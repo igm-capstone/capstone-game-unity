@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class AIArea : MonoBehaviour 
+public class GridBehavior : MonoBehaviour 
 {
     private Vector2 maxSize;
     public float nodeRadius;
@@ -11,20 +11,20 @@ public class AIArea : MonoBehaviour
     private LayerMask obstacle = 1 << 9;
     private LayerMask playerMask = 1 << 10;
     
-    Node_K[,] areaOfNodes;
-    public Transform player;
+    NodeBehavior[,] areaOfNodes;
+    //public Transform player;
 
     void Start()
     {
         maxSize = new Vector2(gameObject.GetComponent<Collider>().bounds.size.x, gameObject.GetComponent<Collider>().bounds.size.z);
         numSpheresX = Mathf.RoundToInt(maxSize.x / nodeRadius) / 2;
         numSpheresZ = Mathf.RoundToInt(maxSize.y / nodeRadius) / 2;
-        createAIArea();
+        createGrid();
     }
 
-    public void createAIArea()
+    public void createGrid()
     {
-        areaOfNodes = new Node_K[numSpheresX,numSpheresZ];
+        areaOfNodes = new NodeBehavior[numSpheresX,numSpheresZ];
         Vector3 startingCorner = new Vector3(gameObject.GetComponent<Collider>().bounds.min.x,gameObject.transform.position.y, gameObject.GetComponent<Collider>().bounds.min.z);
 
         for (int x = 0; x < numSpheresX; x++)
@@ -33,15 +33,18 @@ public class AIArea : MonoBehaviour
             {
                 Vector3 nodePos = startingCorner + new Vector3((nodeRadius * 2) * x + nodeRadius, 0.1f, (nodeRadius * 2) * z + nodeRadius);
                 bool canWalk = !Physics.CheckSphere(nodePos, nodeRadius, obstacle);
-                if(canWalk)
-                    areaOfNodes[x,z] = new Node_K(nodePos, canWalk, new Vector2(x,z),1);
-                else
-                    areaOfNodes[x, z] = new Node_K(nodePos, canWalk, new Vector2(x, z),10000);
+                if(canWalk) {
+                    areaOfNodes[x,z] = new NodeBehavior();
+                    areaOfNodes[x,z].SetNodeProperties(nodePos, canWalk, new Vector2(x,z),1);
+                } else {
+                    areaOfNodes[x, z] = new NodeBehavior();
+                    areaOfNodes[x, z].SetNodeProperties(nodePos, canWalk, new Vector2(x, z), 1);
+                }
             }
         }
     }
 
-    public Node_K getNodeAtPos(Vector3 pos)
+    public NodeBehavior getNodeAtPos(Vector3 pos)
     {
 
         Vector2 percent = new Vector2(Mathf.Clamp01((pos.x + maxSize.x / 2) / maxSize.x), Mathf.Clamp01((pos.z + maxSize.y / 2) / maxSize.y));
@@ -54,9 +57,9 @@ public class AIArea : MonoBehaviour
 //        return null;
     }
 
-    public List<Node_K> neighbors(Node_K centerNode)
+    public List<NodeBehavior> neighbors(NodeBehavior centerNode)
     {
-        List<Node_K> neighborNodes = new List<Node_K>();
+        List<NodeBehavior> neighborNodes = new List<NodeBehavior>();
         for (int x = -1; x < 2; x++)
         {
             for (int z = -1; z < 2; z++)
@@ -74,8 +77,8 @@ public class AIArea : MonoBehaviour
         return neighborNodes;
     }
 
-    public List<Node_K> aStarPath = new List<Node_K>();
-    public LinkedList<Node_K> fringePath = new LinkedList<Node_K>();
+    public List<NodeBehavior> aStarPath = new List<NodeBehavior>();
+    public LinkedList<NodeBehavior> fringePath = new LinkedList<NodeBehavior>();
     void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
@@ -84,8 +87,8 @@ public class AIArea : MonoBehaviour
         
         if (areaOfNodes != null)
         {
-            Node_K playerNode = getNodeAtPos(player.position);
-            foreach (Node_K node in areaOfNodes)
+            //NodeBehavior playerNode = getNodeAtPos(player.position);
+            foreach (NodeBehavior node in areaOfNodes)
             {
                 if (node.walkable)
                 {
@@ -98,17 +101,17 @@ public class AIArea : MonoBehaviour
                     Gizmos.DrawSphere(node.myPos, nodeRadius);
                 }
 
-                if (node == playerNode)
+                /*if (node == playerNode)
                 {
                     Gizmos.color = Color.black;
                     Gizmos.DrawSphere(node.myPos, nodeRadius);
-                }
+                }*/
             }
 
             if (fringePath.Count > 0)
             {
                 Gizmos.color = Color.black;
-                foreach (Node_K n in fringePath)
+                foreach (NodeBehavior n in fringePath)
                 {
                     //Gizmos.DrawSphere(n.myPos, nodeRadius);
                 }
@@ -117,7 +120,7 @@ public class AIArea : MonoBehaviour
             if (aStarPath.Count > 0)
             {
                 Gizmos.color = Color.black;
-                foreach (Node_K n in aStarPath)
+                foreach (NodeBehavior n in aStarPath)
                     Gizmos.DrawSphere(n.myPos, nodeRadius);
             }
         }
