@@ -7,24 +7,30 @@ public class Node
     private ArrayList visibleLights;
     private Vector3 _position;
     private Vector2 _coord;
-    private int _cost;
-    private bool _canWalk;       // The node can be walked on at some point;
-    private int gC, hC, xCoord, zCoord, hIndex;
+    private float _weight;
+    private bool _canWalk;
+    private float gC = -1;
     private Node _nodeParent;
 
-    public Node(Vector3 __position, bool __canWalk, Vector2 __coord, int __cost)
+    public Node(Vector3 __position, bool __canWalk, Vector2 __coord, int __weight)
     {
         visibleLights = new ArrayList();
         _position = __position;
         _canWalk = __canWalk;
         _coord = __coord;
-        _cost = __cost;
+        _weight = __weight;
     }
 
-    public int cost
+    public void Reset() {
+        _weight = 1;
+        gC = -1;
+        _nodeParent = null;
+    }
+
+    public float weight
     {
-        get { return _cost; }
-        set { _cost = value; }
+        get { return (!canWalk || !hasLight) ? int.MaxValue : _weight; }
+        set { _weight = value; }
     }
 
     public Vector3 position
@@ -38,20 +44,14 @@ public class Node
         set { _canWalk = value; }
     }
 
-    public int fCost
+    public bool hasLight
     {
-        get { return (gC + hC); }
+        get { return visibleLights.Count > 0; }
     }
 
-    public int gCost
+    public float gCost
     {
         get { return gC; }
-        set { gC = value; }
-    }
-
-    public int hCost
-    {
-        get { return hC; }
         set { gC = value; }
     }
 
@@ -66,29 +66,14 @@ public class Node
         get { return _coord; }
     }
 
-    public int heapIndex
-    {
-        get { return hIndex; }
-        set { hIndex = value; }
-    }
-
-    public int CompareTo(Node nodeToCompare)
-    {
-        int compare = fCost.CompareTo(nodeToCompare.fCost);
-        if (compare == 0)
-            compare = hCost.CompareTo(nodeToCompare.hCost);
-
-        return -compare;
-    }
-
-    public void OnLightUpdate(GameObject[] lights)
+    public void OnLightUpdate(Light2D[] lights)
     {
         if (!canWalk) {
             return;
         }
 
         visibleLights.Clear();
-        foreach (GameObject light in lights)
+        foreach (Light2D light in lights)
         {
             RaycastHit hit;
             if (Physics.Raycast(_position, Vector3.Normalize(light.transform.position - _position), out hit))
@@ -101,9 +86,5 @@ public class Node
         }
     }
 
-    public bool IsVisible()
-    {
-        return (visibleLights.Count > 0);
-    }
 
 }
