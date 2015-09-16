@@ -5,35 +5,37 @@ using System.Linq;
 public class Node
 {
     private ArrayList visibleLights;
-    private Vector3 myPosition;
-    private Vector2 coord;
-    private int myCost;
-    private bool canWalk;       // The node can be walked on at some point;
+    private Vector3 _position;
+    private Vector2 _coord;
+    private int _cost;
+    private bool _canWalk;       // The node can be walked on at some point;
     private int gC, hC, xCoord, zCoord, hIndex;
-    private Node nodeParent;
+    private Node _nodeParent;
 
-    public Node(Vector3 _myPosition, bool _canWalk, Vector2 _coord, int _myCost)
+    public Node(Vector3 __position, bool __canWalk, Vector2 __coord, int __cost)
     {
         visibleLights = new ArrayList();
-        myPosition = _myPosition;
-        canWalk = _canWalk;
-        coord = _coord;
-        myCost = _myCost;
+        _position = __position;
+        _canWalk = __canWalk;
+        _coord = __coord;
+        _cost = __cost;
     }
 
-    public int nodeCost
+    public int cost
     {
-        get { return myCost; }
+        get { return _cost; }
+        set { _cost = value; }
     }
 
-    public Vector3 myPos
+    public Vector3 position
     {
-        get{ return myPosition; }
+        get{ return _position; }
     }
 
-    public bool walkable
+    public bool canWalk
     {
-        get { return canWalk; }
+        get { return _canWalk; }
+        set { _canWalk = value; }
     }
 
     public int fCost
@@ -55,13 +57,13 @@ public class Node
 
     public Node parent
     {
-        get { return nodeParent; }
-        set { nodeParent = value; }
+        get { return _nodeParent; }
+        set { _nodeParent = value; }
     }
 
-    public Vector2 myCoord
+    public Vector2 coord
     {
-        get { return coord; }
+        get { return _coord; }
     }
 
     public int heapIndex
@@ -89,7 +91,7 @@ public class Node
         foreach (GameObject light in lights)
         {
             RaycastHit hit;
-            if (Physics.Raycast(myPosition, Vector3.Normalize(light.transform.position - myPosition), out hit))
+            if (Physics.Raycast(_position, Vector3.Normalize(light.transform.position - _position), out hit))
             {
                 if (hit.collider.gameObject.tag == "Light")
                 {
