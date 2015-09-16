@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Linq;
 
-public class NodeBehavior : MonoBehaviour
+public class Node
 {
     private ArrayList visibleLights;
     private Vector3 myPosition;
@@ -10,15 +10,11 @@ public class NodeBehavior : MonoBehaviour
     private int myCost;
     private bool canWalk;       // The node can be walked on at some point;
     private int gC, hC, xCoord, zCoord, hIndex;
-    private NodeBehavior nodeParent;
+    private Node nodeParent;
 
-    public void Start()
+    public Node(Vector3 _myPosition, bool _canWalk, Vector2 _coord, int _myCost)
     {
         visibleLights = new ArrayList();
-    }
-
-    public void SetNodeProperties(Vector3 _myPosition, bool _canWalk, Vector2 _coord, int _myCost)
-    {
         myPosition = _myPosition;
         canWalk = _canWalk;
         coord = _coord;
@@ -57,7 +53,7 @@ public class NodeBehavior : MonoBehaviour
         set { gC = value; }
     }
 
-    public NodeBehavior parent
+    public Node parent
     {
         get { return nodeParent; }
         set { nodeParent = value; }
@@ -74,7 +70,7 @@ public class NodeBehavior : MonoBehaviour
         set { hIndex = value; }
     }
 
-    public int CompareTo(NodeBehavior nodeToCompare)
+    public int CompareTo(Node nodeToCompare)
     {
         int compare = fCost.CompareTo(nodeToCompare.fCost);
         if (compare == 0)
@@ -93,7 +89,7 @@ public class NodeBehavior : MonoBehaviour
         foreach (GameObject light in lights)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, Vector3.Normalize(light.transform.position - transform.position), out hit))
+            if (Physics.Raycast(myPosition, Vector3.Normalize(light.transform.position - myPosition), out hit))
             {
                 if (hit.collider.gameObject.tag == "Light")
                 {
