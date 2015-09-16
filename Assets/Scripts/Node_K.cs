@@ -1,16 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
-public class Node_K : IHeapObj<Node_K>
+public class NodeBehavior : MonoBehaviour
 {
+    private ArrayList visibleLights;
     private Vector3 myPosition;
     private Vector2 coord;
     private int myCost;
-    private bool canWalk;
+    private bool canWalk;       // The node can be walked on at some point;
     private int gC, hC, xCoord, zCoord, hIndex;
-    private Node_K nodeParent;
+    private NodeBehavior nodeParent;
 
-    public Node_K(Vector3 _myPosition, bool _canWalk, Vector2 _coord, int _myCost)
+    public void Start()
+    {
+        visibleLights = new ArrayList();
+    }
+
+    public void SetNodeProperties(Vector3 _myPosition, bool _canWalk, Vector2 _coord, int _myCost)
     {
         myPosition = _myPosition;
         canWalk = _canWalk;
@@ -50,7 +57,7 @@ public class Node_K : IHeapObj<Node_K>
         set { gC = value; }
     }
 
-    public Node_K parent
+    public NodeBehavior parent
     {
         get { return nodeParent; }
         set { nodeParent = value; }
@@ -67,7 +74,7 @@ public class Node_K : IHeapObj<Node_K>
         set { hIndex = value; }
     }
 
-    public int CompareTo(Node_K nodeToCompare)
+    public int CompareTo(NodeBehavior nodeToCompare)
     {
         int compare = fCost.CompareTo(nodeToCompare.fCost);
         if (compare == 0)
@@ -75,4 +82,30 @@ public class Node_K : IHeapObj<Node_K>
 
         return -compare;
     }
+
+    public void OnLightUpdate(GameObject[] lights)
+    {
+        if (!canWalk) {
+            return;
+        }
+
+        visibleLights.Clear();
+        foreach (GameObject light in lights)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.Normalize(light.transform.position - transform.position), out hit))
+            {
+                if (hit.collider.gameObject.tag == "Light")
+                {
+                    visibleLights.Add(hit.collider.gameObject);
+                }
+            }
+        }
+    }
+
+    public bool IsVisible()
+    {
+        return (visibleLights.Count > 0);
+    }
+
 }
