@@ -75,14 +75,16 @@ public class Node
         visibleLights.Clear();
         foreach (Light2D light in lights)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(_position, Vector3.Normalize(light.transform.position - _position), out hit))
-            {
-                if (hit.collider.gameObject.tag == "Light")
+            Vector2 p = new Vector2(_position.x, _position.y);
+            Vector2 d = new Vector2(light.transform.position.x, light.transform.position.y) - p;
+            d.Normalize();
+
+            RaycastHit2D hit;
+            hit = Physics2D.Raycast(p, d);
+            if (hit.collider.gameObject.tag == "Light")
                 {
                     visibleLights.Add(hit.collider.gameObject);
                 }
-            }
         }
     }
 

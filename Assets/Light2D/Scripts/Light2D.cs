@@ -228,7 +228,7 @@ public class Light2D : MonoBehaviour {
 
 
 
-            var hit = Physics2D.Raycast(transform.position, vertex.Position - transform.position, lightRadius);
+            var hit = Physics2D.Raycast(transform.position, vertex.Position - transform.position, lightRadius, shadowMask);
             //Debug.DrawRay(transform.position, v.pos - transform.position, Color.white);
 
             if (!hit)
