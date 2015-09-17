@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Obstacle : MonoBehaviour {
+public class MovementBroadcast : MonoBehaviour {
 
     private GridBehavior grid;
+    private LightController[] lights;
     Vector3 lastPos;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         grid = FindObjectOfType<GridBehavior>();
+        lights = FindObjectsOfType<LightController>();
         lastPos = transform.position;
     }
 
@@ -18,7 +20,11 @@ public class Obstacle : MonoBehaviour {
     {
         if (transform.position != lastPos)
         {
-            grid.SendMessage("UpdateCosts");
+            grid.UpdateCosts();
+            foreach (LightController light in lights)
+            {
+                light.UpdateLightFX();
+            }
             lastPos = transform.position;
         }
     }

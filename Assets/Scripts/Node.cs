@@ -81,10 +81,10 @@ public class Node
 
             RaycastHit2D hit;
             hit = Physics2D.Raycast(p, d);
-            if (hit.collider.gameObject.tag == "Light")
-                {
-                    visibleLights.Add(hit.collider.gameObject);
-                }
+            if (hit && hit.collider && hit.collider.gameObject.tag == "Light")
+            {
+                visibleLights.Add(hit.collider.gameObject);
+            }
         }
     }
 

@@ -55,9 +55,11 @@ public class Light2D : MonoBehaviour {
         meshRenderer.sharedMaterial = lightMaterial;
 
         vertices = new List<Vertex>();
+
+        UpdateLightFX();
     }
 
-    void Update()
+    public void UpdateLightFX()
     {
         // TODO avoid getting all colliders every frame
         FindLightColliders();
