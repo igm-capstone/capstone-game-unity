@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 
+[ExecuteInEditMode]
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
 public class Light2D : MonoBehaviour {
@@ -27,6 +29,10 @@ public class Light2D : MonoBehaviour {
     public  float lightRadius = 100f;
     public Material lightMaterial;
     public LayerMask shadowMask = Physics.DefaultRaycastLayers;
+
+#if UNITY_EDITOR
+    public bool debug;
+#endif
 
     private PolygonCollider2D[] colliders;
     private List<Vertex> vertices;
@@ -56,7 +62,7 @@ public class Light2D : MonoBehaviour {
         // TODO avoid getting all colliders every frame
         FindLightColliders();
         SetLight();
-        RenderLightMesh();
+        BuildLightMesh();
         ResetBounds();
     }
 
@@ -107,7 +113,7 @@ public class Light2D : MonoBehaviour {
                     vertex.IsEndpoint = true;
                 }
 
-                Debug.DrawLine(transform.position, vertex.Position, vertex.IsEndpoint ? Color.red : Color.white);
+                //Debug.DrawLine(transform.position, vertex.Position, vertex.IsEndpoint ? Color.red : Color.white);
 
                 // vertex position is saved in light local space.
                 vertex.Position = transform.InverseTransformPoint(vertex.Position);
@@ -121,7 +127,6 @@ public class Light2D : MonoBehaviour {
                 {
                     touchUp = true;
                 }
-
 
                 if (vertex.Position.sqrMagnitude <= lightRadius * lightRadius)
                 {
@@ -195,7 +200,8 @@ public class Light2D : MonoBehaviour {
                     var newVertexPosition = hit ? (Vector3)hit.point
                         : transform.TransformPoint(direction * lightRadius);
 
-                    Debug.DrawLine(position, newVertexPosition, Color.green);
+                    //Debug.DrawLine(position, newVertexPosition, Color.green);
+                    if (debug) Debug.DrawLine(transform.position, newVertexPosition, Color.white * .5f + Color.magenta * .5f);
 
                     vertex = new Vertex();
                     vertex.Position = transform.InverseTransformPoint(newVertexPosition);
@@ -205,9 +211,6 @@ public class Light2D : MonoBehaviour {
                 }
 
             }
-
-            
-
         }
 
         var theta = 0;
@@ -225,6 +228,7 @@ public class Light2D : MonoBehaviour {
 
             vertex.Position *= lightRadius;
             vertex.Position += transform.position;
+            vertex.Position.Scale(transform.lossyScale);
 
 
 
@@ -278,7 +282,7 @@ public class Light2D : MonoBehaviour {
         }
     }
 
-    private void RenderLightMesh()
+    private void BuildLightMesh()
     {
         // fill the mesh with vertices
         var meshVertices = new Vector3[vertices.Count + 1];
