@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GuardBehavior : MonoBehaviour {
 
+    public GameObject mLightPrefab;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -21,11 +23,19 @@ public class GuardBehavior : MonoBehaviour {
         if (Input.GetMouseButtonUp(0))
         {
             GameObject[] lights = GameObject.FindGameObjectsWithTag("Light");
-            foreach (GameObject light in lights) {
-                if (light.GetComponent<CircleCollider2D>().OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition))) {
+            foreach (GameObject light in lights)
+            {
+                if (light.GetComponent<CircleCollider2D>().OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
+                {
                     light.GetComponent<Light2D>().Toggle();
                 }
             }
         }
+        //else if (Input.GetMouseButtonUp(1))
+        //{
+        //    Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //    position.z = 0.0f;
+        //    GameObject.Instantiate(mLightPrefab, position, Quaternion.identity);
+        //}
     }
 }
