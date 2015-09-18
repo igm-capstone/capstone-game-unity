@@ -20,7 +20,7 @@ public class Light2D : MonoBehaviour {
     struct Vertex
     {
         public float PseudoAngle;
-        public Vector3 Position;
+        public Vector2 Position;
         public VertexLocation Location;
         public bool IsEndpoint;
     }
@@ -58,6 +58,16 @@ public class Light2D : MonoBehaviour {
 
         UpdateLightFX();
     }
+
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (!Application.isPlaying)
+        {
+            UpdateLightFX();;
+        }
+    }
+#endif
 
     public void UpdateLightFX()
     {
@@ -100,6 +110,7 @@ public class Light2D : MonoBehaviour {
                 var vertex = new Vertex();
 
                 var worldPoint = collider.transform.TransformPoint(point);
+
                 var distance = (worldPoint - transform.position).magnitude;
 
                 var hit = Physics2D.Raycast(transform.position, worldPoint - transform.position, distance, shadowMask);
@@ -199,8 +210,8 @@ public class Light2D : MonoBehaviour {
 
                     var hit = Physics2D.Raycast(position, direction, lightRadius, shadowMask);
 
-                    var newVertexPosition = hit ? (Vector3)hit.point
-                        : transform.TransformPoint(direction * lightRadius);
+                    Vector3 newVertexPosition;
+                    newVertexPosition = hit ? (Vector3)hit.point : transform.TransformPoint(direction*lightRadius);
 
                     //Debug.DrawLine(position, newVertexPosition, Color.green);
                     if (debug) Debug.DrawLine(transform.position, newVertexPosition, Color.white * .5f + Color.magenta * .5f);
@@ -224,17 +235,19 @@ public class Light2D : MonoBehaviour {
         {
             theta = (amount * i) % 360;
 
+            var position2d = (Vector2) transform.position;
+
             var vertex = new Vertex();
             vertex.Position = new Vector3(FastMath.SinArray[theta], FastMath.CosArray[theta], 0);
             vertex.PseudoAngle = PseudoAtan2(vertex.Position.y, vertex.Position.x);
 
             vertex.Position *= lightRadius;
-            vertex.Position += transform.position;
+            vertex.Position += position2d;
             vertex.Position.Scale(transform.lossyScale);
 
 
 
-            var hit = Physics2D.Raycast(transform.position, vertex.Position - transform.position, lightRadius, shadowMask);
+            var hit = Physics2D.Raycast(transform.position, vertex.Position - position2d, lightRadius, shadowMask);
             //Debug.DrawRay(transform.position, v.pos - transform.position, Color.white);
 
             if (!hit)
