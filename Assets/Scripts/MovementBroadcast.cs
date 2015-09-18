@@ -7,6 +7,8 @@ public class MovementBroadcast : MonoBehaviour {
     private LightController[] lights;
     Vector3 lastPos;
 
+    public GameObject A, B;
+
     // Use this for initialization
     void Awake()
     {
@@ -26,6 +28,9 @@ public class MovementBroadcast : MonoBehaviour {
                 light.UpdateLightFX();
             }
             lastPos = transform.position;
+
+            if (A != null && B != null)
+                grid.GetFringePath(A, B);
         }
     }
 }
