@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
+using PathFinder;
 
-public class GridBehavior : MonoBehaviour 
+public class GridBehavior : MonoBehaviour, ISearchSpace
 {
     private Vector2 maxSize;
     public float nodeRadius;
@@ -14,6 +16,15 @@ public class GridBehavior : MonoBehaviour
     public LayerMask obstacleLayer = 1 << 9;
 
     Node[,] areaOfNodes;
+
+    public IEnumerable<INode> Nodes
+    {
+        get
+        {
+            // cast will convert the 2D array into IEnumerable ;)
+            return areaOfNodes.Cast<INode>();
+        }
+    }
 
     void Start()
     {
@@ -35,7 +46,7 @@ public class GridBehavior : MonoBehaviour
             {
                 Vector3 nodePos = startingCorner + new Vector3((nodeRadius * 2) * x + nodeRadius, (nodeRadius * 2) * y + nodeRadius, 0.1f);
                 //Init nodes
-                areaOfNodes[x, y] = new Node(nodePos, true, new Vector2(x, y), 1);
+                areaOfNodes[x, y] = new Node(this, nodePos, new Vector2(x, y), 1);
             }
         }
         UpdateCosts();
@@ -70,7 +81,54 @@ public class GridBehavior : MonoBehaviour
         return areaOfNodes[gridCoordX, gridCoordY];
     }
 
-    public List<Node> GetNeighbors(Node centerNode)
+    public IEnumerable<NodeConnection> GetNodeConnections(int x, int y)
+    {
+        var notLeftEdge = x > 0;
+        var notRightEdge = x < areaOfNodes.GetLength(0) - 1;
+        var notBottomEdge = y > 0;
+        var notTopEdge = y < areaOfNodes.GetLength(1) - 1;
+
+        var connections = new List<NodeConnection>();
+
+        //if (notLeftEdge) AddNodeIfValid(connections, nodes[x - 1, y]);
+        //if (notRightEdge) AddNodeIfValid(connections, nodes[x + 1, y]);
+        //if (notBottomEdge) AddNodeIfValid(connections, nodes[x, y - 1]);
+        //if (notTopEdge) AddNodeIfValid(connections, nodes[x, y + 1]);
+
+        //if (notLeftEdge && notBottomEdge) AddNodeIfValid(connections, nodes[x - 1, y - 1]);
+        //if (notLeftEdge && notTopEdge) AddNodeIfValid(connections, nodes[x - 1, y + 1]);
+        //if (notRightEdge && notBottomEdge) AddNodeIfValid(connections, nodes[x + 1, y - 1]);
+        //if (notRightEdge && notTopEdge) AddNodeIfValid(connections, nodes[x + 1, y + 1]);
+
+        if (notTopEdge) CreateConnectionIfValid(connections, areaOfNodes[x, y], areaOfNodes[x, y + 1]);
+        if (notRightEdge && notTopEdge) CreateConnectionIfValid(connections, areaOfNodes[x, y], areaOfNodes[x + 1, y + 1]);
+        if (notRightEdge) CreateConnectionIfValid(connections, areaOfNodes[x, y], areaOfNodes[x + 1, y]);
+        if (notRightEdge && notBottomEdge) CreateConnectionIfValid(connections, areaOfNodes[x, y], areaOfNodes[x + 1, y - 1]);
+        if (notBottomEdge) CreateConnectionIfValid(connections, areaOfNodes[x, y], areaOfNodes[x, y - 1]);
+        if (notLeftEdge && notBottomEdge) CreateConnectionIfValid(connections, areaOfNodes[x, y], areaOfNodes[x - 1, y - 1]);
+        if (notLeftEdge) CreateConnectionIfValid(connections, areaOfNodes[x, y], areaOfNodes[x - 1, y]);
+        if (notLeftEdge && notTopEdge) CreateConnectionIfValid(connections, areaOfNodes[x, y], areaOfNodes[x - 1, y + 1]);
+
+        return connections;
+    }
+
+    void CreateConnectionIfValid(List<NodeConnection> list, Node nodeFrom, Node nodeTo)
+    {
+        if (nodeTo.Weight < Single.MaxValue)
+        {
+            var conn = new NodeConnection
+            {
+                // 1.4 for diagonals and 1 for horizontal or vertical connections
+                Cost = nodeFrom.coord.x == nodeTo.coord.x || nodeFrom.coord.y == nodeTo.coord.y ? 1 : 1.4f,
+                From = nodeFrom,
+                To = nodeTo,
+            };
+
+            list.Add(conn);
+        }
+    }
+
+    public List<Node> GetNeighbors(Vector2 coord)
     {
         List<Node> neighborNodes = new List<Node>();
         for (int x = -1; x < 2; x++)
@@ -79,15 +137,15 @@ public class GridBehavior : MonoBehaviour
             {
                 if (x == 0 && y == 0)
                     continue;
-                
-                int xLimit = x + Mathf.RoundToInt(centerNode.coord.x);
-                int zLimit = y + Mathf.RoundToInt(centerNode.coord.y);
+
+                int xLimit = x + Mathf.RoundToInt(coord.x);
+                int zLimit = y + Mathf.RoundToInt(coord.y);
 
                 if (xLimit > -1 && zLimit > -1 && xLimit < numSpheresX && zLimit < numSpheresY)
                 {
                     neighborNodes.Add(areaOfNodes[xLimit, zLimit]);
                     if (x == y)
-                        areaOfNodes[xLimit, zLimit].weight = 1.4f;
+                        areaOfNodes[xLimit, zLimit].Weight = 1.4f;
                 }
             }
         }
@@ -104,7 +162,7 @@ public class GridBehavior : MonoBehaviour
             {
                 if (node.canWalk && node.hasLight)
                 {
-                    Handles.color = new Color(0, ((11.0f - node.weight) / 10.0f)*0.6f+0.4f, 0);
+                    Handles.color = new Color(0, ((11.0f - node.Weight) / 10.0f)*0.6f+0.4f, 0);
                 }
                 if (!node.hasLight)
                 {
@@ -132,7 +190,7 @@ public class GridBehavior : MonoBehaviour
                 }*/
             }
 
-            if (path.Count > 0)
+            if (path != null)
             {
                 Handles.color = Color.red;
                 foreach (Node node in path)
@@ -149,9 +207,11 @@ public class GridBehavior : MonoBehaviour
     }
 
 
-    private float Heuristic(Node A, Node B)
+    public static float Heuristic(INode NodeA, INode NodeB)
     {
-        //return Mathf.Max(Mathf.Abs(A.coord.x - B.coord.x), Mathf.Abs(A.coord.y - B.coord.y));
+        var A = NodeA as Node;
+        var B = NodeB as Node;
+        
         float xDist = Mathf.Abs(A.coord.x - B.coord.x);
         float yDist = Mathf.Abs(A.coord.y - B.coord.y);
         if(xDist > yDist)
@@ -159,12 +219,18 @@ public class GridBehavior : MonoBehaviour
         return 1.4f*xDist + (yDist-xDist);
     }
 
-    Stack<Node> path = new Stack<Node>();
-    public Stack<Node> GetAStartPath(GameObject Start, GameObject End)
+    IEnumerable<INode> path;
+    public IEnumerable<INode> GetFringePath(GameObject Start, GameObject End)
     {
         Debug.Log("Fringe start");
-        path.Clear();
-        foreach (Node n in areaOfNodes) n.Reset();
+        PathFinder.Fringe fringe = new PathFinder.Fringe(Heuristic);
+
+        Node startNode = getNodeAtPos(Start.transform.position);
+        Node endNode = getNodeAtPos(End.transform.position);
+
+        path = fringe.FindPath((INode)startNode, (INode)endNode);
+        
+        /*foreach (Node n in areaOfNodes) n.Reset();
 
         Node startNode = getNodeAtPos(Start.transform.position);
         Node endNode = getNodeAtPos(End.transform.position);
@@ -197,7 +263,7 @@ public class GridBehavior : MonoBehaviour
                         {
                             now.Enqueue(n);
                             n.parent = current;
-                            n.gCost = current.gCost + n.weight;
+                            n.gCost = current.gCost + n.Weight;
                         }
                     }
                 }
@@ -225,7 +291,7 @@ public class GridBehavior : MonoBehaviour
                 current = current.parent;
             }
         }
-        Debug.Log("Fringe end");
+        Debug.Log("Fringe end");*/
         return path;
     }
 

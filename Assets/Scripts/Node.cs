@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using PathFinder;
 
-public class Node
+public class Node : INode
 {
     private ArrayList visibleLights;
     private Vector3 _position;
@@ -12,13 +14,23 @@ public class Node
     private float gC = -1;
     private Node _nodeParent;
 
-    public Node(Vector3 __position, bool __canWalk, Vector2 __coord, int __weight)
+    public readonly GridBehavior Grid;
+
+    public Node(GridBehavior grid, Vector3 position, Vector2 coord, float weight)
     {
         visibleLights = new ArrayList();
-        _position = __position;
-        _canWalk = __canWalk;
-        _coord = __coord;
-        _weight = __weight;
+        _position = position;
+        _coord = coord;
+        _weight = weight;
+        Grid = grid;
+    }
+
+    public IEnumerable<NodeConnection> Connections
+    {
+        get
+        {
+            return Grid.GetNodeConnections((int)_coord.x, (int)_coord.y);
+        }
     }
 
     public void Reset() {
@@ -27,9 +39,9 @@ public class Node
         _nodeParent = null;
     }
 
-    public float weight
+    public float Weight
     {
-        get { return (!canWalk || !hasLight) ? int.MaxValue : _weight; }
+        get { return (!canWalk || !hasLight) ? float.MaxValue : _weight; }
         set { _weight = value; }
     }
 
