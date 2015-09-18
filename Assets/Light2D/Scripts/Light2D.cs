@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 
+[ExecuteInEditMode]
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
 public class Light2D : MonoBehaviour {
@@ -18,7 +20,7 @@ public class Light2D : MonoBehaviour {
     struct Vertex
     {
         public float PseudoAngle;
-        public Vector3 Position;
+        public Vector2 Position;
         public VertexLocation Location;
         public bool IsEndpoint;
     }
@@ -27,6 +29,10 @@ public class Light2D : MonoBehaviour {
     public  float lightRadius = 100f;
     public Material lightMaterial;
     public LayerMask shadowMask = Physics.DefaultRaycastLayers;
+
+#if UNITY_EDITOR
+    public bool debug;
+#endif
 
     private PolygonCollider2D[] colliders;
     private List<Vertex> vertices;
@@ -53,12 +59,22 @@ public class Light2D : MonoBehaviour {
         UpdateLightFX();
     }
 
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (!Application.isPlaying)
+        {
+            UpdateLightFX();;
+        }
+    }
+#endif
+
     public void UpdateLightFX()
     {
         // TODO avoid getting all colliders every frame
         FindLightColliders();
         SetLight();
-        RenderLightMesh();
+        BuildLightMesh();
         ResetBounds();
     }
 
@@ -94,6 +110,7 @@ public class Light2D : MonoBehaviour {
                 var vertex = new Vertex();
 
                 var worldPoint = collider.transform.TransformPoint(point);
+
                 var distance = (worldPoint - transform.position).magnitude;
 
                 var hit = Physics2D.Raycast(transform.position, worldPoint - transform.position, distance, shadowMask);
@@ -109,7 +126,7 @@ public class Light2D : MonoBehaviour {
                     vertex.IsEndpoint = true;
                 }
 
-                Debug.DrawLine(transform.position, vertex.Position, vertex.IsEndpoint ? Color.red : Color.white);
+                //Debug.DrawLine(transform.position, vertex.Position, vertex.IsEndpoint ? Color.red : Color.white);
 
                 // vertex position is saved in light local space.
                 vertex.Position = transform.InverseTransformPoint(vertex.Position);
@@ -123,7 +140,6 @@ public class Light2D : MonoBehaviour {
                 {
                     touchUp = true;
                 }
-
 
                 if (vertex.Position.sqrMagnitude <= lightRadius * lightRadius)
                 {
@@ -194,10 +210,11 @@ public class Light2D : MonoBehaviour {
 
                     var hit = Physics2D.Raycast(position, direction, lightRadius, shadowMask);
 
-                    var newVertexPosition = hit ? (Vector3)hit.point
-                        : transform.TransformPoint(direction * lightRadius);
+                    Vector3 newVertexPosition;
+                    newVertexPosition = hit ? (Vector3)hit.point : transform.TransformPoint(direction*lightRadius);
 
-                    Debug.DrawLine(position, newVertexPosition, Color.green);
+                    //Debug.DrawLine(position, newVertexPosition, Color.green);
+                    if (debug) Debug.DrawLine(transform.position, newVertexPosition, Color.white * .5f + Color.magenta * .5f);
 
                     vertex = new Vertex();
                     vertex.Position = transform.InverseTransformPoint(newVertexPosition);
@@ -207,9 +224,6 @@ public class Light2D : MonoBehaviour {
                 }
 
             }
-
-            
-
         }
 
         var theta = 0;
@@ -221,16 +235,19 @@ public class Light2D : MonoBehaviour {
         {
             theta = (amount * i) % 360;
 
+            var position2d = (Vector2) transform.position;
+
             var vertex = new Vertex();
             vertex.Position = new Vector3(FastMath.SinArray[theta], FastMath.CosArray[theta], 0);
             vertex.PseudoAngle = PseudoAtan2(vertex.Position.y, vertex.Position.x);
 
             vertex.Position *= lightRadius;
-            vertex.Position += transform.position;
+            vertex.Position += position2d;
+            vertex.Position.Scale(transform.lossyScale);
 
 
 
-            var hit = Physics2D.Raycast(transform.position, vertex.Position - transform.position, lightRadius, shadowMask);
+            var hit = Physics2D.Raycast(transform.position, vertex.Position - position2d, lightRadius, shadowMask);
             //Debug.DrawRay(transform.position, v.pos - transform.position, Color.white);
 
             if (!hit)
@@ -280,7 +297,7 @@ public class Light2D : MonoBehaviour {
         }
     }
 
-    private void RenderLightMesh()
+    private void BuildLightMesh()
     {
         // fill the mesh with vertices
         var meshVertices = new Vector3[vertices.Count + 1];
