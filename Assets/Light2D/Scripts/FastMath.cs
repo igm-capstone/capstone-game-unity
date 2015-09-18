@@ -72,4 +72,20 @@ public static class FastMath
         }
         return atan;
     }
+
+    // This method emulates Atan2. 
+    // Although the output angle is highly innacurate this
+    // can be used as a pseudo angle comparator.
+    public static float PseudoAtan2(float dy, float dx)
+    {
+        float ax = Mathf.Abs(dx);
+        float ay = Mathf.Abs(dy);
+        float p = dy / (ax + ay);
+        return dx < 0 ? 2 - p : p;
+    }
+
+    public static bool Approximately(float a, float b, float error = 0.001f)
+    {
+        return Mathf.Abs(b - a) < error;
+    }
 }

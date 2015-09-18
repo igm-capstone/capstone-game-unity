@@ -64,7 +64,7 @@ public class Light2D : MonoBehaviour {
     {
         if (!Application.isPlaying)
         {
-            UpdateLightFX();;
+            UpdateLightFX();
         }
     }
 #endif
@@ -130,7 +130,7 @@ public class Light2D : MonoBehaviour {
 
                 // vertex position is saved in light local space.
                 vertex.Position = transform.InverseTransformPoint(vertex.Position);
-                vertex.PseudoAngle = PseudoAtan2(vertex.Position.y, vertex.Position.x);
+                vertex.PseudoAngle = FastMath.PseudoAtan2(vertex.Position.y, vertex.Position.x);
 
                 if (vertex.PseudoAngle < 0f)
                 {
@@ -218,7 +218,7 @@ public class Light2D : MonoBehaviour {
 
                     vertex = new Vertex();
                     vertex.Position = transform.InverseTransformPoint(newVertexPosition);
-                    vertex.PseudoAngle = PseudoAtan2(vertex.Position.y, vertex.Position.x);
+                    vertex.PseudoAngle = FastMath.PseudoAtan2(vertex.Position.y, vertex.Position.x);
 
                     vertices.Add(vertex);
                 }
@@ -239,7 +239,7 @@ public class Light2D : MonoBehaviour {
 
             var vertex = new Vertex();
             vertex.Position = new Vector3(FastMath.SinArray[theta], FastMath.CosArray[theta], 0);
-            vertex.PseudoAngle = PseudoAtan2(vertex.Position.y, vertex.Position.x);
+            vertex.PseudoAngle = FastMath.PseudoAtan2(vertex.Position.y, vertex.Position.x);
 
             vertex.Position *= lightRadius;
             vertex.Position += position2d;
@@ -343,16 +343,5 @@ public class Light2D : MonoBehaviour {
         var bounds = lightMesh.bounds;
         bounds.center = Vector3.zero;
         lightMesh.bounds = bounds;
-    }
-
-    // This method emulates Atan2. 
-    // Although the output angle is highly innacurate this
-    // can be used as a pseudo angle comparator.
-    static float PseudoAtan2(float dy, float dx)
-    {
-        float ax = Mathf.Abs(dx);
-        float ay = Mathf.Abs(dy);
-        float p = dy / (ax + ay);
-        return dx < 0 ? 2 - p : p;
     }
 }
