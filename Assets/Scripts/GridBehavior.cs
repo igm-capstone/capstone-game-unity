@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEditor;
 using PathFinder;
 
+[ExecuteInEditMode]
 public class GridBehavior : MonoBehaviour, ISearchSpace
 {
     private Vector2 maxSize;
@@ -12,10 +13,11 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
 
     private int numSpheresX, numSpheresY;
     private Vector3 startingCorner;
-
+    
     public LayerMask obstacleLayer = 1 << 9;
 
     Node[,] areaOfNodes;
+    private GameObject ShadowColliderGroup;
 
     public IEnumerable<INode> Nodes
     {
@@ -25,17 +27,32 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
             return areaOfNodes.Cast<INode>();
         }
     }
-
+    
     void Start()
     {
-        maxSize = new Vector2(gameObject.GetComponent<Collider>().bounds.size.x, gameObject.GetComponent<Collider>().bounds.size.y);
+        var originalCol = gameObject.GetComponent<Collider>();
+
+        maxSize = new Vector2(originalCol.bounds.size.x, originalCol.bounds.size.y);
         numSpheresX = Mathf.RoundToInt(maxSize.x / nodeRadius) / 2;
         numSpheresY = Mathf.RoundToInt(maxSize.y / nodeRadius) / 2;
 
-        startingCorner = new Vector3(gameObject.GetComponent<Collider>().bounds.min.x, gameObject.GetComponent<Collider>().bounds.min.y, gameObject.transform.position.z);
+        startingCorner = new Vector3(originalCol.bounds.min.x, originalCol.bounds.min.y, gameObject.transform.position.z);
 
+        if (Application.isPlaying)
+        {
+            ShadowColliderGroup = new GameObject();
+            ShadowColliderGroup.layer = 10;
+            ShadowColliderGroup.transform.parent = gameObject.transform;
+        }
         createGrid();
     }
+
+#if UNITY_EDITOR
+    private void Update()
+    {
+        UpdateCosts();
+    }
+#endif
 
     public void createGrid()
     {
@@ -44,9 +61,17 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
         {
             for (int y = 0; y < numSpheresY; y++)
             {
-                Vector3 nodePos = startingCorner + new Vector3((nodeRadius * 2) * x + nodeRadius, (nodeRadius * 2) * y + nodeRadius, 0.1f);
-                //Init nodes
+                Vector3 nodePos = startingCorner + new Vector3((nodeRadius * 2) * x + nodeRadius, (nodeRadius * 2) * y + nodeRadius, 0);
                 areaOfNodes[x, y] = new Node(this, nodePos, new Vector2(x, y), 1);
+
+                //ShadowCollider
+                if (Application.isPlaying)
+                {
+                    BoxCollider2D col = ShadowColliderGroup.AddComponent<BoxCollider2D>();
+                    col.size = new Vector2(1, 1);
+                    col.offset = areaOfNodes[x, y].position;
+                    areaOfNodes[x, y].shadowCollider = col;
+                }
             }
         }
         UpdateCosts();
@@ -54,16 +79,16 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
 
     public void UpdateCosts()
     {
-        Debug.Log("Updating costs");
         Light2D[] sceneLights = FindObjectsOfType(typeof(Light2D)) as Light2D[];
         
         for (int x = 0; x < numSpheresX; x++)
         {
             for (int y = 0; y < numSpheresY; y++)
             {
-                Vector3 nodePos = startingCorner + new Vector3((nodeRadius * 2) * x + nodeRadius, (nodeRadius * 2) * y + nodeRadius, 0.1f);
+                Vector3 nodePos = areaOfNodes[x, y].position;
                 //Check for obstacles
-                areaOfNodes[x, y].canWalk = !Physics.CheckSphere(nodePos, nodeRadius, obstacleLayer);
+                var col = Physics2D.BoxCast((Vector2)nodePos, new Vector2(nodeRadius*2, nodeRadius*2), 0, Vector2.up, 0, obstacleLayer).collider;
+                areaOfNodes[x, y].canWalk = (col == null);
 
                 //Check for lights
                 areaOfNodes[x, y].OnLightUpdate(sceneLights);
@@ -89,16 +114,6 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
         var notTopEdge = y < areaOfNodes.GetLength(1) - 1;
 
         var connections = new List<NodeConnection>();
-
-        //if (notLeftEdge) AddNodeIfValid(connections, nodes[x - 1, y]);
-        //if (notRightEdge) AddNodeIfValid(connections, nodes[x + 1, y]);
-        //if (notBottomEdge) AddNodeIfValid(connections, nodes[x, y - 1]);
-        //if (notTopEdge) AddNodeIfValid(connections, nodes[x, y + 1]);
-
-        //if (notLeftEdge && notBottomEdge) AddNodeIfValid(connections, nodes[x - 1, y - 1]);
-        //if (notLeftEdge && notTopEdge) AddNodeIfValid(connections, nodes[x - 1, y + 1]);
-        //if (notRightEdge && notBottomEdge) AddNodeIfValid(connections, nodes[x + 1, y - 1]);
-        //if (notRightEdge && notTopEdge) AddNodeIfValid(connections, nodes[x + 1, y + 1]);
 
         if (notTopEdge) CreateConnectionIfValid(connections, areaOfNodes[x, y], areaOfNodes[x, y + 1]);
         if (notRightEdge && notTopEdge) CreateConnectionIfValid(connections, areaOfNodes[x, y], areaOfNodes[x + 1, y + 1]);
@@ -128,30 +143,6 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
         }
     }
 
-    public List<Node> GetNeighbors(Vector2 coord)
-    {
-        List<Node> neighborNodes = new List<Node>();
-        for (int x = -1; x < 2; x++)
-        {
-            for (int y = -1; y < 2; y++)
-            {
-                if (x == 0 && y == 0)
-                    continue;
-
-                int xLimit = x + Mathf.RoundToInt(coord.x);
-                int zLimit = y + Mathf.RoundToInt(coord.y);
-
-                if (xLimit > -1 && zLimit > -1 && xLimit < numSpheresX && zLimit < numSpheresY)
-                {
-                    neighborNodes.Add(areaOfNodes[xLimit, zLimit]);
-                    if (x == y)
-                        areaOfNodes[xLimit, zLimit].Weight = 1.4f;
-                }
-            }
-        }
-        return neighborNodes;
-    }
-
     void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
@@ -166,7 +157,6 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
                 }
                 if (!node.hasLight)
                 {
-                    Handles.color = Color.gray;
                 }
                 if (!node.canWalk)
                 {
@@ -181,13 +171,6 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
                     Handles.color = Color.blue;
                     Handles.DrawWireDisc(node.position, Vector3.back, nodeRadius / 2.0f);
                 }
-                //Handles.Label(node.position, node.weight > 10 ? "X" : node.weight.ToString());
-                
-                /*if (node == playerNode)
-                {
-                    Gizmos.color = Color.black;
-                    Gizmos.DrawSphere(node.myPos, nodeRadius);
-                }*/
             }
 
             if (path != null)
@@ -230,68 +213,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
 
         path = fringe.FindPath((INode)startNode, (INode)endNode);
         
-        /*foreach (Node n in areaOfNodes) n.Reset();
-
-        Node startNode = getNodeAtPos(Start.transform.position);
-        Node endNode = getNodeAtPos(End.transform.position);
-
-        if (!endNode.hasLight) { Debug.Log("Fringe aborted"); return path; }
-
-        float threshold = Heuristic(startNode, endNode);
-        startNode.gCost = 0;
-    
-        Queue<Node> now = new Queue<Node>();
-        Queue<Node> later = new Queue<Node>();
-        
-        now.Enqueue(startNode);
-        
-        Node current = null;
-        while (threshold < 10 * numSpheresX * numSpheresX) //too far...
-        {
-            while (now.Count > 0)
-            {
-                current = now.Dequeue();
-                if (current == endNode) break;
-
-                float f = current.gCost + Heuristic(current, endNode);
-                if (f <= threshold)
-                {
-                    List<Node> nearby = GetNeighbors(current);
-                    foreach (Node n in nearby)
-                    {
-                        if (n.gCost == -1)
-                        {
-                            now.Enqueue(n);
-                            n.parent = current;
-                            n.gCost = current.gCost + n.Weight;
-                        }
-                    }
-                }
-                else
-                {
-                    later.Enqueue(current);
-                }
-            }
-
-            if (current != endNode)
-            {
-                threshold++;
-                now = later;
-                later = new Queue<Node>();
-            }
-            else break;
-        }
-
-        //Reconstruct if found endNode
-        if (current == endNode)
-        {
-            while (current != startNode)
-            {
-                path.Push(current.parent);
-                current = current.parent;
-            }
-        }
-        Debug.Log("Fringe end");*/
+        Debug.Log("Fringe end");
         return path;
     }
 

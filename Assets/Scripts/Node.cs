@@ -13,6 +13,8 @@ public class Node : INode
     private bool _canWalk;
     private float gC = -1;
     private Node _nodeParent;
+    
+    public BoxCollider2D shadowCollider;
 
     public readonly GridBehavior Grid;
 
@@ -84,6 +86,12 @@ public class Node : INode
             return;
         }
 
+        int shadowLayer = 10;
+        if (Application.isPlaying)
+        {
+            shadowLayer = shadowCollider.gameObject.layer;
+        }
+
         visibleLights.Clear();
         foreach (Light2D light in lights)
         {
@@ -92,11 +100,16 @@ public class Node : INode
             d.Normalize();
 
             RaycastHit2D hit;
-            hit = Physics2D.Raycast(p, d);
+            hit = Physics2D.Raycast(p, d, 1000.0f, ~(1 << shadowLayer));
             if (hit && hit.collider && hit.collider.gameObject.tag == "Light")
             {
                 visibleLights.Add(hit.collider.gameObject);
             }
+        }
+
+        if (Application.isPlaying)
+        {
+            shadowCollider.enabled = !hasLight;
         }
     }
 
