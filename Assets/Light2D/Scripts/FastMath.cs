@@ -43,6 +43,17 @@ public static class FastMath
         }
     }
 
+
+    public static float Sin(float x)
+    {
+        return SinArray[Mathf.RoundToInt(x) % 360];
+    }
+
+    public static float Cos(float x)
+    {
+        return CosArray[Mathf.RoundToInt(x) % 360];
+    }
+    
     private const float PI = 3.14159265f;
     private const float PIBy2 = 1.5707963f;
     // |error| < 0.005
