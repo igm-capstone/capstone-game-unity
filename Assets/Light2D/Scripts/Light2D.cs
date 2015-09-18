@@ -344,4 +344,10 @@ public class Light2D : MonoBehaviour {
         bounds.center = Vector3.zero;
         lightMesh.bounds = bounds;
     }
+
+    public void Toggle()
+    {
+        meshRenderer.enabled = !meshRenderer.enabled;
+    }
+
 }
