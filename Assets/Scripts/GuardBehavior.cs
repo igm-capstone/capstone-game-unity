@@ -27,7 +27,7 @@ public class GuardBehavior : MonoBehaviour {
             {
                 if (light.GetComponent<CircleCollider2D>().OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
                 {
-                    light.GetComponent<Light2D>().Toggle();
+                    light.GetComponent<LightController>().ToggleStatus();
                 }
             }
         }
