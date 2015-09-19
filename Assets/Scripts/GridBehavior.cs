@@ -40,7 +40,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
 
         if (Application.isPlaying)
         {
-            ShadowColliderGroup = new GameObject();
+            ShadowColliderGroup = new GameObject("Shadows");
             ShadowColliderGroup.layer = 10;
             ShadowColliderGroup.transform.parent = gameObject.transform;
         }
@@ -70,6 +70,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
                     BoxCollider2D col = ShadowColliderGroup.AddComponent<BoxCollider2D>();
                     col.size = new Vector2(1, 1);
                     col.offset = areaOfNodes[x, y].position;
+                    col.isTrigger = true;
                     areaOfNodes[x, y].shadowCollider = col;
                 }
             }

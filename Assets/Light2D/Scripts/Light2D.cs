@@ -99,6 +99,11 @@ public class Light2D : MonoBehaviour {
         // iterate meshes gathering vertices.
         foreach (var collider in colliders)
         {
+            if (((1 << collider.gameObject.layer) & shadowMask) == 0)
+            {
+                continue;
+            }
+
             colliderVertices.Clear();
 
             var touchDown = false;
