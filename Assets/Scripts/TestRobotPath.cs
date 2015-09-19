@@ -12,10 +12,11 @@ public class TestRobotPath : MonoBehaviour
     public LayerMask wallMask;
 
     // repel
-    public Vector3 repelOffset = new Vector3(1.1f, -1f, 0) * .6f;
+    public Vector3 repelOffset = new Vector3(.66f, -.6f, 0);
     public float repelFocus = 4f;
     public float repelCastDistance = 2f;
     public float repelIncrement = 0.2f;
+    public float rapelDecay = 0.1f;
     public float maxRepel = 1f;
 
     public float turnRate = 50;
@@ -82,12 +83,17 @@ public class TestRobotPath : MonoBehaviour
             repel = Mathf.Min(repel + repelIncrement, maxRepel);
         }
         
-        repel = repel * .8f; // Mathf.Abs(repel) < .01f ? 0 : repel * .8f;
+        repel = repel * (1 - rapelDecay); // Mathf.Abs(repel) < .01f ? 0 : repel * .8f;
         var moveDirection = new Vector3(repel, 1 - Mathf.Abs(repel));
         
         // "forward"
         Debug.DrawLine(transform.position, transform.position + transform.up);
         Debug.DrawLine(transform.position, transform.position + transform.TransformDirection(moveDirection).normalized, Color.yellow);
+
+        if (GetComponent<Animator>())
+        {
+            GetComponent<Animator>().SetFloat("Slide", repel);
+        }
 
         transform.Translate(moveDirection * moveSpeed * .1f * Time.deltaTime, Space.Self);
     }
