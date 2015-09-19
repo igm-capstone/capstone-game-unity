@@ -153,24 +153,25 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
             {
                 if (node.canWalk && node.hasLight)
                 {
-                    Handles.color = new Color(0, ((11.0f - node.Weight) / 10.0f)*0.6f+0.4f, 0);
+                    Handles.color = new Color(0, ((11.0f - node.Weight) / 10.0f)*0.6f+0.4f, 0, 0.4f);
                 }
                 if (!node.hasLight)
                 {
+                    Handles.color = new Color(0.5f, 0.5f, 0.5f, 0.4f);
                 }
                 if (!node.canWalk)
                 {
-                    Handles.color = Color.black;
+                    Handles.color = new Color(0.1f, 0.1f, 0.1f, 0.4f);
+                    Handles.DrawLine(node.position + new Vector3(nodeRadius * .9f, nodeRadius * .9f, 0f), node.position + new Vector3(-nodeRadius * .9f, -nodeRadius * .9f, 0f));
+                    Handles.DrawLine(node.position + new Vector3(-nodeRadius * .9f, nodeRadius * .9f, 0f), node.position + new Vector3(nodeRadius * .9f, -nodeRadius * .9f, 0f));
                 }
-                
+                Handles.DrawPolyLine(new[] { 
+                    node.position + new Vector3(nodeRadius*.9f, nodeRadius*.9f, 0f),
+                    node.position + new Vector3(nodeRadius*.9f, -nodeRadius*.9f, 0f),
+                    node.position + new Vector3(-nodeRadius*.9f, -nodeRadius*.9f, 0f),
+                    node.position + new Vector3(-nodeRadius*.9f, nodeRadius*.9f, 0f),
+                    node.position + new Vector3(nodeRadius*.9f, nodeRadius*.9f, 0f) });
 
-                Handles.DrawWireDisc(node.position, Vector3.back, nodeRadius);
-
-                if (node.gCost != -1)
-                {
-                    Handles.color = Color.blue;
-                    Handles.DrawWireDisc(node.position, Vector3.back, nodeRadius / 2.0f);
-                }
             }
 
             if (path != null)
