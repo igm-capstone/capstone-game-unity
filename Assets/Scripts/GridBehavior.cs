@@ -98,8 +98,12 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
 
         //Let AI know what to do based on visibility status
         PlayerController player = FindObjectOfType(typeof(PlayerController)) as PlayerController;
-        Node playerNode = getNodeAtPos(player.transform.position);
-        bool playerIsAccessible = playerNode.hasLight && playerNode.canWalk;
+        bool playerIsAccessible = false;
+        if (player)
+        {
+            Node playerNode = getNodeAtPos(player.transform.position);
+            playerIsAccessible = playerNode.hasLight && playerNode.canWalk;
+        }
 
         AIController[] robots = FindObjectsOfType(typeof(AIController)) as AIController[];
         foreach (AIController robot in robots)
