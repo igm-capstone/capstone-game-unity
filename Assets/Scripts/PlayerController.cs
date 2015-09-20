@@ -44,4 +44,13 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.DrawWireSphere(gameObject.transform.position, collisionRadius);
     }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Goal")
+        {
+            GameStateHUD hud = FindObjectOfType(typeof(GameStateHUD)) as GameStateHUD;
+            hud.SetMsg("Player Wins!");
+        }
+    }
 }

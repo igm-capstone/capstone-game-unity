@@ -2,10 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 
 public class TargetFollower : MonoBehaviour
 {
-    public GridBehavior grid;
+    private GridBehavior grid;
 
     public LayerMask wallMask;
 
@@ -20,14 +21,14 @@ public class TargetFollower : MonoBehaviour
     public float turnRate = 50;
     public float moveSpeed = 20;
 
+    void Awake()
+    {
+        grid = FindObjectOfType<GridBehavior>();
+    }
+
     public void MoveTowards(Transform target)
     {
-       // if (path == null)
-       // {
-            path = GetPathTo(target);
-       // }
-
-        Debug.Log(path.Count);
+        path = GetPathTo(target);
 
         var colors = new[] { Color.magenta, Color.yellow };
 
@@ -94,10 +95,11 @@ public class TargetFollower : MonoBehaviour
 
     float repel = 0;
     private IList<Vector2> path;
+    private IEnumerable<Node> nodePath;
 
     IList<Vector2> GetPathTo(Transform target)
     {
-        var nodePath = grid.GetFringePath(gameObject, target.gameObject).Cast<Node>();
+        nodePath = grid.GetFringePath(gameObject, target.gameObject).Cast<Node>();
         if (nodePath == null) return null; 
 
         // compress path
@@ -133,4 +135,15 @@ public class TargetFollower : MonoBehaviour
         return path;
     } 
 
+    void OnDrawGizmos()
+    {
+        if (nodePath != null)
+        {
+            Handles.color = Color.red;
+            foreach (Node node in nodePath)
+            {
+                Handles.DrawWireDisc(node.position, Vector3.back, grid.nodeRadius/2.0f);
+            }
+        }
+    }
 }

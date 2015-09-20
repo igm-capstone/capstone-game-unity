@@ -15,6 +15,7 @@ public class LightController : MonoBehaviour {
 
     Light2D light2d;
     MeshRenderer renderer;
+    PolygonCollider2D collider;
     SpriteRenderer sprite;
 
     public bool dirty = true;
@@ -24,6 +25,7 @@ public class LightController : MonoBehaviour {
         light2d = GetComponent<Light2D>();
         renderer = GetComponent<MeshRenderer>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        collider = GetComponentInChildren<PolygonCollider2D>();
         DrawSprite();
 	}
 
@@ -48,10 +50,12 @@ public class LightController : MonoBehaviour {
             case Status.On:
                 sprite.sprite = SpriteOn;
                 renderer.enabled = true;
+                collider.enabled = true;
                 break;
             case Status.Off:
                 sprite.sprite = SpriteOff;
                 renderer.enabled = false;
+                collider.enabled = false;
                 break;
         }
     }
@@ -61,7 +65,7 @@ public class LightController : MonoBehaviour {
         switch (CurrentStatus)
         {
             case Status.Off: 
-            CurrentStatus = Status.On;
+                CurrentStatus = Status.On;
                 break;
             case Status.On:
                 CurrentStatus = Status.Off;
