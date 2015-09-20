@@ -34,7 +34,7 @@ public class GuardHUD : MonoBehaviour {
     {
         var panel = transform.FindChild("Panel");
         
-        for (var i = 0; i < ActiveLights; i++)
+        for (var i = 0; i < ActiveLights && i < panel.transform.childCount; i++)
         {
             Image icon = panel.transform.GetChild(i).GetComponent<Image>();
             icon.sprite = UsedEnergySprite;

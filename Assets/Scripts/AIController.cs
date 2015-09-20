@@ -33,4 +33,13 @@ public class AIController : MonoBehaviour {
     public void TurnOff() {
         chase.enabled = false;
     }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            GameStateHUD hud = FindObjectOfType(typeof(GameStateHUD)) as GameStateHUD;
+            hud.SetMsg("Guard Wins!");
+        }
+    }
 }

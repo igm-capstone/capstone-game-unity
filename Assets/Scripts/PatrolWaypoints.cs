@@ -17,6 +17,7 @@ public class PatrolWaypoints : MonoBehaviour
     // Update is called once per frame
 	void Update ()
 	{
+        if (path == null) return;
 	    var waypoints = path.GetWaypoints();
 
 	    var nextWaypoint = waypoints[Mathf.Abs(nextStop)];
