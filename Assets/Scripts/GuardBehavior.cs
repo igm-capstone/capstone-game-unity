@@ -6,11 +6,12 @@ public class GuardBehavior : MonoBehaviour {
     public int MaxActiveLights = 3;
     private int ActiveLights = 0;
     LightController[] lights;
+    GuardHUD guardHUD;
             
 	// Use this for initialization
 	void Start ()
     {
-	    lights = FindObjectsOfType<LightController>();
+        lights = FindObjectsOfType<LightController>();
         foreach (LightController light in lights)
         {
             if (light.CurrentStatus == LightController.Status.On)
@@ -18,6 +19,10 @@ public class GuardBehavior : MonoBehaviour {
                 ActiveLights++;
             }
         }
+
+        guardHUD = FindObjectOfType<GuardHUD>();
+        guardHUD.SetMaxLightLevel(MaxActiveLights);
+        guardHUD.SetLightLevel(ActiveLights);
 	}
 	
 	// Update is called once per frame
@@ -38,11 +43,13 @@ public class GuardBehavior : MonoBehaviour {
                     if ((light.CurrentStatus == LightController.Status.Off && ActiveLights < MaxActiveLights)) {
                         light.ToggleStatus();
                         ActiveLights++;
+                        guardHUD.SetLightLevel(ActiveLights);
                     }
                     else if (light.CurrentStatus == LightController.Status.On)
                     {
                         light.ToggleStatus();
                         ActiveLights--;
+                        guardHUD.SetLightLevel(ActiveLights);
                     }
                 }
             }
