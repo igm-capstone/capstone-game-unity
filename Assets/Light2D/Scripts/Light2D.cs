@@ -86,8 +86,6 @@ public class Light2D : MonoBehaviour {
 
     private void SetLight()
     {
-        var sortAngles = false;
-
         // TODO consider using object pool
         vertices.Clear();
 
