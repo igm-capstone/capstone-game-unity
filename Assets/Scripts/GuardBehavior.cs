@@ -35,11 +35,11 @@ public class GuardBehavior : MonoBehaviour {
             {
                 if (light.GetComponent<CircleCollider2D>().OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
                 {
-                    if ((light.CurrentStatus == LightController.Status.On && ActiveLights < MaxActiveLights)) {
+                    if ((light.CurrentStatus == LightController.Status.Off && ActiveLights < MaxActiveLights)) {
                         light.ToggleStatus();
                         ActiveLights++;
                     }
-                    else if (light.CurrentStatus == LightController.Status.Off)
+                    else if (light.CurrentStatus == LightController.Status.On)
                     {
                         light.ToggleStatus();
                         ActiveLights--;
