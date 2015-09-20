@@ -20,10 +20,10 @@ public class MovementBroadcast : MonoBehaviour {
     {
         if (transform.position != lastPos)
         {
-            grid.UpdateGrid();
+            grid.dirty = true;
             foreach (LightController light in lights)
             {
-                light.UpdateLightFX();
+                light.dirty = true;
             }
             lastPos = transform.position;
         }

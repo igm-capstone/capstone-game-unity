@@ -14,10 +14,12 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
     private int numSpheresX, numSpheresY;
     private Vector3 startingCorner;
     
-    public LayerMask obstacleLayer = 1 << 9;
+    public LayerMask obstacleLayer = 1 << 9 | 1 << 12;
 
     Node[,] areaOfNodes;
     private GameObject ShadowColliderGroup;
+
+    public bool dirty = true;
 
     public IEnumerable<INode> Nodes
     {
@@ -50,7 +52,11 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
 #if UNITY_EDITOR
     private void Update()
     {
-        UpdateGrid();
+        if (!Application.isPlaying || dirty)
+        {
+            UpdateGrid();
+            dirty = false;
+        }
     }
 #endif
 
@@ -88,11 +94,26 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
             {
                 Vector3 nodePos = areaOfNodes[x, y].position;
                 //Check for obstacles
-                var col = Physics2D.BoxCast((Vector2)nodePos, new Vector2(nodeRadius*2, nodeRadius*2), 0, Vector2.up, 0, obstacleLayer).collider;
-                areaOfNodes[x, y].canWalk = (col == null);
+                var cols = Physics2D.OverlapAreaAll((Vector2)nodePos - new Vector2(nodeRadius, nodeRadius), (Vector2)nodePos + new Vector2(nodeRadius, nodeRadius), obstacleLayer | 1 << 8);
 
+                areaOfNodes[x, y].canWalk = true;
+                areaOfNodes[x, y].hasLight = false;
+                foreach (Collider2D col in cols)
+                {
+                    if (col.gameObject.layer != LayerMask.NameToLayer("Lights"))
+                        areaOfNodes[x, y].canWalk = false;
+                }
+                if (areaOfNodes[x, y].canWalk && cols.Length > 0)
+                {
+                    areaOfNodes[x, y].hasLight = true;
+                }
+
+                if (Application.isPlaying)
+                {
+                    areaOfNodes[x, y].shadowCollider.enabled = !areaOfNodes[x, y].hasLight;
+                }
                 //Check for lights
-                areaOfNodes[x, y].OnLightUpdate(sceneLights);
+                //areaOfNodes[x, y].OnLightUpdate(sceneLights);
             }
         }
 
