@@ -17,6 +17,8 @@ public class LightController : MonoBehaviour {
     MeshRenderer renderer;
     SpriteRenderer sprite;
 
+    public bool dirty = true;
+
 	// Use this for initialization
 	void Awake () {
         light2d = GetComponent<Light2D>();
@@ -29,7 +31,10 @@ public class LightController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	
+	    if (dirty) {
+            UpdateLightFX();
+            dirty = false;
+        }
 	}
 
     public void UpdateLightFX()

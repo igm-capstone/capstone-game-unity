@@ -10,7 +10,7 @@ public class Node : INode
     private Vector3 _position;
     private Vector2 _coord;
     private float _weight;
-    private bool _canWalk;
+    private bool _canWalk, _hasLight;
     private float gC = -1;
     private Node _nodeParent;
     
@@ -60,7 +60,8 @@ public class Node : INode
 
     public bool hasLight
     {
-        get { return visibleLights.Count > 0; }
+        get { return _hasLight; }
+        set { _hasLight = value; }
     }
 
     public float gCost
