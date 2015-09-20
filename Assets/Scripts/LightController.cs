@@ -5,13 +5,11 @@ using System.Collections;
 [RequireComponent(typeof(Light2D))]
 public class LightController : MonoBehaviour {
     public enum Status {
-        Empty,
         On,
         Off
     }
 
     public Status CurrentStatus = Status.On;
-    public Sprite SpriteEmpty;
     public Sprite SpriteOn;
     public Sprite SpriteOff;
 
@@ -26,7 +24,9 @@ public class LightController : MonoBehaviour {
         sprite = GetComponentInChildren<SpriteRenderer>();
         DrawSprite();
 	}
-	
+
+    public LayerMask shadowMask { get { return light2d.shadowMask;} }
+
 	// Update is called once per frame
 	void Update () {
 	
@@ -40,10 +40,6 @@ public class LightController : MonoBehaviour {
     private void DrawSprite() {
         switch (CurrentStatus)
         {
-            case Status.Empty:
-                sprite.sprite = SpriteEmpty;
-                renderer.enabled = false;
-                break;
             case Status.On:
                 sprite.sprite = SpriteOn;
                 renderer.enabled = true;
@@ -59,7 +55,6 @@ public class LightController : MonoBehaviour {
     {
         switch (CurrentStatus)
         {
-            case Status.Empty:
             case Status.Off: 
             CurrentStatus = Status.On;
                 break;

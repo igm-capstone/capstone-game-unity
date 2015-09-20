@@ -68,7 +68,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
                 if (Application.isPlaying)
                 {
                     BoxCollider2D col = ShadowColliderGroup.AddComponent<BoxCollider2D>();
-                    col.size = new Vector2(1, 1);
+                    col.size = new Vector2(nodeRadius * 2, nodeRadius * 2);
                     col.offset = areaOfNodes[x, y].position;
                     col.isTrigger = true;
                     areaOfNodes[x, y].shadowCollider = col;
@@ -80,8 +80,8 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
 
     public void UpdateGrid()
     {
-        Light2D[] sceneLights = FindObjectsOfType(typeof(Light2D)) as Light2D[];
-        
+        LightController[] sceneLights = FindObjectsOfType(typeof(LightController)) as LightController[];
+
         for (int x = 0; x < numSpheresX; x++)
         {
             for (int y = 0; y < numSpheresY; y++)
@@ -96,35 +96,33 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
             }
         }
 
-        //Let AI know what to do based on visibility status
-        PlayerController player = FindObjectOfType(typeof(PlayerController)) as PlayerController;
-        bool playerIsAccessible = false;
-        if (player)
+        if (Application.isPlaying)
         {
-            Node playerNode = getNodeAtPos(player.transform.position);
-            playerIsAccessible = playerNode.hasLight && playerNode.canWalk;
-        }
-
-        AIController[] robots = FindObjectsOfType(typeof(AIController)) as AIController[];
-        foreach (AIController robot in robots)
-        {
-            if (getNodeAtPos(robot.transform.position).hasLight)
+            //Let AI know what to do based on visibility status
+            PlayerController player = FindObjectOfType(typeof(PlayerController)) as PlayerController;
+            bool playerIsAccessible = false;
+            if (player)
             {
-                if (playerIsAccessible)
+                Node playerNode = getNodeAtPos(player.transform.position);
+                playerIsAccessible = playerNode.hasLight && playerNode.canWalk;
+            }
+
+            AIController[] robots = FindObjectsOfType(typeof(AIController)) as AIController[];
+            foreach (AIController robot in robots)
+            {
+                if (getNodeAtPos(robot.transform.position).hasLight)
                 {
-                    robot.StartFollow();
-                } 
-                else 
-                {
-                    robot.StartPatrol();
+                    if (playerIsAccessible) {
+                        robot.StartFollow();
+                    } else {
+                        robot.StartPatrol();
+                    }
+                }
+                else {
+                    robot.TurnOff();
                 }
             }
-            else
-            {
-                robot.TurnOff();
-            }
         }
-
     }
 
     public Node getNodeAtPos(Vector3 pos)
@@ -204,15 +202,6 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
                     node.position + new Vector3(nodeRadius*.9f, nodeRadius*.9f, 0f) });
 
             }
-
-            if (path != null)
-            {
-                Handles.color = Color.red;
-                foreach (Node node in path)
-                {
-                    Handles.DrawWireDisc(node.position, Vector3.back, nodeRadius/2.0f);
-                }
-            }
         }
     }
 
@@ -234,16 +223,18 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
         return 1.4f*xDist + (yDist-xDist);
     }
 
-    IEnumerable<INode> path;
+    
     public IEnumerable<INode> GetFringePath(GameObject Start, GameObject End)
     {
+        IEnumerable<INode> path;
+
         PathFinder.Fringe fringe = new PathFinder.Fringe(Heuristic);
 
         Node startNode = getNodeAtPos(Start.transform.position);
         Node endNode = getNodeAtPos(End.transform.position);
 
         path = fringe.FindPath((INode)startNode, (INode)endNode);
-        
+
         return path;
     }
 
