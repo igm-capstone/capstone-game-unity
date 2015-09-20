@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     {
         move();
         moveableObstacle = Physics2D.OverlapCircleAll(transform.position, collisionRadius, moveableObjectLayer);
-        if (moveableObstacle[0].gameObject != null)
+        if (moveableObstacle.Length > 0 && moveableObstacle[0].gameObject != null)
             moveObject();
 	}
 

@@ -207,7 +207,6 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
     IEnumerable<INode> path;
     public IEnumerable<INode> GetFringePath(GameObject Start, GameObject End)
     {
-        Debug.Log("Fringe start");
         PathFinder.Fringe fringe = new PathFinder.Fringe(Heuristic);
 
         Node startNode = getNodeAtPos(Start.transform.position);
@@ -215,7 +214,6 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
 
         path = fringe.FindPath((INode)startNode, (INode)endNode);
         
-        Debug.Log("Fringe end");
         return path;
     }
 

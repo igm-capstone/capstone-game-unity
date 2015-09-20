@@ -100,7 +100,7 @@ public class Node : INode
             d.Normalize();
 
             RaycastHit2D hit;
-            hit = Physics2D.Raycast(p, d, 1000.0f, ~(1 << shadowLayer));
+            hit = Physics2D.Raycast(p, d, 1000.0f, light.shadowMask | (1<<8));
             if (hit && hit.collider && hit.collider.gameObject.tag == "Light")
             {
                 visibleLights.Add(hit.collider.gameObject);
