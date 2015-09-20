@@ -23,6 +23,7 @@ public class Light2D : MonoBehaviour {
         public Vector2 Position;
         public VertexLocation Location;
         public bool IsEndpoint;
+        public bool IsSecondary;
     }
     
     public  int lightSegments = 8;
@@ -42,6 +43,8 @@ public class Light2D : MonoBehaviour {
     private MeshFilter meshFilter;
     private MeshRenderer meshRenderer;
 
+    private PolygonCollider2D lightMeshCollider;
+
     void Awake()
     {
         lightMesh = new Mesh();
@@ -54,6 +57,23 @@ public class Light2D : MonoBehaviour {
         meshRenderer = GetComponent<MeshRenderer>();
         meshRenderer.sharedMaterial = lightMaterial;
 
+        var container = transform.Find("LightMesh");
+        if (!container)
+        {
+            container = new GameObject("LightMesh").transform;
+            container.SetParent(transform, true);
+            container.localPosition = Vector3.zero;
+            container.gameObject.layer = gameObject.layer;
+        }
+
+        lightMeshCollider = container.GetComponent<PolygonCollider2D>();
+        if (lightMeshCollider == null)
+        {
+            lightMeshCollider = container.gameObject.AddComponent<PolygonCollider2D>();
+        }
+
+        lightMeshCollider.isTrigger = true;
+        
         vertices = new List<Vertex>();
 
         UpdateLightFX();
@@ -75,6 +95,7 @@ public class Light2D : MonoBehaviour {
         FindLightColliders();
         SetLight();
         BuildLightMesh();
+        BuildCollider();
         ResetBounds();
     }
 
@@ -222,6 +243,7 @@ public class Light2D : MonoBehaviour {
                     vertex = new Vertex();
                     vertex.Position = transform.InverseTransformPoint(newVertexPosition);
                     vertex.PseudoAngle = FastMath.PseudoAtan2(vertex.Position.y, vertex.Position.x);
+                    vertex.IsSecondary = true;
 
                     vertices.Add(vertex);
                 }
@@ -243,6 +265,7 @@ public class Light2D : MonoBehaviour {
             var vertex = new Vertex();
             vertex.Position = new Vector3(FastMath.SinArray[theta], FastMath.CosArray[theta], 0);
             vertex.PseudoAngle = FastMath.PseudoAtan2(vertex.Position.y, vertex.Position.x);
+            vertex.IsSecondary = true;
 
             vertex.Position *= lightRadius;
             vertex.Position += position2d;
@@ -341,6 +364,23 @@ public class Light2D : MonoBehaviour {
         meshRenderer.sharedMaterial = lightMaterial;
     }
 
+
+    private void BuildCollider()
+    {
+        var points = new List<Vector2>();
+
+        foreach (var vertex in vertices)
+        {
+            if (vertex.Location == VertexLocation.Middle && !vertex.IsSecondary)
+            {
+                continue;
+            }
+            
+            points.Add(vertex.Position);
+        }
+
+        lightMeshCollider.points = points.ToArray();
+    }
     private void ResetBounds()
     {
         var bounds = lightMesh.bounds;

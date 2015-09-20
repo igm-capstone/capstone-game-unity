@@ -1,41 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(TestRobotPath))]
+[RequireComponent(typeof(ChaseTarget))]
+[RequireComponent(typeof(PatrolWaypoints))]
 public class AIController : MonoBehaviour {
 
-    TestRobotPath follower;
+    private ChaseTarget chase;
+    private PatrolWaypoints patrol;
 
 	// Use this for initialization
-	void Start () {
-	    follower = GetComponent<TestRobotPath>();
-        follower.enabled = false;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void Awake () {
+	    chase = GetComponent<ChaseTarget>();
+	    patrol = GetComponent<PatrolWaypoints>();
 	}
 
+    void Start()
+    {
+        chase.enabled = false;
+	    patrol.enabled = false;
+    }
+
     public void StartFollow() {
-        follower.enabled = true;
+        chase.enabled = true;
+        patrol.enabled = false;
     }
 
     public void StartPatrol() {
-        follower.enabled = false;
+        chase.enabled = false;
+        patrol.enabled = true;
     }
 
     public void TurnOff() {
-        follower.enabled = false;
+        chase.enabled = false;
     }
-
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            // This or post message to Game manager.
-            Application.LoadLevel(Application.loadedLevel);
-        }
-    }
-
 }

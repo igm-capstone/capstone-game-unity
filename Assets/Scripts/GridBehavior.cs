@@ -68,7 +68,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
                 if (Application.isPlaying)
                 {
                     BoxCollider2D col = ShadowColliderGroup.AddComponent<BoxCollider2D>();
-                    col.size = new Vector2(1, 1);
+                    col.size = new Vector2(nodeRadius * 2, nodeRadius * 2);
                     col.offset = areaOfNodes[x, y].position;
                     col.isTrigger = true;
                     areaOfNodes[x, y].shadowCollider = col;
