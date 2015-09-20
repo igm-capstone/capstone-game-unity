@@ -80,8 +80,8 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
 
     public void UpdateGrid()
     {
-        Light2D[] sceneLights = FindObjectsOfType(typeof(Light2D)) as Light2D[];
-        
+        LightController[] sceneLights = FindObjectsOfType(typeof(LightController)) as LightController[];
+
         for (int x = 0; x < numSpheresX; x++)
         {
             for (int y = 0; y < numSpheresY; y++)
