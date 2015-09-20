@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(TestRobotPath))]
 public class AIController : MonoBehaviour {
 
     TestRobotPath follower;

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 
 public class TestRobotPath : MonoBehaviour
 {
@@ -100,11 +101,11 @@ public class TestRobotPath : MonoBehaviour
 
     float repel = 0;
     private IList<Vector2> path;
+    private IEnumerable<Node> nodePath;
 
     IList<Vector2> GetTargetPath()
     {
-        var nodePath = grid.GetFringePath(gameObject, target.gameObject).Cast<Node>();
-        if (nodePath == null) return null; 
+        nodePath = grid.GetFringePath(gameObject, target.gameObject).Cast<Node>();
 
         // compress path
         var path = new List<Vector2>();
@@ -137,6 +138,17 @@ public class TestRobotPath : MonoBehaviour
         path.Add(nodePath.Last().position);
 
         return path;
-    } 
+    }
 
+    void OnDrawGizmos()
+    {
+        if (nodePath != null)
+        {
+            Handles.color = Color.red;
+            foreach (Node node in nodePath)
+            {
+                Handles.DrawWireDisc(node.position, Vector3.back, grid.nodeRadius/2.0f);
+            }
+        }
+    }
 }

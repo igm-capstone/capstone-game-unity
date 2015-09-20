@@ -3,12 +3,21 @@ using System.Collections;
 
 public class GuardBehavior : MonoBehaviour {
 
-    public GameObject mLightPrefab;
-
+    public int MaxActiveLights = 3;
+    private int ActiveLights = 0;
+    LightController[] lights;
+            
 	// Use this for initialization
 	void Start ()
     {
-	
+	    lights = FindObjectsOfType<LightController>();
+        foreach (LightController light in lights)
+        {
+            if (light.CurrentStatus == LightController.Status.On)
+            {
+                ActiveLights++;
+            }
+        }
 	}
 	
 	// Update is called once per frame
@@ -22,20 +31,21 @@ public class GuardBehavior : MonoBehaviour {
         // Using mouse over instead of ray cast due to 2D collider. Physics does not interact with Physics2D.
         if (Input.GetMouseButtonUp(0))
         {
-            GameObject[] lights = GameObject.FindGameObjectsWithTag("Light");
-            foreach (GameObject light in lights)
+            foreach (LightController light in lights)
             {
                 if (light.GetComponent<CircleCollider2D>().OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
                 {
-                    light.GetComponent<LightController>().ToggleStatus();
+                    if ((light.CurrentStatus == LightController.Status.Off && ActiveLights < MaxActiveLights)) {
+                        light.ToggleStatus();
+                        ActiveLights++;
+                    }
+                    else if (light.CurrentStatus == LightController.Status.On)
+                    {
+                        light.ToggleStatus();
+                        ActiveLights--;
+                    }
                 }
             }
         }
-        //else if (Input.GetMouseButtonUp(1))
-        //{
-        //    Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //    position.z = 0.0f;
-        //    GameObject.Instantiate(mLightPrefab, position, Quaternion.identity);
-        //}
     }
 }

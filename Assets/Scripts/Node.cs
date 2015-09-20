@@ -80,21 +80,16 @@ public class Node : INode
         get { return _coord; }
     }
 
-    public void OnLightUpdate(Light2D[] lights)
+    public void OnLightUpdate(LightController[] lights)
     {
         if (!canWalk) {
             return;
         }
 
-        int shadowLayer = 10;
-        if (Application.isPlaying)
-        {
-            shadowLayer = shadowCollider.gameObject.layer;
-        }
-
         visibleLights.Clear();
-        foreach (Light2D light in lights)
+        foreach (LightController light in lights)
         {
+            if (light.CurrentStatus != LightController.Status.On) continue;
             Vector2 p = new Vector2(_position.x, _position.y);
             Vector2 d = new Vector2(light.transform.position.x, light.transform.position.y) - p;
             d.Normalize();
