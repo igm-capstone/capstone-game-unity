@@ -104,6 +104,7 @@ public class TestRobotPath : MonoBehaviour
     IList<Vector2> GetTargetPath()
     {
         var nodePath = grid.GetFringePath(gameObject, target.gameObject).Cast<Node>();
+        if (nodePath == null) return null; 
 
         // compress path
         var path = new List<Vector2>();

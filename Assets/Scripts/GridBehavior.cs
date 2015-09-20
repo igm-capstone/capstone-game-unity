@@ -50,7 +50,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
 #if UNITY_EDITOR
     private void Update()
     {
-        UpdateCosts();
+        UpdateGrid();
     }
 #endif
 
@@ -75,10 +75,10 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
                 }
             }
         }
-        UpdateCosts();
+        UpdateGrid();
     }
 
-    public void UpdateCosts()
+    public void UpdateGrid()
     {
         Light2D[] sceneLights = FindObjectsOfType(typeof(Light2D)) as Light2D[];
         
@@ -95,6 +95,32 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
                 areaOfNodes[x, y].OnLightUpdate(sceneLights);
             }
         }
+
+        //Let AI know what to do based on visibility status
+        PlayerController player = FindObjectOfType(typeof(PlayerController)) as PlayerController;
+        Node playerNode = getNodeAtPos(player.transform.position);
+        bool playerIsAccessible = playerNode.hasLight && playerNode.canWalk;
+
+        AIController[] robots = FindObjectsOfType(typeof(AIController)) as AIController[];
+        foreach (AIController robot in robots)
+        {
+            if (getNodeAtPos(robot.transform.position).hasLight)
+            {
+                if (playerIsAccessible)
+                {
+                    robot.StartFollow();
+                } 
+                else 
+                {
+                    robot.StartPatrol();
+                }
+            }
+            else
+            {
+                robot.TurnOff();
+            }
+        }
+
     }
 
     public Node getNodeAtPos(Vector3 pos)
