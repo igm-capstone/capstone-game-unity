@@ -102,7 +102,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
                 {
                     if (col.gameObject.layer != LayerMask.NameToLayer("Lights"))
                         areaOfNodes[x, y].canWalk = false;
-                    else
+                    else if (col is PolygonCollider2D)
                         areaOfNodes[x, y].hasLight = true;
                 }
 
