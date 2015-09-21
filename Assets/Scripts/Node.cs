@@ -41,7 +41,7 @@ public class Node : INode
 
     public float Weight
     {
-        get { return (!canWalk || !hasLight) ? float.MaxValue : _weight; }
+        get { return (!hasLight) ? float.MaxValue : (!canWalk) ? 100 * _weight : _weight; }
         set { _weight = value; }
     }
 

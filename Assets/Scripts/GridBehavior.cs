@@ -123,7 +123,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
             if (player)
             {
                 Node playerNode = getNodeAtPos(player.transform.position);
-                playerIsAccessible = playerNode.hasLight && playerNode.canWalk;
+                playerIsAccessible = playerNode.hasLight;
             }
 
             AIController[] robots = FindObjectsOfType(typeof(AIController)) as AIController[];
