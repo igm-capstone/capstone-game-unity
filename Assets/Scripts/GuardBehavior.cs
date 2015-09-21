@@ -7,10 +7,13 @@ public class GuardBehavior : MonoBehaviour {
     private int ActiveLights = 0;
     LightController[] lights;
     GuardHUD guardHUD;
+    GridBehavior grid;
             
 	// Use this for initialization
 	void Start ()
     {
+        grid = FindObjectOfType<GridBehavior>();
+        
         lights = FindObjectsOfType<LightController>();
         foreach (LightController light in lights)
         {
@@ -44,12 +47,14 @@ public class GuardBehavior : MonoBehaviour {
                         light.ToggleStatus();
                         ActiveLights++;
                         guardHUD.SetLightLevel(ActiveLights);
+                        grid.dirty = true;
                     }
                     else if (light.CurrentStatus == LightController.Status.On)
                     {
                         light.ToggleStatus();
                         ActiveLights--;
                         guardHUD.SetLightLevel(ActiveLights);
+                        grid.dirty = true;
                     }
                 }
             }

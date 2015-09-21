@@ -102,15 +102,13 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
                 {
                     if (col.gameObject.layer != LayerMask.NameToLayer("Lights"))
                         areaOfNodes[x, y].canWalk = false;
-                }
-                if (areaOfNodes[x, y].canWalk && cols.Length > 0)
-                {
-                    areaOfNodes[x, y].hasLight = true;
+                    else
+                        areaOfNodes[x, y].hasLight = true;
                 }
 
                 if (Application.isPlaying)
                 {
-                    areaOfNodes[x, y].shadowCollider.enabled = !areaOfNodes[x, y].hasLight;
+                    areaOfNodes[x, y].shadowCollider.enabled = !areaOfNodes[x, y].hasLight || !areaOfNodes[x, y].canWalk;
                 }
                 //Check for lights
                 //areaOfNodes[x, y].OnLightUpdate(sceneLights);
@@ -125,7 +123,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
             if (player)
             {
                 Node playerNode = getNodeAtPos(player.transform.position);
-                playerIsAccessible = playerNode.hasLight && playerNode.canWalk;
+                playerIsAccessible = playerNode.hasLight;
             }
 
             AIController[] robots = FindObjectsOfType(typeof(AIController)) as AIController[];
@@ -195,32 +193,37 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
 
     void OnDrawGizmos()
     {
+        float alpha = 0.8f;
+        float size = nodeRadius * .8f;
+
         Gizmos.color = Color.green;
         if (areaOfNodes != null)
         {
             //Node playerNode = getNodeAtPos(player.position);
             foreach (Node node in areaOfNodes)
             {
-                if (node.canWalk && node.hasLight)
-                {
-                    Handles.color = new Color(0, ((11.0f - node.Weight) / 10.0f)*0.6f+0.4f, 0, 0.4f);
-                }
-                if (!node.hasLight)
-                {
-                    Handles.color = new Color(0.5f, 0.5f, 0.5f, 0.4f);
-                }
                 if (!node.canWalk)
                 {
-                    Handles.color = new Color(0.1f, 0.1f, 0.1f, 0.4f);
-                    Handles.DrawLine(node.position + new Vector3(nodeRadius * .9f, nodeRadius * .9f, 0f), node.position + new Vector3(-nodeRadius * .9f, -nodeRadius * .9f, 0f));
-                    Handles.DrawLine(node.position + new Vector3(-nodeRadius * .9f, nodeRadius * .9f, 0f), node.position + new Vector3(nodeRadius * .9f, -nodeRadius * .9f, 0f));
+                    Handles.color = new Color(0.1f, 0.1f, 0.1f, alpha);
+                    Handles.DrawLine(node.position + new Vector3(size, size, 0f), node.position + new Vector3(-size, -size, 0f));
+                    Handles.DrawLine(node.position + new Vector3(-size, size, 0f), node.position + new Vector3(size, -size, 0f));
                 }
+
+                if (node.hasLight)
+                {
+                    Handles.color = new Color(1, 1, 0, alpha);
+                }
+                else
+                {
+                    Handles.color = new Color(0.5f, 0.5f, 0.5f, alpha);
+                }
+
                 Handles.DrawPolyLine(new[] { 
-                    node.position + new Vector3(nodeRadius*.9f, nodeRadius*.9f, 0f),
-                    node.position + new Vector3(nodeRadius*.9f, -nodeRadius*.9f, 0f),
-                    node.position + new Vector3(-nodeRadius*.9f, -nodeRadius*.9f, 0f),
-                    node.position + new Vector3(-nodeRadius*.9f, nodeRadius*.9f, 0f),
-                    node.position + new Vector3(nodeRadius*.9f, nodeRadius*.9f, 0f) });
+                    node.position + new Vector3(size, size, 0f),
+                    node.position + new Vector3(size, -size, 0f),
+                    node.position + new Vector3(-size, -size, 0f),
+                    node.position + new Vector3(-size, size, 0f),
+                    node.position + new Vector3(size, size, 0f) });
 
             }
         }
