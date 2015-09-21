@@ -6,9 +6,13 @@ public class MovementBroadcast : MonoBehaviour {
     private GridBehavior grid;
     private LightController[] lights;
     Vector3 lastPos;
+    Node lastNode = null;
+
+    public bool AffectsGrid = true;
+    public bool AffectsAI = true;
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
         grid = FindObjectOfType<GridBehavior>();
         lights = FindObjectsOfType<LightController>();
@@ -20,10 +24,17 @@ public class MovementBroadcast : MonoBehaviour {
     {
         if (transform.position != lastPos)
         {
-            grid.dirty = true;
-            foreach (LightController light in lights)
+            if (AffectsGrid)
             {
-                light.dirty = true;
+                grid.dirty = true;
+                foreach (LightController light in lights)
+                {
+                    light.dirty = true;
+                }
+            }
+            if (AffectsAI)
+            {
+                grid.checkAI = true;
             }
             lastPos = transform.position;
         }

@@ -12,7 +12,8 @@ public class Node : INode
     private bool _canWalk, _hasLight;
     private float gC = -1;
     private Node _nodeParent;
-    
+    private bool _isStartEnd = false;
+
     public BoxCollider2D shadowCollider;
 
     public readonly GridBehavior Grid;
@@ -41,7 +42,7 @@ public class Node : INode
 
     public float Weight
     {
-        get { return (!hasLight) ? float.MaxValue : (!canWalk) ? 100 * _weight : _weight; }
+        get { return ((!hasLight || !canWalk) && !_isStartEnd) ? float.MaxValue : _weight; }
         set { _weight = value; }
     }
 
@@ -60,6 +61,12 @@ public class Node : INode
     {
         get { return _hasLight; }
         set { _hasLight = value; }
+    }
+
+    public bool isStartEnd
+    {
+        get { return _isStartEnd; }
+        set { _isStartEnd = value; shadowCollider.enabled = value; }
     }
 
     public float gCost

@@ -20,6 +20,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
     private GameObject ShadowColliderGroup;
 
     public bool dirty = true;
+    public bool checkAI = true;
 
     public IEnumerable<INode> Nodes
     {
@@ -57,6 +58,12 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
             UpdateGrid();
             dirty = false;
         }
+        if (checkAI)
+        {
+            UpdateAI();
+            checkAI = false;
+        }
+
     }
 #endif
 
@@ -82,18 +89,17 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
             }
         }
         UpdateGrid();
+        UpdateAI();
     }
 
-    public void UpdateGrid()
+    private void UpdateGrid()
     {
-        LightController[] sceneLights = FindObjectsOfType(typeof(LightController)) as LightController[];
-
         for (int x = 0; x < numSpheresX; x++)
         {
             for (int y = 0; y < numSpheresY; y++)
             {
                 Vector3 nodePos = areaOfNodes[x, y].position;
-                //Check for obstacles
+
                 var cols = Physics2D.OverlapAreaAll((Vector2)nodePos - new Vector2(nodeRadius, nodeRadius), (Vector2)nodePos + new Vector2(nodeRadius, nodeRadius), obstacleLayer | 1 << 8);
 
                 areaOfNodes[x, y].canWalk = true;
@@ -110,11 +116,11 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
                 {
                     areaOfNodes[x, y].shadowCollider.enabled = !areaOfNodes[x, y].hasLight || !areaOfNodes[x, y].canWalk;
                 }
-                //Check for lights
-                //areaOfNodes[x, y].OnLightUpdate(sceneLights);
             }
         }
+    }
 
+    private void UpdateAI() {
         if (Application.isPlaying)
         {
             //Let AI know what to do based on visibility status
@@ -146,12 +152,10 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
 
     public Node getNodeAtPos(Vector3 pos)
     {
-        Vector2 percent = new Vector2(Mathf.Clamp01((pos.x + maxSize.x / 2) / maxSize.x), Mathf.Clamp01((pos.y + maxSize.y / 2) / maxSize.y));
+        float x = (pos.x - nodeRadius - startingCorner.x) / (nodeRadius * 2);
+        float y = (pos.y - nodeRadius - startingCorner.y) / (nodeRadius * 2);
 
-        int gridCoordX = Mathf.RoundToInt((numSpheresX - 1) * percent.x);
-        int gridCoordY = Mathf.RoundToInt((numSpheresY - 1) * percent.y);
-
-        return areaOfNodes[gridCoordX, gridCoordY];
+        return areaOfNodes[(int)Mathf.Round(x), (int)Mathf.Round(y)];
     }
 
     public IEnumerable<NodeConnection> GetNodeConnections(int x, int y)
@@ -216,8 +220,6 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
                     Handles.DrawLine(node.position + new Vector3(size, size, 0f), node.position + new Vector3(-size, -size, 0f));
                     Handles.DrawLine(node.position + new Vector3(-size, size, 0f), node.position + new Vector3(size, -size, 0f));
                 }
-
-
             }
         }
     }
@@ -250,8 +252,14 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
         Node startNode = getNodeAtPos(Start.transform.position);
         Node endNode = getNodeAtPos(End.transform.position);
 
+        startNode.isStartEnd = true;
+        endNode.isStartEnd = true;
+        
         path = fringe.FindPath((INode)startNode, (INode)endNode);
-
+        
+        startNode.isStartEnd = false;
+        endNode.isStartEnd = false;
+        
         return path;
     }
 
