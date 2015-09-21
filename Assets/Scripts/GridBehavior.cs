@@ -193,37 +193,30 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
 
     void OnDrawGizmos()
     {
-        float alpha = 0.8f;
-        float size = nodeRadius * .8f;
+        float size = nodeRadius * .95f;
 
-        Gizmos.color = Color.green;
         if (areaOfNodes != null)
         {
             //Node playerNode = getNodeAtPos(player.position);
             foreach (Node node in areaOfNodes)
             {
+                Handles.color = new Color(1, 1, 1, 1);
+                Handles.DrawSolidRectangleWithOutline(new[] { 
+                    node.position + new Vector3(size, size, 0f),
+                    node.position + new Vector3(size, -size, 0f),
+                    node.position + new Vector3(-size, -size, 0f),
+                    node.position + new Vector3(-size, size, 0f) },
+                    node.hasLight ? new Color(1, 1, 0, 0.05f) : new Color(0.5f, 0.5f, 0.5f, 0.05f),
+                    node.hasLight ? new Color(1, 1, 0, 0.4f) : new Color(0.5f, 0.5f, 0.5f, 0.4f));
+
                 if (!node.canWalk)
                 {
-                    Handles.color = new Color(0.1f, 0.1f, 0.1f, alpha);
+                    Handles.color = node.hasLight ? new Color(1, 1, 0, .4f) : new Color(0.5f, 0.5f, 0.5f, .4f); 
+                    //Handles.DrawSolidDisc(node.position, new Vector3(0, 0, 1), nodeRadius * .4f);
                     Handles.DrawLine(node.position + new Vector3(size, size, 0f), node.position + new Vector3(-size, -size, 0f));
                     Handles.DrawLine(node.position + new Vector3(-size, size, 0f), node.position + new Vector3(size, -size, 0f));
                 }
 
-                if (node.hasLight)
-                {
-                    Handles.color = new Color(1, 1, 0, alpha);
-                }
-                else
-                {
-                    Handles.color = new Color(0.5f, 0.5f, 0.5f, alpha);
-                }
-
-                Handles.DrawPolyLine(new[] { 
-                    node.position + new Vector3(size, size, 0f),
-                    node.position + new Vector3(size, -size, 0f),
-                    node.position + new Vector3(-size, -size, 0f),
-                    node.position + new Vector3(-size, size, 0f),
-                    node.position + new Vector3(size, size, 0f) });
 
             }
         }
