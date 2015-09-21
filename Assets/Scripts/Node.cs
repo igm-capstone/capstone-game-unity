@@ -6,7 +6,6 @@ using PathFinder;
 
 public class Node : INode
 {
-    private ArrayList visibleLights;
     private Vector3 _position;
     private Vector2 _coord;
     private float _weight;
@@ -20,7 +19,6 @@ public class Node : INode
 
     public Node(GridBehavior grid, Vector3 position, Vector2 coord, float weight)
     {
-        visibleLights = new ArrayList();
         _position = position;
         _coord = coord;
         _weight = weight;
@@ -80,34 +78,5 @@ public class Node : INode
     {
         get { return _coord; }
     }
-
-    public void OnLightUpdate(LightController[] lights)
-    {
-        if (!canWalk) {
-            return;
-        }
-
-        visibleLights.Clear();
-        foreach (LightController light in lights)
-        {
-            if (light.CurrentStatus != LightController.Status.On) continue;
-            Vector2 p = new Vector2(_position.x, _position.y);
-            Vector2 d = new Vector2(light.transform.position.x, light.transform.position.y) - p;
-            d.Normalize();
-
-            RaycastHit2D hit;
-            hit = Physics2D.Raycast(p, d, 1000.0f, light.shadowMask | (1<<8));
-            if (hit && hit.collider && hit.collider.gameObject.tag == "Light")
-            {
-                visibleLights.Add(hit.collider.gameObject);
-            }
-        }
-
-        if (Application.isPlaying)
-        {
-            shadowCollider.enabled = !hasLight;
-        }
-    }
-
 
 }
