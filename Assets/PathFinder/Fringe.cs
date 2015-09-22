@@ -117,7 +117,7 @@ namespace PathFinder
 
             if (!found)
             {
-                return null;
+                return path;
             }
 
             PathCost = cache[endNode].cost;

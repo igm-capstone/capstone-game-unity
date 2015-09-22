@@ -256,7 +256,11 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
         endNode.isStartEnd = true;
         
         path = fringe.FindPath((INode)startNode, (INode)endNode);
-        
+        if (fringe.PathCost > 200)
+        {
+            return new List<INode>();
+        }
+
         startNode.isStartEnd = false;
         endNode.isStartEnd = false;
         

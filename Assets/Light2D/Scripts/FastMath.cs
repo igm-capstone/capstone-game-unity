@@ -46,11 +46,13 @@ public static class FastMath
 
     public static float Sin(float x)
     {
+        while (x < 0) x += 360;
         return SinArray[Mathf.RoundToInt(x) % 360];
     }
 
     public static float Cos(float x)
     {
+        while (x < 0) x += 360;
         return CosArray[Mathf.RoundToInt(x) % 360];
     }
     

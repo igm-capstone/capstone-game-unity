@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Light2D))]
@@ -17,7 +18,7 @@ public class LightController : MonoBehaviour {
     MeshRenderer renderer;
     PolygonCollider2D collider;
     SpriteRenderer sprite;
-
+    
     public bool dirty = true;
 
 	// Use this for initialization
@@ -58,6 +59,14 @@ public class LightController : MonoBehaviour {
                 collider.enabled = false;
                 break;
         }
+        var material = GetComponent<MeshRenderer>().sharedMaterial;
+
+        if (material) {
+            var c = material.color;
+            c.a = 1;
+            sprite.color = c; 
+        }
+        
     }
 
     public void ToggleStatus()

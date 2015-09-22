@@ -55,12 +55,21 @@ public class TargetFollower : MonoBehaviour
 
         Debug.DrawLine(position, targetPosition, Color.cyan);
 
+        var currentAngle = transform.eulerAngles.z;
+        
         var targetDistance = targetPosition - position;
         var targetAngle = FastMath.Atan2(-targetDistance.x, targetDistance.y) * Mathf.Rad2Deg;
+
+
+        System.Func<float, float, float> mod = (a, n) => a - Mathf.Floor(a/n) * n;
+
+        var da = Mathf.Abs(mod((targetAngle - currentAngle + 180), 360) - 180);
+
+        Debug.LogFormat("{0}, {1}, {2}", targetAngle, currentAngle, da);
+
+
         var targetRotation = Quaternion.Euler(0, 0, targetAngle);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnRate  * 5 * Time.deltaTime);
-
-
 
         var frontOffset = transform.TransformPoint(Vector3.up * repelFocus);
         var rightOffset = transform.TransformPoint(repelOffset);
@@ -79,7 +88,26 @@ public class TargetFollower : MonoBehaviour
         }
         
         repel = repel * (1 - rapelDecay); // Mathf.Abs(repel) < .01f ? 0 : repel * .8f;
-        var moveDirection = new Vector3(repel, 1 - Mathf.Abs(repel));
+
+
+        if (da > 90)
+        {
+            reverseTime = .25f;
+        }
+
+        var reverse = false;
+        if (reverseTime > 0)
+        {
+            reverse = true;
+            reverseTime -= Time.deltaTime;
+            return;
+        }
+
+        //var reverse = da > 60;
+        //if (reverse)
+        //    return;
+
+        var moveDirection = new Vector3(repel, (1 - Mathf.Abs(repel)) * (reverse ? -1 : 1));
         
         // "forward"
         Debug.DrawLine(transform.position, transform.position + transform.up);
@@ -93,6 +121,7 @@ public class TargetFollower : MonoBehaviour
         transform.Translate(moveDirection * moveSpeed * .1f * Time.deltaTime, Space.Self);
     }
 
+    float reverseTime = 0;
     float repel = 0;
     private IList<Vector2> path;
     private IEnumerable<Node> nodePath;
