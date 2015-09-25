@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using PathFinder;
 
 [ExecuteInEditMode]
-public class GridBehavior : MonoBehaviour, ISearchSpace
+public class GridBehavior : NetworkBehaviour, ISearchSpace
 {
     private Vector2 maxSize;
     public float nodeRadius;
@@ -19,8 +22,10 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
     Node[,] areaOfNodes;
     private GameObject ShadowColliderGroup;
 
-    public bool dirty = true;
-    public bool checkAI = true;
+    [SyncVar]
+    private bool dirty = true;
+    [SyncVar]
+    private bool checkAI = true;
 
     public IEnumerable<INode> Nodes
     {
@@ -50,22 +55,32 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
         createGrid();
     }
 
-#if UNITY_EDITOR
     private void Update()
     {
-        if (!Application.isPlaying || dirty)
+        if (!Application.isPlaying || isServer)
         {
-            UpdateGrid();
-            dirty = false;
+            if (!Application.isPlaying || dirty)
+            {
+                UpdateGrid();
+                dirty = false;
+            }
+            if (checkAI)
+            {
+                UpdateAI();
+                checkAI = false;
+            }
         }
-        if (checkAI)
-        {
-            UpdateAI();
-            checkAI = false;
-        }
-
     }
-#endif
+
+    public void SetGridDirty()
+    {
+        dirty = true;
+    }
+
+    public void SetAIDirty()
+    {
+        checkAI = true;
+    }
 
     public void createGrid()
     {
@@ -94,6 +109,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
 
     private void UpdateGrid()
     {
+        Debug.Log("Grid update: "+isServer.ToString());
         for (int x = 0; x < numSpheresX; x++)
         {
             for (int y = 0; y < numSpheresY; y++)
@@ -121,6 +137,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
     }
 
     private void UpdateAI() {
+        Debug.Log("AI update: " + isServer.ToString());
         if (Application.isPlaying)
         {
             //Let AI know what to do based on visibility status
@@ -135,16 +152,23 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
             AIController[] robots = FindObjectsOfType(typeof(AIController)) as AIController[];
             foreach (AIController robot in robots)
             {
-                if (getNodeAtPos(robot.transform.position).hasLight)
+                if (robot.enabled)
                 {
-                    if (playerIsAccessible) {
-                        robot.StartFollow();
-                    } else {
-                        robot.StartPatrol();
+                    if (getNodeAtPos(robot.transform.position).hasLight)
+                    {
+                        if (playerIsAccessible)
+                        {
+                            robot.StartFollow();
+                        }
+                        else
+                        {
+                            robot.StartPatrol();
+                        }
                     }
-                }
-                else {
-                    robot.TurnOff();
+                    else
+                    {
+                        robot.TurnOff();
+                    }
                 }
             }
         }
@@ -195,6 +219,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
         }
     }
 
+#if UNITY_EDITOR
     void OnDrawGizmos()
     {
         float size = nodeRadius * .95f;
@@ -223,6 +248,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
             }
         }
     }
+#endif
 
     public int GetMaxSize
     {

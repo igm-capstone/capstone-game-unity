@@ -32,8 +32,7 @@ namespace PathFinder
             mappedNodes.Clear();
 
             var path = new LinkedList<INode>();
-            var currentNode = endNode;
-
+            
             AdvanceFrontier(startNode, endNode);
 
             PathCost = mappedNodeCosts[endNode];
