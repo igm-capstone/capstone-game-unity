@@ -56,7 +56,9 @@ public class PlayerController : NetworkBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Enemy") && 
+             ( collision.contacts[0].collider.gameObject.layer == LayerMask.NameToLayer("Player") ||
+                collision.contacts[0].otherCollider.gameObject.layer == LayerMask.NameToLayer("Player") ) )
         {
             CmdEndGame("Guard Wins!");
         }

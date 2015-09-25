@@ -59,7 +59,7 @@ public class GuardBehavior : NetworkBehaviour {
                     }
 
                     if (shouldToggle) {
-                        Debug.Log("Client: toggling light");
+                        //Debug.Log("Client: toggling light");
                         //light.ToggleStatus();
                         guardHUD.SetLightLevel(ActiveLights);
                         CmdLightHasBeenClicked(light.gameObject.name); //Toggle on server
@@ -72,7 +72,7 @@ public class GuardBehavior : NetworkBehaviour {
     [Command]
     void CmdLightHasBeenClicked(string lightName)
     {
-        Debug.Log("Client: sending CMD!");
+        //Debug.Log("Client: sending CMD!");
         LightController light = GameObject.Find(lightName).GetComponent<LightController>();
         light.ToggleStatus();
     }

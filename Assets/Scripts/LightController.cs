@@ -37,7 +37,7 @@ public class LightController : NetworkBehaviour {
 	// Update is called once per frame
 	void Update () {
 	    if (dirty) {
-            Debug.Log("Dirty light");
+            //Debug.Log("Dirty light");
             DrawSprite();
             light2d.UpdateLightFX();
             dirty = false;
@@ -52,7 +52,7 @@ public class LightController : NetworkBehaviour {
 	}
 
     private void DrawSprite() {
-        Debug.Log("DrawSprite");
+        //Debug.Log("DrawSprite");
             
         switch (CurrentStatus)
         {
@@ -79,7 +79,7 @@ public class LightController : NetworkBehaviour {
 
     public void ToggleStatus()
     {
-        Debug.Log("ToggleStatus called. IsServer: "+isServer.ToString());
+        //Debug.Log("ToggleStatus called. IsServer: "+isServer.ToString());
         switch (CurrentStatus)
         {
             case Status.Off: 
@@ -95,7 +95,7 @@ public class LightController : NetworkBehaviour {
     [Client]
     void GotStatusFromSrv(Status latestStatus)
     {
-        Debug.Log("GotSts from server. IsServer: " + isServer.ToString());
+        //Debug.Log("GotSts from server. IsServer: " + isServer.ToString());
         CurrentStatus = latestStatus;
         dirty = true;
     }

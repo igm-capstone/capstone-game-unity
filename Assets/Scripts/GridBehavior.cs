@@ -109,7 +109,7 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
 
     private void UpdateGrid()
     {
-        Debug.Log("Grid update: "+isServer.ToString());
+        //Debug.Log("Grid update: "+isServer.ToString());
         for (int x = 0; x < numSpheresX; x++)
         {
             for (int y = 0; y < numSpheresY; y++)
@@ -137,7 +137,7 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
     }
 
     private void UpdateAI() {
-        Debug.Log("AI update: " + isServer.ToString());
+        //Debug.Log("AI update: " + isServer.ToString());
         if (Application.isPlaying)
         {
             //Let AI know what to do based on visibility status

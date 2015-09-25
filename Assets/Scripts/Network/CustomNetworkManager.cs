@@ -51,12 +51,12 @@ public class CustomNetworkManager : NetworkManager
         GameObject player;
         if (conn.hostId == -1) //Local client
         {
-            Debug.Log("Spawning prisioner");
+            //Debug.Log("Spawning prisioner");
             player = (GameObject)GameObject.Instantiate(prisonerPrefab, new Vector3(0,0,0), Quaternion.identity);
         }
         else
         {
-            Debug.Log("Spawning guard");
+            //Debug.Log("Spawning guard");
             player = (GameObject)GameObject.Instantiate(guardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         }
 
