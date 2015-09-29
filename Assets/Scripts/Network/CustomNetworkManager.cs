@@ -37,6 +37,10 @@ public class CustomNetworkManager : NetworkManager
             var btnJoin = GameObject.Find("ButtonJoin").GetComponent<Button>();
             btnJoin.onClick.RemoveAllListeners();
             btnJoin.onClick.AddListener(Join);
+
+            var btnQuit = GameObject.Find("ButtonQuit").GetComponent<Button>();
+            btnQuit.onClick.RemoveAllListeners();
+            btnQuit.onClick.AddListener(Quit);
         }
         else
         {
@@ -46,13 +50,19 @@ public class CustomNetworkManager : NetworkManager
         }
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
     {
         GameObject player;
         if (conn.hostId == -1) //Local client
         {
             //Debug.Log("Spawning prisioner");
-            player = (GameObject)GameObject.Instantiate(prisonerPrefab, new Vector3(0,0,0), Quaternion.identity);
+            GameObject spawnPoint = GameObject.Find("PrisonerSpawnPoint");
+            player = (GameObject)GameObject.Instantiate(prisonerPrefab, spawnPoint.transform.position, Quaternion.identity);
         }
         else
         {
