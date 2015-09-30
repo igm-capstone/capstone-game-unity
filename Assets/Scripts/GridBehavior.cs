@@ -57,9 +57,16 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
 
     private void Update()
     {
-        if (!Application.isPlaying || isServer)
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
         {
-            if (!Application.isPlaying || dirty)
+           UpdateGrid();
+        }
+#endif
+
+        if(isServer)
+        {
+            if (dirty)
             {
                 UpdateGrid();
                 dirty = false;
