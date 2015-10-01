@@ -8,5 +8,16 @@ public class PrisonerNetworkBehavior : NetworkBehaviour {
         GetComponent<PlayerController>().enabled = true;
         GetComponent<MovementBroadcast>().enabled = true;
         transform.FindChild("Fog").GetComponent<SpriteRenderer>().color = Color.white;
+
+        foreach (var light in FindObjectsOfType<LightController>())
+        {
+            light.dirty = true;
+        }
+
+        foreach (var grid in FindObjectsOfType<GridBehavior>())
+        {
+            grid.SetGridDirty();
+            grid.SetAIDirty();
+        }
 	}
 }
