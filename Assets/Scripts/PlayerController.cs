@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         // Close Application
         if ((Input.GetKey(KeyCode.F4))&&(Input.GetKey(KeyCode.RightAlt)|| Input.GetKey(KeyCode.LeftAlt)))
         {
-            Application.LoadLevel(Application.loadedLevel);
+            Application.Quit();
         }
     }
 
