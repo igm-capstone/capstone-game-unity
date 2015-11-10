@@ -29,7 +29,12 @@ public class PlayerController : MonoBehaviour
         {
             Application.LoadLevel(Application.loadedLevel);
         }
-	}
+        // Close Application
+        if ((Input.GetKey(KeyCode.F4))&&(Input.GetKey(KeyCode.RightAlt)|| Input.GetKey(KeyCode.LeftAlt)))
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+    }
 
     private void move()
     {
