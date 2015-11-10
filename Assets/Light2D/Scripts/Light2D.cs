@@ -237,8 +237,10 @@ public class Light2D : MonoBehaviour {
                     Vector3 newVertexPosition;
                     newVertexPosition = hit ? (Vector3)hit.point : transform.TransformPoint(direction*lightRadius);
 
+                    #if UNITY_EDITOR
                     //Debug.DrawLine(position, newVertexPosition, Color.green);
                     if (debug) Debug.DrawLine(transform.position, newVertexPosition, Color.white * .5f + Color.magenta * .5f);
+                    #endif
 
                     vertex = new Vertex();
                     vertex.Position = transform.InverseTransformPoint(newVertexPosition);

@@ -2,7 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class TargetFollower : MonoBehaviour
 {
@@ -65,7 +68,7 @@ public class TargetFollower : MonoBehaviour
 
         var da = Mathf.Abs(mod((targetAngle - currentAngle + 180), 360) - 180);
 
-        Debug.LogFormat("{0}, {1}, {2}", targetAngle, currentAngle, da);
+        //Debug.LogFormat("{0}, {1}, {2}", targetAngle, currentAngle, da);
 
 
         var targetRotation = Quaternion.Euler(0, 0, targetAngle);
@@ -162,8 +165,9 @@ public class TargetFollower : MonoBehaviour
         path.Add(nodePath.Last().position);
 
         return path;
-    } 
+    }
 
+#if UNITY_EDITOR
     void OnDrawGizmos()
     {
         if (nodePath != null)
@@ -175,4 +179,5 @@ public class TargetFollower : MonoBehaviour
             }
         }
     }
+#endif
 }

@@ -22,6 +22,13 @@ public class PlayerController : MonoBehaviour
         moveableObstacle = Physics2D.OverlapCircleAll(transform.position, collisionRadius, moveableObjectLayer);
         if (moveableObstacle.Length > 0 && moveableObstacle[0].gameObject != null)
             moveObject();
+
+        //Test Inputs
+        // Restart the Level
+        if(Input.GetKey(KeyCode.R))
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
 	}
 
     private void move()
@@ -40,10 +47,12 @@ public class PlayerController : MonoBehaviour
             moveableObstacle[0].transform.parent = null;
     }
 
+    #if UNITY_EDITOR
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(gameObject.transform.position, collisionRadius);
     }
+    #endif
 
     public void OnTriggerEnter2D(Collider2D collision)
     {

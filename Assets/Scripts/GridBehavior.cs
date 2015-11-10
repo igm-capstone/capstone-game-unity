@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using PathFinder;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [ExecuteInEditMode]
 public class GridBehavior : MonoBehaviour, ISearchSpace
@@ -50,7 +53,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
         createGrid();
     }
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
     private void Update()
     {
         if (!Application.isPlaying || dirty)
@@ -65,7 +68,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
         }
 
     }
-#endif
+//#endif
 
     public void createGrid()
     {
@@ -195,6 +198,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
         }
     }
 
+    #if UNITY_EDITOR
     void OnDrawGizmos()
     {
         float size = nodeRadius * .95f;
@@ -223,6 +227,7 @@ public class GridBehavior : MonoBehaviour, ISearchSpace
             }
         }
     }
+    #endif
 
     public int GetMaxSize
     {
