@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class GuardBehavior : MonoBehaviour {
+public class GuardBehavior : NetworkBehaviour {
 
     public int MaxActiveLights = 3;
     private int ActiveLights = 0;
     LightController[] lights;
+    [SerializeField]
+    GameObject guardUIPrefab;
     GuardHUD guardHUD;
-    GridBehavior grid;
             
 	// Use this for initialization
 	void Start ()
     {
-        grid = FindObjectOfType<GridBehavior>();
-        
         lights = FindObjectsOfType<LightController>();
         foreach (LightController light in lights)
         {
@@ -23,7 +23,9 @@ public class GuardBehavior : MonoBehaviour {
             }
         }
 
-        guardHUD = FindObjectOfType<GuardHUD>();
+        GameObject guardUI = Instantiate(guardUIPrefab);
+        guardUI.transform.SetParent(FindObjectOfType<Canvas>().transform, false);
+        guardHUD = guardUI.GetComponent<GuardHUD>();
         guardHUD.SetMaxLightLevel(MaxActiveLights);
         guardHUD.SetLightLevel(ActiveLights);
 	}
@@ -43,21 +45,36 @@ public class GuardBehavior : MonoBehaviour {
             {
                 if (light.GetComponent<CircleCollider2D>().OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
                 {
+                    bool shouldToggle = false;
+
                     if ((light.CurrentStatus == LightController.Status.Off && ActiveLights < MaxActiveLights)) {
-                        light.ToggleStatus();
                         ActiveLights++;
-                        guardHUD.SetLightLevel(ActiveLights);
-                        grid.dirty = true;
+                        shouldToggle = true;
+                        
                     }
                     else if (light.CurrentStatus == LightController.Status.On)
                     {
-                        light.ToggleStatus();
                         ActiveLights--;
+                        shouldToggle = true;
+                    }
+
+                    if (shouldToggle) {
+                        //Debug.Log("Client: toggling light");
+                        //light.ToggleStatus();
                         guardHUD.SetLightLevel(ActiveLights);
-                        grid.dirty = true;
+                        CmdLightHasBeenClicked(light.gameObject.name); //Toggle on server
                     }
                 }
             }
         }
     }
+
+    [Command]
+    void CmdLightHasBeenClicked(string lightName)
+    {
+        //Debug.Log("Client: sending CMD!");
+        LightController light = GameObject.Find(lightName).GetComponent<LightController>();
+        light.ToggleStatus();
+    }
+
 }

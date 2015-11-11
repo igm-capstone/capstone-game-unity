@@ -4,9 +4,9 @@ using System.Collections;
 [RequireComponent(typeof(TargetFollower))]
 public class ChaseTarget : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
 
-    private  TargetFollower follower;
+    private TargetFollower follower;
 
     void Awake()
     {
@@ -15,6 +15,11 @@ public class ChaseTarget : MonoBehaviour
 
 	void Update()
 	{
+        if (target == null)
+        {
+            target = GameObject.Find("Prisoner(Clone)").transform;
+        }
+
 	    if ((target.position - transform.position).sqrMagnitude > 1)
 	    {
             follower.MoveTowards(target);

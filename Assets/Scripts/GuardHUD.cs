@@ -25,7 +25,7 @@ public class GuardHUD : MonoBehaviour {
             for (var i = 1; i < MaxActiveLights; i++)
             {
                 var newIcon = Instantiate(icon);
-                newIcon.transform.SetParent(panel);
+                newIcon.transform.SetParent(panel, false);
             }
         }
     }

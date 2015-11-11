@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Light2D))]
-public class LightController : MonoBehaviour {
+public class LightController : NetworkBehaviour {
     public enum Status {
         On,
         Off
     }
 
+    [SyncVar(hook = "GotStatusFromSrv")]
     public Status CurrentStatus = Status.On;
     public Sprite SpriteOn;
     public Sprite SpriteOff;
@@ -18,7 +20,7 @@ public class LightController : MonoBehaviour {
     MeshRenderer renderer;
     PolygonCollider2D collider;
     SpriteRenderer sprite;
-    
+
     public bool dirty = true;
 
 	// Use this for initialization
@@ -35,17 +37,23 @@ public class LightController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	    if (dirty) {
-            UpdateLightFX();
+            //Debug.Log("Dirty light");
+            DrawSprite();
+            light2d.UpdateLightFX();
             dirty = false;
+
+            if (isServer)
+            {
+                GridBehavior grid = FindObjectOfType<GridBehavior>();
+                grid.SetGridDirty();
+                grid.SetAIDirty();
+            }
         }
 	}
 
-    public void UpdateLightFX()
-    {
-        light2d.UpdateLightFX();
-    }
-
     private void DrawSprite() {
+        //Debug.Log("DrawSprite");
+            
         switch (CurrentStatus)
         {
             case Status.On:
@@ -71,6 +79,7 @@ public class LightController : MonoBehaviour {
 
     public void ToggleStatus()
     {
+        //Debug.Log("ToggleStatus called. IsServer: "+isServer.ToString());
         switch (CurrentStatus)
         {
             case Status.Off: 
@@ -80,7 +89,15 @@ public class LightController : MonoBehaviour {
                 CurrentStatus = Status.Off;
                 break;
         }
-        DrawSprite();
+        dirty = true;
+    }
+
+    [Client]
+    void GotStatusFromSrv(Status latestStatus)
+    {
+        //Debug.Log("GotSts from server. IsServer: " + isServer.ToString());
+        CurrentStatus = latestStatus;
+        dirty = true;
     }
 
 }

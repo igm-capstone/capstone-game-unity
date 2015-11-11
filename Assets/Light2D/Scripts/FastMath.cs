@@ -9,7 +9,7 @@ public static class FastMath
     private const int Count = Mask + 1;
     private static readonly int Dim = (int)Mathf.Sqrt(Count);
 
-    private static readonly float InvDimMinus1 = 1.0f / (Dim - 1);
+    //private static readonly float InvDimMinus1 = 1.0f / (Dim - 1);
 
     private const float Deg = 180.0f / Mathf.PI;
 

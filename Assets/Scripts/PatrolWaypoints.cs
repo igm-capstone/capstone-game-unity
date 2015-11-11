@@ -52,7 +52,7 @@ public class PatrolWaypoints : MonoBehaviour
 	        }
 
             return;
-            nextWaypoint = waypoints[Mathf.Abs(nextStop)];
+            //nextWaypoint = waypoints[Mathf.Abs(nextStop)];
         }
 
         follower.MoveTowards(nextWaypoint);

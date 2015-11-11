@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour 
+public class PlayerController : NetworkBehaviour 
 {
     private Rigidbody2D rb;
     [SerializeField]
@@ -63,8 +64,29 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Goal")
         {
-            GameStateHUD hud = FindObjectOfType(typeof(GameStateHUD)) as GameStateHUD;
-            hud.SetMsg("Player Wins!");
+            CmdEndGame("Prisoner Wins!");
         }
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Enemy") && 
+             ( collision.contacts[0].collider.gameObject.layer == LayerMask.NameToLayer("Player") ||
+                collision.contacts[0].otherCollider.gameObject.layer == LayerMask.NameToLayer("Player") ) )
+        {
+            CmdEndGame("Guard Wins!");
+        }
+    }
+
+    [Command]
+    void CmdEndGame(string msg)
+    {
+        RpcEndGame(msg);
+    }
+
+    [ClientRpc]
+    void RpcEndGame(string msg){
+        GameStateHUD hud = FindObjectOfType<GameStateHUD>();
+        hud.SetMsg(msg);
     }
 }

@@ -31,9 +31,7 @@ public class Light2D : MonoBehaviour {
     public Material lightMaterial;
     public LayerMask shadowMask = Physics.DefaultRaycastLayers;
 
-#if UNITY_EDITOR
-    public bool debug;
-#endif
+    private bool debug;
 
     private PolygonCollider2D[] colliders;
     private List<Vertex> vertices;
@@ -47,6 +45,10 @@ public class Light2D : MonoBehaviour {
 
     void Awake()
     {
+        #if UNITY_EDITOR
+        debug = true;
+        #endif
+
         lightMesh = new Mesh();
         lightMesh.name = string.Format("Light Mesh ({0})", name);
         lightMesh.MarkDynamic();

@@ -3,18 +3,15 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class GameStateHUD : MonoBehaviour {
-
+    
+    public GameObject gameStateHUD;
     Text msg;
     Image img;
+    Button btn;
 
 	// Use this for initialization
 	void Start () {
-        img = GetComponent<Image>();
-        msg = gameObject.GetComponentInChildren<Text>();
-
-        img.enabled = false;
-        msg.enabled = false;
-        msg.text = null;
+        gameStateHUD.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -24,8 +21,18 @@ public class GameStateHUD : MonoBehaviour {
 
     public void SetMsg(string text)
     {
-        img.enabled = true;
-        msg.enabled = true;
+        gameStateHUD.SetActive(true);
+
+        msg = gameStateHUD.GetComponentInChildren<Text>();
         msg.text = text;
+
+        btn = gameStateHUD.GetComponentInChildren<Button>();
+        btn.onClick.RemoveAllListeners();
+        btn.onClick.AddListener(RestartGame);
+    }
+
+    void RestartGame()
+    {
+        CustomNetworkManager.singleton.ServerChangeScene(Application.loadedLevelName);
     }
 }

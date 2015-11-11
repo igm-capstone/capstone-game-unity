@@ -4,10 +4,8 @@ using System.Collections;
 public class MovementBroadcast : MonoBehaviour {
 
     private GridBehavior grid;
-    private LightController[] lights;
     Vector3 lastPos;
-    Node lastNode = null;
-
+    
     public bool AffectsGrid = true;
     public bool AffectsAI = true;
 
@@ -15,7 +13,6 @@ public class MovementBroadcast : MonoBehaviour {
     void Start()
     {
         grid = FindObjectOfType<GridBehavior>();
-        lights = FindObjectsOfType<LightController>();
         lastPos = transform.position;
     }
 
@@ -26,7 +23,7 @@ public class MovementBroadcast : MonoBehaviour {
         {
             if (AffectsGrid)
             {
-                grid.dirty = true;
+                grid.SetGridDirty();
 
                 var distance = transform.position - lastPos;
                 var direction = distance.normalized;
@@ -43,15 +40,10 @@ public class MovementBroadcast : MonoBehaviour {
                     var light = hit.transform.GetComponentInParent<LightController>();
                     if (light) light.dirty = true;
                 }
-
-                //foreach (LightController light in lights)
-                //{
-                //    light.dirty = true;
-                //}
             }
             if (AffectsAI)
             {
-                grid.checkAI = true;
+                grid.SetAIDirty();
             }
             lastPos = transform.position;
         }
