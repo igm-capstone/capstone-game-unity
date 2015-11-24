@@ -11,6 +11,7 @@ public class GameStateHUD : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        if (GameObject.FindObjectOfType<CustomNetworkManager>() == null) Application.LoadLevel("Menu");
         gameStateHUD.SetActive(false);
     }
 	
