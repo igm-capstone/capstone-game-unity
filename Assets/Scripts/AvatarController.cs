@@ -42,6 +42,7 @@ public class AvatarController : NetworkBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
+        transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(vertical, horizontal) * Mathf.Rad2Deg, Vector3.forward);
         rb.velocity = new Vector2(horizontal,vertical) * moveSpeed;
     }
 
