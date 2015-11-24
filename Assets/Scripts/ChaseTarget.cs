@@ -17,7 +17,7 @@ public class ChaseTarget : MonoBehaviour
 	{
         if (target == null)
         {
-            target = GameObject.Find("Prisoner(Clone)").transform;
+            target = GameObject.Find("Avatar(Clone)").transform;
         }
 
 	    if ((target.position - transform.position).sqrMagnitude > 1)

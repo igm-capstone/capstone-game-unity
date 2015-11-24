@@ -6,8 +6,8 @@ using UnityEngine.Networking.NetworkSystem;
 
 public class CustomNetworkManager : NetworkManager
 {
-    public GameObject prisonerPrefab;
-    public GameObject guardPrefab;
+    public GameObject ghostPrefab;
+    public GameObject avatarPrefab;
 
     public void Host()
     {
@@ -60,14 +60,14 @@ public class CustomNetworkManager : NetworkManager
         GameObject player;
         if (conn.hostId == -1) //Local client
         {
-            //Debug.Log("Spawning prisioner");
-            GameObject spawnPoint = GameObject.Find("PrisonerSpawnPoint");
-            player = (GameObject)GameObject.Instantiate(prisonerPrefab, spawnPoint.transform.position, Quaternion.identity);
+            //Debug.Log("Spawning ghost");
+            player = (GameObject)GameObject.Instantiate(ghostPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         }
         else
         {
-            //Debug.Log("Spawning guard");
-            player = (GameObject)GameObject.Instantiate(guardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            //Debug.Log("Spawning avatar");
+            GameObject spawnPoint = GameObject.Find("AvatarSpawnPoint");
+            player = (GameObject)GameObject.Instantiate(avatarPrefab, spawnPoint.transform.position, Quaternion.identity);
         }
 
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);

@@ -152,7 +152,7 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
         if (Application.isPlaying)
         {
             //Let AI know what to do based on visibility status
-            PlayerController player = FindObjectOfType(typeof(PlayerController)) as PlayerController;
+            AvatarController player = FindObjectOfType(typeof(AvatarController)) as AvatarController;
             bool playerIsAccessible = false;
             if (player)
             {
@@ -160,8 +160,8 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
                 playerIsAccessible = playerNode.hasLight;
             }
 
-            AIController[] robots = FindObjectsOfType(typeof(AIController)) as AIController[];
-            foreach (AIController robot in robots)
+            MinionController[] robots = FindObjectsOfType(typeof(MinionController)) as MinionController[];
+            foreach (MinionController robot in robots)
             {
                 if (robot.enabled)
                 {

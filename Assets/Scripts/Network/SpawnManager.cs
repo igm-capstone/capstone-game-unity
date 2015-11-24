@@ -8,13 +8,13 @@ public class SpawnManager : NetworkBehaviour {
 
 	public override void OnStartServer ()
 	{
-        var spawnPointCollector = GameObject.Find("EnemyCollector").transform;
+        var spawnPointCollector = GameObject.Find("MinionCollector").transform;
         for (int i = 0; i < spawnPointCollector.childCount; ++i)
         {
             Transform spawn = spawnPointCollector.GetChild(i);
             GameObject robot = GameObject.Instantiate(EnemyPrefab, spawn.transform.position, Quaternion.identity) as GameObject;
             robot.transform.SetParent(spawn);
-            robot.GetComponent<AIController>().enabled = true;
+            robot.GetComponent<MinionController>().enabled = true;
             robot.GetComponent<PatrolWaypoints>().path = spawn.GetComponentInChildren<WaypointPath>();
             NetworkServer.Spawn(robot); 
             
