@@ -14,8 +14,11 @@ public class AvatarController : NetworkBehaviour
     private Collider2D[] moveableObstacle = new Collider2D[1];
     private bool disable = false;
 
+    MeleeWeaponBehavior weaponBehavior;
+
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
+        weaponBehavior = GetComponentInChildren<MeleeWeaponBehavior>();
 	}
 	
 	void FixedUpdate () 
@@ -37,6 +40,11 @@ public class AvatarController : NetworkBehaviour
         {
             Application.Quit();
         }
+
+        if (Input.GetKey(KeyCode.M))
+        {
+            weaponBehavior.StartCoroutine(weaponBehavior.Slash());
+        }
     }
 
     private void move()
@@ -54,6 +62,11 @@ public class AvatarController : NetworkBehaviour
             moveableObstacle[0].transform.parent = gameObject.transform;
         else
             moveableObstacle[0].transform.parent = null;
+    }
+
+    private void MeleeAttack()
+    {
+
     }
 
     #if UNITY_EDITOR
