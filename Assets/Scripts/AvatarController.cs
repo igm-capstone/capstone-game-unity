@@ -12,6 +12,7 @@ public class AvatarController : NetworkBehaviour
     [SerializeField]
     private float collisionRadius;
     private Collider2D[] moveableObstacle = new Collider2D[1];
+    private bool disable = false;
 
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -19,7 +20,8 @@ public class AvatarController : NetworkBehaviour
 	
 	void FixedUpdate () 
     {
-        move();
+        if(!disable)
+            move();
         moveableObstacle = Physics2D.OverlapCircleAll(transform.position, collisionRadius, moveableObjectLayer);
         if (moveableObstacle.Length > 0 && moveableObstacle[0].gameObject != null)
             moveObject();
@@ -75,7 +77,14 @@ public class AvatarController : NetworkBehaviour
              ( collision.contacts[0].collider.gameObject.layer == LayerMask.NameToLayer("Player") ||
                 collision.contacts[0].otherCollider.gameObject.layer == LayerMask.NameToLayer("Player") ) )
         {
-            CmdEndGame("Guard Wins!");
+            disable = true;
+            //CmdEndGame("Guard Wins!");
+        }
+        else if((collision.collider.gameObject.layer == LayerMask.NameToLayer("Player") &&
+                 (collision.contacts[0].collider.gameObject.layer == LayerMask.NameToLayer("Player") ||
+                    collision.contacts[0].otherCollider.gameObject.layer == LayerMask.NameToLayer("Player"))))
+        {
+            disable = false;
         }
     }
 
