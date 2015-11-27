@@ -11,13 +11,13 @@ public class AvatarController : NetworkBehaviour
     private LayerMask moveableObjectLayer;
     [SerializeField]
     private float collisionRadius;
-    private Collider2D[] moveableObstacle = new Collider2D[1];
+    public Collider2D[] moveableObstacle = new Collider2D[1];
     private bool disable = false;
 
     MeleeWeaponBehavior weaponBehavior;
 
 	void Start () {
-        rb = GetComponent<Rigidbody2D>();
+        rb = transform.parent.GetComponent<Rigidbody2D>();
         weaponBehavior = GetComponentInChildren<MeleeWeaponBehavior>();
 	}
 	
@@ -51,7 +51,6 @@ public class AvatarController : NetworkBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-
         transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(vertical, horizontal) * Mathf.Rad2Deg, Vector3.forward);
         rb.velocity = new Vector2(horizontal,vertical) * moveSpeed;
     }
@@ -59,7 +58,7 @@ public class AvatarController : NetworkBehaviour
     private void moveObject()
     {
         if(Input.GetKey(KeyCode.Space))
-            moveableObstacle[0].transform.parent = gameObject.transform;
+            moveableObstacle[0].transform.parent = gameObject.transform.parent.transform;
         else
             moveableObstacle[0].transform.parent = null;
     }
