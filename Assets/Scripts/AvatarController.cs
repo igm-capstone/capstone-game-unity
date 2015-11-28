@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
-using System.Collections;
 
-public class AvatarController : NetworkBehaviour 
+public class AvatarController : MonoBehaviour 
 {
     private Rigidbody2D rb;
     [SerializeField]
@@ -57,10 +56,22 @@ public class AvatarController : NetworkBehaviour
 
     private void moveObject()
     {
-        if(Input.GetKey(KeyCode.Space))
-            moveableObstacle[0].transform.parent = gameObject.transform.parent.transform;
-        else
-            moveableObstacle[0].transform.parent = null;
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (moveableObstacle[0].transform.parent != gameObject.transform.parent.transform)
+            {
+                moveableObstacle[0].transform.parent = gameObject.transform.parent.transform;
+                transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, true);
+            }
+        }
+        else 
+        {
+            if (moveableObstacle[0].transform.parent != null)
+            {
+                moveableObstacle[0].transform.parent = null;
+                transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, false);
+            }
+        }
     }
 
     private void MeleeAttack()
@@ -79,7 +90,7 @@ public class AvatarController : NetworkBehaviour
     {
         if (collision.gameObject.tag == "Goal")
         {
-            CmdEndGame("Prisoner Wins!");
+            transform.parent.GetComponent<AvatarNetworkBehavior>().CmdEndGame("Prisoner Wins!");
         }
     }
 
@@ -90,7 +101,7 @@ public class AvatarController : NetworkBehaviour
                 collision.contacts[0].otherCollider.gameObject.layer == LayerMask.NameToLayer("Player") ) )
         {
             disable = true;
-            //CmdEndGame("Guard Wins!");
+            transform.parent.GetComponent<AvatarNetworkBehavior>().CmdEndGame("Guard Wins!");
         }
         else if((collision.collider.gameObject.layer == LayerMask.NameToLayer("Player") &&
                  (collision.contacts[0].collider.gameObject.layer == LayerMask.NameToLayer("Player") ||
@@ -100,15 +111,4 @@ public class AvatarController : NetworkBehaviour
         }
     }
 
-    [Command]
-    void CmdEndGame(string msg)
-    {
-        RpcEndGame(msg);
-    }
-
-    [ClientRpc]
-    void RpcEndGame(string msg){
-        GameStateHUD hud = FindObjectOfType<GameStateHUD>();
-        hud.SetMsg(msg);
-    }
 }

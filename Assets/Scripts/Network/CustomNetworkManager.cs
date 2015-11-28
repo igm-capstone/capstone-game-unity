@@ -62,12 +62,14 @@ public class CustomNetworkManager : NetworkManager
         {
             //Debug.Log("Spawning ghost");
             player = (GameObject)GameObject.Instantiate(ghostPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            player.GetComponent<GhostNetworkBehavior>().conn = conn;
         }
         else
         {
             //Debug.Log("Spawning avatar");
             GameObject spawnPoint = GameObject.Find("AvatarSpawnPoint");
             player = (GameObject)GameObject.Instantiate(avatarPrefab, spawnPoint.transform.position, Quaternion.identity);
+            player.GetComponent<AvatarNetworkBehavior>().conn = conn;
         }
 
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
