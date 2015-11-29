@@ -57,7 +57,7 @@ public class CustomNetworkManager : NetworkManager
 
     public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
     {
-        GameObject player;
+        GameObject player = null;
         if (conn.hostId == -1) //Local client
         {
             //Debug.Log("Spawning ghost");
@@ -67,8 +67,18 @@ public class CustomNetworkManager : NetworkManager
         else
         {
             //Debug.Log("Spawning avatar");
-            GameObject spawnPoint = GameObject.Find("AvatarSpawnPoint");
-            player = (GameObject)GameObject.Instantiate(avatarPrefab, spawnPoint.transform.position, Quaternion.identity);
+            AvatarSpawnPoint[] spawnPoints = FindObjectsOfType<AvatarSpawnPoint>();
+            foreach (AvatarSpawnPoint sp in spawnPoints)
+            {
+                if (sp.PlayerID == numPlayers)
+                {
+                    player = (GameObject)Instantiate(avatarPrefab, sp.transform.position, Quaternion.identity);
+                }
+            }
+            if (player == null) // didnt match to a spawn point
+            {
+                player = (GameObject)Instantiate(avatarPrefab, spawnPoints[0].transform.position, Quaternion.identity);
+            }
             player.GetComponent<AvatarNetworkBehavior>().conn = conn;
         }
 
