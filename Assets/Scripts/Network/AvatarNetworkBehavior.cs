@@ -5,6 +5,13 @@ using System.Collections;
 public class AvatarNetworkBehavior : NetworkBehaviour {
     public NetworkConnection conn;
 
+    private Transform blockCollector;
+    
+    void Start()
+    {
+        blockCollector = GameObject.Find("BlocksCollector").transform;
+    }
+
 	public override void OnStartLocalPlayer () {
         GetComponentInChildren<AvatarController>().enabled = true;
         GetComponentInChildren<MovementBroadcast>().enabled = true;
@@ -33,15 +40,15 @@ public class AvatarNetworkBehavior : NetworkBehaviour {
     {
         NetworkIdentity blockNetID = GameObject.Find(block).GetComponent<NetworkIdentity>();
 
-        if (status)
+        if (status && blockNetID.transform.parent == blockCollector)
         {
-            blockNetID.RemoveClientAuthority(FindObjectOfType<GhostNetworkBehavior>().conn);
-            blockNetID.AssignClientAuthority(conn);
+            blockNetID.transform.parent = transform;
+            RpcTakeBlockOver(block, status, this.netId);
         }
-        else
+        else if (!status)
         {
-            blockNetID.RemoveClientAuthority(conn);
-            blockNetID.AssignClientAuthority(FindObjectOfType<GhostNetworkBehavior>().conn);
+            blockNetID.transform.parent = blockCollector;
+            RpcTakeBlockOver(block, status, this.netId);
         }
     }
 
@@ -50,5 +57,29 @@ public class AvatarNetworkBehavior : NetworkBehaviour {
     {
         GameStateHUD hud = FindObjectOfType<GameStateHUD>();
         hud.SetMsg(msg);
+    }
+
+    [ClientRpc]
+    void RpcTakeBlockOver(string block, bool status, NetworkInstanceId playerID)
+    {
+        NetworkIdentity blockNetID = GameObject.Find(block).GetComponent<NetworkIdentity>();
+
+        AvatarNetworkBehavior[] players = FindObjectsOfType<AvatarNetworkBehavior>();
+
+        foreach (var player in players)
+        {
+            if (player.netId == playerID)
+            {
+                if (status && blockNetID.transform.parent == blockCollector)
+                {
+                    blockNetID.transform.parent = player.transform;
+                }
+                else if (!status)
+                {
+                    blockNetID.transform.parent = blockCollector;
+
+                }
+            }
+        }
     }
 }

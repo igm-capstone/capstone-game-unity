@@ -60,22 +60,11 @@ public class AvatarController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            if (moveableObstacle[0].transform.parent == blockCollector)
-            {
-                if (moveableObstacle[0].transform.parent != gameObject.transform.parent.transform)
-                {
-                    moveableObstacle[0].transform.parent = gameObject.transform.parent.transform;
-                    transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, true);
-                }
-            }
+            transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, true);
         }
         else
         {
-            if (moveableObstacle[0].transform.parent == gameObject.transform.parent.transform)
-            {
-                moveableObstacle[0].transform.parent = blockCollector;
-                transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, false);
-            }
+            transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, false);
         }
     }
 
