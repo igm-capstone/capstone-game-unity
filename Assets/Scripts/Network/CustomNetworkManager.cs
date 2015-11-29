@@ -73,6 +73,7 @@ public class CustomNetworkManager : NetworkManager
                 if (sp.PlayerID == numPlayers)
                 {
                     player = (GameObject)Instantiate(avatarPrefab, sp.transform.position, Quaternion.identity);
+                    break;
                 }
             }
             if (player == null) // didnt match to a spawn point

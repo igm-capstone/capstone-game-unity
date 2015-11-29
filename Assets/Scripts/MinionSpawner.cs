@@ -24,7 +24,7 @@ public class MinionSpawner : MonoBehaviour {
     private bool selectingMinion;
     private Vector3 worldPoint;
 
-    void Awake()
+    void Start()
     {
         var go = new GameObject("SpawnPreview");
         previewContainer = go.transform;

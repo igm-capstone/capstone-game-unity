@@ -18,7 +18,7 @@ public class GhostHUD : MonoBehaviour {
 
     public void SetMaxLightLevel(int MaxActiveLights)
     {
-        var panel = transform.FindChild("Panel");
+        /*var panel = transform.FindChild("Panel");
         if (panel.transform.childCount != MaxActiveLights)
         {
             var icon = panel.transform.GetChild(0);
@@ -27,12 +27,12 @@ public class GhostHUD : MonoBehaviour {
                 var newIcon = Instantiate(icon);
                 newIcon.transform.SetParent(panel, false);
             }
-        }
+        }*/
     }
 
     public void SetLightLevel(int ActiveLights)
     {
-        var panel = transform.FindChild("Panel");
+        /*var panel = transform.FindChild("Panel");
         
         for (var i = 0; i < ActiveLights && i < panel.transform.childCount; i++)
         {
@@ -44,6 +44,6 @@ public class GhostHUD : MonoBehaviour {
         {
             Image icon = panel.transform.GetChild(i).GetComponent<Image>();
             icon.sprite = AvailableEnergySprite;
-        }
+        }*/
     }
 }

@@ -25,7 +25,7 @@ public class GhostBehavior : NetworkBehaviour {
         }
 
         GameObject guardUI = Instantiate(guardUIPrefab);
-        guardUI.transform.SetParent(FindObjectOfType<Canvas>().transform, false);
+        guardUI.transform.SetParent(GameObject.Find("MainCanvas").transform, false);
         guardHUD = guardUI.GetComponent<GhostHUD>();
         guardHUD.SetMaxLightLevel(MaxActiveLights);
         guardHUD.SetLightLevel(ActiveLights);
