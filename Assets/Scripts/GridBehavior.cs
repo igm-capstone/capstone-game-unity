@@ -190,7 +190,15 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
         float x = (pos.x - nodeRadius - startingCorner.x) / (nodeRadius * 2);
         float y = (pos.y - nodeRadius - startingCorner.y) / (nodeRadius * 2);
 
-        return areaOfNodes[(int)Mathf.Round(x), (int)Mathf.Round(y)];
+        var i = (int) Mathf.Round(x);
+        var j = (int) Mathf.Round(y);
+
+        if (areaOfNodes == null || i < 0 || i >= areaOfNodes.GetLength(0) || j < 0 || j >= areaOfNodes.GetLongLength(1))
+        {
+            return null;
+        } 
+
+        return areaOfNodes[i, j];
     }
 
     public IEnumerable<NodeConnection> GetNodeConnections(int x, int y)

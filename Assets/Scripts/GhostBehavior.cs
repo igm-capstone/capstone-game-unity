@@ -5,6 +5,7 @@ using System.Collections;
 public class GhostBehavior : NetworkBehaviour {
 
     public int MaxActiveLights = 3;
+    public bool InteractiveLights;
     private int ActiveLights = 0;
     LightController[] lights;
     [SerializeField]
@@ -33,7 +34,7 @@ public class GhostBehavior : NetworkBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        HandleInput();
+       HandleInput();
 	}
 
     void HandleInput()
@@ -41,29 +42,39 @@ public class GhostBehavior : NetworkBehaviour {
         // Using mouse over instead of ray cast due to 2D collider. Physics does not interact with Physics2D.
         if (Input.GetMouseButtonUp(0))
         {
-            foreach (LightController light in lights)
+            if (InteractiveLights)
             {
-                if (light.GetComponent<CircleCollider2D>().OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
+                ToggleLightsAtWorldPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            }
+        }
+    }
+
+    void ToggleLightsAtWorldPoint(Vector3 worldPoint)
+    {
+        foreach (LightController light in lights)
+        {
+            if (light.GetComponent<CircleCollider2D>().OverlapPoint(worldPoint))
+            {
+                bool shouldToggle = false;
+
+                if ((light.CurrentStatus == LightController.Status.Off && ActiveLights < MaxActiveLights))
                 {
-                    bool shouldToggle = false;
+                    ActiveLights++;
+                    shouldToggle = true;
 
-                    if ((light.CurrentStatus == LightController.Status.Off && ActiveLights < MaxActiveLights)) {
-                        ActiveLights++;
-                        shouldToggle = true;
-                        
-                    }
-                    else if (light.CurrentStatus == LightController.Status.On)
-                    {
-                        ActiveLights--;
-                        shouldToggle = true;
-                    }
+                }
+                else if (light.CurrentStatus == LightController.Status.On)
+                {
+                    ActiveLights--;
+                    shouldToggle = true;
+                }
 
-                    if (shouldToggle) {
-                        //Debug.Log("Client: toggling light");
-                        //light.ToggleStatus();
-                        guardHUD.SetLightLevel(ActiveLights);
-                        CmdLightHasBeenClicked(light.gameObject.name); //Toggle on server
-                    }
+                if (shouldToggle)
+                {
+                    //Debug.Log("Client: toggling light");
+                    //light.ToggleStatus();
+                    guardHUD.SetLightLevel(ActiveLights);
+                    CmdLightHasBeenClicked(light.gameObject.name); //Toggle on server
                 }
             }
         }

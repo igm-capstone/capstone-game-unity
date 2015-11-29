@@ -26,6 +26,7 @@ public class TargetFollower : MonoBehaviour
 
     void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         grid = FindObjectOfType<GridBehavior>();
     }
 
@@ -103,6 +104,7 @@ public class TargetFollower : MonoBehaviour
         {
             reverse = true;
             reverseTime -= Time.deltaTime;
+            animator.SetFloat("Speed", 0);
             return;
         }
 
@@ -116,18 +118,20 @@ public class TargetFollower : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position + transform.up);
         Debug.DrawLine(transform.position, transform.position + transform.TransformDirection(moveDirection).normalized, Color.yellow);
 
-        if (GetComponent<Animator>())
+        if (animator)
         {
-            GetComponent<Animator>().SetFloat("Slide", repel);
+            animator.SetFloat("Slide", repel);
         }
 
         transform.Translate(moveDirection * moveSpeed * .1f * Time.deltaTime, Space.Self);
+        animator.SetFloat("Speed", .8f);
     }
 
     float reverseTime = 0;
     float repel = 0;
     private IList<Vector2> path;
     private IEnumerable<Node> nodePath;
+    private Animator animator;
 
     IList<Vector2> GetPathTo(Transform target)
     {
