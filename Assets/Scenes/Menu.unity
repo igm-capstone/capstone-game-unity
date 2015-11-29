@@ -553,18 +553,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 633719704}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1400174514}
-        m_MethodName: Host
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &633719704
@@ -975,6 +964,7 @@ MonoBehaviour:
   - {fileID: 133474, guid: 73966fe075ec45f45b4c12e9167f156b, type: 2}
   - {fileID: 196296, guid: 019c493b42c53a1468dbd861bbbd1d49, type: 2}
   - {fileID: 198946, guid: f7e43e3f7365f3c4aacde84a2de4f97f, type: 2}
+  - {fileID: 155754, guid: b554c4a33a58290439e71fa855519a5d, type: 2}
   m_CustomConfig: 1
   m_MaxConnections: 5
   m_ConnectionConfig:

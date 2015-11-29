@@ -11,19 +11,19 @@ public class CustomNetworkManager : NetworkManager
 
     public void Host()
     {
-        NetworkManager.singleton.StartHost();
+        StartHost();
     }
 
     public void Join()
     {
         GetIPAddress();
-        NetworkManager.singleton.StartClient();
+        StartClient();
     }
 
     void GetIPAddress()
     {
         string ip = GameObject.Find("InputFieldIP").transform.FindChild("Text").GetComponent<Text>().text;
-        NetworkManager.singleton.networkAddress = ip;
+        networkAddress = ip;
     }
 
     void OnLevelWasLoaded(int level)
@@ -46,7 +46,7 @@ public class CustomNetworkManager : NetworkManager
         {
             var btnExit = GameObject.Find("ButtonExit").GetComponent<Button>();
             btnExit.onClick.RemoveAllListeners();
-            btnExit.onClick.AddListener(NetworkManager.singleton.StopHost);
+            btnExit.onClick.AddListener(StopHost);
         }
     }
 

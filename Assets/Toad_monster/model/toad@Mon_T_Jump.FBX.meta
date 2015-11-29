@@ -1,0 +1,630 @@
+fileFormatVersion: 2
+guid: 7d2cba596a26092459a9bf57e8b8e13f
+timeCreated: 1448391398
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: toad
+    100002: toad 1
+    100004: toad Head
+    100006: toad L Calf
+    100008: toad L Clavicle
+    100010: toad L Finger0
+    100012: toad L Finger01
+    100014: toad L Finger1
+    100016: toad L Finger11
+    100018: toad L Foot
+    100020: toad L Forearm
+    100022: toad L Hand
+    100024: toad L Thigh
+    100026: toad L Toe0
+    100028: toad L UpperArm
+    100030: toad Neck
+    100032: toad Pelvis
+    100034: toad Prop1
+    100036: toad R Calf
+    100038: toad R Clavicle
+    100040: toad R Finger0
+    100042: toad R Finger01
+    100044: toad R Finger1
+    100046: toad R Finger11
+    100048: toad R Foot
+    100050: toad R Forearm
+    100052: toad R Hand
+    100054: toad R Thigh
+    100056: toad R Toe0
+    100058: toad R UpperArm
+    100060: toad Spine
+    100062: toad Tail
+    100064: toad Tail1
+    100066: toad Tail2
+    100068: toad Tail3
+    100070: toad Tail4
+    100072: //RootNode
+    100074: wepon
+    400000: toad
+    400002: toad 1
+    400004: toad Head
+    400006: toad L Calf
+    400008: toad L Clavicle
+    400010: toad L Finger0
+    400012: toad L Finger01
+    400014: toad L Finger1
+    400016: toad L Finger11
+    400018: toad L Foot
+    400020: toad L Forearm
+    400022: toad L Hand
+    400024: toad L Thigh
+    400026: toad L Toe0
+    400028: toad L UpperArm
+    400030: toad Neck
+    400032: toad Pelvis
+    400034: toad Prop1
+    400036: toad R Calf
+    400038: toad R Clavicle
+    400040: toad R Finger0
+    400042: toad R Finger01
+    400044: toad R Finger1
+    400046: toad R Finger11
+    400048: toad R Foot
+    400050: toad R Forearm
+    400052: toad R Hand
+    400054: toad R Thigh
+    400056: toad R Toe0
+    400058: toad R UpperArm
+    400060: toad Spine
+    400062: toad Tail
+    400064: toad Tail1
+    400066: toad Tail2
+    400068: toad Tail3
+    400070: toad Tail4
+    400072: //RootNode
+    400074: wepon
+    2300000: wepon
+    3300000: wepon
+    4300000: toad
+    4300002: wepon
+    7400000: Take 001
+    11100000: //RootNode
+    13700000: toad
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 'MuscleClip ''toad@Mon_T_Jump''conversion warning: ''toad
+      1/toad Pelvis/toad Spine/toad Neck/toad L Clavicle'' has translation animation.
+      It is not supported.
+
+
+      MuscleClip ''toad@Mon_T_Jump''conversion warning: ''toad 1/toad Pelvis/toad
+      Spine/toad Neck/toad R Clavicle'' has translation animation. It is not supported.
+
+
+'
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    human:
+    - boneName: toad 1
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad L Thigh
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad R Thigh
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad L Calf
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad R Calf
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad L Foot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad R Foot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad Neck
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad L Clavicle
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad R Clavicle
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad L UpperArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad R UpperArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad L Forearm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad R Forearm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad L Hand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad R Hand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad L Toe0
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad R Toe0
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad L Finger0
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad L Finger01
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad L Finger1
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad L Finger11
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad R Finger0
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad R Finger01
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad R Finger1
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toad R Finger11
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: toad(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Omni001
+      position: {x: 0, y: 3.29369068, z: -3.151577}
+      rotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Omni002
+      position: {x: 0, y: 3.29369068, z: 1.97262251}
+      rotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: toad
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: toad 1
+      position: {x: 0, y: .74641788, z: -2.98023224e-08}
+      rotation: {x: -.500000358, y: .499999672, z: .499999672, w: .500000358}
+      scale: {x: .99999994, y: .99999994, z: 1}
+      transformModified: 1
+    - name: toad Footsteps
+      position: {x: -0, y: 0, z: -.567863166}
+      rotation: {x: 0, y: 0, z: -.707106292, w: .707107246}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: toad Pelvis
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -.499999642, y: .500000358, z: .499999642, w: .500000358}
+      scale: {x: 1, y: .99999994, z: .99999994}
+      transformModified: 1
+    - name: toad L Thigh
+      position: {x: 2.28881831e-07, y: 3.05175774e-07, z: .178731203}
+      rotation: {x: -.10448043, y: .982425451, z: .138206422, w: .0694485456}
+      scale: {x: .999999821, y: 1, z: 1}
+      transformModified: 1
+    - name: toad L Calf
+      position: {x: -.363903463, y: 5.72204577e-08, z: 3.81469718e-08}
+      rotation: {x: -.0060852007, y: .00573441247, z: .315145582, w: .949006557}
+      scale: {x: .999999881, y: 1.00000024, z: 1.00000012}
+      transformModified: 1
+    - name: toad L Foot
+      position: {x: -.187646002, y: 0, z: -3.81469718e-08}
+      rotation: {x: .158508733, y: .0152363591, z: -.204079896, w: .965916276}
+      scale: {x: .99999994, y: 1, z: .999999881}
+      transformModified: 1
+    - name: toad L Toe0
+      position: {x: -.199650928, y: .137675852, z: -.0220845416}
+      rotation: {x: -.0216775909, y: -.0216775611, z: -.706774414, w: .706774414}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: toad L Toe0Nub
+      position: {x: -.384755284, y: 8.94069652e-10, z: 0}
+      rotation: {x: -4.53610427e-10, y: 2.77756292e-26, z: 1, w: 6.12323426e-17}
+      scale: {x: -1.00000012, y: -1, z: -1.00000012}
+      transformModified: 1
+    - name: toad R Thigh
+      position: {x: -2.28881831e-07, y: -2.28881831e-07, z: -.178731173}
+      rotation: {x: -.104480267, y: .982425332, z: -.138207361, w: -.0694490746}
+      scale: {x: .999999821, y: 1, z: 1}
+      transformModified: 1
+    - name: toad R Calf
+      position: {x: -.363903493, y: 0, z: 0}
+      rotation: {x: .00608576741, y: -.00573451724, z: .315145582, w: .949006557}
+      scale: {x: .99999994, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: toad R Foot
+      position: {x: -.187645912, y: 0, z: -3.81469718e-08}
+      rotation: {x: -.158508763, y: -.015235181, z: -.204080269, w: .965916216}
+      scale: {x: 1, y: .99999994, z: .99999994}
+      transformModified: 1
+    - name: toad R Toe0
+      position: {x: -.199650928, y: .137675852, z: .0220845025}
+      rotation: {x: .0216775909, y: .0216775592, z: -.706774414, w: .706774414}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: toad R Toe0Nub
+      position: {x: -.384755284, y: 0, z: 3.81469718e-08}
+      rotation: {x: 0, y: 4.59522143e-10, z: -0, w: 1}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: toad Spine
+      position: {x: -.181155235, y: -.000164642333, z: 2.5145448e-07}
+      rotation: {x: -2.18611899e-06, y: 8.40435519e-07, z: -.241698802, w: .970351338}
+      scale: {x: 1, y: 1, z: .99999994}
+      transformModified: 1
+    - name: toad Neck
+      position: {x: -.234130785, y: -6.8435671e-05, z: -1.89902483e-10}
+      rotation: {x: -4.99429836e-14, y: -9.0511687e-09, z: .00326334173, w: .999994695}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: toad Head
+      position: {x: -.086000517, y: -7.62939436e-08, z: 0}
+      rotation: {x: -3.44095192e-15, y: 6.6740049e-09, z: -.00240557594, w: .999997139}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: toad HeadNub
+      position: {x: -.656065643, y: 0, z: 0}
+      rotation: {x: -2.84217094e-14, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: toad L Clavicle
+      position: {x: -.13260147, y: -.0342949666, z: .101458728}
+      rotation: {x: -.582360625, y: .00166741724, z: .812925518, w: .00233006803}
+      scale: {x: 1, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: toad L UpperArm
+      position: {x: -.377514064, y: 0, z: 0}
+      rotation: {x: -.134592175, y: .144071892, z: .0239154641, w: .98007971}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: toad L Forearm
+      position: {x: -.327225834, y: 0, z: 0}
+      rotation: {x: -.00531211449, y: .016207505, z: .0282950383, w: .999454141}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: toad L Hand
+      position: {x: -.279072821, y: -5.72204577e-08, z: 0}
+      rotation: {x: -.699863493, y: .0989595652, z: -.0990383774, w: .700421035}
+      scale: {x: .99999994, y: 1, z: .99999994}
+      transformModified: 1
+    - name: toad L Finger0
+      position: {x: -.0184513666, y: .032463301, z: -.0997957587}
+      rotation: {x: .705415845, y: -.149083301, z: .0666806921, w: .689722002}
+      scale: {x: .999999881, y: .999999881, z: .99999994}
+      transformModified: 1
+    - name: toad L Finger01
+      position: {x: -.0987192169, y: 0, z: 0}
+      rotation: {x: -1.95810514e-07, y: 2.23517347e-07, z: -.0267658103, w: .999641776}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: toad L Finger0Nub
+      position: {x: -.142365634, y: 0, z: -3.81469718e-08}
+      rotation: {x: -6.98491875e-10, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: toad L Finger1
+      position: {x: -.14561294, y: 7.62939436e-08, z: -1.90734859e-08}
+      rotation: {x: -.0197454114, y: -.0811327025, z: -.0678048059, w: .994198263}
+      scale: {x: .99999994, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: toad L Finger11
+      position: {x: -.0719198957, y: -7.62939436e-08, z: -1.90734859e-08}
+      rotation: {x: 8.54488249e-08, y: 6.70552112e-08, z: -.034790121, w: .999394715}
+      scale: {x: 1, y: .99999994, z: 1}
+      transformModified: 1
+    - name: toad L Finger1Nub
+      position: {x: -.0814585835, y: 3.81469718e-08, z: 3.81469718e-08}
+      rotation: {x: 2.79396772e-09, y: -3.72529074e-09, z: 1.04083417e-17, w: 1}
+      scale: {x: .99999994, y: 1, z: .99999994}
+      transformModified: 1
+    - name: toad R Clavicle
+      position: {x: -.13260147, y: -.0342944339, z: -.101458922}
+      rotation: {x: .582359552, y: -.00166973448, z: .812926352, w: .00232845522}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: toad R UpperArm
+      position: {x: -.377514035, y: 0, z: 7.62939436e-08}
+      rotation: {x: .134592429, y: -.144071758, z: .0239159763, w: .98007971}
+      scale: {x: 1, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: toad R Forearm
+      position: {x: -.327225834, y: 0, z: 0}
+      rotation: {x: .00531208515, y: -.0162075814, z: .0282953754, w: .999454141}
+      scale: {x: 1.00000012, y: 1, z: 1}
+      transformModified: 1
+    - name: toad R Hand
+      position: {x: -.279072881, y: -5.72204577e-08, z: 0}
+      rotation: {x: .699863493, y: -.0989595652, z: -.0990383774, w: .700421035}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1.00000024}
+      transformModified: 1
+    - name: toad R Finger0
+      position: {x: -.0184514429, y: .0324632265, z: .0997957364}
+      rotation: {x: -.705415905, y: .149083644, z: .0666806921, w: .689721882}
+      scale: {x: 1, y: .99999994, z: 1}
+      transformModified: 1
+    - name: toad R Finger01
+      position: {x: -.0987192169, y: 0, z: 3.81469718e-08}
+      rotation: {x: 1.19209204e-07, y: 2.23517262e-07, z: -.0267662965, w: .999641776}
+      scale: {x: 1, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: toad R Finger0Nub
+      position: {x: -.14236562, y: 0, z: -3.81469718e-08}
+      rotation: {x: 9.31322575e-10, y: -4.88944352e-09, z: 1, w: 3.72529074e-09}
+      scale: {x: -.99999994, y: -1, z: -1}
+      transformModified: 1
+    - name: toad R Finger1
+      position: {x: -.145612985, y: 0, z: 0}
+      rotation: {x: .0197453685, y: .0811324716, z: -.0678047612, w: .994198263}
+      scale: {x: 1, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: toad R Finger11
+      position: {x: -.071919933, y: 0, z: -1.90734859e-08}
+      rotation: {x: -8.94069245e-08, y: -2.7939663e-07, z: -.0347901173, w: .999394655}
+      scale: {x: .99999994, y: 1, z: 1}
+      transformModified: 1
+    - name: toad R Finger1Nub
+      position: {x: -.0814585835, y: 0, z: -1.90734859e-08}
+      rotation: {x: 3.42162353e-25, y: 5.58793545e-09, z: 1, w: 6.12323426e-17}
+      scale: {x: -1, y: -1, z: -1}
+      transformModified: 1
+    - name: toad Tail
+      position: {x: -.0159982685, y: -.271789849, z: -3.72171058e-08}
+      rotation: {x: -3.82651621e-07, y: -2.78754811e-07, z: .878941417, w: .476929873}
+      scale: {x: 1, y: 1, z: .99999994}
+      transformModified: 1
+    - name: toad Tail1
+      position: {x: -.487213492, y: -.000292968733, z: -8.12433398e-10}
+      rotation: {x: 2.46895142e-13, y: 3.16134475e-07, z: -.113979802, w: .993483067}
+      scale: {x: 1, y: 1.00000012, z: .99999994}
+      transformModified: 1
+    - name: toad Tail2
+      position: {x: -.377725512, y: -.000207366946, z: -5.75382741e-10}
+      rotation: {x: 2.13068393e-14, y: 2.8975569e-07, z: -.104469076, w: .994528174}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: toad Tail3
+      position: {x: -.266264647, y: -.000221214286, z: -6.13363194e-10}
+      rotation: {x: -2.21711945e-13, y: 5.89346563e-08, z: -.0212483853, w: .999774218}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: toad Tail4
+      position: {x: -.278045177, y: -.000281028741, z: -7.79618814e-10}
+      rotation: {x: -1.10184567e-13, y: 5.89345213e-08, z: -.0212483946, w: .999774218}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: toad TailNub
+      position: {x: -.353190452, y: 1.90734859e-08, z: 2.18278724e-13}
+      rotation: {x: .707388222, y: -.706825197, z: -9.80225195e-07, w: -9.81005996e-07}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: toad Prop1
+      position: {x: -.0920368731, y: -.68304801, z: -.286807805}
+      rotation: {x: .0597957745, y: -.524390101, z: .0369517729, w: .848571777}
+      scale: {x: .99999994, y: .99999994, z: 1}
+      transformModified: 1
+    - name: wepon
+      position: {x: -.000256500236, y: -.00240989681, z: .10159146}
+      rotation: {x: .00198948872, y: -.0012430785, z: -.70690614, w: .707303524}
+      scale: {x: 1.00000024, y: 1.00000024, z: 1.00000012}
+      transformModified: 1
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
