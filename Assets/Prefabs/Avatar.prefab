@@ -47,6 +47,7 @@ GameObject:
   - 114: {fileID: 11448782}
   - 114: {fileID: 11458820}
   - 114: {fileID: 11465060}
+  - 114: {fileID: 11422052}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
@@ -273,6 +274,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlashDuration: .200000003
+--- !u!114 &11422052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 400852}
+  m_ChildIndex: 1
+  m_SendInterval: .0333333351
+  m_SyncRotationAxis: 3
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: .00100000005
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &11448782
 MonoBehaviour:
   m_ObjectHideFlags: 1

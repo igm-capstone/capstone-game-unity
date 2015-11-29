@@ -6,10 +6,12 @@ public class AvatarNetworkBehavior : NetworkBehaviour {
     public NetworkConnection conn;
 
     private Transform blockCollector;
+    private MeleeWeaponBehavior meleeBehaviour;
     
     void Start()
     {
         blockCollector = GameObject.Find("BlocksCollector").transform;
+        meleeBehaviour = GetComponentInChildren<MeleeWeaponBehavior>();
     }
 
 	public override void OnStartLocalPlayer () {
@@ -43,12 +45,12 @@ public class AvatarNetworkBehavior : NetworkBehaviour {
         if (status && blockNetID.transform.parent == blockCollector)
         {
             blockNetID.transform.parent = transform;
-            RpcTakeBlockOver(block, status, this.netId);
+            RpcTakeBlockOver(block, status);
         }
         else if (!status)
         {
             blockNetID.transform.parent = blockCollector;
-            RpcTakeBlockOver(block, status, this.netId);
+            RpcTakeBlockOver(block, status);
         }
     }
 
@@ -60,26 +62,31 @@ public class AvatarNetworkBehavior : NetworkBehaviour {
     }
 
     [ClientRpc]
-    void RpcTakeBlockOver(string block, bool status, NetworkInstanceId playerID)
+    void RpcTakeBlockOver(string block, bool status)
     {
         NetworkIdentity blockNetID = GameObject.Find(block).GetComponent<NetworkIdentity>();
 
-        AvatarNetworkBehavior[] players = FindObjectsOfType<AvatarNetworkBehavior>();
-
-        foreach (var player in players)
+        if (status && blockNetID.transform.parent == blockCollector)
         {
-            if (player.netId == playerID)
-            {
-                if (status && blockNetID.transform.parent == blockCollector)
-                {
-                    blockNetID.transform.parent = player.transform;
-                }
-                else if (!status)
-                {
-                    blockNetID.transform.parent = blockCollector;
-
-                }
-            }
+            blockNetID.transform.parent = transform;
         }
+        else if (!status)
+        {
+            blockNetID.transform.parent = blockCollector;
+
+        }
+    }
+
+    [Command]
+    public void CmdEnableSlash(bool status)
+    {
+        meleeBehaviour.EnableSlash(status);
+        RpcEnableSlash(status);
+    }
+
+    [ClientRpc]
+    public void RpcEnableSlash(bool status)
+    {
+        meleeBehaviour.EnableSlash(status);
     }
 }

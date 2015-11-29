@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Networking;
 
 [RequireComponent(typeof(ChaseTarget))]
 [RequireComponent(typeof(PatrolWaypoints))]
-public class MinionController : MonoBehaviour {
+public class MinionController : NetworkBehaviour {
 
     private ChaseTarget chase;
     private PatrolWaypoints patrol;
@@ -33,5 +33,11 @@ public class MinionController : MonoBehaviour {
     public void TurnOff() {
         chase.enabled = false;
         patrol.enabled = false;
+    }
+
+    [Command]
+    public void CmdKill()
+    {
+        Destroy(gameObject);
     }
 }
