@@ -12,12 +12,14 @@ public class AvatarController : MonoBehaviour
     private float collisionRadius;
     public Collider2D[] moveableObstacle = new Collider2D[1];
     private bool disable = false;
+    private Transform blockCollector;
 
     MeleeWeaponBehavior weaponBehavior;
 
 	void Start () {
         rb = transform.parent.GetComponent<Rigidbody2D>();
         weaponBehavior = GetComponentInChildren<MeleeWeaponBehavior>();
+        blockCollector = GameObject.Find("BlocksCollector").transform;
 	}
 	
 	void FixedUpdate () 
@@ -58,17 +60,20 @@ public class AvatarController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            if (moveableObstacle[0].transform.parent != gameObject.transform.parent.transform)
+            if (moveableObstacle[0].transform.parent == blockCollector)
             {
-                moveableObstacle[0].transform.parent = gameObject.transform.parent.transform;
-                transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, true);
+                if (moveableObstacle[0].transform.parent != gameObject.transform.parent.transform)
+                {
+                    moveableObstacle[0].transform.parent = gameObject.transform.parent.transform;
+                    transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, true);
+                }
             }
         }
-        else 
+        else
         {
-            if (moveableObstacle[0].transform.parent != null)
+            if (moveableObstacle[0].transform.parent == gameObject.transform.parent.transform)
             {
-                moveableObstacle[0].transform.parent = null;
+                moveableObstacle[0].transform.parent = blockCollector;
                 transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, false);
             }
         }
