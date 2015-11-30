@@ -11,7 +11,7 @@ public class AvatarController : MonoBehaviour
     [SerializeField]
     private float collisionRadius;
     public Collider2D[] moveableObstacle = new Collider2D[1];
-    private bool disable = false;
+    public bool disable = false;
     private Transform blockCollector;
 
     MeleeWeaponBehavior weaponBehavior;
@@ -88,7 +88,7 @@ public class AvatarController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Goal")
         {
-            transform.parent.GetComponent<AvatarNetworkBehavior>().CmdEndGame("Prisoner Wins!");
+            transform.parent.GetComponent<AvatarNetworkBehavior>().CmdEndGame("Human team Wins!");
         }
     }
 
@@ -99,7 +99,7 @@ public class AvatarController : MonoBehaviour
                 collision.contacts[0].otherCollider.gameObject.layer == LayerMask.NameToLayer("Player") ) )
         {
             disable = true;
-            transform.parent.GetComponent<AvatarNetworkBehavior>().CmdEndGame("Guard Wins!");
+            transform.parent.GetComponent<AvatarNetworkBehavior>().CmdEndGame("Ghost wins!");
         }
         else if((collision.collider.gameObject.layer == LayerMask.NameToLayer("Player") &&
                  (collision.contacts[0].collider.gameObject.layer == LayerMask.NameToLayer("Player") ||

@@ -22,14 +22,14 @@ public class GameStateHUD : MonoBehaviour {
 
     public void SetMsg(string text)
     {
-        /*gameStateHUD.SetActive(true);
+        gameStateHUD.SetActive(true);
 
         msg = gameStateHUD.GetComponentInChildren<Text>();
         msg.text = text;
 
         btn = gameStateHUD.GetComponentInChildren<Button>();
         btn.onClick.RemoveAllListeners();
-        btn.onClick.AddListener(RestartGame);*/
+        btn.onClick.AddListener(RestartGame);
     }
 
     void RestartGame()
