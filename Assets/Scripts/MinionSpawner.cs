@@ -23,6 +23,8 @@ public class MinionSpawner : MonoBehaviour {
     private Canvas canvas;
     private bool selectingMinion;
     private Vector3 worldPoint;
+    private Vector3 screenPoint;
+    private bool validPosition;
 
     void Start()
     {
@@ -44,21 +46,34 @@ public class MinionSpawner : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetMouseButtonUp(0) )
+        if (Input.GetMouseButtonDown(0))
         {
-            var camera = canvas.worldCamera;
-            var screenPoint = Input.mousePosition;
-            var canvasPoint = Vector2.zero;
+            screenPoint = Input.mousePosition;
             worldPoint = Camera.main.ScreenToWorldPoint(screenPoint);
             worldPoint.z = -20;
 
             var obstaclesOverlaped = Physics2D.OverlapCircleNonAlloc(worldPoint, .75f, overlapResult, ObstacleLayerMask);
-
             if (!selectingMinion && obstaclesOverlaped == 0)
             {
+                previewContainer.transform.position = worldPoint;
+                validPosition = true;
+            }
+            else
+            {
+                validPosition = false;
+            }
+        }
+
+
+        if (Input.GetMouseButtonUp(0) )
+        {
+            if (!selectingMinion && validPosition)
+            {
+                var camera = canvas.worldCamera;
+                var canvasPoint = Vector2.zero;
+
                 selectingMinion = true;
                 minionsPanel.gameObject.SetActive(true);
-                previewContainer.transform.position = worldPoint;
                 RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)canvas.transform, screenPoint, camera, out canvasPoint);
                 minionsPanel.transform.position = canvas.transform.TransformPoint(canvasPoint);
             }

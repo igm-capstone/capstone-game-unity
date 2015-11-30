@@ -62,7 +62,7 @@ public class SpawnManager : NetworkBehaviour
 
 
         Transform spawn = minionContainer;
-        GameObject robot = Instantiate(EnemyPrefab, spawnPos, Quaternion.identity) as GameObject;
+        GameObject robot = Instantiate(EnemyPrefab, position, Quaternion.identity) as GameObject;
         robot.transform.SetParent(spawn);
         robot.GetComponent<MinionController>().enabled = true;
         robot.GetComponent<PatrolWaypoints>().path = path;
