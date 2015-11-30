@@ -165,9 +165,9 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 0}
-      m_Width: 13254
-      m_Height: 13254
+      m_Icon: {fileID: 2800000, guid: 2af3b784d4e6a30468e5a44acfa4b36f, type: 3}
+      m_Width: 128
+      m_Height: 128
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
   webPlayerTemplate: APPLICATION:Default
