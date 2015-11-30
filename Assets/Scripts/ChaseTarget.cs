@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 [RequireComponent(typeof(TargetFollower))]
 public class ChaseTarget : MonoBehaviour
@@ -13,11 +14,15 @@ public class ChaseTarget : MonoBehaviour
         follower = GetComponent<TargetFollower>();
     }
 
+    private float chaseTime;
+
 	void Update()
 	{
         if (target == null)
         {
-            target = GameObject.Find("Avatar(Clone)").transform;
+            var pos = transform.position;
+            var avatars = FindObjectsOfType<AvatarNetworkBehavior>();
+            target = avatars.Select(a => a.transform).OrderBy(t => (t.position - pos).sqrMagnitude).FirstOrDefault();
         }
 
 	    if ((target.position - transform.position).sqrMagnitude > 1)
@@ -25,6 +30,13 @@ public class ChaseTarget : MonoBehaviour
             follower.MoveTowards(target);
 	    }
 
+	    chaseTime += Time.deltaTime;
+
+	    if (chaseTime > 1)
+	    {
+	        target = null;
+	        chaseTime = 0;
+	    }
 	}
     
 }
