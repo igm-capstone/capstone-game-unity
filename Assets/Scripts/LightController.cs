@@ -17,8 +17,8 @@ public class LightController : NetworkBehaviour {
     public Sprite SpriteOff;
 
     Light2D light2d;
-    MeshRenderer renderer;
-    PolygonCollider2D collider;
+    new MeshRenderer renderer;
+    new PolygonCollider2D collider;
     SpriteRenderer sprite;
 
     public bool dirty = true;

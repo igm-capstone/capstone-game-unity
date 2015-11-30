@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
@@ -76,7 +77,6 @@ public class Light2D : MonoBehaviour {
 
         lightMeshCollider.isTrigger = true;
         
-        vertices = new List<Vertex>();
 
         UpdateLightFX();
     }
@@ -93,6 +93,12 @@ public class Light2D : MonoBehaviour {
 
     public void UpdateLightFX()
     {
+
+        if (vertices == null)
+        {
+            vertices = new List<Vertex>();
+        }
+
         // TODO avoid getting all colliders every frame
         FindLightColliders();
         SetLight();

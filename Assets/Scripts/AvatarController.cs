@@ -12,14 +12,14 @@ public class AvatarController : MonoBehaviour
     private float collisionRadius;
     public Collider2D[] moveableObstacle = new Collider2D[1];
     public bool disable = false;
-    private Transform blockCollector;
+    //private Transform blockCollector;
 
     MeleeWeaponBehavior weaponBehavior;
 
 	void Start () {
         rb = transform.parent.GetComponent<Rigidbody2D>();
         weaponBehavior = GetComponentInChildren<MeleeWeaponBehavior>();
-        blockCollector = GameObject.Find("BlocksCollector").transform;
+        //blockCollector = GameObject.Find("BlocksCollector").transform;
 	}
 	
 	void FixedUpdate () 

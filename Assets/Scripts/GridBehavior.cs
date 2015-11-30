@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 using System.Collections.Generic;
 using System.Linq;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using PathFinder;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 [ExecuteInEditMode]
 public class GridBehavior : NetworkBehaviour, ISearchSpace
@@ -64,6 +62,11 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
 #if UNITY_EDITOR
         if (!Application.isPlaying)
         {
+            if (areaOfNodes == null)
+            {
+                Start();
+            }
+
            UpdateGrid();
         }
 #endif

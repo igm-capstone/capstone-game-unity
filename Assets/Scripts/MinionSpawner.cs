@@ -17,7 +17,6 @@ public class MinionSpawner : MonoBehaviour {
     }
 
     private Transform previewContainer;
-    private GridBehavior grid;
     private Collider2D[] overlapResult;
     private RectTransform minionsPanel;
     private Canvas canvas;
@@ -30,8 +29,6 @@ public class MinionSpawner : MonoBehaviour {
     {
         var go = new GameObject("SpawnPreview");
         previewContainer = go.transform;
-
-        grid = FindObjectOfType<GridBehavior>();
 
         overlapResult = new Collider2D[1];
 
