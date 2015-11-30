@@ -7,6 +7,7 @@ public class GhostNetworkBehavior : NetworkBehaviour {
 
     public override void OnStartLocalPlayer () {
         GetComponent<GhostBehavior>().enabled = true;
+        GetComponentInChildren<Camera>().enabled = true;
 
 
         foreach (var light in FindObjectsOfType<LightController>())

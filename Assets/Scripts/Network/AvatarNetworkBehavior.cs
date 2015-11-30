@@ -15,6 +15,7 @@ public class AvatarNetworkBehavior : NetworkBehaviour {
     }
 
 	public override void OnStartLocalPlayer () {
+        GetComponentInChildren<Camera>().enabled = true;
         GetComponentInChildren<AvatarController>().enabled = true;
         GetComponentInChildren<MovementBroadcast>().enabled = true;
         transform.GetChild(0).FindChild("Fog").GetComponent<SpriteRenderer>().color = Color.white;
