@@ -3,7 +3,7 @@ using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 
-public class SpawnManager : NetworkBehaviour
+public class MinionSpawnManager : NetworkBehaviour
 {
 
     public GameObject EnemyPrefab;
@@ -11,7 +11,7 @@ public class SpawnManager : NetworkBehaviour
     private Transform minionContainer;
     private List<WaypointPath> paths; 
 
-    public static SpawnManager Instance { get; private set; }
+    public static MinionSpawnManager Instance { get; private set; }
 
     public override void OnStartServer ()
     {

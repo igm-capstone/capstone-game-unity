@@ -39,7 +39,6 @@ public class MeleeWeaponBehavior : MonoBehaviour
     {
         if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            Debug.Log("APPLY DAMAGE LOGIC HERE");
             collision.collider.GetComponent<MinionController>().CmdKill();
         }
     }

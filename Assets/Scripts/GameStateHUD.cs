@@ -30,10 +30,18 @@ public class GameStateHUD : MonoBehaviour {
         btn = gameStateHUD.GetComponentInChildren<Button>();
         btn.onClick.RemoveAllListeners();
         btn.onClick.AddListener(RestartGame);
+        btn.GetComponentInChildren<Text>().text = "Restart";
+    }
+
+    public void SetRestarting()
+    {
+        btn = gameStateHUD.GetComponentInChildren<Button>();
+        btn.onClick.RemoveAllListeners();
+        btn.GetComponentInChildren<Text>().text = "Restarting...";
     }
 
     void RestartGame()
     {
-        CustomNetworkManager.singleton.ServerChangeScene(Application.loadedLevelName);
+        GameObject.Find("Me").GetComponent<BasePlayerNetworkBehavior>().CmdRestartGame();
     }
 }

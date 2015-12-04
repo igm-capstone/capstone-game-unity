@@ -86,7 +86,7 @@ public class MinionSpawner : MonoBehaviour {
     public void OnMinionButtonClick()
     {
         //Spawn(worldPoint);
-        SpawnManager.Instance.CmdSpawn(worldPoint);
+        MinionSpawnManager.Instance.CmdSpawn(worldPoint);
     }
 
     public void Spawn(Vector3 position)
