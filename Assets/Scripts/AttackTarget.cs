@@ -24,7 +24,7 @@ public class AttackTarget : NetworkBehaviour {
 
         if (CheckHit())
         {
-            RpcAttack();
+            GetComponent<RpcNetworkAnimator>().SetTrigger("Attack");
         }
 
     }
@@ -35,7 +35,7 @@ public class AttackTarget : NetworkBehaviour {
         if (isAttacking)
         {
             isAttacking = false;
-            RpcCancel();
+            GetComponent<RpcNetworkAnimator>().SetTrigger("Iddle");
             if (AttackCompleteCallback != null) AttackCompleteCallback();
         }
     }
@@ -57,14 +57,12 @@ public class AttackTarget : NetworkBehaviour {
     [ClientRpc]
     public void RpcAttack()
     {
-        transform.Find("Model").GetComponent<Animator>().SetTrigger("Attack");
     }
 
     [ClientRpc]
     public void RpcCancel()
     {
         Debug.Log("Cancel Attack");
-        transform.Find("Model").GetComponent<Animator>().SetTrigger("Iddle");
     }
 
 

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
+using UnityEngine.Networking;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -24,10 +24,16 @@ public class TargetFollower : MonoBehaviour
     public float turnRate = 50;
     public float moveSpeed = 20;
 
+    float reverseTime = 0;
+    float repel = 0;
+    private IList<Vector2> path;
+    private IEnumerable<Node> nodePath;
+    private RpcNetworkAnimator animator;
+
     void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
         grid = FindObjectOfType<GridBehavior>();
+        animator = GetComponent<RpcNetworkAnimator>();
     }
 
     public void MoveTowards(Transform target)
@@ -127,11 +133,6 @@ public class TargetFollower : MonoBehaviour
         animator.SetFloat("Speed", .8f);
     }
 
-    float reverseTime = 0;
-    float repel = 0;
-    private IList<Vector2> path;
-    private IEnumerable<Node> nodePath;
-    private Animator animator;
 
     IList<Vector2> GetPathTo(Transform target)
     {
