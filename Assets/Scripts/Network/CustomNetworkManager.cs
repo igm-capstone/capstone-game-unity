@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.Networking.NetworkSystem;
@@ -13,6 +14,29 @@ public class CustomNetworkManager : NetworkManager
     [NonSerialized]
     public bool sceneLoaded = false;
 
+    public void EnableBtn(string buttonName, string msg, UnityAction action)
+    {
+        var btnGO = GameObject.Find(buttonName);
+        if (btnGO == null) return;
+
+        var btn = btnGO.GetComponent<Button>();
+        var text = btnGO.GetComponentInChildren<Text>();
+        btn.onClick.RemoveAllListeners();
+        btn.onClick.AddListener(action);
+        text.text = msg;
+    }
+
+    public void DisableBtn(string buttonName, string msg)
+    {
+        var btnGO = GameObject.Find(buttonName);
+        if (btnGO == null) return;
+
+        var btn = btnGO.GetComponent<Button>();
+        var text = btnGO.GetComponentInChildren<Text>();
+        btn.onClick.RemoveAllListeners();
+        text.text = msg;
+    }
+
     void GetIPAddress()
     {
         string ip = GameObject.Find("InputFieldIP").transform.FindChild("Text").GetComponent<Text>().text;
@@ -21,39 +45,30 @@ public class CustomNetworkManager : NetworkManager
 
     public void SetButtons()
     {
-        var btnGO = GameObject.Find("ButtonHost");
-        if (btnGO != null)
-        {
-            var btn = btnGO.GetComponent<Button>();
-            btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(() => { StartHost(); });
-        }
-
-        btnGO = GameObject.Find("ButtonJoin");
-        if (btnGO != null)
-        {
-            var btn = btnGO.GetComponent<Button>();
-            btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(() => { GetIPAddress(); StartClient(); });
-        }
-
-        btnGO = GameObject.Find("ButtonQuit");
-        if (btnGO != null)
-        {
-            var btn = btnGO.GetComponent<Button>();
-            btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(() => { Application.Quit(); });
-        }
-
-        btnGO = GameObject.Find("ButtonExit");
-        if (btnGO != null)
-        {
-            var btn = btnGO.GetComponent<Button>();
-            btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(() => { StopHost(); });
-        }
+        EnableBtn("ButtonHost", "Host Game", TryHost);
+        EnableBtn("ButtonJoin", "Join Game", TryJoin);
+        EnableBtn("ButtonQuit", "Quit Game", () => { Application.Quit(); });
+        EnableBtn("ButtonExit", "Exit", () => { DisableBtn("ButtonExit", "Exiting..."); StopHost(); });
     }
 
+    public void TryHost()
+    {
+        DisableBtn("ButtonHost", "Hosting...");
+        if (StartHost() == null) EnableBtn("ButtonHost", "Error - Host Again?", TryHost);
+    }
+
+    public void TryJoin()
+    {
+        DisableBtn("ButtonJoin", "Joining...");
+        GetIPAddress();
+        StartClient();
+    }
+
+    public override void OnClientError(NetworkConnection conn, int errorCode)
+    {
+        EnableBtn("ButtonJoin", "Error - Join Again?", TryJoin);
+        base.OnClientError(conn, errorCode);
+    }
 
     public override void ServerChangeScene(string sceneName)
     {
