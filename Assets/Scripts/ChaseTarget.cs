@@ -25,9 +25,22 @@ public class ChaseTarget : MonoBehaviour
             target = avatars.Select(a => a.transform).OrderBy(t => (t.position - pos).sqrMagnitude).FirstOrDefault();
         }
 
-	    if ((target.position - transform.position).sqrMagnitude > 1)
+	    if (target == null)
 	    {
+	        return;
+	    }
+
+	    if ((target.position - transform.position).magnitude > 1.5f)
+	    {
+
+
             follower.MoveTowards(target);
+	    }
+	    else
+	    {
+	        // hit!
+            GetComponent<MinionController>().Attack();
+	        return;
 	    }
 
 	    chaseTime += Time.deltaTime;
@@ -39,4 +52,6 @@ public class ChaseTarget : MonoBehaviour
 	    }
 	}
     
+
+
 }

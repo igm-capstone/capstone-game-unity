@@ -376,6 +376,7 @@ GameObject:
   - 114: {fileID: 11461328}
   - 114: {fileID: 11449298}
   - 114: {fileID: 11435514}
+  - 114: {fileID: 11469260}
   - 114: {fileID: 11456102}
   - 114: {fileID: 11496266}
   - 114: {fileID: 11438718}
@@ -1642,6 +1643,18 @@ MonoBehaviour:
   maxRepel: 1
   turnRate: 30
   moveSpeed: 50
+--- !u!114 &11469260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155754}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b54cc894172296b4283a42e2b9acc609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
 --- !u!114 &11496266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1768,6 +1781,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
