@@ -88,7 +88,7 @@ public class MinionSpawner : MonoBehaviour {
         //Spawn(worldPoint);
         var z = FindObjectOfType<GridBehavior>().transform.position.z;
         worldPoint.z = z;
-        SpawnManager.Instance.CmdSpawn(worldPoint);
+        MinionSpawnManager.Instance.CmdSpawn(worldPoint);
     }
 
     public void Spawn(Vector3 position)

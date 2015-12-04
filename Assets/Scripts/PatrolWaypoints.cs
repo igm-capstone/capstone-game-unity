@@ -34,7 +34,7 @@ public class PatrolWaypoints : MonoBehaviour
 	    var nextWaypoint = waypoints[Mathf.Abs(nextStop)];
 	    var direction = nextWaypoint.position - transform.position;
         var node = grid.getNodeAtPos(nextWaypoint.position);
-        var canWalk = node.hasLight && node.canWalk;
+        var canWalk = node != null && node.hasLight && node.canWalk;
 
 	    if (direction.sqrMagnitude < 1 || !canWalk)
 	    {

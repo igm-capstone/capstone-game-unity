@@ -2,24 +2,11 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class GhostNetworkBehavior : NetworkBehaviour {
-    public NetworkConnection conn;
-
+public class GhostNetworkBehavior : BasePlayerNetworkBehavior {
     public override void OnStartLocalPlayer () {
-        GetComponent<GhostBehavior>().enabled = true;
-        GetComponentInChildren<Camera>().enabled = true;
-
-
-        foreach (var light in FindObjectsOfType<LightController>())
-        {
-            light.dirty = true;
-        }
-
-        foreach (var grid in FindObjectsOfType<GridBehavior>())
-        {
-            grid.SetGridDirty();
-            grid.SetAIDirty();
-        }
-	}
+        GetComponent<GhostController>().enabled = true;
+        
+        base.OnStartLocalPlayer();
+    }
 
 }

@@ -2,15 +2,15 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class GhostBehavior : NetworkBehaviour {
+public class GhostController : NetworkBehaviour {
 
     public int MaxActiveLights = 3;
     public bool InteractiveLights;
     private int ActiveLights = 0;
     LightController[] lights;
     [SerializeField]
-    GameObject guardUIPrefab;
-    GhostHUD guardHUD;
+    GameObject ghostUIPrefab;
+    GhostHUD ghostHUD;
             
 	// Use this for initialization
 	void Start ()
@@ -24,11 +24,11 @@ public class GhostBehavior : NetworkBehaviour {
             }
         }
 
-        GameObject guardUI = Instantiate(guardUIPrefab);
-        guardUI.transform.SetParent(GameObject.Find("MainCanvas").transform, false);
-        guardHUD = guardUI.GetComponent<GhostHUD>();
-        guardHUD.SetMaxLightLevel(MaxActiveLights);
-        guardHUD.SetLightLevel(ActiveLights);
+        GameObject ghostUI = Instantiate(ghostUIPrefab);
+        ghostUI.transform.SetParent(GameObject.Find("MainCanvas").transform, false);
+        ghostHUD = ghostUI.GetComponent<GhostHUD>();
+        ghostHUD.SetMaxLightLevel(MaxActiveLights);
+        ghostHUD.SetLightLevel(ActiveLights);
 	}
 	
 	// Update is called once per frame
@@ -73,7 +73,7 @@ public class GhostBehavior : NetworkBehaviour {
                 {
                     //Debug.Log("Client: toggling light");
                     //light.ToggleStatus();
-                    guardHUD.SetLightLevel(ActiveLights);
+                    ghostHUD.SetLightLevel(ActiveLights);
                     CmdLightHasBeenClicked(light.gameObject.name); //Toggle on server
                 }
             }

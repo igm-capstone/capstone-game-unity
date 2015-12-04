@@ -996,7 +996,7 @@ MonoBehaviour:
     m_MaxSentMessageQueueSize: 128
     m_IsAcksLong: 0
     m_Channels: []
-  m_Channels: 0500000000000000
+  m_Channels: 0000000005000000
   m_UseWebSockets: 0
   m_UseSimulator: 0
   m_SimulatedLatency: 1
@@ -1009,6 +1009,7 @@ MonoBehaviour:
   matchSize: 4
   ghostPrefab: {fileID: 196296, guid: 019c493b42c53a1468dbd861bbbd1d49, type: 2}
   avatarPrefab: {fileID: 133474, guid: 73966fe075ec45f45b4c12e9167f156b, type: 2}
+  sceneLoaded: 0
 --- !u!4 &1400174516
 Transform:
   m_ObjectHideFlags: 0
@@ -1361,6 +1362,7 @@ GameObject:
   - 223: {fileID: 1865215290}
   - 114: {fileID: 1865215289}
   - 114: {fileID: 1865215288}
+  - 114: {fileID: 1865215291}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1440,3 +1442,14 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &1865215291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1865215286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aaa3cefc6d10214093e4635b1d74f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
