@@ -64,6 +64,7 @@ GameObject:
   - 114: {fileID: 11430634}
   - 114: {fileID: 11472564}
   - 114: {fileID: 11439956}
+  - 114: {fileID: 11468366}
   m_Layer: 5
   m_Name: Hallucinate
   m_TagString: Untagged
@@ -171,6 +172,7 @@ GameObject:
   - 114: {fileID: 11402508}
   - 114: {fileID: 11498342}
   - 114: {fileID: 11417968}
+  - 114: {fileID: 11470436}
   m_Layer: 5
   m_Name: Blow Light
   m_TagString: Untagged
@@ -191,6 +193,7 @@ GameObject:
   - 114: {fileID: 11444232}
   - 114: {fileID: 11410520}
   - 114: {fileID: 11438884}
+  - 114: {fileID: 11450012}
   m_Layer: 5
   m_Name: Spawn Minion
   m_TagString: Untagged
@@ -382,7 +385,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117566}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f59a6f7a7f3f39149bac608ea1ec3408, type: 3}
   m_Name: 
@@ -509,6 +512,19 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+--- !u!114 &11450012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12842a7149152434b93f4d28b451639e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  Cooldown: 0
 --- !u!114 &11450978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -590,6 +606,19 @@ MonoBehaviour:
   m_FillAmount: 0
   m_FillClockwise: 0
   m_FillOrigin: 2
+--- !u!114 &11468366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12842a7149152434b93f4d28b451639e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  Cooldown: 0
 --- !u!114 &11468926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -630,6 +659,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11470436
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12842a7149152434b93f4d28b451639e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  Cooldown: 0
 --- !u!114 &11472564
 MonoBehaviour:
   m_ObjectHideFlags: 1
