@@ -420,7 +420,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Mon_T_Up
-  m_Speed: 1
+  m_Speed: 10
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110197232}
@@ -432,7 +432,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b8c175183829b614fb938b9dfd09730c, type: 3}
+  m_Motion: {fileID: 7400000, guid: 4f3d0581ba602324e81566e99bc3cc9a, type: 3}
   m_Tag: 
   m_SpeedParameter: Speed
   m_MirrorParameter: 
