@@ -19,7 +19,12 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
     private int numSpheresX, numSpheresY;
     private Vector3 startingCorner;
     
-    public LayerMask obstacleLayer = 1 << 9 | 1 << 12;
+    public LayerMask opaqueObstacleMask = 1 << 9 | 1 << 12;
+    public LayerMask lightmeshMask = 1 << 16;
+    public LayerMask transparentMask = 1 << 17;
+
+    public float lightMaxWeight = 1;
+    public float lightInfluence = 10;
 
     Node[,] areaOfNodes;
     private GameObject ShadowColliderGroup;
@@ -107,14 +112,14 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
                 areaOfNodes[x, y] = new Node(this, nodePos, new Vector2(x, y), 1);
 
                 //ShadowCollider
-                if (Application.isPlaying)
-                {
-                    BoxCollider2D col = ShadowColliderGroup.AddComponent<BoxCollider2D>();
-                    col.size = new Vector2(nodeRadius * 2, nodeRadius * 2);
-                    col.offset = areaOfNodes[x, y].position;
-                    col.isTrigger = true;
-                    areaOfNodes[x, y].shadowCollider = col;
-                }
+                //if (Application.isPlaying)
+                //{
+                //    BoxCollider2D col = ShadowColliderGroup.AddComponent<BoxCollider2D>();
+                //    col.size = new Vector2(nodeRadius * 2, nodeRadius * 2);
+                //    col.offset = areaOfNodes[x, y].position;
+                //    col.isTrigger = true;
+                //    areaOfNodes[x, y].shadowCollider = col;
+                //}
             }
         }
         UpdateGrid();
@@ -123,29 +128,56 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
 
     private void UpdateGrid()
     {
+        var inv_c2 = 1.0f / (lightInfluence * lightInfluence);
+
+        var radiusVec2 = Vector2.one * nodeRadius;
+
         //Debug.Log("Grid update: "+isServer.ToString());
         for (int x = 0; x < numSpheresX; x++)
         {
             for (int y = 0; y < numSpheresY; y++)
             {
-                Vector3 nodePos = areaOfNodes[x, y].position;
+                Node node = areaOfNodes[x, y];
+                Vector3 nodePos = node.position;
 
-                var cols = Physics2D.OverlapAreaAll((Vector2)nodePos - new Vector2(nodeRadius, nodeRadius), (Vector2)nodePos + new Vector2(nodeRadius, nodeRadius), obstacleLayer | 1 << LayerMask.NameToLayer("LightMesh") | 1 << LayerMask.NameToLayer("Lights"));
+                var cols = Physics2D.OverlapAreaAll((Vector2)nodePos - radiusVec2, (Vector2)nodePos + radiusVec2, opaqueObstacleMask | lightmeshMask | transparentMask);
 
-                areaOfNodes[x, y].canWalk = true;
-                areaOfNodes[x, y].hasLight = false;
-                foreach (Collider2D col in cols)
+                node.Weight = 1;
+                node.canWalk = true;
+                node.hasLight = false;
+
+                foreach (var col in cols)
                 {
-                    if (col.gameObject.layer != LayerMask.NameToLayer("LightMesh") && col.gameObject.layer != LayerMask.NameToLayer("Lights"))
-                        areaOfNodes[x, y].canWalk = false;
-                    else if (col is PolygonCollider2D)
-                        areaOfNodes[x, y].hasLight = true;
+                    var polygon = col as PolygonCollider2D;
+                    var colLayer = 1 << col.gameObject.layer;
+
+                    // cant walk if collided with obstacle layer object
+                    node.canWalk &= (colLayer & opaqueObstacleMask) == 0;
+
+                    // next checks deppend on polygon collider
+                    if (polygon == null)
+                        continue;
+
+                    var isLightmeshPolygon = (colLayer & lightmeshMask) != 0;
+
+                    // has light if collided with any light
+                    if (isLightmeshPolygon && node.canWalk)
+                    {
+                        node.hasLight = true;
+                        var d2 = (col.transform.position - node.position).sqrMagnitude;
+                        
+                        // add extra weight for each light using the formula: 1 / (dist^2/c^2 + 1). Function has max of 1 at 0 distance for positive numbers
+                        // c is proportional to the inverse of the decay of the curve
+                        node.Weight += lightMaxWeight / (1 + d2 * inv_c2);
+                    }
                 }
 
-                if (Application.isPlaying)
-                {
-                    areaOfNodes[x, y].shadowCollider.enabled = !areaOfNodes[x, y].hasLight || !areaOfNodes[x, y].canWalk;
-                }
+                if (!node.canWalk) node.Weight = float.MaxValue;
+
+                //if (Application.isPlaying)
+                //{
+                //    areaOfNodes[x, y].shadowCollider.enabled = !areaOfNodes[x, y].hasLight || !areaOfNodes[x, y].canWalk;
+                //}
             }
         }
     }
@@ -263,11 +295,15 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
 
                 if (!node.canWalk)
                 {
-                    Handles.color = node.hasLight ? new Color(1, 1, 0, .4f) : new Color(0.5f, 0.5f, 0.5f, .4f); 
+                    Handles.color = node.hasLight ? new Color(1, 1, 0, .4f) : new Color(0.5f, 0.5f, 0.5f, .4f);
                     //Handles.DrawSolidDisc(node.position, new Vector3(0, 0, 1), nodeRadius * .4f);
-                    Handles.DrawLine(node.position + new Vector3(size, size, 0f), node.position + new Vector3(-size, -size, 0f));
-                    Handles.DrawLine(node.position + new Vector3(-size, size, 0f), node.position + new Vector3(size, -size, 0f));
+                    Handles.DrawLine(node.position + new Vector3(size, size, 0f),
+                        node.position + new Vector3(-size, -size, 0f));
+                    Handles.DrawLine(node.position + new Vector3(-size, size, 0f),
+                        node.position + new Vector3(size, -size, 0f));
                 }
+
+                //Handles.Label(node.position, node.Weight == float.MaxValue ? "max" : node.Weight.ToString("F2"));
             }
         }
     }
@@ -279,34 +315,32 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
     }
 
 
-    public static float Heuristic(INode NodeA, INode NodeB)
+    public static float Heuristic(INode nodeA, INode nodeB)
     {
-        var A = NodeA as Node;
-        var B = NodeB as Node;
+        var a = (Node)nodeA;
+        var b = (Node)nodeB;
         
-        float xDist = Mathf.Abs(A.coord.x - B.coord.x);
-        float yDist = Mathf.Abs(A.coord.y - B.coord.y);
+        var xDist = Mathf.Abs(a.coord.x - b.coord.x);
+        var yDist = Mathf.Abs(a.coord.y - b.coord.y);
         if(xDist > yDist)
             return 1.4f*yDist + (xDist-yDist);
         return 1.4f*xDist + (yDist-xDist);
     }
 
     
-    public IEnumerable<INode> GetFringePath(GameObject Start, GameObject End)
+    public IEnumerable<INode> GetFringePath(GameObject start, GameObject end)
     {
-        IEnumerable<INode> path;
+        var fringe = new Fringe(Heuristic);
 
-        PathFinder.Fringe fringe = new PathFinder.Fringe(Heuristic);
+        var startNode = getNodeAtPos(start.transform.position);
+        var endNode = getNodeAtPos(end.transform.position);
 
-        Node startNode = getNodeAtPos(Start.transform.position);
-        Node endNode = getNodeAtPos(End.transform.position);
-
-        if (startNode == null || endNode == null) return null;
+        if (startNode == null || endNode == null) return new List<INode>();
 
         startNode.isStartEnd = true;
         endNode.isStartEnd = true;
         
-        path = fringe.FindPath((INode)startNode, (INode)endNode);
+        var path = fringe.FindPath(startNode, endNode);
         if (fringe.PathCost > 200)
         {
             return new List<INode>();

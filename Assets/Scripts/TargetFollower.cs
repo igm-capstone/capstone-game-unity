@@ -27,7 +27,7 @@ public class TargetFollower : MonoBehaviour
     float reverseTime = 0;
     float repel = 0;
     private IList<Vector2> path;
-    private IEnumerable<Node> nodePath;
+    private IList<Node> nodePath;
     private RpcNetworkAnimator animator;
 
     void Awake()
@@ -39,6 +39,11 @@ public class TargetFollower : MonoBehaviour
     public void MoveTowards(Transform target)
     {
         path = GetPathTo(target);
+
+        if (path == null)
+        {
+            return;
+        }
 
         var colors = new[] { Color.magenta, Color.yellow };
 
@@ -136,8 +141,8 @@ public class TargetFollower : MonoBehaviour
 
     IList<Vector2> GetPathTo(Transform target)
     {
-        nodePath = grid.GetFringePath(gameObject, target.gameObject).Cast<Node>();
-        if (nodePath == null) return null; 
+        nodePath = grid.GetFringePath(gameObject, target.gameObject).Cast<Node>().ToList();
+        if (!nodePath.Any()) return null; 
 
         // compress path
         var path = new List<Vector2>();

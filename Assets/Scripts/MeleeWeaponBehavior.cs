@@ -37,7 +37,7 @@ public class MeleeWeaponBehavior : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Minion"))
         {
             collision.collider.GetComponent<MinionController>().CmdKill();
         }
