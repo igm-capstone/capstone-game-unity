@@ -13,9 +13,10 @@ public class Domination : MonoBehaviour
 
     // Domination Point Tier. All dom Pnts of a tier must be dominated to go to the next.
     [Range(0, 5)]
-    public int DomPntTier;
-    public bool canBeDominated = false;
-    public event System.Action<Domination> WasCaptured;
+    public int TierCapture;
+    public bool canBeCaptured = false;
+
+    public event System.Action WasCaptured;
 
 
     public void Update()
@@ -28,7 +29,7 @@ public class Domination : MonoBehaviour
     }
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Player" && canBeDominated)
+        if (other.tag == "Player" && canBeCaptured)
         {
             outsideDominationArea = false;
             if (elapsedTime < timeToCapture)
@@ -39,7 +40,8 @@ public class Domination : MonoBehaviour
             else
             {
                 captured = true;
-                WasCaptured(this);
+                // Indicates that this point was captured to the EventMngr
+                WasCaptured();
             }
         }
     }
