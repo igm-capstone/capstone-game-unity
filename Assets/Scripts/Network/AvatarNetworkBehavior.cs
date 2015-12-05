@@ -66,4 +66,22 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     {
         meleeBehaviour.EnableSlash(status);
     }
+
+
+    [ClientRpc]
+    public void RpcEnableMinion(string minionID)
+    {
+        GameObject minion = GameObject.Find(minionID);
+        minion.SetActive(true);
+    }
+
+    [ClientRpc]
+    public void RpcDisableMinion(string minionID)
+    {
+        if (gameObject.name == "Me")
+        {
+            GameObject minion = GameObject.Find(minionID);
+            minion.SetActive(false);
+        }
+    }
 }
