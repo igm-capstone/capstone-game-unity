@@ -177,7 +177,7 @@ MonoBehaviour:
   ghostUIPrefab: {fileID: 117566, guid: e293756eec0692849a7e13161b28204f, type: 2}
   LayersToClick:
     serializedVersion: 2
-    m_Bits: 2304
+    m_Bits: 35072
 --- !u!114 &11456038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -314,7 +314,7 @@ Prefab:
       objectReference: {fileID: 117566, guid: e293756eec0692849a7e13161b28204f, type: 2}
     - target: {fileID: 0}
       propertyPath: LayersToClick.m_Bits
-      value: 2304
+      value: 35072
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

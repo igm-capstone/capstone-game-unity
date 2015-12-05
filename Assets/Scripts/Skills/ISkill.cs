@@ -30,15 +30,15 @@ public abstract class ISkill : MonoBehaviour
         _fill.fillAmount = 1 - ((Time.time - _lastUse) / Cooldown);
     }
     
-    public void Use() { Use(null); }
-    public void Use(GameObject target)
+    public void Use() { Use(null, Vector3.zero); }
+    public void Use(GameObject target, Vector3 clickWorldPos)
     {
         if (!IsReady()) return;
-        Usage(target);
-        _lastUse = Time.time;
+        if (Usage(target, clickWorldPos))
+            _lastUse = Time.time;
     }
 
-    protected abstract void Usage(GameObject target);
+    protected abstract bool Usage(GameObject target, Vector3 clickWorldPos);
 
     public bool IsReady()
     {

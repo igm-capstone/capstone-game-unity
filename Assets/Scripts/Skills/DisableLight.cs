@@ -3,20 +3,19 @@ using System.Collections;
 
 public class DisableLight : ISkill
 {
-    private static GhostController ghost;
-    public float Duration = 1;
+    public float Duration = 2;
 
-    protected override void Usage(GameObject target)
+    protected override bool Usage(GameObject target, Vector3 clickWorldPos)
     {
-        if (ghost == null) ghost = GameObject.Find("Me").GetComponent<GhostController>();
-
         var light = target.GetComponent<LightController>();
+        if (!light) return false;
 
         if (light != null && light.CurrentStatus == LightController.Status.On)
         {
             light.ToggleStatus(); //ghost.CmdLightHasBeenClicked(light.gameObject.name); //Toggle on server
             StartCoroutine(TurnBackOn(light));
         }
+        return true;
     }
 
     IEnumerator TurnBackOn(LightController light)

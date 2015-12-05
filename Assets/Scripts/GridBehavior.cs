@@ -130,13 +130,13 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
             {
                 Vector3 nodePos = areaOfNodes[x, y].position;
 
-                var cols = Physics2D.OverlapAreaAll((Vector2)nodePos - new Vector2(nodeRadius, nodeRadius), (Vector2)nodePos + new Vector2(nodeRadius, nodeRadius), obstacleLayer | 1 << 8);
+                var cols = Physics2D.OverlapAreaAll((Vector2)nodePos - new Vector2(nodeRadius, nodeRadius), (Vector2)nodePos + new Vector2(nodeRadius, nodeRadius), obstacleLayer | 1 << LayerMask.NameToLayer("LightMesh") | 1 << LayerMask.NameToLayer("Lights"));
 
                 areaOfNodes[x, y].canWalk = true;
                 areaOfNodes[x, y].hasLight = false;
                 foreach (Collider2D col in cols)
                 {
-                    if (col.gameObject.layer != LayerMask.NameToLayer("Lights"))
+                    if (col.gameObject.layer != LayerMask.NameToLayer("LightMesh") && col.gameObject.layer != LayerMask.NameToLayer("Lights"))
                         areaOfNodes[x, y].canWalk = false;
                     else if (col is PolygonCollider2D)
                         areaOfNodes[x, y].hasLight = true;

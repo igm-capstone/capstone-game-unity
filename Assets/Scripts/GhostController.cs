@@ -34,14 +34,15 @@ public class GhostController : NetworkBehaviour {
         // Using mouse over instead of ray cast due to 2D collider. Physics does not interact with Physics2D.
         if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), -Vector2.up, 1000, LayersToClick);
+            var clickWordPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(clickWordPos, -Vector2.up, 1000, LayersToClick);
 
             if (hit.collider != null)
             {
                 Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
 
                 var activeSkill = ghostSkillBar.GetActiveSkill();
-                if (activeSkill) activeSkill.Use(hit.collider.gameObject);
+                if (activeSkill) activeSkill.Use(hit.collider.gameObject, clickWordPos);
             }
         }
     }
