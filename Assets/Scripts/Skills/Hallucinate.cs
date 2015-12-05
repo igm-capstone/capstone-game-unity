@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 
 public class Hallucinate : ISkill
@@ -26,8 +28,28 @@ public class Hallucinate : ISkill
                         ac.RpcDisableMinion(minion.name);
                     }
                 }
+
+                foreach (GameObject minion in minions)
+                {
+                    StartCoroutine(DisposeMinion(minion));
+                }
             });
 
         return true;
+    }
+
+    IEnumerator DisposeMinion(GameObject minion)
+    {
+        float minionLifetime = 0.0f;
+        while(minionLifetime < Duration)
+        {
+            minionLifetime += Time.deltaTime;
+            yield return null;
+        }
+
+        if (minion != null)
+        {
+            NetworkServer.Destroy(minion);
+        }
     }
 }
