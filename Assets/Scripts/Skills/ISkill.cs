@@ -1,61 +1,64 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEditor.AnimatedValues;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
 public abstract class ISkill : MonoBehaviour
 {
-    public string Name;
-    public float Cooldown;
+    public string Name = "Skill";
+    public float Cooldown = 2;
 
     private float _lastUse = float.MinValue;
     private Button _btn;
     private Image _fill;
     private Image _hl;
+    private SkillBar _skillBar;
 
-    public void Awake()
+    void Start()
     {
         _btn = GetComponent<Button>();
         _fill = transform.Find("Fill").GetComponent<Image>();
         _hl = transform.Find("Highlight").GetComponent<Image>();
+        _skillBar = GetComponentInParent<SkillBar>();
 
-        _btn.onClick.AddListener(OnClick);
+        if (_skillBar.OnClickBehavior == SkillBar.OnClickBehaviorType.SetActiveSkillOnClick)
+            _btn.onClick.AddListener(SetActive);
+        else
+            _btn.onClick.AddListener(Use);
     }
 
-    public void Update()
+    void Update()
     {
         _fill.fillAmount = 1 - ((Time.time - _lastUse) / Cooldown);
     }
-
-    public void SetActive(bool active)
+    
+    public void Use() { Use(null); }
+    public void Use(GameObject target)
     {
-        if (active)
-        {
-            foreach (var skill in transform.parent.GetComponentsInChildren<ISkill>())
-            {
-                skill.SetActive(false);
-            }
-        }
-        _hl.enabled = active;
+        if (!IsReady()) return;
+        Usage(target);
+        _lastUse = Time.time;
     }
 
-    public bool IsActiveSkill()
-    {
-        return _hl.enabled;
-    }
+    protected abstract void Usage(GameObject target);
 
     public bool IsReady()
     {
         return (Time.time > _lastUse + Cooldown);
     }
 
-    public void StartCooldown()
+    //Skillbar helpers
+    public void SetActive()
     {
-        _lastUse = Time.time;
+        _skillBar.SetActiveSkill(this);
     }
 
-    public abstract void OnClick();
+    public void SetHighlight(bool active)
+    {
+        _hl.enabled = active;
+    }
+
+    public void SetVisibility(bool active)
+    {
+        gameObject.SetActive(active);
+    }
 
 }

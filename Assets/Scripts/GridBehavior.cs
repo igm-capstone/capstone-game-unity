@@ -40,13 +40,13 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
     
     void Start()
     {
-        var originalCol = gameObject.GetComponent<Collider>();
+        var mRenderer = gameObject.GetComponent<Renderer>();
 
-        maxSize = new Vector2(originalCol.bounds.size.x, originalCol.bounds.size.y);
+        maxSize = new Vector2(mRenderer.bounds.size.x, mRenderer.bounds.size.y);
         numSpheresX = Mathf.RoundToInt(maxSize.x / nodeRadius) / 2;
         numSpheresY = Mathf.RoundToInt(maxSize.y / nodeRadius) / 2;
 
-        startingCorner = new Vector3(originalCol.bounds.min.x, originalCol.bounds.min.y, gameObject.transform.position.z);
+        startingCorner = new Vector3(mRenderer.bounds.min.x, mRenderer.bounds.min.y, gameObject.transform.position.z);
 
         if (Application.isPlaying)
         {

@@ -28,8 +28,8 @@ public class MovementBroadcast : MonoBehaviour {
                 var distance = transform.position - lastPos;
                 var direction = distance.normalized;
                 var angle = FastMath.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                var size = GetComponent<PolygonCollider2D>().bounds.size * 1.25f;
-                var layerMask = 1 << LayerMask.NameToLayer("Lights");
+                var size = GetComponent<PolygonCollider2D>() != null ? GetComponent<PolygonCollider2D>().bounds.size * 1.25f : new Vector3(3.0f, 3.0f, 0.0f);
+                var layerMask = 1 << LayerMask.NameToLayer("LightMesh");
 
                 DebugBox(lastPos, size, Color.blue);
                 DebugBox(transform.position, size, Color.red);

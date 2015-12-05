@@ -13,8 +13,8 @@ GameObject:
   - 58: {fileID: 5863208}
   - 114: {fileID: 11444198}
   - 114: {fileID: 11477160}
-  - 114: {fileID: 11404802}
   - 58: {fileID: 5819258}
+  - 114: {fileID: 11409118}
   - 114: {fileID: 11478208}
   m_Layer: 8
   m_Name: Light
@@ -32,7 +32,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 431608}
   - 60: {fileID: 6070464}
-  m_Layer: 8
+  m_Layer: 16
   m_Name: LightMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,9 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -255,7 +257,7 @@ PolygonCollider2D:
       - {x: .11000061, y: -17.3166122}
       - {x: .0588302612, y: -32.2000046}
       - {x: .0551490784, y: -32.2000008}
---- !u!114 &11404802
+--- !u!114 &11409118
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -279,10 +281,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec4f409e813f21499a8a495e3f87ca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentStatus: 1
+  CurrentStatus: 0
   SpriteOn: {fileID: 21300000, guid: 0d074ff7e79d9df4fbdd8ceb93e22da7, type: 3}
   SpriteOff: {fileID: 21300000, guid: 62971bca6b970ae4e892b066c9ad0c5d, type: 3}
-  dirty: 0
+  dirty: 1
 --- !u!114 &11477160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -299,7 +301,7 @@ MonoBehaviour:
   lightMaterial: {fileID: 2100000, guid: b0a95a22e23b6a54092969a96defeaf8, type: 2}
   shadowMask:
     serializedVersion: 2
-    m_Bits: 4294939336
+    m_Bits: 4294841032
 --- !u!114 &11478208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -350,7 +352,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -367,7 +371,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: shadowMask.m_Bits
-      value: 4294939336
+      value: 4294841032
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: debug
@@ -375,7 +379,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: CurrentStatus
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: lightMaterial
@@ -428,6 +432,14 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 62971bca6b970ae4e892b066c9ad0c5d,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: dirty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 114494}

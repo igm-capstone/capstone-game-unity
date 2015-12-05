@@ -1009,7 +1009,6 @@ MonoBehaviour:
   matchSize: 4
   ghostPrefab: {fileID: 196296, guid: 019c493b42c53a1468dbd861bbbd1d49, type: 2}
   avatarPrefab: {fileID: 133474, guid: 73966fe075ec45f45b4c12e9167f156b, type: 2}
-  sceneLoaded: 0
 --- !u!4 &1400174516
 Transform:
   m_ObjectHideFlags: 0

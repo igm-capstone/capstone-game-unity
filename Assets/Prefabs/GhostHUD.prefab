@@ -80,7 +80,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22403180}
-  - 114: {fileID: 11479192}
   - 114: {fileID: 11423610}
   m_Layer: 5
   m_Name: GhostHUD
@@ -152,8 +151,9 @@ GameObject:
   - 114: {fileID: 11478668}
   - 114: {fileID: 11494282}
   - 114: {fileID: 11468926}
+  - 114: {fileID: 11409614}
   m_Layer: 5
-  m_Name: MinionsPanel
+  m_Name: SkillPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -270,6 +270,19 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+--- !u!114 &11409614
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627ce09e3a6e8164db3cf48ed233fbc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HideInactiveSkills: 0
+  OnClickBehavior: 0
 --- !u!114 &11410520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -524,7 +537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 
-  Cooldown: 0
+  Cooldown: 2
+  Duration: 1
 --- !u!114 &11450978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -618,7 +632,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 
-  Cooldown: 0
+  Cooldown: 2
+  Duration: 1
 --- !u!114 &11468926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -670,8 +685,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12842a7149152434b93f4d28b451639e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  Cooldown: 0
+  Name: Disable Light
+  Cooldown: 5
+  Duration: 2
 --- !u!114 &11472564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -794,20 +810,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11479192
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38984b113c3b144eb5b80baeaf96d2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AvailableEnergySprite: {fileID: 21300000, guid: f2eafda9a8751994db425a22b8c67fa8,
-    type: 3}
-  UsedEnergySprite: {fileID: 21300000, guid: 549e50788f0ffc7418a4416a1d27c987, type: 3}
 --- !u!114 &11486698
 MonoBehaviour:
   m_ObjectHideFlags: 1

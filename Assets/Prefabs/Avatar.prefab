@@ -44,9 +44,9 @@ GameObject:
   - 4: {fileID: 435526}
   - 50: {fileID: 5030080}
   - 114: {fileID: 11459388}
+  - 114: {fileID: 11465060}
   - 114: {fileID: 11448782}
   - 114: {fileID: 11458820}
-  - 114: {fileID: 11465060}
   - 114: {fileID: 11422052}
   m_Layer: 0
   m_Name: Avatar

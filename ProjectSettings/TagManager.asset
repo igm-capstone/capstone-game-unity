@@ -21,10 +21,10 @@ TagManager:
   - Shadows
   - Player
   - MoveableObject
-  - Enemy
+  - Minion
   - Fog
-  - 
-  - 
+  - Floor
+  - LightMesh
   - 
   - 
   - 

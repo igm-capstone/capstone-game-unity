@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 472542}
   m_Layer: 12
-  m_Name: DomPoint Container
+  m_Name: DomPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

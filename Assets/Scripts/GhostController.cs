@@ -1,35 +1,27 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class GhostController : NetworkBehaviour {
 
-    public int MaxActiveLights = 3;
-    public bool InteractiveLights;
-    private int ActiveLights = 0;
     LightController[] lights;
     [SerializeField]
     GameObject ghostUIPrefab;
-    GhostHUD ghostHUD;
+    [SerializeField]
+    LayerMask LayersToClick;
+
+    SkillBar ghostSkillBar;
             
-	// Use this for initialization
 	void Start ()
     {
         lights = FindObjectsOfType<LightController>();
-        foreach (LightController light in lights)
-        {
-            if (light.CurrentStatus == LightController.Status.On)
-            {
-                ActiveLights++;
-            }
-        }
 
         GameObject ghostUI = Instantiate(ghostUIPrefab);
         ghostUI.transform.SetParent(GameObject.Find("MainCanvas").transform, false);
-        ghostHUD = ghostUI.GetComponent<GhostHUD>();
-        ghostHUD.SetMaxLightLevel(MaxActiveLights);
-        ghostHUD.SetLightLevel(ActiveLights);
-	}
+
+        ghostSkillBar = ghostUI.GetComponentInChildren<SkillBar>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -40,50 +32,23 @@ public class GhostController : NetworkBehaviour {
     void HandleInput()
     {
         // Using mouse over instead of ray cast due to 2D collider. Physics does not interact with Physics2D.
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            if (InteractiveLights)
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), -Vector2.up, 1000, LayersToClick);
+
+            if (hit.collider != null)
             {
-                ToggleLightsAtWorldPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            }
-        }
-    }
+                Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
 
-    void ToggleLightsAtWorldPoint(Vector3 worldPoint)
-    {
-        foreach (LightController light in lights)
-        {
-            if (light.GetComponent<CircleCollider2D>().OverlapPoint(worldPoint))
-            {
-                bool shouldToggle = false;
-
-                if ((light.CurrentStatus == LightController.Status.Off && ActiveLights < MaxActiveLights))
-                {
-                    ActiveLights++;
-                    shouldToggle = true;
-
-                }
-                else if (light.CurrentStatus == LightController.Status.On)
-                {
-                    ActiveLights--;
-                    shouldToggle = true;
-                }
-
-                if (shouldToggle)
-                {
-                    //Debug.Log("Client: toggling light");
-                    //light.ToggleStatus();
-                    ghostHUD.SetLightLevel(ActiveLights);
-                    CmdLightHasBeenClicked(light.gameObject.name); //Toggle on server
-                }
+                var activeSkill = ghostSkillBar.GetActiveSkill();
+                if (activeSkill) activeSkill.Use(hit.collider.gameObject);
             }
         }
     }
 
     [Command]
-    void CmdLightHasBeenClicked(string lightName)
+    public void CmdLightHasBeenClicked(string lightName)
     {
-        //Debug.Log("Client: sending CMD!");
         LightController light = GameObject.Find(lightName).GetComponent<LightController>();
         light.ToggleStatus();
     }
