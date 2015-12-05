@@ -1648,11 +1648,11 @@ MonoBehaviour:
   wallMask:
     serializedVersion: 2
     m_Bits: 5632
-  repelOffset: {x: .699999988, y: -.25, z: 0}
-  repelFocus: 3
-  repelCastDistance: 2.5
-  repelIncrement: .0599999987
-  rapelDecay: .0700000003
+  repelOffset: {x: 1.39999998, y: -.5, z: 0}
+  repelFocus: 14
+  repelCastDistance: 4
+  repelIncrement: .100000001
+  rapelDecay: .200000003
   maxRepel: 1
   turnRate: 30
   moveSpeed: 50
@@ -1798,6 +1798,30 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: repelOffset.x
+      value: 1.39999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: repelOffset.y
+      value: -.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: repelFocus
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: repelCastDistance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rapelDecay
+      value: .200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: repelIncrement
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

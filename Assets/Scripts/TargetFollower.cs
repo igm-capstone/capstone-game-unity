@@ -39,6 +39,8 @@ public class TargetFollower : MonoBehaviour
     public void MoveTowards(Transform target)
     {
         path = GetPathTo(target);
+        var node = grid.getNodeAtPos(transform.position);
+        var speedFactor = 1 / (node.Weight);
 
         if (path == null)
         {
@@ -134,8 +136,8 @@ public class TargetFollower : MonoBehaviour
             animator.SetFloat("Slide", repel);
         }
 
-        transform.Translate(moveDirection * moveSpeed * .1f * Time.deltaTime, Space.Self);
-        animator.SetFloat("Speed", .8f);
+        transform.Translate(moveDirection * moveSpeed * speedFactor * .1f * Time.deltaTime, Space.Self);
+        animator.SetFloat("Speed", (1 + speedFactor) * .5f, .5f, .5f);
     }
 
 
