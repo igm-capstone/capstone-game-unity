@@ -16,7 +16,7 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
 	public override void OnStartLocalPlayer () {
         GetComponentInChildren<AvatarController>().enabled = true;
         GetComponentInChildren<MovementBroadcast>().enabled = true;
-        transform.GetChild(0).FindChild("Fog").GetComponent<SpriteRenderer>().color = Color.white;
+        //transform.GetChild(0).FindChild("Fog").GetComponent<SpriteRenderer>().color = Color.white;
 
         base.OnStartLocalPlayer();
     }

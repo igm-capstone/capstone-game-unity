@@ -237,6 +237,35 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
         return areaOfNodes[i, j];
     }
 
+    public IList<Node> getNodesNearPos(Vector3 pos, float radius, Predicate<Node> conditionPredicate = null)
+    {
+        var nodes = new List<Node>();
+
+        var minNode = getNodeAtPos(pos - Vector3.one * radius);
+        var maxNode = getNodeAtPos(pos + Vector3.one * radius);
+        var sqrRadius = radius * radius;
+
+        var minx = (int)Mathf.Max(0, minNode.coord.x);
+        var miny = (int)Mathf.Max(0, minNode.coord.y);
+        var maxx = (int)Mathf.Min(numSpheresX, maxNode.coord.x + 1);
+        var maxy = (int)Mathf.Min(numSpheresY, maxNode.coord.y + 1);
+
+        for (int x = minx; x < maxx; x++)
+        {
+            for (int y = miny; y < maxy; y++)
+            {
+                var node = areaOfNodes[x, y];
+
+                if ((node.position - pos).sqrMagnitude > sqrRadius || conditionPredicate == null || !conditionPredicate(node))
+                    continue;
+
+                nodes.Add(node);
+            }
+        }
+
+        return nodes;
+    }
+
     public IEnumerable<NodeConnection> GetNodeConnections(int x, int y)
     {
         var notLeftEdge = x > 0;
