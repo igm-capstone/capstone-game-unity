@@ -42,7 +42,7 @@ public class Node : INode
 
     public float Weight
     {
-        get { return ((!hasLight || !canWalk) && !_isStartEnd) ? float.MaxValue : _weight; }
+        get { return _weight; }
         set { _weight = value; }
     }
 
@@ -66,7 +66,7 @@ public class Node : INode
     public bool isStartEnd
     {
         get { return _isStartEnd; }
-        set { _isStartEnd = value; shadowCollider.enabled = value; }
+        set { _isStartEnd = value; }
     }
 
     public float gCost

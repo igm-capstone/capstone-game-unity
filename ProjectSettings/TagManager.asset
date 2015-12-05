@@ -16,16 +16,16 @@ TagManager:
   - UI
   - 
   - 
-  - Lights
-  - Obstacles
-  - Shadows
+  - LightSwitch
+  - OpaqueObstacle
+  - Shadow
   - Player
   - MoveableObject
   - Minion
   - Fog
   - Floor
   - LightMesh
-  - 
+  - TransparentObstacle
   - 
   - 
   - 

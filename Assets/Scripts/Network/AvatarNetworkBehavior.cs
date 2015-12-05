@@ -16,7 +16,7 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
 	public override void OnStartLocalPlayer () {
         GetComponentInChildren<AvatarController>().enabled = true;
         GetComponentInChildren<MovementBroadcast>().enabled = true;
-        transform.GetChild(0).FindChild("Fog").GetComponent<SpriteRenderer>().color = Color.white;
+        //transform.GetChild(0).FindChild("Fog").GetComponent<SpriteRenderer>().color = Color.white;
 
         base.OnStartLocalPlayer();
     }
@@ -65,5 +65,23 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     public void RpcEnableSlash(bool status)
     {
         meleeBehaviour.EnableSlash(status);
+    }
+
+
+    [ClientRpc]
+    public void RpcEnableMinion(string minionID)
+    {
+        GameObject minion = GameObject.Find(minionID);
+        minion.SetActive(true);
+    }
+
+    [ClientRpc]
+    public void RpcDisableMinion(string minionID)
+    {
+        if (gameObject.name == "Me")
+        {
+            GameObject minion = GameObject.Find(minionID);
+            minion.SetActive(false);
+        }
     }
 }
