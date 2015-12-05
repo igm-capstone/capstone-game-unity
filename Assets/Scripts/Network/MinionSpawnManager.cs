@@ -2,9 +2,12 @@
 using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System;
 
 public class MinionSpawnManager : NetworkBehaviour
 {
+
 
     public GameObject EnemyPrefab;
     private Transform pathContainer;
@@ -75,10 +78,60 @@ public class MinionSpawnManager : NetworkBehaviour
         StartCoroutine(SetGridDirty());
     }
 
+    [Command]
+    public void CmdCoolerSpawn(GameObject target, float radius, int numMinions, Action<GameObject[], GameObject> completion)
+    {
+        Vector3[] positions = new Vector3[numMinions];
+        for (int n = 0; n < numMinions; n++)
+        {
+            Vector3 r = (UnityEngine.Random.insideUnitCircle * radius);
+            positions[n] = target.transform.position + r;
+        }
+
+        GameObject[] minions = new GameObject[numMinions];
+        for (int n = 0; n < numMinions; n++)
+        {
+            var minDist = float.MaxValue;
+            WaypointPath path = null;
+            Vector3 spawnPos = Vector3.zero;
+            int waypointIndex = 0;
+
+            foreach (var waypointPath in paths)
+            {
+                for (int i = 0; i < waypointPath.transform.childCount; i++)
+                {
+                    Transform waypoint = waypointPath.transform.GetChild(i);
+                    var dist = (waypoint.position - positions[n]).sqrMagnitude;
+                    if (dist < minDist)
+                    {
+                        path = waypointPath;
+                        minDist = dist;
+                        spawnPos = waypoint.position;
+                        waypointIndex = i;
+                    }
+                }
+            }
+
+            Transform spawn = minionContainer;
+            minions[n] = Instantiate(EnemyPrefab, positions[n], Quaternion.identity) as GameObject;
+            minions[n].transform.SetParent(spawn);
+            minions[n].GetComponent<MinionController>().enabled = true;
+            minions[n].GetComponent<PatrolWaypoints>().path = path;
+            minions[n].GetComponent<PatrolWaypoints>().nextStop = waypointIndex;
+            NetworkServer.Spawn(minions[n]);
+
+            TextureRandomizer rnd = minions[n].GetComponent<TextureRandomizer>();
+            rnd.RandomizeTexture();
+        }
+
+        completion(minions, target);
+
+        StartCoroutine(SetGridDirty());
+    }
+
     IEnumerator SetGridDirty()
     {
         yield return new WaitForSeconds(.5f);
         FindObjectOfType<GridBehavior>().SetAIDirty();
     }
-
 }
