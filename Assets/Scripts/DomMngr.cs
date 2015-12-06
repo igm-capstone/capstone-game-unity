@@ -4,6 +4,8 @@ using System.Collections;
 
 public class DomMngr : MonoBehaviour
 {
+    GhostNetworkBehavior GhostPlyer;
+
     Domination[] DomPntList;
     int CurrentTier = 0;
     int MaxTier;
@@ -59,6 +61,15 @@ public class DomMngr : MonoBehaviour
         if (CurrentTier+1 > MaxTier)
         {
             // Game is over - Avatars Win.
+            string WinMsg = "Avatars Win!";
+
+            // Gets reference to the Ghost Player, the Host
+            GhostPlyer = FindObjectOfType<GhostNetworkBehavior>();
+            // display win msg and exit 
+            GhostPlyer.CmdEndGame(WinMsg);
+
+            return;
+
         }
 
         // If all were Captured

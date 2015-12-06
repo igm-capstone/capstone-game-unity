@@ -38,7 +38,7 @@ public class RpcNetworkAnimator: NetworkBehaviour
 
     public void ResetTrigger(string name)
     {
-        ResetTrigger(name);
+        RpcResetTrigger(name);
     }
 
 
