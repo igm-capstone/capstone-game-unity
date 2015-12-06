@@ -12,11 +12,13 @@ public class SkillBar : MonoBehaviour
         UseSkill
     }
 
+    public int MaxSkills;
     public bool HideInactiveSkills = false;
     public OnClickBehaviorType OnClickBehavior;
 
-    private ISkill[] _skillList;
+    private List<ISkill> _skillList;
     private ISkill _activeSkill = null;
+    private int _skillCapacity;
 
     void Start()
    { 
@@ -26,6 +28,10 @@ public class SkillBar : MonoBehaviour
         {
             skill.enabled = true;
         }
+
+        SetSkillCapacity(MaxSkills);
+        SetSkillList(transform.parent.GetComponentsInChildren<ISkill>().ToList<ISkill>());
+        
     }
 
 
@@ -45,5 +51,56 @@ public class SkillBar : MonoBehaviour
                 s.SkillBtnScript.SetHighlight(s == skill);
         }
         _activeSkill = skill;
+    }
+
+    public void SetSkillList(List<ISkill> skillList)
+    {
+        if (skillList.Count() < _skillCapacity)
+        {
+            _skillList = skillList;
+        }
+    }
+
+    public void ClearSkillList()
+    {
+        _skillList.Clear();
+    }
+
+    public void AddSkill(ISkill skill)
+    {
+        if (_skillList.Count < _skillCapacity)
+        {
+            _skillList.Add(skill);
+        }
+    }
+
+    public ISkill GetSkill(int index)
+    {
+        return _skillList[index];
+    }
+
+    public void RemoveSkill(ISkill skill)
+    {
+        _skillList.Remove(skill);
+    }
+
+    public int GetSkillCount()
+    {
+        return _skillList.Count();
+    }
+
+    public int GetSkillCapacity()
+    {
+        return _skillCapacity;
+    }
+
+    public void SetSkillCapacity(int capacity)
+    {
+        _skillCapacity = capacity;
+    }
+
+    public bool IsFull()
+    {
+        return _skillList.Count() == _skillCapacity;
     }
 }
