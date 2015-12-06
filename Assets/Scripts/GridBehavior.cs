@@ -192,7 +192,7 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
             if (player)
             {
                 Node playerNode = getNodeAtPos(player.transform.position);
-                playerIsAccessible = (playerNode != null && playerNode.hasLight);
+                playerIsAccessible = (playerNode != null);
             }
 
             MinionController[] robots = FindObjectsOfType(typeof(MinionController)) as MinionController[];
@@ -201,7 +201,7 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
                 if (robot.enabled)
                 {
                     var robotNode = getNodeAtPos(robot.transform.position);
-                    if (robotNode != null && robotNode.hasLight)
+                    if (robotNode != null)
                     {
                         if (playerIsAccessible)
                         {

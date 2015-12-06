@@ -29,11 +29,13 @@ public class TargetFollower : MonoBehaviour
     private IList<Vector2> path;
     private IList<Node> nodePath;
     private RpcNetworkAnimator animator;
+    private Transform container;
 
     void Awake()
     {
         grid = FindObjectOfType<GridBehavior>();
         animator = GetComponent<RpcNetworkAnimator>();
+        container = transform.Find("Rotation");
     }
 
     public void MoveTowards(Transform target)
@@ -57,7 +59,7 @@ public class TargetFollower : MonoBehaviour
 
         Vector2 targetPosition = transform.position;
         Vector2 position = transform.position;
-        foreach (var nodePosition in path.Reverse())
+        foreach (var nodePosition in path.Take(3).Reverse())
         {
             var distance = nodePosition - position;
             var direction = distance.normalized;
@@ -72,7 +74,7 @@ public class TargetFollower : MonoBehaviour
 
         Debug.DrawLine(position, targetPosition, Color.cyan);
 
-        var currentAngle = transform.eulerAngles.z;
+        var currentAngle = container.eulerAngles.z;
         
         var targetDistance = targetPosition - position;
         var targetAngle = FastMath.Atan2(-targetDistance.x, targetDistance.y) * Mathf.Rad2Deg;
@@ -86,11 +88,11 @@ public class TargetFollower : MonoBehaviour
 
 
         var targetRotation = Quaternion.Euler(0, 0, targetAngle);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnRate  * 5 * Time.deltaTime);
+        container.rotation = Quaternion.RotateTowards(container.rotation, targetRotation, turnRate  * 5 * Time.deltaTime);
 
-        var frontOffset = transform.TransformPoint(Vector3.up * repelFocus);
-        var rightOffset = transform.TransformPoint(repelOffset);
-        var leftOffset = transform.TransformPoint(new Vector3(-repelOffset.x, repelOffset.y));
+        var frontOffset = container.TransformPoint(Vector3.up * repelFocus);
+        var rightOffset = container.TransformPoint(repelOffset);
+        var leftOffset =  container.TransformPoint(new Vector3(-repelOffset.x, repelOffset.y));
 
         Debug.DrawLine(rightOffset, rightOffset + (frontOffset - rightOffset).normalized * repelCastDistance);
         if (Physics2D.Raycast(rightOffset, frontOffset - rightOffset, repelCastDistance, wallMask))
@@ -125,11 +127,11 @@ public class TargetFollower : MonoBehaviour
         //if (reverse)
         //    return;
 
-        var moveDirection = new Vector3(repel, (1 - Mathf.Abs(repel)) * (reverse ? -1 : 1));
+        var moveDirection = container.rotation * new Vector3(repel, (1 - Mathf.Abs(repel)) * (reverse ? -1 : 1));
         
         // "forward"
-        Debug.DrawLine(transform.position, transform.position + transform.up);
-        Debug.DrawLine(transform.position, transform.position + transform.TransformDirection(moveDirection).normalized, Color.yellow);
+        Debug.DrawLine(transform.position, transform.position + container.up * 3);
+        Debug.DrawLine(transform.position, transform.position + moveDirection.normalized * 3, Color.yellow);
 
         if (animator)
         {

@@ -7,6 +7,6 @@ public class TextureRandomizer : MonoBehaviour {
 
 	public void RandomizeTexture()
     {
-        transform.Find("Model/toad").GetComponent<SkinnedMeshRenderer>().material.SetTexture("_MainTex", textures[Random.Range(0,textures.Length)]);
+        transform.Find("Rotation/Model/toad").GetComponent<SkinnedMeshRenderer>().material.SetTexture("_MainTex", textures[Random.Range(0,textures.Length)]);
     }
 }
