@@ -17,7 +17,7 @@ public class PickupBehavior : MonoBehaviour {
 	
 	}
 
-    public void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag != "Player")
         {
