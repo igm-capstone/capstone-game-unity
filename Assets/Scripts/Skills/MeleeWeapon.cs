@@ -26,16 +26,16 @@ public class MeleeWeapon : ISkill
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.M) && !avatarController.Disabled)
+        if (Input.GetKeyDown(KeyCode.M) && !avatarController.Disabled)
         {
             Use();
         }
     }
 
-    protected override bool Usage(GameObject target, Vector3 clickWorldPos)
+    protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
         StartCoroutine(Slash());
-        return true;
+        return null;
     }
 
     public IEnumerator Slash()

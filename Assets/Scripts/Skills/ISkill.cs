@@ -42,12 +42,21 @@ public abstract class ISkill : MonoBehaviour
     public void Use() { Use(null, Vector3.zero); }
     public void Use(GameObject target, Vector3 clickWorldPos)
     {
-        if (!IsReady()) return;
-        if (Usage(target, clickWorldPos))
+        if (!IsReady())
+        {
+            HelpMessage.Instance.SetMessage(Name + " is still on cooldown!");
+            return;
+        }
+
+        string usageResult = Usage(target, clickWorldPos);
+        if (usageResult == null)
+        {
             LastUse = Time.time;
+        }
+        HelpMessage.Instance.SetMessage(usageResult);
     }
 
-    protected abstract bool Usage(GameObject target, Vector3 clickWorldPos);
+    protected abstract string Usage(GameObject target, Vector3 clickWorldPos);
 
     public bool IsReady()
     {

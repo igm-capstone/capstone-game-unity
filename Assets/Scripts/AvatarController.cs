@@ -23,10 +23,12 @@ public class AvatarController : MonoBehaviour
         _avatarSkillBar.enabled = true;
     }
 
-    void FixedUpdate () 
+    void FixedUpdate() 
     {
-        if (!Disabled)
+        if (!Disabled) 
             Move();
+        else 
+            HelpMessage.Instance.SetMessage("You are incapacitated. Seek help!");
     }
 
     private void Move()

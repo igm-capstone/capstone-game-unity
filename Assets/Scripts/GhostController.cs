@@ -12,10 +12,6 @@ public class GhostController : MonoBehaviour {
             
 	void Start ()
     {
-        /*GameObject ghostUI = Instantiate(ghostUIPrefab);
-        ghostUI.transform.SetParent(GameObject.Find("MainCanvas").transform, false);
-
-        _ghostSkillBar = ghostUI.GetComponentInChildren<SkillBar>();*/
         _ghostSkillBar = GetComponent<SkillBar>();
 	    _ghostSkillBar.enabled = true;
     }
@@ -37,7 +33,14 @@ public class GhostController : MonoBehaviour {
             if (hit.collider != null)
             {
                 var activeSkill = _ghostSkillBar.GetActiveSkill();
-                if (activeSkill) activeSkill.Use(hit.collider.gameObject, clickWordPos);
+                if (activeSkill)
+                {
+                    activeSkill.Use(hit.collider.gameObject, clickWordPos);
+                }
+                else
+                {
+                    HelpMessage.Instance.SetMessage("No skill selected!");
+                }
             }
         }
     }

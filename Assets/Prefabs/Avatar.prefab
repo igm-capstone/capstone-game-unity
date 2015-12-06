@@ -516,7 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 0}
+  SkillSprite: {fileID: 21300000, guid: 549e50788f0ffc7418a4416a1d27c987, type: 3}
   Name: Melee Weapon
   Cooldown: 1
   SlashDuration: .300000012
@@ -891,7 +891,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SkillSprite
       value: 
-      objectReference: {fileID: 21300000, guid: c4b48107c53270b4fa108397793abdc6,
+      objectReference: {fileID: 21300000, guid: 549e50788f0ffc7418a4416a1d27c987,
         type: 3}
     - target: {fileID: 0}
       propertyPath: SlashDuration

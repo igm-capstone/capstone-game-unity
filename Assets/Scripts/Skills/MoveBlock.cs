@@ -32,9 +32,9 @@ public class MoveBlock : ISkill
         }
     }
 
-    protected override bool Usage(GameObject target, Vector3 clickWorldPos)
+    protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
-        return true;
+        return null;
     }
 
     public void TakeBlockOver(string block, bool status)

@@ -5,9 +5,9 @@ public class SpawnMinion : ISkill
 {
     public float distanceFromPlayers = 5f;
 
-    protected override bool Usage(GameObject target, Vector3 clickWorldPos)
+    protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
-        if (target.layer != LayerMask.NameToLayer("Floor")) return false;
+        if (target.layer != LayerMask.NameToLayer("Floor")) return Name + " skill needs to the floor.";
 
         var grid = GridBehavior.Instance;
         var z = grid.transform.position.z;
@@ -17,7 +17,7 @@ public class SpawnMinion : ISkill
         if (!node.canWalk || node.hasLight)
         {
             //Debug.LogFormat("Lit area {0}, unwalkable area {0}", node.hasLight, !node.canWalk);
-            return false;
+            return Name + " skill can only be used in the darkness!";
         }
 
         var avatars = FindObjectsOfType<AvatarController>();
@@ -27,11 +27,11 @@ public class SpawnMinion : ISkill
         if (avatars.Any() && minDistance < sqrDist)
         {
             //Debug.Log("Near player");
-            return false;
+            return Name + " skill cannot be used so close to a player!";
         }
 
         MinionSpawnManager.Instance.CmdSpawn(clickWorldPos);
 
-        return true;
+        return null;
     }
 }

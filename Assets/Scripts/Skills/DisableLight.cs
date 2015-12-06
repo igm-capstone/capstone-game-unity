@@ -5,17 +5,17 @@ public class DisableLight : ISkill
 {
     public float Duration = 2;
 
-    protected override bool Usage(GameObject target, Vector3 clickWorldPos)
+    protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
         var light = target.GetComponent<LightController>();
-        if (!light) return false;
+        if (!light) return Name + " skill needs to target a light switch.";
 
         if (light != null && light.CurrentStatus == LightController.Status.On)
         {
             light.ToggleStatus(); //Off
             StartCoroutine(TurnBackOn(light));
         }
-        return true;
+        return null;
     }
 
     IEnumerator TurnBackOn(LightController light)
