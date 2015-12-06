@@ -76,6 +76,7 @@ public class AttackTarget : NetworkBehaviour {
 
         // Damage
         Debug.Log("DAMAGE!");
+        GetComponent<MinionController>().CmdAssignDamage(target.gameObject, 1);
 
         // exit
         target = null;

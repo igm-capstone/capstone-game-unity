@@ -59,4 +59,10 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
             minion.SetActive(false);
         }
     }
+
+    [Command]
+    public void CmdAssignDamage(GameObject obj, int damage)
+    {
+        obj.GetComponent<Health>().TakeDamage(damage);
+    }
 }

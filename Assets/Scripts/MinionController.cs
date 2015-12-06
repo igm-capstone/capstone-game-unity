@@ -69,7 +69,12 @@ public class MinionController : NetworkBehaviour
     [Command]
     public void CmdKill()
     {
-        Debug.Log("MinionTakeDamage");
-        gameObject.GetComponent<Health>().TakeDamage(1);
+        NetworkServer.Destroy(gameObject);
+    }
+
+    [Command]
+    public void CmdAssignDamage(GameObject obj, int damage)
+    {
+        obj.GetComponent<Health>().TakeDamage(damage);
     }
 }

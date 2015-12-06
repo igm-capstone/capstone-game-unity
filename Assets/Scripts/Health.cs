@@ -34,9 +34,13 @@ public class Health : NetworkBehaviour
     public void TakeDamage(int value)
     {
         CurrentHealth -= value;
-        if (CurrentHealth < 0)
+        if (CurrentHealth <= 0)
         {
             CurrentHealth = 0;
+            if (GetComponent<MinionController>() != null)
+            {
+                GetComponent<MinionController>().CmdKill();
+            }
         }
         if (CurrentHealth > BaseHealth)
         {

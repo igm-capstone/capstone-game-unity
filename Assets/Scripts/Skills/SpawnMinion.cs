@@ -16,7 +16,7 @@ public class SpawnMinion : ISkill
         var node = grid.getNodeAtPos(clickWorldPos);
         if (!node.canWalk || node.hasLight)
         {
-            Debug.LogFormat("Lit area {0}, unwalkable area {0}", node.hasLight, !node.canWalk);
+            //Debug.LogFormat("Lit area {0}, unwalkable area {0}", node.hasLight, !node.canWalk);
             return false;
         }
 
@@ -26,7 +26,7 @@ public class SpawnMinion : ISkill
 
         if (avatars.Any() && minDistance < sqrDist)
         {
-            Debug.Log("Near player");
+            //Debug.Log("Near player");
             return false;
         }
 

@@ -9,8 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 410792}
   - 212: {fileID: 21271818}
-  - 61: {fileID: 6180578}
   - 96: {fileID: 9635952}
+  - 61: {fileID: 6101718}
   m_Layer: 18
   m_Name: Weapon
   m_TagString: Untagged
@@ -41,11 +41,17 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 435526}
-  - 50: {fileID: 5030080}
   - 114: {fileID: 11459388}
   - 114: {fileID: 11465060}
   - 114: {fileID: 11448782}
   - 114: {fileID: 11458820}
+  - 50: {fileID: 5052620}
+  - 60: {fileID: 6021440}
+  - 114: {fileID: 11470710}
+  - 114: {fileID: 11466728}
+  - 114: {fileID: 11417010}
+  - 114: {fileID: 11438486}
+  - 114: {fileID: 11439576}
   - 114: {fileID: 11485634}
   m_Layer: 11
   m_Name: Avatar
@@ -94,12 +100,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 448192}
-  - 114: {fileID: 11481162}
-  - 114: {fileID: 11449118}
-  - 60: {fileID: 6099952}
-  - 114: {fileID: 11493594}
-  - 114: {fileID: 11498096}
-  - 114: {fileID: 11464576}
   m_Layer: 11
   m_Name: AvatarRotation
   m_TagString: Player
@@ -347,7 +347,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135854}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!50 &5030080
+--- !u!50 &5052620
 Rigidbody2D:
   serializedVersion: 2
   m_ObjectHideFlags: 1
@@ -363,12 +363,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!60 &6099952
+--- !u!60 &6021440
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154064}
+  m_GameObject: {fileID: 133474}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -376,11 +376,11 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: -1.5, y: 1.5}
-      - {x: -1.5, y: -1.5}
-      - {x: 1.5, y: -1.5}
-      - {x: 1.5, y: 1.5}
---- !u!61 &6180578
+    - - {x: -.25, y: .25}
+      - {x: -.25, y: -.25}
+      - {x: .25, y: -.25}
+      - {x: .25, y: .25}
+--- !u!61 &6101718
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -392,7 +392,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 3.00000048, y: 3}
+  m_Size: {x: 3.00000048, y: 2.99999976}
 --- !u!81 &8150906
 AudioListener:
   m_ObjectHideFlags: 1
@@ -414,7 +414,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156540}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 3e62194992fa7db4cbc7b9d3fe2427b0, type: 2}
   m_CullingMode: 0
@@ -471,6 +471,56 @@ TrailRenderer:
       rgba: 16438910
   m_MinVertexDistance: .00999999978
   m_Autodestruct: 0
+--- !u!114 &11417010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133474}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627ce09e3a6e8164db3cf48ed233fbc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxSkills: 3
+  HideInactiveSkills: 0
+  OnClickBehavior: 1
+--- !u!114 &11438486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133474}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b58825af18d92842bb889339b96cb8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+  SkillSprite: {fileID: 21300000, guid: c4b48107c53270b4fa108397793abdc6, type: 3}
+  Name: Move Block
+  Cooldown: 0
+  moveableObjectLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  collisionRadius: 1
+--- !u!114 &11439576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133474}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d740ead7dea084d8b37ff342a8096c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+  SkillSprite: {fileID: 0}
+  Name: Melee Weapon
+  Cooldown: 1
+  SlashDuration: .300000012
+  Damage: 1
 --- !u!114 &11448782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -482,7 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 2
+  m_TransformSyncMode: 1
   m_SendInterval: .0333333351
   m_SyncRotationAxis: 0
   m_RotationSyncCompression: 0
@@ -491,19 +541,6 @@ MonoBehaviour:
   m_SnapThreshold: 4
   m_InterpolateRotation: 15
   m_InterpolateMovement: 1
---- !u!114 &11449118
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf04bd9b5c8833459cf45900518af20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AffectsGrid: 0
-  AffectsAI: 1
 --- !u!114 &11458820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -555,22 +592,6 @@ MonoBehaviour:
     i15: 107
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &11464576
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154064}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5d740ead7dea084d8b37ff342a8096c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 0}
-  Name: Melee Weapon
-  Cooldown: 2
-  SlashDuration: .200000003
 --- !u!114 &11465060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -582,19 +603,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795f99c4c8dccdc479e0b16a91ed075b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11481162
+--- !u!114 &11466728
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154064}
+  m_GameObject: {fileID: 133474}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 153858798af409f41bcbe96b72ce6150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  disable: 0
+--- !u!114 &11470710
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf04bd9b5c8833459cf45900518af20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AffectsGrid: 0
+  AffectsAI: 1
 --- !u!114 &11485634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -606,42 +639,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbb605028cfaec48b2c20240430a909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHealth: 5
+  BaseHealth: 20
   HealthCanvas: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
   CurrentHealth: 0
---- !u!114 &11493594
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154064}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627ce09e3a6e8164db3cf48ed233fbc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxSkills: 3
-  HideInactiveSkills: 0
-  OnClickBehavior: 1
---- !u!114 &11498096
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154064}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b58825af18d92842bb889339b96cb8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: c4b48107c53270b4fa108397793abdc6, type: 3}
-  Name: Move Block
-  Cooldown: 0
-  moveableObjectLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  collisionRadius: 1
 --- !u!124 &12432304
 Behaviour:
   m_ObjectHideFlags: 1
@@ -882,7 +882,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: SkillButtonPrefab
@@ -893,6 +893,14 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: c4b48107c53270b4fa108397793abdc6,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: SlashDuration
+      value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BaseHealth
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 133474}

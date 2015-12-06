@@ -43,12 +43,10 @@ public class MoveBlock : ISkill
         
         if (status && blockNetID.transform.parent == blockCollector.transform)
         {
-            Debug.Log("Seting parent");
             blockNetID.transform.SetParent(transform.parent.transform);
         }
         else if (!status && blockNetID.transform.parent == transform.parent.transform)
         {
-            Debug.Log("UnSeting parent");
             blockNetID.transform.SetParent(blockCollector.transform);
         }
     }

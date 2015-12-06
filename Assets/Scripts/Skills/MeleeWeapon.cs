@@ -4,26 +4,29 @@ using System.Collections;
 
 public class MeleeWeapon : ISkill
 {
-    public float SlashDuration = 0.2f;
+    public float SlashDuration = 0.3f;
+    public int Damage = 1;
 
     Transform weaponTransform;
-    BoxCollider2D hitboxCollider;
+    Collider2D hitboxCollider;
     SpriteRenderer spriteRenderer;
     TrailRenderer trailRenderer;
     AvatarNetworkBehavior avatarNetwork;
+    AvatarController avatarController;
 
     public void Awake()
     {
         trailRenderer = GetComponentInChildren<TrailRenderer>();
-        hitboxCollider = trailRenderer.gameObject.GetComponent<BoxCollider2D>();
+        hitboxCollider = trailRenderer.gameObject.GetComponent<Collider2D>();
         spriteRenderer = trailRenderer.gameObject.GetComponent<SpriteRenderer>();
         weaponTransform = trailRenderer.transform;
-        avatarNetwork = GetComponentInParent<AvatarNetworkBehavior>();
+        avatarNetwork = GetComponent<AvatarNetworkBehavior>();
+        avatarController = GetComponent<AvatarController>();
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.M))
+        if (Input.GetKey(KeyCode.M) && !avatarController.Disabled)
         {
             Use();
         }
@@ -38,6 +41,7 @@ public class MeleeWeapon : ISkill
     public IEnumerator Slash()
     {
         avatarNetwork.CmdEnableSlash(true);
+        hitboxCollider.enabled = true;
         Quaternion q0 = Quaternion.Euler(0.0f, 0.0f, -90.0f);
         Quaternion q1 = Quaternion.Euler(0.0f, 0.0f, 90.0f);
         float time = 0.0f;
@@ -51,20 +55,24 @@ public class MeleeWeapon : ISkill
 
         weaponTransform.parent.localRotation = Quaternion.identity;
         avatarNetwork.CmdEnableSlash(false);
+        hitboxCollider.enabled = false;
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D other)
     {
-        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Minion"))
+        if (hitboxCollider.enabled) //Very important!
         {
-            collision.collider.GetComponent<MinionController>().CmdKill();
+            if (other.gameObject.layer == LayerMask.NameToLayer("Minion"))
+            {
+                avatarNetwork.CmdAssignDamage(other.gameObject, Damage);
+                hitboxCollider.enabled = false;  //Very important!
+            }
         }
     }
 
 
     public void EnableSlash(bool status)
     {
-        hitboxCollider.enabled = status;
         trailRenderer.enabled = status;
         spriteRenderer.enabled = status;
     }

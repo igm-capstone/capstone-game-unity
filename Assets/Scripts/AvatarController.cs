@@ -6,24 +6,26 @@ using UnityEngine.Networking;
 //[RequireComponent(typeof(MeleeWeaponBehavior))]
 public class AvatarController : MonoBehaviour 
 {
-    private Rigidbody2D rb;
     [SerializeField]
     private float moveSpeed;
     [SerializeField]
-    public bool disable = false;
+    public bool Disabled { get { return (_health &&  _health.CurrentHealth <= 0); } }
 
-    SkillBar _avatarSkillBar;
+    private Rigidbody2D _rb;
+    private SkillBar _avatarSkillBar;
+    private Health _health;
 
     void Start () {
+        _rb = GetComponent<Rigidbody2D>();
+        _health = GetComponent<Health>();
+
         _avatarSkillBar = GetComponentInChildren<SkillBar>();
         _avatarSkillBar.enabled = true;
+    }
 
-        rb = transform.parent.GetComponent<Rigidbody2D>();
-	}
-	
-	void FixedUpdate () 
+    void FixedUpdate () 
     {
-        if(!disable)
+        if (!Disabled)
             Move();
     }
 
@@ -33,10 +35,10 @@ public class AvatarController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         if (Mathf.Abs(vertical) > Mathf.Epsilon || Mathf.Abs(horizontal) > Mathf.Epsilon)
         {
-            transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(vertical, horizontal) * Mathf.Rad2Deg, Vector3.forward);
+            transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(vertical, horizontal) * Mathf.Rad2Deg, Vector3.forward);
         }
 
-        rb.velocity = new Vector2(horizontal,vertical) * moveSpeed;
+        _rb.velocity = new Vector2(horizontal,vertical) * moveSpeed;
     }
 
 }
