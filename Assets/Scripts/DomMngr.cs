@@ -10,6 +10,7 @@ public class DomMngr : MonoBehaviour
     int CurrentTier = 0;
     int MaxTier;
 
+    private BasePlayerNetworkBehavior netBehavior;
 
     // Use this for initialization
     void Awake()
@@ -34,6 +35,33 @@ public class DomMngr : MonoBehaviour
             // Set all other Dom Pnt to not be capturable
             else
                 DomPnt.canBeCaptured = false;
+        }
+    }
+
+    void Update()
+    {
+        if (netBehavior == null)
+        {
+            var me =  GameObject.Find("Me");
+            if (me)
+                netBehavior = me.GetComponent<BasePlayerNetworkBehavior>();
+        }
+
+        var players = FindObjectsOfType<AvatarNetworkBehavior>();
+        bool AreAllDead = (players.Length > 0);
+        foreach (var player in players)
+        {
+            if(player.GetComponent<Health>().CurrentHealth > 0)
+            {
+                AreAllDead = false;
+                break;
+            }
+        }
+
+        if (AreAllDead)
+        {
+            string WinMsg = "Ghost Wins!";
+            netBehavior.CmdEndGame(WinMsg);
         }
     }
 
@@ -63,10 +91,8 @@ public class DomMngr : MonoBehaviour
             // Game is over - Avatars Win.
             string WinMsg = "Avatars Win!";
 
-            // Gets reference to the Ghost Player, the Host
-            GhostPlyer = FindObjectOfType<GhostNetworkBehavior>();
             // display win msg and exit 
-            GhostPlyer.CmdEndGame(WinMsg);
+            netBehavior.CmdEndGame(WinMsg);
 
             return;
 

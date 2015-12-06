@@ -9,6 +9,8 @@ public class GameStateHUD : MonoBehaviour {
     Image img;
     Button btn;
 
+    private bool isOver = false;
+
 	// Use this for initialization
 	void Start () {
         if (GameObject.FindObjectOfType<CustomNetworkManager>() == null) Application.LoadLevel("Menu");
@@ -22,6 +24,7 @@ public class GameStateHUD : MonoBehaviour {
 
     public void SetMsg(string text)
     {
+        if (isOver) return;
         gameStateHUD.SetActive(true);
 
         msg = gameStateHUD.GetComponentInChildren<Text>();
