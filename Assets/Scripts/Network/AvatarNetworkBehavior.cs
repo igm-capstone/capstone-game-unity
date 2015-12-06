@@ -2,22 +2,19 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-[RequireComponent(typeof(MeleeWeaponBehavior))]
+//[RequireComponent(typeof(MeleeWeaponBehavior))]
 public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     private GameObject blockCollector;
-    private MeleeWeaponBehavior meleeBehaviour;
+    //private MeleeWeaponBehavior meleeBehaviour;
     
     void Start()
     {
         blockCollector = GameObject.Find("BlocksCollector");
-        meleeBehaviour = GetComponentInChildren<MeleeWeaponBehavior>();
     }
 
 	public override void OnStartLocalPlayer () {
         GetComponentInChildren<AvatarController>().enabled = true;
         GetComponentInChildren<MovementBroadcast>().enabled = true;
-        //transform.GetChild(0).FindChild("Fog").GetComponent<SpriteRenderer>().color = Color.white;
-
         base.OnStartLocalPlayer();
     }
 
@@ -57,14 +54,14 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     [Command]
     public void CmdEnableSlash(bool status)
     {
-        meleeBehaviour.EnableSlash(status);
+        //meleeBehaviour.EnableSlash(status);
         RpcEnableSlash(status);
     }
 
     [ClientRpc]
     public void RpcEnableSlash(bool status)
     {
-        meleeBehaviour.EnableSlash(status);
+        //meleeBehaviour.EnableSlash(status);
     }
 
 

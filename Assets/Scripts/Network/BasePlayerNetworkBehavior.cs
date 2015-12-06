@@ -32,7 +32,7 @@ public class BasePlayerNetworkBehavior : NetworkBehaviour
     [Command]
     public void CmdEndGame(string msg)
     {
-        AvatarController[] players = FindObjectsOfType<AvatarController>();
+        /*AvatarController[] players = FindObjectsOfType<AvatarController>();
         foreach (var p in players)
         {
             if (p.disable == false)
@@ -40,6 +40,8 @@ public class BasePlayerNetworkBehavior : NetworkBehaviour
                 return;
             }
         }
+        */
+
         RpcEndGame(msg);
     }
 
