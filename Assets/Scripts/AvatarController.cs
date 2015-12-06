@@ -2,7 +2,8 @@
 using UnityEngine.Networking;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(MeleeWeaponBehavior))]
+[RequireComponent(typeof(SkillBar))]
+//[RequireComponent(typeof(MeleeWeaponBehavior))]
 public class AvatarController : MonoBehaviour 
 {
     private Rigidbody2D rb;
@@ -15,11 +16,13 @@ public class AvatarController : MonoBehaviour
     public Collider2D[] moveableObstacle = new Collider2D[1];
     public bool disable = false;
 
-    MeleeWeaponBehavior weaponBehavior;
+    SkillBar _avatarSkillBar;
 
-	void Start () {
+    void Start () {
+        _avatarSkillBar = GetComponentInChildren<SkillBar>();
+        _avatarSkillBar.enabled = true;
+
         rb = transform.parent.GetComponent<Rigidbody2D>();
-        weaponBehavior = GetComponentInChildren<MeleeWeaponBehavior>();
 	}
 	
 	void FixedUpdate () 
@@ -30,22 +33,6 @@ public class AvatarController : MonoBehaviour
         if (moveableObstacle.Length > 0 && moveableObstacle[0].gameObject != null)
             moveObject();
 
-        //Test Inputs
-        // Restart the Level
-        if(Input.GetKey(KeyCode.R))
-        {
-            Application.LoadLevel(Application.loadedLevel);
-        }
-        // Close Application
-        if ((Input.GetKey(KeyCode.F4))&&(Input.GetKey(KeyCode.RightAlt)|| Input.GetKey(KeyCode.LeftAlt)))
-        {
-            Application.Quit();
-        }
-
-        if (Input.GetKey(KeyCode.M))
-        {
-            weaponBehavior.StartCoroutine(weaponBehavior.Slash());
-        }
     }
 
     private void move()
@@ -69,44 +56,6 @@ public class AvatarController : MonoBehaviour
         else
         {
             transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, false);
-        }
-    }
-
-    private void MeleeAttack()
-    {
-
-    }
-
-    #if UNITY_EDITOR
-    void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(gameObject.transform.position, collisionRadius);
-    }
-    #endif
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Goal")
-        {
-            transform.parent.GetComponent<AvatarNetworkBehavior>().CmdEndGame("Human team Wins!");
-        }
-    }
-
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        //TODO change this to tags
-        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Minion") && 
-             ( collision.contacts[0].collider.gameObject.layer == LayerMask.NameToLayer("Player") ||
-                collision.contacts[0].otherCollider.gameObject.layer == LayerMask.NameToLayer("Player") ) )
-        {
-            disable = true;
-            transform.parent.GetComponent<AvatarNetworkBehavior>().CmdEndGame("Ghost wins!");
-        }
-        else if((collision.collider.gameObject.layer == LayerMask.NameToLayer("Player") &&
-                 (collision.contacts[0].collider.gameObject.layer == LayerMask.NameToLayer("Player") ||
-                    collision.contacts[0].otherCollider.gameObject.layer == LayerMask.NameToLayer("Player"))))
-        {
-            disable = false;
         }
     }
 

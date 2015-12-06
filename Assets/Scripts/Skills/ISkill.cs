@@ -1,33 +1,33 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class ISkill : MonoBehaviour
 {
+    public GameObject SkillButtonPrefab;
+    public Sprite SkillSprite;
+
     public string Name = "Skill";
     public float Cooldown = 2;
 
-    private float _lastUse = float.MinValue;
-    private Button _btn;
-    private Image _fill;
-    private Image _hl;
-    private SkillBar _skillBar;
+    public float LastUse { get; private set; }
 
+    [NonSerialized]
+    public SkillButton SkillBtnScript;
+    
     void Start()
     {
-        _btn = GetComponent<Button>();
-        _fill = transform.Find("Fill").GetComponent<Image>();
-        _hl = transform.Find("Highlight").GetComponent<Image>();
-        _skillBar = GetComponentInParent<SkillBar>();
+        LastUse = float.MinValue;
 
-        if (_skillBar.OnClickBehavior == SkillBar.OnClickBehaviorType.SetActiveSkillOnClick)
-            _btn.onClick.AddListener(SetActive);
-        else
-            _btn.onClick.AddListener(Use);
-    }
+        // CreateUI
+        var skillBar = GameObject.Find("SkillBar");
+        var button = Instantiate(SkillButtonPrefab);
+        button.transform.SetParent(skillBar.transform, false);
 
-    void Update()
-    {
-        _fill.fillAmount = 1 - ((Time.time - _lastUse) / Cooldown);
+        SkillBtnScript = button.GetComponent<SkillButton>();
+        SkillBtnScript._skill = this;
+        SkillBtnScript._skillBar = GetComponent<SkillBar>();
+        SkillBtnScript.Init();
     }
     
     public void Use() { Use(null, Vector3.zero); }
@@ -35,30 +35,13 @@ public abstract class ISkill : MonoBehaviour
     {
         if (!IsReady()) return;
         if (Usage(target, clickWorldPos))
-            _lastUse = Time.time;
+            LastUse = Time.time;
     }
 
     protected abstract bool Usage(GameObject target, Vector3 clickWorldPos);
 
     public bool IsReady()
     {
-        return (Time.time > _lastUse + Cooldown);
+        return (Time.time > LastUse + Cooldown);
     }
-
-    //Skillbar helpers
-    public void SetActive()
-    {
-        _skillBar.SetActiveSkill(this);
-    }
-
-    public void SetHighlight(bool active)
-    {
-        _hl.enabled = active;
-    }
-
-    public void SetVisibility(bool active)
-    {
-        gameObject.SetActive(active);
-    }
-
 }

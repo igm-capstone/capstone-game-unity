@@ -18,10 +18,16 @@ public class SkillBar : MonoBehaviour
     private ISkill[] _skillList;
     private ISkill _activeSkill = null;
 
-    void Awake()
-    {
-        _skillList = transform.parent.GetComponentsInChildren<ISkill>();
+    void Start()
+   { 
+        _skillList = GetComponents<ISkill>();
+
+        foreach (var skill in _skillList)
+        {
+            skill.enabled = true;
+        }
     }
+
 
     public ISkill GetActiveSkill()
     {
@@ -33,9 +39,10 @@ public class SkillBar : MonoBehaviour
         foreach (var s in _skillList)
         {
             if (HideInactiveSkills)
-                s.SetVisibility(s == skill);
-            else
-                s.SetHighlight(s == skill);
+                s.SkillBtnScript.SetVisibility(s == skill);
+            
+            if (OnClickBehavior == OnClickBehaviorType.SetActiveSkillOnClick)
+                s.SkillBtnScript.SetHighlight(s == skill);
         }
         _activeSkill = skill;
     }

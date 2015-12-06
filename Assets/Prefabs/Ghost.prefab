@@ -30,7 +30,10 @@ GameObject:
   - 114: {fileID: 11456038}
   - 114: {fileID: 11430948}
   - 114: {fileID: 11452076}
-  - 114: {fileID: 11422868}
+  - 114: {fileID: 11459854}
+  - 114: {fileID: 11425386}
+  - 114: {fileID: 11485708}
+  - 114: {fileID: 11438610}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -111,47 +114,21 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171462}
   m_Enabled: 0
---- !u!114 &11422868
+--- !u!114 &11425386
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196296}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Script: {fileID: 11500000, guid: ed2a4bb744f4f534e98feb7849b517e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
-    m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
-    m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
-    m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+  SkillSprite: {fileID: 21300000, guid: 441c3834d891f934da5b9a9bff92f057, type: 3}
+  Name: Spawn Minion
+  Cooldown: 2
 --- !u!114 &11430948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -163,6 +140,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f244e439895d7f148a2103841c6cc9cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11438610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196296}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12842a7149152434b93f4d28b451639e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+  SkillSprite: {fileID: 21300000, guid: 92a225833a8fe6240bd1852782d6896d, type: 3}
+  Name: Disable Lights
+  Cooldown: 4
+  Duration: 2
 --- !u!114 &11452076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -174,7 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc3225f95049ef4ea76406c228ce24b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostUIPrefab: {fileID: 117566, guid: e293756eec0692849a7e13161b28204f, type: 2}
   LayersToClick:
     serializedVersion: 2
     m_Bits: 35072
@@ -210,6 +202,35 @@ MonoBehaviour:
     i15: 73
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &11459854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196296}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627ce09e3a6e8164db3cf48ed233fbc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HideInactiveSkills: 0
+  OnClickBehavior: 0
+--- !u!114 &11485708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196296}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6af76fc3d98c7489382e69d57d0b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+  SkillSprite: {fileID: 21300000, guid: 5edf57f5f0d065245bbc4934b786e877, type: 3}
+  Name: Hallucinate
+  Cooldown: 2
+  Duration: 10
 --- !u!124 &12474532
 Behaviour:
   m_ObjectHideFlags: 1
@@ -326,6 +347,40 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_BackGroundColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SkillButtonPrefab
+      value: 
+      objectReference: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: SkillIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 92a225833a8fe6240bd1852782d6896d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: Name
+      value: Disable Lights
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Cooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SkillSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 92a225833a8fe6240bd1852782d6896d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: HideInactiveSkills
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: OnClickBehavior
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

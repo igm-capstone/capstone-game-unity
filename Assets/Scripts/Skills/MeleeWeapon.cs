@@ -2,7 +2,7 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class MeleeWeaponBehavior : MonoBehaviour
+public class MeleeWeapon : ISkill
 {
     public float SlashDuration = 0.2f;
 
@@ -15,6 +15,12 @@ public class MeleeWeaponBehavior : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         avatarNetwork = GetComponentInParent<AvatarNetworkBehavior>();
+    }
+
+    protected override bool Usage(GameObject target, Vector3 clickWorldPos)
+    {
+        StartCoroutine(Slash());
+        return true;
     }
 
     public IEnumerator Slash()

@@ -3,28 +3,25 @@ using UnityEngine.Networking;
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class GhostController : NetworkBehaviour {
-
-    LightController[] lights;
-    [SerializeField]
-    GameObject ghostUIPrefab;
+[RequireComponent(typeof(SkillBar))]
+public class GhostController : MonoBehaviour {
     [SerializeField]
     LayerMask LayersToClick;
 
-    SkillBar ghostSkillBar;
+    SkillBar _ghostSkillBar;
             
 	void Start ()
     {
-        lights = FindObjectsOfType<LightController>();
-
-        GameObject ghostUI = Instantiate(ghostUIPrefab);
+        /*GameObject ghostUI = Instantiate(ghostUIPrefab);
         ghostUI.transform.SetParent(GameObject.Find("MainCanvas").transform, false);
 
-        ghostSkillBar = ghostUI.GetComponentInChildren<SkillBar>();
+        _ghostSkillBar = ghostUI.GetComponentInChildren<SkillBar>();*/
+        _ghostSkillBar = GetComponent<SkillBar>();
+	    _ghostSkillBar.enabled = true;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update ()
     {
        HandleInput();
 	}
@@ -41,17 +38,9 @@ public class GhostController : NetworkBehaviour {
             {
                 Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
 
-                var activeSkill = ghostSkillBar.GetActiveSkill();
+                var activeSkill = _ghostSkillBar.GetActiveSkill();
                 if (activeSkill) activeSkill.Use(hit.collider.gameObject, clickWordPos);
             }
         }
     }
-
-    [Command]
-    public void CmdLightHasBeenClicked(string lightName)
-    {
-        LightController light = GameObject.Find(lightName).GetComponent<LightController>();
-        light.ToggleStatus();
-    }
-
 }
