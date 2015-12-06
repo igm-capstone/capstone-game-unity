@@ -81,11 +81,13 @@ public class MinionSpawnManager : NetworkBehaviour
     [Command]
     public void CmdCoolerSpawn(GameObject target, float radius, int numMinions, Action<GameObject[], GameObject> completion)
     {
+        List<Node> nodes = FindObjectOfType<GridBehavior>().getNodesNearPos(target.transform.position, radius, node => !node.hasLight && node.canWalk) as List<Node>;
+        nodes.Sort((a, b) => UnityEngine.Random.Range(-1, 2));
+
         Vector3[] positions = new Vector3[numMinions];
         for (int n = 0; n < numMinions; n++)
         {
-            Vector3 r = (UnityEngine.Random.insideUnitCircle * radius);
-            positions[n] = target.transform.position + r;
+            positions[n] = nodes[n].position;
         }
 
         GameObject[] minions = new GameObject[numMinions];
