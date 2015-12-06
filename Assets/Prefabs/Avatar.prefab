@@ -47,6 +47,7 @@ GameObject:
   - 114: {fileID: 11465060}
   - 114: {fileID: 11448782}
   - 114: {fileID: 11458820}
+  - 114: {fileID: 11485634}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
@@ -97,6 +98,7 @@ GameObject:
   - 114: {fileID: 11481162}
   - 114: {fileID: 11449118}
   - 60: {fileID: 6099952}
+  - 114: {fileID: 11493594}
   m_Layer: 11
   m_Name: AvatarRotation
   m_TagString: Player
@@ -479,6 +481,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d740ead7dea084d8b37ff342a8096c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 0}
+  SkillSprite: {fileID: 0}
+  Name: Skill
+  Cooldown: 2
   SlashDuration: .200000003
 --- !u!114 &11448782
 MonoBehaviour:
@@ -594,6 +600,34 @@ MonoBehaviour:
   moveableObstacle:
   - {fileID: 0}
   disable: 0
+--- !u!114 &11485634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cbb605028cfaec48b2c20240430a909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseHealth: 5
+  HealthCanvas: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
+  CurrentHealth: 0
+--- !u!114 &11493594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627ce09e3a6e8164db3cf48ed233fbc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxSkills: 0
+  HideInactiveSkills: 0
+  OnClickBehavior: 0
 --- !u!124 &12432304
 Behaviour:
   m_ObjectHideFlags: 1
@@ -804,6 +838,10 @@ Prefab:
       propertyPath: m_BackGroundColor.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: HealthCanvas
+      value: 
+      objectReference: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 133474}

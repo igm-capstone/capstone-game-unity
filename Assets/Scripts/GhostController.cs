@@ -36,8 +36,6 @@ public class GhostController : MonoBehaviour {
 
             if (hit.collider != null)
             {
-                Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
-
                 var activeSkill = _ghostSkillBar.GetActiveSkill();
                 if (activeSkill) activeSkill.Use(hit.collider.gameObject, clickWordPos);
             }

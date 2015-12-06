@@ -236,7 +236,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &11431506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -278,6 +278,7 @@ MonoBehaviour:
   elapsedTime: 0
   timeToCapture: 20
   dominationFill: {fileID: 11498598}
+  connection: {fileID: 0}
   TierCapture: 0
   canBeCaptured: 0
 --- !u!114 &11490504
@@ -416,7 +417,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113110}

@@ -29,8 +29,8 @@ public class SkillBar : MonoBehaviour
             skill.enabled = true;
         }
 
-        SetSkillCapacity(MaxSkills);
-        SetSkillList(transform.parent.GetComponentsInChildren<ISkill>().ToList<ISkill>());
+        //SetSkillCapacity(MaxSkills);
+        //SetSkillList(transform.parent.GetComponentsInChildren<ISkill>().ToList<ISkill>());
         
     }
 

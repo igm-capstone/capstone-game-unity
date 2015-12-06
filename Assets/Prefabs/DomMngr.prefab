@@ -1152,6 +1152,7 @@ MonoBehaviour:
   elapsedTime: 0
   timeToCapture: 20
   dominationFill: {fileID: 11471970}
+  connection: {fileID: 0}
   TierCapture: 0
   canBeCaptured: 0
 --- !u!114 &11402188
@@ -1160,7 +1161,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -1169,7 +1170,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &11402342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1197,7 +1198,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172064}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -1206,7 +1207,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &11408892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1329,7 +1330,8 @@ MonoBehaviour:
   elapsedTime: 0
   timeToCapture: 20
   dominationFill: {fileID: 11419878}
-  TierCapture: 0
+  connection: {fileID: 0}
+  TierCapture: 1
   canBeCaptured: 0
 --- !u!114 &11423704
 MonoBehaviour:
@@ -1399,6 +1401,7 @@ MonoBehaviour:
   elapsedTime: 0
   timeToCapture: 20
   dominationFill: {fileID: 11419070}
+  connection: {fileID: 0}
   TierCapture: 0
   canBeCaptured: 0
 --- !u!114 &11450518
@@ -1522,6 +1525,7 @@ MonoBehaviour:
   elapsedTime: 0
   timeToCapture: 20
   dominationFill: {fileID: 11493326}
+  connection: {fileID: 0}
   TierCapture: 0
   canBeCaptured: 0
 --- !u!114 &11481554
@@ -1538,6 +1542,7 @@ MonoBehaviour:
   elapsedTime: 0
   timeToCapture: 20
   dominationFill: {fileID: 11490788}
+  connection: {fileID: 0}
   TierCapture: 0
   canBeCaptured: 0
 --- !u!114 &11481916
@@ -1567,7 +1572,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130958}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -1576,7 +1581,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &11484446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1604,7 +1609,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186438}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -1613,7 +1618,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &11490788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1647,7 +1652,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178386}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -1656,7 +1661,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &11493326
 MonoBehaviour:
   m_ObjectHideFlags: 1
