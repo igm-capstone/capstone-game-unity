@@ -23,11 +23,11 @@ public class MoveBlock : ISkill
         {
             if (Input.GetKey(KeyCode.Space))
             {
-                transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, true);
+                GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, true);
             }
             else
             {
-                transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, false);
+                GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, false);
             }
         }
     }
@@ -43,9 +43,9 @@ public class MoveBlock : ISkill
         
         if (status && blockNetID.transform.parent == blockCollector.transform)
         {
-            blockNetID.transform.SetParent(transform.parent.transform);
+            blockNetID.transform.SetParent(transform);
         }
-        else if (!status && blockNetID.transform.parent == transform.parent.transform)
+        else if (!status && blockNetID.transform.parent == transform)
         {
             blockNetID.transform.SetParent(blockCollector.transform);
         }

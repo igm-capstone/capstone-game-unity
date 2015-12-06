@@ -13,20 +13,17 @@ public class Hallucinate : ISkill
     {
         if (target.layer != LayerMask.NameToLayer("Player")) return false;
 
-        var z = GridBehavior.Instance.transform.position.z;
-        clickWorldPos.z = z;
-
-        MinionSpawnManager.Instance.CmdCoolerSpawn(target, 3.0f, 3, 
+        MinionSpawnManager.Instance.CmdCoolerSpawn(target, 3.0f, 3,
             (GameObject[] minions, GameObject player) =>
             {
-                IEnumerable<GameObject> players = GameObject.FindGameObjectsWithTag("Player").Where(p => p != player);
-                foreach (GameObject p in players)
+                var selfAc = player.GetComponentInParent<AvatarNetworkBehavior>();
+                foreach (var ac in FindObjectsOfType<AvatarNetworkBehavior>())
                 {
-                    AvatarNetworkBehavior ac = p.GetComponentInParent<AvatarNetworkBehavior>();
-                    foreach (GameObject minion in minions)
-                    {
-                        ac.RpcDisableMinion(minion.name);
-                    }
+                    if (ac != selfAc)
+                        foreach (GameObject minion in minions)
+                        {
+                            ac.RpcDisableMinion(minion);
+                        }
                 }
 
                 foreach (GameObject minion in minions)
@@ -40,12 +37,7 @@ public class Hallucinate : ISkill
 
     IEnumerator DisposeMinion(GameObject minion)
     {
-        float minionLifetime = 0.0f;
-        while(minionLifetime < Duration)
-        {
-            minionLifetime += Time.deltaTime;
-            yield return null;
-        }
+        yield return new WaitForSeconds(Duration);
 
         if (minion != null)
         {

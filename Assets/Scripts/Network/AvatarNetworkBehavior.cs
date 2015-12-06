@@ -44,20 +44,9 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
 
 
     [ClientRpc]
-    public void RpcEnableMinion(string minionID)
+    public void RpcDisableMinion(GameObject minion)
     {
-        GameObject minion = GameObject.Find(minionID);
-        minion.SetActive(true);
-    }
-
-    [ClientRpc]
-    public void RpcDisableMinion(string minionID)
-    {
-        if (gameObject.name == "Me")
-        {
-            GameObject minion = GameObject.Find(minionID);
-            minion.SetActive(false);
-        }
+        if (hasAuthority) minion.SetActive(false);
     }
 
     [Command]
