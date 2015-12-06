@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627ce09e3a6e8164db3cf48ed233fbc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSkills: 0
+  MaxSkills: 3
   HideInactiveSkills: 0
   OnClickBehavior: 0
 --- !u!114 &11485708
@@ -392,6 +392,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: orthographic size
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaxSkills
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

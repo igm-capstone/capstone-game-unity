@@ -44,9 +44,8 @@ public class LightController : NetworkBehaviour {
 
             if (isServer)
             {
-                GridBehavior grid = FindObjectOfType<GridBehavior>();
-                grid.SetGridDirty();
-                grid.SetAIDirty();
+                GridBehavior.Instance.SetGridDirty();
+                GridBehavior.Instance.SetAIDirty();
             }
         }
 	}

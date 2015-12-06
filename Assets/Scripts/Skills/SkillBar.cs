@@ -12,7 +12,7 @@ public class SkillBar : MonoBehaviour
         UseSkill
     }
 
-    public int MaxSkills;
+    public int MaxSkills = 3;
     public bool HideInactiveSkills = false;
     public OnClickBehaviorType OnClickBehavior;
 
@@ -22,16 +22,13 @@ public class SkillBar : MonoBehaviour
 
     void Start()
    { 
-        _skillList = GetComponents<ISkill>().ToList<ISkill>();
+        SetSkillCapacity(MaxSkills);
+        SetSkillList(GetComponents<ISkill>().ToList());
 
         foreach (var skill in _skillList)
         {
             skill.enabled = true;
         }
-
-        //SetSkillCapacity(MaxSkills);
-        //SetSkillList(transform.parent.GetComponentsInChildren<ISkill>().ToList<ISkill>());
-        
     }
 
 
@@ -55,7 +52,7 @@ public class SkillBar : MonoBehaviour
 
     public void SetSkillList(List<ISkill> skillList)
     {
-        if (skillList.Count() < _skillCapacity)
+        if (skillList.Count() <= _skillCapacity)
         {
             _skillList = skillList;
         }

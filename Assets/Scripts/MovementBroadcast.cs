@@ -3,7 +3,6 @@ using System.Collections;
 
 public class MovementBroadcast : MonoBehaviour {
 
-    private GridBehavior grid;
     Vector3 lastPos;
     
     public bool AffectsGrid = true;
@@ -12,7 +11,6 @@ public class MovementBroadcast : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        grid = FindObjectOfType<GridBehavior>();
         lastPos = transform.position;
     }
 
@@ -23,7 +21,7 @@ public class MovementBroadcast : MonoBehaviour {
         {
             if (AffectsGrid)
             {
-                grid.SetGridDirty();
+                GridBehavior.Instance.SetGridDirty();
 
                 var distance = transform.position - lastPos;
                 var direction = distance.normalized;
@@ -43,7 +41,7 @@ public class MovementBroadcast : MonoBehaviour {
             }
             if (AffectsAI)
             {
-                grid.SetAIDirty();
+                GridBehavior.Instance.SetAIDirty();
             }
             lastPos = transform.position;
         }

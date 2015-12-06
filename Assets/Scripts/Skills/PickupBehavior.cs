@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(ISkill))]
 public class PickupBehavior : MonoBehaviour {
 
-    public ISkill Skill;
-
-	// Use this for initialization
-	void Start ()
-    {
-	
+    // Use this for initialization
+	void Awake ()
+	{
+	    GetComponent<ISkill>().enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -30,6 +29,9 @@ public class PickupBehavior : MonoBehaviour {
             skillBar.RemoveSkill(skillBar.GetSkill(0));
         }
 
-        skillBar.AddSkill(Skill);
+        
+        skillBar.AddSkill(GetComponent<ISkill>());
+
+        Destroy(gameObject);
     }
 }

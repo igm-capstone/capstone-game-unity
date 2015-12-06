@@ -13,7 +13,7 @@ public class Hallucinate : ISkill
     {
         if (target.layer != LayerMask.NameToLayer("Player")) return false;
 
-        var z = FindObjectOfType<GridBehavior>().transform.position.z;
+        var z = GridBehavior.Instance.transform.position.z;
         clickWorldPos.z = z;
 
         MinionSpawnManager.Instance.CmdCoolerSpawn(target, 3.0f, 3, 

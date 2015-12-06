@@ -21,34 +21,13 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     [Command]
     public void CmdTakeBlockOver(string block, bool status)
     {
-        if (!blockCollector) return;
-        NetworkIdentity blockNetID = GameObject.Find(block).GetComponent<NetworkIdentity>();
-
-        if (status && blockNetID.transform.parent == blockCollector)
-        {
-            blockNetID.transform.parent = transform;
-        }
-        else if (!status)
-        {
-            blockNetID.transform.parent = blockCollector.transform;
-        }
         RpcTakeBlockOver(block, status);
     }
     
     [ClientRpc]
     void RpcTakeBlockOver(string block, bool status)
     {
-        NetworkIdentity blockNetID = GameObject.Find(block).GetComponent<NetworkIdentity>();
-
-        if (status && blockNetID.transform.parent == blockCollector)
-        {
-            blockNetID.transform.parent = transform;
-        }
-        else if (!status)
-        {
-            blockNetID.transform.parent = blockCollector.transform;
-
-        }
+        GetComponentInChildren<MoveBlock>().TakeBlockOver(block, status);
     }
 
     [Command]

@@ -9,7 +9,7 @@ public class SpawnMinion : ISkill
     {
         if (target.layer != LayerMask.NameToLayer("Floor")) return false;
 
-        var grid = FindObjectOfType<GridBehavior>();
+        var grid = GridBehavior.Instance;
         var z = grid.transform.position.z;
         clickWorldPos.z = z;
 

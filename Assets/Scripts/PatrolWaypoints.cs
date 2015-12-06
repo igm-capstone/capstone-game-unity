@@ -9,12 +9,10 @@ public class PatrolWaypoints : MonoBehaviour
     
     private TargetFollower follower;
 
-    private GridBehavior grid;
     private Transform[] waypoints;
 
     void Awake()
     {
-        grid = FindObjectOfType<GridBehavior>();
         follower = GetComponent<TargetFollower>();
     }
 
@@ -33,7 +31,7 @@ public class PatrolWaypoints : MonoBehaviour
 
 	    var nextWaypoint = waypoints[Mathf.Abs(nextStop)];
 	    var direction = nextWaypoint.position - transform.position;
-        var node = grid.getNodeAtPos(nextWaypoint.position);
+        var node = GridBehavior.Instance.getNodeAtPos(nextWaypoint.position);
         var canWalk = node != null && node.canWalk;
 
 	    if (direction.sqrMagnitude < 1 || !canWalk)

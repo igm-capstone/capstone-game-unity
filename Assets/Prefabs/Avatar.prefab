@@ -48,7 +48,7 @@ GameObject:
   - 114: {fileID: 11448782}
   - 114: {fileID: 11458820}
   - 114: {fileID: 11485634}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Avatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +99,7 @@ GameObject:
   - 114: {fileID: 11449118}
   - 60: {fileID: 6099952}
   - 114: {fileID: 11493594}
+  - 114: {fileID: 11498096}
   m_Layer: 11
   m_Name: AvatarRotation
   m_TagString: Player
@@ -497,15 +498,15 @@ MonoBehaviour:
   m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
+  m_TransformSyncMode: 2
   m_SendInterval: .0333333351
-  m_SyncRotationAxis: 3
+  m_SyncRotationAxis: 0
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
-  m_MovementTheshold: .00100000005
-  m_SnapThreshold: 1
+  m_MovementTheshold: .00999999978
+  m_SnapThreshold: 4
   m_InterpolateRotation: 15
-  m_InterpolateMovement: 15
+  m_InterpolateMovement: 1
 --- !u!114 &11449118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -535,7 +536,7 @@ MonoBehaviour:
   m_SendInterval: .0333333351
   m_SyncRotationAxis: 3
   m_RotationSyncCompression: 0
-  m_MovementThreshold: .00100000005
+  m_MovementThreshold: .00999999978
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
 --- !u!114 &11459388
@@ -593,12 +594,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  moveableObjectLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  collisionRadius: .540000021
-  moveableObstacle:
-  - {fileID: 0}
   disable: 0
 --- !u!114 &11485634
 MonoBehaviour:
@@ -620,14 +615,33 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154064}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 627ce09e3a6e8164db3cf48ed233fbc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSkills: 0
+  MaxSkills: 3
   HideInactiveSkills: 0
-  OnClickBehavior: 0
+  OnClickBehavior: 1
+--- !u!114 &11498096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154064}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b58825af18d92842bb889339b96cb8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+  SkillSprite: {fileID: 21300000, guid: c4b48107c53270b4fa108397793abdc6, type: 3}
+  Name: Move Block
+  Cooldown: 0
+  moveableObjectLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  collisionRadius: 1
 --- !u!124 &12432304
 Behaviour:
   m_ObjectHideFlags: 1
@@ -776,11 +790,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TransformSyncMode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_MovementTheshold
-      value: .00100000005
+      value: .00999999978
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SendInterval
@@ -788,11 +802,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_InterpolateMovement
-      value: 15
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SnapThreshold
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
@@ -842,6 +856,43 @@ Prefab:
       propertyPath: HealthCanvas
       value: 
       objectReference: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: MaxSkills
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: OnClickBehavior
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Name
+      value: Move Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_MovementThreshold
+      value: .00999999978
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: collisionRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Cooldown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SkillButtonPrefab
+      value: 
+      objectReference: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: SkillSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c4b48107c53270b4fa108397793abdc6,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 133474}

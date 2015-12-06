@@ -42,9 +42,12 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
             return areaOfNodes.Cast<INode>();
         }
     }
-    
+
+    public static GridBehavior Instance { get; private set; }
+
     void Start()
     {
+        Instance = this;
         var mRenderer = gameObject.GetComponent<Renderer>();
 
         maxSize = new Vector2(mRenderer.bounds.size.x, mRenderer.bounds.size.y);

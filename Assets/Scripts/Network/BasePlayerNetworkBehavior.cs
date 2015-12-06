@@ -21,12 +21,6 @@ public class BasePlayerNetworkBehavior : NetworkBehaviour
         {
             light.dirty = true;
         }
-
-        foreach (var grid in FindObjectsOfType<GridBehavior>())
-        {
-            grid.SetGridDirty();
-            grid.SetAIDirty();
-        }
     }
 
     [Command]

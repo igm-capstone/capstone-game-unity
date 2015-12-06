@@ -1,0 +1,61 @@
+﻿using UnityEngine;
+using UnityEngine.Networking;
+using System.Collections;
+
+public class MoveBlock : ISkill
+{
+    [SerializeField]
+    private LayerMask moveableObjectLayer = 1 << 12;
+    [SerializeField]
+    private float collisionRadius = 0.6f;
+
+    private GameObject blockCollector;
+    
+    public void Start()
+    {
+        blockCollector = GameObject.Find("BlocksCollector");
+    }
+
+    public void Update()
+    {
+        var moveableObstacle = Physics2D.OverlapCircleAll(transform.position, collisionRadius, moveableObjectLayer);
+        if (moveableObstacle.Length > 0 && moveableObstacle[0].gameObject != null)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, true);
+            }
+            else
+            {
+                transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, false);
+            }
+        }
+    }
+
+    protected override bool Usage(GameObject target, Vector3 clickWorldPos)
+    {
+        return true;
+    }
+
+    public void TakeBlockOver(string block, bool status)
+    {
+        if (blockCollector == null)
+        {
+            blockCollector = GameObject.Find("BlocksCollector");
+            Debug.Log("Was null");
+        }
+
+        GameObject blockNetID = GameObject.Find(block);
+        
+        if (status && blockNetID.transform.parent == blockCollector.transform)
+        {
+            Debug.Log("Seting parent");
+            blockNetID.transform.SetParent(transform.parent.transform);
+        }
+        else if (!status && blockNetID.transform.parent == transform.parent.transform)
+        {
+            Debug.Log("UnSeting parent");
+            blockNetID.transform.SetParent(blockCollector.transform);
+        }
+    }
+}

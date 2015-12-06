@@ -9,8 +9,6 @@ using UnityEditor;
 
 public class TargetFollower : MonoBehaviour
 {
-    private GridBehavior grid;
-
     public LayerMask wallMask;
 
     // repel
@@ -33,7 +31,6 @@ public class TargetFollower : MonoBehaviour
 
     void Awake()
     {
-        grid = FindObjectOfType<GridBehavior>();
         animator = GetComponent<RpcNetworkAnimator>();
         container = transform.Find("Rotation");
     }
@@ -41,7 +38,7 @@ public class TargetFollower : MonoBehaviour
     public void MoveTowards(Transform target)
     {
         path = GetPathTo(target);
-        var node = grid.getNodeAtPos(transform.position);
+        var node = GridBehavior.Instance.getNodeAtPos(transform.position);
         var speedFactor = 1 / (node.Weight);
 
         if (path == null)
@@ -145,7 +142,7 @@ public class TargetFollower : MonoBehaviour
 
     IList<Vector2> GetPathTo(Transform target)
     {
-        nodePath = grid.GetFringePath(gameObject, target.gameObject).Cast<Node>().ToList();
+        nodePath = GridBehavior.Instance.GetFringePath(gameObject, target.gameObject).Cast<Node>().ToList();
         if (!nodePath.Any()) return null; 
 
         // compress path
@@ -189,7 +186,7 @@ public class TargetFollower : MonoBehaviour
             Handles.color = Color.red;
             foreach (Node node in nodePath)
             {
-                Handles.DrawWireDisc(node.position, Vector3.back, grid.nodeRadius/2.0f);
+                Handles.DrawWireDisc(node.position, Vector3.back, GridBehavior.Instance.nodeRadius/2.0f);
             }
         }
     }

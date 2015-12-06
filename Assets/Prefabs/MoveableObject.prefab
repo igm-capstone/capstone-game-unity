@@ -12,8 +12,6 @@ GameObject:
   - 23: {fileID: 2338998}
   - 114: {fileID: 11460746}
   - 60: {fileID: 6034596}
-  - 114: {fileID: 11455796}
-  - 114: {fileID: 11478444}
   m_Layer: 12
   m_Name: MoveableObject
   m_TagString: Untagged
@@ -83,38 +81,6 @@ PolygonCollider2D:
       - {x: .500417948, y: -.499719232}
       - {x: -.499331266, y: -.498804212}
       - {x: -.500081599, y: .500448525}
---- !u!114 &11455796
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 135064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 216
-    i1: 75
-    i2: 236
-    i3: 78
-    i4: 130
-    i5: 11
-    i6: 211
-    i7: 68
-    i8: 201
-    i9: 95
-    i10: 49
-    i11: 236
-    i12: 228
-    i13: 194
-    i14: 197
-    i15: 195
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &11460746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,26 +94,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AffectsGrid: 1
   AffectsAI: 1
---- !u!114 &11478444
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 135064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: .0333333351
-  m_SyncRotationAxis: 0
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: .00100000005
-  m_SnapThreshold: 1
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 20
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -173,7 +119,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SendInterval

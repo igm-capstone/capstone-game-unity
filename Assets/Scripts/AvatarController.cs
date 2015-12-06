@@ -10,10 +10,6 @@ public class AvatarController : MonoBehaviour
     [SerializeField]
     private float moveSpeed;
     [SerializeField]
-    private LayerMask moveableObjectLayer;
-    [SerializeField]
-    private float collisionRadius;
-    public Collider2D[] moveableObstacle = new Collider2D[1];
     public bool disable = false;
 
     SkillBar _avatarSkillBar;
@@ -28,14 +24,10 @@ public class AvatarController : MonoBehaviour
 	void FixedUpdate () 
     {
         if(!disable)
-            move();
-        moveableObstacle = Physics2D.OverlapCircleAll(transform.position, collisionRadius, moveableObjectLayer);
-        if (moveableObstacle.Length > 0 && moveableObstacle[0].gameObject != null)
-            moveObject();
-
+            Move();
     }
 
-    private void move()
+    private void Move()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -45,18 +37,6 @@ public class AvatarController : MonoBehaviour
         }
 
         rb.velocity = new Vector2(horizontal,vertical) * moveSpeed;
-    }
-
-    private void moveObject()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, true);
-        }
-        else
-        {
-            transform.parent.GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, false);
-        }
     }
 
 }
