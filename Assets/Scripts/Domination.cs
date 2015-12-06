@@ -10,6 +10,7 @@ public class Domination : MonoBehaviour
     public float elapsedTime = 0.0f;
     public float timeToCapture = 20.0f;
     public Image dominationFill;
+    public Image connection;
 
     // Domination Point Tier. All dom Pnts of a tier must be dominated to go to the next.
     [Range(0, 5)]
@@ -25,6 +26,11 @@ public class Domination : MonoBehaviour
         {
             elapsedTime -= Time.deltaTime;
             dominationFill.fillAmount = elapsedTime / timeToCapture;
+        }
+
+        if(captured == true && connection != null)
+        {
+            connection.fillAmount += (Time.deltaTime * 0.5f);
         }
     }
     void OnTriggerStay2D(Collider2D other)
