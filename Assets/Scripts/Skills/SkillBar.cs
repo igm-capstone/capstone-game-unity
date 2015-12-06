@@ -22,7 +22,7 @@ public class SkillBar : MonoBehaviour
 
     void Start()
    { 
-        _skillList = GetComponents<ISkill>();
+        _skillList = GetComponents<ISkill>().ToList<ISkill>();
 
         foreach (var skill in _skillList)
         {
