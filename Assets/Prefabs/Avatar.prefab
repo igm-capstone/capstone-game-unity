@@ -10,9 +10,8 @@ GameObject:
   - 4: {fileID: 410792}
   - 212: {fileID: 21271818}
   - 61: {fileID: 6180578}
-  - 114: {fileID: 11406044}
   - 96: {fileID: 9635952}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,6 +99,7 @@ GameObject:
   - 60: {fileID: 6099952}
   - 114: {fileID: 11493594}
   - 114: {fileID: 11498096}
+  - 114: {fileID: 11464576}
   m_Layer: 11
   m_Name: AvatarRotation
   m_TagString: Player
@@ -430,7 +430,7 @@ TrailRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107726}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
@@ -471,22 +471,6 @@ TrailRenderer:
       rgba: 16438910
   m_MinVertexDistance: .00999999978
   m_Autodestruct: 0
---- !u!114 &11406044
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 107726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5d740ead7dea084d8b37ff342a8096c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SkillButtonPrefab: {fileID: 0}
-  SkillSprite: {fileID: 0}
-  Name: Skill
-  Cooldown: 2
-  SlashDuration: .200000003
 --- !u!114 &11448782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -571,6 +555,22 @@ MonoBehaviour:
     i15: 107
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &11464576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154064}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d740ead7dea084d8b37ff342a8096c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+  SkillSprite: {fileID: 0}
+  Name: Melee Weapon
+  Cooldown: 2
+  SlashDuration: .200000003
 --- !u!114 &11465060
 MonoBehaviour:
   m_ObjectHideFlags: 1

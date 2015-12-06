@@ -6,15 +6,27 @@ public class MeleeWeapon : ISkill
 {
     public float SlashDuration = 0.2f;
 
-    BoxCollider2D boxCollider;
+    Transform weaponTransform;
+    BoxCollider2D hitboxCollider;
     SpriteRenderer spriteRenderer;
+    TrailRenderer trailRenderer;
     AvatarNetworkBehavior avatarNetwork;
 
-    public void Start()
+    public void Awake()
     {
-        boxCollider = GetComponent<BoxCollider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        trailRenderer = GetComponentInChildren<TrailRenderer>();
+        hitboxCollider = trailRenderer.gameObject.GetComponent<BoxCollider2D>();
+        spriteRenderer = trailRenderer.gameObject.GetComponent<SpriteRenderer>();
+        weaponTransform = trailRenderer.transform;
         avatarNetwork = GetComponentInParent<AvatarNetworkBehavior>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.M))
+        {
+            Use();
+        }
     }
 
     protected override bool Usage(GameObject target, Vector3 clickWorldPos)
@@ -32,12 +44,12 @@ public class MeleeWeapon : ISkill
 
         while (time < SlashDuration)
         {
-            transform.parent.localRotation = Quaternion.Slerp(q0, q1, time / SlashDuration);
+            weaponTransform.parent.localRotation = Quaternion.Slerp(q0, q1, time / SlashDuration);
             time += Time.deltaTime;
             yield return null;
         }
 
-        transform.parent.localRotation = Quaternion.identity;
+        weaponTransform.parent.localRotation = Quaternion.identity;
         avatarNetwork.CmdEnableSlash(false);
     }
 
@@ -52,7 +64,8 @@ public class MeleeWeapon : ISkill
 
     public void EnableSlash(bool status)
     {
-        boxCollider.enabled = status;
+        hitboxCollider.enabled = status;
+        trailRenderer.enabled = status;
         spriteRenderer.enabled = status;
     }
 

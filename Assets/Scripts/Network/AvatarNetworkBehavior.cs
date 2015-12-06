@@ -33,14 +33,13 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     [Command]
     public void CmdEnableSlash(bool status)
     {
-        //meleeBehaviour.EnableSlash(status);
         RpcEnableSlash(status);
     }
 
     [ClientRpc]
     public void RpcEnableSlash(bool status)
     {
-        //meleeBehaviour.EnableSlash(status);
+        GetComponentInChildren<MeleeWeapon>().EnableSlash(status);
     }
 
 

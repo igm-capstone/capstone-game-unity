@@ -7,11 +7,11 @@ public class MoveBlock : ISkill
     [SerializeField]
     private LayerMask moveableObjectLayer = 1 << 12;
     [SerializeField]
-    private float collisionRadius = 0.6f;
+    private float collisionRadius = 1.0f;
 
     private GameObject blockCollector;
     
-    public void Start()
+    public void Awake()
     {
         blockCollector = GameObject.Find("BlocksCollector");
     }
@@ -39,12 +39,6 @@ public class MoveBlock : ISkill
 
     public void TakeBlockOver(string block, bool status)
     {
-        if (blockCollector == null)
-        {
-            blockCollector = GameObject.Find("BlocksCollector");
-            Debug.Log("Was null");
-        }
-
         GameObject blockNetID = GameObject.Find(block);
         
         if (status && blockNetID.transform.parent == blockCollector.transform)
