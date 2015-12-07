@@ -46,7 +46,21 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     [ClientRpc]
     public void RpcDisableMinion(GameObject minion)
     {
-        if (hasAuthority) minion.SetActive(false);
+        if (hasAuthority)
+        {
+            foreach (var s in minion.GetComponentsInChildren<Renderer>())
+            {
+                s.enabled = false;
+            }
+            foreach (var s in minion.GetComponentsInChildren<Collider2D>())
+            {
+                s.enabled = false;
+            }
+            foreach (var s in minion.GetComponentsInChildren<Canvas>())
+            {
+                s.gameObject.SetActive(false);
+            }
+        }
     }
 
     [Command]
