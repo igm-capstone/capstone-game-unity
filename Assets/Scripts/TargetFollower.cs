@@ -39,7 +39,7 @@ public class TargetFollower : MonoBehaviour
     {
         path = GetPathTo(target);
         var node = GridBehavior.Instance.getNodeAtPos(transform.position);
-        var speedFactor = 1 / (node.Weight);
+        var speedFactor = 1 / Mathf.Min(node.Weight, 4);
 
         if (path == null)
         {

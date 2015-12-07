@@ -175,7 +175,7 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
                     }
                 }
 
-                if (!node.canWalk) node.Weight = float.MaxValue;
+                if (!node.canWalk) node.Weight = 1000;
 
                 //if (Application.isPlaying)
                 //{
@@ -373,7 +373,7 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
         endNode.isStartEnd = true;
         
         var path = fringe.FindPath(startNode, endNode);
-        if (fringe.PathCost > 200)
+        if (fringe.PathCost > 2000)
         {
             return new List<INode>();
         }
