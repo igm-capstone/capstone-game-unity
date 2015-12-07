@@ -393,10 +393,6 @@ public class Light2D : MonoBehaviour {
     }
     private void ResetBounds()
     {
-        /*var bounds = lightMesh.bounds;
-        bounds.center = Vector3.zero;
-        lightMesh.bounds = bounds;*/
-
         lightMesh.RecalculateBounds();
     }
 
