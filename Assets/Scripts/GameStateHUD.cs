@@ -13,7 +13,14 @@ public class GameStateHUD : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        if (GameObject.FindObjectOfType<CustomNetworkManager>() == null) Application.LoadLevel("Menu");
+	    if (GameObject.FindObjectOfType<CustomNetworkManager>() == null)
+	    {
+	        foreach (var obj in FindObjectsOfType<Component>())
+	        {
+	            Destroy(obj.gameObject);
+	        }
+            Application.LoadLevel("Menu");
+	    }
         gameStateHUD.SetActive(false);
     }
 	
