@@ -26,7 +26,7 @@ public class MeleeWeapon : ISkill
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M) && !avatarController.Disabled)
+        if (Input.GetKeyDown(KeyCode.M))
         {
             Use();
         }
@@ -34,6 +34,8 @@ public class MeleeWeapon : ISkill
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
+        if (avatarController.Disabled) return "You are incapacitated. Seek help!";
+        
         StartCoroutine(Slash());
         return null;
     }

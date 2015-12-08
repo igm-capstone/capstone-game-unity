@@ -484,7 +484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxSkills: 3
   HideInactiveSkills: 0
-  OnClickBehavior: 1
+  OnClickBehavior: 2
 --- !u!114 &11438486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -862,7 +862,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: OnClickBehavior
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Name

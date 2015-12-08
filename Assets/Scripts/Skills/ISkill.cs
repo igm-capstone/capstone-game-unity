@@ -10,6 +10,8 @@ public abstract class ISkill : MonoBehaviour
     public string Name = "Skill";
     public float Cooldown = 2;
 
+    [NonSerialized] public bool IsActive;
+
     public float LastUse { get; private set; }
 
     [NonSerialized]

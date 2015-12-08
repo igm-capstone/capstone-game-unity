@@ -9,7 +9,8 @@ public class SkillBar : MonoBehaviour
     public enum OnClickBehaviorType
     {
         SetActiveSkillOnClick,
-        UseSkill
+        UseSkill,
+        DoNothing
     }
 
     public int MaxSkills = 3;
@@ -45,8 +46,7 @@ public class SkillBar : MonoBehaviour
             if (HideInactiveSkills)
                 s.SkillBtnScript.SetVisibility(s == skill);
             
-            if (OnClickBehavior == OnClickBehaviorType.SetActiveSkillOnClick)
-                s.SkillBtnScript.SetHighlight(s == skill);
+            s.IsActive = (s == skill);
         }
         _activeSkill = skill;
     }

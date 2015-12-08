@@ -18,8 +18,10 @@ public class SkillButton : MonoBehaviour
 
         if (_skillBar.OnClickBehavior == SkillBar.OnClickBehaviorType.SetActiveSkillOnClick)
             _btn.onClick.AddListener(SetActiveClick);
-        else
+        else if (_skillBar.OnClickBehavior == SkillBar.OnClickBehaviorType.UseSkill)
             _btn.onClick.AddListener(_skill.Use);
+        else
+            _btn.interactable = false;
 
         _fill = transform.Find("Fill").GetComponent<Image>();
         _hl = transform.Find("Highlight").GetComponent<Image>();
@@ -30,6 +32,8 @@ public class SkillButton : MonoBehaviour
     void Update()
     {
         _fill.fillAmount = 1 - ((Time.time - _skill.LastUse) / _skill.Cooldown);
+
+        _hl.enabled = _skill.IsActive;
     }
 
     void SetActiveClick()

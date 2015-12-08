@@ -10,31 +10,57 @@ public class MoveBlock : ISkill
     private float collisionRadius = 1.0f;
 
     private GameObject blockCollector;
+    private AvatarController avatarController;
+    private string currentBlock = null;
     
     public void Awake()
     {
         blockCollector = GameObject.Find("BlocksCollector");
+        avatarController = GetComponent<AvatarController>();
     }
 
     public void Update()
     {
-        var moveableObstacle = Physics2D.OverlapCircleAll(transform.position, collisionRadius, moveableObjectLayer);
-        if (moveableObstacle.Length > 0 && moveableObstacle[0].gameObject != null)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKey(KeyCode.Space))
-            {
-                GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, true);
-            }
-            else
-            {
-                GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, false);
-            }
+            Use();
+        }
+
+        // Drop if dead
+        if (IsActive && avatarController.Disabled)
+        {
+            GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(currentBlock, false);
+            currentBlock = null;
+            IsActive = false;
         }
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
-        return null;
+        if (avatarController.Disabled) return "You are incapacitated. Seek help!";
+
+        if (currentBlock != null)
+        {
+            GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(currentBlock, false);
+            currentBlock = null;
+            IsActive = false;
+            return null;
+        }
+        else
+        {
+            var moveableObstacle = Physics2D.OverlapCircleAll(transform.position, collisionRadius, moveableObjectLayer);
+            if (moveableObstacle.Length > 0 && moveableObstacle[0].gameObject != null)
+            {
+                GetComponent<AvatarNetworkBehavior>().CmdTakeBlockOver(moveableObstacle[0].name, true);
+                currentBlock = moveableObstacle[0].name;
+                IsActive = true;
+                return null;
+            }
+            else
+            {
+                return "You need to be close to a block to pick it up!";
+            }
+        }
     }
 
     public void TakeBlockOver(string block, bool status)
