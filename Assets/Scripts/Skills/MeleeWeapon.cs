@@ -17,10 +17,10 @@ public class MeleeWeapon : ISkill
 
     public void Awake()
     {
-        trailRenderer = GetComponentInChildren<TrailRenderer>();
-        hitboxCollider = trailRenderer.gameObject.GetComponent<Collider2D>();
-        spriteRenderer = trailRenderer.gameObject.GetComponent<SpriteRenderer>();
-        weaponTransform = trailRenderer.transform;
+        //trailRenderer = GetComponentInChildren<TrailRenderer>();
+        //hitboxCollider = trailRenderer.gameObject.GetComponent<Collider2D>();
+        //spriteRenderer = trailRenderer.gameObject.GetComponent<SpriteRenderer>();
+        //weaponTransform = trailRenderer.transform;
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         avatarController = GetComponent<AvatarController>();
         animator = GetComponent<RpcNetworkAnimator>();
@@ -37,19 +37,19 @@ public class MeleeWeapon : ISkill
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
         if (avatarController.Disabled) return "You are incapacitated. Seek help!";
-        
-        StartCoroutine(Slash());
+
+        animator.SetTrigger("Attack"); //StartCoroutine(Slash());
         return null;
     }
 
-    public IEnumerator Slash()
+    /*public IEnumerator Slash()
     {
-        avatarNetwork.CmdEnableSlash(true);
+        //avatarNetwork.CmdEnableSlash(true);
         //Attack Animation 3D model
         animator.SetTrigger("Attack");
-
+        /*
         //Sprite Attack
-        hitboxCollider.enabled = true;
+        //hitboxCollider.enabled = true;
         Quaternion q0 = Quaternion.Euler(0.0f, 0.0f, -90.0f);
         Quaternion q1 = Quaternion.Euler(0.0f, 0.0f, 90.0f);
         float time = 0.0f;
@@ -61,12 +61,13 @@ public class MeleeWeapon : ISkill
             yield return null;
         }
 
-        weaponTransform.parent.localRotation = Quaternion.identity;
-        avatarNetwork.CmdEnableSlash(false);
-        hitboxCollider.enabled = false;
+        //weaponTransform.parent.localRotation = Quaternion.identity;
+        //avatarNetwork.CmdEnableSlash(false);
+        //hitboxCollider.enabled = false;
+
     }
 
-    public void OnCollisionEnter2D(Collision2D other)
+   /* public void OnCollisionEnter2D(Collision2D other)
     {
         if (hitboxCollider.enabled) //Very important!
         {
@@ -77,11 +78,11 @@ public class MeleeWeapon : ISkill
             }
         }
     }
-
+    */
 
     public void EnableSlash(bool status)
     {
-        trailRenderer.enabled = status;
+        //trailRenderer.enabled = status;
         //spriteRenderer.enabled = status;
     }
 
