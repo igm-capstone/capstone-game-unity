@@ -23,12 +23,12 @@ public class SkillBar : MonoBehaviour
 
     void Start()
    { 
-        SetSkillCapacity(MaxSkills);
+        SetSkillCapacity(GetComponents<ISkill>().ToList().Count());
         SetSkillList(GetComponents<ISkill>().ToList());
 
         foreach (var skill in _skillList)
         {
-            skill.enabled = true;
+            skill.enabled = !skill.canDrop;
         }
     }
 
@@ -49,6 +49,19 @@ public class SkillBar : MonoBehaviour
             s.IsActive = (s == skill);
         }
         _activeSkill = skill;
+    }
+
+    public void SetSkillEnabled(string name, bool enabled)
+    {
+        //  List<ISkill> skills = _skillList.Where(s => s.Name == name) as List<ISkill>;
+
+        foreach (ISkill s in _skillList)
+        {
+            if (s.canDrop)
+            {
+                s.enabled = (s.Name == name);
+            }
+        }
     }
 
     public void SetSkillList(List<ISkill> skillList)

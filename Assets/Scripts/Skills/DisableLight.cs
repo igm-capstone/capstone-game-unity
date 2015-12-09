@@ -5,6 +5,12 @@ public class DisableLight : ISkill
 {
     public float Duration = 2;
 
+    public void Awake()
+    {
+        Name = "DisableLight";
+        canDrop = false;
+    }
+
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
         var light = target.GetComponent<LightController>();

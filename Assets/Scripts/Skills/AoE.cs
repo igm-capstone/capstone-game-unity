@@ -2,9 +2,9 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class Heal : ISkill
+public class AoE : ISkill
 {
-    public int HealAmount = 1;
+    public int Damage = 2;
     public float AreaRadius = 2;
 
     RpcNetworkAnimator animator;
@@ -14,17 +14,17 @@ public class Heal : ISkill
 
     public void Awake()
     {
-        Name = "Heal";
+        Name = "AoE";
         canDrop = true;
         animator = GetComponentInParent<RpcNetworkAnimator>();
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         avatarController = GetComponent<AvatarController>();
-        transform.Find("HealFX").localScale = new Vector3(AreaRadius, AreaRadius, 1);
+        transform.Find("AoEFX").localScale = new Vector3(AreaRadius, AreaRadius, 1);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             Use();
         }
@@ -36,11 +36,11 @@ public class Heal : ISkill
         
         animator.SetTrigger("Activated");
 
-        var players = Physics2D.OverlapCircleAll(transform.position, AreaRadius, 1 << LayerMask.NameToLayer("Player"));
+        var players = Physics2D.OverlapCircleAll(transform.position, AreaRadius, 1 << LayerMask.NameToLayer("Minion"));
 
         foreach (var p in players)
         {
-            GetComponent<AvatarNetworkBehavior>().CmdAssignDamage(p.gameObject, -HealAmount);
+            GetComponent<AvatarNetworkBehavior>().CmdAssignDamage(p.gameObject, Damage);
         }
         return null;
     }

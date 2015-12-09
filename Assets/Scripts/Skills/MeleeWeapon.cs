@@ -21,9 +21,14 @@ public class MeleeWeapon : ISkill
         //hitboxCollider = trailRenderer.gameObject.GetComponent<Collider2D>();
         //spriteRenderer = trailRenderer.gameObject.GetComponent<SpriteRenderer>();
         //weaponTransform = trailRenderer.transform;
+
+        Name = "Melee";
+        canDrop = false;      
+
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         avatarController = GetComponent<AvatarController>();
         animator = GetComponent<RpcNetworkAnimator>();
+       
     }
 
     void Update()
