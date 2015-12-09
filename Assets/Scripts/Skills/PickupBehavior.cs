@@ -30,6 +30,6 @@ public class PickupBehavior : NetworkBehaviour
         var g = GetComponent<ISkill>();
         skillBar.SetSkillEnabled(skill.Name, true);
 
-        NetworkServer.Destroy(gameObject);
+        other.gameObject.GetComponent<AvatarNetworkBehavior>().CmdPickup(this.gameObject);
     }
 }

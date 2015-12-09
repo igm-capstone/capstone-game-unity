@@ -68,4 +68,17 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     {
         obj.GetComponent<Health>().TakeDamage(damage);
     }
+
+    [Command]
+    public void CmdPickup(GameObject obj)
+    {
+        RpcPickup(obj);
+        NetworkServer.Destroy(obj);
+    }
+
+    [ClientRpc]
+    public void RpcPickup(GameObject obj)
+    {
+        Destroy(obj);
+    }
 }
