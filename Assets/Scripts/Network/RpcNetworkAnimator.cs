@@ -12,34 +12,76 @@ public class RpcNetworkAnimator: NetworkBehaviour
 
     public void SetFloat(string name, float value)
     {
-        RpcSetFloat(name, value);
+        if (isServer) RpcSetFloat(name, value);
+        else CmdSetFloat(name, value);
     }
 
     public void SetFloat(string name, float value, float damp, float deltaTime)
     {
-        RpcSetFloatDamp(name, value, damp, deltaTime);
+        if (isServer) RpcSetFloatDamp(name, value, damp, deltaTime);
+        else CmdSetFloatDamp(name, value, damp, deltaTime);
     }
 
     public void SetInteger(string name, int value)
     {
-        RpcSetInteger(name, value);
+        if (isServer) RpcSetInteger(name, value);
+        else CmdSetInteger(name, value);
     }
 
     public void SetBool(string name, bool value)
     {
-        RpcSetBool(name, value);
+        if (isServer) RpcSetBool(name, value);
+        else CmdSetBool(name, value);
     }
 
     public void SetTrigger(string name)
     {
-        RpcSetTrigger(name);
+        if (isServer) RpcSetTrigger(name);
+        else CmdSetTrigger(name);
     }
-
 
     public void ResetTrigger(string name)
     {
+        if (isServer) RpcResetTrigger(name);
+        else CmdResetTrigger(name);
+    }
+
+    [Command]
+    void CmdSetFloat(string name, float value)
+    {
+        RpcSetFloat(name, value);
+    }
+
+    [Command]
+    void CmdSetFloatDamp(string name, float value, float damp, float deltaTime)
+    {
+        RpcSetFloatDamp(name, value, damp, deltaTime);
+    }
+
+    [Command]
+    void CmdSetInteger(string name, int value)
+    {
+        RpcSetInteger(name, value);
+    }
+
+    [Command]
+    void CmdSetBool(string name, bool value)
+    {
+        RpcSetBool(name, value);
+    }
+
+    [Command]
+    void CmdSetTrigger(string name)
+    {
+        RpcSetTrigger(name);
+    }
+
+    [Command]
+    void CmdResetTrigger(string name)
+    {
         RpcResetTrigger(name);
     }
+
 
 
     [ClientRpc]
