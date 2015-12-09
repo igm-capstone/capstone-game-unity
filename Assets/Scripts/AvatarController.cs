@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 public class AvatarController : MonoBehaviour 
 {
     [SerializeField]
-    private float moveSpeed;
+    public float MoveSpeed = 4;
     [SerializeField]
     public bool Disabled { get { return (_health &&  _health.CurrentHealth <= 0); } }
 
@@ -42,7 +42,7 @@ public class AvatarController : MonoBehaviour
         {
             transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(vertical, horizontal) * Mathf.Rad2Deg, Vector3.forward);
         }
-        _rb.velocity = new Vector2(horizontal,vertical) * moveSpeed;
+        _rb.velocity = new Vector2(horizontal,vertical) * MoveSpeed;
         animator.SetFloat("RunSpeed", _rb.velocity.magnitude);
     }
 
