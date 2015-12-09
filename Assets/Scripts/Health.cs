@@ -13,6 +13,7 @@ public class Health : NetworkBehaviour
 
     private Slider slider;
     private GameObject canvas;
+    private RpcNetworkAnimator animator;
 
     void Awake()
     {
@@ -20,6 +21,7 @@ public class Health : NetworkBehaviour
         canvas = GameObject.Instantiate(HealthCanvas);
         canvas.transform.SetParent(transform, false);
         slider = GetComponentInChildren<Slider>();
+        animator = GetComponent<RpcNetworkAnimator>();
     }
 	
 	// Update is called once per frame
@@ -34,9 +36,13 @@ public class Health : NetworkBehaviour
     public void TakeDamage(int value)
     {
         CurrentHealth -= value;
+        if (GetComponent<AvatarController>() != null)
+            animator.SetTrigger("TakeDamage");
         if (CurrentHealth <= 0)
         {
             CurrentHealth = 0;
+            if (GetComponent<AvatarController>() != null)
+                animator.SetTrigger("Dead");
             if (GetComponent<MinionController>() != null)
             {
                 GetComponent<MinionController>().CmdKill();
