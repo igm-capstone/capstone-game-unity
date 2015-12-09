@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using Wenzil.Console;
 
 public class BasePlayerNetworkBehavior : NetworkBehaviour
 {
@@ -21,6 +22,21 @@ public class BasePlayerNetworkBehavior : NetworkBehaviour
         {
             light.dirty = true;
         }
+    }
+
+    [ConsoleCommand("use")]
+    public static void UseCommand(params string[] args)
+    {
+        var me = GameObject.Find("Me");
+        ISkill skill = null;
+        switch (args[0])
+        {
+            case "minion":
+                skill = me.GetComponent<SpawnMinion>();
+                break;
+        }
+
+        skill.Use();
     }
 
     [Command]
