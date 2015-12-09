@@ -17,6 +17,8 @@ public class MeleeWeapon : ISkill
 
     public void Awake()
     {
+        Name = "Melee";
+        canDrop = false;
         trailRenderer = GetComponentInChildren<TrailRenderer>();
         hitboxCollider = trailRenderer.gameObject.GetComponent<Collider2D>();
         spriteRenderer = trailRenderer.gameObject.GetComponent<SpriteRenderer>();
@@ -24,6 +26,7 @@ public class MeleeWeapon : ISkill
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         avatarController = GetComponent<AvatarController>();
         animator = GetComponent<RpcNetworkAnimator>();
+       
     }
 
     void Update()

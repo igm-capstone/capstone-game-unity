@@ -2,12 +2,14 @@
 using System.Collections;
 
 [RequireComponent(typeof(ISkill))]
-public class PickupBehavior : MonoBehaviour {
-
+public class PickupBehavior : MonoBehaviour
+{
+    ISkill skill;
     // Use this for initialization
 	void Awake ()
 	{
-	    GetComponent<ISkill>().enabled = false;
+        skill = GetComponent<ISkill>() as ISkill;
+       // skill.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -24,13 +26,8 @@ public class PickupBehavior : MonoBehaviour {
         }
 
         SkillBar skillBar = other.gameObject.GetComponent<SkillBar>();
-        if (skillBar.IsFull())
-        {
-            skillBar.RemoveSkill(skillBar.GetSkill(0));
-        }
-
-        
-        skillBar.AddSkill(GetComponent<ISkill>());
+        var g = GetComponent<ISkill>();
+        skillBar.SetSkillEnabled(skill.Name, true);
 
         Destroy(gameObject);
     }

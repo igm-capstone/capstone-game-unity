@@ -9,6 +9,11 @@ public class Hallucinate : ISkill
     private static GhostController ghost;
     public float Duration = 10;
 
+    public void Awake()
+    {
+        Name = "Hallucinate";
+        canDrop = false;
+    }
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
         if (target.layer != LayerMask.NameToLayer("Player")) return Name + " skill needs to target an explorer.";

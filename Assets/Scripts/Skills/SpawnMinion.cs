@@ -5,6 +5,12 @@ public class SpawnMinion : ISkill
 {
     public float distanceFromPlayers = 5f;
 
+    public void Awake()
+    {
+        Name = "SpawnMinion";
+        canDrop = false;
+    }
+
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
         if (target.layer != LayerMask.NameToLayer("Floor")) return Name + " skill needs to the floor.";
