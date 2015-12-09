@@ -248,6 +248,7 @@ GameObject:
   - 114: {fileID: 11439576}
   - 114: {fileID: 11485634}
   - 114: {fileID: 11420664}
+  - 114: {fileID: 11410854}
   m_Layer: 11
   m_Name: Avatar
   m_TagString: Player
@@ -886,7 +887,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.40999985, y: -.189999998, z: 0}
+  m_LocalPosition: {x: 18.5799999, y: -.25, z: -.0700000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 448192}
@@ -1352,7 +1353,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 69cb5e2eda748984a9899f1499e19675, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1439,6 +1440,24 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11410854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133474}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de3365a11c622f0439050f9c3b2889f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+  SkillSprite: {fileID: 0}
+  Name: Skill
+  Cooldown: 2
+  canDrop: 0
+  Duration: 2
+  SpeedMultiplier: 2
 --- !u!114 &11417010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1480,6 +1499,7 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: ca14d521ba1358a44851490d1ac8c40c, type: 3}
   Name: Move Block
   Cooldown: 0
+  canDrop: 0
   moveableObjectLayer:
     serializedVersion: 2
     m_Bits: 4096
@@ -1499,6 +1519,7 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 0734cb10911136e44802c8344db09ca1, type: 3}
   Name: Melee Weapon
   Cooldown: 1
+  canDrop: 0
   SlashDuration: .300000012
   Damage: 1
 --- !u!114 &11448782
@@ -1594,7 +1615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153858798af409f41bcbe96b72ce6150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  MoveSpeed: 4
 --- !u!114 &11470710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1639,7 +1660,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e3800cbd17406354198eaf3e9c84b357, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
