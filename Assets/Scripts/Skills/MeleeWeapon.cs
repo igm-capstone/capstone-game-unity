@@ -13,6 +13,7 @@ public class MeleeWeapon : ISkill
     TrailRenderer trailRenderer;
     AvatarNetworkBehavior avatarNetwork;
     AvatarController avatarController;
+    RpcNetworkAnimator animator;
 
     public void Awake()
     {
@@ -22,6 +23,7 @@ public class MeleeWeapon : ISkill
         weaponTransform = trailRenderer.transform;
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         avatarController = GetComponent<AvatarController>();
+        animator = GetComponent<RpcNetworkAnimator>();
     }
 
     void Update()
@@ -43,6 +45,10 @@ public class MeleeWeapon : ISkill
     public IEnumerator Slash()
     {
         avatarNetwork.CmdEnableSlash(true);
+        //Attack Animation 3D model
+        animator.SetTrigger("Attack");
+
+        //Sprite Attack
         hitboxCollider.enabled = true;
         Quaternion q0 = Quaternion.Euler(0.0f, 0.0f, -90.0f);
         Quaternion q1 = Quaternion.Euler(0.0f, 0.0f, 90.0f);
@@ -50,7 +56,7 @@ public class MeleeWeapon : ISkill
 
         while (time < SlashDuration)
         {
-            weaponTransform.parent.localRotation = Quaternion.Slerp(q0, q1, time / SlashDuration);
+            //weaponTransform.parent.localRotation = Quaternion.Slerp(q0, q1, time / SlashDuration);
             time += Time.deltaTime;
             yield return null;
         }
@@ -76,7 +82,7 @@ public class MeleeWeapon : ISkill
     public void EnableSlash(bool status)
     {
         trailRenderer.enabled = status;
-        spriteRenderer.enabled = status;
+        //spriteRenderer.enabled = status;
     }
 
 

@@ -23,15 +23,7 @@ namespace Wenzil.Console
 
         void Awake()
         {
-            if (Instance != null)
-            {
-                Destroy(transform.parent.gameObject);
-                return;
-            }
-
             Instance = this;
-            DontDestroyOnLoad(transform.parent.gameObject);
-
             /* This instantiation causes a bug when Unity rebuilds the project while in play mode
                Solution: move it to class level initialization, and make inputHistoryCapacity a const */
             inputHistory = new ConsoleInputHistory(inputHistoryCapacity); 
@@ -45,11 +37,6 @@ namespace Wenzil.Console
 
         void OnDisable()
         {
-            if (Instance != this)
-            {
-                return;
-            }
-
             Console.OnConsoleLog -= ui.AddNewOutputLine;
             ui.onSubmitCommand -= ExecuteCommand;
             ui.onClearConsole -= inputHistory.Clear;
