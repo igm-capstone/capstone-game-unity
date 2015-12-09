@@ -11,6 +11,8 @@ public class Sprint : ISkill
 
     public void Awake()
     {
+        Name = "Sprint";
+        canDrop = true;
         avatarController = GetComponent<AvatarController>();
     }
 

@@ -23,7 +23,7 @@ public class SkillBar : MonoBehaviour
 
     void Start()
    { 
-        SetSkillCapacity(MaxSkills);
+        SetSkillCapacity(GetComponents<ISkill>().ToList().Count());
         SetSkillList(GetComponents<ISkill>().ToList());
 
         foreach (var skill in _skillList)

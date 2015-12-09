@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
+
 using System.Collections;
 
-[RequireComponent(typeof(ISkill))]
-public class PickupBehavior : MonoBehaviour
+public class PickupBehavior : NetworkBehaviour
 {
     ISkill skill;
     // Use this for initialization
@@ -29,6 +30,6 @@ public class PickupBehavior : MonoBehaviour
         var g = GetComponent<ISkill>();
         skillBar.SetSkillEnabled(skill.Name, true);
 
-        Destroy(gameObject);
+        NetworkServer.Destroy(gameObject);
     }
 }
