@@ -14,13 +14,14 @@ public class AvatarController : MonoBehaviour
     private Rigidbody2D _rb;
     private SkillBar _avatarSkillBar;
     private Health _health;
-
+    private RpcNetworkAnimator animator;
     void Start () {
         _rb = GetComponent<Rigidbody2D>();
         _health = GetComponent<Health>();
 
         _avatarSkillBar = GetComponentInChildren<SkillBar>();
         _avatarSkillBar.enabled = true;
+        animator = GetComponent<RpcNetworkAnimator>();
     }
 
     void FixedUpdate() 
@@ -39,8 +40,8 @@ public class AvatarController : MonoBehaviour
         {
             transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(vertical, horizontal) * Mathf.Rad2Deg, Vector3.forward);
         }
-
         _rb.velocity = new Vector2(horizontal,vertical) * moveSpeed;
+        animator.SetFloat("RunSpeed", _rb.velocity.magnitude);
     }
 
 }

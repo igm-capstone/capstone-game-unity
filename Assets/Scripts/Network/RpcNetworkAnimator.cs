@@ -12,7 +12,11 @@ public class RpcNetworkAnimator: NetworkBehaviour
 
     public void SetFloat(string name, float value)
     {
-        RpcSetFloat(name, value);
+        if (isServer)
+            RpcSetFloat(name, value);
+        else
+            CmdSetFloat(name,value);
+        
     }
 
     public void SetFloat(string name, float value, float damp, float deltaTime)
@@ -27,12 +31,19 @@ public class RpcNetworkAnimator: NetworkBehaviour
 
     public void SetBool(string name, bool value)
     {
-        RpcSetBool(name, value);
+        if (isServer)
+            RpcSetBool(name, value);
+        else
+            CmdSetBool(name,value);
+        
     }
 
     public void SetTrigger(string name)
     {
-        RpcSetTrigger(name);
+        if (isServer)
+            RpcSetTrigger(name);
+        else
+            CmdSetTrigger(name);
     }
 
 
@@ -46,6 +57,11 @@ public class RpcNetworkAnimator: NetworkBehaviour
     void RpcSetFloat(string name, float value)
     {
         Animator.SetFloat(name, value);
+    }
+    [Command]
+    void CmdSetFloat(string name, float value)
+    {
+        SetFloat(name, value);
     }
 
     [ClientRpc]
@@ -66,10 +82,22 @@ public class RpcNetworkAnimator: NetworkBehaviour
         Animator.SetBool(name, value);
     }
 
+    [Command]
+    void CmdSetBool(string name, bool value)
+    {
+        SetBool(name,value);
+    }
+
     [ClientRpc]
     void RpcSetTrigger(string name)
     {
-        Animator.SetTrigger(name);
+        Animator.SetTrigger(name);        
+    }
+
+    [Command]
+    void CmdSetTrigger(string name)
+    {
+        SetTrigger(name);
     }
 
     [ClientRpc]
