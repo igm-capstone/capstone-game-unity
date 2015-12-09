@@ -16,8 +16,12 @@ public class AttackTarget : NetworkBehaviour {
         if (target == null)
         {
             var pos = transform.position;
-            var avatars = FindObjectsOfType<AvatarNetworkBehavior>();
-            target = avatars.Select(a => a.transform).OrderBy(t => (t.position - pos).sqrMagnitude).FirstOrDefault();
+            var avatars = FindObjectsOfType<AvatarController>();
+            target = avatars
+                .Where(a => !a.Disabled)                        // skip disabled avatars,
+                .Select(a => a.transform)                       // select transform
+                .OrderBy(t => (t.position - pos).sqrMagnitude)  // and order by distance
+                .FirstOrDefault();
         }
 
         isAttacking = true;
@@ -47,6 +51,13 @@ public class AttackTarget : NetworkBehaviour {
             return;
         }
 
+        var targetAvatar = target.GetComponent<AvatarController>();
+        if (targetAvatar != null && targetAvatar.Disabled)
+        {
+            CancelAttack();
+            target = null;
+            return;
+        }
 
         if ((target.position - transform.position).magnitude > 3f)
         {

@@ -15,11 +15,14 @@ public class AvatarController : MonoBehaviour
     private SkillBar _avatarSkillBar;
     private Health _health;
 
-    void Start () {
+    void Awake()
+    {
         _rb = GetComponent<Rigidbody2D>();
         _health = GetComponent<Health>();
-
         _avatarSkillBar = GetComponentInChildren<SkillBar>();
+    }
+
+    void Start () {
         _avatarSkillBar.enabled = true;
     }
 
