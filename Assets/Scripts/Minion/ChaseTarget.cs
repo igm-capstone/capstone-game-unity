@@ -10,14 +10,16 @@ public class ChaseTarget : MinionBehaviour
 	    var target = Controller.ClosestAvatar;
         if (target == null)
 	    {
-	        return;
+            Controller.DeactivateBehaviour();
+            return;
 	    }
 
 	    var targetAvatar = target.GetComponent<AvatarController>();
 	    if (targetAvatar != null && targetAvatar.Disabled)
 	    {
 	        target = null;
-	        return;
+            Controller.DeactivateBehaviour();
+            return;
 	    }
 
 	    if ((target.position - transform.position).magnitude > 1.5f)
@@ -32,7 +34,6 @@ public class ChaseTarget : MinionBehaviour
 	    {
 	        // hit!
             Controller.ActivateBehaviour<AttackTarget>();
-	        return;
 	    }
 	}
     

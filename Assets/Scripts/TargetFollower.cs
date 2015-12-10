@@ -152,6 +152,9 @@ public class TargetFollower : MonoBehaviour
 
     void GetPathTo(Vector3 targetPosition, int maxSteps = int.MaxValue)
     {
+        // compress path
+        path.Clear();
+
         var goal = GridBehavior.Instance.getNodeAtPos(targetPosition);
 
         if (goal == lastGoal)
@@ -165,12 +168,8 @@ public class TargetFollower : MonoBehaviour
 
         if (nodePath.Count() < 2)
         {
-            path.Clear();
             return;
         } 
-
-        // compress path
-        path = new List<Vector2>();
 
         var previousNode = nodePath.First();
         var previousAngle = float.MaxValue;

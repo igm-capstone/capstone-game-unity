@@ -5,12 +5,13 @@ using System.Linq;
 using UnityEngine.Networking;
 
 public class AttackTarget : MinionBehaviour {
+    
 
-
-    public Action AttackCompleteCallback;
+    private bool isAttacking;
 
     public override void ActivateBehaviour()
     {
+        isAttacking = true;
         if (CheckHit())
         {
             GetComponent<RpcNetworkAnimator>().SetTrigger("Attack");
@@ -19,8 +20,8 @@ public class AttackTarget : MinionBehaviour {
 
     public override void DeactivateBehaviour()
     {
+        isAttacking = false;
         GetComponent<RpcNetworkAnimator>().SetTrigger("Iddle");
-        if (AttackCompleteCallback != null) AttackCompleteCallback();
     }
 
     public override void UpdateBehaviour()
@@ -43,18 +44,14 @@ public class AttackTarget : MinionBehaviour {
 
     public void AttackAnimationComplete()
     {
-        //// was attack canceled?
-        //if (!isAttacking)
-        //{
-        //    return;
-        //}
+        if (!isAttacking)
+        {
+            return;
+        }
 
         // Damage
-        Debug.Log("DAMAGE!");
         GetComponent<MinionController>().CmdAssignDamage(Controller.ClosestAvatar.gameObject, 1);
-
-        // exit
-        if (AttackCompleteCallback != null) AttackCompleteCallback();
+        Controller.DeactivateBehaviour();
     }
 
     private bool CheckHit()
