@@ -15,6 +15,7 @@ public class AvatarController : MonoBehaviour
     private SkillBar _avatarSkillBar;
     private Health _health;
     private RpcNetworkAnimator animator;
+
     void Awake () {
         _rb = GetComponent<Rigidbody2D>();
         _health = GetComponent<Health>();
@@ -22,10 +23,12 @@ public class AvatarController : MonoBehaviour
         _avatarSkillBar = GetComponentInChildren<SkillBar>();
         animator = GetComponent<RpcNetworkAnimator>();
     }
+
     void Start()
     {
         _avatarSkillBar.enabled = true;
     }
+
     void FixedUpdate() 
     {
         if (!Disabled) 

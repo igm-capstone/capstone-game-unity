@@ -8,16 +8,15 @@ public class AoE : ISkill
     public float AreaRadius = 3;
 
     RpcNetworkAnimator animator;
-
     AvatarNetworkBehavior avatarNetwork;
     AvatarController avatarController;
-
     public Transform FX;
 
     public void Awake()
     {
         Name = "AoE";
         canDrop = true;
+
         animator = GetComponentInParent<RpcNetworkAnimator>();
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         avatarController = GetComponent<AvatarController>();
@@ -42,11 +41,11 @@ public class AoE : ISkill
 
         animator.SetTrigger("AoE");
 
-        var players = Physics2D.OverlapCircleAll(transform.position, AreaRadius, 1 << LayerMask.NameToLayer("Minion"));
+        var minions = Physics2D.OverlapCircleAll(transform.position, AreaRadius, 1 << LayerMask.NameToLayer("Minion"));
 
-        foreach (var p in players)
+        foreach (var m in minions)
         {
-            GetComponent<AvatarNetworkBehavior>().CmdAssignDamage(p.gameObject, Damage);
+            avatarNetwork.CmdAssignDamage(m.gameObject, Damage);
         }
         return null;
     }

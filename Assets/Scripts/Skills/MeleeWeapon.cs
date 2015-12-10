@@ -4,31 +4,20 @@ using System.Collections;
 
 public class MeleeWeapon : ISkill
 {
-    public float SlashDuration = 0.3f;
     public int Damage = 1;
 
-    Transform weaponTransform;
-    Collider2D hitboxCollider;
-    SpriteRenderer spriteRenderer;
-    TrailRenderer trailRenderer;
+    RpcNetworkAnimator animator;
     AvatarNetworkBehavior avatarNetwork;
     AvatarController avatarController;
-    RpcNetworkAnimator animator;
-
+    
     public void Awake()
     {
-        //trailRenderer = GetComponentInChildren<TrailRenderer>();
-        //hitboxCollider = trailRenderer.gameObject.GetComponent<Collider2D>();
-        //spriteRenderer = trailRenderer.gameObject.GetComponent<SpriteRenderer>();
-        //weaponTransform = trailRenderer.transform;
-
         Name = "Melee";
-        canDrop = false;      
+        canDrop = false;
 
-        avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         avatarController = GetComponent<AvatarController>();
+        avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         animator = GetComponent<RpcNetworkAnimator>();
-       
     }
 
     void Update()
@@ -43,53 +32,15 @@ public class MeleeWeapon : ISkill
     {
         if (avatarController.Disabled) return "You are incapacitated. Seek help!";
 
+        //TODO: This is a circle, but it should be a cone in front of the player!
+        var minions = Physics2D.OverlapCircleAll(transform.position, 1.0f, 1 << LayerMask.NameToLayer("Minion"));
+
+        foreach (var m in minions)
+        {
+            avatarNetwork.CmdAssignDamage(m.gameObject, Damage);
+        }
+
         animator.SetTrigger("Attack"); //StartCoroutine(Slash());
         return null;
     }
-
-    /*public IEnumerator Slash()
-    {
-        //avatarNetwork.CmdEnableSlash(true);
-        //Attack Animation 3D model
-        animator.SetTrigger("Attack");
-        /*
-        //Sprite Attack
-        //hitboxCollider.enabled = true;
-        Quaternion q0 = Quaternion.Euler(0.0f, 0.0f, -90.0f);
-        Quaternion q1 = Quaternion.Euler(0.0f, 0.0f, 90.0f);
-        float time = 0.0f;
-
-        while (time < SlashDuration)
-        {
-            //weaponTransform.parent.localRotation = Quaternion.Slerp(q0, q1, time / SlashDuration);
-            time += Time.deltaTime;
-            yield return null;
-        }
-
-        //weaponTransform.parent.localRotation = Quaternion.identity;
-        //avatarNetwork.CmdEnableSlash(false);
-        //hitboxCollider.enabled = false;
-
-    }
-
-   /* public void OnCollisionEnter2D(Collision2D other)
-    {
-        if (hitboxCollider.enabled) //Very important!
-        {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Minion"))
-            {
-                avatarNetwork.CmdAssignDamage(other.gameObject, Damage);
-                hitboxCollider.enabled = false;  //Very important!
-            }
-        }
-    }
-    */
-
-    public void EnableSlash(bool status)
-    {
-        //trailRenderer.enabled = status;
-        //spriteRenderer.enabled = status;
-    }
-
-
 }

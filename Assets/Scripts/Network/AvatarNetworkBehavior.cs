@@ -30,19 +30,6 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
         GetComponentInChildren<MoveBlock>().TakeBlockOver(block, status);
     }
 
-    [Command]
-    public void CmdEnableSlash(bool status)
-    {
-        RpcEnableSlash(status);
-    }
-
-    [ClientRpc]
-    public void RpcEnableSlash(bool status)
-    {
-        GetComponentInChildren<MeleeWeapon>().EnableSlash(status);
-    }
-
-
     [ClientRpc]
     public void RpcDisableMinion(GameObject minion)
     {

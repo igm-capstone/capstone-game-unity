@@ -17,6 +17,7 @@ public class MoveBlock : ISkill
     {
         Name = "MoveBlock";
         canDrop = false;
+
         blockCollector = GameObject.Find("BlocksCollector");
         avatarController = GetComponent<AvatarController>();
     }

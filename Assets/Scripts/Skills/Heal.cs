@@ -8,7 +8,6 @@ public class Heal : ISkill
     public float AreaRadius = 3;
 
     RpcNetworkAnimator animator;
-
     AvatarNetworkBehavior avatarNetwork;
     AvatarController avatarController;
     public Transform FX;
@@ -17,6 +16,7 @@ public class Heal : ISkill
     {
         Name = "Heal";
         canDrop = true;
+
         animator = GetComponentInParent<RpcNetworkAnimator>();
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         avatarController = GetComponent<AvatarController>();
@@ -45,7 +45,7 @@ public class Heal : ISkill
 
         foreach (var p in players)
         {
-            GetComponent<AvatarNetworkBehavior>().CmdAssignDamage(p.gameObject, -HealAmount);
+            avatarNetwork.CmdAssignDamage(p.gameObject, -HealAmount);
         }
         return null;
     }
