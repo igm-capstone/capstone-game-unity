@@ -93,10 +93,6 @@ Material:
         second: .5
       data:
         first:
-          name: _InvFade
-        second: 1
-      data:
-        first:
           name: _Parallax
         second: .0199999996
       data:
@@ -131,6 +127,10 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _InvFade
+        second: 1
     m_Colors:
       data:
         first:
@@ -143,4 +143,4 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .242700905, g: .522058845, b: .207288086, a: .5}
+        second: {r: .242700905, g: .522058845, b: .207288086, a: 0}

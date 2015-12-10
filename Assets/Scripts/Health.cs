@@ -35,19 +35,23 @@ public class Health : NetworkBehaviour
 
     public void TakeDamage(int value)
     {
-        CurrentHealth -= value;
         if (GetComponent<AvatarController>() != null)
-            animator.SetTrigger("TakeDamage");
+        {
+            if (value > 0) animator.SetTrigger("TakeDamage");
+            if (value < 0 && CurrentHealth <= 0) animator.SetBool("Dead", false);
+        }
+
+        CurrentHealth -= value;
+
         if (CurrentHealth <= 0)
         {
             CurrentHealth = 0;
             if (GetComponent<AvatarController>() != null)
                 animator.SetTrigger("Dead");
-            if (GetComponent<MinionController>() != null)
-            {
+            else if (GetComponent<MinionController>() != null)
                 GetComponent<MinionController>().CmdKill();
-            }
         }
+
         if (CurrentHealth > BaseHealth)
         {
             CurrentHealth = BaseHealth;
