@@ -6,6 +6,7 @@ using UnityEditor;
 #endif
 
 using System.Collections.Generic;
+using System.Deployment.Internal;
 using System.Linq;
 using PathFinder;
 
@@ -198,29 +199,29 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
                 playerIsAccessible = (playerNode != null);
             }
 
-            MinionController[] robots = FindObjectsOfType(typeof(MinionController)) as MinionController[];
-            foreach (MinionController robot in robots)
-            {
-                if (robot.enabled)
-                {
-                    var robotNode = getNodeAtPos(robot.transform.position);
-                    if (robotNode != null)
-                    {
-                        if (playerIsAccessible)
-                        {
-                            robot.StartFollow();
-                        }
-                        else
-                        {
-                            robot.StartPatrol();
-                        }
-                    }
-                    else
-                    {
-                        robot.TurnOff();
-                    }
-                }
-            }
+            //MinionController[] robots = FindObjectsOfType(typeof(MinionController)) as MinionController[];
+            //foreach (MinionController robot in robots)
+            //{
+            //    if (robot.enabled)
+            //    {
+            //        var robotNode = getNodeAtPos(robot.transform.position);
+            //        if (robotNode != null)
+            //        {
+            //            if (playerIsAccessible)
+            //            {
+            //                robot.StartFollow();
+            //            }
+            //            else
+            //            {
+            //                robot.StartPatrol();
+            //            }
+            //        }
+            //        else
+            //        {
+            //            robot.TurnOff();
+            //        }
+            //    }
+            //}
         }
     }
 
@@ -240,26 +241,39 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
         return areaOfNodes[i, j];
     }
 
+
+
     public IList<Node> getNodesNearPos(Vector3 pos, float radius, Predicate<Node> conditionPredicate = null)
+    {
+        return getNodesNearPos(pos, radius, 0, conditionPredicate);
+    }
+
+    public IList<Node> getNodesNearPos(Vector3 pos, float radius, float minRadius, Predicate<Node> conditionPredicate = null)
     {
         var nodes = new List<Node>();
 
-        var minNode = getNodeAtPos(pos - Vector3.one * radius);
-        var maxNode = getNodeAtPos(pos + Vector3.one * radius);
-        var sqrRadius = radius * radius;
+        minRadius = Mathf.Clamp(minRadius, 0, radius - 1);
 
-        var minx = (int)Mathf.Max(0, minNode.coord.x);
-        var miny = (int)Mathf.Max(0, minNode.coord.y);
-        var maxx = (int)Mathf.Min(numSpheresX, maxNode.coord.x + 1);
-        var maxy = (int)Mathf.Min(numSpheresY, maxNode.coord.y + 1);
+        var minPos = ClampPosition(pos - Vector3.one * radius);
+        var maxPos = ClampPosition(pos + Vector3.one * radius);
+        
+        var minNode = getNodeAtPos(minPos);
+        var maxNode = getNodeAtPos(maxPos);
+        var sqrRadius = radius * radius;
+        var sqrMinRadius = minRadius * minRadius;
+
+        var minx = (int)minNode.coord.x;
+        var miny = (int)minNode.coord.y;
+        var maxx = (int)maxNode.coord.x + 1;
+        var maxy = (int)maxNode.coord.y + 1;
 
         for (int x = minx; x < maxx; x++)
         {
             for (int y = miny; y < maxy; y++)
             {
                 var node = areaOfNodes[x, y];
-
-                if ((node.position - pos).sqrMagnitude > sqrRadius || conditionPredicate == null || !conditionPredicate(node))
+                var sqrMag = (node.position - pos).sqrMagnitude;
+                if (sqrMag > sqrRadius || sqrMag < sqrMinRadius || conditionPredicate == null || !conditionPredicate(node))
                     continue;
 
                 nodes.Add(node);
@@ -267,6 +281,17 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
         }
 
         return nodes;
+    }
+
+    private Vector3 ClampPosition(Vector3 position)
+    {
+        var rad = (Vector3.one * nodeRadius);
+        var uv = (position - rad - startingCorner) / (nodeRadius * 2);
+        uv.x = Mathf.Clamp(uv.x, 0, numSpheresX - 1);
+        uv.y = Mathf.Clamp(uv.y, 0, numSpheresY - 1);
+        uv.z = 0;
+
+        return (uv * nodeRadius * 2) + rad + startingCorner;
     }
 
     public IEnumerable<NodeConnection> GetNodeConnections(int x, int y)
@@ -316,26 +341,27 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
             //Node playerNode = getNodeAtPos(player.position);
             foreach (Node node in areaOfNodes)
             {
-                Handles.color = new Color(1, 1, 1, 1);
-                Handles.DrawSolidRectangleWithOutline(new[] { 
-                    node.position + new Vector3(size, size, 0f),
-                    node.position + new Vector3(size, -size, 0f),
-                    node.position + new Vector3(-size, -size, 0f),
-                    node.position + new Vector3(-size, size, 0f) },
-                    node.hasLight ? new Color(1, 1, 0, 0.05f) : new Color(0.5f, 0.5f, 0.5f, 0.05f),
-                    node.hasLight ? new Color(1, 1, 0, 0.4f) : new Color(0.5f, 0.5f, 0.5f, 0.4f));
+                //Handles.color = new Color(1, 1, 1, 1);
+                //Handles.DrawSolidRectangleWithOutline(new[] { 
+                //    node.position + new Vector3(size, size, 0f),
+                //    node.position + new Vector3(size, -size, 0f),
+                //    node.position + new Vector3(-size, -size, 0f),
+                //    node.position + new Vector3(-size, size, 0f) },
+                //    node.hasLight ? new Color(1, 1, 0, 0.05f) : new Color(0.5f, 0.5f, 0.5f, 0.05f),
+                //    node.hasLight ? new Color(1, 1, 0, 0.4f) : new Color(0.5f, 0.5f, 0.5f, 0.4f));
 
-                if (!node.canWalk)
-                {
-                    Handles.color = node.hasLight ? new Color(1, 1, 0, .4f) : new Color(0.5f, 0.5f, 0.5f, .4f);
-                    //Handles.DrawSolidDisc(node.position, new Vector3(0, 0, 1), nodeRadius * .4f);
-                    Handles.DrawLine(node.position + new Vector3(size, size, 0f),
-                        node.position + new Vector3(-size, -size, 0f));
-                    Handles.DrawLine(node.position + new Vector3(-size, size, 0f),
-                        node.position + new Vector3(size, -size, 0f));
-                }
+                //if (!node.canWalk)
+                //{
+                //    Handles.color = node.hasLight ? new Color(1, 1, 0, .4f) : new Color(0.5f, 0.5f, 0.5f, .4f);
+                //    //Handles.DrawSolidDisc(node.position, new Vector3(0, 0, 1), nodeRadius * .4f);
+                //    Handles.DrawLine(node.position + new Vector3(size, size, 0f),
+                //        node.position + new Vector3(-size, -size, 0f));
+                //    Handles.DrawLine(node.position + new Vector3(-size, size, 0f),
+                //        node.position + new Vector3(size, -size, 0f));
+                //}
 
                 //Handles.Label(node.position, node.Weight == float.MaxValue ? "max" : node.Weight.ToString("F2"));
+                //Handles.Label(node.position, (node.coord).ToString());
             }
         }
     }
@@ -360,19 +386,19 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
     }
 
     
-    public IEnumerable<INode> GetFringePath(GameObject start, GameObject end)
+    public IEnumerable<INode> GetFringePath(Vector3 startPosition, Vector3 endPosition, int maxSteps = int.MaxValue)
     {
         var fringe = new Fringe(Heuristic);
 
-        var startNode = getNodeAtPos(start.transform.position);
-        var endNode = getNodeAtPos(end.transform.position);
+        var startNode = getNodeAtPos(startPosition);
+        var endNode = getNodeAtPos(endPosition);
 
         if (startNode == null || endNode == null) return new List<INode>();
 
         startNode.isStartEnd = true;
         endNode.isStartEnd = true;
         
-        var path = fringe.FindPath(startNode, endNode);
+        var path = fringe.FindPath(startNode, endNode, maxSteps);
         if (fringe.PathCost > 2000)
         {
             return new List<INode>();

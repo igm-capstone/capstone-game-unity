@@ -388,14 +388,15 @@ GameObject:
   m_Component:
   - 4: {fileID: 445446}
   - 58: {fileID: 5815378}
-  - 114: {fileID: 11461328}
-  - 114: {fileID: 11449298}
-  - 114: {fileID: 11435514}
-  - 114: {fileID: 11469260}
-  - 114: {fileID: 11456102}
   - 114: {fileID: 11496266}
   - 114: {fileID: 11438718}
   - 114: {fileID: 11418664}
+  - 114: {fileID: 11461328}
+  - 114: {fileID: 11456102}
+  - 114: {fileID: 11449298}
+  - 114: {fileID: 11435514}
+  - 114: {fileID: 11469260}
+  - 114: {fileID: 11447166}
   - 114: {fileID: 11413584}
   - 114: {fileID: 11448616}
   - 114: {fileID: 11414802}
@@ -1663,6 +1664,17 @@ MonoBehaviour:
   m_SnapThreshold: .5
   m_InterpolateRotation: 20
   m_InterpolateMovement: 20
+--- !u!114 &11447166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c386b21169f64b41b5eb118a09867eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11448616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1697,6 +1709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13895fbd23d41cb44947787f910fbb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClosestAvatar: {fileID: 0}
 --- !u!114 &11461328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1730,7 +1743,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54cc894172296b4283a42e2b9acc609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAttacking: 0
 --- !u!114 &11496266
 MonoBehaviour:
   m_ObjectHideFlags: 1

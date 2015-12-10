@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,21 +30,24 @@ public class TargetFollower : MonoBehaviour
     private RpcNetworkAnimator animator;
     private Transform container;
 
+    private Node lastGoal;
+
     void Awake()
     {
         animator = GetComponent<RpcNetworkAnimator>();
         container = transform.Find("Rotation");
+        path = new List<Vector2>();
     }
 
-    public void MoveTowards(Transform target)
+    public bool MoveTowards(Vector3 targetPos, int maxSteps = int.MaxValue)
     {
-        path = GetPathTo(target);
+        GetPathTo(targetPos, maxSteps);
         var node = GridBehavior.Instance.getNodeAtPos(transform.position);
         var speedFactor = 1 / Mathf.Min(node.Weight, 4);
 
-        if (path == null)
+        if (path.Count == 0)
         {
-            return;
+            return false;
         }
 
         var colors = new[] { Color.magenta, Color.yellow };
@@ -117,7 +121,7 @@ public class TargetFollower : MonoBehaviour
             reverse = true;
             reverseTime -= Time.deltaTime;
             animator.SetFloat("Speed", 0);
-            return;
+            return true;
         }
 
         //var reverse = da > 60;
@@ -137,21 +141,36 @@ public class TargetFollower : MonoBehaviour
 
         transform.Translate(moveDirection * moveSpeed * speedFactor * .1f * Time.deltaTime, Space.Self);
         animator.SetFloat("Speed", (1 + speedFactor) * .5f, .5f, .5f);
+
+        return true;
     }
 
-
-    IList<Vector2> GetPathTo(Transform target)
+    public void ResetGoal()
     {
-        nodePath = GridBehavior.Instance.GetFringePath(gameObject, target.gameObject).Cast<Node>().ToList();
-        if (!nodePath.Any()) return null; 
+        lastGoal = null;
+    }
 
-        // compress path
-        var path = new List<Vector2>();
+    void GetPathTo(Vector3 targetPosition, int maxSteps = int.MaxValue)
+    {
+        var goal = GridBehavior.Instance.getNodeAtPos(targetPosition);
+
+        if (goal == lastGoal)
+        {
+            return;
+        }
+
+        lastGoal = goal;
+
+        nodePath = GridBehavior.Instance.GetFringePath(transform.position, targetPosition, maxSteps).Cast<Node>().ToList();
 
         if (nodePath.Count() < 2)
         {
-            return path;
-        }
+            path.Clear();
+            return;
+        } 
+
+        // compress path
+        path = new List<Vector2>();
 
         var previousNode = nodePath.First();
         var previousAngle = float.MaxValue;
@@ -174,8 +193,6 @@ public class TargetFollower : MonoBehaviour
         }
 
         path.Add(nodePath.Last().position);
-
-        return path;
     }
 
 #if UNITY_EDITOR

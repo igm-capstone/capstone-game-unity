@@ -46,8 +46,6 @@ namespace PathFinder
 
         public IEnumerable<INode> FindPath(INode startNode, INode endNode, int stepsLimit)
         {
-            stepsLimit = 20;
-
             var path = new LinkedList<INode>();
 
             fringe.Clear();
@@ -62,7 +60,6 @@ namespace PathFinder
             while (!found && fringe.Count > 0)
             {
                 var fMin = float.MaxValue;
-                var limitCount = 0;
 
                 for (var linkedNode = fringe.First; linkedNode != null;)
                 {
@@ -79,15 +76,7 @@ namespace PathFinder
 
                     if (nodeInfo.steps >= stepsLimit)
                     {
-                        limitCount += 1;
-
-                        if (limitCount == fringe.Count())
-                        {
-                            return path;
-                        }
-
-                        linkedNode = linkedNode.Next;
-                        continue;
+                        return path;
                     }
 
                     if (node == endNode)
@@ -101,7 +90,7 @@ namespace PathFinder
                         var costConn = nodeInfo.cost + (connection.Cost * connection.To.Weight);
                         var connNode = connection.To;
 
-                        FringeNode connInfo = new FringeNode();
+                        FringeNode connInfo;
                         if (cache.TryGetValue(connNode, out connInfo))
                         {
                             if (costConn >= connInfo.cost)

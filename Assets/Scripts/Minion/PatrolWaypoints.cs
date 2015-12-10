@@ -1,22 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(TargetFollower))]
-public class PatrolWaypoints : MonoBehaviour
+public class PatrolWaypoints : MinionBehaviour
 {
     public WaypointPath path;
     public int nextStop;
     
-    private TargetFollower follower;
-
     private Transform[] waypoints;
 
     void Awake()
-    {
-        follower = GetComponent<TargetFollower>();
-    }
-
-    void Start()
     {
         if (path == null) return;
 
@@ -25,7 +17,7 @@ public class PatrolWaypoints : MonoBehaviour
     }
 
     // Update is called once per frame
-	void Update ()
+	public override void UpdateBehaviour ()
 	{
         if (waypoints == null) return;
 
@@ -53,24 +45,6 @@ public class PatrolWaypoints : MonoBehaviour
             //nextWaypoint = waypoints[Mathf.Abs(nextStop)];
         }
 
-        follower.MoveTowards(nextWaypoint);
+        Controller.Follower.MoveTowards(nextWaypoint.position);
 	}
-
-
-    void TargetNextWaypoint()
-    {
-        nextStop += 1;
-
-        // the sign represents the direction of the movement (+ -> towards last wp, 
-        // - -> towards first wp) for non looping paths.
-        //
-        //            ->      1     ->     n-1     ->    
-        //   0   x------------x-------------x------------x   n
-        //            <-     -1     <-   -(n-1)    <-
-        if (nextStop >= waypoints.Length)
-        {
-            nextStop = path.loop ? 0 : 2 - waypoints.Length;
-        }
-
-    }
 }
