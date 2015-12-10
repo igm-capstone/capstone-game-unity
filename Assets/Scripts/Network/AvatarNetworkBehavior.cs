@@ -30,19 +30,6 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
         GetComponentInChildren<MoveBlock>().TakeBlockOver(block, status);
     }
 
-    [Command]
-    public void CmdEnableSlash(bool status)
-    {
-        RpcEnableSlash(status);
-    }
-
-    [ClientRpc]
-    public void RpcEnableSlash(bool status)
-    {
-        GetComponentInChildren<MeleeWeapon>().EnableSlash(status);
-    }
-
-
     [ClientRpc]
     public void RpcDisableMinion(GameObject minion)
     {
@@ -67,5 +54,18 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     public void CmdAssignDamage(GameObject obj, int damage)
     {
         obj.GetComponent<Health>().TakeDamage(damage);
+    }
+
+    [Command]
+    public void CmdPickup(GameObject obj)
+    {
+        RpcPickup(obj);
+        NetworkServer.Destroy(obj);
+    }
+
+    [ClientRpc]
+    public void RpcPickup(GameObject obj)
+    {
+        Destroy(obj);
     }
 }

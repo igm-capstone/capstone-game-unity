@@ -2,27 +2,34 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class MeleeWeapon : ISkill
+public class AoE : ISkill
 {
-    public int Damage = 1;
+    public int Damage = 2;
+    public float AreaRadius = 3;
 
     RpcNetworkAnimator animator;
     AvatarNetworkBehavior avatarNetwork;
     AvatarController avatarController;
-    
+    public Transform FX;
+
     public void Awake()
     {
-        Name = "Melee";
-        canDrop = false;
+        Name = "AoE";
+        canDrop = true;
 
-        avatarController = GetComponent<AvatarController>();
+        animator = GetComponentInParent<RpcNetworkAnimator>();
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
-        animator = GetComponent<RpcNetworkAnimator>();
+        avatarController = GetComponent<AvatarController>();
+
+        Transform oldParent = FX.parent;
+        FX.parent = null;
+        FX.localScale = new Vector3(AreaRadius, AreaRadius, 1); ;
+        FX.parent = oldParent;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             Use();
         }
@@ -32,15 +39,15 @@ public class MeleeWeapon : ISkill
     {
         if (avatarController.Disabled) return "You are incapacitated. Seek help!";
 
-        //TODO: This is a circle, but it should be a cone in front of the player!
-        var minions = Physics2D.OverlapCircleAll(transform.position, 1.0f, 1 << LayerMask.NameToLayer("Minion"));
+        animator.SetTrigger("AoE");
+
+        var minions = Physics2D.OverlapCircleAll(transform.position, AreaRadius, 1 << LayerMask.NameToLayer("Minion"));
 
         foreach (var m in minions)
         {
             avatarNetwork.CmdAssignDamage(m.gameObject, Damage);
         }
-
-        animator.SetTrigger("Attack"); //StartCoroutine(Slash());
         return null;
     }
+
 }

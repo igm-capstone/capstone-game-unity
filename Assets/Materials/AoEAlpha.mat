@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: HealAlpha
+  m_Name: AoEAlpha
   m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 2272fd9d79660ba4d8e429786df2c6ec, type: 3}
+          m_Texture: {fileID: 2800000, guid: 1af0d81bf1bccb84ba7954ddc061f759, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -143,4 +143,4 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .242700905, g: .522058845, b: .207288086, a: 0}
+        second: {r: .720588207, g: .169550151, b: .340561897, a: 0}

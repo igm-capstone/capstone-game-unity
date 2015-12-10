@@ -7,22 +7,25 @@ using UnityEngine.Networking;
 public class AvatarController : MonoBehaviour 
 {
     [SerializeField]
-    private float moveSpeed;
+    public float MoveSpeed = 4;
     [SerializeField]
     public bool Disabled { get { return (_health &&  _health.CurrentHealth <= 0); } }
 
     private Rigidbody2D _rb;
     private SkillBar _avatarSkillBar;
     private Health _health;
+    private RpcNetworkAnimator animator;
 
-    void Awake()
-    {
+    void Awake () {
         _rb = GetComponent<Rigidbody2D>();
         _health = GetComponent<Health>();
+
         _avatarSkillBar = GetComponentInChildren<SkillBar>();
+        animator = GetComponent<RpcNetworkAnimator>();
     }
 
-    void Start () {
+    void Start()
+    {
         _avatarSkillBar.enabled = true;
     }
 
@@ -42,8 +45,8 @@ public class AvatarController : MonoBehaviour
         {
             transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(vertical, horizontal) * Mathf.Rad2Deg, Vector3.forward);
         }
-
-        _rb.velocity = new Vector2(horizontal,vertical) * moveSpeed;
+        _rb.velocity = new Vector2(horizontal,vertical) * MoveSpeed;
+        animator.SetFloat("RunSpeed", _rb.velocity.magnitude);
     }
 
 }

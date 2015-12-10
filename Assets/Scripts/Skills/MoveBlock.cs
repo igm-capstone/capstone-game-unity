@@ -15,6 +15,9 @@ public class MoveBlock : ISkill
     
     public void Awake()
     {
+        Name = "MoveBlock";
+        canDrop = false;
+
         blockCollector = GameObject.Find("BlocksCollector");
         avatarController = GetComponent<AvatarController>();
     }
