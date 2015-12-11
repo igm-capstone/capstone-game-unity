@@ -10,9 +10,21 @@ public class CustomNetworkManager : NetworkManager
 {
     public GameObject ghostPrefab;
     public GameObject avatarPrefab;
-    
+
+    public bool exposeConsole = true;
+    public GameObject console;
+
     [NonSerialized]
     public bool sceneLoaded = false;
+
+    void Start()
+    {
+        if (exposeConsole && console)
+        {
+            var c = Instantiate(console);
+            c.transform.SetParent(this.transform);
+        }
+    }
 
     public void EnableBtn(string buttonName, string msg, UnityAction action)
     {

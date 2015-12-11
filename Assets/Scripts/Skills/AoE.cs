@@ -21,10 +21,14 @@ public class AoE : ISkill
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         avatarController = GetComponent<AvatarController>();
 
-        Transform oldParent = FX.parent;
-        FX.parent = null;
-        FX.localScale = new Vector3(AreaRadius, AreaRadius, 1);
-        FX.parent = oldParent;
+        if (FX)
+        {
+            Transform oldParent = FX.parent;
+            FX.parent = null;
+            FX.localScale = new Vector3(AreaRadius, AreaRadius, 1);
+            ;
+            FX.parent = oldParent;
+        }
     }
 
     void Update()
