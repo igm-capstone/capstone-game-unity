@@ -59,18 +59,26 @@ public class MeleeWeapon : ISkill
 
         var minions = Physics2D.OverlapAreaAll(aa, bb, 1 << LayerMask.NameToLayer("Minion"));
 
-        if (!minions.Any())
-        {
-            return null;
-        }
-
         animator.SetTrigger("Attack");
 
-        var minion = minions.Contains(lastTarget) ? lastTarget : minions.First();
-        avatarNetwork.CmdAssignDamage(minion.gameObject, Damage);
-        lastTarget = minion;
-        agroTime = 2;
+        lastTarget = minions.Contains(lastTarget) ? lastTarget : minions.FirstOrDefault();
+
+        if (lastTarget != null)
+        {
+            agroTime = 2;
+        }
 
         return null;
+    }
+
+    void AttackAnimationComplete()
+    {
+        Debug.Log("attack " + lastTarget);
+        if (lastTarget == null)
+        {
+            return;
+        }
+
+        avatarNetwork.CmdAssignDamage(lastTarget.gameObject, Damage);
     }
 }

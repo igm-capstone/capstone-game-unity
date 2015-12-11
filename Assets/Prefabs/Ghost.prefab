@@ -129,6 +129,7 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 441c3834d891f934da5b9a9bff92f057, type: 3}
   Name: Spawn Minion
   Cooldown: 2
+  canDrop: 0
   distanceFromPlayers: 5
 --- !u!114 &11430948
 MonoBehaviour:
@@ -156,6 +157,7 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 92a225833a8fe6240bd1852782d6896d, type: 3}
   Name: Disable Lights
   Cooldown: 4
+  canDrop: 0
   Duration: 2
 --- !u!114 &11452076
 MonoBehaviour:
@@ -170,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayersToClick:
     serializedVersion: 2
-    m_Bits: 35072
+    m_Bits: 557312
 --- !u!114 &11456038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,6 +234,7 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 5edf57f5f0d065245bbc4934b786e877, type: 3}
   Name: Hallucinate
   Cooldown: 2
+  canDrop: 0
   Duration: 10
 --- !u!124 &12474532
 Behaviour:
@@ -337,7 +340,7 @@ Prefab:
       objectReference: {fileID: 117566, guid: e293756eec0692849a7e13161b28204f, type: 2}
     - target: {fileID: 0}
       propertyPath: LayersToClick.m_Bits
-      value: 35072
+      value: 557312
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_BackGroundColor.r

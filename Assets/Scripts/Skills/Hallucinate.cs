@@ -16,7 +16,7 @@ public class Hallucinate : ISkill
     }
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
-        if (target.layer != LayerMask.NameToLayer("Player")) return Name + " skill needs to target an explorer.";
+        if (target.tag != "Player") return Name + " skill needs to target an explorer.";
 
         MinionSpawnManager.Instance.CmdCoolerSpawn(target, 3.0f, 3,
             (GameObject[] minions, GameObject player) =>

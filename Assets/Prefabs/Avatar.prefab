@@ -45,6 +45,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &104314
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 406944}
+  - 61: {fileID: 6142208}
+  m_Layer: 18
+  m_Name: Hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &105064
 GameObject:
   m_ObjectHideFlags: 1
@@ -226,10 +242,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 464758}
-  - 61: {fileID: 6192016}
-  m_Layer: 18
-  m_Name: Hitbox
-  m_TagString: Untagged
+  - 58: {fileID: 5871574}
+  m_Layer: 19
+  m_Name: Clickbox
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -962,6 +978,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 475804}
   m_RootOrder: 0
+--- !u!4 &406944
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 448192}
+  m_RootOrder: 1
 --- !u!4 &407854
 Transform:
   m_ObjectHideFlags: 1
@@ -1267,6 +1295,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 485922}
+  - {fileID: 406944}
   - {fileID: 464758}
   m_Father: {fileID: 435526}
   m_RootOrder: 0
@@ -1331,7 +1360,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 448192}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &465156
 Transform:
   m_ObjectHideFlags: 1
@@ -1789,6 +1818,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &5871574
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125598}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.5
 --- !u!60 &6021440
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -1806,19 +1848,19 @@ PolygonCollider2D:
       - {x: -.25, y: -.25}
       - {x: .25, y: -.25}
       - {x: .25, y: .25}
---- !u!61 &6192016
+--- !u!61 &6142208
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125598}
+  m_GameObject: {fileID: 104314}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 1.22000003, y: 0}
+  m_Offset: {x: 1, y: 0}
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 2}
+  m_Size: {x: 2, y: 1.60000002}
 --- !u!81 &8150906
 AudioListener:
   m_ObjectHideFlags: 1

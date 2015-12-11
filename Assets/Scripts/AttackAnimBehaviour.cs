@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MinionAnimBehaviour : StateMachineBehaviour {
+public class AttackAnimBehaviour : StateMachineBehaviour {
 
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
 	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -17,7 +17,7 @@ public class MinionAnimBehaviour : StateMachineBehaviour {
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 	    if (stateInfo.tagHash == Animator.StringToHash("Attack"))
 	    {
-	        animator.SendMessageUpwards("AttackAnimationComplete");
+	        animator.SendMessageUpwards("AttackAnimationComplete", SendMessageOptions.DontRequireReceiver);
 	    }
 	}
 

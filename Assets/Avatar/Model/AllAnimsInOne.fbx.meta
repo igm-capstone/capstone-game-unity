@@ -100,6 +100,8 @@ ModelImporter:
     7400004: Idle
     7400006: Attack
     7400008: Run
+    7400010: Start Attack
+    7400012: End Attack
     9500000: //RootNode
     13700000: Darius
   materials:
@@ -581,6 +583,230 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Darius
+        weight: 1
+      - path: Darius_CAT_Pelvis_
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_L_Thigh
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_L_Thigh/Darius_CAT_L_Calf
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_L_Thigh/Darius_CAT_L_Calf/Darius_CAT_L_Foot
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_L_Thigh/Darius_CAT_L_Calf/Darius_CAT_L_Foot/Darius_CAT_L_Digit_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_R_Thigh
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_R_Thigh/Darius_CAT_R_Calf
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_R_Thigh/Darius_CAT_R_Calf/Darius_CAT_R_Foot
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_R_Thigh/Darius_CAT_R_Calf/Darius_CAT_R_Foot/Darius_CAT_R_Digit_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_1_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_1_1/Darius_CAT_L_Digit_1_2
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_2_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_2_1/Darius_CAT_L_Digit_2_2
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_3_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_3_1/Darius_CAT_L_Digit_3_2
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_4_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_4_1/Darius_CAT_L_Digit_4_2
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_Neck
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_Neck/Darius_CAT_Head
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_Neck/Darius_CAT_Head/Darius_CAT_Eye_L
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_Neck/Darius_CAT_Head/Darius_CAT_Eye_R
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_Neck/Darius_CAT_Head/Darius_CAT_Jaw
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_1_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_1_1/Darius_CAT_R_Digit_1_2
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_2_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_2_1/Darius_CAT_R_Digit_2_2
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_3_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_3_1/Darius_CAT_R_Digit_3_2
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_4_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_4_1/Darius_CAT_R_Digit_4_2
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Start Attack
+      takeName: Take 001
+      firstFrame: 158
+      lastFrame: 164
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Darius
+        weight: 1
+      - path: Darius_CAT_Pelvis_
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_L_Thigh
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_L_Thigh/Darius_CAT_L_Calf
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_L_Thigh/Darius_CAT_L_Calf/Darius_CAT_L_Foot
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_L_Thigh/Darius_CAT_L_Calf/Darius_CAT_L_Foot/Darius_CAT_L_Digit_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_R_Thigh
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_R_Thigh/Darius_CAT_R_Calf
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_R_Thigh/Darius_CAT_R_Calf/Darius_CAT_R_Foot
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_R_Thigh/Darius_CAT_R_Calf/Darius_CAT_R_Foot/Darius_CAT_R_Digit_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_1_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_1_1/Darius_CAT_L_Digit_1_2
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_2_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_2_1/Darius_CAT_L_Digit_2_2
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_3_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_3_1/Darius_CAT_L_Digit_3_2
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_4_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_L_Collarbone/Darius_CAT_L_Upperarm/Darius_CAT_L_Forearm/Darius_CAT_L_Palm/Darius_CAT_L_Digit_4_1/Darius_CAT_L_Digit_4_2
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_Neck
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_Neck/Darius_CAT_Head
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_Neck/Darius_CAT_Head/Darius_CAT_Eye_L
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_Neck/Darius_CAT_Head/Darius_CAT_Eye_R
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_Neck/Darius_CAT_Head/Darius_CAT_Jaw
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_1_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_1_1/Darius_CAT_R_Digit_1_2
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_2_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_2_1/Darius_CAT_R_Digit_2_2
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_3_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_3_1/Darius_CAT_R_Digit_3_2
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_4_1
+        weight: 1
+      - path: Darius_CAT_Pelvis_/Darius_CAT_Spine/Darius_CAT_Ribcage/Darius_CAT_R_Collarbone/Darius_CAT_R_Upperarm/Darius_CAT_R_Forearm/Darius_CAT_R_Palm/Darius_CAT_R_Digit_4_1/Darius_CAT_R_Digit_4_2
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: End Attack
+      takeName: Take 001
+      firstFrame: 164
+      lastFrame: 180
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
