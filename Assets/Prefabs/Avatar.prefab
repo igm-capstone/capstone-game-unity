@@ -218,6 +218,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &125598
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 464758}
+  - 61: {fileID: 6192016}
+  m_Layer: 18
+  m_Name: Hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &125972
 GameObject:
   m_ObjectHideFlags: 1
@@ -1251,6 +1267,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 485922}
+  - {fileID: 464758}
   m_Father: {fileID: 435526}
   m_RootOrder: 0
 --- !u!4 &449600
@@ -1302,6 +1319,18 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 489630}
+  m_RootOrder: 1
+--- !u!4 &464758
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125598}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 448192}
   m_RootOrder: 1
 --- !u!4 &465156
 Transform:
@@ -1777,6 +1806,19 @@ PolygonCollider2D:
       - {x: -.25, y: -.25}
       - {x: .25, y: -.25}
       - {x: .25, y: .25}
+--- !u!61 &6192016
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125598}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 1.22000003, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 2}
 --- !u!81 &8150906
 AudioListener:
   m_ObjectHideFlags: 1
@@ -1926,8 +1968,13 @@ MonoBehaviour:
   Name: Melee Weapon
   Cooldown: 1
   canDrop: 0
-  SlashDuration: .300000012
   Damage: 1
+  hitbox:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
 --- !u!114 &11448782
 MonoBehaviour:
   m_ObjectHideFlags: 1

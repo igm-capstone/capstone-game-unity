@@ -23,7 +23,7 @@ public class AoE : ISkill
 
         Transform oldParent = FX.parent;
         FX.parent = null;
-        FX.localScale = new Vector3(AreaRadius, AreaRadius, 1); ;
+        FX.localScale = new Vector3(AreaRadius, AreaRadius, 1);
         FX.parent = oldParent;
     }
 

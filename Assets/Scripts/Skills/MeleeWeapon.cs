@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using System.Linq;
+using UnityEngine.Audio;
 
 public class MeleeWeapon : ISkill
 {
     public int Damage = 1;
+    public Rect hitbox;
 
     RpcNetworkAnimator animator;
     AvatarNetworkBehavior avatarNetwork;
     AvatarController avatarController;
-    
+    Collider2D lastTarget;
+    float agroTime;
+
     public void Awake()
     {
         Name = "Melee";
@@ -26,21 +31,46 @@ public class MeleeWeapon : ISkill
         {
             Use();
         }
+
+        if (agroTime > 0)
+        {
+            agroTime -= Time.deltaTime;
+
+            if (agroTime <= 0)
+            {
+                agroTime = 0;
+                lastTarget = null;
+            }
+        }
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
         if (avatarController.Disabled) return "You are incapacitated. Seek help!";
 
-        //TODO: This is a circle, but it should be a cone in front of the player!
-        var minions = Physics2D.OverlapCircleAll(transform.position, 1.0f, 1 << LayerMask.NameToLayer("Minion"));
+        var hitbox = transform.Find("AvatarRotation/Hitbox");
+        var hitboxCollider = hitbox.GetComponent<BoxCollider2D>();
+        var hitboxOffset = hitboxCollider.offset;
+        var hitboxSize = hitboxCollider.size * .5f;
+        var aa = hitbox.TransformPoint(hitboxOffset - hitboxSize);
+        var bb = hitbox.TransformPoint(hitboxOffset + hitboxSize);
 
-        foreach (var m in minions)
+        Debug.DrawLine(aa, bb, Color.magenta, 5);
+
+        var minions = Physics2D.OverlapAreaAll(aa, bb, 1 << LayerMask.NameToLayer("Minion"));
+
+        if (!minions.Any())
         {
-            avatarNetwork.CmdAssignDamage(m.gameObject, Damage);
+            return null;
         }
 
-        animator.SetTrigger("Attack"); //StartCoroutine(Slash());
+        animator.SetTrigger("Attack");
+
+        var minion = minions.Contains(lastTarget) ? lastTarget : minions.First();
+        avatarNetwork.CmdAssignDamage(minion.gameObject, Damage);
+        lastTarget = minion;
+        agroTime = 2;
+
         return null;
     }
 }
