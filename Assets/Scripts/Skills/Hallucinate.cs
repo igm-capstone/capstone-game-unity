@@ -8,6 +8,8 @@ public class Hallucinate : ISkill
 {
     private static GhostController ghost;
     public float Duration = 10;
+    public float Radius = 10.0f;
+    public int Minions = 3;
 
     public void Awake()
     {
@@ -18,7 +20,7 @@ public class Hallucinate : ISkill
     {
         if (target.tag != "Player") return Name + " skill needs to target an explorer.";
 
-        MinionSpawnManager.Instance.CmdCoolerSpawn(target, 3.0f, 3,
+        MinionSpawnManager.Instance.CmdCoolerSpawn(target, Radius, Minions,
             (GameObject[] minions, GameObject player) =>
             {
                 var selfAc = player.GetComponentInParent<AvatarNetworkBehavior>();
