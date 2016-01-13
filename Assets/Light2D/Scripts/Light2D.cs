@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 
+[Rig3DAsset("Light", IgnoreRotation = true, IgnoreScale = true)]
 [ExecuteInEditMode]
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
@@ -27,8 +28,12 @@ public class Light2D : MonoBehaviour {
         public bool IsSecondary;
     }
     
+    [Export]
     public  int lightSegments = 8;
+
+    [Export]
     public  float lightRadius = 100f;
+
     public Material lightMaterial;
     public LayerMask shadowMask = Physics.DefaultRaycastLayers;
 
