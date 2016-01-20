@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Remoting.Messaging;
 using Newtonsoft.Json.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 [InitializeOnLoad]
@@ -15,12 +14,20 @@ public class AssetPipelineTools
     [MenuItem("Tools/Export Active Scene")]
     public static void ExportActiveScene()
     {
-        var rig3dAssetAttr = typeof (Rig3DAssetAttribute);
+       var scenePath = EditorApplication.currentScene;
+
+        if (string.IsNullOrEmpty(scenePath))
+        {
+            Debug.LogWarning("No active scene! Please load a scene before exporting.");
+            return;
+        }
+
+        var rig3DAssetAttr = typeof (Rig3DAssetAttribute);
 
         // Get a list of all classes annotated with AssetTypeAttribute
         var assetTypes =
-            from t in rig3dAssetAttr.Assembly.GetTypes()
-            let attr = t.GetCustomAttributes(rig3dAssetAttr, false)
+            from t in rig3DAssetAttr.Assembly.GetTypes()
+            let attr = t.GetCustomAttributes(rig3DAssetAttr, false)
             where attr.Any()
             select new {
                 Type = t,
@@ -41,17 +48,17 @@ public class AssetPipelineTools
                 var jobj = new JObject();
 
                 var transform = obj.transform;
-                if (!assetType.Attr.IgnorePosition)
+                if (assetType.Attr.ExportPosition)
                 {
                     jobj.Add("position", ToJObject(transform.position));
                 }
 
-                if (!assetType.Attr.IgnoreRotation)
+                if (assetType.Attr.ExportRotation)
                 {
                     jobj.Add("rotation", ToJObject(transform.rotation));
                 }
 
-                if (!assetType.Attr.IgnoreScale)
+                if (assetType.Attr.ExportScale)
                 {
                     jobj.Add("scale", ToJObject(transform.lossyScale));
                 }
@@ -87,7 +94,19 @@ public class AssetPipelineTools
         }
 
         var str = json.ToString();
-        Debug.Log(str);
+
+        // extract scene name
+        var startIndex = scenePath.LastIndexOfAny(new[] {'/', '\\'}) + 1;
+        var endIndex = scenePath.LastIndexOf('.');
+        var sceneName = scenePath.Substring(startIndex, endIndex - startIndex);
+
+        var exportPath = Path.GetFullPath(Path.Combine(Application.dataPath, "../Export"));
+        var jsonPath = Path.Combine(exportPath, sceneName + ".json");
+
+        Directory.CreateDirectory(exportPath);
+        File.WriteAllText(jsonPath, str);
+
+        Debug.LogFormat("JSON asset saved at {0}.", jsonPath);
     }
 
     private static IDictionary<PropertyInfo, ExportAttribute> GetExportProperties(Type type)

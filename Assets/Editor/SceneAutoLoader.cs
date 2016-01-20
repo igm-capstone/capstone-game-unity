@@ -1,6 +1,11 @@
 using UnityEngine;
 using UnityEditor;
- 
+
+#if !(UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
+using UnityEditor.SceneManagement;
+#endif
+
+
 /// <summary>
 /// Scene auto loader.
 /// </summary>
@@ -64,14 +69,26 @@ static class SceneAutoLoader
         {
             return;
         }
- 
+
+#if UNITY_5_2 || UNITY_5_1 || UNITY_5_0
         if (!EditorApplication.isPlaying && EditorApplication.isPlayingOrWillChangePlaymode)
+#else
+        if (!EditorApplication.isPlaying && EditorApplication.isPlayingOrWillChangePlaymode)
+#endif
         {
             // User pressed play -- autoload master scene.
             PreviousScene = EditorApplication.currentScene;
+#if UNITY_5_2 || UNITY_5_1 || UNITY_5_0
             if (EditorApplication.SaveCurrentSceneIfUserWantsTo())
+#else
+            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+#endif
             {
+#if UNITY_5_2 || UNITY_5_1 || UNITY_5_0
                 if (!EditorApplication.OpenScene(MasterScene))
+#else
+                if (!EditorSceneManager.OpenScene(MasterScene).IsValid())
+#endif
                 {
                     Debug.LogError(string.Format("error: scene not found: {0}", MasterScene));
                     EditorApplication.isPlaying = false;
@@ -86,13 +103,17 @@ static class SceneAutoLoader
         if (EditorApplication.isPlaying && !EditorApplication.isPlayingOrWillChangePlaymode)
         {
             // User pressed stop -- reload previous scene.
+#if UNITY_5_2 || UNITY_5_1 || UNITY_5_0
             if (!EditorApplication.OpenScene(PreviousScene))
+#else
+            if (!EditorSceneManager.OpenScene(PreviousScene).IsValid())
+#endif
             {
                 Debug.LogError(string.Format("error: scene not found: {0}", PreviousScene));
             }
         }
     }
- 
+
     // Properties are remembered as editor preferences.
     private const string cEditorPrefLoadMasterOnPlay = "SceneAutoLoader.LoadMasterOnPlay";
     private const string cEditorPrefMasterScene = "SceneAutoLoader.MasterScene";

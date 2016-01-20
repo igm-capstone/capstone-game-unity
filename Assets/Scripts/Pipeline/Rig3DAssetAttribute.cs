@@ -14,7 +14,7 @@ public sealed class Rig3DAssetAttribute : Attribute
 
     public string Name { get; private set; }
 
-    public bool IgnorePosition { get; set; }
-    public bool IgnoreRotation { get; set; }
-    public bool IgnoreScale { get; set; }
+    public bool ExportPosition { get; set; }
+    public bool ExportRotation { get; set; }
+    public bool ExportScale { get; set; }
 }
