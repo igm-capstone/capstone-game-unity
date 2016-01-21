@@ -114,10 +114,14 @@ public class MinionSpawnManager : NetworkBehaviour
                 }
             }
 
+            var avatar = target.GetComponentInParent<AvatarController>();
+            
+
             Transform spawn = minionContainer;
             minions[n] = Instantiate(EnemyPrefab, positions[n], Quaternion.identity) as GameObject;
             minions[n].transform.SetParent(spawn);
             minions[n].GetComponent<MinionController>().enabled = true;
+            minions[n].GetComponent<MinionController>().SetVisibility(avatar.gameObject);
             minions[n].GetComponent<PatrolWaypoints>().path = path;
             minions[n].GetComponent<PatrolWaypoints>().nextStop = waypointIndex;
             NetworkServer.Spawn(minions[n]);

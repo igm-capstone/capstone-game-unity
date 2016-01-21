@@ -10,7 +10,8 @@ public class MinionController : NetworkBehaviour
     private Dictionary<Type, MinionBehaviour> map;
     private Stack<MinionBehaviour> behaviourStack; 
 
-    private float agroTime; 
+    private float agroTime;
+    private GameObject visibleTo;
 
     public  Transform ClosestAvatar;
     public TargetFollower Follower { get; private set; }
@@ -63,7 +64,17 @@ public class MinionController : NetworkBehaviour
         if (ClosestAvatar == null)
         {
             var pos = transform.position;
-            var avatars = FindObjectsOfType<AvatarController>();
+
+            AvatarController[] avatars;
+            if (visibleTo)
+            {
+                avatars = new[] {visibleTo.GetComponent<AvatarController>() };
+            }
+            else
+            {
+                avatars = FindObjectsOfType<AvatarController>();
+            }
+
             var orderedAvatars = avatars
                 .Where(a => !a.Disabled)                        // skip disabled avatars,
                 .Select(a => a.transform)                       // select transform
@@ -116,6 +127,16 @@ public class MinionController : NetworkBehaviour
     [Command]
     public void CmdAssignDamage(GameObject obj, int damage)
     {
+        if (visibleTo != null && obj != visibleTo)
+        {
+            return;
+        }
+
         obj.GetComponent<Health>().TakeDamage(damage);
+    }
+
+    public void SetVisibility(GameObject obj)
+    {
+        visibleTo = obj;
     }
 }
