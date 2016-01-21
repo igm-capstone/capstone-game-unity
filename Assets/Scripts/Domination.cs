@@ -2,18 +2,21 @@
 using System.Collections;
 using UnityEngine.UI;
 
+[Rig3DAsset("domination", Rig3DExports.Position)]
 public class Domination : MonoBehaviour
 {
     [System.NonSerialized]
     public bool captured = false;
     private bool outsideDominationArea = true;
     public float elapsedTime = 0.0f;
+
+    [Export]
     public float timeToCapture = 20.0f;
     public Image dominationFill;
     public Image connection;
 
     // Domination Point Tier. All dom Pnts of a tier must be dominated to go to the next.
-    [Range(0, 5)]
+    [Export, Range(0, 5)]
     public int TierCapture;
     public bool canBeCaptured = false;
 

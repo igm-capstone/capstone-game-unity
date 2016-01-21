@@ -190,14 +190,18 @@ public class AssetPipelineTools
         return fields.ToDictionary(t => t.Field, t => t.Attr);
     }
 
-    private static JArray ToJObject(Vector3 v)
+    private static JToken ToJObject(Vector3 v)
     {
-        return new JArray { v.x, v.y, v.z };
+        // Using JRaw to aggregate all vector values in 1 line in the generated json string.
+        return new JRaw(string.Format("[ {0:0.0}, {1:0.0}, {2:0.0} ]", v.x, v.y, v.z));
+        // return new JArray { v.x, v.y, v.z };
     }
 
-    private static JArray ToJObject(Quaternion q)
+    private static JToken ToJObject(Quaternion q)
     {
-        return new JArray { q.x, q.y, q.z, q.w };
+        // Using JRaw to aggregate all vector values in 1 line in the generated json string.
+        return new JRaw(string.Format("[ {0:0.0}, {1:0.0}, {2:0.0}, {3:0.0} ]", q.x, q.y, q.z, q.w));
+        //return new JArray { q.x, q.y, q.z, q.w };
     }
     private static bool ExportContainsProperty(Rig3DExports defaultExports, Rig3DExports exports)
     {
