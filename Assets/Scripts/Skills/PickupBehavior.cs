@@ -3,13 +3,18 @@ using UnityEngine.Networking;
 
 using System.Collections;
 
+[Rig3DAsset("pickup", Rig3DExports.Position)]
 public class PickupBehavior : NetworkBehaviour
 {
     ISkill skill;
+
+    [Export("skillName")]
+    public string SkillName { get { return GetComponent<ISkill>().GetType().Name; } }
+
     // Use this for initialization
 	void Awake ()
 	{
-        skill = GetComponent<ISkill>() as ISkill;
+        skill = GetComponent<ISkill>();
        // skill.enabled = false;
 	}
 	

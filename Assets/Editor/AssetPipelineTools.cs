@@ -34,63 +34,20 @@ public class AssetPipelineTools
                 Attr = attr.First() as Rig3DAssetAttribute,
             };
 
+        // Add annotated types
         var json = new JObject();
-        foreach (var assetType in assetTypes)
+        foreach (var assetTypeInfo in assetTypes)
         {
-            var objs = Object.FindObjectsOfType(assetType.Type).Cast<MonoBehaviour>();
+            var array = GetAssetArray(assetTypeInfo.Type, assetTypeInfo.Attr.Exports);
+            json.Add(assetTypeInfo.Attr.Name, array);
+        }
 
-            var fields = GetExportFields(assetType.Type);
-            var properties = GetExportProperties(assetType.Type);
-
-            var array = new JArray();
-            foreach (var obj in objs)
-            {
-                var jobj = new JObject();
-
-                var transform = obj.transform;
-                if (assetType.Attr.ExportPosition)
-                {
-                    jobj.Add("position", ToJObject(transform.position));
-                }
-
-                if (assetType.Attr.ExportRotation)
-                {
-                    jobj.Add("rotation", ToJObject(transform.rotation));
-                }
-
-                if (assetType.Attr.ExportScale)
-                {
-                    jobj.Add("scale", ToJObject(transform.lossyScale));
-                }
-                
-                foreach (var fieldPair in fields)
-                {
-                    var name = fieldPair.Value.Name;
-                    if (string.IsNullOrEmpty(name))
-                    {
-                        name = fieldPair.Key.Name;
-                    }
-
-                    var value = fieldPair.Key.GetValue(obj);
-                    jobj.Add(name, new JRaw(value));
-                }
-
-                foreach (var propPair in properties)
-                {
-                    var name = propPair.Value.Name;
-                    if (string.IsNullOrEmpty(name))
-                    {
-                        name = propPair.Key.Name;
-                    }
-
-                    var value = propPair.Key.GetValue(obj, null);
-                    jobj.Add(name, new JRaw(value));
-                }
-
-                array.Add(jobj);
-            }
-
-            json.Add(assetType.Attr.Name, array);
+        // Add transform collections
+        var collections = Object.FindObjectsOfType<Rig3DCollection>();
+        foreach (var collection in collections)
+        {
+            var array = GetCollectionArray(collection, collection.Exports);
+            json.Add(collection.CollectionName, array);
         }
 
         var str = json.ToString();
@@ -107,6 +64,102 @@ public class AssetPipelineTools
         File.WriteAllText(jsonPath, str);
 
         Debug.LogFormat("JSON asset saved at {0}.", jsonPath);
+    }
+
+    private static JArray GetCollectionArray(Rig3DCollection collection, Rig3DExports defaultExports)
+    {
+        var objs = FlattenChildren(collection.transform);
+
+        var array = new JArray();
+        foreach (var behaviour in objs)
+        {
+            var jobj = CreateJsonObject(behaviour, defaultExports);
+
+            array.Add(jobj);
+        }
+        return array;
+    }
+
+    private static JArray GetAssetArray(Type assetType, Rig3DExports defaultExports)
+    {
+        var objs = Object.FindObjectsOfType(assetType).Cast<MonoBehaviour>();
+
+        var fields = GetExportFields(assetType);
+        var properties = GetExportProperties(assetType);
+
+        var array = new JArray();
+        foreach (var behaviour in objs)
+        {
+            var jobj = CreateJsonObject(behaviour, defaultExports);
+
+            foreach (var fieldPair in fields)
+            {
+                var name = fieldPair.Value.Name;
+                if (string.IsNullOrEmpty(name))
+                {
+                    name = fieldPair.Key.Name;
+                }
+
+                var value = fieldPair.Key.GetValue(behaviour);
+                jobj.Add(name, new JValue(value));
+            }
+
+            foreach (var propPair in properties)
+            {
+                var name = propPair.Value.Name;
+                if (string.IsNullOrEmpty(name))
+                {
+                    name = propPair.Key.Name;
+                }
+
+                var value = propPair.Key.GetValue(behaviour, null);
+                jobj.Add(name, new JValue(value));
+            }
+
+            array.Add(jobj);
+        }
+        return array;
+    }
+
+    private static IEnumerable<Transform> FlattenChildren(Transform transform)
+    {
+        if (transform.childCount == 0)
+        {
+            yield return transform;
+        }
+
+        var children = transform.Cast<Transform>();
+        var flatten = (Func<Transform, IEnumerable<Transform>>) FlattenChildren;
+
+        // select many receive 
+        foreach (var child in children.SelectMany(flatten))
+        {
+            yield return child;
+        }
+    }
+
+
+    private static JObject CreateJsonObject(Component component, Rig3DExports defaultExports)
+    {
+        var jobj = new JObject();
+
+        var transform = component.transform;
+        if (ExportContainsProperty(defaultExports, Rig3DExports.Position))
+        {
+            jobj.Add("position", ToJObject(transform.position));
+        }
+
+        if (ExportContainsProperty(defaultExports, Rig3DExports.Rotation))
+        {
+            jobj.Add("rotation", ToJObject(transform.rotation));
+        }
+
+        if (ExportContainsProperty(defaultExports, Rig3DExports.Scale))
+        {
+            jobj.Add("scale", ToJObject(transform.lossyScale));
+        }
+
+        return jobj;
     }
 
     private static IDictionary<PropertyInfo, ExportAttribute> GetExportProperties(Type type)
@@ -146,5 +199,8 @@ public class AssetPipelineTools
     {
         return new JArray { q.x, q.y, q.z, q.w };
     }
-
+    private static bool ExportContainsProperty(Rig3DExports defaultExports, Rig3DExports exports)
+    {
+        return (defaultExports & exports) == exports;
+    }
 }

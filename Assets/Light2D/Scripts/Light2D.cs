@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 
-[Rig3DAsset("Light", ExportPosition = true)]
+[Rig3DAsset("light", Rig3DExports.Position)]
 [ExecuteInEditMode]
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
