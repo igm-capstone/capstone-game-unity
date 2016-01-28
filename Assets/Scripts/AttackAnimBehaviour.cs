@@ -19,7 +19,12 @@ public class AttackAnimBehaviour : StateMachineBehaviour {
 	    {
 	        animator.SendMessageUpwards("AttackAnimationComplete", SendMessageOptions.DontRequireReceiver);
 	    }
-	}
+
+        else if (stateInfo.tagHash == Animator.StringToHash("LongAttack"))
+        {
+            animator.SendMessageUpwards("LongAttackAnimationComplete", SendMessageOptions.DontRequireReceiver);
+        }
+    }
 
 	// OnStateMove is called before OnStateMove is called on any state inside this state machine
 	//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

@@ -334,6 +334,7 @@ GameObject:
   - 114: {fileID: 11410854}
   - 114: {fileID: 11400276}
   - 114: {fileID: 11414952}
+  - 114: {fileID: 11499930}
   m_Layer: 11
   m_Name: Avatar
   m_TagString: Player
@@ -1858,9 +1859,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 1, y: 0}
+  m_Offset: {x: 1.70000005, y: 0}
   serializedVersion: 2
-  m_Size: {x: 2, y: 1.60000002}
+  m_Size: {x: 3.4000001, y: 1.60000002}
 --- !u!81 &8150906
 AudioListener:
   m_ObjectHideFlags: 1
@@ -2135,9 +2136,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbb605028cfaec48b2c20240430a909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHealth: 20
+  BaseHealth: 50
   HealthCanvas: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
   CurrentHealth: 0
+--- !u!114 &11499930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133474}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cfa7d5a84e69154f836e0b7ac26e5c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+  SkillSprite: {fileID: 21300004, guid: 216fa7f6cf9a76f45a8dbd685ddc9d17, type: 3}
+  Name: LongAttack
+  Cooldown: 1
+  canDrop: 0
+  Damage: 1
 --- !u!124 &12432304
 Behaviour:
   m_ObjectHideFlags: 1
@@ -11109,7 +11127,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Name
-      value: Move Block
+      value: LongAttack
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
@@ -11142,7 +11160,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: BaseHealth
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
@@ -11151,6 +11169,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: AreaRadius
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: canDrop
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
