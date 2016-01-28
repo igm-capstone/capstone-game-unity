@@ -33,7 +33,7 @@ public class AoE : ISkill
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.J))
         {
             Use();
         }

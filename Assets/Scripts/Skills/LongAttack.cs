@@ -37,9 +37,6 @@ public class LongAttack : ISkill {
         var hitbox = transform.Find("AvatarRotation/Hitbox");
         var hitboxCollider = hitbox.GetComponent<BoxCollider2D>();
 
-        //var hitboxSize = new Vector2(hitboxCollider.size.x, hitboxCollider.size.y * 0.5f);
-        //var hitboxOffset = new Vector2(hitboxSize.x , hitboxCollider.offset.y);
-
         var hitboxSize = new Vector2(hitboxCollider.size.x * 1.15f, hitboxCollider.size.y * 0.5f);
         var hitboxOffset = new Vector2(hitboxSize.x, hitboxCollider.offset.y);
 

@@ -18,7 +18,7 @@ public class Sprint : ISkill
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             Use();
         }

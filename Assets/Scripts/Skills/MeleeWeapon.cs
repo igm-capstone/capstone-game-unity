@@ -58,7 +58,7 @@ public class MeleeWeapon : ISkill
         Debug.DrawLine(aa, bb, Color.magenta, 5);
 
         var minions = Physics2D.OverlapAreaAll(aa, bb, 1 << LayerMask.NameToLayer("Minion"));
-
+        
         animator.SetTrigger("Attack");
 
         lastTarget = minions.Contains(lastTarget) ? lastTarget : minions.FirstOrDefault();
