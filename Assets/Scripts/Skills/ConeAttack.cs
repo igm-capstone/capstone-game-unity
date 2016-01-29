@@ -11,16 +11,19 @@ public class ConeAttack : ISkill
     AvatarNetworkBehavior avatarNetwork;
     AvatarController avatarController;
     Transform avatarModelTransform;
+    GameObject hb;
     public void Awake()
     {
         Name = "ConeAttack";
-        canDrop = false;
+        canDrop = true;
 
         avatarController = GetComponent<AvatarController>();
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         animator = GetComponent<RpcNetworkAnimator>();
 
         avatarModelTransform = transform.FindChild("AvatarRotation").FindChild("AllAnimsInOne");
+        hb = transform.FindChild("AvatarRotation").FindChild("ConeAttackHitBox").gameObject;
+        hb.SetActive(false);
     }
 
     void Update()
@@ -34,6 +37,9 @@ public class ConeAttack : ISkill
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
         if (avatarController.Disabled) return "You are incapacitated. Seek Help!";
+
+        //show hitbox 
+        hb.SetActive(true);
 
         animator.SetTrigger("ConeAttack");
         var minions = Physics2D.OverlapCircleAll(transform.position, radius, 1 << LayerMask.NameToLayer("Minion"));
@@ -52,5 +58,10 @@ public class ConeAttack : ISkill
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
+    void ConeAttackAnimationComplete()
+    {
+        hb.SetActive(false);
     }
 }

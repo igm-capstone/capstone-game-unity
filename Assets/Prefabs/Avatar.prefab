@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &101046
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 428522}
+  - 33: {fileID: 3357198}
+  - 64: {fileID: 6442112}
+  - 23: {fileID: 2398914}
+  m_Layer: 11
+  m_Name: ConeAttackHitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &102016
 GameObject:
   m_ObjectHideFlags: 1
@@ -217,6 +235,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &122116
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 403274}
+  - 33: {fileID: 3322866}
+  - 64: {fileID: 6449104}
+  - 23: {fileID: 2340918}
+  m_Layer: 11
+  m_Name: LongAttackHitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &125080
 GameObject:
   m_ObjectHideFlags: 1
@@ -955,6 +991,18 @@ Transform:
   - {fileID: 471636}
   m_Father: {fileID: 458010}
   m_RootOrder: 0
+--- !u!4 &403274
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122116}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.9000001, y: 0, z: 0}
+  m_LocalScale: {x: 7.81316423, y: 1.57000005, z: 5}
+  m_Children: []
+  m_Father: {fileID: 448192}
+  m_RootOrder: 4
 --- !u!4 &403822
 Transform:
   m_ObjectHideFlags: 1
@@ -1097,6 +1145,18 @@ Transform:
   - {fileID: 431604}
   m_Father: {fileID: 471752}
   m_RootOrder: 0
+--- !u!4 &428522
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101046}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_Children: []
+  m_Father: {fileID: 448192}
+  m_RootOrder: 3
 --- !u!4 &431604
 Transform:
   m_ObjectHideFlags: 1
@@ -1299,6 +1359,8 @@ Transform:
   - {fileID: 485922}
   - {fileID: 406944}
   - {fileID: 464758}
+  - {fileID: 428522}
+  - {fileID: 403274}
   m_Father: {fileID: 435526}
   m_RootOrder: 0
 --- !u!4 &449600
@@ -1731,6 +1793,32 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!23 &2340918
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122116}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: f06e128bda326684cb8bfb9a5d9170b4, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!23 &2345598
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -1783,6 +1871,32 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!23 &2398914
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101046}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: f06e128bda326684cb8bfb9a5d9170b4, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!33 &3316928
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1804,6 +1918,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125080}
   m_Mesh: {fileID: 4300002, guid: 78c6da88802d70947a7f5677f59b88b1, type: 3}
+--- !u!33 &3322866
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122116}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &3357198
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101046}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!50 &5052620
 Rigidbody2D:
   serializedVersion: 2
@@ -1863,6 +1991,30 @@ BoxCollider2D:
   m_Offset: {x: 1.70000005, y: 0}
   serializedVersion: 2
   m_Size: {x: 3.4000001, y: 1.60000002}
+--- !u!64 &6442112
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101046}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &6449104
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122116}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!81 &8150906
 AudioListener:
   m_ObjectHideFlags: 1
@@ -1909,7 +2061,7 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 45350ad05f758454580a16b3d9349bb6, type: 3}
   Name: Heal
   Cooldown: 2
-  canDrop: 1
+  canDrop: 0
   HealAmount: 1
   AreaRadius: 3
   FX: {fileID: 448086}
@@ -1928,7 +2080,7 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 0460b37cd7485f64a8eb9ea5af7ae6c1, type: 3}
   Name: Sprint
   Cooldown: 2
-  canDrop: 1
+  canDrop: 0
   Duration: 2
   SpeedMultiplier: 2
 --- !u!114 &11414952
@@ -1946,7 +2098,7 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 1965a1dbdc9f706418d3db6c49c6ab4a, type: 3}
   Name: Flame Sword
   Cooldown: 2
-  canDrop: 1
+  canDrop: 0
   Damage: 2
   AreaRadius: 3
   FX: {fileID: 475804}
@@ -1962,12 +2114,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 549e50788f0ffc7418a4416a1d27c987, type: 3}
+  SkillSprite: {fileID: 21300000, guid: f2eafda9a8751994db425a22b8c67fa8, type: 3}
   Name: Skill
   Cooldown: 1
   canDrop: 0
   damage: 2
-  radius: 2
+  radius: 2.5
 --- !u!114 &11417010
 MonoBehaviour:
   m_ObjectHideFlags: 1

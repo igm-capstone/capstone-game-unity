@@ -11,6 +11,7 @@ public class LongAttack : ISkill {
     AvatarNetworkBehavior avatarNetwork;
     AvatarController avatarController;
     Collider2D lastTarget;
+    GameObject hb;
 
     public void Awake()
     {
@@ -20,6 +21,9 @@ public class LongAttack : ISkill {
         animator = GetComponentInParent<RpcNetworkAnimator>();
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         avatarController = GetComponent<AvatarController>();        
+
+        hb = transform.FindChild("AvatarRotation").FindChild("LongAttackHitBox").gameObject;
+        hb.SetActive(false);
     }
     
     void Update()
@@ -42,18 +46,20 @@ public class LongAttack : ISkill {
 
         var aa = hitbox.TransformPoint(hitboxOffset - hitboxSize);
         var bb = hitbox.TransformPoint(hitboxOffset + hitboxSize);
-
+        hb.SetActive(true);
         Debug.DrawLine(aa, bb, Color.yellow, 5);
 
         var minions = Physics2D.OverlapAreaAll(aa, bb, 1 << LayerMask.NameToLayer("Minion"));
         animator.SetTrigger("LongAttack");        
         lastTarget = minions.Contains(lastTarget) ? lastTarget : minions.FirstOrDefault();
+        
         return null;
     }
 
     void LongAttackAnimationComplete()
     {
         Debug.Log("Long Attack " + lastTarget);
+        hb.SetActive(false);
         if (lastTarget == null)
             return;
 
