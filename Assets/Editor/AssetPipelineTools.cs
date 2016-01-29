@@ -42,8 +42,8 @@ public class AssetPipelineTools
         Debug.LogFormat("JSON asset saved at {0}.", jsonPath);
     }
 
-    [UnityEditor.MenuItem("Tools/Export Active Scene To...")]
-    public static void ExportActiveSceneTo()
+    [UnityEditor.MenuItem("Tools/Export Active Scene As...")]
+    public static void ExportActiveSceneAs()
     {
         var scenePath = EditorApplication.currentScene;
 
