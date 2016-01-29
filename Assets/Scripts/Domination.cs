@@ -10,13 +10,13 @@ public class Domination : MonoBehaviour
     private bool outsideDominationArea = true;
     public float elapsedTime = 0.0f;
 
-    [Export]
+    [Export("captureTime")]
     public float timeToCapture = 20.0f;
     public Image dominationFill;
     public Image connection;
 
     // Domination Point Tier. All dom Pnts of a tier must be dominated to go to the next.
-    [Export, Range(0, 5)]
+    [Export("tier"), Range(0, 5)]
     public int TierCapture;
     public bool canBeCaptured = false;
 
