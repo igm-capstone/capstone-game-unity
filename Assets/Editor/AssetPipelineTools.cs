@@ -245,14 +245,14 @@ public class AssetPipelineTools
     private static JToken ToJObject(Vector3 v)
     {
         // Using JRaw to aggregate all vector values in 1 line in the generated json string.
-        return new JRaw(string.Format("[ {0:0.0}, {1:0.0}, {2:0.0} ]", v.x, v.y, v.z));
+        return new JRaw(string.Format("[ {0:F4}, {1:F4}, {2:F4} ]", v.x, v.y, v.z));
         // return new JArray { v.x, v.y, v.z };
     }
 
     private static JToken ToJObject(Quaternion q)
     {
         // Using JRaw to aggregate all vector values in 1 line in the generated json string.
-        return new JRaw(string.Format("[ {0:0.0}, {1:0.0}, {2:0.0}, {3:0.0} ]", q.x, q.y, q.z, q.w));
+        return new JRaw(string.Format("[ {0:F4}, {1:F4}, {2:F4}, {3:F4} ]", q.x, q.y, q.z, q.w));
         //return new JArray { q.x, q.y, q.z, q.w };
     }
     private static bool ExportContainsProperty(Rig3DExports defaultExports, Rig3DExports exports)
