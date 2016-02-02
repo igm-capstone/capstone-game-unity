@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 using UnityEditor;
 using UnityEngine;
+using Application = UnityEngine.Application;
+using Component = UnityEngine.Component;
 using Object = UnityEngine.Object;
 
 [InitializeOnLoad]
 public class AssetPipelineTools
 {
-    [MenuItem("Tools/Export Active Scene")]
+    [UnityEditor.MenuItem("Tools/Export Active Scene")]
     public static void ExportActiveScene()
     {
        var scenePath = EditorApplication.currentScene;
@@ -22,14 +26,75 @@ public class AssetPipelineTools
             return;
         }
 
-        var rig3DAssetAttr = typeof (Rig3DAssetAttribute);
+        var str = ExportScene(scenePath);
+
+        // extract scene name
+        var startIndex = scenePath.LastIndexOfAny(new[] {'/', '\\'}) + 1;
+        var endIndex = scenePath.LastIndexOf('.');
+        var sceneName = scenePath.Substring(startIndex, endIndex - startIndex);
+
+        var exportPath = Path.GetFullPath(Path.Combine(Application.dataPath, "../Export"));
+        var jsonPath = Path.Combine(exportPath, sceneName + ".json");
+
+        Directory.CreateDirectory(exportPath);
+        File.WriteAllText(jsonPath, str);
+
+        Debug.LogFormat("JSON asset saved at {0}.", jsonPath);
+    }
+
+    [UnityEditor.MenuItem("Tools/Export Active Scene As...")]
+    public static void ExportActiveSceneAs()
+    {
+        var scenePath = EditorApplication.currentScene;
+
+        if (string.IsNullOrEmpty(scenePath))
+        {
+            Debug.LogWarning("No active scene! Please load a scene before exporting.");
+            return;
+        }
+        
+        var str = ExportScene(scenePath);
+        
+        // extract scene name
+        var startIndex = scenePath.LastIndexOfAny(new[] { '/', '\\' }) + 1;
+        var endIndex = scenePath.LastIndexOf('.');
+        var sceneName = scenePath.Substring(startIndex, endIndex - startIndex);
+
+        var defaultDir = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));
+        var initialDir = EditorPrefs.GetString("jsonSaveDir", defaultDir);
+        var dialog = new SaveFileDialog {
+            FileName = sceneName + ".json",
+            InitialDirectory = initialDir,
+            Filter = "JSON Asset (*.json)|*.json",
+        };
+
+        var result = dialog.ShowDialog();
+
+        if (result != DialogResult.OK)
+        {
+            return;
+        }
+
+        var dir = Path.GetDirectoryName(dialog.FileName) ?? defaultDir;
+        EditorPrefs.SetString("jsonSaveDir", dir);
+
+        Directory.CreateDirectory(dir);
+
+        File.WriteAllText(dialog.FileName, str);
+        Debug.LogFormat("JSON asset saved at {0}.", dialog.FileName);
+    }
+
+    private static string ExportScene(string scenePath)
+    {
+        var rig3DAssetAttr = typeof(Rig3DAssetAttribute);
 
         // Get a list of all classes annotated with AssetTypeAttribute
         var assetTypes =
             from t in rig3DAssetAttr.Assembly.GetTypes()
             let attr = t.GetCustomAttributes(rig3DAssetAttr, false)
             where attr.Any()
-            select new {
+            select new
+            {
                 Type = t,
                 Attr = attr.First() as Rig3DAssetAttribute,
             };
@@ -50,20 +115,7 @@ public class AssetPipelineTools
             json.Add(collection.CollectionName, array);
         }
 
-        var str = json.ToString();
-
-        // extract scene name
-        var startIndex = scenePath.LastIndexOfAny(new[] {'/', '\\'}) + 1;
-        var endIndex = scenePath.LastIndexOf('.');
-        var sceneName = scenePath.Substring(startIndex, endIndex - startIndex);
-
-        var exportPath = Path.GetFullPath(Path.Combine(Application.dataPath, "../Export"));
-        var jsonPath = Path.Combine(exportPath, sceneName + ".json");
-
-        Directory.CreateDirectory(exportPath);
-        File.WriteAllText(jsonPath, str);
-
-        Debug.LogFormat("JSON asset saved at {0}.", jsonPath);
+        return json.ToString();
     }
 
     private static JArray GetCollectionArray(Rig3DCollection collection, Rig3DExports defaultExports)
@@ -193,14 +245,14 @@ public class AssetPipelineTools
     private static JToken ToJObject(Vector3 v)
     {
         // Using JRaw to aggregate all vector values in 1 line in the generated json string.
-        return new JRaw(string.Format("[ {0:0.0}, {1:0.0}, {2:0.0} ]", v.x, v.y, v.z));
+        return new JRaw(string.Format("[ {0:F4}, {1:F4}, {2:F4} ]", v.x, v.y, v.z));
         // return new JArray { v.x, v.y, v.z };
     }
 
     private static JToken ToJObject(Quaternion q)
     {
         // Using JRaw to aggregate all vector values in 1 line in the generated json string.
-        return new JRaw(string.Format("[ {0:0.0}, {1:0.0}, {2:0.0}, {3:0.0} ]", q.x, q.y, q.z, q.w));
+        return new JRaw(string.Format("[ {0:F4}, {1:F4}, {2:F4}, {3:F4} ]", q.x, q.y, q.z, q.w));
         //return new JArray { q.x, q.y, q.z, q.w };
     }
     private static bool ExportContainsProperty(Rig3DExports defaultExports, Rig3DExports exports)
