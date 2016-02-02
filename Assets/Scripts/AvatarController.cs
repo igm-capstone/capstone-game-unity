@@ -33,8 +33,12 @@ public class AvatarController : MonoBehaviour
     {
         if (!Disabled) 
             Move();
-        else 
+        else
+        {
+            _rb.velocity = new Vector2(0, 0);
             HelpMessage.Instance.SetMessage("You are incapacitated. Seek help!");
+        }
+            
     }
 
     private void Move()

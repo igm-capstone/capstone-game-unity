@@ -129,7 +129,7 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 441c3834d891f934da5b9a9bff92f057, type: 3}
   Name: Spawn Minion
-  Cooldown: 0
+  Cooldown: 2
   canDrop: 0
   distanceFromPlayers: 5
 --- !u!114 &11430948
@@ -246,7 +246,7 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 5edf57f5f0d065245bbc4934b786e877, type: 3}
   Name: Hallucinate
-  Cooldown: 0
+  Cooldown: 2
   canDrop: 0
   Duration: 10
   Radius: 10
@@ -388,7 +388,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: SkillSprite
