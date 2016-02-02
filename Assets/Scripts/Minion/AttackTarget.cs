@@ -27,6 +27,7 @@ public class AttackTarget : MinionBehaviour {
     public override void UpdateBehaviour()
     {
         var target = Controller.ClosestAvatar;
+        if (!target) return;
 
         var targetAvatar = target.GetComponent<AvatarController>();
         if (targetAvatar != null && targetAvatar.Disabled)
@@ -50,8 +51,12 @@ public class AttackTarget : MinionBehaviour {
         }
 
         // Damage
-        GetComponent<MinionController>().CmdAssignDamage(Controller.ClosestAvatar.gameObject, 1);
-        Controller.DeactivateBehaviour();
+        var nearAvatar = Controller.ClosestAvatar;
+        if (nearAvatar)
+        {
+            GetComponent<MinionController>().CmdAssignDamage(nearAvatar.gameObject, 1);
+            Controller.DeactivateBehaviour();
+        }
     }
 
     private bool CheckHit()
