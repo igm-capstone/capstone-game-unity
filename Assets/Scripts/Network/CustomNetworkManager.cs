@@ -9,7 +9,7 @@ using UnityEngine.Networking.NetworkSystem;
 public class CustomNetworkManager : NetworkManager
 {
     public GameObject ghostPrefab;
-    public GameObject avatarPrefab;
+    public GameObject[] avatarPrefab;
 
     public bool exposeConsole = true;
     public GameObject console;
@@ -130,14 +130,14 @@ public class CustomNetworkManager : NetworkManager
             {
                 if (sp.PlayerID == conn.connectionId)
                 {
-                    player = (GameObject)Instantiate(avatarPrefab, sp.transform.position, Quaternion.identity);
+                    player = (GameObject)Instantiate(avatarPrefab[sp.PlayerID - 1], sp.transform.position, Quaternion.identity);
                     break;
                 }
             }
             if (player == null) // didnt match to a spawn point
             {
                 player =
-                    (GameObject)Instantiate(avatarPrefab, spawnPoints[0].transform.position, Quaternion.identity);
+                    (GameObject)Instantiate(avatarPrefab[0], spawnPoints[0].transform.position, Quaternion.identity);
             }
             player.GetComponent<AvatarNetworkBehavior>().conn = conn;
         }

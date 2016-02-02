@@ -16,7 +16,7 @@ public class LongAttack : ISkill {
     public void Awake()
     {
         Name = "LongAttack";
-        canDrop = true;
+        canDrop = false;
 
         animator = GetComponentInParent<RpcNetworkAnimator>();
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();

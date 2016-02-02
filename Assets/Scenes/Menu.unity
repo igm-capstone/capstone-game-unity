@@ -343,7 +343,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: localhost
+  m_Text: 
 --- !u!222 &431332207
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -972,7 +972,9 @@ MonoBehaviour:
   m_OfflineScene: Menu
   m_OnlineScene: LevelMVP - Design
   m_SpawnPrefabs:
-  - {fileID: 133474, guid: 73966fe075ec45f45b4c12e9167f156b, type: 2}
+  - {fileID: 188006, guid: 072c0af010dc12842bfb73d4e7b2af4d, type: 2}
+  - {fileID: 138790, guid: 0b83457a2661e274d8c9b6a6a2cf980d, type: 2}
+  - {fileID: 173442, guid: 0fb07828639fd7b45a86cc70504f9f18, type: 2}
   - {fileID: 196296, guid: 019c493b42c53a1468dbd861bbbd1d49, type: 2}
   - {fileID: 155754, guid: b554c4a33a58290439e71fa855519a5d, type: 2}
   m_CustomConfig: 1
@@ -1008,7 +1010,10 @@ MonoBehaviour:
   matchName: default
   matchSize: 4
   ghostPrefab: {fileID: 196296, guid: 019c493b42c53a1468dbd861bbbd1d49, type: 2}
-  avatarPrefab: {fileID: 133474, guid: 73966fe075ec45f45b4c12e9167f156b, type: 2}
+  avatarPrefab:
+  - {fileID: 188006, guid: 072c0af010dc12842bfb73d4e7b2af4d, type: 2}
+  - {fileID: 138790, guid: 0b83457a2661e274d8c9b6a6a2cf980d, type: 2}
+  - {fileID: 173442, guid: 0fb07828639fd7b45a86cc70504f9f18, type: 2}
   exposeConsole: 1
   console: {fileID: 182870, guid: 8057a11613acd314fade6d13b2a5be5c, type: 2}
 --- !u!4 &1400174516
