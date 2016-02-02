@@ -50,7 +50,7 @@ public class AttackTarget : MinionBehaviour {
         }
 
         // Damage
-        GetComponent<MinionController>().CmdAssignDamage(Controller.ClosestAvatar.gameObject, 1);
+        GetComponent<MinionController>().CmdAssignDamage(Controller.ClosestAvatar.gameObject, 0);
         Controller.DeactivateBehaviour();
     }
 
