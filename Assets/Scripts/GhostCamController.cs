@@ -6,7 +6,6 @@ public class GhostCamController : MonoBehaviour
 {
     public GameObject OuterWallsArray;
     float SpdXAxis, SpdYAxis;
-    float HorBrdr, VerBrdr;
     float ScrRightBorder, ScrLeftBorder, ScrUpBorder, ScrDownBorder;
 
     Transform GhostTransform;
