@@ -20,11 +20,13 @@ public class MoveBlock : ISkill
 
         blockCollector = GameObject.Find("BlocksCollector");
         avatarController = GetComponent<AvatarController>();
+
+        key = KeyCode.Space;
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(key))
         {
             Use();
         }

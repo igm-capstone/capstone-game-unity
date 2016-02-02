@@ -28,11 +28,13 @@ public class Heal : ISkill
             FX.localScale = new Vector3(AreaRadius, AreaRadius, 1);
             FX.parent = oldParent;
         }
+
+        key = KeyCode.N;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
+        if (Input.GetKeyDown(key))
         {
             Use();
         }

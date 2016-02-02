@@ -14,11 +14,13 @@ public class Sprint : ISkill
         Name = "Sprint";
         canDrop = false;
         avatarController = GetComponent<AvatarController>();
+
+        key = KeyCode.Z;
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(key))
         {
             Use();
         }

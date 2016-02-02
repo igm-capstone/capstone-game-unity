@@ -29,11 +29,13 @@ public class AoE : ISkill
             ;
             FX.parent = oldParent;
         }
+
+        key = KeyCode.J;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(key))
         {
             Use();
         }

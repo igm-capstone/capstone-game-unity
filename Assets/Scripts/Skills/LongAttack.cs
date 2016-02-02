@@ -24,11 +24,13 @@ public class LongAttack : ISkill {
 
         hb = transform.FindChild("AvatarRotation").FindChild("LongAttackHitBox").gameObject;
         hb.SetActive(false);
+
+        key = KeyCode.L;
     }
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(key))
         {
             Use();
         }

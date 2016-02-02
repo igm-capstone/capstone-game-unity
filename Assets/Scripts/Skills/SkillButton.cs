@@ -27,6 +27,10 @@ public class SkillButton : MonoBehaviour
         _hl = transform.Find("Highlight").GetComponent<Image>();
         _icon = transform.Find("Image").GetComponent<Image>();
         _icon.sprite = _skill.SkillSprite;
+        if (_skill.key != KeyCode.None)
+        {
+            transform.Find("Key").GetComponent<Text>().text = _skill.key.ToString();
+        }
     }
 
     void Update()

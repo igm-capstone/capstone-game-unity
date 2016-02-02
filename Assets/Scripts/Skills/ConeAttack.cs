@@ -24,11 +24,13 @@ public class ConeAttack : ISkill
         avatarModelTransform = transform.FindChild("AvatarRotation").FindChild("AllAnimsInOne");
         hb = transform.FindChild("AvatarRotation").FindChild("ConeAttackHitBox").gameObject;
         hb.SetActive(false);
+
+        key = KeyCode.K;
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K))
+        if(Input.GetKeyDown(key))
         {
             Use();
         }

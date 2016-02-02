@@ -23,11 +23,13 @@ public class MeleeWeapon : ISkill
         avatarController = GetComponent<AvatarController>();
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         animator = GetComponent<RpcNetworkAnimator>();
+
+        key = KeyCode.M;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(key))
         {
             Use();
         }
