@@ -15,7 +15,7 @@ public class AoE : ISkill
     public void Awake()
     {
         Name = "AoE";
-        canDrop = true;
+        canDrop = false;
 
         animator = GetComponentInParent<RpcNetworkAnimator>();
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();

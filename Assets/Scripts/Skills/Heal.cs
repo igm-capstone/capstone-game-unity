@@ -15,7 +15,7 @@ public class Heal : ISkill
     public void Awake()
     {
         Name = "Heal";
-        canDrop = true;
+        canDrop = false;
 
         animator = GetComponentInParent<RpcNetworkAnimator>();
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();

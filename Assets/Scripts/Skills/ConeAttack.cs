@@ -15,7 +15,7 @@ public class ConeAttack : ISkill
     public void Awake()
     {
         Name = "ConeAttack";
-        canDrop = true;
+        canDrop = false;
 
         avatarController = GetComponent<AvatarController>();
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
