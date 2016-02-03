@@ -15,6 +15,12 @@ using Object = UnityEngine.Object;
 [InitializeOnLoad]
 public class AssetPipelineTools
 {
+    class CollectionData
+    {
+        public JArray Collection;
+        public Bounds Bounds;
+    }
+
     [UnityEditor.MenuItem("Tools/Export Active Scene")]
     public static void ExportActiveScene()
     {
@@ -108,28 +114,64 @@ public class AssetPipelineTools
         }
 
         // Add transform collections
+        Bounds? bounds = null;
         var collections = Object.FindObjectsOfType<Rig3DCollection>();
         foreach (var collection in collections)
         {
-            var array = GetCollectionArray(collection, collection.Exports);
-            json.Add(collection.CollectionName, array);
+            var data = GetCollectionArray(collection);
+
+            json.Add(collection.CollectionName, data.Collection);
+
+            if (collection.CalculateBounds)
+            {
+                if (!bounds.HasValue)
+                {
+                    bounds = data.Bounds;
+                }
+                else
+                {
+                    bounds.Value.Encapsulate(data.Bounds);
+                }
+            }
         }
+        // add level general metadata
+
+        var metadata = new JObject();
+
+        if (bounds.HasValue)
+        {
+            metadata.Add("bounds", ToJToken(bounds.Value));
+        }
+
+        json.AddFirst(new JProperty("metadata", metadata));
 
         return json.ToString();
     }
 
-    private static JArray GetCollectionArray(Rig3DCollection collection, Rig3DExports defaultExports)
+    private static CollectionData GetCollectionArray(Rig3DCollection collection)
     {
         var objs = FlattenChildren(collection.transform);
+        var bounds = new Bounds();
 
         var array = new JArray();
         foreach (var behaviour in objs)
         {
-            var jobj = CreateJsonObject(behaviour, defaultExports);
+            var jobj = CreateJsonObject(behaviour, collection.Exports);
+
+            if (collection.CalculateBounds)
+            {
+                foreach (var renderer in behaviour.GetComponentsInChildren<Renderer>())
+                {
+                    bounds.Encapsulate(renderer.bounds);
+                }
+            }
 
             array.Add(jobj);
         }
-        return array;
+        return new CollectionData {
+            Collection = array,
+            Bounds = bounds,
+        };
     }
 
     private static JArray GetAssetArray(Type assetType, Rig3DExports defaultExports)
@@ -198,17 +240,17 @@ public class AssetPipelineTools
         var transform = component.transform;
         if (ExportContainsProperty(defaultExports, Rig3DExports.Position))
         {
-            jobj.Add("position", ToJObject(transform.position));
+            jobj.Add("position", ToJToken(transform.position));
         }
 
         if (ExportContainsProperty(defaultExports, Rig3DExports.Rotation))
         {
-            jobj.Add("rotation", ToJObject(transform.rotation));
+            jobj.Add("rotation", ToJToken(transform.rotation));
         }
 
         if (ExportContainsProperty(defaultExports, Rig3DExports.Scale))
         {
-            jobj.Add("scale", ToJObject(transform.lossyScale));
+            jobj.Add("scale", ToJToken(transform.lossyScale));
         }
 
         return jobj;
@@ -242,14 +284,24 @@ public class AssetPipelineTools
         return fields.ToDictionary(t => t.Field, t => t.Attr);
     }
 
-    private static JToken ToJObject(Vector3 v)
+
+
+    private static JToken ToJToken(Bounds b)
+    {
+        return new JObject {
+            new JProperty("center", ToJToken(b.center)),
+            new JProperty("extents", ToJToken(b.extents)),
+        };
+    }
+
+    private static JToken ToJToken(Vector3 v)
     {
         // Using JRaw to aggregate all vector values in 1 line in the generated json string.
         return new JRaw(string.Format("[ {0:F4}, {1:F4}, {2:F4} ]", v.x, v.y, v.z));
         // return new JArray { v.x, v.y, v.z };
     }
 
-    private static JToken ToJObject(Quaternion q)
+    private static JToken ToJToken(Quaternion q)
     {
         // Using JRaw to aggregate all vector values in 1 line in the generated json string.
         return new JRaw(string.Format("[ {0:F4}, {1:F4}, {2:F4}, {3:F4} ]", q.x, q.y, q.z, q.w));

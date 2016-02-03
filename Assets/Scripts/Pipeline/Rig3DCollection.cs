@@ -6,4 +6,6 @@ public class Rig3DCollection : MonoBehaviour
 
     [MultiButtons(Columns = 3)]
     public Rig3DExports Exports;
+
+    public bool CalculateBounds;
 }
