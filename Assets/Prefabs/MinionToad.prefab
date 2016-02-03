@@ -1609,7 +1609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbb605028cfaec48b2c20240430a909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHealth: 5
+  BaseHealth: 30
   HealthCanvas: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
   CurrentHealth: 0
 --- !u!114 &11418664
@@ -1744,6 +1744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54cc894172296b4283a42e2b9acc609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AtckDamage: 6
 --- !u!114 &11496266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1922,6 +1923,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: moveSpeed
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: AtckDamage
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BaseHealth
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

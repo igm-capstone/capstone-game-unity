@@ -2083,7 +2083,7 @@ MonoBehaviour:
   Name: Heal
   Cooldown: 2
   canDrop: 0
-  HealAmount: 1
+  HealAmount: 8
   AreaRadius: 3
   FX: {fileID: 415600}
 --- !u!114 &11422862
@@ -2153,7 +2153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbb605028cfaec48b2c20240430a909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHealth: 50
+  BaseHealth: 40
   HealthCanvas: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
   CurrentHealth: 0
 --- !u!114 &11471496
@@ -2170,9 +2170,9 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300004, guid: 216fa7f6cf9a76f45a8dbd685ddc9d17, type: 3}
   Name: LongAttack
-  Cooldown: 1
+  Cooldown: .5
   canDrop: 0
-  Damage: 3
+  Damage: 20
 --- !u!114 &11494156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2184,7 +2184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153858798af409f41bcbe96b72ce6150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3
+  MoveSpeed: 30
 --- !u!114 &11499050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11017,11 +11017,23 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: MoveSpeed
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: BaseHealth
-      value: 500
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Cooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: HealAmount
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

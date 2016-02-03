@@ -25,7 +25,7 @@ public class LongAttack : ISkill {
         hb = transform.FindChild("AvatarRotation").FindChild("LongAttackHitBox").gameObject;
         hb.SetActive(false);
 
-        key = KeyCode.L;
+        key = KeyCode.J;
     }
     
     void Update()

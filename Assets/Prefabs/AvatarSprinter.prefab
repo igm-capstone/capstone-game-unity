@@ -1964,7 +1964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbb605028cfaec48b2c20240430a909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHealth: 25
+  BaseHealth: 30
   HealthCanvas: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
   CurrentHealth: 0
 --- !u!114 &11432800
@@ -2041,7 +2041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153858798af409f41bcbe96b72ce6150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3
+  MoveSpeed: 40
 --- !u!114 &11449298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2056,9 +2056,9 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: f2eafda9a8751994db425a22b8c67fa8, type: 3}
   Name: Skill
-  Cooldown: 1
+  Cooldown: .5
   canDrop: 0
-  damage: 2
+  damage: 15
   radius: 2.5
 --- !u!114 &11454976
 MonoBehaviour:
@@ -2074,10 +2074,10 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 0460b37cd7485f64a8eb9ea5af7ae6c1, type: 3}
   Name: Sprint
-  Cooldown: 2
+  Cooldown: 3.5
   canDrop: 0
-  Duration: 2
-  SpeedMultiplier: 2
+  Duration: .800000012
+  SpeedMultiplier: 1.5
 --- !u!114 &11462544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10975,7 +10975,39 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: BaseHealth
-      value: 500
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MoveSpeed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: HideInactiveSkills
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Cooldown
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SpeedAdjust
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: canDrop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Duration
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SpeedMultiplier
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

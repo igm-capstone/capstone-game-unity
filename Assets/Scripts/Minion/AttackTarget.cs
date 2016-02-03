@@ -8,6 +8,7 @@ public class AttackTarget : MinionBehaviour {
     
 
     private bool isAttacking;
+    public int AtckDamage;
 
     public override void ActivateBehaviour()
     {
@@ -54,7 +55,7 @@ public class AttackTarget : MinionBehaviour {
         var nearAvatar = Controller.ClosestAvatar;
         if (nearAvatar)
         {
-            GetComponent<MinionController>().CmdAssignDamage(nearAvatar.gameObject, 1);
+            GetComponent<MinionController>().CmdAssignDamage(nearAvatar.gameObject, AtckDamage);
             Controller.DeactivateBehaviour();
         }
     }

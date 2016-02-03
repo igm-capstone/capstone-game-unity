@@ -8,6 +8,7 @@ public class AvatarController : MonoBehaviour
 {
     [SerializeField]
     public float MoveSpeed = 4;
+    float SpeedAdjust = 9;
     [SerializeField]
     public bool Disabled { get { return (_health &&  _health.CurrentHealth <= 0); } }
 
@@ -22,6 +23,9 @@ public class AvatarController : MonoBehaviour
 
         _avatarSkillBar = GetComponentInChildren<SkillBar>();
         animator = GetComponent<RpcNetworkAnimator>();
+
+        // Game Balance Adjust => Makes Speed number comparable to Minion Speed number.
+        MoveSpeed = MoveSpeed /SpeedAdjust;
     }
 
     void Start()
