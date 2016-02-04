@@ -41,18 +41,28 @@ public class AvatarController : MonoBehaviour
         {
             _rb.velocity = new Vector2(0, 0);
             HelpMessage.Instance.SetMessage("You are incapacitated. Seek help!");
-        }
-            
+        }   
     }
 
     private void Move()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
+        
+        // Mouse and Key controls - Rotation
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float LookPosX = mouseWorldPos.x - transform.position.x;
+        float LookPosY = mouseWorldPos.y - transform.position.y;
+        transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(LookPosY, LookPosX) * Mathf.Rad2Deg, Vector3.forward);
+
+        /*
+        // Keyboard only controls - Rotation
         if (Mathf.Abs(vertical) > Mathf.Epsilon || Mathf.Abs(horizontal) > Mathf.Epsilon)
         {
-            transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(vertical, horizontal) * Mathf.Rad2Deg, Vector3.forward);
+            //transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(vertical, horizontal) * Mathf.Rad2Deg, Vector3.forward);
         }
+        */
+        // Applies velocity
         _rb.velocity = new Vector2(horizontal,vertical) * MoveSpeed;
         animator.SetFloat("RunSpeed", _rb.velocity.magnitude);
     }

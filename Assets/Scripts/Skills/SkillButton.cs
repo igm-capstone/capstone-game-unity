@@ -29,7 +29,14 @@ public class SkillButton : MonoBehaviour
         _icon.sprite = _skill.SkillSprite;
         if (_skill.key != KeyCode.None)
         {
-            transform.Find("Key").GetComponent<Text>().text = _skill.key.ToString();
+            if (_skill.key == KeyCode.Mouse0)
+                transform.Find("Key").GetComponent<Text>().text = "LMBtn";
+
+            else if (_skill.key == KeyCode.Mouse1)
+                transform.Find("Key").GetComponent<Text>().text = "RMBtn";
+
+            else
+                transform.Find("Key").GetComponent<Text>().text = _skill.key.ToString();
         }
     }
 
