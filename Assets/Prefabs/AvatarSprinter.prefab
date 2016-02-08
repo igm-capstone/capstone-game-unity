@@ -2041,7 +2041,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153858798af409f41bcbe96b72ce6150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 40
+  MoveSpeed: 120
+  CalcMoveSpeed: 0
 --- !u!114 &11449298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10979,7 +10980,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: MoveSpeed
-      value: 40
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: HideInactiveSkills

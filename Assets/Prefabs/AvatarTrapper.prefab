@@ -2061,7 +2061,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153858798af409f41bcbe96b72ce6150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 35
+  MoveSpeed: 100
+  CalcMoveSpeed: 0
 --- !u!124 &12490656
 Behaviour:
   m_ObjectHideFlags: 1
@@ -10881,7 +10882,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: MoveSpeed
-      value: 35
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: BaseHealth
