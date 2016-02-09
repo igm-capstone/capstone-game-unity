@@ -64,9 +64,11 @@ public class AvatarController : MonoBehaviour
             //transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(vertical, horizontal) * Mathf.Rad2Deg, Vector3.forward);
         }
         */
+
         // Applies velocity
-        _rb.velocity = new Vector2(horizontal,vertical) * CalcMoveSpeed;
+        _rb.velocity = new Vector2(horizontal, vertical).normalized * CalcMoveSpeed*
+            (Mathf.Abs(Mathf.Abs(horizontal) - Mathf.Abs(vertical)) + (Mathf.Abs(horizontal) * Mathf.Abs(vertical) * Mathf.Sqrt(2)));
+
         animator.SetFloat("RunSpeed", _rb.velocity.magnitude);
     }
-
-}
+} 
