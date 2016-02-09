@@ -1964,7 +1964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbb605028cfaec48b2c20240430a909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHealth: 30
+  BaseHealth: 120
   HealthCanvas: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
   CurrentHealth: 0
 --- !u!114 &11432800
@@ -2041,7 +2041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153858798af409f41bcbe96b72ce6150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 120
+  MoveSpeed: 130
   CalcMoveSpeed: 0
 --- !u!114 &11449298
 MonoBehaviour:
@@ -2059,7 +2059,7 @@ MonoBehaviour:
   Name: Skill
   Cooldown: .5
   canDrop: 0
-  damage: 15
+  damage: 8
   radius: 2.5
 --- !u!114 &11454976
 MonoBehaviour:
@@ -10976,11 +10976,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: BaseHealth
-      value: 30
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: MoveSpeed
-      value: 120
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: HideInactiveSkills
@@ -10988,7 +10988,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damage
-      value: 15
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
