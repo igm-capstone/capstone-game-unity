@@ -91,10 +91,13 @@ public static class FastMath
     // can be used as a pseudo angle comparator.
     public static float PseudoAtan2(float dy, float dx)
     {
-        float ax = Mathf.Abs(dx);
-        float ay = Mathf.Abs(dy);
-        float p = dy / (ax + ay);
-        return dx < 0 ? 2 - p : p;
+        var val = Mathf.Atan2(dy, dx);
+        return val;
+        //return val < 0 ? val + (2 * Mathf.PI) : val;
+        //float ax = Mathf.Abs(dx);
+        //float ay = Mathf.Abs(dy);
+        //float p = dy / (ax + ay);
+        //return dx < 0 ? 2 - p : p;
     }
 
     public static bool Approximately(float a, float b, float error = 0.001f)
