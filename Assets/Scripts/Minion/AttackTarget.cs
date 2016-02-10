@@ -4,11 +4,18 @@ using System.Collections;
 using System.Linq;
 using UnityEngine.Networking;
 
-public class AttackTarget : MinionBehaviour {
-    
-
+public class AttackTarget : MinionBehaviour
+{
     private bool isAttacking;
     public int AtckDamage;
+    public float ExplosionRadius;
+
+    MinionType MyType;
+
+    void Awake()
+    {
+        MyType = GetComponent<MinionController>().Type;
+    }
 
     public override void ActivateBehaviour()
     {
@@ -51,12 +58,42 @@ public class AttackTarget : MinionBehaviour {
             return;
         }
 
-        // Damage
-        var nearAvatar = Controller.ClosestAvatar;
-        if (nearAvatar)
+
+        switch (MyType)
         {
-            GetComponent<MinionController>().CmdAssignDamage(nearAvatar.gameObject, AtckDamage);
-            Controller.DeactivateBehaviour();
+            case MinionType.Meelee:
+                // Damage
+                var nearAvatar = Controller.ClosestAvatar;
+                if (nearAvatar)
+                {
+                    GetComponent<MinionController>().CmdAssignDamage(nearAvatar.gameObject, AtckDamage);
+                    Controller.DeactivateBehaviour();
+                }
+                break;
+
+            case MinionType.AOEBomber:
+                // Explode on players
+                Vector2 Cur2DPosition = new Vector2(this.transform.position.x, this.transform.position.y);
+                Collider2D[] NearbyAvatarsCol = Physics2D.OverlapCircleAll(Cur2DPosition, ExplosionRadius, LayerMask.GetMask("Player"));
+
+                if (NearbyAvatarsCol != null)
+                {
+                    // Assign Damage
+                    foreach (var AvatarCol in NearbyAvatarsCol)
+                    {
+                        if (AvatarCol.gameObject.tag == "Player")
+                        {
+                            GetComponent<MinionController>().CmdAssignDamage(AvatarCol.gameObject, AtckDamage);
+                        }
+                    }
+                    // Kill self
+                    GetComponent<Health>().TakeDamage(int.MaxValue);
+                }
+                break;
+
+            default:
+                Debug.Log("Minion type Invalid!");
+                break;
         }
     }
 
@@ -64,5 +101,10 @@ public class AttackTarget : MinionBehaviour {
     {
         // check if target is in hit area
         return (Controller.ClosestAvatar.position - transform.position).sqrMagnitude > 1;
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(this.transform.position, ExplosionRadius);
     }
 }

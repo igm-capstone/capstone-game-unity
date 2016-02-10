@@ -4,6 +4,12 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
+public enum MinionType
+{
+    Meelee,
+    AOEBomber
+}
+
 [RequireComponent(typeof(TargetFollower))]
 public class MinionController : NetworkBehaviour
 {
@@ -17,6 +23,8 @@ public class MinionController : NetworkBehaviour
     public TargetFollower Follower { get; private set; }
 
     public GridBehavior grid;
+
+    public MinionType Type;
 
 	// Use this for initialization
 	void Awake ()

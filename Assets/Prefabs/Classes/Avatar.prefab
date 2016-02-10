@@ -2283,6 +2283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 4
+  CalcMoveSpeed: 0
 --- !u!114 &11470710
 MonoBehaviour:
   m_ObjectHideFlags: 1

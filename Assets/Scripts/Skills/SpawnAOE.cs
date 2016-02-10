@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Linq;
 
-public class SpawnMinion : ISkill
+public class SpawnAOE : ISkill
 {
     public float distanceFromPlayers = 5f;
 
     public void Awake()
     {
-        Name = "SpawnMinion";
+        Name = "SpawnAOE";
         canDrop = false;
     }
 
@@ -36,7 +36,7 @@ public class SpawnMinion : ISkill
             return Name + " skill cannot be used so close to a player!";
         }
 
-        MinionSpawnManager.Instance.CmdSpawn(clickWorldPos, MinionType.Meelee);
+        MinionSpawnManager.Instance.CmdSpawn(clickWorldPos, MinionType.AOEBomber);
 
         return null;
     }

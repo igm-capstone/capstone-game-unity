@@ -5,11 +5,10 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System;
 
+
 public class MinionSpawnManager : NetworkBehaviour
 {
-
-
-    public GameObject EnemyPrefab;
+    public GameObject[] EnemyPrefab;
     private Transform pathContainer;
     private Transform minionContainer;
     private List<WaypointPath> paths; 
@@ -35,12 +34,11 @@ public class MinionSpawnManager : NetworkBehaviour
         //    robot.GetComponent<MinionController>().enabled = true;
         //    robot.GetComponent<PatrolWaypoints>().path = spawn.GetComponentInChildren<WaypointPath>();
         //    NetworkServer.Spawn(robot); 
-
         //}
     }
 
     [Command]
-    public void CmdSpawn(Vector3 position)
+    public void CmdSpawn(Vector3 position, MinionType MinType)
     {
         var minDist = float.MaxValue;
         WaypointPath path = null;
@@ -63,9 +61,23 @@ public class MinionSpawnManager : NetworkBehaviour
             }
         }
 
-
         Transform spawn = minionContainer;
-        GameObject robot = Instantiate(EnemyPrefab, position, Quaternion.identity) as GameObject;
+        GameObject robot;
+        switch (MinType)
+        {
+            case MinionType.Meelee:
+                robot = Instantiate(EnemyPrefab[0], position, Quaternion.identity) as GameObject;
+                break;
+
+            case MinionType.AOEBomber:
+                robot = Instantiate(EnemyPrefab[1], position, Quaternion.identity) as GameObject;
+                break;
+
+            default:
+                robot = Instantiate(EnemyPrefab[0], position, Quaternion.identity) as GameObject;
+                break;
+        }
+
         robot.transform.SetParent(spawn);
         robot.GetComponent<MinionController>().enabled = true;
         robot.GetComponent<PatrolWaypoints>().path = path;
@@ -118,7 +130,7 @@ public class MinionSpawnManager : NetworkBehaviour
             
 
             Transform spawn = minionContainer;
-            minions[n] = Instantiate(EnemyPrefab, positions[n], Quaternion.identity) as GameObject;
+            minions[n] = Instantiate(EnemyPrefab[0], positions[n], Quaternion.identity) as GameObject;
             minions[n].transform.SetParent(spawn);
             minions[n].GetComponent<MinionController>().enabled = true;
             minions[n].GetComponent<MinionController>().SetVisibility(avatar.gameObject);
