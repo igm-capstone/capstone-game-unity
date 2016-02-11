@@ -110,7 +110,11 @@ public class Light2D : MonoBehaviour {
 
         // TODO avoid getting all colliders every frame
         FindLightColliders();
+
+        vertices.Clear();
+
         SetLight();
+
         BuildLightMesh();
         BuildCollider();
         ResetBounds();
@@ -121,6 +125,8 @@ public class Light2D : MonoBehaviour {
         // TODO filter colliders by LayerMask
         colliders = FindObjectsOfType<PolygonCollider2D>();
     }
+
+
 
     private void SetLight()
     {
@@ -156,7 +162,7 @@ public class Light2D : MonoBehaviour {
             var points = (from p in collider.points
                          let worldPoint = (Vector2)collider.transform.TransformPoint(p)
                          let distance = (worldPoint - (Vector2)basePosition).magnitude
-                         select new { Point = worldPoint, LocalPoint = p, Distance = distance }).ToArray();
+            select new { Point = worldPoint, LocalPoint = p, Angle = angle, Distance = distance }).ToArray();
 
             // ignore colliders that doesn't have any point in range
             if (points.All(p => p.Distance > lightRadius))
@@ -273,54 +279,54 @@ public class Light2D : MonoBehaviour {
                         continue;
                     }
 
-                    var secVertex = new Vertex { IsSecondary = true };
 
                     // vertex calculate position
                     var position = transform.TransformPoint(hiloVertex.Position);
-                    var direction = (position - transform.position).normalized;
-                    position += direction * .0001f;
+                    var distance = position - transform.position;
+                    var direction = distance.normalized;
 
-                    var hit = Physics2D.Raycast(position, direction, lightRadius, shadowMask);
+                    position += direction * .0001f;
+                    //Debug.DrawLine(position + Vector3.one, position - Vector3.one, Color.blue);
+                    //Debug.DrawLine(transform.position, transform.position + direction * 30, Color.blue);
+                    var secVertex = new Vertex { IsSecondary = true };
+                    var hit = Physics2D.Raycast(position, direction, lightRadius - distance.magnitude, shadowMask);
                     if (hit)
                     {
+                        Debug.DrawLine(position, hit.point, Color.blue);
                         secVertex.Position = transform.InverseTransformPoint(hit.point);
                     }
                     else
                     {
-                        secVertex.Position = direction * lightRadius;
+                        // rotate by baseangle first 
+                        
+                        secVertex.Position = Quaternion.Euler(0, 0, -baseAngle * Mathf.Rad2Deg) * direction * lightRadius;
+                        Debug.DrawLine(position, transform.TransformPoint(secVertex.Position), Color.blue);
                     }
+                    Debug.DrawLine(transform.TransformPoint(hiloVertex.Position), transform.TransformPoint(secVertex.Position), Color.white * .5f + Color.red * .5f);
 
-                    float newVertexAngle = FastMath.PseudoAtan2(vertex.Position.y, vertex.Position.x);
-                    vertex.PseudoAngle = ClampAngle(baseAngle + newVertexAngle, lowAngle, highAngle);
+                    float newVertexAngle = FastMath.PseudoAtan2(secVertex.Position.y, secVertex.Position.x);
+                    secVertex.PseudoAngle = ClampAngle(baseAngle + newVertexAngle, lowAngle, highAngle);
 
-                    vertices.Add(vertex);
+                    vertices.Add(secVertex);
 
                     #if UNITY_EDITOR
-                    //Debug.DrawLine(position, newVertexPosition, Color.green);
-                    if (debug) Debug.DrawLine(transform.position, transform.TransformPoint(vertex.Position), Color.white * .5f + Color.magenta * .5f);
+                    if (debug) Debug.DrawLine(transform.position, transform.TransformPoint(secVertex.Position), Color.white * .5f + Color.magenta * .5f);
                     #endif
                 }
 
             }
         }
 
-        //float amount = (Mathf.PI * 2) / lightSegments;
         var amount = coneAngle * 2.0f / lightSegments;
         var theta = lowAngle;
 
         // Generate vectors for light cast
         for (int i = 0; i <= lightSegments; i++)
         {
-
-            //if (theta < 0) theta += 360;
-
             var position2d = (Vector2) transform.position;
 
             var vertex = new Vertex();
-            //vertex.Position = new Vector3(FastMath.CosArray[theta], FastMath.SinArray[theta], 0);
             vertex.Position = transform.TransformDirection(new Vector3(Mathf.Cos(theta - baseAngle), Mathf.Sin(theta - baseAngle), 0));
-            //var a = FastMath.PseudoAtan2(vertex.Position.y, vertex.Position.x);
-            //var b = ClampAngle(baseAngle + a, lowAngle, highAngle);
             vertex.PseudoAngle = theta;
             vertex.IsSecondary = true;
 
@@ -328,14 +334,18 @@ public class Light2D : MonoBehaviour {
             vertex.Position += position2d;
             vertex.Position.Scale(transform.lossyScale);
 
-
-
             var hit = Physics2D.Raycast(transform.position, vertex.Position - position2d, lightRadius, shadowMask);
-            //Debug.DrawRay(transform.position, v.pos - transform.position, Color.white);
-
-            if (!hit)
+            if (hit)
             {
-                //Debug.DrawLine(transform.position, v.pos, Color.white);
+                // first and last segments must be added to the mesh
+                if (i == 0 || i == lightSegments)
+                {
+                    vertex.Position = transform.InverseTransformPoint(hit.point);
+                    vertices.Add(vertex);
+                }
+            }
+            else
+            {
                 vertex.Position = transform.InverseTransformPoint(vertex.Position);
                 vertices.Add(vertex);
             }
@@ -345,7 +355,6 @@ public class Light2D : MonoBehaviour {
 
         // sort all vertices by angle in a descending order
         vertices.Sort((v1, v2) => v2.PseudoAngle.CompareTo(v1.PseudoAngle));
-        //vertices.Sort((v1, v2) => ClampAngle(v2.PseudoAngle, -angle * Mathf.Deg2Rad*0.5f, angle * Mathf.Deg2Rad * 0.5f).CompareTo(ClampAngle(v1.PseudoAngle, -angle * Mathf.Deg2Rad * 0.5f, angle * Mathf.Deg2Rad * 0.5f)));
 
         var epsilon = 0.00001f;
         for (int i = 0; i < vertices.Count - 1; i++)
