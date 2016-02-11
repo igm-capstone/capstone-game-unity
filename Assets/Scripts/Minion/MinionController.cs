@@ -147,4 +147,14 @@ public class MinionController : NetworkBehaviour
     {
         visibleTo = obj;
     }
+
+    [ClientRpc]
+    public void RpcTriggerExplosionSrpite( bool State)
+    {
+        if (Type == MinionType.AOEBomber)
+        {
+            GameObject AttackSprite = transform.FindChild("ExplosionSprite").gameObject;
+            AttackSprite.SetActive(State);
+        }
+    }
 }
