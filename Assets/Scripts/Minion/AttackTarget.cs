@@ -9,12 +9,23 @@ public class AttackTarget : MinionBehaviour
     private bool isAttacking;
     public int AtckDamage;
     public float ExplosionRadius;
+    GameObject AttackSprite;
 
     MinionType MyType;
 
     void Awake()
     {
         MyType = GetComponent<MinionController>().Type;
+
+        if (MyType == MinionType.AOEBomber)
+        {
+            AttackSprite = transform.FindChild("ExplosionSprite").gameObject;
+            AttackSprite.SetActive(false);
+
+            GetComponent<MinionController>().RpcTriggerExplosionSrpite(false);
+        }
+
+        
     }
 
     public override void ActivateBehaviour()
@@ -24,6 +35,14 @@ public class AttackTarget : MinionBehaviour
         {
             GetComponent<RpcNetworkAnimator>().SetTrigger("Attack");
         }
+
+        if (MyType == MinionType.AOEBomber)
+        {
+            // Explosion Sprite
+            AttackSprite.SetActive(true);
+            GetComponent<MinionController>().RpcTriggerExplosionSrpite(true);
+        }
+        
     }
 
     public override void DeactivateBehaviour()
@@ -73,6 +92,7 @@ public class AttackTarget : MinionBehaviour
 
             case MinionType.AOEBomber:
                 // Explode on players
+
                 Vector2 Cur2DPosition = new Vector2(this.transform.position.x, this.transform.position.y);
                 Collider2D[] NearbyAvatarsCol = Physics2D.OverlapCircleAll(Cur2DPosition, ExplosionRadius, LayerMask.GetMask("Player"));
 
@@ -88,6 +108,7 @@ public class AttackTarget : MinionBehaviour
                     }
                     // Kill self
                     GetComponent<Health>().TakeDamage(int.MaxValue);
+                    
                 }
                 break;
 
@@ -107,4 +128,6 @@ public class AttackTarget : MinionBehaviour
     {
         Gizmos.DrawWireSphere(this.transform.position, ExplosionRadius);
     }
+
+
 }

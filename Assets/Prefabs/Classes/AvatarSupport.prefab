@@ -2168,7 +2168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300004, guid: 216fa7f6cf9a76f45a8dbd685ddc9d17, type: 3}
+  SkillSprite: {fileID: 21300000, guid: 0734cb10911136e44802c8344db09ca1, type: 3}
   Name: LongAttack
   Cooldown: .5
   canDrop: 0
@@ -11036,6 +11036,11 @@ Prefab:
       propertyPath: HealAmount
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SkillSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0734cb10911136e44802c8344db09ca1,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 138790}
