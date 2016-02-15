@@ -628,6 +628,7 @@ GameObject:
   - 114: {fileID: 11480688}
   - 114: {fileID: 11421404}
   - 114: {fileID: 11417364}
+  - 114: {fileID: 11461486}
   m_Layer: 11
   m_Name: AvatarTrapper
   m_TagString: Player
@@ -1595,7 +1596,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26, y: 2, z: 0}
+  m_LocalPosition: {x: -19.9916096, y: -4.78702831, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 460598}
@@ -1841,10 +1842,10 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: -.25, y: .25}
-      - {x: -.25, y: -.25}
-      - {x: .25, y: -.25}
-      - {x: .25, y: .25}
+    - - {x: -2.55999994, y: 2.55999994}
+      - {x: -2.55999994, y: -2.55999994}
+      - {x: 2.55999994, y: -2.55999994}
+      - {x: 2.55999994, y: 2.55999994}
 --- !u!81 &8119694
 AudioListener:
   m_ObjectHideFlags: 1
@@ -2025,6 +2026,23 @@ MonoBehaviour:
   MaxSkills: 3
   HideInactiveSkills: 0
   OnClickBehavior: 2
+--- !u!114 &11461486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173442}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ee20cf1de6d63468c576e2a6264c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+  SkillSprite: {fileID: 21300000, guid: 66a5ec73656e2a94e97ff972fe39dc9e, type: 3}
+  Name: Set Trap
+  Cooldown: 5
+  canDrop: 0
+  SlctdTrapObj: {fileID: 150852, guid: cbf340c69f010c54aa1ed2004220b4b0, type: 2}
 --- !u!114 &11480688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10895,6 +10913,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: Damage
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
