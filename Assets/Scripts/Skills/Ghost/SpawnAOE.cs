@@ -36,7 +36,7 @@ public class SpawnAOE : ISkill
             return Name + " skill cannot be used so close to a player!";
         }
 
-        MinionSpawnManager.Instance.CmdSpawn(clickWorldPos, MinionType.AOEBomber);
+        MinionSpawnManager.Instance.CmdSingleSpawn(clickWorldPos, MinionType.AOEBomber);
 
         return null;
     }

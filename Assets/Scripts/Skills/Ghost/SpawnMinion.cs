@@ -36,7 +36,7 @@ public class SpawnMinion : ISkill
             return Name + " skill cannot be used so close to a player!";
         }
 
-        MinionSpawnManager.Instance.CmdSpawn(clickWorldPos, MinionType.Meelee);
+        MinionSpawnManager.Instance.CmdSingleSpawn(clickWorldPos, MinionType.Meelee);
 
         return null;
     }

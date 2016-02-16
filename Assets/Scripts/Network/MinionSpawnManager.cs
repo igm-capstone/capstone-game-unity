@@ -38,7 +38,7 @@ public class MinionSpawnManager : NetworkBehaviour
     }
 
     [Command]
-    public void CmdSpawn(Vector3 position, MinionType MinType)
+    public void CmdSingleSpawn(Vector3 position, MinionType MinType)
     {
         var minDist = float.MaxValue;
         WaypointPath path = null;
@@ -91,7 +91,7 @@ public class MinionSpawnManager : NetworkBehaviour
     }
 
     [Command]
-    public void CmdCoolerSpawn(GameObject target, float radius, int numMinions, Action<GameObject[], GameObject> completion)
+    public void CmdMultipleSpawn(GameObject target, float radius, int numMinions, Action<GameObject[], GameObject> completion)
     {
         List<Node> nodes = GridBehavior.Instance.getNodesNearPos(target.transform.position, radius, node => !node.hasLight && node.canWalk) as List<Node>;
         nodes.Sort((a, b) => UnityEngine.Random.Range(-1, 2));

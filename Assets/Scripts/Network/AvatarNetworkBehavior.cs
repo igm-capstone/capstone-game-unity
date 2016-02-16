@@ -68,4 +68,11 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     {
         Destroy(obj);
     }
+
+    [Command]
+    public void CmdSetTrapExplorer(Vector3 position, TrapType _SlctdTrap)
+    {
+        TrapSpawnManager.Instance.CmdSetTrap(transform.position, _SlctdTrap);
+    }
+
 }
