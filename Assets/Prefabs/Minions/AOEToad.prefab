@@ -1788,7 +1788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AtckDamage: 50
-  ExplosionRadius: 4
+  ExplosionRadius: 6
 --- !u!114 &11449576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1940,7 +1940,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ExplosionRadius
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: moveSpeed
