@@ -54,6 +54,7 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     public void CmdAssignDamage(GameObject obj, int damage)
     {
         obj.GetComponent<Health>().TakeDamage(damage);
+        Debug.Log("Assigned " + damage + " damage to " + obj);
     }
 
     [Command]

@@ -735,6 +735,7 @@ GameObject:
   - 114: {fileID: 11419244}
   - 114: {fileID: 11497736}
   - 114: {fileID: 11443742}
+  - 50: {fileID: 5050256}
   m_Layer: 13
   m_Name: AOEToad
   m_TagString: Untagged
@@ -1604,6 +1605,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172582}
   m_Mesh: {fileID: 4300002, guid: 823d9780b6a3529439d8b592a149e102, type: 3}
+--- !u!50 &5050256
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183590}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &5819870
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -1949,6 +1966,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: BaseHealth
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

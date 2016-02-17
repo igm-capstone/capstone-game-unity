@@ -18,17 +18,12 @@ public class SetTrap : ISkill
     {
         if (Input.GetKeyDown(key))
         {
-            Debug.Log("Got key!");
             Use();
         }
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
-        Debug.Log("Trying to spawn Trap!");
-        Debug.Log("Debug log" + TrapSpawnManager.Instance);
-        Debug.Log("Debug " + transform);
-
         GetComponent<AvatarNetworkBehavior>().CmdSetTrapExplorer(transform.position, SlctdTrap);
         return null;
     }
