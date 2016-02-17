@@ -69,7 +69,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 366d43f95c9239a41b8c45a185c8636b, type: 2}
+  - {fileID: 2100000, guid: 76ff537c8e1a84345868e6aeee938ab3, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -106,8 +106,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: 1}
-      - {x: 1.1, y: 1}
-      - {x: 1.1, y: 0}
+      - {x: 1.10000002, y: 1}
+      - {x: 1.10000002, y: 0}
       - {x: 0, y: 0}
 --- !u!60 &6066832
 PolygonCollider2D:
@@ -122,10 +122,10 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: 3.9, y: 1}
-      - {x: 5.0, y: 1}
-      - {x: 5.0, y: 0}
-      - {x: 3.9, y: 0}
+    - - {x: 3.9000001, y: 1}
+      - {x: 5, y: 1}
+      - {x: 5, y: 0}
+      - {x: 3.9000001, y: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -136,7 +136,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 366d43f95c9239a41b8c45a185c8636b, type: 2}
+      objectReference: {fileID: 2100000, guid: 76ff537c8e1a84345868e6aeee938ab3, type: 2}
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 9
