@@ -58,13 +58,20 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     }
 
     [Command]
-    public void CmdAssignDamageWithForce(GameObject obj, int damage, Vector2 KnockBackForce)
+    public void CmdAssignDamageWithForce(GameObject obj, int damage, float KnockBackAmount)
     {
         obj.GetComponent<Health>().TakeDamage(damage);
 
-        obj.GetComponent<Rigidbody2D>().AddForce(KnockBackForce, ForceMode2D.Force);
+        //obj.transform.Translate(KnockBackDir.normalized * KnockBackAmount);
 
-        Debug.Log("Assigned " + damage + " damage to " + obj + "with " + KnockBackForce +" of knock back");
+        Debug.Log("Pushing " + obj + " back");
+
+        Vector3 TransForce = (obj.transform.position - transform.position).normalized* KnockBackAmount;
+
+        obj.transform.Translate(TransForce, Space.Self);
+
+
+        Debug.Log("Assigned " + damage + " damage to " + obj + "with " + TransForce + " of knock back");
     }
 
     [Command]

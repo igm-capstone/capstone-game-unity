@@ -2173,7 +2173,7 @@ MonoBehaviour:
   Cooldown: .100000001
   canDrop: 0
   Damage: 10
-  KnockBackMag: 1000
+  KnockBackMag: 5
 --- !u!114 &11494156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11044,7 +11044,7 @@ Prefab:
         type: 3}
     - target: {fileID: 0}
       propertyPath: KnockBackMag
-      value: 1000
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

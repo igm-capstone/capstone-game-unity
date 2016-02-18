@@ -140,9 +140,7 @@ public class TargetFollower : MonoBehaviour
         }
 
         transform.Translate(moveDirection * moveSpeed * speedFactor * .1f * Time.deltaTime, Space.Self);
-        //GetComponent<Rigidbody2D>().velocity = moveDirection.normalized * moveSpeed * speedFactor * 0.1f; ;
         animator.SetFloat("Speed", (1 + speedFactor) * .5f, .5f, .5f);
-
         return true;
     }
 

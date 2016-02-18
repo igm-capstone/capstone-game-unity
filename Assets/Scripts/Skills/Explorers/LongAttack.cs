@@ -14,7 +14,6 @@ public class LongAttack : ISkill {
     GameObject hb;
 
     public float KnockBackMag;
-    Vector2 KnockBackForce;
 
     public void Awake()
     {
@@ -71,9 +70,8 @@ public class LongAttack : ISkill {
         // Damage without force
         //avatarNetwork.CmdAssignDamage(lastTarget.gameObject, Damage);
 
-        // Calculate force.
-        KnockBackForce = (transform.position - lastTarget.transform.position).normalized * KnockBackMag;
-        avatarNetwork.CmdAssignDamageWithForce(lastTarget.gameObject, Damage, KnockBackForce);
+        // Assign damage with knockback.
+        avatarNetwork.CmdAssignDamageWithForce(lastTarget.gameObject, Damage, KnockBackMag);
 
 
 
