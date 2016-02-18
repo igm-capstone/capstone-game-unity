@@ -3,16 +3,18 @@ using UnityEngine.Networking;
 using System.Collections;
 
 //[RequireComponent(typeof(MeleeWeaponBehavior))]
-public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
+public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
+{
     private GameObject blockCollector;
     //private MeleeWeaponBehavior meleeBehaviour;
-    
+
     void Start()
     {
         blockCollector = GameObject.Find("BlocksCollector");
     }
 
-	public override void OnStartLocalPlayer () {
+    public override void OnStartLocalPlayer()
+    {
         GetComponentInChildren<AvatarController>().enabled = true;
         GetComponentInChildren<MovementBroadcast>().enabled = true;
         base.OnStartLocalPlayer();
@@ -23,7 +25,7 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     {
         RpcTakeBlockOver(block, status);
     }
-    
+
     [ClientRpc]
     void RpcTakeBlockOver(string block, bool status)
     {
@@ -62,6 +64,18 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     {
         RpcPickup(obj);
         NetworkServer.Destroy(obj);
+    }    
+
+    [Command]
+    public void CmdDoor(GameObject obj)
+    {
+        RpcDoor(obj);
+    }
+
+    [ClientRpc]
+    public void RpcDoor(GameObject obj)
+    {
+        obj.GetComponentInParent<Door>().SwingDoor();
     }
 
     [ClientRpc]
@@ -76,4 +90,22 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
         TrapSpawnManager.Instance.CmdSetTrap(transform.position, _SlctdTrap);
     }
 
+    GameObject doorToOpen;
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        var door = other.GetComponentInParent<Door>();
+        if (isClient && door)
+        {
+            doorToOpen = door.gameObject;
+        }
+    }
+    
+    public void Update()
+    {
+        if (doorToOpen && Input.GetKeyDown(KeyCode.M))
+        {
+            CmdDoor(doorToOpen);
+            doorToOpen = null;
+        }
+    }
 }
