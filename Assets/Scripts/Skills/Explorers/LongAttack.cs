@@ -13,6 +13,9 @@ public class LongAttack : ISkill {
     Collider2D lastTarget;
     GameObject hb;
 
+    public float KnockBackMag;
+    Vector2 KnockBackForce;
+
     public void Awake()
     {
         Name = "LongAttack";
@@ -60,12 +63,20 @@ public class LongAttack : ISkill {
 
     void LongAttackAnimationComplete()
     {
-        Debug.Log("Long Attack " + lastTarget);
+        //Debug.Log("Long Attack " + lastTarget);
         hb.SetActive(false);
         if (lastTarget == null)
             return;
 
-        avatarNetwork.CmdAssignDamage(lastTarget.gameObject, Damage);
+        // Damage without force
+        //avatarNetwork.CmdAssignDamage(lastTarget.gameObject, Damage);
+
+        // Calculate force.
+        KnockBackForce = (transform.position - lastTarget.transform.position).normalized * KnockBackMag;
+        avatarNetwork.CmdAssignDamageWithForce(lastTarget.gameObject, Damage, KnockBackForce);
+
+
+
         lastTarget = null;
     }
 }

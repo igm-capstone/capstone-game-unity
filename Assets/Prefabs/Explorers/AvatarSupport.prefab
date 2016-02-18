@@ -2170,9 +2170,10 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 0734cb10911136e44802c8344db09ca1, type: 3}
   Name: LongAttack
-  Cooldown: .5
+  Cooldown: .100000001
   canDrop: 0
   Damage: 10
+  KnockBackMag: 1000
 --- !u!114 &11494156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11026,7 +11027,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
-      value: 2
+      value: .100000001
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Damage
@@ -11041,6 +11042,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 0734cb10911136e44802c8344db09ca1,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: KnockBackMag
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 138790}
