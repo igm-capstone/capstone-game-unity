@@ -5,13 +5,11 @@ using System.Linq;
 
 public class LongAttack : ISkill
 {
-
-
     RpcNetworkAnimator animator;
     AvatarNetworkBehavior avatarNetwork;
     AvatarController avatarController;
     Collider2D lastTarget;
-    GameObject hb;
+    GameObject AtckHitBox;
     
     // Class Variables
     public int Damage = 2;
@@ -30,8 +28,8 @@ public class LongAttack : ISkill
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         avatarController = GetComponent<AvatarController>();        
 
-        hb = transform.FindChild("AvatarRotation").FindChild("LongAttackHitBox").gameObject;
-        hb.SetActive(false);
+        AtckHitBox = transform.FindChild("AvatarRotation").FindChild("LongAttackHitBox").gameObject;
+        AtckHitBox.SetActive(false);
 
         key = KeyCode.Mouse0;
     }
@@ -41,6 +39,11 @@ public class LongAttack : ISkill
         if (Input.GetKeyDown(key))
         {
             Use();
+        }
+
+        if (IsReady())
+        {
+            GetComponent<AvatarController>().isAttacking = false;
         }
     }
 
@@ -56,11 +59,14 @@ public class LongAttack : ISkill
 
         var aa = hitbox.TransformPoint(hitboxOffset - hitboxSize);
         var bb = hitbox.TransformPoint(hitboxOffset + hitboxSize);
-        hb.SetActive(true);
+        AtckHitBox.SetActive(true);
         Debug.DrawLine(aa, bb, Color.yellow, 5);
 
         var minions = Physics2D.OverlapAreaAll(aa, bb, 1 << LayerMask.NameToLayer("Minion"));
-        animator.SetTrigger("LongAttack");        
+
+        animator.SetTrigger("LongAttack");
+        GetComponent<AvatarController>().isAttacking = true;
+
         lastTarget = minions.Contains(lastTarget) ? lastTarget : minions.FirstOrDefault();
         
         return null;
@@ -69,15 +75,18 @@ public class LongAttack : ISkill
     void LongAttackAnimationComplete()
     {
         //Debug.Log("Long Attack " + lastTarget);
-        hb.SetActive(false);
+        AtckHitBox.SetActive(false);
         if (lastTarget == null)
             return;
 
-        // Damage without force
-        //avatarNetwork.CmdAssignDamage(lastTarget.gameObject, Damage);
-
-        // Assign damage with knockback.
-        avatarNetwork.CmdAssignDamageWithForce(lastTarget.gameObject, Damage, KnockBackMag);
+        if (hasKnockBack)
+        {   // Assign damage with knockback.
+            avatarNetwork.CmdAssignDamageWithForce(lastTarget.gameObject, Damage, KnockBackMag);
+        }
+        else
+        {   // Damage without force
+            avatarNetwork.CmdAssignDamage(lastTarget.gameObject, Damage);
+        }
 
         lastTarget = null;
     }

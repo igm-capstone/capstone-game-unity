@@ -32,15 +32,25 @@ public class TargetFollower : MonoBehaviour
 
     private Node lastGoal;
 
+    public bool isStunned;
+    public float StunOnHitTime = 0.5f;
+
     void Awake()
     {
         animator = GetComponent<RpcNetworkAnimator>();
         container = transform.Find("Rotation");
         path = new List<Vector2>();
+
+        isStunned = false;
     }
 
     public bool MoveTowards(Vector3 targetPos, int maxSteps = int.MaxValue)
     {
+        if (isStunned)
+        {
+            return true;
+        }
+
         GetPathTo(targetPos, maxSteps);
         var node = GridBehavior.Instance.getNodeAtPos(transform.position);
         var speedFactor = 1 / Mathf.Min(node.Weight, 4);
@@ -191,6 +201,19 @@ public class TargetFollower : MonoBehaviour
         }
 
         path.Add(nodePath.Last().position);
+    }
+
+
+    public void StartStunTimer ()
+    {
+        StartCoroutine(StunTimer(StunOnHitTime));
+    }
+
+    public IEnumerator StunTimer(float _StunTime)
+    {
+        isStunned = true;
+        yield return new WaitForSeconds(_StunTime);
+        isStunned = false;
     }
 
 #if UNITY_EDITOR

@@ -18,6 +18,8 @@ public class AvatarController : MonoBehaviour
     private Health _health;
     private RpcNetworkAnimator animator;
 
+    public bool isAttacking;
+
     void Awake () {
         _rb = GetComponent<Rigidbody2D>();
         _health = GetComponent<Health>();
@@ -66,9 +68,18 @@ public class AvatarController : MonoBehaviour
         }
 
         // Applies velocity
-        _rb.velocity = new Vector2(horizontal, vertical).normalized * CalcMoveSpeed*
-            (Mathf.Abs(Mathf.Abs(horizontal) - Mathf.Abs(vertical)) + (Mathf.Abs(horizontal) * Mathf.Abs(vertical) * Mathf.Sqrt(2)));
+        if (isAttacking == false)
+        {
+            _rb.velocity = new Vector2(horizontal, vertical).normalized * CalcMoveSpeed*
+                (Mathf.Abs(Mathf.Abs(horizontal) - Mathf.Abs(vertical)) + (Mathf.Abs(horizontal) * Mathf.Abs(vertical) * Mathf.Sqrt(2)));
+            animator.SetFloat("RunSpeed", _rb.velocity.magnitude);
+        }
+        else
+        {
+            _rb.velocity = new Vector2(0.0f, 0.0f);
+            animator.SetFloat("RunSpeed", _rb.velocity.magnitude);
+        }
 
-        animator.SetFloat("RunSpeed", _rb.velocity.magnitude);
+        
     }
 } 

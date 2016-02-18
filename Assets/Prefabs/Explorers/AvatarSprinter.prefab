@@ -2043,6 +2043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 100
   CalcMoveSpeed: 0
+  isAttacking: 0
 --- !u!114 &11449298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2057,10 +2058,12 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: f2eafda9a8751994db425a22b8c67fa8, type: 3}
   Name: Skill
-  Cooldown: .5
+  Cooldown: .300000012
   canDrop: 0
-  damage: 8
+  Damage: 8
   radius: 2.5
+  hasKnockBack: 1
+  KnockBackMag: 5
 --- !u!114 &11454976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10992,7 +10995,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
-      value: 3.5
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: SpeedAdjust
@@ -11029,6 +11032,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hasKnockBack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Damage
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

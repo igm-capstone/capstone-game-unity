@@ -1751,6 +1751,8 @@ MonoBehaviour:
   maxRepel: 1
   turnRate: 30
   moveSpeed: 105
+  isStunned: 0
+  StunOnHitTime: .300000012
 --- !u!114 &11469260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1962,6 +1964,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsKinematic
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: StunOnHitTime
+      value: .300000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
