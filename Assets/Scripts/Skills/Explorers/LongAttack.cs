@@ -3,17 +3,23 @@ using System.Collections;
 using UnityEngine.Networking;
 using System.Linq;
 
-public class LongAttack : ISkill {
+public class LongAttack : ISkill
+{
 
-    public int Damage = 2;
 
     RpcNetworkAnimator animator;
     AvatarNetworkBehavior avatarNetwork;
     AvatarController avatarController;
     Collider2D lastTarget;
     GameObject hb;
+    
+    // Class Variables
+    public int Damage = 2;
+    public bool hasKnockBack = false;
 
-    public float KnockBackMag;
+    [SerializeField]
+    [Range(0.0f, 10.0f)]
+    float KnockBackMag = 5.0f;
 
     public void Awake()
     {
@@ -72,8 +78,6 @@ public class LongAttack : ISkill {
 
         // Assign damage with knockback.
         avatarNetwork.CmdAssignDamageWithForce(lastTarget.gameObject, Damage, KnockBackMag);
-
-
 
         lastTarget = null;
     }
