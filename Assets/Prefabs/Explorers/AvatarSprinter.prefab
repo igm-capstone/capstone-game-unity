@@ -1618,8 +1618,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148430}
-  m_LocalRotation: {x: -.238178775, y: 0, z: 0, w: .971221328}
-  m_LocalPosition: {x: 0, y: -9.43000031, z: -17.0300007}
+  m_LocalRotation: {x: -.258819073, y: 0, z: 0, w: .965925813}
+  m_LocalPosition: {x: 0, y: -7, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 433048}
@@ -1704,7 +1704,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148430}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: .109803922, g: .0627451017, b: 0, a: 0}
@@ -2041,8 +2041,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153858798af409f41bcbe96b72ce6150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 130
+  MoveSpeed: 100
   CalcMoveSpeed: 0
+  isAttacking: 0
 --- !u!114 &11449298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2057,10 +2058,12 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: f2eafda9a8751994db425a22b8c67fa8, type: 3}
   Name: Skill
-  Cooldown: .5
+  Cooldown: .300000012
   canDrop: 0
-  damage: 8
+  Damage: 8
   radius: 2.5
+  hasKnockBack: 1
+  KnockBackMag: 5
 --- !u!114 &11454976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10980,7 +10983,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: MoveSpeed
-      value: 130
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: HideInactiveSkills
@@ -10992,7 +10995,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
-      value: 3.5
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: SpeedAdjust
@@ -11009,6 +11012,34 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SpeedMultiplier
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.x
+      value: -.258819073
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.w
+      value: .965925813
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hasKnockBack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Damage
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

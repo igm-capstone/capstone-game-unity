@@ -4,14 +4,22 @@ using System;
 
 public class ConeAttack : ISkill
 {
-    public int damage = 2;
-    public float radius = 2;
-
     RpcNetworkAnimator animator;
     AvatarNetworkBehavior avatarNetwork;
     AvatarController avatarController;
     Transform avatarModelTransform;
     GameObject hb;
+
+    // Class Variable
+    public int Damage = 2;
+    public float radius = 2;
+    public bool hasKnockBack = false;
+
+    [SerializeField]
+    [Range(0.0f, 10.0f)]
+    float KnockBackMag = 5.0f;
+
+
     public void Awake()
     {
         Name = "ConeAttack";
@@ -34,6 +42,12 @@ public class ConeAttack : ISkill
         {
             Use();
         }
+
+        if (IsReady())
+        {
+            GetComponent<AvatarController>().isAttacking = false;
+        }
+
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
@@ -44,6 +58,8 @@ public class ConeAttack : ISkill
         hb.SetActive(true);
 
         animator.SetTrigger("ConeAttack");
+        GetComponent<AvatarController>().isAttacking = true;
+
         var minions = Physics2D.OverlapCircleAll(transform.position, radius, 1 << LayerMask.NameToLayer("Minion"));
 
         foreach (Collider2D m in minions)
@@ -51,7 +67,16 @@ public class ConeAttack : ISkill
             var minionModel = m.gameObject.transform.FindChild("Rotation").FindChild("Model");
             if(Vector2.Dot(minionModel.transform.forward, avatarModelTransform.forward) < 0)
             {
-                avatarNetwork.CmdAssignDamage(m.gameObject, damage);
+                if (hasKnockBack)
+                {
+                    // Assign Damage with Force
+                    avatarNetwork.CmdAssignDamageWithForce(m.gameObject, Damage, KnockBackMag);
+                }
+                else
+                {
+                    // Assign Damage
+                    avatarNetwork.CmdAssignDamage(m.gameObject, Damage);
+                }
             }
         }
         return null;

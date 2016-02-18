@@ -4,13 +4,18 @@ using System.Collections;
 
 public class AoE : ISkill
 {
-    public int Damage = 2;
-    public float AreaRadius = 3;
-
     RpcNetworkAnimator animator;
     AvatarNetworkBehavior avatarNetwork;
     AvatarController avatarController;
     public Transform FX;
+
+    public int Damage = 2;
+    public float AreaRadius = 3;
+    public bool hasKnockBack = false;
+
+    [SerializeField]
+    [Range(0.0f, 10.0f)]
+    float KnockBackMag = 5.0f;
 
     public void Awake()
     {
@@ -39,6 +44,11 @@ public class AoE : ISkill
         {
             Use();
         }
+
+        if (IsReady())
+        {
+            GetComponent<AvatarController>().isAttacking = false;
+        }
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
@@ -46,12 +56,21 @@ public class AoE : ISkill
         if (avatarController.Disabled) return "You are incapacitated. Seek help!";
 
         animator.SetTrigger("AoE");
+        GetComponent<AvatarController>().isAttacking = true;
 
         var minions = Physics2D.OverlapCircleAll(transform.position, AreaRadius, 1 << LayerMask.NameToLayer("Minion"));
 
         foreach (var m in minions)
         {
-            avatarNetwork.CmdAssignDamage(m.gameObject, Damage);
+            // Check if KnockBack is Enabled
+            if (hasKnockBack)
+            {
+                avatarNetwork.CmdAssignDamageWithForce(m.gameObject, Damage, KnockBackMag);
+            }
+            else
+            {
+                avatarNetwork.CmdAssignDamage(m.gameObject, Damage);
+            }
         }
         return null;
     }

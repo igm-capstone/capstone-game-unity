@@ -2099,9 +2099,11 @@ MonoBehaviour:
   Name: Flame Sword
   Cooldown: 2
   canDrop: 0
+  FX: {fileID: 475804}
   Damage: 2
   AreaRadius: 3
-  FX: {fileID: 475804}
+  hasKnockBack: 0
+  KnockBackMag: 5
 --- !u!114 &11416774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2118,8 +2120,10 @@ MonoBehaviour:
   Name: Skill
   Cooldown: 1
   canDrop: 0
-  damage: 2
+  Damage: 2
   radius: 2.5
+  hasKnockBack: 1
+  KnockBackMag: 5
 --- !u!114 &11417010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2328,6 +2332,8 @@ MonoBehaviour:
   Cooldown: 1
   canDrop: 0
   Damage: 2
+  hasKnockBack: 0
+  KnockBackMag: 5
 --- !u!124 &12432304
 Behaviour:
   m_ObjectHideFlags: 1
@@ -11349,6 +11355,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: canDrop
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hasKnockBack
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -55,8 +55,21 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     [Command]
     public void CmdAssignDamage(GameObject obj, int damage)
     {
+        // Assign Damage
         obj.GetComponent<Health>().TakeDamage(damage);
-        Debug.Log("Assigned " + damage + " damage to " + obj);
+    }
+
+    [Command]
+    public void CmdAssignDamageWithForce(GameObject obj, int damage, float KnockBackAmount)
+    {
+        // Assign Damage
+        obj.GetComponent<Health>().TakeDamage(damage);
+        
+        // Calculate KnockBackForce
+        Vector3 TransForce = (obj.transform.position - transform.position).normalized* KnockBackAmount;
+        // Apply Knock back and start stunn timer.
+        obj.transform.Translate(TransForce, Space.Self);
+        obj.GetComponent<TargetFollower>().StartStunTimer();
     }
 
     [Command]
