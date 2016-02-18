@@ -54,6 +54,7 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     public void CmdAssignDamage(GameObject obj, int damage)
     {
         obj.GetComponent<Health>().TakeDamage(damage);
+        Debug.Log("Assigned " + damage + " damage to " + obj);
     }
 
     [Command]
@@ -68,4 +69,11 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior {
     {
         Destroy(obj);
     }
+
+    [Command]
+    public void CmdSetTrapExplorer(Vector3 position, TrapType _SlctdTrap)
+    {
+        TrapSpawnManager.Instance.CmdSetTrap(transform.position, _SlctdTrap);
+    }
+
 }

@@ -628,7 +628,7 @@ GameObject:
   - 114: {fileID: 11480688}
   - 114: {fileID: 11421404}
   - 114: {fileID: 11417364}
-  - 114: {fileID: 11461486}
+  - 114: {fileID: 11435774}
   m_Layer: 11
   m_Name: AvatarTrapper
   m_TagString: Player
@@ -2026,7 +2026,7 @@ MonoBehaviour:
   MaxSkills: 3
   HideInactiveSkills: 0
   OnClickBehavior: 2
---- !u!114 &11461486
+--- !u!114 &11435774
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2034,15 +2034,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 173442}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79ee20cf1de6d63468c576e2a6264c97, type: 3}
+  m_Script: {fileID: 11500000, guid: d2e151517f0c0684fa555de91615ea6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 66a5ec73656e2a94e97ff972fe39dc9e, type: 3}
-  Name: Set Trap
+  Name: Skill
   Cooldown: 5
   canDrop: 0
-  SlctdTrapObj: {fileID: 150852, guid: cbf340c69f010c54aa1ed2004220b4b0, type: 2}
 --- !u!114 &11480688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10908,7 +10907,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Damage
@@ -10918,6 +10917,19 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: canDrop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SkillSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 66a5ec73656e2a94e97ff972fe39dc9e,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: SkillButtonPrefab
+      value: 
+      objectReference: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 173442}
