@@ -368,8 +368,8 @@ GameObject:
   - 114: {fileID: 11400782}
   - 114: {fileID: 11447370}
   - 114: {fileID: 11435682}
-  - 114: {fileID: 11412532}
   - 114: {fileID: 11471496}
+  - 114: {fileID: 11412532}
   m_Layer: 11
   m_Name: AvatarSupport
   m_TagString: Player
@@ -1400,8 +1400,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178704}
-  m_LocalRotation: {x: -.258819073, y: 0, z: 0, w: .965925813}
-  m_LocalPosition: {x: 0, y: -7, z: -16}
+  m_LocalRotation: {x: -.317304671, y: 0, z: 0, w: .948323667}
+  m_LocalPosition: {x: 0, y: -7, z: -10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 405400}
@@ -11058,11 +11058,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.x
-      value: -.258819073
+      value: -.317304671
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.w
-      value: .965925813
+      value: .948323667
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
@@ -11070,7 +11070,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
-      value: -12
+      value: -10.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: hasKnockBack

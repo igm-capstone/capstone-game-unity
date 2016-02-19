@@ -35,7 +35,7 @@ public class AoE : ISkill
             FX.parent = oldParent;
         }
 
-        key = KeyCode.Mouse0;
+        key = KeyCode.O;
     }
 
     void Update()

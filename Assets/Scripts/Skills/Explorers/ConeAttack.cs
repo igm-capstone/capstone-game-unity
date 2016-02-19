@@ -33,7 +33,7 @@ public class ConeAttack : ISkill
         hb = transform.FindChild("AvatarRotation").FindChild("ConeAttackHitBox").gameObject;
         hb.SetActive(false);
 
-        key = KeyCode.Mouse0;
+        key = KeyCode.O;
     }
 
     void Update()

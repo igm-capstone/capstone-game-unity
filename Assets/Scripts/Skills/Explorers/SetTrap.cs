@@ -11,7 +11,7 @@ public class SetTrap : ISkill
 
         SlctdTrap = TrapType.Poison;
 
-        key = KeyCode.Mouse1;
+        key = KeyCode.P;
     }
 
     void Update()
