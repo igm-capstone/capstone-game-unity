@@ -400,6 +400,7 @@ GameObject:
   - 114: {fileID: 11413584}
   - 114: {fileID: 11448616}
   - 114: {fileID: 11414802}
+  - 50: {fileID: 5018436}
   m_Layer: 13
   m_Name: MinionToad
   m_TagString: Untagged
@@ -1540,6 +1541,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151894}
   m_Mesh: {fileID: 4300002, guid: 823d9780b6a3529439d8b592a149e102, type: 3}
+--- !u!50 &5018436
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155754}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &5815378
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -1711,6 +1728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClosestAvatar: {fileID: 0}
   grid: {fileID: 0}
+  Type: 0
 --- !u!114 &11461328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1732,7 +1750,9 @@ MonoBehaviour:
   rapelDecay: .200000003
   maxRepel: 1
   turnRate: 30
-  moveSpeed: 135
+  moveSpeed: 105
+  isStunned: 0
+  StunOnHitTime: .300000012
 --- !u!114 &11469260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1745,6 +1765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AtckDamage: 6
+  ExplosionRadius: 0
 --- !u!114 &11496266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1922,7 +1943,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: moveSpeed
-      value: 135
+      value: 105
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: AtckDamage
@@ -1931,6 +1952,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: BaseHealth
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: StunOnHitTime
+      value: .300000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

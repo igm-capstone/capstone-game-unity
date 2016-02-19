@@ -3,7 +3,7 @@ using UnityEngine.Networking;
 
 using System.Collections;
 
-[Rig3DAsset("pickup", Rig3DExports.Position)]
+[Rig3DAsset("pickups", Rig3DExports.Position)]
 public class PickupBehavior : NetworkBehaviour
 {
     ISkill skill;
@@ -32,7 +32,7 @@ public class PickupBehavior : NetworkBehaviour
         }
 
         SkillBar skillBar = other.gameObject.GetComponent<SkillBar>();
-        var g = GetComponent<ISkill>();
+
         skillBar.SetSkillEnabled(skill.Name, true);
 
         other.gameObject.GetComponent<AvatarNetworkBehavior>().CmdPickup(this.gameObject);

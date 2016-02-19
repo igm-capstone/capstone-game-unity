@@ -29,7 +29,7 @@ public class Heal : ISkill
             FX.parent = oldParent;
         }
 
-        key = KeyCode.Mouse1;
+        key = KeyCode.P;
     }
 
     void Update()

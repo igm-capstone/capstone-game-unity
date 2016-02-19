@@ -13,7 +13,7 @@ public class SpawnMinion : ISkill
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
-        if (target.layer != LayerMask.NameToLayer("Floor")) return Name + " skill needs to the floor.";
+        if (target.layer != LayerMask.NameToLayer("Floor")) return Name + " skill needs to hit the floor. Layer found: " + target.layer.ToString();
 
         var grid = GridBehavior.Instance;
         var z = grid.transform.position.z;
@@ -36,7 +36,7 @@ public class SpawnMinion : ISkill
             return Name + " skill cannot be used so close to a player!";
         }
 
-        MinionSpawnManager.Instance.CmdSpawn(clickWorldPos, MinionType.Meelee);
+        MinionSpawnManager.Instance.CmdSingleSpawn(clickWorldPos, MinionType.Meelee);
 
         return null;
     }

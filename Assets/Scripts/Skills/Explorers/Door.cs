@@ -4,34 +4,29 @@ public class Door : MonoBehaviour
 {
     AvatarNetworkBehavior avatarNetwork;
     public GameObject player;
-    public bool isOpen = false;
-
-    public void Awake()
-    {
-        avatarNetwork = player.GetComponent<AvatarNetworkBehavior>();
-    }
-
-    //public void OpenDoor()
-    //{
-    //    GetComponent<Animator>().SetTrigger("Open");
-    //}
-
-    //public void CloseDoor()
-    //{
-    //    GetComponent<Animator>().SetTrigger("Close");
-    //}
+    private bool isOpen = false;
+    public bool canOpen = true;
 
     public void SwingDoor()
     {
-        if(isOpen)
+        if(!canOpen)
         {
-            GetComponent<Animator>().SetTrigger("Close");
-            isOpen = false;
+            //UI message - can't open door
+            Debug.Log("Door Broken");
         }
         else
         {
-            GetComponent<Animator>().SetTrigger("Open");
-            isOpen = true;
+            if (isOpen)
+            {
+                GetComponent<Animator>().SetTrigger("Close");
+                isOpen = false;
+            }
+            else
+            {
+                GetComponent<Animator>().SetTrigger("Open");
+                isOpen = true;
+            }
         }
+        
     }
 }

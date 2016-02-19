@@ -191,13 +191,13 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
         if (Application.isPlaying)
         {
             //Let AI know what to do based on visibility status
-            AvatarController player = FindObjectOfType(typeof(AvatarController)) as AvatarController;
-            bool playerIsAccessible = false;
-            if (player)
-            {
-                Node playerNode = getNodeAtPos(player.transform.position);
-                playerIsAccessible = (playerNode != null);
-            }
+            //AvatarController player = FindObjectOfType(typeof(AvatarController)) as AvatarController;
+            //bool playerIsAccessible = false;
+            //if (player)
+            //{
+            //    Node playerNode = getNodeAtPos(player.transform.position);
+            //    playerIsAccessible = (playerNode != null);
+            //}
 
             //MinionController[] robots = FindObjectsOfType(typeof(MinionController)) as MinionController[];
             //foreach (MinionController robot in robots)
@@ -334,36 +334,36 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
 #if UNITY_EDITOR
     void OnDrawGizmos()
     {
-        float size = nodeRadius * .95f;
+        //float size = nodeRadius * .95f;
+        //
+        //if (areaOfNodes != null)
+        //{
+        //    //Node playerNode = getNodeAtPos(player.position);
+        //    foreach (Node node in areaOfNodes)
+        //    {
+        //        //Handles.color = new Color(1, 1, 1, 1);
+        //        //Handles.DrawSolidRectangleWithOutline(new[] { 
+        //        //    node.position + new Vector3(size, size, 0f),
+        //        //    node.position + new Vector3(size, -size, 0f),
+        //        //    node.position + new Vector3(-size, -size, 0f),
+        //        //    node.position + new Vector3(-size, size, 0f) },
+        //        //    node.hasLight ? new Color(1, 1, 0, 0.05f) : new Color(0.5f, 0.5f, 0.5f, 0.05f),
+        //        //    node.hasLight ? new Color(1, 1, 0, 0.4f) : new Color(0.5f, 0.5f, 0.5f, 0.4f));
 
-        if (areaOfNodes != null)
-        {
-            //Node playerNode = getNodeAtPos(player.position);
-            foreach (Node node in areaOfNodes)
-            {
-                //Handles.color = new Color(1, 1, 1, 1);
-                //Handles.DrawSolidRectangleWithOutline(new[] { 
-                //    node.position + new Vector3(size, size, 0f),
-                //    node.position + new Vector3(size, -size, 0f),
-                //    node.position + new Vector3(-size, -size, 0f),
-                //    node.position + new Vector3(-size, size, 0f) },
-                //    node.hasLight ? new Color(1, 1, 0, 0.05f) : new Color(0.5f, 0.5f, 0.5f, 0.05f),
-                //    node.hasLight ? new Color(1, 1, 0, 0.4f) : new Color(0.5f, 0.5f, 0.5f, 0.4f));
+        //        //if (!node.canWalk)
+        //        //{
+        //        //    Handles.color = node.hasLight ? new Color(1, 1, 0, .4f) : new Color(0.5f, 0.5f, 0.5f, .4f);
+        //        //    //Handles.DrawSolidDisc(node.position, new Vector3(0, 0, 1), nodeRadius * .4f);
+        //        //    Handles.DrawLine(node.position + new Vector3(size, size, 0f),
+        //        //        node.position + new Vector3(-size, -size, 0f));
+        //        //    Handles.DrawLine(node.position + new Vector3(-size, size, 0f),
+        //        //        node.position + new Vector3(size, -size, 0f));
+        //        //}
 
-                //if (!node.canWalk)
-                //{
-                //    Handles.color = node.hasLight ? new Color(1, 1, 0, .4f) : new Color(0.5f, 0.5f, 0.5f, .4f);
-                //    //Handles.DrawSolidDisc(node.position, new Vector3(0, 0, 1), nodeRadius * .4f);
-                //    Handles.DrawLine(node.position + new Vector3(size, size, 0f),
-                //        node.position + new Vector3(-size, -size, 0f));
-                //    Handles.DrawLine(node.position + new Vector3(-size, size, 0f),
-                //        node.position + new Vector3(size, -size, 0f));
-                //}
-
-                //Handles.Label(node.position, node.Weight == float.MaxValue ? "max" : node.Weight.ToString("F2"));
-                //Handles.Label(node.position, (node.coord).ToString());
-            }
-        }
+        //        //Handles.Label(node.position, node.Weight == float.MaxValue ? "max" : node.Weight.ToString("F2"));
+        //        //Handles.Label(node.position, (node.coord).ToString());
+        //    }
+        //}
     }
 #endif
 

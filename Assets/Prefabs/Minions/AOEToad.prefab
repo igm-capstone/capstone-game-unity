@@ -726,6 +726,7 @@ GameObject:
   - 114: {fileID: 11425594}
   - 114: {fileID: 11426180}
   - 114: {fileID: 11410564}
+  - 50: {fileID: 5050256}
   - 114: {fileID: 11426500}
   - 114: {fileID: 11434402}
   - 114: {fileID: 11445320}
@@ -1604,6 +1605,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172582}
   m_Mesh: {fileID: 4300002, guid: 823d9780b6a3529439d8b592a149e102, type: 3}
+--- !u!50 &5050256
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183590}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &5819870
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -1763,7 +1780,9 @@ MonoBehaviour:
   rapelDecay: .200000003
   maxRepel: 1
   turnRate: 30
-  moveSpeed: 90
+  moveSpeed: 70
+  isStunned: 0
+  StunOnHitTime: .5
 --- !u!114 &11443742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1787,7 +1806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54cc894172296b4283a42e2b9acc609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AtckDamage: 50
+  AtckDamage: 80
   ExplosionRadius: 6
 --- !u!114 &11449576
 MonoBehaviour:
@@ -1936,7 +1955,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: AtckDamage
-      value: 50
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ExplosionRadius
@@ -1944,11 +1963,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: moveSpeed
-      value: 90
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: BaseHealth
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: StunOnHitTime
+      value: .5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

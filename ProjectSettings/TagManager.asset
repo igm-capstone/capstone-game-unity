@@ -28,6 +28,7 @@ TagManager:
   - TransparentObstacle
   - Hitbox
   - Clickbok
+  - Trap
   - Door
   - temp
   - 

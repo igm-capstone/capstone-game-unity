@@ -368,6 +368,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &151058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 481726}
+  - 20: {fileID: 2072602}
+  - 92: {fileID: 9233660}
+  - 124: {fileID: 12400686}
+  - 81: {fileID: 8138234}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &151924
 GameObject:
   m_ObjectHideFlags: 1
@@ -415,25 +434,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &155326
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 433272}
-  - 20: {fileID: 2040450}
-  - 92: {fileID: 9282594}
-  - 124: {fileID: 12490656}
-  - 81: {fileID: 8119694}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &155796
 GameObject:
   m_ObjectHideFlags: 1
@@ -628,7 +628,7 @@ GameObject:
   - 114: {fileID: 11480688}
   - 114: {fileID: 11421404}
   - 114: {fileID: 11417364}
-  - 114: {fileID: 11461486}
+  - 114: {fileID: 11435774}
   m_Layer: 11
   m_Name: AvatarTrapper
   m_TagString: Player
@@ -1152,18 +1152,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 403324}
   m_RootOrder: 0
---- !u!4 &433272
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155326}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -30}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 492218}
-  m_RootOrder: 1
 --- !u!4 &433450
 Transform:
   m_ObjectHideFlags: 1
@@ -1489,6 +1477,18 @@ Transform:
   - {fileID: 457562}
   m_Father: {fileID: 482074}
   m_RootOrder: 0
+--- !u!4 &481726
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151058}
+  m_LocalRotation: {x: -.317304671, y: 0, z: 0, w: .948323667}
+  m_LocalPosition: {x: 0, y: -7, z: -10.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 492218}
+  m_RootOrder: 1
 --- !u!4 &482074
 Transform:
   m_ObjectHideFlags: 1
@@ -1596,11 +1596,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.9916096, y: -4.78702831, z: 0}
+  m_LocalPosition: {x: -27.3751678, y: -8.57164001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 460598}
-  - {fileID: 433272}
+  - {fileID: 481726}
   - {fileID: 482242}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1667,12 +1667,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 442430}
   m_RootOrder: 0
---- !u!20 &2040450
+--- !u!20 &2072602
 Camera:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155326}
+  m_GameObject: {fileID: 151058}
   m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
@@ -1686,7 +1686,7 @@ Camera:
   near clip plane: .300000012
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 12
   m_Depth: -1
   m_CullingMask:
@@ -1838,27 +1838,27 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: -2.55999994, y: 2.55999994}
-      - {x: -2.55999994, y: -2.55999994}
-      - {x: 2.55999994, y: -2.55999994}
-      - {x: 2.55999994, y: 2.55999994}
---- !u!81 &8119694
+    - - {x: -.258525848, y: .313321114}
+      - {x: -.231126785, y: -.395516396}
+      - {x: .422916412, y: -.422914505}
+      - {x: .422916412, y: .258522987}
+--- !u!81 &8138234
 AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155326}
+  m_GameObject: {fileID: 151058}
   m_Enabled: 0
---- !u!92 &9282594
+--- !u!92 &9233660
 Behaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155326}
+  m_GameObject: {fileID: 151058}
   m_Enabled: 0
 --- !u!95 &9563892
 Animator:
@@ -1922,13 +1922,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 1965a1dbdc9f706418d3db6c49c6ab4a, type: 3}
+  SkillSprite: {fileID: 21300000, guid: 61165a2d681de2049b5296c3092ea42d, type: 3}
   Name: Flame Sword
-  Cooldown: 1
+  Cooldown: .5
   canDrop: 0
+  FX: {fileID: 403324}
   Damage: 15
   AreaRadius: 2
-  FX: {fileID: 403324}
+  hasKnockBack: 1
+  KnockBackMag: 7
 --- !u!114 &11418068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2026,7 +2028,7 @@ MonoBehaviour:
   MaxSkills: 3
   HideInactiveSkills: 0
   OnClickBehavior: 2
---- !u!114 &11461486
+--- !u!114 &11435774
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2034,15 +2036,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 173442}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79ee20cf1de6d63468c576e2a6264c97, type: 3}
+  m_Script: {fileID: 11500000, guid: d2e151517f0c0684fa555de91615ea6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 66a5ec73656e2a94e97ff972fe39dc9e, type: 3}
-  Name: Set Trap
-  Cooldown: 5
+  Name: Skill
+  Cooldown: 2.5
   canDrop: 0
-  SlctdTrapObj: {fileID: 150852, guid: cbf340c69f010c54aa1ed2004220b4b0, type: 2}
 --- !u!114 &11480688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2079,14 +2080,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153858798af409f41bcbe96b72ce6150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 110
+  MoveSpeed: 85
   CalcMoveSpeed: 0
---- !u!124 &12490656
+  isAttacking: 0
+--- !u!124 &12400686
 Behaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155326}
+  m_GameObject: {fileID: 151058}
   m_Enabled: 0
 --- !u!137 &13783488
 SkinnedMeshRenderer:
@@ -10900,7 +10902,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: MoveSpeed
-      value: 110
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: BaseHealth
@@ -10908,7 +10910,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Damage
@@ -10916,7 +10918,52 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: canDrop
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SkillSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 61165a2d681de2049b5296c3092ea42d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: SkillButtonPrefab
+      value: 
+      objectReference: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.x
+      value: -.317304671
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.w
+      value: .948323667
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: -10.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: KnockBackMag
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hasKnockBack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_UsedByEffector
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

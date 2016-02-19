@@ -797,8 +797,8 @@ GameObject:
   - 114: {fileID: 11434190}
   - 114: {fileID: 11405854}
   - 114: {fileID: 11472534}
-  - 114: {fileID: 11454976}
   - 114: {fileID: 11449298}
+  - 114: {fileID: 11454976}
   m_Layer: 11
   m_Name: AvatarSprinter
   m_TagString: Player
@@ -1124,7 +1124,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26, y: -3, z: 0}
+  m_LocalPosition: {x: -38.5908127, y: -14.2009888, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 436182}
@@ -1618,8 +1618,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148430}
-  m_LocalRotation: {x: -.238178775, y: 0, z: 0, w: .971221328}
-  m_LocalPosition: {x: 0, y: -9.43000031, z: -17.0300007}
+  m_LocalRotation: {x: -.317304671, y: 0, z: 0, w: .948323667}
+  m_LocalPosition: {x: 0, y: -7, z: -10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 433048}
@@ -1704,7 +1704,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148430}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: .109803922, g: .0627451017, b: 0, a: 0}
@@ -1906,10 +1906,10 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: -.25, y: .25}
-      - {x: -.25, y: -.25}
-      - {x: .25, y: -.25}
-      - {x: .25, y: .25}
+    - - {x: -.295505524, y: .330339432}
+      - {x: -.295505524, y: -.434855461}
+      - {x: .469696045, y: -.434856415}
+      - {x: .504535675, y: .365180016}
 --- !u!64 &6489162
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -2041,8 +2041,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153858798af409f41bcbe96b72ce6150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 130
+  MoveSpeed: 100
   CalcMoveSpeed: 0
+  isAttacking: 0
 --- !u!114 &11449298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2055,12 +2056,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: f2eafda9a8751994db425a22b8c67fa8, type: 3}
+  SkillSprite: {fileID: 21300000, guid: 9bc1b515b807ee848961d86bb49858a4, type: 3}
   Name: Skill
-  Cooldown: .5
+  Cooldown: .300000012
   canDrop: 0
-  damage: 8
+  Damage: 8
   radius: 2.5
+  hasKnockBack: 1
+  KnockBackMag: 5
 --- !u!114 &11454976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10980,7 +10983,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: MoveSpeed
-      value: 130
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: HideInactiveSkills
@@ -10992,7 +10995,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
-      value: 3.5
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: SpeedAdjust
@@ -11010,6 +11013,39 @@ Prefab:
       propertyPath: SpeedMultiplier
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.x
+      value: -.317304671
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.w
+      value: .948323667
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: -10.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hasKnockBack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Damage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SkillSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9bc1b515b807ee848961d86bb49858a4,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188006}

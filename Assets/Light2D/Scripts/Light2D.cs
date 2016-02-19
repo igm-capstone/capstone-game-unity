@@ -1,12 +1,9 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Networking;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 
-[Rig3DAsset("lamp", Rig3DExports.Position | Rig3DExports.Rotation)]
+[Rig3DAsset("lamps", Rig3DExports.Position | Rig3DExports.Rotation)]
 [ExecuteInEditMode]
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]

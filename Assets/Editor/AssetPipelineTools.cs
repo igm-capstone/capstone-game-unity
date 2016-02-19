@@ -105,12 +105,15 @@ public class AssetPipelineTools
                 Attr = attr.First() as Rig3DAssetAttribute,
             };
 
-        // Add annotated types
         var json = new JObject();
+        var counters = new JObject();
+
+        // Add annotated types
         foreach (var assetTypeInfo in assetTypes)
         {
             var array = GetAssetArray(assetTypeInfo.Type, assetTypeInfo.Attr.Exports);
             json.Add(assetTypeInfo.Attr.Name, array);
+            counters.Add(assetTypeInfo.Attr.Name, array.Count);    
         }
 
         // Add transform collections
@@ -121,6 +124,8 @@ public class AssetPipelineTools
             var data = GetCollectionArray(collection);
 
             json.Add(collection.CollectionName, data.Collection);
+
+            counters.Add(collection.CollectionName, data.Collection.Count);
 
             if (collection.CalculateBounds)
             {
@@ -134,14 +139,16 @@ public class AssetPipelineTools
                 }
             }
         }
+        
         // add level general metadata
-
         var metadata = new JObject();
 
         if (bounds.HasValue)
         {
             metadata.Add("bounds", ToJToken(bounds.Value));
         }
+
+        metadata.Add("count", counters);
 
         json.AddFirst(new JProperty("metadata", metadata));
 
