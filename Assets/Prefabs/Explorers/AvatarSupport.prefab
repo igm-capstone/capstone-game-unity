@@ -1400,8 +1400,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178704}
-  m_LocalRotation: {x: -.317304671, y: 0, z: 0, w: .948323667}
-  m_LocalPosition: {x: 0, y: -9, z: -15}
+  m_LocalRotation: {x: .300705433, y: 0, z: 0, w: -.953717053}
+  m_LocalPosition: {x: 0, y: -7, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 405400}
@@ -2174,8 +2174,6 @@ MonoBehaviour:
   Damage: 10
   hasKnockBack: 1
   KnockBackMag: 5
-  BoxXAdjst: .300000012
-  BoxYAdjst: .5
 --- !u!114 &11494156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11059,15 +11057,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.x
-      value: -.317304671
+      value: .300705433
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.w
-      value: .948323667
+      value: -.953717053
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
-      value: -9
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
