@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-[Rig3DAsset("domination", Rig3DExports.Position)]
+[Rig3DAsset("dominationPoints", Rig3DExports.Position)]
 public class Domination : MonoBehaviour
 {
     [System.NonSerialized]

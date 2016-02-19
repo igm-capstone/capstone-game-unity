@@ -32,7 +32,6 @@ public class TrapSpawnManager : NetworkBehaviour
     [Command]
     public void CmdSetTrap(Vector3 position, TrapType _SlctdTrap)
     {
-        Vector3 spawnPos = Vector3.zero;
         GameObject spawnedTrap;
 
         Debug.Log("About to select trap!");

@@ -6,21 +6,6 @@ public class Door : MonoBehaviour
     public GameObject player;
     public bool isOpen = false;
 
-    public void Awake()
-    {
-        avatarNetwork = player.GetComponent<AvatarNetworkBehavior>();
-    }
-
-    //public void OpenDoor()
-    //{
-    //    GetComponent<Animator>().SetTrigger("Open");
-    //}
-
-    //public void CloseDoor()
-    //{
-    //    GetComponent<Animator>().SetTrigger("Close");
-    //}
-
     public void SwingDoor()
     {
         if(isOpen)

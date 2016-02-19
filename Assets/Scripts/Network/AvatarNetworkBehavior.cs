@@ -5,13 +5,7 @@ using System.Collections;
 //[RequireComponent(typeof(MeleeWeaponBehavior))]
 public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
 {
-    private GameObject blockCollector;
     //private MeleeWeaponBehavior meleeBehaviour;
-
-    void Start()
-    {
-        blockCollector = GameObject.Find("BlocksCollector");
-    }
 
     public override void OnStartLocalPlayer()
     {

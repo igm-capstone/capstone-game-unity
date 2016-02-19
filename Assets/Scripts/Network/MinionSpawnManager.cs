@@ -9,23 +9,15 @@ using System;
 public class MinionSpawnManager : NetworkBehaviour
 {
     public GameObject[] EnemyPrefab;
-    private Transform pathContainer;
     private Transform minionContainer;
-    private List<WaypointPath> paths; 
 
     public static MinionSpawnManager Instance { get; private set; }
 
     public override void OnStartServer ()
     {
         Instance = this;
-        paths = new List<WaypointPath>();
 
-        pathContainer = GameObject.Find("PathCollector").transform;
         minionContainer = GameObject.Find("MinionCollector").transform;
-        foreach (Transform child in pathContainer)
-        {
-            paths.Add(child.GetComponentInChildren<WaypointPath>());
-        }
         //for (int i = 0; i < spawnPointCollector.childCount; ++i)
         //{
         //    Transform spawn = spawnPointCollector.GetChild(i);
@@ -38,32 +30,11 @@ public class MinionSpawnManager : NetworkBehaviour
     }
 
     [Command]
-    public void CmdSingleSpawn(Vector3 position, MinionType MinType)
+    public void CmdSingleSpawn(Vector3 position, MinionType minType)
     {
-        var minDist = float.MaxValue;
-        WaypointPath path = null;
-        Vector3 spawnPos = Vector3.zero;
-        int waypointIndex = 0;
-
-        foreach (var waypointPath in paths)
-        {
-            for (int i = 0; i < waypointPath.transform.childCount; i++)
-            {
-                Transform waypoint = waypointPath.transform.GetChild(i);
-                var dist = (waypoint.position - position).sqrMagnitude;
-                if (dist < minDist)
-                {
-                    path = waypointPath;
-                    minDist = dist;
-                    spawnPos = waypoint.position;
-                    waypointIndex = i;
-                }
-            }
-        }
-
         Transform spawn = minionContainer;
         GameObject robot;
-        switch (MinType)
+        switch (minType)
         {
             case MinionType.Meelee:
                 robot = Instantiate(EnemyPrefab[0], position, Quaternion.identity) as GameObject;
@@ -80,8 +51,6 @@ public class MinionSpawnManager : NetworkBehaviour
 
         robot.transform.SetParent(spawn);
         robot.GetComponent<MinionController>().enabled = true;
-        robot.GetComponent<PatrolWaypoints>().path = path;
-        robot.GetComponent<PatrolWaypoints>().nextStop = waypointIndex;
         NetworkServer.Spawn(robot);
 
         TextureRandomizer rnd = robot.GetComponent<TextureRandomizer>();
@@ -105,37 +74,13 @@ public class MinionSpawnManager : NetworkBehaviour
         GameObject[] minions = new GameObject[numMinions];
         for (int n = 0; n < numMinions; n++)
         {
-            var minDist = float.MaxValue;
-            WaypointPath path = null;
-            Vector3 spawnPos = Vector3.zero;
-            int waypointIndex = 0;
-
-            foreach (var waypointPath in paths)
-            {
-                for (int i = 0; i < waypointPath.transform.childCount; i++)
-                {
-                    Transform waypoint = waypointPath.transform.GetChild(i);
-                    var dist = (waypoint.position - positions[n]).sqrMagnitude;
-                    if (dist < minDist)
-                    {
-                        path = waypointPath;
-                        minDist = dist;
-                        spawnPos = waypoint.position;
-                        waypointIndex = i;
-                    }
-                }
-            }
-
             var avatar = target.GetComponentInParent<AvatarController>();
             
-
             Transform spawn = minionContainer;
             minions[n] = Instantiate(EnemyPrefab[0], positions[n], Quaternion.identity) as GameObject;
             minions[n].transform.SetParent(spawn);
             minions[n].GetComponent<MinionController>().enabled = true;
             minions[n].GetComponent<MinionController>().SetVisibility(avatar.gameObject);
-            minions[n].GetComponent<PatrolWaypoints>().path = path;
-            minions[n].GetComponent<PatrolWaypoints>().nextStop = waypointIndex;
             NetworkServer.Spawn(minions[n]);
 
             TextureRandomizer rnd = minions[n].GetComponent<TextureRandomizer>();
