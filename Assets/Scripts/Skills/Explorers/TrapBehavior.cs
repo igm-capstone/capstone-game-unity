@@ -11,6 +11,7 @@ public class TrapBehavior : MonoBehaviour {
     public float TriggerRadius;
     public float Duration;
     public float EffectTime;   // The time in between applications of the trap effect. A "2" would mean that the effect is applied every 2 seconds.
+    public bool AffectPlayers = false;
 
     public int PoisonDamage;
     public float GlueSlowRate;
@@ -48,7 +49,8 @@ public class TrapBehavior : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (mustApplyEffect && other.gameObject.layer == LayerMask.NameToLayer("Minion"))
+        if (mustApplyEffect &&(other.gameObject.layer == LayerMask.NameToLayer("Minion") ||
+            (AffectPlayers && other.gameObject.layer == LayerMask.NameToLayer("Player"))))
         {
             ApplyTrapEffect(MyType, other.gameObject);
         }
@@ -80,13 +82,13 @@ public class TrapBehavior : MonoBehaviour {
                 break;
 
             default:
-                Debug.Log("Activate Trap: TRap type not found");
+                Debug.Log("Activate Trap: Trap type not found");
                 break;
         }
     }
 
     // Applies the Trap Effect on a Target.
-    void ApplyTrapEffect(TrapType _MyType, GameObject Target)
+    void ApplyTrapEffect(TrapType _MyType, GameObject TargetObj)
     {
         switch (_MyType)
         {
@@ -97,7 +99,7 @@ public class TrapBehavior : MonoBehaviour {
                 // Test for a Script exclusive to the traper to avoid aplying damage multiple times.
                 if (TrapPlayerObj.GetComponent<SetTrap>() != null)
                 {   // Apply Poison Damage
-                    TrapPlayerObj.GetComponent<AvatarNetworkBehavior>().CmdAssignDamage(Target, PoisonDamage);
+                    TrapPlayerObj.GetComponent<AvatarNetworkBehavior>().CmdAssignDamage(TargetObj, PoisonDamage);
                 }
                 break;
 
@@ -110,7 +112,7 @@ public class TrapBehavior : MonoBehaviour {
                 break;
 
             default:
-                Debug.Log("Apply Trap Effect: TRap type not found");
+                Debug.Log("Apply Trap Effect: Trap type not found");
                 break;
         }
 

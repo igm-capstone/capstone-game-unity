@@ -34,16 +34,10 @@ public class TrapSpawnManager : NetworkBehaviour
     {
         GameObject spawnedTrap;
 
-        Debug.Log("About to select trap!");
-
-        spawnedTrap = Instantiate(TrapsPrefab[0], position, Quaternion.identity) as GameObject;
-        spawnedTrap.transform.SetParent(TrapContainer);
-        NetworkServer.Spawn(spawnedTrap);
-
-        /*
         switch (_SlctdTrap)
         {
             case TrapType.Poison:
+
                 if (TrapsPrefab[0] != null)
                 {
                     spawnedTrap = Instantiate(TrapsPrefab[0], position, Quaternion.identity) as GameObject;
@@ -57,11 +51,15 @@ public class TrapSpawnManager : NetworkBehaviour
                 break;
 
             case TrapType.Glue:
+
+                Debug.Log("Glue Trap not implemented yet");
                 if (TrapsPrefab[1] != null)
                 {
+                    /*
                     spawnedTrap = Instantiate(TrapsPrefab[1], position, Quaternion.identity) as GameObject;
                     spawnedTrap.transform.SetParent(TrapContainer);
                     NetworkServer.Spawn(spawnedTrap);
+                    */
                 }
                 else
                 {
@@ -70,11 +68,15 @@ public class TrapSpawnManager : NetworkBehaviour
                 break;
 
             case TrapType.Spring:
+
+                Debug.Log("Spring Trap not implemented yet");
                 if (TrapsPrefab[2] != null)
                 {
+                    /*
                     spawnedTrap = Instantiate(TrapsPrefab[2], position, Quaternion.identity) as GameObject;
                     spawnedTrap.transform.SetParent(TrapContainer);
                     NetworkServer.Spawn(spawnedTrap);
+                    */
                 }
                 else
                 {
@@ -86,7 +88,6 @@ public class TrapSpawnManager : NetworkBehaviour
                 Debug.Log("Trap Type not found.");
                 break;
         }//switch
-        */
     } 
 }
  

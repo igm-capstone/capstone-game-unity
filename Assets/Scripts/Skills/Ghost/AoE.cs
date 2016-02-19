@@ -9,6 +9,10 @@ public class AoE : ISkill
     AvatarController avatarController;
     public Transform FX;
 
+    //public LayerMask HitLayers = 1 << LayerMask.NameToLayer("Minion") | 1 << LayerMask.NameToLayer("Player");
+
+    public LayerMask HitLayers;
+
     public int Damage = 2;
     public float AreaRadius = 3;
     public bool hasKnockBack = false;
@@ -55,23 +59,30 @@ public class AoE : ISkill
     {
         if (avatarController.Disabled) return "You are incapacitated. Seek help!";
 
+        // Trigger animation
         animator.SetTrigger("AoE");
         GetComponent<AvatarController>().isAttacking = true;
 
-        var minions = Physics2D.OverlapCircleAll(transform.position, AreaRadius, 1 << LayerMask.NameToLayer("Minion"));
+        var TargetsHit = Physics2D.OverlapCircleAll(transform.position, AreaRadius, HitLayers);
 
-        foreach (var m in minions)
+        foreach (var trgt in TargetsHit)
         {
-            // Check if KnockBack is Enabled
-            if (hasKnockBack)
+            // Check if I am hitting myself
+            if (trgt.gameObject == this.gameObject)
             {
-                avatarNetwork.CmdAssignDamageWithForce(m.gameObject, Damage, KnockBackMag);
+                continue;
+            }
+
+            // Check if knockBack is enabled and if hitting a minion.
+            if (hasKnockBack && trgt.gameObject.layer == LayerMask.NameToLayer("Minion"))
+            {
+                avatarNetwork.CmdAssignDamageWithForce(trgt.gameObject, Damage, KnockBackMag);
             }
             else
             {
-                avatarNetwork.CmdAssignDamage(m.gameObject, Damage);
+                avatarNetwork.CmdAssignDamage(trgt.gameObject, Damage);
             }
-        }
+        } //foreach
         return null;
     }
 
