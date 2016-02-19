@@ -148,6 +148,7 @@ MonoBehaviour:
   TriggerRadius: 5
   Duration: 10
   EffectTime: .5
+  AffectPlayers: 1
   PoisonDamage: 4
   GlueSlowRate: 10
   SpringKnockForce: 100
@@ -1284,6 +1285,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: Duration
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: AffectPlayers
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

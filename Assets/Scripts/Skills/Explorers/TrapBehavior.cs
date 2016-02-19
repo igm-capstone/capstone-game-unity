@@ -49,8 +49,8 @@ public class TrapBehavior : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (mustApplyEffect && other.gameObject.layer == LayerMask.NameToLayer("Minion") ||
-            (AffectPlayers && other.gameObject.layer == LayerMask.NameToLayer("Player")))
+        if (mustApplyEffect &&(other.gameObject.layer == LayerMask.NameToLayer("Minion") ||
+            (AffectPlayers && other.gameObject.layer == LayerMask.NameToLayer("Player"))))
         {
             ApplyTrapEffect(MyType, other.gameObject);
         }
