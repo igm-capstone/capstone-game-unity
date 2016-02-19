@@ -9,6 +9,8 @@ public class AoE : ISkill
     AvatarController avatarController;
     public Transform FX;
 
+    public LayerMask HitLayers = 1 << LayerMask.NameToLayer("Minion") | 1 << LayerMask.NameToLayer("Player");
+
     public int Damage = 2;
     public float AreaRadius = 3;
     public bool hasKnockBack = false;
@@ -58,18 +60,23 @@ public class AoE : ISkill
         animator.SetTrigger("AoE");
         GetComponent<AvatarController>().isAttacking = true;
 
-        var minions = Physics2D.OverlapCircleAll(transform.position, AreaRadius, 1 << LayerMask.NameToLayer("Minion"));
+        var Targets = Physics2D.OverlapCircleAll(transform.position, AreaRadius, HitLayers);
 
-        foreach (var m in minions)
+        foreach (var trgt in Targets)
         {
+            // Check if I am hitting myself
+            if (trgt.gameObject == this.gameObject)
+            {
+                return null;
+            }
             // Check if KnockBack is Enabled
             if (hasKnockBack)
             {
-                avatarNetwork.CmdAssignDamageWithForce(m.gameObject, Damage, KnockBackMag);
+                avatarNetwork.CmdAssignDamageWithForce(trgt.gameObject, Damage, KnockBackMag);
             }
             else
             {
-                avatarNetwork.CmdAssignDamage(m.gameObject, Damage);
+                avatarNetwork.CmdAssignDamage(trgt.gameObject, Damage);
             }
         }
         return null;

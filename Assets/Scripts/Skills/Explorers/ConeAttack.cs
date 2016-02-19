@@ -10,6 +10,8 @@ public class ConeAttack : ISkill
     Transform avatarModelTransform;
     GameObject hb;
 
+    public LayerMask HitLayers = 1 << LayerMask.NameToLayer("Minion") | 1 << LayerMask.NameToLayer("Player");
+
     // Class Variable
     public int Damage = 2;
     public float radius = 2;
@@ -60,22 +62,27 @@ public class ConeAttack : ISkill
         animator.SetTrigger("ConeAttack");
         GetComponent<AvatarController>().isAttacking = true;
 
-        var minions = Physics2D.OverlapCircleAll(transform.position, radius, 1 << LayerMask.NameToLayer("Minion"));
+        var Targets = Physics2D.OverlapCircleAll(transform.position, radius, HitLayers);
 
-        foreach (Collider2D m in minions)
+        foreach (Collider2D trgt in Targets)
         {
-            var minionModel = m.gameObject.transform.FindChild("Rotation").FindChild("Model");
+            // Check if I am hitting myself
+            if (trgt.gameObject == this.gameObject)
+            {
+                return null;
+            }
+            var minionModel = trgt.gameObject.transform.FindChild("Rotation").FindChild("Model");
             if(Vector2.Dot(minionModel.transform.forward, avatarModelTransform.forward) < 0)
             {
                 if (hasKnockBack)
                 {
                     // Assign Damage with Force
-                    avatarNetwork.CmdAssignDamageWithForce(m.gameObject, Damage, KnockBackMag);
+                    avatarNetwork.CmdAssignDamageWithForce(trgt.gameObject, Damage, KnockBackMag);
                 }
                 else
                 {
                     // Assign Damage
-                    avatarNetwork.CmdAssignDamage(m.gameObject, Damage);
+                    avatarNetwork.CmdAssignDamage(trgt.gameObject, Damage);
                 }
             }
         }

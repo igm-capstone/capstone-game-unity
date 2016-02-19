@@ -10,7 +10,9 @@ public class LongAttack : ISkill
     AvatarController avatarController;
     Collider2D lastTarget;
     GameObject AtckHitBox;
-    
+
+    public LayerMask HitLayers = 1 << LayerMask.NameToLayer("Minion") | 1 << LayerMask.NameToLayer("Player");
+
     // Class Variables
     public int Damage = 2;
     public bool hasKnockBack = false;
@@ -62,7 +64,7 @@ public class LongAttack : ISkill
         AtckHitBox.SetActive(true);
         Debug.DrawLine(aa, bb, Color.yellow, 5);
 
-        var minions = Physics2D.OverlapAreaAll(aa, bb, 1 << LayerMask.NameToLayer("Minion"));
+        var minions = Physics2D.OverlapAreaAll(aa, bb, HitLayers);
 
         animator.SetTrigger("LongAttack");
         GetComponent<AvatarController>().isAttacking = true;
@@ -76,7 +78,7 @@ public class LongAttack : ISkill
     {
         //Debug.Log("Long Attack " + lastTarget);
         AtckHitBox.SetActive(false);
-        if (lastTarget == null)
+        if (lastTarget == null || lastTarget.gameObject == this.gameObject)
             return;
 
         if (hasKnockBack)

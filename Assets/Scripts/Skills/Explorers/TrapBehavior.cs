@@ -11,6 +11,7 @@ public class TrapBehavior : MonoBehaviour {
     public float TriggerRadius;
     public float Duration;
     public float EffectTime;   // The time in between applications of the trap effect. A "2" would mean that the effect is applied every 2 seconds.
+    public bool AffectPlayers = false;
 
     public int PoisonDamage;
     public float GlueSlowRate;
@@ -48,7 +49,8 @@ public class TrapBehavior : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (mustApplyEffect && other.gameObject.layer == LayerMask.NameToLayer("Minion"))
+        if (mustApplyEffect && other.gameObject.layer == LayerMask.NameToLayer("Minion") ||
+            (AffectPlayers && other.gameObject.layer == LayerMask.NameToLayer("Player")))
         {
             ApplyTrapEffect(MyType, other.gameObject);
         }
