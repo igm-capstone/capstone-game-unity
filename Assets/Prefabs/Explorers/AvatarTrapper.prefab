@@ -620,7 +620,7 @@ GameObject:
   - 114: {fileID: 11422288}
   - 114: {fileID: 11427628}
   - 50: {fileID: 5087704}
-  - 60: {fileID: 6015442}
+  - 61: {fileID: 6161852}
   - 114: {fileID: 11415400}
   - 114: {fileID: 11487224}
   - 114: {fileID: 11432990}
@@ -1484,7 +1484,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151058}
   m_LocalRotation: {x: -.317304671, y: 0, z: 0, w: .948323667}
-  m_LocalPosition: {x: 0, y: -7, z: -10.5}
+  m_LocalPosition: {x: 0, y: -9, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 492218}
@@ -1596,7 +1596,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.3751678, y: -8.57164001, z: 0}
+  m_LocalPosition: {x: -19.7926426, y: 10.9499998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 460598}
@@ -1829,8 +1829,8 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5
---- !u!60 &6015442
-PolygonCollider2D:
+--- !u!61 &6161852
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -1838,14 +1838,10 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: -.258525848, y: .313321114}
-      - {x: -.231126785, y: -.395516396}
-      - {x: .422916412, y: -.422914505}
-      - {x: .422916412, y: .258522987}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!81 &8138234
 AudioListener:
   m_ObjectHideFlags: 1
@@ -1924,9 +1920,12 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 61165a2d681de2049b5296c3092ea42d, type: 3}
   Name: Flame Sword
-  Cooldown: .5
+  Cooldown: .300000012
   canDrop: 0
   FX: {fileID: 403324}
+  HitLayers:
+    serializedVersion: 2
+    m_Bits: 10240
   Damage: 15
   AreaRadius: 2
   hasKnockBack: 1
@@ -10910,7 +10909,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
-      value: 2.5
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Damage
@@ -10947,11 +10946,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
-      value: -7
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
-      value: -10.5
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: KnockBackMag
@@ -10964,6 +10963,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_UsedByEffector
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: HitLayers.m_Bits
+      value: 10240
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

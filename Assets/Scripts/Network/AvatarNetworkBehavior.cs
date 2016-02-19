@@ -67,9 +67,14 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
         
         // Calculate KnockBackForce
         Vector3 TransForce = (obj.transform.position - transform.position).normalized* KnockBackAmount;
-        // Apply Knock back and start stunn timer.
+        // Apply Knock back and start stun timer.
         obj.transform.Translate(TransForce, Space.Self);
-        obj.GetComponent<TargetFollower>().StartStunTimer();
+
+        // Stun on minion.
+        if (obj.GetComponent<TargetFollower>() != null)
+        {
+            obj.GetComponent<TargetFollower>().StartStunTimer();
+        }
     }
 
     [Command]

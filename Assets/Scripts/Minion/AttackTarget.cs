@@ -24,8 +24,6 @@ public class AttackTarget : MinionBehaviour
 
             GetComponent<MinionController>().RpcTriggerExplosionSrpite(false);
         }
-
-        
     }
 
     public override void ActivateBehaviour()
@@ -42,7 +40,6 @@ public class AttackTarget : MinionBehaviour
             AttackSprite.SetActive(true);
             GetComponent<MinionController>().RpcTriggerExplosionSrpite(true);
         }
-        
     }
 
     public override void DeactivateBehaviour()
@@ -76,7 +73,6 @@ public class AttackTarget : MinionBehaviour
         {
             return;
         }
-
 
         switch (MyType)
         {

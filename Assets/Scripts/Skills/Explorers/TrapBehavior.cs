@@ -82,13 +82,13 @@ public class TrapBehavior : MonoBehaviour {
                 break;
 
             default:
-                Debug.Log("Activate Trap: TRap type not found");
+                Debug.Log("Activate Trap: Trap type not found");
                 break;
         }
     }
 
     // Applies the Trap Effect on a Target.
-    void ApplyTrapEffect(TrapType _MyType, GameObject Target)
+    void ApplyTrapEffect(TrapType _MyType, GameObject TargetObj)
     {
         switch (_MyType)
         {
@@ -99,7 +99,7 @@ public class TrapBehavior : MonoBehaviour {
                 // Test for a Script exclusive to the traper to avoid aplying damage multiple times.
                 if (TrapPlayerObj.GetComponent<SetTrap>() != null)
                 {   // Apply Poison Damage
-                    TrapPlayerObj.GetComponent<AvatarNetworkBehavior>().CmdAssignDamage(Target, PoisonDamage);
+                    TrapPlayerObj.GetComponent<AvatarNetworkBehavior>().CmdAssignDamage(TargetObj, PoisonDamage);
                 }
                 break;
 
@@ -112,7 +112,7 @@ public class TrapBehavior : MonoBehaviour {
                 break;
 
             default:
-                Debug.Log("Apply Trap Effect: TRap type not found");
+                Debug.Log("Apply Trap Effect: Trap type not found");
                 break;
         }
 
