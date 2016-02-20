@@ -35,6 +35,11 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
     [SyncVar]
     private bool checkAI = true;
 
+    [SerializeField]
+    private bool ShowDebugLines = false;
+
+    [SerializeField] private Rect DebugArea = Rect.MinMaxRect(-25, -25, 25, 25);
+
     public IEnumerable<INode> Nodes
     {
         get
@@ -334,36 +339,45 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
 #if UNITY_EDITOR
     void OnDrawGizmos()
     {
-        //float size = nodeRadius * .95f;
-        //
-        //if (areaOfNodes != null)
-        //{
-        //    //Node playerNode = getNodeAtPos(player.position);
-        //    foreach (Node node in areaOfNodes)
-        //    {
-        //        //Handles.color = new Color(1, 1, 1, 1);
-        //        //Handles.DrawSolidRectangleWithOutline(new[] { 
-        //        //    node.position + new Vector3(size, size, 0f),
-        //        //    node.position + new Vector3(size, -size, 0f),
-        //        //    node.position + new Vector3(-size, -size, 0f),
-        //        //    node.position + new Vector3(-size, size, 0f) },
-        //        //    node.hasLight ? new Color(1, 1, 0, 0.05f) : new Color(0.5f, 0.5f, 0.5f, 0.05f),
-        //        //    node.hasLight ? new Color(1, 1, 0, 0.4f) : new Color(0.5f, 0.5f, 0.5f, 0.4f));
+        if (!ShowDebugLines)
+        {
+            return;
+        }
 
-        //        //if (!node.canWalk)
-        //        //{
-        //        //    Handles.color = node.hasLight ? new Color(1, 1, 0, .4f) : new Color(0.5f, 0.5f, 0.5f, .4f);
-        //        //    //Handles.DrawSolidDisc(node.position, new Vector3(0, 0, 1), nodeRadius * .4f);
-        //        //    Handles.DrawLine(node.position + new Vector3(size, size, 0f),
-        //        //        node.position + new Vector3(-size, -size, 0f));
-        //        //    Handles.DrawLine(node.position + new Vector3(-size, size, 0f),
-        //        //        node.position + new Vector3(size, -size, 0f));
-        //        //}
+        float size = nodeRadius * .95f;
 
-        //        //Handles.Label(node.position, node.Weight == float.MaxValue ? "max" : node.Weight.ToString("F2"));
-        //        //Handles.Label(node.position, (node.coord).ToString());
-        //    }
-        //}
+        if (areaOfNodes != null)
+        {
+            foreach (Node node in areaOfNodes)
+            {
+                if (!DebugArea.Contains(node.position))
+                {
+                    continue;
+                }
+
+                Handles.color = new Color(1, 1, 1, 1);
+                Handles.DrawSolidRectangleWithOutline(new[] {
+                    node.position + new Vector3(size, size, 0f),
+                    node.position + new Vector3(size, -size, 0f),
+                    node.position + new Vector3(-size, -size, 0f),
+                    node.position + new Vector3(-size, size, 0f) },
+                    node.hasLight ? new Color(1, 1, 0, 0.05f) : new Color(0.5f, 0.5f, 0.5f, 0.05f),
+                    node.hasLight ? new Color(1, 1, 0, 0.4f) : new Color(0.5f, 0.5f, 0.5f, 0.4f));
+
+                if (!node.canWalk)
+                {
+                    Handles.color = node.hasLight ? new Color(1, 1, 0, .4f) : new Color(0.5f, 0.5f, 0.5f, .4f);
+                    //Handles.DrawSolidDisc(node.position, new Vector3(0, 0, 1), nodeRadius * .4f);
+                    Handles.DrawLine(node.position + new Vector3(size, size, 0f),
+                        node.position + new Vector3(-size, -size, 0f));
+                    Handles.DrawLine(node.position + new Vector3(-size, size, 0f),
+                        node.position + new Vector3(size, -size, 0f));
+                }
+
+                //Handles.Label(node.position, node.Weight == float.MaxValue ? "max" : node.Weight.ToString("F2"));
+                //Handles.Label(node.position, (node.coord).ToString());
+            }
+        }
     }
 #endif
 

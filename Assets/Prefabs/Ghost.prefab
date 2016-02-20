@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayersToClick:
     serializedVersion: 2
-    m_Bits: 557312
+    m_Bits: 2654464
 --- !u!114 &11456038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -374,7 +374,7 @@ Prefab:
       objectReference: {fileID: 117566, guid: e293756eec0692849a7e13161b28204f, type: 2}
     - target: {fileID: 0}
       propertyPath: LayersToClick.m_Bits
-      value: 557312
+      value: 2654464
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_BackGroundColor.r

@@ -31,7 +31,10 @@ public class WanderAround : MinionBehaviour
             GetNewTarget();
         }
 
-        Controller.Follower.MoveTowards(target.position);
+        if (!Controller.Follower.MoveTowards(target.position))
+        {
+            GetNewTarget();
+        }
     }
 
     private void GetNewTarget()

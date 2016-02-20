@@ -20,7 +20,7 @@ public class SpawnMinion : ISkill
         clickWorldPos.z = z;
 
         var node = grid.getNodeAtPos(clickWorldPos);
-        if (!node.canWalk || node.hasLight)
+        if (node == null || !node.canWalk || node.hasLight)
         {
             //Debug.LogFormat("Lit area {0}, unwalkable area {0}", node.hasLight, !node.canWalk);
             return Name + " skill can only be used in the darkness!";

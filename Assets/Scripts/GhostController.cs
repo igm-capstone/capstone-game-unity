@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using System.Linq;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(SkillBar))]
@@ -28,16 +29,21 @@ public class GhostController : MonoBehaviour {
         if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             var clickWordPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(clickWordPos, -Vector2.up, 1000, LayersToClick);
 
-            if (hit.collider != null)
+            if (Physics2D.Raycast(clickWordPos, Vector2.zero, 1000, LayerMask.GetMask(new [] {"Door"})))
+            {
+                return;
+            }
+
+            RaycastHit2D hit = Physics2D.Raycast(clickWordPos, Vector2.zero, 1000, LayersToClick);
+            if (hit)
             {
                 var activeSkill = _ghostSkillBar.GetActiveSkill();
-                if (activeSkill)
+                if (activeSkill) 
                 {
                     activeSkill.Use(hit.collider.gameObject, clickWordPos);
                 }
-                else
+                else 
                 {
                     HelpMessage.Instance.SetMessage("No skill selected!");
                 }

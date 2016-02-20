@@ -17,8 +17,10 @@ public class GhostNetworkBehavior : BasePlayerNetworkBehavior {
             var clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hitInfo = Physics2D.Raycast(clickPos, Vector2.zero,1000, 1 << LayerMask.NameToLayer("Door"));
 
-            if (hitInfo.collider.gameObject.CompareTag("Door"))
+            if (hitInfo && hitInfo.collider.gameObject.CompareTag("Door"))
+            {
                 RpcOpenDoor(hitInfo.collider.gameObject);
+            }
         }
     }
 
