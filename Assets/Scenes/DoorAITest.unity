@@ -5712,6 +5712,26 @@ Prefab:
       propertyPath: m_Name
       value: Door (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114350, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 102426, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170080, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098512, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
   m_IsPrefabParent: 0
@@ -7636,7 +7656,12 @@ MonoBehaviour:
   Name: LongAttack
   Cooldown: 2
   canDrop: 0
+  HitLayers:
+    serializedVersion: 2
+    m_Bits: 0
   Damage: 2
+  hasKnockBack: 0
+  KnockBackMag: 5
 --- !u!4 &317978616 stripped
 Transform:
   m_PrefabParentObject: {fileID: 403228, guid: 7e1c33b774aa93744bbb27ad8f5fced4, type: 2}
@@ -7679,6 +7704,18 @@ Prefab:
     - target: {fileID: 437960, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 102426, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
@@ -11228,27 +11265,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22484636, guid: 8e6616663b74cc745b27cc0b7a2f7fa4, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 146.568726
+      value: 150.017822
       objectReference: {fileID: 0}
     - target: {fileID: 22484636, guid: 8e6616663b74cc745b27cc0b7a2f7fa4, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -31.1047134
+      value: -31.8753357
       objectReference: {fileID: 0}
     - target: {fileID: 22484636, guid: 8e6616663b74cc745b27cc0b7a2f7fa4, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 253.137451
+      value: 260.035645
       objectReference: {fileID: 0}
     - target: {fileID: 22484636, guid: 8e6616663b74cc745b27cc0b7a2f7fa4, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 38.2094269
+      value: 39.7506714
       objectReference: {fileID: 0}
     - target: {fileID: 22489368, guid: 8e6616663b74cc745b27cc0b7a2f7fa4, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 293.137451
+      value: 300.035645
       objectReference: {fileID: 0}
     - target: {fileID: 22489368, guid: 8e6616663b74cc745b27cc0b7a2f7fa4, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 62.2094269
+      value: 63.7506714
       objectReference: {fileID: 0}
     - target: {fileID: 22463216, guid: 8e6616663b74cc745b27cc0b7a2f7fa4, type: 2}
       propertyPath: m_SizeDelta.x
@@ -16430,6 +16467,7 @@ MonoBehaviour:
   CollectionName: moveableBlock
   Exports: 7
   CalculateBounds: 0
+  NormalizeDepth: 0
 --- !u!1001 &942216745
 Prefab:
   m_ObjectHideFlags: 0
@@ -16480,6 +16518,10 @@ Prefab:
     - target: {fileID: 117028, guid: 50810025e40378c40b27e34ca201ada3, type: 2}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066832, guid: 50810025e40378c40b27e34ca201ada3, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50810025e40378c40b27e34ca201ada3, type: 2}
@@ -16907,9 +16949,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 973208462}
-  m_LocalRotation: {x: 0, y: 0, z: .429057151, w: -.903277397}
-  m_LocalPosition: {x: -6.75, y: 8.81999969, z: -.5}
-  m_LocalScale: {x: 1.25205564, y: .998587251, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: .715545595, w: -.698566079}
+  m_LocalPosition: {x: -6.41900015, y: 8.94299984, z: -.5}
+  m_LocalScale: {x: 1.31974769, y: .519900739, z: 1}
   m_Children: []
   m_Father: {fileID: 1212192055}
   m_RootOrder: 53
@@ -18326,9 +18368,14 @@ MonoBehaviour:
   Name: Skill
   Cooldown: 2
   canDrop: 0
+  FX: {fileID: 0}
+  HitLayers:
+    serializedVersion: 2
+    m_Bits: 0
   Damage: 2
   AreaRadius: 3
-  FX: {fileID: 0}
+  hasKnockBack: 0
+  KnockBackMag: 5
 --- !u!4 &1201031380 stripped
 Transform:
   m_PrefabParentObject: {fileID: 403228, guid: 7e1c33b774aa93744bbb27ad8f5fced4, type: 2}
@@ -18432,6 +18479,7 @@ MonoBehaviour:
   CollectionName: wall
   Exports: 7
   CalculateBounds: 1
+  NormalizeDepth: 0
 --- !u!1 &1231655282
 GameObject:
   m_ObjectHideFlags: 0
@@ -23409,6 +23457,26 @@ Prefab:
       propertyPath: opaqueObstacleMask.m_Bits
       value: 2101760
       objectReference: {fileID: 0}
+    - target: {fileID: 11435872, guid: f1c02f1c6a913da4787c1dd2301ed880, type: 2}
+      propertyPath: ShowDebugLines
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435872, guid: f1c02f1c6a913da4787c1dd2301ed880, type: 2}
+      propertyPath: DebugArea.width
+      value: 57.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435872, guid: f1c02f1c6a913da4787c1dd2301ed880, type: 2}
+      propertyPath: DebugArea.height
+      value: 33.2999992
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435872, guid: f1c02f1c6a913da4787c1dd2301ed880, type: 2}
+      propertyPath: DebugArea.x
+      value: -26.7000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435872, guid: f1c02f1c6a913da4787c1dd2301ed880, type: 2}
+      propertyPath: DebugArea.y
+      value: -22.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6540044, guid: f1c02f1c6a913da4787c1dd2301ed880, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f1c02f1c6a913da4787c1dd2301ed880, type: 2}
@@ -23601,8 +23669,13 @@ MonoBehaviour:
   Name: Skill
   Cooldown: 1
   canDrop: 0
-  damage: 2
+  HitLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  Damage: 2
   radius: 2.5
+  hasKnockBack: 0
+  KnockBackMag: 5
 --- !u!1 &1554318290
 GameObject:
   m_ObjectHideFlags: 0
@@ -27789,9 +27862,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1865957453}
-  m_LocalRotation: {x: 0, y: 0, z: .920248687, w: -.391334027}
-  m_LocalPosition: {x: 9.22000027, y: 6.38999987, z: -.5}
-  m_LocalScale: {x: 1.25205564, y: .998587251, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: .72102052, w: -.692913711}
+  m_LocalPosition: {x: 9.55000019, y: 5.42999983, z: -.5}
+  m_LocalScale: {x: 2.35488367, y: .433524162, z: 1}
   m_Children: []
   m_Father: {fileID: 1212192055}
   m_RootOrder: 52
@@ -27887,6 +27960,18 @@ Prefab:
     - target: {fileID: 114350, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
       propertyPath: m_Name
       value: Door (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 102426, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
@@ -31498,9 +31583,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1996989711}
-  m_LocalRotation: {x: 0, y: 0, z: .919763088, w: -.392474204}
-  m_LocalPosition: {x: 6.26000023, y: 9.25, z: -.5}
-  m_LocalScale: {x: 1.23272729, y: .998587847, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: .99995333, w: .00966379605}
+  m_LocalPosition: {x: 4.61000013, y: 9.47999954, z: -.5}
+  m_LocalScale: {x: 2.36786199, y: .674348474, z: 1}
   m_Children: []
   m_Father: {fileID: 1212192055}
   m_RootOrder: 51
@@ -33634,6 +33719,18 @@ Prefab:
     - target: {fileID: 114350, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
       propertyPath: m_Name
       value: Door (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 102426, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}

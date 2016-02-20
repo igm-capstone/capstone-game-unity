@@ -145,7 +145,13 @@ public class AssetPipelineTools
 
         if (bounds.HasValue)
         {
-            metadata.Add("bounds", ToJToken(bounds.Value));
+            var center = bounds.Value.center;
+            var size = bounds.Value.size;
+
+            center.z = 0;
+            size.z = 1;
+            
+            metadata.Add("bounds", ToJToken(new Bounds(center, size)));
         }
 
         metadata.Add("count", counters);
@@ -163,7 +169,7 @@ public class AssetPipelineTools
         var array = new JArray();
         foreach (var behaviour in objs)
         {
-            var jobj = CreateJsonObject(behaviour, collection.Exports);
+            var jobj = CreateJsonObject(behaviour, collection.Exports, true);
 
             if (collection.CalculateBounds)
             {
@@ -240,14 +246,19 @@ public class AssetPipelineTools
     }
 
 
-    private static JObject CreateJsonObject(Component component, Rig3DExports defaultExports)
+    private static JObject CreateJsonObject(Component component, Rig3DExports defaultExports, bool normalizeDepth = false)
     {
         var jobj = new JObject();
 
         var transform = component.transform;
         if (ExportContainsProperty(defaultExports, Rig3DExports.Position))
         {
-            jobj.Add("position", ToJToken(transform.position));
+            var pos = transform.position;
+            if (normalizeDepth)
+            {
+                pos.z = 0;
+            }
+            jobj.Add("position", ToJToken(pos));
         }
 
         if (ExportContainsProperty(defaultExports, Rig3DExports.Rotation))
@@ -257,7 +268,31 @@ public class AssetPipelineTools
 
         if (ExportContainsProperty(defaultExports, Rig3DExports.Scale))
         {
-            jobj.Add("scale", ToJToken(transform.lossyScale));
+            var skl = transform.lossyScale;
+            if (normalizeDepth)
+            {
+                skl.z = 1;
+            }
+            jobj.Add("scale", ToJToken(skl));
+        }
+
+        if (ExportContainsProperty(defaultExports, Rig3DExports.Layer))
+        {
+            jobj.Add("layer", transform.gameObject.layer);
+        }
+
+        if (ExportContainsProperty(defaultExports, Rig3DExports.Tag))
+        {
+            jobj.Add("tag", transform.gameObject.tag);
+        }
+
+        if (ExportContainsProperty(defaultExports, Rig3DExports.Mesh))
+        {
+            var mesh = transform.GetComponentInChildren<MeshFilter>();
+            if (mesh)
+            {
+                jobj.Add("mesh", mesh.sharedMesh.name);
+            }
         }
 
         return jobj;
