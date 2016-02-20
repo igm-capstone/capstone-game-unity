@@ -19,6 +19,9 @@ public class GhostCamController : MonoBehaviour
     Vector3 DownStep;
     Vector3 UpStep;
 
+    public float keyMoveSpeed = 80.0f;
+
+
     // Use this for initialization
     void Start ()
     {
@@ -28,7 +31,7 @@ public class GhostCamController : MonoBehaviour
         GhostCam.orthographicSize = 20.0f;
 
         // Get Lvl bounds
-        OuterWallsArray = GameObject.Find("OuterWalls");
+        OuterWallsArray = GameObject.Find("Walls");
         LvlBounds = CreateLevelBounds(OuterWallsArray);
 
         // Starting Values
@@ -41,10 +44,29 @@ public class GhostCamController : MonoBehaviour
         RightStep = new Vector3(SpdXAxis, 0);
         DownStep = new Vector3(0, -SpdYAxis);
         UpStep = new Vector3(0, SpdYAxis);
+        
     }
 
     // Update is called once per frame
     void Update()
+    {
+        MoveCamWithKeyboard();
+    }
+
+    void MoveCamWithKeyboard()
+    {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        // Applies movement
+        if (Mathf.Abs(vertical) > Mathf.Epsilon || Mathf.Abs(horizontal) > Mathf.Epsilon)
+        {
+            Vector3 moveDir = new Vector3(horizontal, vertical).normalized;
+            GhostTransform.Translate(moveDir * keyMoveSpeed  * Time.deltaTime, Space.Self);
+        }
+    }
+
+    void MoveCamWithMouse()
     {
         // This calculation is done here to account for the window changing sizes
         // These numbers are in pixels (screen space)
@@ -53,18 +75,20 @@ public class GhostCamController : MonoBehaviour
         ScrUpBorder = Screen.height - 10.0f;
         ScrDownBorder = 10.0f;
 
+
+        // This needs to be revamped
         // Mouse movement on X-axis of the screen
         // Left
         if (Input.mousePosition.x < ScrLeftBorder)
         {
             // If Screen can move, move!
-            if (LvlBounds.Contains(GhostTransform.position + 10*LeftStep))
+            if (LvlBounds.Contains(GhostTransform.position + 10 * LeftStep))
                 GhostTransform.position += LeftStep;
         }
         // Right
         else if (Input.mousePosition.x > ScrRightBorder)
         {
-            if (LvlBounds.Contains(GhostTransform.position + 10*RightStep))
+            if (LvlBounds.Contains(GhostTransform.position + 10 * RightStep))
                 GhostTransform.position += RightStep;
         }
 
@@ -73,13 +97,13 @@ public class GhostCamController : MonoBehaviour
         // Down
         if (Input.mousePosition.y < ScrDownBorder)
         {
-            if (LvlBounds.Contains(GhostTransform.position + 10*DownStep))
+            if (LvlBounds.Contains(GhostTransform.position + 10 * DownStep))
                 GhostTransform.position += DownStep;
         }
         // Up
         else if (Input.mousePosition.y > ScrUpBorder)
         {
-            if (LvlBounds.Contains(GhostTransform.position + 10*UpStep))
+            if (LvlBounds.Contains(GhostTransform.position + 10 * UpStep))
                 GhostTransform.position += UpStep;
         }
     }
