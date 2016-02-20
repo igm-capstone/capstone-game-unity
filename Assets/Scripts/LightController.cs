@@ -6,13 +6,15 @@ using System.Collections.Generic;
 [ExecuteInEditMode]
 [RequireComponent(typeof(Light2D))]
 public class LightController : NetworkBehaviour {
-    public enum Status {
+    public enum LghtStatus
+    {
+        Off,
         On,
-        Off
+        Dimmed
     }
 
     [SyncVar(hook = "GotStatusFromSrv")]
-    public Status CurrentStatus = Status.On;
+    public LghtStatus CurrentStatus = LghtStatus.Off;
     public Sprite SpriteOn;
     public Sprite SpriteOff;
 
@@ -23,14 +25,24 @@ public class LightController : NetworkBehaviour {
 
     public bool dirty = true;
 
-	// Use this for initialization
-	void Awake () {
+    Material onLightMat;
+    Material offLightMat;
+
+    // Use this for initialization
+    void Awake ()
+    {
+
         light2d = GetComponent<Light2D>();
         renderer = GetComponent<MeshRenderer>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         collider = GetComponentInChildren<PolygonCollider2D>();
         DrawSprite();
-	}
+
+        onLightMat = Resources.Load<Material>("LightOnMat");
+        offLightMat = Resources.Load<Material>("LightOffMat");
+
+
+    }
 
     public LayerMask shadowMask { get { return light2d.shadowMask;} }
 
@@ -51,21 +63,32 @@ public class LightController : NetworkBehaviour {
 	}
 
     private void DrawSprite() {
-        //Debug.Log("DrawSprite");
             
         switch (CurrentStatus)
         {
-            case Status.On:
-                sprite.sprite = SpriteOn;
-                renderer.enabled = true;
-                collider.enabled = true;
-                break;
-            case Status.Off:
+            case LghtStatus.Off:
+                // Starting state. Lights are off
                 sprite.sprite = SpriteOff;
                 renderer.enabled = false;
                 collider.enabled = false;
                 break;
+
+            case LghtStatus.On:
+                // Lights are On
+                sprite.sprite = SpriteOn;
+                renderer.enabled = true;
+                light2d.lightMaterial = onLightMat;
+                collider.enabled = true;
+                break;
+
+            case LghtStatus.Dimmed:
+                // Ghost Dimmed the lights.
+                sprite.sprite = SpriteOff;
+                light2d.lightMaterial = offLightMat;
+                collider.enabled = false;
+                break;
         }
+
         var material = GetComponent<MeshRenderer>().sharedMaterial;
 
         if (material) {
@@ -76,23 +99,31 @@ public class LightController : NetworkBehaviour {
         
     }
 
-    public void ToggleStatus()
+    public void ChangeStatusTo(LghtStatus NxtStatus)
     {
         //Debug.Log("ToggleStatus called. IsServer: "+isServer.ToString());
-        switch (CurrentStatus)
+        switch (NxtStatus)
         {
-            case Status.Off: 
-                CurrentStatus = Status.On;
+            case LghtStatus.Off: 
+                CurrentStatus = LghtStatus.Off;
+                DrawSprite();
                 break;
-            case Status.On:
-                CurrentStatus = Status.Off;
+
+            case LghtStatus.On:
+                CurrentStatus = LghtStatus.On;
+                DrawSprite();
+                break;
+
+            case LghtStatus.Dimmed:
+                CurrentStatus = LghtStatus.Dimmed;
+                DrawSprite();
                 break;
         }
         dirty = true;
     }
 
     [Client]
-    void GotStatusFromSrv(Status latestStatus)
+    void GotStatusFromSrv(LghtStatus latestStatus)
     {
         //Debug.Log("GotSts from server. IsServer: " + isServer.ToString());
         CurrentStatus = latestStatus;
