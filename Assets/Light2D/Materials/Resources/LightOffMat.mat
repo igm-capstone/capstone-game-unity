@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: LightMaterialGradient
+  m_Name: LightOffMat
   m_Shader: {fileID: 4800000, guid: d6921e235d4fe1a4ebafa5cd517fb411, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -51,7 +51,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .820940256, g: .823529422, b: .635813177, a: .588235319}
+        second: {r: .820940256, g: .823529422, b: .635813177, a: .176470593}
       data:
         first:
           name: _TintColor
