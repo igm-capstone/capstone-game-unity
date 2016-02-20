@@ -28,7 +28,7 @@ public class GhostCamController : MonoBehaviour
         // Object Getters
         GhostTransform = transform.parent.transform;
         GhostCam = GetComponent<Camera>();
-        GhostCam.orthographicSize = 20.0f;
+        //GhostCam.orthographicSize = 20.0f;
 
         // Get Lvl bounds
         OuterWallsArray = GameObject.Find("Walls");

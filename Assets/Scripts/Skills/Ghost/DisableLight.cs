@@ -34,7 +34,7 @@ public class DisableLight : ISkill
         light.ToggleStatus(); //On
         yield return new WaitForSeconds(0.1f);
         light.ToggleStatus(); //Off
-        yield return new WaitForSeconds(0.1f);
-        light.ToggleStatus(); //On
+        //yield return new WaitForSeconds(0.1f);
+        //light.ToggleStatus(); //On
     }
 }
