@@ -8,6 +8,7 @@ public enum Rig3DExports
     Scale    = (1 << 2),
     Layer    = (1 << 3),
     Tag      = (1 << 4),
+    Mesh     = (1 << 5),
 }
 
 [AttributeUsage(AttributeTargets.Class)]
