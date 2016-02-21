@@ -80,6 +80,13 @@ public class AvatarController : MonoBehaviour
             animator.SetFloat("RunSpeed", _rb.velocity.magnitude);
         }
 
-        
+        var pos = transform.position;
+        var nodee = GridBehavior.Instance.getNodeAtPos(pos);
+        if (nodee != null)
+        {
+            pos.z = nodee.ZIndex;
+            transform.position = pos;
+        }
+
     }
 } 

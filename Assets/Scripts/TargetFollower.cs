@@ -166,8 +166,11 @@ public class TargetFollower : MonoBehaviour
 
         var pos = transform.position;
         var nodee = GridBehavior.Instance.getNodeAtPos(pos);
-        pos.z = nodee.ZIndex;
-        transform.position = pos;
+        if (nodee != null)
+        {
+            pos.z = nodee.ZIndex;
+            transform.position = pos;
+        }
 
         animator.SetFloat("Speed", (1 + speedFactor) * .5f, .5f, .5f);
         return true;
