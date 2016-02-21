@@ -65,6 +65,8 @@ public class ConeAttack : ISkill
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
+        Debug.Log("Using Skill " + Name);
+
         if (avatarController.Disabled) return "You are incapacitated. Seek Help!";
         
         //show Graphic HitBox 

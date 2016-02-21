@@ -102,6 +102,12 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
         TrapSpawnManager.Instance.CmdSetTrap(transform.position, _SlctdTrap);
     }
 
+    [Command]
+    public void CmdChangeLightStatus(GameObject LightCtrl, LightController.LghtStatus NxtStatus)
+    {
+        LightCtrl.GetComponent<LightController>().ChangeStatusTo(NxtStatus);
+    }
+
     GameObject doorToOpen;
     public void OnTriggerStay2D(Collider2D other)
     {
