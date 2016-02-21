@@ -23,6 +23,9 @@ public class TargetFollower : MonoBehaviour
     public float turnRate = 50;
     public float moveSpeed = 20;
 
+    [Range(0.0f, 100.0f)]
+    public float SlowSpdPerCent = 50.0f;
+
     float reverseTime = 0;
     float repel = 0;
     private IList<Vector2> path;
@@ -53,7 +56,17 @@ public class TargetFollower : MonoBehaviour
 
         GetPathTo(targetPos, maxSteps);
         var node = GridBehavior.Instance.getNodeAtPos(transform.position);
-        var speedFactor = 1 / Mathf.Min(node.Weight, 4);
+        //var speedFactor = 1 / Mathf.Min(node.Weight, 4);
+
+        float speedFactor;
+        if (node.hasLight)
+        {
+            speedFactor = SlowSpdPerCent/100.0f;
+        }
+        else
+        {
+            speedFactor = 1;
+        }
 
         if (path.Count == 0)
         {

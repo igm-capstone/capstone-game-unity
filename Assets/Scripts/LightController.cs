@@ -68,7 +68,8 @@ public class LightController : NetworkBehaviour {
         {
             case LghtStatus.Off:
                 // Starting state. Lights are off
-                sprite.sprite = SpriteOff;
+                //sprite.sprite = SpriteOff;
+                sprite.sprite = SpriteOn;
                 renderer.enabled = false;
                 collider.enabled = false;
                 break;

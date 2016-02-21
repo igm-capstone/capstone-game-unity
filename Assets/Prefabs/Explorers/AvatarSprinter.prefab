@@ -145,11 +145,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 464040}
-  - 61: {fileID: 6174948}
   m_Layer: 18
-  m_Name: FarHitBox
+  m_Name: LightHitBox
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -2663371497217273435, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -672,6 +671,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &172432
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 450580}
+  - 61: {fileID: 6174948}
+  m_Layer: 18
+  m_Name: FarHitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &172646
 GameObject:
   m_ObjectHideFlags: 1
@@ -822,7 +837,7 @@ GameObject:
   - 114: {fileID: 11462544}
   - 114: {fileID: 11434468}
   - 50: {fileID: 5009478}
-  - 60: {fileID: 6002474}
+  - 61: {fileID: 6128230}
   - 114: {fileID: 11432800}
   - 114: {fileID: 11438314}
   - 114: {fileID: 11492230}
@@ -831,6 +846,7 @@ GameObject:
   - 114: {fileID: 11472534}
   - 114: {fileID: 11449298}
   - 114: {fileID: 11454976}
+  - 114: {fileID: 11480352}
   m_Layer: 11
   m_Name: AvatarSprinter
   m_TagString: Player
@@ -1156,7 +1172,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.07808876, y: -12.692235, z: 0}
+  m_LocalPosition: {x: .87146616, y: 2.57729912, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 436182}
@@ -1220,8 +1236,9 @@ Transform:
   - {fileID: 431792}
   - {fileID: 467168}
   - {fileID: 489322}
-  - {fileID: 464040}
+  - {fileID: 450580}
   - {fileID: 467510}
+  - {fileID: 464040}
   m_Father: {fileID: 433048}
   m_RootOrder: 0
 --- !u!4 &437522
@@ -1330,6 +1347,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 445460}
   m_RootOrder: 0
+--- !u!4 &450580
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172432}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.70000005, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 3.6099999, z: 1}
+  m_Children: []
+  m_Father: {fileID: 436182}
+  m_RootOrder: 3
 --- !u!4 &452808
 Transform:
   m_ObjectHideFlags: 1
@@ -1429,11 +1458,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.70000005, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 3.6099999, z: 1}
+  m_LocalPosition: {x: .600000024, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 436182}
-  m_RootOrder: 3
+  m_RootOrder: 5
 --- !u!4 &465282
 Transform:
   m_ObjectHideFlags: 1
@@ -1951,23 +1980,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5
---- !u!60 &6002474
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188006}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: -.295505524, y: .330339432}
-      - {x: -.295505524, y: -.434855461}
-      - {x: .469696045, y: -.434856415}
-      - {x: .504535675, y: .365180016}
 --- !u!61 &6124384
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -1981,12 +1993,25 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1.20000005, y: 1}
+--- !u!61 &6128230
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188006}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!61 &6174948
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121524}
+  m_GameObject: {fileID: 172432}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -2141,7 +2166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 9bc1b515b807ee848961d86bb49858a4, type: 3}
-  Name: Skill
+  Name: ConeAttack
   Cooldown: .300000012
   canDrop: 0
   HitLayers:
@@ -2233,6 +2258,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 9586948}
+--- !u!114 &11480352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188006}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910650029a8550c48b0bff0235dc6852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+  SkillSprite: {fileID: 21300000, guid: 8254e0dfe1a6b524c8bb7a7f0f242cd4, type: 3}
+  Name: ToggleLights
+  Cooldown: .00100000005
+  canDrop: 0
+  ToggleLightBox: {fileID: 121524}
+  BoxRadius: .800000012
 --- !u!114 &11492230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11082,7 +11125,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
-      value: .300000012
+      value: .100000001
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: SpeedAdjust
@@ -11131,12 +11174,16 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SkillSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9bc1b515b807ee848961d86bb49858a4,
+      objectReference: {fileID: 21300000, guid: 8254e0dfe1a6b524c8bb7a7f0f242cd4,
         type: 3}
     - target: {fileID: 0}
       propertyPath: HitLayers.m_Bits
       value: 10240
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SkillButtonPrefab
+      value: 
+      objectReference: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188006}

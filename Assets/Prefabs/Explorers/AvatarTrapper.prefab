@@ -629,6 +629,7 @@ GameObject:
   - 114: {fileID: 11421404}
   - 114: {fileID: 11417364}
   - 114: {fileID: 11435774}
+  - 114: {fileID: 11452602}
   m_Layer: 11
   m_Name: AvatarTrapper
   m_TagString: Player
@@ -883,6 +884,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &195774
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 415974}
+  m_Layer: 18
+  m_Name: LightHitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: -2663371497217273435, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &196448
 GameObject:
   m_ObjectHideFlags: 1
@@ -1039,6 +1055,18 @@ Transform:
   - {fileID: 402268}
   m_Father: {fileID: 477938}
   m_RootOrder: 0
+--- !u!4 &415974
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195774}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .600000024, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 460598}
+  m_RootOrder: 2
 --- !u!4 &416302
 Transform:
   m_ObjectHideFlags: 1
@@ -1331,6 +1359,7 @@ Transform:
   m_Children:
   - {fileID: 408110}
   - {fileID: 429882}
+  - {fileID: 415974}
   m_Father: {fileID: 492218}
   m_RootOrder: 0
 --- !u!4 &462638
@@ -1596,7 +1625,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.7926426, y: 10.9499998, z: 0}
+  m_LocalPosition: {x: 6.36437464, y: -3.54753733, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 460598}
@@ -2043,6 +2072,24 @@ MonoBehaviour:
   Name: Skill
   Cooldown: 2.5
   canDrop: 0
+--- !u!114 &11452602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173442}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910650029a8550c48b0bff0235dc6852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+  SkillSprite: {fileID: 21300000, guid: 8254e0dfe1a6b524c8bb7a7f0f242cd4, type: 3}
+  Name: ToggleLights
+  Cooldown: .00100000005
+  canDrop: 0
+  ToggleLightBox: {fileID: 195774}
+  BoxRadius: .800000012
 --- !u!114 &11480688
 MonoBehaviour:
   m_ObjectHideFlags: 1
