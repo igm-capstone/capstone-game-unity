@@ -118,7 +118,15 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
             for (int y = 0; y < numSpheresY; y++)
             {
                 Vector3 nodePos = startingCorner + new Vector3((nodeRadius * 2) * x + nodeRadius, (nodeRadius * 2) * y + nodeRadius, 0);
-                areaOfNodes[x, y] = new Node(this, nodePos, new Vector2(x, y), 1);
+
+                float zIndex = 0;
+                var hit = Physics2D.Raycast(nodePos, Vector2.zero, 1000, LayerMask.GetMask("Floor"));
+                if (hit)
+                {
+                    zIndex = hit.collider.transform.position.z;
+                }
+
+                areaOfNodes[x, y] = new Node(this, nodePos, new Vector2(x, y), 1, zIndex);
 
                 //ShadowCollider
                 //if (Application.isPlaying)
@@ -255,6 +263,8 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
 
     public IList<Node> getNodesNearPos(Vector3 pos, float radius, float minRadius, Predicate<Node> conditionPredicate = null)
     {
+        pos.z = 0;
+
         var nodes = new List<Node>();
 
         minRadius = Mathf.Clamp(minRadius, 0, radius - 1);

@@ -14,16 +14,19 @@ public class Node : INode
     private Node _nodeParent;
     private bool _isStartEnd = false;
 
+    public float ZIndex { get; private set; }
+
     public BoxCollider2D shadowCollider;
 
     public readonly GridBehavior Grid;
 
-    public Node(GridBehavior grid, Vector3 position, Vector2 coord, float weight)
+    public Node(GridBehavior grid, Vector3 position, Vector2 coord, float weight, float zIndex = 0)
     {
         _position = position;
         _coord = coord;
         _weight = weight;
         Grid = grid;
+        ZIndex = zIndex;
     }
 
     public IEnumerable<NodeConnection> Connections

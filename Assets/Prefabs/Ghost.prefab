@@ -132,6 +132,7 @@ MonoBehaviour:
   Name: Spawn Minion
   Cooldown: 2
   canDrop: 0
+  cost: 0
   distanceFromPlayers: 5
 --- !u!114 &11430948
 MonoBehaviour:
@@ -173,7 +174,7 @@ MonoBehaviour:
   Name: Disable Lights
   Cooldown: 6
   canDrop: 0
-  Duration: 4
+  cost: 0
 --- !u!114 &11452076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,8 +233,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSkills: 3
+  totalEnergy: 100
   HideInactiveSkills: 0
   OnClickBehavior: 0
+  waitTimeRestoreEnergy: 2
+  restoreAmount: 5
+  energyUiPrefab: {fileID: 126932, guid: ad64248c582df8b4b900ab476a475f4a, type: 2}
 --- !u!114 &11478774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,6 +255,7 @@ MonoBehaviour:
   Name: Skill
   Cooldown: 2
   canDrop: 0
+  cost: 0
   distanceFromPlayers: 5
 --- !u!114 &11485708
 MonoBehaviour:
@@ -267,6 +273,7 @@ MonoBehaviour:
   Name: Hallucinate
   Cooldown: 2
   canDrop: 0
+  cost: 0
   Duration: 10
   Radius: 10
   Minions: 3

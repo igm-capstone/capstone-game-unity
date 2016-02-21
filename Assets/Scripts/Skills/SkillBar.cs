@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class SkillBar : MonoBehaviour
 {
@@ -19,11 +20,15 @@ public class SkillBar : MonoBehaviour
     public OnClickBehaviorType OnClickBehavior;
     public int waitTimeRestoreEnergy = 2;
     public int restoreAmount = 5;
+    public GameObject energyUiPrefab;
 
     private List<ISkill> _skillList;
     private ISkill _activeSkill = null;
     private int _skillCapacity;
     private int availableEnergy;
+    private Text energyUiText;
+
+
 
     void Start()
     { 
@@ -35,7 +40,16 @@ public class SkillBar : MonoBehaviour
             skill.enabled = !skill.canDrop;
         }
         availableEnergy = totalEnergy;
-        StartCoroutine("RestoreEnergy", restoreAmount);
+        StartCoroutine(RestoreEnergy(restoreAmount));
+
+        if (energyUiPrefab != null)
+        {
+            var energyTransform = Instantiate(energyUiPrefab).transform;
+            energyTransform.SetParent(GameObject.Find("SkillBar").transform, false);
+            energyTransform.SetAsFirstSibling();
+            energyUiText = energyTransform.Find("Text").GetComponent<Text>();
+            energyUiText.text = EnergyLeft.ToString();
+        }
     }
 
     void Update()
@@ -129,16 +143,24 @@ public class SkillBar : MonoBehaviour
     public int EnergyLeft
     {
         get { return availableEnergy; }
-        set { availableEnergy = value; }
+        set
+        {
+            availableEnergy = value;
+            energyUiText.text = availableEnergy.ToString();
+
+        }
     }
 
     IEnumerator RestoreEnergy(int restoreValuePerSecond)
     {
-        yield return new WaitForSeconds(waitTimeRestoreEnergy);
-        if (availableEnergy < totalEnergy)
+        while (true)
         {
-            availableEnergy += restoreValuePerSecond;
+            yield return new WaitForSeconds(waitTimeRestoreEnergy);
+            if (availableEnergy < totalEnergy)
+            {
+                availableEnergy += restoreValuePerSecond;
+                energyUiText.text = availableEnergy.ToString();
+            }
         }
-        StartCoroutine("RestoreEnergy", restoreValuePerSecond);
     }
 }
