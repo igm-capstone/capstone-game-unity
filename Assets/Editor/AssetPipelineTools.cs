@@ -21,6 +21,14 @@ public class AssetPipelineTools
         public Bounds Bounds;
     }
 
+    class MeshData
+    {
+        public string Path;
+        public string Name;
+        public Mesh Mesh;
+        public JArray Instances;
+    }
+
     [UnityEditor.MenuItem("Tools/Export Active Scene")]
     public static void ExportActiveScene()
     {
@@ -105,6 +113,9 @@ public class AssetPipelineTools
                 Attr = attr.First() as Rig3DAssetAttribute,
             };
 
+        var assetMap = new Dictionary<Mesh, MeshData>();
+        FindMeshes(ref assetMap);
+
         var json = new JObject();
         var counters = new JObject();
 
@@ -121,10 +132,15 @@ public class AssetPipelineTools
         var collections = Object.FindObjectsOfType<Rig3DCollection>();
         foreach (var collection in collections)
         {
+            // special case for static meshes!!!
+            if (collection.IsStaticMesh)
+            {
+                AddCollectionToMeshArray(collection, ref assetMap);
+                continue;
+            }
+
             var data = GetCollectionArray(collection);
-
             json.Add(collection.CollectionName, data.Collection);
-
             counters.Add(collection.CollectionName, data.Collection.Count);
 
             if (collection.CalculateBounds)
@@ -139,6 +155,23 @@ public class AssetPipelineTools
                 }
             }
         }
+
+        // add static mesh groups to the json
+        var staticMeshes = new JObject();
+        var staticMeshCounter = 0;
+        foreach (var meshData in assetMap.Values)
+        {
+            if (!meshData.Instances.Any())
+            {
+                continue;
+            }
+
+            staticMeshes.Add(meshData.Name, meshData.Instances);
+            staticMeshCounter += meshData.Instances.Count;
+        }
+
+        json.Add("staticMeshes", staticMeshes);
+        counters.Add("staticMeshes", staticMeshCounter);
         
         // add level general metadata
         var metadata = new JObject();
@@ -156,9 +189,42 @@ public class AssetPipelineTools
 
         metadata.Add("count", counters);
 
+
         json.AddFirst(new JProperty("metadata", metadata));
 
         return json.ToString();
+    }
+
+    private static void FindMeshes(ref Dictionary<Mesh, MeshData> map)
+    {
+        var guids = AssetDatabase.FindAssets("", new[] { "Assets/Prototyping/Models", "Assets/3D Models" });
+        foreach (var t in guids)
+        {
+            var path = AssetDatabase.GUIDToAssetPath(t);
+            var mesh = AssetDatabase.LoadAssetAtPath<MeshFilter>(path);
+
+            if (mesh == null)
+            {
+                continue;
+            }
+
+            var meshData = new MeshData {
+                Mesh = mesh.sharedMesh,
+                Path = path,
+                Name = Path.GetFileNameWithoutExtension(path),
+                Instances = new JArray()
+            };
+
+            if (map.ContainsKey(mesh.sharedMesh))
+            {
+                var p = map[mesh.sharedMesh];
+                Debug.Log("duplicate " + (p.Mesh == meshData.Mesh));
+                continue;
+            }
+
+            Debug.LogFormat("Found mesh: {0} ({1})", path, mesh.sharedMesh);
+            map.Add(mesh.sharedMesh, meshData);
+        }
     }
 
     private static CollectionData GetCollectionArray(Rig3DCollection collection)
@@ -169,7 +235,7 @@ public class AssetPipelineTools
         var array = new JArray();
         foreach (var behaviour in objs)
         {
-            var jobj = CreateJsonObject(behaviour, collection.Exports, true);
+            var jobj = CreateJsonObject(behaviour, collection.Exports, collection.NormalizeDepth);
 
             if (collection.CalculateBounds)
             {
@@ -179,12 +245,48 @@ public class AssetPipelineTools
                 }
             }
 
+            if (collection.CullingLayer >= 0)
+            {
+                jobj.Add("cullingLayer", collection.CullingLayer);
+            }
+
             array.Add(jobj);
         }
         return new CollectionData {
             Collection = array,
             Bounds = bounds,
         };
+    }
+
+    private static void AddCollectionToMeshArray(Rig3DCollection collection, ref Dictionary<Mesh, MeshData> map)
+    {
+        var objs = FlattenChildren(collection.transform);
+        foreach (var behaviour in objs)
+        {
+            var jobj = CreateJsonObject(behaviour.parent, collection.Exports, collection.NormalizeDepth);
+            
+            var mesh = behaviour.GetComponentInChildren<MeshFilter>();
+            if (mesh == null)
+            {
+                Debug.LogWarningFormat("Object {0} was marked as static mssh but did not contain a mesh filter component", behaviour);
+                continue;
+            }
+
+            MeshData meshData;
+            map.TryGetValue(mesh.sharedMesh, out meshData);
+            if (meshData == null)
+            {
+                Debug.LogWarningFormat("Could not find mesh data for objcet {0} (mesh: {1})", behaviour, mesh.sharedMesh.name);
+                continue;
+            }
+
+            if (collection.CullingLayer >= 0)
+            {
+                jobj.Add("cullingLayer", collection.CullingLayer);
+            }
+
+            meshData.Instances.Add(jobj);
+        }
     }
 
     private static JArray GetAssetArray(Type assetType, Rig3DExports defaultExports)
@@ -291,7 +393,10 @@ public class AssetPipelineTools
             var mesh = transform.GetComponentInChildren<MeshFilter>();
             if (mesh)
             {
-                jobj.Add("mesh", mesh.sharedMesh.name);
+                Bounds bounds = new Bounds(transform.position, Vector3.zero);
+                bounds.Encapsulate(transform.TransformPoint(mesh.sharedMesh.bounds.max));
+                bounds.Encapsulate(transform.TransformPoint(mesh.sharedMesh.bounds.min));
+                jobj.Add("bounds", ToJToken(bounds));
             }
         }
 
