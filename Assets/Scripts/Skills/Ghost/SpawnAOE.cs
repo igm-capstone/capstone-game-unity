@@ -9,6 +9,7 @@ public class SpawnAOE : ISkill
     {
         Name = "SpawnAOE";
         canDrop = false;
+        cost = 30;
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)

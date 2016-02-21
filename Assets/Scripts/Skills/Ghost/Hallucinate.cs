@@ -15,6 +15,7 @@ public class Hallucinate : ISkill
     {
         Name = "Hallucinate";
         canDrop = false;
+        cost = 20;
     }
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {

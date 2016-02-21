@@ -38,6 +38,15 @@ public class SkillButton : MonoBehaviour
             else
                 transform.Find("Key").GetComponent<Text>().text = _skill.key.ToString();
         }
+
+        if (_skill.cost != 0)
+        {
+            transform.Find("Cost").GetComponent<Text>().text = _skill.cost.ToString();
+        }
+        else
+        {
+            transform.Find("Cost").GetComponent<Text>().text = "";
+        }
     }
 
     void Update()

@@ -14,15 +14,19 @@ public class SkillBar : MonoBehaviour
     }
 
     public int MaxSkills = 3;
+    public int totalEnergy = 100;
     public bool HideInactiveSkills = false;
     public OnClickBehaviorType OnClickBehavior;
+    public int waitTimeRestoreEnergy = 2;
+    public int restoreAmount = 5;
 
     private List<ISkill> _skillList;
     private ISkill _activeSkill = null;
     private int _skillCapacity;
+    private int availableEnergy;
 
     void Start()
-   { 
+    { 
         SetSkillCapacity(GetComponents<ISkill>().ToList().Count());
         SetSkillList(GetComponents<ISkill>().ToList());
 
@@ -30,6 +34,13 @@ public class SkillBar : MonoBehaviour
         {
             skill.enabled = !skill.canDrop;
         }
+        availableEnergy = totalEnergy;
+        StartCoroutine("RestoreEnergy", restoreAmount);
+    }
+
+    void Update()
+    {
+        Debug.Log("availableEnergy" + availableEnergy);
     }
 
 
@@ -113,5 +124,21 @@ public class SkillBar : MonoBehaviour
     public bool IsFull()
     {
         return _skillList.Count() == _skillCapacity;
+    }
+
+    public int EnergyLeft
+    {
+        get { return availableEnergy; }
+        set { availableEnergy = value; }
+    }
+
+    IEnumerator RestoreEnergy(int restoreValuePerSecond)
+    {
+        yield return new WaitForSeconds(waitTimeRestoreEnergy);
+        if (availableEnergy < totalEnergy)
+        {
+            availableEnergy += restoreValuePerSecond;
+        }
+        StartCoroutine("RestoreEnergy", restoreValuePerSecond);
     }
 }

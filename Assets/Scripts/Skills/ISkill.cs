@@ -10,6 +10,7 @@ public abstract class ISkill : MonoBehaviour
     public string Name = "Skill";
     public float Cooldown = 2;
     public bool canDrop = false;
+    public int cost = 0;
 
     [NonSerialized] public KeyCode key = KeyCode.None;
     [NonSerialized] public bool IsActive;

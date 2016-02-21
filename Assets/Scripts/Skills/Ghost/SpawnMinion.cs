@@ -9,6 +9,7 @@ public class SpawnMinion : ISkill
     {
         Name = "SpawnMinion";
         canDrop = false;
+        cost = 10;
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)

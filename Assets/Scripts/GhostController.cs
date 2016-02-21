@@ -39,9 +39,14 @@ public class GhostController : MonoBehaviour {
             if (hit)
             {
                 var activeSkill = _ghostSkillBar.GetActiveSkill();
-                if (activeSkill) 
-                {
+                if (activeSkill && (_ghostSkillBar.EnergyLeft >= activeSkill.cost))
+                {                    
                     activeSkill.Use(hit.collider.gameObject, clickWordPos);
+                    _ghostSkillBar.EnergyLeft -= activeSkill.cost;
+                }
+                else if (activeSkill && (_ghostSkillBar.EnergyLeft < activeSkill.cost))
+                {
+                    HelpMessage.Instance.SetMessage("Not enough energy!");
                 }
                 else 
                 {
