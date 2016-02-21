@@ -1809,7 +1809,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294934527
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2116,6 +2116,7 @@ MonoBehaviour:
   Name: Move Block
   Cooldown: 0
   canDrop: 0
+  cost: 0
   moveableObjectLayer:
     serializedVersion: 2
     m_Bits: 4096
@@ -2169,6 +2170,7 @@ MonoBehaviour:
   Name: ConeAttack
   Cooldown: .300000012
   canDrop: 0
+  cost: 0
   HitLayers:
     serializedVersion: 2
     m_Bits: 10240
@@ -2192,6 +2194,7 @@ MonoBehaviour:
   Name: Sprint
   Cooldown: 3.5
   canDrop: 0
+  cost: 0
   Duration: .800000012
   SpeedMultiplier: 1.5
 --- !u!114 &11462544
@@ -2274,6 +2277,7 @@ MonoBehaviour:
   Name: ToggleLights
   Cooldown: .00100000005
   canDrop: 0
+  cost: 0
   ToggleLightBox: {fileID: 121524}
   BoxRadius: .800000012
 --- !u!114 &11492230
@@ -2288,8 +2292,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSkills: 3
+  totalEnergy: 100
   HideInactiveSkills: 0
   OnClickBehavior: 2
+  waitTimeRestoreEnergy: 2
+  restoreAmount: 5
+  energyUiPrefab: {fileID: 0}
 --- !u!124 &12464980
 Behaviour:
   m_ObjectHideFlags: 1
@@ -11184,6 +11192,10 @@ Prefab:
       propertyPath: SkillButtonPrefab
       value: 
       objectReference: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294934527
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188006}

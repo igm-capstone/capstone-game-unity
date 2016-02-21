@@ -5,7 +5,7 @@ public class Door : MonoBehaviour
 {
     AvatarNetworkBehavior avatarNetwork;
     public GameObject player;
-    private bool isOpen = false;
+    public bool isOpen = false;
     public bool canOpen = true;
     private Collider2D collider2D;
 

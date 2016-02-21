@@ -1780,7 +1780,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294934527
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2036,6 +2036,7 @@ MonoBehaviour:
   Name: Move Block
   Cooldown: 0
   canDrop: 0
+  cost: 0
   moveableObjectLayer:
     serializedVersion: 2
     m_Bits: 4096
@@ -2108,6 +2109,7 @@ MonoBehaviour:
   Name: Heal
   Cooldown: 2
   canDrop: 0
+  cost: 0
   HealAmount: 60
   AreaRadius: 3
   FX: {fileID: 415600}
@@ -2165,8 +2167,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSkills: 3
+  totalEnergy: 100
   HideInactiveSkills: 0
   OnClickBehavior: 2
+  waitTimeRestoreEnergy: 2
+  restoreAmount: 5
+  energyUiPrefab: {fileID: 0}
 --- !u!114 &11447370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2197,6 +2203,7 @@ MonoBehaviour:
   Name: LongAttack
   Cooldown: .300000012
   canDrop: 0
+  cost: 0
   HitLayers:
     serializedVersion: 2
     m_Bits: 10240
@@ -2219,6 +2226,7 @@ MonoBehaviour:
   Name: ToggleLights
   Cooldown: .00100000005
   canDrop: 0
+  cost: 0
   ToggleLightBox: {fileID: 138264}
   BoxRadius: .800000012
 --- !u!114 &11494156
@@ -11125,6 +11133,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: HitLayers.m_Bits
       value: 10240
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294934527
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
