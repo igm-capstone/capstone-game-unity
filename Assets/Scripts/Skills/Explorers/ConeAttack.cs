@@ -69,6 +69,9 @@ public class ConeAttack : ISkill
 
         if (avatarController.Disabled) return "You are incapacitated. Seek Help!";
 
+        // Turns to mouse position.
+        TurnToMousePos();
+
         //show Graphic HitBox 
         HitBoxObj.SetActive(true);
         

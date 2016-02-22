@@ -66,4 +66,15 @@ public abstract class ISkill : MonoBehaviour
     {
         return (Time.time > LastUse + Cooldown);
     }
+    
+    //Turns to mouse position when called.
+    protected void TurnToMousePos()
+    {
+        // Mouse and Key controls - Rotation
+        Vector3 mouseScreenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f);
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+        float LookPosX = mouseWorldPos.x - transform.position.x;
+        float LookPosY = mouseWorldPos.y - transform.position.y;
+        transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(LookPosY, LookPosX) * Mathf.Rad2Deg, Vector3.forward);
+    }
 }
