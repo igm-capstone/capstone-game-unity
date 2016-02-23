@@ -4,8 +4,11 @@ using System;
 
 public class ToggleLights : ISkill
 {
-    public GameObject ToggleLightBox;
     public float BoxRadius = 0.8f;
+    //public float BoxDist = 0.6f;
+
+    public Transform LightBoxTrans;
+    Vector3 lightBoxPos;
 
     LayerMask LightMask;
 
@@ -17,16 +20,19 @@ public class ToggleLights : ISkill
 
         key = KeyCode.E;
 
-        // Get ToggleLightBox object.
-        if (ToggleLightBox == null)
+        if (LightBoxTrans == null)
         {
-            ToggleLightBox =  transform.FindChild("AvatarRotation").FindChild("LightHitBox").gameObject;
+            LightBoxTrans = transform.FindChild("AvatarRotation").transform.FindChild("LightBox").transform;
         }
+
         LightMask = 1 << LayerMask.NameToLayer("LightSwitch");
     }
 
     void Update()
     {
+        // Updates LightBox Position
+        lightBoxPos = LightBoxTrans.position;
+
         // Check the Input.
         if (Input.GetKeyDown(key))
         {
@@ -38,7 +44,7 @@ public class ToggleLights : ISkill
     {
         Debug.Log("Using Skill " + Name);
         // Detects light inside ToggleBox
-        var HitLight = Physics2D.OverlapCircle(ToggleLightBox.transform.position, BoxRadius, LightMask);
+        var HitLight = Physics2D.OverlapCircle(lightBoxPos, BoxRadius, LightMask);
 
         if (HitLight == null)
             return "There are no light switches nearby... ";
@@ -65,6 +71,6 @@ public class ToggleLights : ISkill
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(ToggleLightBox.transform.position, BoxRadius);
+        Gizmos.DrawWireSphere(lightBoxPos, BoxRadius);
     }
 }
