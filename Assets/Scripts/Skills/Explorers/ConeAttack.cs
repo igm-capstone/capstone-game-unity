@@ -46,7 +46,10 @@ public class ConeAttack : ISkill
         HitBoxObj = transform.FindChild("AvatarRotation").FindChild("ConeAttackHitBox").gameObject;
         HitBoxObj.SetActive(false);
 
-        key = KeyCode.O;
+        // Set key code:
+        key = KeyCode.Mouse0;
+
+        isStaticSkill = true;
     }
 
     void Update()
@@ -68,7 +71,10 @@ public class ConeAttack : ISkill
         Debug.Log("Using Skill " + Name);
 
         if (avatarController.Disabled) return "You are incapacitated. Seek Help!";
-        
+
+        // Turns to mouse position.
+        TurnToMousePos();
+
         //show Graphic HitBox 
         HitBoxObj.SetActive(true);
         

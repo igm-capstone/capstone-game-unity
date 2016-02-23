@@ -30,6 +30,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &104166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 482242}
+  - 212: {fileID: 21228418}
+  m_Layer: 11
+  m_Name: ClassAura
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &105368
 GameObject:
   m_ObjectHideFlags: 1
@@ -135,7 +151,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 460598}
-  - 212: {fileID: 21227730}
   m_Layer: 11
   m_Name: AvatarRotation
   m_TagString: Player
@@ -609,12 +624,13 @@ GameObject:
   - 114: {fileID: 11415400}
   - 114: {fileID: 11487224}
   - 114: {fileID: 11432990}
-  - 114: {fileID: 11412216}
   - 114: {fileID: 11480688}
   - 114: {fileID: 11421404}
-  - 114: {fileID: 11417364}
-  - 114: {fileID: 11435774}
   - 114: {fileID: 11452602}
+  - 114: {fileID: 11417364}
+  - 114: {fileID: 11448914}
+  - 114: {fileID: 11435774}
+  - 114: {fileID: 11412216}
   m_Layer: 11
   m_Name: AvatarTrapper
   m_TagString: Player
@@ -775,21 +791,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &189834
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 470104}
-  m_Layer: 11
-  m_Name: LightBox
-  m_TagString: Untagged
-  m_Icon: {fileID: -2663371497217273435, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &191562
 GameObject:
   m_ObjectHideFlags: 1
@@ -881,6 +882,21 @@ GameObject:
   m_Name: Darius_CAT_L_Digit_4_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &195774
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 415974}
+  m_Layer: 18
+  m_Name: LightHitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: -2663371497217273435, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1040,6 +1056,18 @@ Transform:
   - {fileID: 402268}
   m_Father: {fileID: 477938}
   m_RootOrder: 0
+--- !u!4 &415974
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195774}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .400000006, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 460598}
+  m_RootOrder: 2
 --- !u!4 &416302
 Transform:
   m_ObjectHideFlags: 1
@@ -1332,7 +1360,7 @@ Transform:
   m_Children:
   - {fileID: 408110}
   - {fileID: 429882}
-  - {fileID: 470104}
+  - {fileID: 415974}
   m_Father: {fileID: 492218}
   m_RootOrder: 0
 --- !u!4 &462638
@@ -1390,18 +1418,6 @@ Transform:
   - {fileID: 402006}
   m_Father: {fileID: 408110}
   m_RootOrder: 4
---- !u!4 &470104
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189834}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .600000381, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 460598}
-  m_RootOrder: 2
 --- !u!4 &476490
 Transform:
   m_ObjectHideFlags: 1
@@ -1528,6 +1544,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 403324}
   m_RootOrder: 4
+--- !u!4 &482242
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104166}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 492218}
+  m_RootOrder: 2
 --- !u!4 &484454
 Transform:
   m_ObjectHideFlags: 1
@@ -1598,11 +1626,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.6876869, y: -10.7436981, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 460598}
   - {fileID: 481726}
+  - {fileID: 482242}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &492602
@@ -1692,7 +1721,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294934527
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1890,7 +1919,7 @@ MonoBehaviour:
   Name: Move Block
   Cooldown: 0
   canDrop: 0
-  cost: 0
+  isStaticSkill: 0
   moveableObjectLayer:
     serializedVersion: 2
     m_Bits: 4096
@@ -1924,7 +1953,7 @@ MonoBehaviour:
   Name: Flame Sword
   Cooldown: .300000012
   canDrop: 0
-  cost: 0
+  isStaticSkill: 1
   FX: {fileID: 403324}
   HitLayers:
     serializedVersion: 2
@@ -2028,12 +2057,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSkills: 3
-  totalEnergy: 100
   HideInactiveSkills: 0
   OnClickBehavior: 2
-  waitTimeRestoreEnergy: 2
-  restoreAmount: 5
-  energyUiPrefab: {fileID: 0}
 --- !u!114 &11435774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2050,7 +2075,18 @@ MonoBehaviour:
   Name: Skill
   Cooldown: 2.5
   canDrop: 0
-  cost: 0
+  isStaticSkill: 1
+--- !u!114 &11448914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e832ecc25ca89564992190f2c59d4848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11452602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2067,9 +2103,9 @@ MonoBehaviour:
   Name: ToggleLights
   Cooldown: .00100000005
   canDrop: 0
-  cost: 0
-  BoxRadius: .800000012
-  LightBoxTrans: {fileID: 470104}
+  isStaticSkill: 1
+  ToggleLightBox: {fileID: 195774}
+  BoxRadius: .5
 --- !u!114 &11480688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10891,12 +10927,12 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
---- !u!212 &21227730
+--- !u!212 &21228418
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117966}
+  m_GameObject: {fileID: 104166}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -10918,7 +10954,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a, type: 3}
-  m_Color: {r: 1, g: .448529422, b: .448529422, a: .609000027}
+  m_Color: {r: 1, g: .360294104, b: .360294104, a: .522000015}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -10996,8 +11032,8 @@ Prefab:
       value: 10240
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: m_CullingMask.m_Bits
-      value: 4294934527
+      propertyPath: isStaticSkill
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

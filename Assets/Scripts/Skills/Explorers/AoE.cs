@@ -39,7 +39,8 @@ public class AoE : ISkill
             FX.parent = oldParent;
         }
 
-        key = KeyCode.O;
+        // Set key code:
+        key = KeyCode.Mouse0;
     }
 
     void Update()
@@ -58,6 +59,9 @@ public class AoE : ISkill
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
         if (avatarController.Disabled) return "You are incapacitated. Seek help!";
+
+        // Turns to mouse position.
+        TurnToMousePos();
 
         // Trigger animation
         animator.SetTrigger("AoE");

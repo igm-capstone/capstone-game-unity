@@ -16,10 +16,16 @@ public class Heal : ISkill
     {
         Name = "Heal";
         canDrop = false;
+        isStaticSkill = false;
 
         animator = GetComponentInParent<RpcNetworkAnimator>();
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         avatarController = GetComponent<AvatarController>();
+
+        if (FX == null)
+        {
+           FX =  transform.FindChild("AvatarRotation").FindChild("AllAnimsInOne").FindChild("HealFX");
+        }
 
         if (FX)
         {
@@ -29,7 +35,8 @@ public class Heal : ISkill
             FX.parent = oldParent;
         }
 
-        key = KeyCode.P;
+        // Set key code:
+        key = KeyCode.Mouse1;
     }
 
     void Update()

@@ -971,7 +971,7 @@ MonoBehaviour:
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
   m_OfflineScene: Menu
-  m_OnlineScene: Level01
+  m_OnlineScene: ClassBalance
   m_SpawnPrefabs:
   - {fileID: 173442, guid: 0fb07828639fd7b45a86cc70504f9f18, type: 2}
   - {fileID: 138790, guid: 0b83457a2661e274d8c9b6a6a2cf980d, type: 2}
@@ -980,7 +980,8 @@ MonoBehaviour:
   - {fileID: 155754, guid: b554c4a33a58290439e71fa855519a5d, type: 2}
   - {fileID: 183590, guid: 315cf5703670f7447b3260fd20c9e6f5, type: 2}
   - {fileID: 150852, guid: cbf340c69f010c54aa1ed2004220b4b0, type: 2}
-  m_CustomConfig: 1
+  - {fileID: 0}
+  m_CustomConfig: 0
   m_MaxConnections: 5
   m_ConnectionConfig:
     m_PacketSize: 1500

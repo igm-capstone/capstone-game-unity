@@ -15,7 +15,10 @@ public class Sprint : ISkill
         canDrop = false;
         avatarController = GetComponent<AvatarController>();
 
-        key = KeyCode.P;
+        // Set key code:
+        key = KeyCode.Mouse1;
+
+        isStaticSkill = false;
     }
 
     public void Update()

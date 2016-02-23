@@ -11,7 +11,10 @@ public class SetTrap : ISkill
 
         SlctdTrap = TrapType.Poison;
 
-        key = KeyCode.P;
+        // Set key code:
+        key = KeyCode.Mouse1;
+
+        isStaticSkill = false;
     }
 
     void Update()
@@ -24,6 +27,9 @@ public class SetTrap : ISkill
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
+
+        TurnToMousePos();
+
         GetComponent<AvatarNetworkBehavior>().CmdSetTrapExplorer(transform.position, SlctdTrap);
         return null;
     }

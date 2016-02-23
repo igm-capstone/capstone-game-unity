@@ -11,6 +11,7 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     {
         GetComponentInChildren<AvatarController>().enabled = true;
         GetComponentInChildren<MovementBroadcast>().enabled = true;
+        GetComponentInChildren<EquippedSkill>().enabled = true;
         base.OnStartLocalPlayer();
     }
 
