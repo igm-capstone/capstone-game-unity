@@ -2037,6 +2037,7 @@ MonoBehaviour:
   Name: Move Block
   Cooldown: 0
   canDrop: 0
+  cost: 0
   isStaticSkill: 0
   moveableObjectLayer:
     serializedVersion: 2
@@ -2080,7 +2081,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138790}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e832ecc25ca89564992190f2c59d4848, type: 3}
   m_Name: 
@@ -2121,6 +2122,7 @@ MonoBehaviour:
   Name: Heal
   Cooldown: 2
   canDrop: 0
+  cost: 0
   isStaticSkill: 0
   HealAmount: 60
   AreaRadius: 3
@@ -2179,8 +2181,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSkills: 3
+  totalEnergy: 100
   HideInactiveSkills: 0
   OnClickBehavior: 2
+  waitTimeRestoreEnergy: 2
+  restoreAmount: 5
+  energyUiPrefab: {fileID: 0}
 --- !u!114 &11447370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2211,6 +2217,7 @@ MonoBehaviour:
   Name: LongAttack
   Cooldown: .300000012
   canDrop: 0
+  cost: 0
   isStaticSkill: 1
   HitLayers:
     serializedVersion: 2
@@ -2234,6 +2241,7 @@ MonoBehaviour:
   Name: ToggleLights
   Cooldown: .00100000005
   canDrop: 0
+  cost: 0
   isStaticSkill: 1
   ToggleLightBox: {fileID: 138264}
   BoxRadius: .5

@@ -32,10 +32,10 @@ GameObject:
   - 114: {fileID: 11430948}
   - 114: {fileID: 11452076}
   - 114: {fileID: 11459854}
+  - 114: {fileID: 11438610}
   - 114: {fileID: 11425386}
   - 114: {fileID: 11478774}
   - 114: {fileID: 11485708}
-  - 114: {fileID: 11438610}
   - 114: {fileID: 11461776}
   m_Layer: 0
   m_Name: Ghost
@@ -134,6 +134,7 @@ MonoBehaviour:
   Cooldown: 2
   canDrop: 0
   cost: 0
+  isStaticSkill: 1
   distanceFromPlayers: 5
 --- !u!114 &11430948
 MonoBehaviour:
@@ -176,6 +177,7 @@ MonoBehaviour:
   Cooldown: 6
   canDrop: 0
   cost: 0
+  isStaticSkill: 1
 --- !u!114 &11452076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,11 +254,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 6918db9978b4d2343a66400aa899dbce, type: 3}
+  SkillSprite: {fileID: 21300000, guid: f4561c2a9c789d645a93e5c8612fad28, type: 3}
   Name: HauntExplorerToMinion
   Cooldown: 2
   canDrop: 0
   cost: 0
+  isStaticSkill: 1
   HauntMeleeMinion: {fileID: 155754, guid: 3555dcae92f866f4db1693d6a8442a24, type: 2}
 --- !u!114 &11478774
 MonoBehaviour:
@@ -275,6 +278,7 @@ MonoBehaviour:
   Cooldown: 2
   canDrop: 0
   cost: 0
+  isStaticSkill: 1
   distanceFromPlayers: 5
 --- !u!114 &11485708
 MonoBehaviour:
@@ -293,6 +297,7 @@ MonoBehaviour:
   Cooldown: 2
   canDrop: 0
   cost: 0
+  isStaticSkill: 1
   Duration: 10
   Radius: 10
   Minions: 3
@@ -438,7 +443,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SkillSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6918db9978b4d2343a66400aa899dbce,
+      objectReference: {fileID: 21300000, guid: f4561c2a9c789d645a93e5c8612fad28,
         type: 3}
     - target: {fileID: 0}
       propertyPath: HideInactiveSkills
