@@ -7,7 +7,8 @@ using UnityEngine.Networking;
 public enum MinionType
 {
     Meelee,
-    AOEBomber
+    AOEBomber,
+    HauntMelee
 }
 
 [RequireComponent(typeof(TargetFollower))]

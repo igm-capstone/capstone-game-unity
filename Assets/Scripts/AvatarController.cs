@@ -17,10 +17,14 @@ public class AvatarController : MonoBehaviour
     private SkillBar _avatarSkillBar;
     private Health _health;
     private RpcNetworkAnimator animator;
+    private RpcNetworkAnimator hauntedMinionAnimator;
+    private GameObject hauntMinionToControl;
 
     public bool isAttacking;
+    public bool hauntEtoM { get; set; }
 
     void Awake () {
+        hauntEtoM = false;
         _rb = GetComponent<Rigidbody2D>();
         _health = GetComponent<Health>();
 
@@ -73,6 +77,12 @@ public class AvatarController : MonoBehaviour
             _rb.velocity = new Vector2(horizontal, vertical).normalized * CalcMoveSpeed*
                 (Mathf.Abs(Mathf.Abs(horizontal) - Mathf.Abs(vertical)) + (Mathf.Abs(horizontal) * Mathf.Abs(vertical) * Mathf.Sqrt(2)));
             animator.SetFloat("RunSpeed", _rb.velocity.magnitude);
+            if (hauntEtoM)
+            {
+                hauntedMinionAnimator.SetFloat("Speed", _rb.velocity.magnitude);
+            }
+
+
         }
         else
         {
@@ -88,5 +98,12 @@ public class AvatarController : MonoBehaviour
             transform.position = pos;
         }
 
+    }
+
+    public void SetMinionToControl(GameObject minion)
+    {
+        hauntEtoM = true;
+        hauntMinionToControl = minion;
+        hauntedMinionAnimator = hauntMinionToControl.GetComponent<RpcNetworkAnimator>();
     }
 } 

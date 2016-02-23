@@ -36,6 +36,7 @@ GameObject:
   - 114: {fileID: 11478774}
   - 114: {fileID: 11485708}
   - 114: {fileID: 11438610}
+  - 114: {fileID: 11461776}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -239,6 +240,24 @@ MonoBehaviour:
   waitTimeRestoreEnergy: 2
   restoreAmount: 5
   energyUiPrefab: {fileID: 126932, guid: ad64248c582df8b4b900ab476a475f4a, type: 2}
+--- !u!114 &11461776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196296}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a7bcda8da8dea84eabd2c0e2b023eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+  SkillSprite: {fileID: 21300000, guid: 6918db9978b4d2343a66400aa899dbce, type: 3}
+  Name: HauntExplorerToMinion
+  Cooldown: 2
+  canDrop: 0
+  cost: 0
+  HauntMeleeMinion: {fileID: 155754, guid: 3555dcae92f866f4db1693d6a8442a24, type: 2}
 --- !u!114 &11478774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -406,7 +425,7 @@ Prefab:
         type: 3}
     - target: {fileID: 0}
       propertyPath: Name
-      value: Disable Lights
+      value: HauntExplorerToMinion
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Duration
@@ -419,7 +438,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SkillSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 92a225833a8fe6240bd1852782d6896d,
+      objectReference: {fileID: 21300000, guid: 6918db9978b4d2343a66400aa899dbce,
         type: 3}
     - target: {fileID: 0}
       propertyPath: HideInactiveSkills
@@ -445,6 +464,10 @@ Prefab:
       propertyPath: keyMoveSpeed
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: HauntMeleeMinion
+      value: 
+      objectReference: {fileID: 155754, guid: 3555dcae92f866f4db1693d6a8442a24, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196296}

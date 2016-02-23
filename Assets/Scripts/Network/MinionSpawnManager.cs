@@ -9,7 +9,8 @@ using System;
 public class MinionSpawnManager : NetworkBehaviour
 {
     public GameObject[] EnemyPrefab;
-    private Transform minionContainer;
+    public GameObject[] EnemyHauntPrefab;
+    private Transform minionContainer;   
 
     public static MinionSpawnManager Instance { get; private set; }
 
@@ -96,5 +97,61 @@ public class MinionSpawnManager : NetworkBehaviour
     {
         yield return new WaitForSeconds(.5f);
         GridBehavior.Instance.SetAIDirty();
+    }
+
+    [Command]
+    public void CmdHauntSpawn(Vector3 position, MinionType minType, GameObject Explorer)
+    {
+        GameObject minion;
+        switch (minType)
+        {
+            case MinionType.HauntMelee:
+                minion = Instantiate(EnemyHauntPrefab[0], position, Quaternion.identity) as GameObject;                
+                break;
+
+            //case MinionType.AOEBomber:
+            //    robot = Instantiate(EnemyPrefab[1], position, Quaternion.identity) as GameObject;
+            //    break;
+
+            default:
+                minion = Instantiate(EnemyPrefab[0], position, Quaternion.identity) as GameObject;
+                break;
+        }
+
+        
+        NetworkServer.Spawn(minion);
+        RpcSetParent(minion, Explorer);
+        DisableMinion(minion);
+    }
+
+    [ClientRpc]
+    void RpcSetParent(GameObject minion, GameObject player)
+    {
+        minion.transform.SetParent(player.transform.FindChild("AvatarRotation").gameObject.transform);
+        minion.transform.localRotation = Quaternion.Euler(0,0,-90);
+        player.GetComponent<AvatarController>().SetMinionToControl(minion);
+
+        if (GameObject.Find("Me") == player || isServer)
+            DisableMinion(minion);
+        else
+            //disable exlorer model
+            player.transform.FindChild("AvatarRotation").transform.FindChild("AllAnimsInOne").gameObject.SetActive(false);
+
+    }
+
+    public void DisableMinion(GameObject minion)
+    {
+        foreach (var s in minion.GetComponentsInChildren<Renderer>())
+        {
+            s.enabled = false;
+        }
+        foreach (var s in minion.GetComponentsInChildren<Collider2D>())
+        {
+            s.enabled = false;
+        }
+        foreach (var s in minion.GetComponentsInChildren<Canvas>())
+        {
+            s.gameObject.SetActive(false);
+        }
     }
 }
