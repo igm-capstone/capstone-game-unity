@@ -16,6 +16,7 @@ public class Heal : ISkill
     {
         Name = "Heal";
         canDrop = false;
+        isStaticSkill = false;
 
         animator = GetComponentInParent<RpcNetworkAnimator>();
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();

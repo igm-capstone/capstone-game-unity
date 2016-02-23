@@ -380,12 +380,13 @@ GameObject:
   - 114: {fileID: 11499050}
   - 114: {fileID: 11494156}
   - 114: {fileID: 11440748}
-  - 114: {fileID: 11400782}
   - 114: {fileID: 11447370}
   - 114: {fileID: 11435682}
-  - 114: {fileID: 11471496}
-  - 114: {fileID: 11412532}
   - 114: {fileID: 11477158}
+  - 114: {fileID: 11471496}
+  - 114: {fileID: 11404836}
+  - 114: {fileID: 11412532}
+  - 114: {fileID: 11400782}
   m_Layer: 11
   m_Name: AvatarSupport
   m_TagString: Player
@@ -2036,6 +2037,7 @@ MonoBehaviour:
   Name: Move Block
   Cooldown: 0
   canDrop: 0
+  isStaticSkill: 0
   moveableObjectLayer:
     serializedVersion: 2
     m_Bits: 4096
@@ -2072,6 +2074,17 @@ MonoBehaviour:
     i15: 13
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &11404836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e832ecc25ca89564992190f2c59d4848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11411374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2108,6 +2121,7 @@ MonoBehaviour:
   Name: Heal
   Cooldown: 2
   canDrop: 0
+  isStaticSkill: 0
   HealAmount: 60
   AreaRadius: 3
   FX: {fileID: 415600}
@@ -2197,6 +2211,7 @@ MonoBehaviour:
   Name: LongAttack
   Cooldown: .300000012
   canDrop: 0
+  isStaticSkill: 1
   HitLayers:
     serializedVersion: 2
     m_Bits: 10240
@@ -2219,6 +2234,7 @@ MonoBehaviour:
   Name: ToggleLights
   Cooldown: .00100000005
   canDrop: 0
+  isStaticSkill: 1
   ToggleLightBox: {fileID: 138264}
   BoxRadius: .5
 --- !u!114 &11494156
@@ -11125,6 +11141,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: HitLayers.m_Bits
       value: 10240
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isStaticSkill
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

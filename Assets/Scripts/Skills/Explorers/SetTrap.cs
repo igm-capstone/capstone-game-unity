@@ -27,6 +27,9 @@ public class SetTrap : ISkill
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
+
+        TurnToMousePos();
+
         GetComponent<AvatarNetworkBehavior>().CmdSetTrapExplorer(transform.position, SlctdTrap);
         return null;
     }

@@ -11,7 +11,7 @@ public abstract class ISkill : MonoBehaviour
     public float Cooldown = 2;
     public bool canDrop = false;
 
-    public bool isStaticSkill;
+    public bool isStaticSkill = true;
 
     [NonSerialized] public KeyCode key = KeyCode.None;
     [NonSerialized] public bool IsActive;
@@ -73,7 +73,7 @@ public abstract class ISkill : MonoBehaviour
     protected void TurnToMousePos()
     {
         // Mouse and Key controls - Rotation
-        Vector3 mouseScreenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f);
+        Vector3 mouseScreenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
         float LookPosX = mouseWorldPos.x - transform.position.x;
         float LookPosY = mouseWorldPos.y - transform.position.y;

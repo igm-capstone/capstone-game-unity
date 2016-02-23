@@ -23,7 +23,7 @@ public class MoveBlock : ISkill
 
         key = KeyCode.Space;
 
-        isStaticSkill = true;
+        //isStaticSkill = false;
     }
 
     public void Update()

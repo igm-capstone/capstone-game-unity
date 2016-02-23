@@ -624,12 +624,13 @@ GameObject:
   - 114: {fileID: 11415400}
   - 114: {fileID: 11487224}
   - 114: {fileID: 11432990}
-  - 114: {fileID: 11412216}
   - 114: {fileID: 11480688}
   - 114: {fileID: 11421404}
-  - 114: {fileID: 11417364}
-  - 114: {fileID: 11435774}
   - 114: {fileID: 11452602}
+  - 114: {fileID: 11417364}
+  - 114: {fileID: 11448914}
+  - 114: {fileID: 11435774}
+  - 114: {fileID: 11412216}
   m_Layer: 11
   m_Name: AvatarTrapper
   m_TagString: Player
@@ -1918,6 +1919,7 @@ MonoBehaviour:
   Name: Move Block
   Cooldown: 0
   canDrop: 0
+  isStaticSkill: 0
   moveableObjectLayer:
     serializedVersion: 2
     m_Bits: 4096
@@ -1951,6 +1953,7 @@ MonoBehaviour:
   Name: Flame Sword
   Cooldown: .300000012
   canDrop: 0
+  isStaticSkill: 1
   FX: {fileID: 403324}
   HitLayers:
     serializedVersion: 2
@@ -2072,6 +2075,18 @@ MonoBehaviour:
   Name: Skill
   Cooldown: 2.5
   canDrop: 0
+  isStaticSkill: 1
+--- !u!114 &11448914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e832ecc25ca89564992190f2c59d4848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11452602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2088,6 +2103,7 @@ MonoBehaviour:
   Name: ToggleLights
   Cooldown: .00100000005
   canDrop: 0
+  isStaticSkill: 1
   ToggleLightBox: {fileID: 195774}
   BoxRadius: .5
 --- !u!114 &11480688
@@ -11014,6 +11030,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: HitLayers.m_Bits
       value: 10240
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isStaticSkill
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

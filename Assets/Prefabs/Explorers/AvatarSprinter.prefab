@@ -841,12 +841,13 @@ GameObject:
   - 114: {fileID: 11432800}
   - 114: {fileID: 11438314}
   - 114: {fileID: 11492230}
-  - 114: {fileID: 11434190}
   - 114: {fileID: 11405854}
   - 114: {fileID: 11472534}
-  - 114: {fileID: 11449298}
-  - 114: {fileID: 11454976}
   - 114: {fileID: 11480352}
+  - 114: {fileID: 11449298}
+  - 114: {fileID: 11440844}
+  - 114: {fileID: 11454976}
+  - 114: {fileID: 11434190}
   m_Layer: 11
   m_Name: AvatarSprinter
   m_TagString: Player
@@ -2116,6 +2117,7 @@ MonoBehaviour:
   Name: Move Block
   Cooldown: 0
   canDrop: 0
+  isStaticSkill: 0
   moveableObjectLayer:
     serializedVersion: 2
     m_Bits: 4096
@@ -2153,6 +2155,17 @@ MonoBehaviour:
   MoveSpeed: 100
   CalcMoveSpeed: 0
   isAttacking: 0
+--- !u!114 &11440844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188006}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e832ecc25ca89564992190f2c59d4848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11449298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2169,6 +2182,7 @@ MonoBehaviour:
   Name: ConeAttack
   Cooldown: .300000012
   canDrop: 0
+  isStaticSkill: 1
   HitLayers:
     serializedVersion: 2
     m_Bits: 10240
@@ -2192,6 +2206,7 @@ MonoBehaviour:
   Name: Sprint
   Cooldown: 3.5
   canDrop: 0
+  isStaticSkill: 0
   Duration: .800000012
   SpeedMultiplier: 1.5
 --- !u!114 &11462544
@@ -2274,6 +2289,7 @@ MonoBehaviour:
   Name: ToggleLights
   Cooldown: .00100000005
   canDrop: 0
+  isStaticSkill: 1
   ToggleLightBox: {fileID: 121524}
   BoxRadius: .5
 --- !u!114 &11492230
@@ -11184,6 +11200,10 @@ Prefab:
       propertyPath: SkillButtonPrefab
       value: 
       objectReference: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: isStaticSkill
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188006}

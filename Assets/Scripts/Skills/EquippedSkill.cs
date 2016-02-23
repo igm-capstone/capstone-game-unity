@@ -5,76 +5,86 @@ using System;
 
 public class EquippedSkill : MonoBehaviour
 {
-    GameObject curSkillObj = null;
-    ISkill curSkillScrpt = null;
+    List<ISkill> skillList = null;
+    ISkill curEquipSkill = null;
+    bool isFirstFrame = true;
 
-    SkillBar skillBarScr = null;
-
-    KeyCode UseEquipped;
+    KeyCode UseKey;
     KeyCode ChangeSkill;
 
     public void Start()
     {
-
         // Right Mouse Button
-        UseEquipped = KeyCode.Mouse1;
-        ChangeSkill = KeyCode.LeftShift;
+        UseKey = KeyCode.Mouse1;
 
-        skillBarScr = GetComponent<SkillBar>();
+        ChangeSkill = KeyCode.Space;
 
-        skillBarScr.SetSkillCapacity(skillBarScr.GetSkillCapacity()+1);
+        isFirstFrame = true;
 
-        // Updates Script
-        curSkillScrpt = curSkillObj.GetComponent<ISkill>();
-        // Updates Skill key
-        curSkillScrpt.key = UseEquipped;
-        curSkillScrpt.canDrop = true;
+        skillList = new List<ISkill>();
 
-        Debug.Log(curSkillScrpt);
+        var allSkillScrpts = GetComponents<ISkill>();
 
-        // Adds new skill to the skillbar
-        //skillBarScr.AddSkill(curSkillScrpt);
-        curSkillScrpt.enabled = true;
+        foreach (var skill in allSkillScrpts)
+        {
+            Debug.Log("Skills found: " + skill);
+            // If skill is not static, adds to skill list
+            if (!skill.isStaticSkill)
+            {
+                skillList.Add(skill);
+                skill.enabled = false;
+            }// if
+        }// foreach
+
+        // Only one non-static skill found, enable it and disable this script
+        if (skillList.Count == 1)
+        {
+            skillList[0].enabled = true;
+            this.enabled = false;
+        }
+
+        // Equip first skill
+        curEquipSkill = skillList[0];
+        curEquipSkill.key = UseKey;
+        //curEquipSkill.enabled = true;
+
+        // Remove equipped skill from top of list
+        skillList.Remove(curEquipSkill);
+
     }
 
     void Update()
     {
+        // Equip first skill and make sure it is at the correct position.
+        if (isFirstFrame)
+        {
+            switchSkill();
+            switchSkill();
+            isFirstFrame = false;
+        }
+
         // Changes equipped skill
         if (Input.GetKeyDown(ChangeSkill))
         {
             switchSkill();
         }
-
-        // Uses equiped skill
-        if (Input.GetKeyDown(UseEquipped))
-        {
-            curSkillScrpt.Use();
-        }
-
-        if (curSkillScrpt.IsReady())
-        {
-            GetComponent<AvatarController>().isAttacking = false;
-        }
-
     }
 
     // Changes equipped skill
     void switchSkill()
     {
-        Debug.Log("Trying to change skill");
+        //Unequip currently equipped
+        curEquipSkill.enabled = false;
+        
+        // Add skill to bottom of list
+        skillList.Add(curEquipSkill);
 
-        // Updates Script
-        curSkillScrpt = curSkillObj.GetComponent<ISkill>();
-        // Updates Skill key
-        curSkillScrpt.key = UseEquipped;
+        // Equip skill
+        curEquipSkill = skillList[0];
+        curEquipSkill.enabled = true;
+        curEquipSkill.key = UseKey;
 
-        // Adds new skill to the skillbar
-        //skillBarScr.AddSkill(curSkillScrpt);
-        curSkillScrpt.enabled = true;
-
-        curSkillScrpt.canDrop = true;
-
-        Debug.Log("Current Skill script equipped: " + curSkillScrpt);
-
+        // Remove equipped skill from top of list
+        skillList.Remove(curEquipSkill);
     }
 }
