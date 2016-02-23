@@ -17,8 +17,6 @@ public class ToggleLights : ISkill
 
         key = KeyCode.E;
 
-        isStaticSkill = true;
-
         // Get ToggleLightBox object.
         if (ToggleLightBox == null)
         {

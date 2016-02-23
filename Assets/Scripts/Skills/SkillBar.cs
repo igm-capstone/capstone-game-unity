@@ -37,10 +37,14 @@ public class SkillBar : MonoBehaviour
 
         foreach (var skill in _skillList)
         {
+
+            skill.enabled = !skill.canDrop;
+            /* for EquippedSkill
             if (skill.isStaticSkill)
             {
                 skill.enabled = !skill.canDrop;
             }
+            */
         }
         availableEnergy = totalEnergy;
         StartCoroutine(RestoreEnergy(restoreAmount));

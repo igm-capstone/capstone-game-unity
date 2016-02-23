@@ -37,7 +37,7 @@ public class EquippedSkill : MonoBehaviour
         }// foreach
 
         // Only one non-static skill found, enable it and disable this script
-        if (skillList.Count == 1)
+        if (skillList.Count <= 1)
         {
             skillList[0].enabled = true;
             this.enabled = false;
@@ -46,7 +46,6 @@ public class EquippedSkill : MonoBehaviour
         // Equip first skill
         curEquipSkill = skillList[0];
         curEquipSkill.key = UseKey;
-        //curEquipSkill.enabled = true;
 
         // Remove equipped skill from top of list
         skillList.Remove(curEquipSkill);

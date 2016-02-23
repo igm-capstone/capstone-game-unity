@@ -22,8 +22,6 @@ public class MoveBlock : ISkill
         avatarController = GetComponent<AvatarController>();
 
         key = KeyCode.Space;
-
-        //isStaticSkill = false;
     }
 
     public void Update()

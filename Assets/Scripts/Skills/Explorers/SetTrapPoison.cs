@@ -1,20 +1,18 @@
 ﻿using UnityEngine;
 using System.Linq;
 
-public class SetTrap : ISkill
+public class SetTrapPoison : ISkill
 {
     TrapType SlctdTrap;
     public void Awake()
     {
-        Name = "SetTrap";
+        Name = "SetTrapPoison";
         canDrop = false;
 
         SlctdTrap = TrapType.Poison;
 
         // Set key code:
-        key = KeyCode.Mouse1;
-
-        isStaticSkill = false;
+        key = KeyCode.R;
     }
 
     void Update()

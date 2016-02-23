@@ -17,8 +17,6 @@ public class TrapSpawnManager : NetworkBehaviour
     public GameObject[] TrapsPrefab;
     private Transform TrapContainer;
 
-    public TrapType SlctdTrap;
-
     public static TrapSpawnManager Instance { get; private set; }
 
     public void Awake()
@@ -52,14 +50,13 @@ public class TrapSpawnManager : NetworkBehaviour
 
             case TrapType.Glue:
 
-                Debug.Log("Glue Trap not implemented yet");
                 if (TrapsPrefab[1] != null)
                 {
-                    /*
+                    
                     spawnedTrap = Instantiate(TrapsPrefab[1], position, Quaternion.identity) as GameObject;
                     spawnedTrap.transform.SetParent(TrapContainer);
                     NetworkServer.Spawn(spawnedTrap);
-                    */
+                    
                 }
                 else
                 {

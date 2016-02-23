@@ -48,8 +48,6 @@ public class ConeAttack : ISkill
 
         // Set key code:
         key = KeyCode.Mouse0;
-
-        isStaticSkill = true;
     }
 
     void Update()

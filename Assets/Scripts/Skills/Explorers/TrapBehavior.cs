@@ -27,7 +27,7 @@ public class TrapBehavior : MonoBehaviour {
         TriggerCol = GetComponentInChildren<CircleCollider2D>();
         TriggerCol.radius = TriggerRadius;
 
-        if (MyType == TrapType.Poison)
+        if (MyType == TrapType.Poison || MyType == TrapType.Glue)
         {
             PSys = GetComponent<ParticleSystem>();
             PSys.Stop();
@@ -74,7 +74,12 @@ public class TrapBehavior : MonoBehaviour {
                 break;
 
             case TrapType.Glue:
-                Debug.Log("Glue Trap not implemented yet");
+                // Start Particle system
+                PSys.Play();
+                PSys.loop = true;
+
+                StartCoroutine(EffectTimer(EffectTime));
+                StartCoroutine(DurationTimer(Duration));
                 break;
 
             case TrapType.Spring:
@@ -90,21 +95,28 @@ public class TrapBehavior : MonoBehaviour {
     // Applies the Trap Effect on a Target.
     void ApplyTrapEffect(TrapType _MyType, GameObject TargetObj)
     {
+        // Get Player obj. This will return not null for all Explorers.
+        GameObject TrapPlayerObj = GameObject.Find("Me");
+
         switch (_MyType)
         {
             case TrapType.Poison:
-                // Get Player obj. This will return not null for all Explorers.
-                GameObject TrapPlayerObj = GameObject.Find("Me");
+                
                 
                 // Test for a Script exclusive to the traper to avoid aplying damage multiple times.
-                if (TrapPlayerObj.GetComponent<SetTrap>() != null)
+                if (TrapPlayerObj.GetComponent<SetTrapPoison>() != null)
                 {   // Apply Poison Damage
                     TrapPlayerObj.GetComponent<AvatarNetworkBehavior>().CmdAssignDamage(TargetObj, PoisonDamage);
                 }
                 break;
 
             case TrapType.Glue:
-                Debug.Log("Glue Trap not implemented yet");
+
+                // Test for a Script exclusive to the traper to avoid aplying damage multiple times.
+                if (TrapPlayerObj.GetComponent<SetTrapGlue>() != null)
+                {   // Apply Glue effect Damage
+                    Debug.Log(TargetObj + " should be slowed down now...");
+                }
                 break;
 
             case TrapType.Spring:

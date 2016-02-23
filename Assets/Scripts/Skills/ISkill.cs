@@ -12,6 +12,7 @@ public abstract class ISkill : MonoBehaviour
     public bool canDrop = false;
     public int cost = 0;
 
+    // Used for EquippedSkill.
     public bool isStaticSkill = true;
 
     [NonSerialized] public KeyCode key = KeyCode.None;

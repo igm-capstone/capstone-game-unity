@@ -11,7 +11,7 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     {
         GetComponentInChildren<AvatarController>().enabled = true;
         GetComponentInChildren<MovementBroadcast>().enabled = true;
-        GetComponentInChildren<EquippedSkill>().enabled = true;
+        //GetComponentInChildren<EquippedSkill>().enabled = true;
         base.OnStartLocalPlayer();
     }
 
@@ -53,6 +53,17 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
         // Assign Damage
         obj.GetComponent<Health>().TakeDamage(damage);
     }
+
+    [Command]
+    public void CmdSetSlow(GameObject obj, int slowRate)
+    {   
+        if (obj.GetComponent<AvatarController>() != null)
+        {
+            // Player target
+
+        }
+    }
+
 
     [Command]
     public void CmdAssignDamageWithForce(GameObject obj, int damage, float KnockBackAmount)

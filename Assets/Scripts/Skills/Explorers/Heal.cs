@@ -16,7 +16,6 @@ public class Heal : ISkill
     {
         Name = "Heal";
         canDrop = false;
-        isStaticSkill = false;
 
         animator = GetComponentInParent<RpcNetworkAnimator>();
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
@@ -36,7 +35,7 @@ public class Heal : ISkill
         }
 
         // Set key code:
-        key = KeyCode.Mouse1;
+        key = KeyCode.R;
     }
 
     void Update()
