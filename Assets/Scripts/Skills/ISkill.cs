@@ -11,6 +11,8 @@ public abstract class ISkill : MonoBehaviour
     public float Cooldown = 2;
     public bool canDrop = false;
 
+    public bool isStaticSkill;
+
     [NonSerialized] public KeyCode key = KeyCode.None;
     [NonSerialized] public bool IsActive;
 

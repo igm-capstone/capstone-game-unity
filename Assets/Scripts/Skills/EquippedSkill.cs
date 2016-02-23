@@ -3,45 +3,78 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class EquippedSkill : ISkill
+public class EquippedSkill : MonoBehaviour
 {
-    public List<ISkill> SkillList = new List<ISkill>();
-    ISkill curSkill = null;
+    GameObject curSkillObj = null;
+    ISkill curSkillScrpt = null;
 
-    float clkdtimer = 0.0f;
-    float waitTime = 0.0f;
+    SkillBar skillBarScr = null;
 
-    public void Awake()
+    KeyCode UseEquipped;
+    KeyCode ChangeSkill;
+
+    public void Start()
     {
-        Name = "Equipped skill";
-        canDrop = false;
 
         // Right Mouse Button
-        key = KeyCode.Mouse1;
-    }
+        UseEquipped = KeyCode.Mouse1;
+        ChangeSkill = KeyCode.LeftShift;
 
+        skillBarScr = GetComponent<SkillBar>();
+
+        skillBarScr.SetSkillCapacity(skillBarScr.GetSkillCapacity()+1);
+
+        // Updates Script
+        curSkillScrpt = curSkillObj.GetComponent<ISkill>();
+        // Updates Skill key
+        curSkillScrpt.key = UseEquipped;
+        curSkillScrpt.canDrop = true;
+
+        Debug.Log(curSkillScrpt);
+
+        // Adds new skill to the skillbar
+        //skillBarScr.AddSkill(curSkillScrpt);
+        curSkillScrpt.enabled = true;
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(key))
+        // Changes equipped skill
+        if (Input.GetKeyDown(ChangeSkill))
         {
-            Use();
+            switchSkill();
         }
 
-        if (IsReady())
+        // Uses equiped skill
+        if (Input.GetKeyDown(UseEquipped))
+        {
+            curSkillScrpt.Use();
+        }
+
+        if (curSkillScrpt.IsReady())
         {
             GetComponent<AvatarController>().isAttacking = false;
         }
 
     }
 
-    protected override string Usage(GameObject target, Vector3 clickWorldPos)
+    // Changes equipped skill
+    void switchSkill()
     {
-        if (curSkill == null)
-        {
-            return "Error, there are no skills equipped";
-        }
-        curSkill.Use(target, clickWorldPos);
-        return null;
+        Debug.Log("Trying to change skill");
+
+        // Updates Script
+        curSkillScrpt = curSkillObj.GetComponent<ISkill>();
+        // Updates Skill key
+        curSkillScrpt.key = UseEquipped;
+
+        // Adds new skill to the skillbar
+        //skillBarScr.AddSkill(curSkillScrpt);
+        curSkillScrpt.enabled = true;
+
+        curSkillScrpt.canDrop = true;
+
+        Debug.Log("Current Skill script equipped: " + curSkillScrpt);
+
     }
 }

@@ -11,7 +11,10 @@ public class SetTrap : ISkill
 
         SlctdTrap = TrapType.Poison;
 
-        key = KeyCode.P;
+        // Set key code:
+        key = KeyCode.Mouse1;
+
+        isStaticSkill = false;
     }
 
     void Update()

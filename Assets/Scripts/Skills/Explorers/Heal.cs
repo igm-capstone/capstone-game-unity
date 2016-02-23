@@ -21,6 +21,11 @@ public class Heal : ISkill
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         avatarController = GetComponent<AvatarController>();
 
+        if (FX == null)
+        {
+           FX =  transform.FindChild("AvatarRotation").FindChild("AllAnimsInOne").FindChild("HealFX");
+        }
+
         if (FX)
         {
             Transform oldParent = FX.parent;
@@ -29,7 +34,8 @@ public class Heal : ISkill
             FX.parent = oldParent;
         }
 
-        key = KeyCode.P;
+        // Set key code:
+        key = KeyCode.Mouse1;
     }
 
     void Update()

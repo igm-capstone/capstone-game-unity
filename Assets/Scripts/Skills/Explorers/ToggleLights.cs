@@ -5,7 +5,7 @@ using System;
 public class ToggleLights : ISkill
 {
     public GameObject ToggleLightBox;
-    public float BoxRadius = 0.8f;
+    public float BoxRadius = 0.5f;
 
     LayerMask LightMask;
 
@@ -16,6 +16,8 @@ public class ToggleLights : ISkill
         canDrop = false;
 
         key = KeyCode.E;
+
+        isStaticSkill = true;
 
         // Get ToggleLightBox object.
         if (ToggleLightBox == null)

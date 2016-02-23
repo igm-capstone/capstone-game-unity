@@ -1062,7 +1062,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .600000024, y: 0, z: 0}
+  m_LocalPosition: {x: .400000006, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 460598}
@@ -1625,7 +1625,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.36437464, y: -3.54753733, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 460598}
@@ -2089,7 +2089,7 @@ MonoBehaviour:
   Cooldown: .00100000005
   canDrop: 0
   ToggleLightBox: {fileID: 195774}
-  BoxRadius: .800000012
+  BoxRadius: .5
 --- !u!114 &11480688
 MonoBehaviour:
   m_ObjectHideFlags: 1

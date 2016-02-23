@@ -39,7 +39,8 @@ public class LongAttack : ISkill
         DisplayBox = transform.FindChild("AvatarRotation").FindChild("LongAttackHitBox").gameObject;
         DisplayBox.SetActive(false);
 
-        key = KeyCode.O;
+        // Set key code:
+        key = KeyCode.Mouse0;
     }
     
     void Update()
@@ -58,6 +59,9 @@ public class LongAttack : ISkill
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
         if (avatarController.Disabled) return "You are incapacitated. Seek help!";
+
+        // Turns to mouse position.
+        TurnToMousePos();
 
         var hitBox = transform.Find("AvatarRotation/Hitbox");
         var hitBoxCol = hitBox.GetComponent<BoxCollider2D>();

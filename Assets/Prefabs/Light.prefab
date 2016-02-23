@@ -62,7 +62,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.89999998, y: -11.1000004, z: -1}
+  m_LocalPosition: {x: 10.46, y: -3.53999996, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 479766}
@@ -99,7 +99,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114494}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -149,16 +149,16 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -.300000012}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3.5
+  m_Radius: 1.60000002
 --- !u!60 &6070464
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119160}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
@@ -166,18 +166,15 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: 0}
-      - {x: 42.1100159, y: 42.1100006}
-      - {x: 44.9897766, y: 42.1100006}
-      - {x: 44.9978027, y: 42.1100006}
-      - {x: 48.1959991, y: 9.49028492}
-      - {x: 48.1899986, y: 9.48910332}
-      - {x: 48.1899986, y: 8.51956749}
-      - {x: 41.8757782, y: -19.8900013}
-      - {x: 21.6235065, y: -19.8900013}
-      - {x: 21.6235809, y: -19.8900681}
-      - {x: 21.5455074, y: -19.8900013}
-      - {x: 21.5455818, y: -19.89007}
-      - {x: 19.8900032, y: -19.8900013}
+      - {x: 34.5500145, y: 34.5499992}
+      - {x: 36.4683723, y: 34.5499992}
+      - {x: 36.4762764, y: 34.5499992}
+      - {x: 39.6360016, y: 1.92939484}
+      - {x: 39.6300011, y: 1.92910278}
+      - {x: 39.6299973, y: 1.38587976}
+      - {x: 35.7296143, y: -27.4500008}
+      - {x: 35.7266235, y: -27.4500046}
+      - {x: 27.4500008, y: -27.4500008}
 --- !u!114 &11409118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -325,7 +322,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Radius
-      value: 3.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x

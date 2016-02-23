@@ -46,7 +46,10 @@ public class ConeAttack : ISkill
         HitBoxObj = transform.FindChild("AvatarRotation").FindChild("ConeAttackHitBox").gameObject;
         HitBoxObj.SetActive(false);
 
+        // Set key code:
         key = KeyCode.Mouse0;
+
+        isStaticSkill = true;
     }
 
     void Update()
