@@ -8,10 +8,12 @@ public class Door : MonoBehaviour
     public bool isOpen = false;
     public bool canOpen = true;
     private Collider2D collider2D;
+    private GameObject doorMesh;
 
     void Awake()
     {
-        collider2D = transform.Find("ActualCollider").GetComponent<Collider2D>();
+        collider2D = GetComponent<Collider2D>();
+        doorMesh = transform.FindChild("Mesh").gameObject;
     }
 
     bool f(Collider2D c)
@@ -30,14 +32,14 @@ public class Door : MonoBehaviour
         {
             if (isOpen)
             {
-                GetComponent<Animator>().SetTrigger("Close");
+                doorMesh.GetComponent<Animator>().SetTrigger("Close");
                 collider2D.enabled = true;
                 isOpen = false;
                 GridBehavior.Instance.SetGridDirty();
             }
             else
             {
-                GetComponent<Animator>().SetTrigger("Open");
+                doorMesh.GetComponent<Animator>().SetTrigger("Open");
                 collider2D.enabled = false;
                 isOpen = true;
                 GridBehavior.Instance.SetGridDirty();
