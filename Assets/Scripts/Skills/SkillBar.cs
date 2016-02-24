@@ -57,13 +57,7 @@ public class SkillBar : MonoBehaviour
             energyUiText = energyTransform.Find("Text").GetComponent<Text>();
             energyUiText.text = EnergyLeft.ToString();
         }
-    }
-
-    void Update()
-    {
-        Debug.Log("availableEnergy" + availableEnergy);
-    }
-
+    }    
 
     public ISkill GetActiveSkill()
     {

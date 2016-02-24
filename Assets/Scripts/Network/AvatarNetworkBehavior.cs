@@ -93,13 +93,7 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     [Command]
     public void CmdDoor(GameObject obj)
     {
-        RpcDoor(obj);
-    }
-
-    [ClientRpc]
-    public void RpcDoor(GameObject obj)
-    {
-        obj.GetComponentInParent<Door>().SwingDoor();
+        obj.GetComponent<Door>().SwingDoor();
     }
 
     [ClientRpc]
@@ -120,22 +114,22 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
         LightCtrl.GetComponent<LightController>().ChangeStatusTo(NxtStatus);
     }
 
-    GameObject doorToOpen;
-    public void OnTriggerStay2D(Collider2D other)
-    {
-        var door = other.GetComponentInParent<Door>();
-        if (isClient && door)
-        {
-            doorToOpen = door.gameObject;
-        }
-    }
+   // GameObject doorToOpen;
+    //public void OnTriggerStay2D(Collider2D other)
+    //{
+    //    var door = other.GetComponentInParent<Door>();
+    //    if (isClient && door)
+    //    {
+    //        doorToOpen = door.gameObject;
+    //    }
+    //}
     
-    public void Update()
-    {
-        if (doorToOpen && Input.GetKeyDown(KeyCode.M))
-        {
-            CmdDoor(doorToOpen);
-            doorToOpen = null;
-        }
-    }
+    //public void Update()
+    //{
+    //    if (doorToOpen && Input.GetKeyDown(KeyCode.M))
+    //    {
+    //        CmdDoor(doorToOpen);
+    //        doorToOpen = null;
+    //    }
+    //}
 }

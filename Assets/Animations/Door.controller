@@ -99,7 +99,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f03f9a750dea8c040b2ee34cfd407da7, type: 2}
+  m_Motion: {fileID: 7400000, guid: 6405f24e9fde5464eb977a01af507d55, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -110,7 +110,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: New State
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -122,7 +122,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e8f16b8c0a9b96644b9a36a6606c9006, type: 2}
+  m_Motion: {fileID: 0}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -134,7 +134,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: DoorClose
-  m_Speed: -1
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -145,7 +145,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f03f9a750dea8c040b2ee34cfd407da7, type: 2}
+  m_Motion: {fileID: 7400002, guid: 6405f24e9fde5464eb977a01af507d55, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -160,13 +160,13 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 110219874}
-    m_Position: {x: 276, y: 120, z: 0}
+    m_Position: {x: 288, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110275324}
     m_Position: {x: 288, y: -96, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110265858}
-    m_Position: {x: 288, y: 192, z: 0}
+    m_Position: {x: 276, y: 204, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 110179192}

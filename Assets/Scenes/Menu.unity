@@ -971,7 +971,7 @@ MonoBehaviour:
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
   m_OfflineScene: Menu
-  m_OnlineScene: LevelMVP - Design
+  m_OnlineScene: Level01
   m_SpawnPrefabs:
   - {fileID: 157710, guid: ddfaaa28f02042641864fa1a59641e7e, type: 2}
   - {fileID: 138790, guid: 0b83457a2661e274d8c9b6a6a2cf980d, type: 2}
@@ -981,9 +981,7 @@ MonoBehaviour:
   - {fileID: 183590, guid: 315cf5703670f7447b3260fd20c9e6f5, type: 2}
   - {fileID: 150852, guid: cbf340c69f010c54aa1ed2004220b4b0, type: 2}
   - {fileID: 150340, guid: 4be79648881363842b7986a4d16d260a, type: 2}
-  - {fileID: 100808, guid: e18db561f2541d04aa973e3ca745c5b4, type: 2}
-  - {fileID: 194436, guid: 4955546646734d74680f7720f3ae9f1a, type: 2}
-  - {fileID: 0}
+  - {fileID: 114350, guid: a4017acf196f4204e9ba41b7aa0015af, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 5
   m_ConnectionConfig:
@@ -1018,9 +1016,9 @@ MonoBehaviour:
   matchSize: 4
   ghostPrefab: {fileID: 196296, guid: 019c493b42c53a1468dbd861bbbd1d49, type: 2}
   avatarPrefab:
-  - {fileID: 100808, guid: e18db561f2541d04aa973e3ca745c5b4, type: 2}
-  - {fileID: 188006, guid: 072c0af010dc12842bfb73d4e7b2af4d, type: 2}
   - {fileID: 157710, guid: ddfaaa28f02042641864fa1a59641e7e, type: 2}
+  - {fileID: 188006, guid: 072c0af010dc12842bfb73d4e7b2af4d, type: 2}
+  - {fileID: 138790, guid: 0b83457a2661e274d8c9b6a6a2cf980d, type: 2}
   exposeConsole: 0
   console: {fileID: 182870, guid: 8057a11613acd314fade6d13b2a5be5c, type: 2}
 --- !u!4 &1400174516
