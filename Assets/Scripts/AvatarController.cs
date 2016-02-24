@@ -76,7 +76,7 @@ public class AvatarController : MonoBehaviour
             }
 
             // Applies velocity
-            _rb.velocity = new Vector2(horizontal, vertical).normalized * CalcMoveSpeed*
+            _rb.velocity = new Vector2(horizontal, vertical).normalized * CalcMoveSpeed *
                 (Mathf.Abs(Mathf.Abs(horizontal) - Mathf.Abs(vertical)) + (Mathf.Abs(horizontal) * Mathf.Abs(vertical) * Mathf.Sqrt(2)));
             animator.SetFloat("RunSpeed", _rb.velocity.magnitude);
             if (hauntEtoM)
@@ -96,7 +96,7 @@ public class AvatarController : MonoBehaviour
         var nodee = GridBehavior.Instance.getNodeAtPos(pos);
         if (nodee != null)
         {
-            pos.z = nodee.ZIndex;
+            pos.z = Mathf.Lerp(pos.z, nodee.ZIndex, Time.deltaTime * 10);
             transform.position = pos;
         }
 
