@@ -5,7 +5,7 @@ using System;
 public class ToggleLights : ISkill
 {
     public GameObject ToggleLightBox;
-    public float BoxRadius = 0.5f;
+    public float BoxRadius = 1f;
 
     LayerMask LightMask;
 
@@ -36,13 +36,13 @@ public class ToggleLights : ISkill
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
-        Debug.Log("Using Skill " + Name);
         // Detects light inside ToggleBox
         var HitLight = Physics2D.OverlapCircle(ToggleLightBox.transform.position, BoxRadius, LightMask);
 
         if (HitLight == null)
-            return "There are no light switches nearby... ";
+            return null;
 
+        Debug.Log("Using Skill " + Name);
         Debug.Log("Hit: " + HitLight);
 
         // Get light component

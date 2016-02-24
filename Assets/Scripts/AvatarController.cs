@@ -4,14 +4,16 @@ using UnityEngine.Networking;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SkillBar))]
 //[RequireComponent(typeof(MeleeWeaponBehavior))]
-public class AvatarController : MonoBehaviour 
+public class AvatarController : MonoBehaviour
 {
     [SerializeField]
     public float MoveSpeed = 4;
     public float CalcMoveSpeed;
     float SpeedAdjust = 10;
     [SerializeField]
-    public bool Disabled { get { return (_health &&  _health.CurrentHealth <= 0); } }
+    public bool Disabled { get { return (_health && _health.CurrentHealth <= 0); } }
+    public bool isAttacking;
+    public bool hauntEtoM { get; set; }
 
     private Rigidbody2D _rb;
     private SkillBar _avatarSkillBar;
@@ -19,11 +21,10 @@ public class AvatarController : MonoBehaviour
     private RpcNetworkAnimator animator;
     private RpcNetworkAnimator hauntedMinionAnimator;
     private GameObject hauntMinionToControl;
+    private GameObject doorToOpen;
+    private AvatarNetworkBehavior avatarNB;
 
-    public bool isAttacking;
-    public bool hauntEtoM { get; set; }
-
-    void Awake ()
+    void Awake()
     {
         hauntEtoM = false;
         _rb = GetComponent<Rigidbody2D>();
@@ -31,6 +32,7 @@ public class AvatarController : MonoBehaviour
 
         _avatarSkillBar = GetComponentInChildren<SkillBar>();
         animator = GetComponent<RpcNetworkAnimator>();
+        avatarNB = GetComponent<AvatarNetworkBehavior>();
 
         // Game Balance Adjust => Makes Speed number comparable to Minion Speed number.
         CalcMoveSpeed = MoveSpeed / SpeedAdjust;
@@ -41,16 +43,27 @@ public class AvatarController : MonoBehaviour
         _avatarSkillBar.enabled = true;
     }
 
-    void FixedUpdate() 
+    void FixedUpdate()
     {
         CalcMoveSpeed = MoveSpeed / SpeedAdjust;
-        if (!Disabled) 
+        if (!Disabled)
             Move();
         else
         {
             _rb.velocity = new Vector2(0, 0);
             HelpMessage.Instance.SetMessage("You are incapacitated. Seek help!");
-        }   
+        }
+
+        
+    }
+
+    void Update()
+    {
+        if (GetDoor() && Input.GetKeyDown(KeyCode.E))
+        {
+            avatarNB.CmdDoor(doorToOpen);
+            doorToOpen = null;
+        }
     }
 
     private void Move()
@@ -107,5 +120,18 @@ public class AvatarController : MonoBehaviour
         hauntEtoM = true;
         hauntMinionToControl = minion;
         hauntedMinionAnimator = hauntMinionToControl.GetComponent<RpcNetworkAnimator>();
+    }   
+
+    public bool GetDoor()
+    {
+        var door = Physics2D.OverlapCircle(transform.position, 2, 1 << LayerMask.NameToLayer("Door"));
+        if (door && door.transform.GetComponentInParent<Door>())
+        {
+            doorToOpen = door.transform.GetComponentInParent<Door>().gameObject;
+            return true;
+        }
+        else
+            return false;
+
     }
-} 
+}
