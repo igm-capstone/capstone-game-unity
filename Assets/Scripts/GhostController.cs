@@ -35,30 +35,41 @@ public class GhostController : MonoBehaviour {
                 return;
             }
 
-            RaycastHit2D hit = Physics2D.Raycast(clickWordPos, Vector2.zero, 1000, LayersToClick);
-            if (hit)
+            RaycastHit hit3d;
+            RaycastHit2D hit2d;
+            GameObject go = null; 
+            if ((hit2d = Physics2D.Raycast(clickWordPos, Vector2.zero, 1000, LayersToClick)) == true)
             {
-                var activeSkill = _ghostSkillBar.GetActiveSkill();
-                if (!activeSkill)
-                {                    
-                    HelpMessage.Instance.SetMessage("No skill selected!");
-                    return;
-                }
-
-                if (_ghostSkillBar.EnergyLeft < activeSkill.cost)
-                {
-                    HelpMessage.Instance.SetMessage("Not enough energy!");
-                    return;
-                }
-
-                if (activeSkill.IsReady())
-                {
-                    _ghostSkillBar.EnergyLeft -= activeSkill.cost;
-                }
-
-                activeSkill.Use(hit.collider.gameObject, clickWordPos);
-
+                go = hit2d.collider.gameObject;
             }
+            else if (Physics.Raycast(clickWordPos + Vector3.back * 500, Vector3.forward, out hit3d, 1000, LayersToClick))
+            {
+                go = hit3d.collider.gameObject;
+            }
+            else
+            {
+                return;
+            }
+
+            var activeSkill = _ghostSkillBar.GetActiveSkill();
+            if (!activeSkill)
+            {
+                HelpMessage.Instance.SetMessage("No skill selected!");
+                return;
+            }
+
+            if (_ghostSkillBar.EnergyLeft < activeSkill.cost)
+            {
+                HelpMessage.Instance.SetMessage("Not enough energy!");
+                return;
+            }
+
+            if (activeSkill.IsReady())
+            {
+                _ghostSkillBar.EnergyLeft -= activeSkill.cost;
+            }
+
+            activeSkill.Use(go, clickWordPos);
         }
     }
 }
