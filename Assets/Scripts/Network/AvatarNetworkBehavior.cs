@@ -88,10 +88,16 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     {
         RpcPickup(obj);
         NetworkServer.Destroy(obj);
-    }    
+    }
 
     [Command]
     public void CmdDoor(GameObject obj)
+    {
+        RpcDoor(obj);
+    }
+
+    [ClientRpc]
+    public void RpcDoor(GameObject obj)
     {
         obj.GetComponent<Door>().SwingDoor();
     }

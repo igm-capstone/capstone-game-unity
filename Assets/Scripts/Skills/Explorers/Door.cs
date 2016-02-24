@@ -3,18 +3,13 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    AvatarNetworkBehavior avatarNetwork;
     public bool isOpen = false;
     public bool canOpen = true;
-    private Collider2D collider2D;
-    private GameObject doorMesh;
-    private RpcNetworkAnimator animator;
+    private Animator animator;
 
     void Awake()
     {
-        collider2D = GetComponent<Collider2D>();
-        doorMesh = transform.FindChild("Mesh").gameObject;
-        animator = GetComponentInChildren<RpcNetworkAnimator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     bool f(Collider2D c)
@@ -34,15 +29,15 @@ public class Door : MonoBehaviour
             if (isOpen)
             {
                 animator.SetTrigger("Close");
-                collider2D.enabled = true;
                 isOpen = false;
+                GetComponent<PolygonCollider2D>().enabled = true;
                 GridBehavior.Instance.SetGridDirty();
             }
             else
             {
                 animator.SetTrigger("Open");
-                collider2D.enabled = false;
                 isOpen = true;
+                GetComponent<PolygonCollider2D>().enabled = false;
                 GridBehavior.Instance.SetGridDirty();
             }
         }

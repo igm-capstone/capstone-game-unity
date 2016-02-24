@@ -8,8 +8,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
   - enabled: 1
-    path: Assets/Scenes/LevelMVP - Design.unity
-  - enabled: 1
-    path: Assets/Scenes/ClassBalance.unity
-  - enabled: 1
     path: Assets/Scenes/Level01.unity
