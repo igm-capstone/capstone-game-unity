@@ -1971,16 +1971,15 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 012eab9b596c88846bdb77f836669350, type: 3}
   Name: GrenadeToss
-  Cooldown: .400000006
+  Cooldown: .600000024
   canDrop: 0
   cost: 0
   isStaticSkill: 1
-  ExploRadius: 0
-  ExploPreFab: {fileID: 194436, guid: 4955546646734d74680f7720f3ae9f1a, type: 2}
   HitLayers:
     serializedVersion: 2
     m_Bits: 10240
-  MaxThrowRange: 20
+  ExploRadius: 3.5
+  ThrowDistance: 7
   Damage: 8
   hasKnockBack: 1
   KnockBackMag: 5.5
@@ -2050,6 +2049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795f99c4c8dccdc479e0b16a91ed075b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExploPreFab: {fileID: 194436, guid: 4955546646734d74680f7720f3ae9f1a, type: 2}
 --- !u!114 &11487384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10898,7 +10898,23 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: ExploPreFab
+      value: 
+      objectReference: {fileID: 194436, guid: 4955546646734d74680f7720f3ae9f1a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: ExploRadius
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ThrowDistance
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Cooldown
+      value: .600000024
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100808}

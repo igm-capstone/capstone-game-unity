@@ -10,12 +10,11 @@ public class GrenadeToss : ISkill
     AvatarController avatarController;
 
     // Class Variables
-    public float ExploRadius;
-    public GameObject ExploPreFab;
-    Vector3 ExploPos;
     public LayerMask HitLayers;
 
-    public float MaxThrowRange = 5.0f;
+    // When changing this remeber to change the ExploDiameter variable on the ExplosionBehavior Script.
+    float ExploRadius = 3.5f;
+    public float ThrowDistance = 7.0f;
 
     public int Damage = 2;
     public bool hasKnockBack = false;
@@ -24,8 +23,7 @@ public class GrenadeToss : ISkill
     [Range(0.0f, 10.0f)]
     float KnockBackMag = 5.0f;
 
-
-    Vector3 mouseWorldPos;
+    Vector3 ExploPos;
 
     public void Awake()
     {
@@ -52,25 +50,8 @@ public class GrenadeToss : ISkill
         {
             GetComponent<AvatarController>().isAttacking = false;
         }
-        
 
-        // Get mouse position in World Coordinates
-        Vector3 mouseScreenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 
-            GridBehavior.Instance.getNodeAtPos(transform.position).ZIndex);
-        mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-
-        // Usar Screen to ray.
-
-        // Calculate Explosion position
-        ExploPos = (mouseWorldPos - transform.position);
-
-
-        //Debug.DrawRay(transform.position, ExploPos, Color.yellow);
-
-        Debug.DrawLine(Input.mousePosition, mouseScreenPos, Color.blue);
-        Debug.DrawLine(mouseScreenPos, mouseWorldPos, Color.yellow);
-        Debug.DrawLine(mouseWorldPos, ExploPos,Color.red);
-    }
+    }// Update
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
@@ -78,22 +59,22 @@ public class GrenadeToss : ISkill
 
         // Turns to mouse position.
         TurnToMousePos();
-
-
-
-
+        
         // Trigger animation
         animator.SetTrigger("LongAttack");
         GetComponent<AvatarController>().isAttacking = true;
 
-        // Instantiate Explosion
-        Instantiate(ExploPreFab, ExploPos, Quaternion.identity);
+        // Calculate Explosion position
+        ExploPos = transform.position + (transform.GetChild(0).transform.right * ThrowDistance);
+
+        GetComponent<AvatarNetworkBehavior>().CmdSpawnExplosion(ExploPos);
 
         // Get targets
         var TargetsHit = Physics2D.OverlapCircleAll(ExploPos, ExploRadius, HitLayers);
 
         foreach (var trgt in TargetsHit)
         {
+            Debug.Log("Explosion hit: " + trgt);
             // Check if knockBack is enabled and if hitting a minion.
             if (hasKnockBack && trgt.gameObject.layer == LayerMask.NameToLayer("Minion"))
             {
@@ -106,5 +87,10 @@ public class GrenadeToss : ISkill
         } //foreach
 
         return null;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(ExploPos, ExploRadius);
     }
 }

@@ -59,8 +59,7 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     {   
         if (obj.GetComponent<AvatarController>() != null)
         {
-            // Player target
-
+            // Player target - Unimplemented.
         }
     }
 
@@ -107,6 +106,16 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     {
         Destroy(obj);
     }
+    
+    public GameObject ExploPreFab;
+    [Command]
+    public void CmdSpawnExplosion(Vector3 _exploSpawnPos)
+    {
+        // Instantiate Explosion
+        GameObject exploInstance = Instantiate(ExploPreFab, _exploSpawnPos, Quaternion.identity) as GameObject;
+
+        NetworkServer.Spawn(exploInstance);
+    }
 
     [Command]
     public void CmdSetTrapExplorer(Vector3 position, TrapType _SlctdTrap)
@@ -119,23 +128,4 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     {
         LightCtrl.GetComponent<LightController>().ChangeStatusTo(NxtStatus);
     }
-
-   // GameObject doorToOpen;
-    //public void OnTriggerStay2D(Collider2D other)
-    //{
-    //    var door = other.GetComponentInParent<Door>();
-    //    if (isClient && door)
-    //    {
-    //        doorToOpen = door.gameObject;
-    //    }
-    //}
-    
-    //public void Update()
-    //{
-    //    if (doorToOpen && Input.GetKeyDown(KeyCode.M))
-    //    {
-    //        CmdDoor(doorToOpen);
-    //        doorToOpen = null;
-    //    }
-    //}
 }
