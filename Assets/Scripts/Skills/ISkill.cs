@@ -75,10 +75,15 @@ public abstract class ISkill : MonoBehaviour
     protected void TurnToMousePos()
     {
         // Mouse and Key controls - Rotation
+        // Get mouse position in World Coordinates
         Vector3 mouseScreenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+
+        // Calculate look position.
         float LookPosX = mouseWorldPos.x - transform.position.x;
         float LookPosY = mouseWorldPos.y - transform.position.y;
+        
+        // Apply rotation
         transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(LookPosY, LookPosX) * Mathf.Rad2Deg, Vector3.forward);
     }
 }
