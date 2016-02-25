@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using UnityEngine;
-
+[Rig3DAsset("doors", Rig3DExports.Position | Rig3DExports.Rotation | Rig3DExports.Scale)]
 public class Door : MonoBehaviour
 {
     public bool isOpen = false;
+    [Export]
     public bool canOpen = true;
     private Animator animator;
 
