@@ -376,7 +376,7 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
 
                 if (!node.canWalk)
                 {
-                    Handles.color = node.hasLight ? new Color(1, 1, 0, .4f) : new Color(0.5f, 0.5f, 0.5f, .4f);
+                    Handles.color = node.hasLight ? new Color(1, 1, 0, .4f) : new Color(1f, 0f, 0f, .8f);
                     //Handles.DrawSolidDisc(node.position, new Vector3(0, 0, 1), nodeRadius * .4f);
                     Handles.DrawLine(node.position + new Vector3(size, size, 0f),
                         node.position + new Vector3(-size, -size, 0f));
