@@ -37,7 +37,6 @@ GameObject:
   - 114: {fileID: 11487384}
   - 114: {fileID: 11461480}
   - 114: {fileID: 11427248}
-  - 114: {fileID: 11461512}
   m_Layer: 11
   m_Name: GrenadeSupport
   m_TagString: Player
@@ -1514,7 +1513,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.9654655, y: -15.4998064, z: 0}
+  m_LocalPosition: {x: -1.83676052, y: -16.4998035, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 496544}
@@ -1978,33 +1977,10 @@ MonoBehaviour:
   HitLayers:
     serializedVersion: 2
     m_Bits: 10240
-  ExploRadius: 3.5
-  ThrowDistance: 7
   Damage: 8
   hasKnockBack: 1
+  ThrowDistance: 7
   KnockBackMag: 5.5
---- !u!114 &11461512
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100808}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b58825af18d92842bb889339b96cb8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: ca14d521ba1358a44851490d1ac8c40c, type: 3}
-  Name: Move Block
-  Cooldown: 0
-  canDrop: 0
-  cost: 0
-  isStaticSkill: 1
-  moveableObjectLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  collisionRadius: 1
 --- !u!114 &11465374
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -846,7 +846,6 @@ GameObject:
   - 114: {fileID: 11480352}
   - 114: {fileID: 11449298}
   - 114: {fileID: 11454976}
-  - 114: {fileID: 11434190}
   m_Layer: 11
   m_Name: AvatarSprinter
   m_TagString: Player
@@ -1172,7 +1171,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 9.85999966, y: -13.1647558, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 436182}
@@ -1354,8 +1353,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.70000005, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 3.6099999, z: 1}
+  m_LocalPosition: {x: .519999981, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 436182}
   m_RootOrder: 3
@@ -1519,8 +1518,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188934}
   m_LocalRotation: {x: 0, y: 0, z: -.707106829, w: .707106709}
-  m_LocalPosition: {x: 1.25, y: -0, z: 0}
-  m_LocalScale: {x: 5, y: 2.5, z: 1}
+  m_LocalPosition: {x: .5, y: -0, z: 0}
+  m_LocalScale: {x: 2.79999995, y: 1.62, z: 1}
   m_Children: []
   m_Father: {fileID: 436182}
   m_RootOrder: 4
@@ -1669,8 +1668,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .600000024, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 5, z: 1}
+  m_LocalPosition: {x: .5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 436182}
   m_RootOrder: 2
@@ -1992,7 +1991,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.20000005, y: 1}
+  m_Size: {x: 1.62, y: 2.79999995}
 --- !u!61 &6128230
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -2100,28 +2099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795f99c4c8dccdc479e0b16a91ed075b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11434190
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188006}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b58825af18d92842bb889339b96cb8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: ca14d521ba1358a44851490d1ac8c40c, type: 3}
-  Name: Move Block
-  Cooldown: 0
-  canDrop: 0
-  cost: 0
-  isStaticSkill: 1
-  moveableObjectLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  collisionRadius: 1
+  ExploPreFab: {fileID: 0}
 --- !u!114 &11434468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2169,17 +2147,17 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 9bc1b515b807ee848961d86bb49858a4, type: 3}
   Name: ConeAttack
-  Cooldown: .300000012
+  Cooldown: .100000001
   canDrop: 0
   cost: 0
   isStaticSkill: 1
   HitLayers:
     serializedVersion: 2
     m_Bits: 10240
-  Damage: 8
+  Damage: 4
   radius: 2.5
   hasKnockBack: 1
-  KnockBackMag: 5
+  KnockBackMag: 2.5
 --- !u!114 &11454976
 MonoBehaviour:
   m_ObjectHideFlags: 1

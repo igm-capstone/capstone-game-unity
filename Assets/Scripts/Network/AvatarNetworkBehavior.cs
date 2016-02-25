@@ -54,15 +54,41 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
         obj.GetComponent<Health>().TakeDamage(damage);
     }
 
+
+    #region Slow Down functions
     [Command]
-    public void CmdSetSlow(GameObject obj, int slowRate)
-    {   
-        if (obj.GetComponent<AvatarController>() != null)
-        {
-            // Player target - Unimplemented.
-        }
+    public void CmdStartSlowDown(GameObject _obj, float _slowRate)
+    {
+        RpcStartSlowDown(_obj, _slowRate);
     }
 
+    [ClientRpc]
+    public void RpcStartSlowDown(GameObject _obj, float _slowRate)
+    {
+        if (_obj.GetComponent<AvatarController>() != null)
+            _obj.GetComponent<AvatarController>().StartSlowDown(_slowRate);
+
+        else if (_obj.GetComponent<TargetFollower>() != null)
+            _obj.GetComponent<TargetFollower>().StartSlowDown(_slowRate);
+    }
+
+    [Command]
+    public void CmdStopSlowDown(GameObject _obj)
+    {
+        RpcStopSlowDown(_obj);
+    }
+
+    [ClientRpc]
+    public void RpcStopSlowDown(GameObject _obj)
+    {
+        if (_obj.GetComponent<AvatarController>() != null)
+            _obj.GetComponent<AvatarController>().StopSlowDown();
+
+        else if (_obj.GetComponent<TargetFollower>() != null)
+            _obj.GetComponent<TargetFollower>().StopSlowDown();
+    }
+
+    #endregion
 
     [Command]
     public void CmdAssignDamageWithForce(GameObject obj, int damage, float KnockBackAmount)

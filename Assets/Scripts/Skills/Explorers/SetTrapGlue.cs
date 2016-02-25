@@ -25,9 +25,9 @@ public class SetTrapGlue : ISkill
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
-
+        // Face mouse direction
         TurnToMousePos();
-
+        // Use skill
         GetComponent<AvatarNetworkBehavior>().CmdSetTrapExplorer(transform.position, SlctdTrap);
         return null;
     }

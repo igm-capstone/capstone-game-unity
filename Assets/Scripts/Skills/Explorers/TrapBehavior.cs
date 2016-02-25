@@ -6,15 +6,20 @@ public class TrapBehavior : MonoBehaviour {
     CircleCollider2D TriggerCol;
     ParticleSystem PSys = null;
 
+
+    // Get Player obj. This will return not null for all Explorers.
+    GameObject TrapPlayerObj;
+
+
     public TrapType MyType;
 
-    public float TriggerRadius;
+    public float trapTriggerRadius;
     public float Duration;
     public float EffectTime;   // The time in between applications of the trap effect. A "2" would mean that the effect is applied every 2 seconds.
     public bool AffectPlayers = false;
 
     public int PoisonDamage;
-    public float GlueSlowRate;
+    public float GlueSlowRate = 0.3f;
     public float SpringKnockForce;
 
     bool mustApplyEffect;
@@ -25,7 +30,13 @@ public class TrapBehavior : MonoBehaviour {
     {
         // Component Getters
         TriggerCol = GetComponentInChildren<CircleCollider2D>();
-        TriggerCol.radius = TriggerRadius;
+        TriggerCol.radius = trapTriggerRadius;
+
+        TrapPlayerObj = GameObject.Find("Me");
+
+        // Starting Values
+        mustApplyEffect = false;
+        isTrapActive = false;
 
         if (MyType == TrapType.Poison || MyType == TrapType.Glue)
         {
@@ -33,14 +44,17 @@ public class TrapBehavior : MonoBehaviour {
             PSys.Stop();
         }
 
-        // Starting Values
-        mustApplyEffect = false;
-        isTrapActive = false;
+        if (MyType == TrapType.Glue)
+        {
+            mustApplyEffect = true;
+        }
+
 	}
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Minion") && isTrapActive == false)
+        if (isTrapActive == false && (other.gameObject.layer == LayerMask.NameToLayer("Minion") ||
+                                        (AffectPlayers && other.gameObject.layer == LayerMask.NameToLayer("Player"))))
         {
             ActivateTrap(MyType);
             isTrapActive = true;
@@ -53,6 +67,18 @@ public class TrapBehavior : MonoBehaviour {
             (AffectPlayers && other.gameObject.layer == LayerMask.NameToLayer("Player"))))
         {
             ApplyTrapEffect(MyType, other.gameObject);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (MyType == TrapType.Glue) 
+        {
+            if (TrapPlayerObj.GetComponent<SetTrapGlue>() != null)
+            {
+                // Stop glue trap effect on target
+                TrapPlayerObj.GetComponent<AvatarNetworkBehavior>().CmdStopSlowDown(other.gameObject);
+            }
         }
     }
 
@@ -77,8 +103,8 @@ public class TrapBehavior : MonoBehaviour {
                 // Start Particle system
                 PSys.Play();
                 PSys.loop = true;
-
-                StartCoroutine(EffectTimer(EffectTime));
+                
+                //mustApplyEffect is always true for GlueTrap
                 StartCoroutine(DurationTimer(Duration));
                 break;
 
@@ -95,14 +121,11 @@ public class TrapBehavior : MonoBehaviour {
     // Applies the Trap Effect on a Target.
     void ApplyTrapEffect(TrapType _MyType, GameObject TargetObj)
     {
-        // Get Player obj. This will return not null for all Explorers.
-        GameObject TrapPlayerObj = GameObject.Find("Me");
+        
 
         switch (_MyType)
         {
             case TrapType.Poison:
-                
-                
                 // Test for a Script exclusive to the traper to avoid aplying damage multiple times.
                 if (TrapPlayerObj.GetComponent<SetTrapPoison>() != null)
                 {   // Apply Poison Damage
@@ -111,11 +134,10 @@ public class TrapBehavior : MonoBehaviour {
                 break;
 
             case TrapType.Glue:
-
-                // Test for a Script exclusive to the traper to avoid aplying damage multiple times.
+                // Test for a Script exclusive to the traper to avoid setting target to slow multiple times.
                 if (TrapPlayerObj.GetComponent<SetTrapGlue>() != null)
-                {   // Apply Glue effect Damage
-                    Debug.Log(TargetObj + " should be slowed down now...");
+                {   // Apply Glue slow down
+                    TrapPlayerObj.GetComponent<AvatarNetworkBehavior>().CmdStartSlowDown(TargetObj, GlueSlowRate);
                 }
                 break;
 
@@ -128,8 +150,11 @@ public class TrapBehavior : MonoBehaviour {
                 break;
         }
 
-        // Reset for Effect timer.
-        mustApplyEffect = false;
+        if (MyType != TrapType.Glue)
+        {
+            // Reset for Effect timer.
+            mustApplyEffect = false;
+        }
     }
 
     // Wait for Trap Effect Time to apply the Trap effect.
@@ -146,13 +171,29 @@ public class TrapBehavior : MonoBehaviour {
     IEnumerator DurationTimer(float _TrapDuration)
     {
         yield return new WaitForSeconds(_TrapDuration);
+
+        if (MyType == TrapType.Glue)
+        {
+            // Stop slowdown on all current affected targets before destroying trap.
+            var curTrgts = Physics2D.OverlapCircleAll(transform.position, trapTriggerRadius);
+            foreach (var trgt in curTrgts)
+            {
+                Debug.Log(trgt);
+                if (TrapPlayerObj.GetComponent<SetTrapGlue>() != null)
+                {
+                    // Stop glue trap effect on target
+                    TrapPlayerObj.GetComponent<AvatarNetworkBehavior>().CmdStopSlowDown(trgt.gameObject);
+                }
+            }
+        }
+
         Destroy(this.gameObject);
     }
 
     // Draw the Trap circular trigger.
     void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, TriggerRadius);
+        Gizmos.DrawWireSphere(transform.position, trapTriggerRadius);
     }
 
 }

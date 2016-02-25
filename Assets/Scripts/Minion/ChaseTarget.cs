@@ -4,6 +4,8 @@ using System.Linq;
 
 public class ChaseTarget : MinionBehaviour
 {
+
+
 	public override void UpdateBehaviour()
 	{
        
@@ -36,7 +38,4 @@ public class ChaseTarget : MinionBehaviour
             Controller.ActivateBehaviour<AttackTarget>();
 	    }
 	}
-    
-
-
 }

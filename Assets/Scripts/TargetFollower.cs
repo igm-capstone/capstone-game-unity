@@ -38,6 +38,8 @@ public class TargetFollower : MonoBehaviour
     public bool isStunned;
     public float StunOnHitTime = 0.5f;
 
+    float slowDownMod;
+
     void Awake()
     {
         animator = GetComponent<RpcNetworkAnimator>();
@@ -45,6 +47,7 @@ public class TargetFollower : MonoBehaviour
         path = new List<Vector2>();
 
         isStunned = false;
+        slowDownMod = 1.0f;
     }
 
     public bool MoveTowards(Vector3 targetPos, int maxSteps = int.MaxValue)
@@ -162,7 +165,7 @@ public class TargetFollower : MonoBehaviour
             animator.SetFloat("Slide", repel);
         }
 
-        transform.Translate(moveDirection * moveSpeed * speedFactor * .1f * Time.deltaTime, Space.Self);
+        transform.Translate(moveDirection * moveSpeed * speedFactor * slowDownMod* .1f * Time.deltaTime, Space.Self);
 
         var pos = transform.position;
         var nodee = GridBehavior.Instance.getNodeAtPos(pos);
@@ -236,6 +239,16 @@ public class TargetFollower : MonoBehaviour
         isStunned = true;
         yield return new WaitForSeconds(_StunTime);
         isStunned = false;
+    }
+
+    public void StartSlowDown(float _slowRate)
+    {
+        slowDownMod = _slowRate;
+    }
+
+    public void StopSlowDown()
+    {
+        slowDownMod = 1.0f;
     }
 
 #if UNITY_EDITOR

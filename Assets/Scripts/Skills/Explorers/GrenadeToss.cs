@@ -12,12 +12,13 @@ public class GrenadeToss : ISkill
     // Class Variables
     public LayerMask HitLayers;
 
+    public int Damage = 2;
+    public bool hasKnockBack = false;
+
     // When changing this remeber to change the ExploDiameter variable on the ExplosionBehavior Script.
     float ExploRadius = 3.5f;
     public float ThrowDistance = 7.0f;
 
-    public int Damage = 2;
-    public bool hasKnockBack = false;
 
     [SerializeField]
     [Range(0.0f, 10.0f)]

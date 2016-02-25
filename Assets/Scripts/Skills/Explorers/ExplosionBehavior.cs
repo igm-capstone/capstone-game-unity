@@ -69,8 +69,8 @@ public class ExplosionBehavior : MonoBehaviour
         // Expanding
         yield return new WaitForSeconds(_ExploTime/2);
         // resets timer:
-        //exploTimer = 0.0f;
-        //mustInflate = false;
+        exploTimer = 0.0f;
+        mustInflate = false;
         
         // Contracting
         yield return new WaitForSeconds(_ExploTime / 2);

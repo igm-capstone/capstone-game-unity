@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.Networking;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -24,6 +25,7 @@ public class AvatarController : MonoBehaviour
     private GameObject doorToOpen;
     private AvatarNetworkBehavior avatarNB;
 
+    float slowDownMod;
     void Awake()
     {
         hauntEtoM = false;
@@ -36,6 +38,8 @@ public class AvatarController : MonoBehaviour
 
         // Game Balance Adjust => Makes Speed number comparable to Minion Speed number.
         CalcMoveSpeed = MoveSpeed / SpeedAdjust;
+        slowDownMod = 1.0f;
+
     }
 
     void Start()
@@ -89,7 +93,7 @@ public class AvatarController : MonoBehaviour
             }
 
             // Applies velocity
-            _rb.velocity = new Vector2(horizontal, vertical).normalized * CalcMoveSpeed *
+            _rb.velocity = new Vector2(horizontal, vertical).normalized * CalcMoveSpeed * slowDownMod*
                 (Mathf.Abs(Mathf.Abs(horizontal) - Mathf.Abs(vertical)) + (Mathf.Abs(horizontal) * Mathf.Abs(vertical) * Mathf.Sqrt(2)));
             animator.SetFloat("RunSpeed", _rb.velocity.magnitude);
             if (hauntEtoM)
@@ -132,6 +136,16 @@ public class AvatarController : MonoBehaviour
         }
         else
             return false;
+    }
 
+    // Functions to apply slowdown on player
+    public void StartSlowDown(float _slowRate)
+    {
+        slowDownMod = _slowRate;
+    }
+
+    public void StopSlowDown()
+    {
+        slowDownMod = 1.0f;
     }
 }
