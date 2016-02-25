@@ -9,7 +9,7 @@ public class DisableLight : ISkill
     {
         Name = "DisableLight";
         canDrop = false;
-        cost = 10;
+        cost = 0;
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)

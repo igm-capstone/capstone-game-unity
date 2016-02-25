@@ -11,7 +11,7 @@ public class Haunt_ExpToMinion : ISkill {
     {
         Name = "ExplorerToMinion";
         canDrop = false;
-        cost = 15;
+        cost = 0;
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)

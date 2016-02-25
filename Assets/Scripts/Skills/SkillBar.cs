@@ -15,10 +15,10 @@ public class SkillBar : MonoBehaviour
     }
 
     public int MaxSkills = 3;
-    public int totalEnergy = 100;
+    public int totalEnergy = 200;
     public bool HideInactiveSkills = false;
     public OnClickBehaviorType OnClickBehavior;
-    public int waitTimeRestoreEnergy = 2;
+    public float waitTimeRestoreEnergy = 2;
     public int restoreAmount = 5;
     public GameObject energyUiPrefab;
 
