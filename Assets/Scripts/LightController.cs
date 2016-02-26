@@ -29,7 +29,7 @@ public class LightController : NetworkBehaviour {
     Material offLightMat;
 
     // Use this for initialization
-    void Awake ()
+    void Start ()
     {
 
         light2d = GetComponent<Light2D>();

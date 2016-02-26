@@ -150,6 +150,12 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     }
 
     [Command]
+    public void CmdSetLantExplorer(Vector3 position, LanternType _SlctdLant)
+    {
+        LanternSpawnManager.Instance.CmdSetLantern(transform.position, _SlctdLant);
+    }
+
+    [Command]
     public void CmdChangeLightStatus(GameObject LightCtrl, LightController.LghtStatus NxtStatus)
     {
         LightCtrl.GetComponent<LightController>().ChangeStatusTo(NxtStatus);
