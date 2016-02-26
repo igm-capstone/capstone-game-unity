@@ -174,19 +174,25 @@ public class TrapBehavior : MonoBehaviour {
 
         if (MyType == TrapType.Glue)
         {
+
             // Stop slowdown on all current affected targets before destroying trap.
             var curTrgts = Physics2D.OverlapCircleAll(transform.position, trapTriggerRadius);
             foreach (var trgt in curTrgts)
             {
-                Debug.Log(trgt);
                 if (TrapPlayerObj.GetComponent<SetTrapGlue>() != null)
                 {
-                    // Stop glue trap effect on target
-                    TrapPlayerObj.GetComponent<AvatarNetworkBehavior>().CmdStopSlowDown(trgt.gameObject);
-                }
-            }
-        }
+                    if (trgt.GetComponent<AvatarController>() != null ||
+                        trgt.GetComponent<TargetFollower>() != null)
+                    {
+                        // Stop glue trap effect on target
+                        TrapPlayerObj.GetComponent<AvatarNetworkBehavior>().CmdStopSlowDown(trgt.gameObject);
+                    }// if
+                }// if
+            }// foreach
+        }// if
 
+        // Waits for end of frame so all logic related to this can run
+        yield return new WaitForEndOfFrame();
         Destroy(this.gameObject);
     }
 

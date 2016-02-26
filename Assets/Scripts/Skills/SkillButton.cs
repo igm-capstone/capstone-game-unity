@@ -47,6 +47,16 @@ public class SkillButton : MonoBehaviour
         {
             transform.Find("Cost").GetComponent<Text>().text = "";
         }
+
+        if (_skill.UseCount != 0)
+        {
+            transform.Find("UseCount").GetComponent<Text>().text = _skill.UseCount.ToString();
+        }
+        else
+        {
+            transform.Find("UseCount").GetComponent<Text>().text = "";
+        }
+
     }
 
     void Update()
@@ -69,5 +79,17 @@ public class SkillButton : MonoBehaviour
     public void SetVisibility(bool active)
     {
         gameObject.SetActive(active);
+    }
+
+    public void UpdateUseAmount()
+    {
+        if (_skill.UseCount != 0)
+        {
+            transform.Find("UseCount").GetComponent<Text>().text = _skill.UseCount.ToString();
+        }
+        else
+        {
+            transform.Find("UseCount").GetComponent<Text>().text = "";
+        }
     }
 }
