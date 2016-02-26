@@ -8,15 +8,15 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 467526}
+  - 114: {fileID: 11402230}
   - 33: {fileID: 3395852}
   - 23: {fileID: 2339928}
   - 58: {fileID: 5859980}
   - 114: {fileID: 11413544}
   - 114: {fileID: 11468808}
-  - 58: {fileID: 5862394}
   - 114: {fileID: 11400472}
-  - 114: {fileID: 11402230}
-  m_Layer: 8
+  - 58: {fileID: 5862394}
+  m_Layer: 0
   m_Name: Light (2)
   m_TagString: Light
   m_Icon: {fileID: 0}
@@ -32,14 +32,14 @@ GameObject:
   m_Component:
   - 4: {fileID: 419412}
   - 33: {fileID: 3333950}
+  - 114: {fileID: 11452944}
   - 23: {fileID: 2306894}
   - 58: {fileID: 5851456}
   - 114: {fileID: 11436496}
   - 114: {fileID: 11405316}
-  - 58: {fileID: 5875174}
   - 114: {fileID: 11413590}
-  - 114: {fileID: 11452944}
-  m_Layer: 8
+  - 58: {fileID: 5875174}
+  m_Layer: 0
   m_Name: Light (1)
   m_TagString: Light
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 463492}
   - 60: {fileID: 6055206}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: LightMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 451582}
   - 212: {fileID: 21276458}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 405894}
   - 212: {fileID: 21244680}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 455976}
   - 60: {fileID: 6088232}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: LightMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.46031284, y: 28.486681, z: -1}
+  m_LocalPosition: {x: -56.3936157, y: -57.6534081, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 419412}
@@ -229,7 +229,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: c9c721b8f69a75547846e3dbcebeb74c, type: 2}
+  - {fileID: 2100000, guid: b0a95a22e23b6a54092969a96defeaf8, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -255,7 +255,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: c9c721b8f69a75547846e3dbcebeb74c, type: 2}
+  - {fileID: 2100000, guid: b0a95a22e23b6a54092969a96defeaf8, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -384,31 +384,31 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: 0}
-      - {x: -2.73028363e-05, y: 24.5}
-      - {x: 3.19786954, y: 24.2904015}
-      - {x: 6.34105015, y: 23.6651878}
-      - {x: 9.37573338, y: 22.6350536}
-      - {x: 12.2499943, y: 21.2176247}
-      - {x: 14.9146557, y: 19.4371567}
-      - {x: 17.3241215, y: 17.3241138}
-      - {x: 19.4371586, y: 14.9146528}
-      - {x: 21.2176247, y: 12.249999}
-      - {x: 22.6350517, y: 9.37574196}
-      - {x: 23.6651821, y: 6.34106636}
-      - {x: 24.2903996, y: 3.197891}
-      - {x: 24.5, y: -3.5371886e-07}
-      - {x: 24.2903996, y: -3.19789147}
-      - {x: 23.6651859, y: -6.34106636}
-      - {x: 22.6350479, y: -9.37574196}
-      - {x: 21.2176247, y: -12.2499971}
-      - {x: 19.4371586, y: -14.9146547}
-      - {x: 17.3241215, y: -17.3241119}
-      - {x: 14.9146576, y: -19.4371529}
-      - {x: 12.2500038, y: -21.2176228}
-      - {x: 9.37574673, y: -22.6350498}
-      - {x: 6.34106922, y: -23.665184}
-      - {x: 3.19789577, y: -24.2903976}
-      - {x: 4.89148988e-06, y: -24.4999981}
+      - {x: -9.16320096e-06, y: 7.00000381}
+      - {x: .913675666, y: 6.94011259}
+      - {x: 1.81172776, y: 6.76148558}
+      - {x: 2.67878175, y: 6.46715832}
+      - {x: 3.49999809, y: 6.06217861}
+      - {x: 4.26133156, y: 5.553473}
+      - {x: 4.94974661, y: 4.94974756}
+      - {x: 5.55347586, y: 4.26132774}
+      - {x: 6.0621767, y: 3.49999809}
+      - {x: 6.46715641, y: 2.67878509}
+      - {x: 6.76148272, y: 1.8117311}
+      - {x: 6.94011354, y: .91368258}
+      - {x: 7, y: 1.53380779e-06}
+      - {x: 6.94011259, y: -.913683295}
+      - {x: 6.76148176, y: -1.81173158}
+      - {x: 6.46715832, y: -2.67878556}
+      - {x: 6.06217861, y: -3.49999809}
+      - {x: 5.553473, y: -4.26132774}
+      - {x: 4.94974756, y: -4.94974661}
+      - {x: 4.26133156, y: -5.55347204}
+      - {x: 3.50000191, y: -6.0621767}
+      - {x: 2.67878509, y: -6.46715641}
+      - {x: 1.81173491, y: -6.7614789}
+      - {x: .913686395, y: -6.94011354}
+      - {x: 1.53380779e-06, y: -7}
 --- !u!60 &6088232
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -423,31 +423,31 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: 0}
-      - {x: 1.04904175e-05, y: 24.4999981}
-      - {x: 3.19790173, y: 24.2903957}
-      - {x: 6.34107542, y: 23.6651821}
-      - {x: 9.3757515, y: 22.635046}
-      - {x: 12.2500076, y: 21.2176189}
-      - {x: 14.9146605, y: 19.4371548}
-      - {x: 17.3241196, y: 17.32411}
-      - {x: 19.4371605, y: 14.9146519}
-      - {x: 21.2176247, y: 12.2499943}
-      - {x: 22.6350517, y: 9.37573814}
-      - {x: 23.665184, y: 6.34106255}
-      - {x: 24.2903976, y: 3.19788551}
-      - {x: 24.5, y: -5.7220459e-06}
-      - {x: 24.2903976, y: -3.19789696}
-      - {x: 23.6651802, y: -6.34107208}
-      - {x: 22.635046, y: -9.37574959}
-      - {x: 21.2176189, y: -12.2500057}
-      - {x: 19.4371529, y: -14.9146595}
-      - {x: 17.3241138, y: -17.3241196}
-      - {x: 14.9146519, y: -19.4371586}
-      - {x: 12.2499971, y: -21.2176247}
-      - {x: 9.375741, y: -22.6350498}
-      - {x: 6.34106445, y: -23.665184}
-      - {x: 3.19789028, y: -24.2903996}
-      - {x: -9.53674316e-07, y: -24.5}
+      - {x: 3.81469727e-06, y: 7}
+      - {x: .913684845, y: 6.94011307}
+      - {x: 1.81173706, y: 6.76147842}
+      - {x: 2.67878723, y: 6.46715546}
+      - {x: 3.50000381, y: 6.06217575}
+      - {x: 4.26132965, y: 5.55347061}
+      - {x: 4.94974899, y: 4.94974518}
+      - {x: 5.55347443, y: 4.26132965}
+      - {x: 6.06217957, y: 3.5}
+      - {x: 6.46715546, y: 2.67878342}
+      - {x: 6.76148224, y: 1.81173325}
+      - {x: 6.94011307, y: .91368103}
+      - {x: 7, y: 0}
+      - {x: 6.94011307, y: -.913684845}
+      - {x: 6.76148224, y: -1.81173325}
+      - {x: 6.46715546, y: -2.67878723}
+      - {x: 6.06217575, y: -3.5}
+      - {x: 5.55347443, y: -4.26132965}
+      - {x: 4.94974518, y: -4.94974899}
+      - {x: 4.26132965, y: -5.55347443}
+      - {x: 3.5, y: -6.06217957}
+      - {x: 2.67878342, y: -6.46715927}
+      - {x: 1.81173325, y: -6.76147842}
+      - {x: .91368103, y: -6.94011307}
+      - {x: 0, y: -7.00000381}
 --- !u!65 &6548356
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -549,9 +549,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightSegments: 24
-  lightRadius: 24.5
+  lightRadius: 7
   angle: 180
-  lightMaterial: {fileID: 2100000, guid: c9c721b8f69a75547846e3dbcebeb74c, type: 2}
+  lightMaterial: {fileID: 2100000, guid: b0a95a22e23b6a54092969a96defeaf8, type: 2}
   shadowMask:
     serializedVersion: 2
     m_Bits: 4294054600
@@ -642,9 +642,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightSegments: 24
-  lightRadius: 24.5
+  lightRadius: 7
   angle: 180
-  lightMaterial: {fileID: 2100000, guid: c9c721b8f69a75547846e3dbcebeb74c, type: 2}
+  lightMaterial: {fileID: 2100000, guid: b0a95a22e23b6a54092969a96defeaf8, type: 2}
   shadowMask:
     serializedVersion: 2
     m_Bits: 4294054600

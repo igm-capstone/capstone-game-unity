@@ -1919,6 +1919,7 @@ MonoBehaviour:
   Cooldown: 0
   canDrop: 0
   cost: 0
+  UseCount: 0
   isStaticSkill: 1
   moveableObjectLayer:
     serializedVersion: 2
@@ -1973,13 +1974,14 @@ MonoBehaviour:
   Cooldown: .400000006
   canDrop: 0
   cost: 0
+  UseCount: 0
   isStaticSkill: 1
-  ExploRadius: 0
   HitLayers:
     serializedVersion: 2
     m_Bits: 10240
   Damage: 8
   hasKnockBack: 1
+  ThrowDistance: 7
   KnockBackMag: 5.5
 --- !u!114 &11411374
 MonoBehaviour:
@@ -2018,6 +2020,7 @@ MonoBehaviour:
   Cooldown: 2
   canDrop: 0
   cost: 0
+  UseCount: 0
   isStaticSkill: 1
   HealAmount: 60
   AreaRadius: 3
@@ -2033,6 +2036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795f99c4c8dccdc479e0b16a91ed075b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExploPreFab: {fileID: 0}
 --- !u!114 &11432944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2113,6 +2117,7 @@ MonoBehaviour:
   Cooldown: .00100000005
   canDrop: 0
   cost: 0
+  UseCount: 0
   isStaticSkill: 1
   ToggleLightBox: {fileID: 138264}
   BoxRadius: .5

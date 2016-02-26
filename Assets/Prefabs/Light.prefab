@@ -8,14 +8,14 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430072}
+  - 114: {fileID: 11478208}
   - 33: {fileID: 3311810}
   - 23: {fileID: 2340496}
   - 58: {fileID: 5863208}
   - 114: {fileID: 11444198}
   - 114: {fileID: 11477160}
-  - 58: {fileID: 5819258}
   - 114: {fileID: 11409118}
-  - 114: {fileID: 11478208}
+  - 114: {fileID: 11433860}
   m_Layer: 8
   m_Name: Light
   m_TagString: Light
@@ -48,7 +48,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 479766}
   - 212: {fileID: 21200060}
-  m_Layer: 8
+  - 58: {fileID: 5884182}
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114494}
   m_LocalRotation: {x: 0, y: 0, z: .923879564, w: .382683307}
-  m_LocalPosition: {x: -30.7693443, y: 28.3864536, z: -1}
+  m_LocalPosition: {x: -26.2918606, y: -41.8353424, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 479766}
@@ -126,19 +127,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114494}
   m_Mesh: {fileID: 0}
---- !u!58 &5819258
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114494}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: .5
 --- !u!58 &5863208
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -152,6 +140,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.60000002
+--- !u!58 &5884182
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155008}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: .5
 --- !u!60 &6070464
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -166,31 +167,31 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: 0}
-      - {x: 22.6350632, y: 9.37570858}
-      - {x: 22.9297066, y: 8.63009167}
-      - {x: 23.1997967, y: 7.87523603}
-      - {x: 23.4450455, y: 7.1119442}
-      - {x: 23.6651897, y: 6.3410368}
-      - {x: 23.8599892, y: 5.56333923}
-      - {x: 24.0292416, y: 4.77968502}
-      - {x: 24.1727657, y: 3.99091434}
-      - {x: 24.2904015, y: 3.19786644}
-      - {x: 24.3820267, y: 2.40139961}
-      - {x: 24.4475422, y: 1.602355}
-      - {x: 24.4868832, y: .801597595}
-      - {x: 24.5, y: -1.8119812e-05}
-      - {x: 24.4868813, y: -.801633835}
-      - {x: 24.4475403, y: -1.60239124}
-      - {x: 24.3820229, y: -2.40143394}
-      - {x: 24.2903938, y: -3.19790268}
-      - {x: 24.1727619, y: -3.99094772}
-      - {x: 24.0292397, y: -4.77972126}
-      - {x: 23.8599854, y: -5.56337166}
-      - {x: 23.665184, y: -6.34106922}
-      - {x: 23.445034, y: -7.11197758}
-      - {x: 23.1997871, y: -7.87526655}
-      - {x: 22.9296951, y: -8.63012505}
-      - {x: 22.635046, y: -9.37574482}
+      - {x: 22.6350594, y: 9.37570953}
+      - {x: 22.9297085, y: 8.63009357}
+      - {x: 23.1997986, y: 7.8752327}
+      - {x: 23.4450474, y: 7.11194229}
+      - {x: 23.6651897, y: 6.34103394}
+      - {x: 23.859993, y: 5.56333828}
+      - {x: 24.0292435, y: 4.77968502}
+      - {x: 24.1727676, y: 3.9909153}
+      - {x: 24.2903996, y: 3.19786549}
+      - {x: 24.3820267, y: 2.40139771}
+      - {x: 24.4475441, y: 1.602355}
+      - {x: 24.4868832, y: .801599503}
+      - {x: 24.5, y: -2.00271606e-05}
+      - {x: 24.4868813, y: -.801634789}
+      - {x: 24.4475441, y: -1.60239124}
+      - {x: 24.3820248, y: -2.40143204}
+      - {x: 24.2903976, y: -3.19790173}
+      - {x: 24.17276, y: -3.99094868}
+      - {x: 24.0292358, y: -4.77972126}
+      - {x: 23.8599834, y: -5.56337357}
+      - {x: 23.6651821, y: -6.34107113}
+      - {x: 23.4450378, y: -7.11197853}
+      - {x: 23.1997871, y: -7.87526751}
+      - {x: 22.9296951, y: -8.63012409}
+      - {x: 22.6350479, y: -9.37574387}
 --- !u!114 &11409118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,6 +205,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AffectsGrid: 1
   AffectsAI: 1
+--- !u!114 &11433860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6550b509401494945997ec29d61c6b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 2
 --- !u!114 &11444198
 MonoBehaviour:
   m_ObjectHideFlags: 1

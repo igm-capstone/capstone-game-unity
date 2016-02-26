@@ -627,7 +627,8 @@ GameObject:
   - 114: {fileID: 11478992}
   - 114: {fileID: 11419616}
   - 114: {fileID: 11499490}
-  - 114: {fileID: 11488056}
+  - 114: {fileID: 11405936}
+  - 114: {fileID: 11464632}
   - 114: {fileID: 11473330}
   - 114: {fileID: 11459288}
   - 114: {fileID: 11467360}
@@ -1047,7 +1048,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.4361725, y: 5.36623669, z: 0}
+  m_LocalPosition: {x: -56.5552292, y: -69.6392288, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 437546}
@@ -2021,6 +2022,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11405936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157710}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6550b509401494945997ec29d61c6b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 1
 --- !u!114 &11410476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2071,6 +2084,7 @@ MonoBehaviour:
   Cooldown: 0
   canDrop: 0
   cost: 0
+  UseCount: 3
   isStaticSkill: 1
 --- !u!114 &11444976
 MonoBehaviour:
@@ -2141,7 +2155,30 @@ MonoBehaviour:
   Cooldown: 2.5
   canDrop: 0
   cost: 0
+  UseCount: 0
   isStaticSkill: 1
+--- !u!114 &11464632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157710}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d8cabc79ffbce489ee77d61bdb05ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+  SkillSprite: {fileID: 21300000, guid: 37ecfd6470428cd4299e1d6364ec9938, type: 3}
+  Name: InteractSkill
+  Cooldown: 0
+  canDrop: 0
+  cost: 0
+  UseCount: 0
+  isStaticSkill: 1
+  IntrctBoxDist: .400000006
+  IntrctBoxRad: 1
+  ReviveHealPrcnt: .200000003
 --- !u!114 &11467360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2159,6 +2196,7 @@ MonoBehaviour:
   Cooldown: 2.5
   canDrop: 0
   cost: 0
+  UseCount: 0
   isStaticSkill: 1
 --- !u!114 &11473330
 MonoBehaviour:
@@ -2177,6 +2215,7 @@ MonoBehaviour:
   Cooldown: .400000006
   canDrop: 0
   cost: 0
+  UseCount: 0
   isStaticSkill: 1
   HitLayers:
     serializedVersion: 2
@@ -2195,7 +2234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795f99c4c8dccdc479e0b16a91ed075b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExploPreFab: {fileID: 0}
+  ExploPreFab: {fileID: 194436, guid: 4955546646734d74680f7720f3ae9f1a, type: 2}
 --- !u!114 &11478992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2214,26 +2253,6 @@ MonoBehaviour:
   waitTimeRestoreEnergy: 2
   restoreAmount: 5
   energyUiPrefab: {fileID: 0}
---- !u!114 &11488056
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 157710}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 910650029a8550c48b0bff0235dc6852, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 8254e0dfe1a6b524c8bb7a7f0f242cd4, type: 3}
-  Name: ToggleLights
-  Cooldown: .00100000005
-  canDrop: 0
-  cost: 0
-  isStaticSkill: 1
-  ToggleLightBox: {fileID: 134274}
-  BoxRadius: .5
 --- !u!114 &11491262
 MonoBehaviour:
   m_ObjectHideFlags: 1

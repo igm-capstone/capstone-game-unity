@@ -56,6 +56,7 @@ public class Heal : ISkill
 
         foreach (var p in players)
         {
+            // NEgative damage means healing.
             avatarNetwork.CmdAssignDamage(p.gameObject, -HealAmount);
         }
         return null;

@@ -25,6 +25,8 @@ public class TrapBehavior : MonoBehaviour {
     bool mustApplyEffect;
     bool isTrapActive;
 
+    LayerMask hitLayers;
+
     // Use this for initialization
     void Awake ()
     {
@@ -49,7 +51,9 @@ public class TrapBehavior : MonoBehaviour {
             mustApplyEffect = true;
         }
 
-	}
+        hitLayers = 1 << LayerMask.NameToLayer("Minion") | 1 << LayerMask.NameToLayer("Player");
+
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -176,14 +180,17 @@ public class TrapBehavior : MonoBehaviour {
         {
 
             // Stop slowdown on all current affected targets before destroying trap.
-            var curTrgts = Physics2D.OverlapCircleAll(transform.position, trapTriggerRadius);
+            var curTrgts = Physics2D.OverlapCircleAll(transform.position, trapTriggerRadius, hitLayers);
+
             foreach (var trgt in curTrgts)
             {
                 if (TrapPlayerObj.GetComponent<SetTrapGlue>() != null)
                 {
+                    
                     if (trgt.GetComponent<AvatarController>() != null ||
                         trgt.GetComponent<TargetFollower>() != null)
                     {
+                    
                         // Stop glue trap effect on target
                         TrapPlayerObj.GetComponent<AvatarNetworkBehavior>().CmdStopSlowDown(trgt.gameObject);
                     }// if

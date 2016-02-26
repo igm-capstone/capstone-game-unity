@@ -87,4 +87,13 @@ public abstract class ISkill : MonoBehaviour
         // Apply rotation
         transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(LookPosY, LookPosX) * Mathf.Rad2Deg, Vector3.forward);
     }
+
+    //Gets the Position a set distance forward from the avatar.
+    protected Vector3 GetPosForwardFromAvatar(float _dist)
+    {
+
+        Vector3 retPosition = transform.position + (transform.GetChild(0).transform.right * _dist);
+
+        return retPosition;
+    }
 }

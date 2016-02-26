@@ -66,11 +66,12 @@ public class GrenadeToss : ISkill
         GetComponent<AvatarController>().isAttacking = true;
 
         // Calculate Explosion position
-        ExploPos = transform.position + (transform.GetChild(0).transform.right * ThrowDistance);
+        ExploPos = GetPosForwardFromAvatar(ThrowDistance);
 
+        // Instantiate explosion
         GetComponent<AvatarNetworkBehavior>().CmdSpawnExplosion(ExploPos);
 
-        // Get targets
+        // Get targets hit
         var TargetsHit = Physics2D.OverlapCircleAll(ExploPos, ExploRadius, HitLayers);
 
         foreach (var trgt in TargetsHit)

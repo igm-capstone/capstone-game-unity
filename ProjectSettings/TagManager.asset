@@ -32,8 +32,8 @@ TagManager:
   - Trap
   - Door
   - CPPCollision
-  - 
-  - 
+  - HideSpot
+  - Goal
   - 
   - 
   - 

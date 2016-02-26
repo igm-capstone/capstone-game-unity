@@ -39,7 +39,6 @@ public class AvatarController : MonoBehaviour
         // Game Balance Adjust => Makes Speed number comparable to Minion Speed number.
         CalcMoveSpeed = MoveSpeed / SpeedAdjust;
         slowDownMod = 1.0f;
-
     }
 
     void Start()

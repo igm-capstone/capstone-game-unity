@@ -7,6 +7,9 @@ public class ToggleLights : ISkill
     public GameObject ToggleLightBox;
     public float BoxRadius = 1f;
 
+    Vector3 TogglePos;
+    float ToggleSize;
+
     LayerMask LightMask;
 
     public void Awake()
