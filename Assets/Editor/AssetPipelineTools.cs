@@ -322,7 +322,14 @@ public class AssetPipelineTools
                 }
 
                 var value = propPair.Key.GetValue(behaviour, null);
-                jobj.Add(name, new JValue(value));
+                if (value is Bounds)
+                {
+                    jobj.Add(name, ToJToken((Bounds)value));
+                }
+                else
+                {
+                    jobj.Add(name, new JValue(value));
+                }
             }
 
             array.Add(jobj);
@@ -392,10 +399,9 @@ public class AssetPipelineTools
         {
             var mesh = transform.GetComponentInChildren<MeshFilter>();
             if (mesh)
-            {
-                Bounds bounds = new Bounds(transform.position, Vector3.zero);
+            { 
+                Bounds bounds = new Bounds(transform.TransformPoint(mesh.sharedMesh.bounds.min), Vector3.zero);
                 bounds.Encapsulate(transform.TransformPoint(mesh.sharedMesh.bounds.max));
-                bounds.Encapsulate(transform.TransformPoint(mesh.sharedMesh.bounds.min));
                 jobj.Add("bounds", ToJToken(bounds));
             }
         }

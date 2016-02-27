@@ -6,6 +6,19 @@ public class Door : MonoBehaviour
     public bool isOpen = false;
     [Export]
     public bool canOpen = true;
+
+    [Export]
+    public Bounds bounds
+    {
+        get
+        {
+            Bounds localBounds = transform.Find("Mesh").GetComponent<MeshFilter>().sharedMesh.bounds;
+            Bounds bounds = new Bounds(transform.TransformPoint(localBounds.min), Vector3.zero);
+            bounds.Encapsulate(transform.TransformPoint(localBounds.max));
+            return bounds;
+        }
+    }
+
     private Animator animator;
 
     void Awake()
