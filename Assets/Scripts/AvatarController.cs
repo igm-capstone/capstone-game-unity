@@ -60,6 +60,7 @@ public class AvatarController : MonoBehaviour
         
     }
 
+    /*
     void Update()
     {
         if (GetDoor() && Input.GetKeyDown(KeyCode.E))
@@ -68,6 +69,7 @@ public class AvatarController : MonoBehaviour
             doorToOpen = null;
         }
     }
+    */
 
     private void Move()
     {
@@ -125,6 +127,7 @@ public class AvatarController : MonoBehaviour
         hauntedMinionAnimator = hauntMinionToControl.GetComponent<RpcNetworkAnimator>();
     }   
 
+    /*
     public bool GetDoor()
     {
         var door = Physics2D.OverlapCircle(transform.position, 2, 1 << LayerMask.NameToLayer("Door"));
@@ -136,6 +139,8 @@ public class AvatarController : MonoBehaviour
         else
             return false;
     }
+
+    */
 
     // Functions to apply slowdown on player
     public void StartSlowDown(float _slowRate)

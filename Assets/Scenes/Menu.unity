@@ -971,7 +971,7 @@ MonoBehaviour:
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
   m_OfflineScene: Menu
-  m_OnlineScene: LevelMVP - Design
+  m_OnlineScene: Level01
   m_SpawnPrefabs:
   - {fileID: 157710, guid: ddfaaa28f02042641864fa1a59641e7e, type: 2}
   - {fileID: 100808, guid: e18db561f2541d04aa973e3ca745c5b4, type: 2}
