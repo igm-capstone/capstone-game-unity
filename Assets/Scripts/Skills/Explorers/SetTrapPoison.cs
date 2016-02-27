@@ -12,7 +12,7 @@ public class SetTrapPoison : ISkill
         SlctdTrap = TrapType.Poison;
 
         // Set key code:
-        key = KeyCode.R;
+        key = KeyCode.Alpha1;
     }
 
     void Update()

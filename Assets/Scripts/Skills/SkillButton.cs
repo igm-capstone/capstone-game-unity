@@ -35,6 +35,22 @@ public class SkillButton : MonoBehaviour
             else if (_skill.key == KeyCode.Mouse1)
                 transform.Find("Key").GetComponent<Text>().text = "RMBtn";
 
+            else if (_skill.key == KeyCode.Alpha1)
+            {
+                transform.Find("Key").GetComponent<Text>().text = "1";
+            }
+            else if (_skill.key == KeyCode.Alpha2)
+            {
+                transform.Find("Key").GetComponent<Text>().text = "2";
+            }
+            else if (_skill.key == KeyCode.Alpha3)
+            {
+                transform.Find("Key").GetComponent<Text>().text = "3";
+            }
+            else if (_skill.key == KeyCode.Alpha4)
+            {
+                transform.Find("Key").GetComponent<Text>().text = "4";
+            }
             else
                 transform.Find("Key").GetComponent<Text>().text = _skill.key.ToString();
         }

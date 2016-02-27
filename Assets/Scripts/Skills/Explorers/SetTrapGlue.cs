@@ -12,7 +12,7 @@ public class SetTrapGlue : ISkill
         SlctdTrap = TrapType.Glue;
 
         // Set key code:
-        key = KeyCode.T;
+        key = KeyCode.Alpha2;
     }
 
     void Update()
