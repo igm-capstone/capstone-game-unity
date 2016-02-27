@@ -16,7 +16,7 @@ public class Sprint : ISkill
         avatarController = GetComponent<AvatarController>();
 
         // Set key code:
-        key = KeyCode.R;
+        key = KeyCode.Alpha1;
     }
 
     public void Update()
