@@ -15,6 +15,8 @@ public class InteractSkill :  ISkill
 
     LayerMask IntrctMask;
 
+    AvatarNetworkBehavior avatarNetBhvr;
+
     public void Awake()
     {
         // ISkill SetUps
@@ -23,6 +25,9 @@ public class InteractSkill :  ISkill
         isStaticSkill = true;
 
         key = KeyCode.E;
+
+
+        avatarNetBhvr = GetComponent<AvatarNetworkBehavior>();
 
         // Assign interact mask, maybe not necessary
         IntrctMask =  1 << LayerMask.NameToLayer("LightSwitch") | 
@@ -77,6 +82,8 @@ public class InteractSkill :  ISkill
         {
             case InteractableObject.Door:
                 Debug.Log("Interacting with a door!");
+                // This gets the Door Trigger, who is a child of the actual door.
+                avatarNetBhvr.CmdDoor(_targetObj.transform.parent.gameObject);
                 break;
 
             case InteractableObject.Player:
@@ -86,7 +93,7 @@ public class InteractSkill :  ISkill
                     Debug.Log("Interacting with a Lamp!");
                     // If player is disabled revive. Amount is rounded down
                     int HealAmount = Mathf.FloorToInt(_targetObj.GetComponent<Health>().BaseHealth * ReviveHealPrcnt);
-                    GetComponent<AvatarNetworkBehavior>().CmdAssignDamage(_targetObj, -HealAmount);
+                    avatarNetBhvr.CmdAssignDamage(_targetObj, -HealAmount);
                 }
                 break;
 
@@ -105,11 +112,11 @@ public class InteractSkill :  ISkill
                 // Change light status acordingly
                 if (lightScr.CurrentStatus == LightController.LghtStatus.On)
                 {
-                    GetComponent<AvatarNetworkBehavior>().CmdChangeLightStatus(lightScr.gameObject, LightController.LghtStatus.Dimmed);
+                    avatarNetBhvr.CmdChangeLightStatus(lightScr.gameObject, LightController.LghtStatus.Dimmed);
                 }
                 else if ((lightScr.CurrentStatus == LightController.LghtStatus.Dimmed) || lightScr.CurrentStatus == LightController.LghtStatus.Off)
                 {
-                    GetComponent<AvatarNetworkBehavior>().CmdChangeLightStatus(lightScr.gameObject, LightController.LghtStatus.On);
+                    avatarNetBhvr.CmdChangeLightStatus(lightScr.gameObject, LightController.LghtStatus.On);
                 }
                 break;
 
