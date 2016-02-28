@@ -58,18 +58,7 @@ public class AvatarController : MonoBehaviour
         }
 
         
-    }
-
-    /*
-    void Update()
-    {
-        if (GetDoor() && Input.GetKeyDown(KeyCode.E))
-        {
-            avatarNB.CmdDoor(doorToOpen);
-            doorToOpen = null;
-        }
-    }
-    */
+    }    
 
     private void Move()
     {
@@ -120,27 +109,13 @@ public class AvatarController : MonoBehaviour
 
     }
 
-    public void SetMinionToControl(GameObject minion)
+    public void SetMinionToControl(GameObject minion, bool hauntMinionActive)
     {
-        hauntEtoM = true;
+        hauntEtoM = hauntMinionActive;
         hauntMinionToControl = minion;
-        hauntedMinionAnimator = hauntMinionToControl.GetComponent<RpcNetworkAnimator>();
-    }   
-
-    /*
-    public bool GetDoor()
-    {
-        var door = Physics2D.OverlapCircle(transform.position, 2, 1 << LayerMask.NameToLayer("Door"));
-        if (door && door.transform.GetComponentInParent<Door>())
-        {
-            doorToOpen = door.transform.GetComponentInParent<Door>().gameObject;
-            return true;
-        }
-        else
-            return false;
-    }
-
-    */
+        if(hauntMinionToControl != null)
+            hauntedMinionAnimator = hauntMinionToControl.GetComponent<RpcNetworkAnimator>();
+    }       
 
     // Functions to apply slowdown on player
     public void StartSlowDown(float _slowRate)

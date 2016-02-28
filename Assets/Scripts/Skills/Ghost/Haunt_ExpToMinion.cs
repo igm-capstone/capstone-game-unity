@@ -11,7 +11,7 @@ public class Haunt_ExpToMinion : ISkill {
     {
         Name = "ExplorerToMinion";
         canDrop = false;
-        cost = 0;
+        cost = 0;       
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
@@ -20,7 +20,6 @@ public class Haunt_ExpToMinion : ISkill {
         
         var selfAc = target.GetComponent<AvatarNetworkBehavior>();
         MinionSpawnManager.Instance.CmdHauntSpawn(target.transform.position, MinionType.HauntMelee, target.GetComponentInParent<NetworkIdentity>().gameObject);
-        //target.GetComponentInParent<NetworkIdentity>().gameObject.GetComponent<AvatarController>().hauntEtoM = true;
         return null;
     }    
 }
