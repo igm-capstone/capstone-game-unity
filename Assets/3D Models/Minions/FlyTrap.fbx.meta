@@ -1,0 +1,169 @@
+fileFormatVersion: 2
+guid: d3821c6e97c95b04a9790de9c96951ed
+timeCreated: 1456606421
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Flytrap_UV__1_:Flytrap
+    100004: JNT_Body_Connector
+    100006: JNT_Root
+    100008: JNT_Snek_FlowerStem_2_1
+    100010: JNT_Snek_FlowerStem_2_2
+    100012: JNT_Snek_FlowerStem_2_3
+    100014: JNT_Snek_FlowerStem_2_4
+    100016: JNT_Snek_FlowerStem_2_5
+    100018: JNT_Snek_FlowerStem_2_6
+    100020: JNT_Snek_FlowerStem_2_7
+    100022: JNT_Snek_FlowerStem_2_8
+    100024: JNT_Snek_Head1_Part_1
+    100026: JNT_Snek_Head1_Part_2
+    100028: JNT_Snek_Head1_Part_3
+    100030: JNT_Snek_Head1_Part_4
+    100032: JNT_Snek_Head1_Part_5
+    100034: JNT_Snek_Head1_Part_6
+    100036: JNT_Snek_Head2_Part_1
+    100038: JNT_Snek_Head2_Part_2
+    100040: JNT_Snek_Head2_Part_3
+    100042: JNT_Snek_Head2_Part_4
+    100044: JNT_Snek_Head2_Part_5
+    100046: JNT_Snek_Head2_Part_6
+    100048: JNT_Snek_Stem_1_1
+    100050: JNT_Snek_Stem_1_2
+    100052: JNT_Snek_Stem_1_3
+    100054: JNT_Snek_Stem_1_4
+    100056: JNT_Snek_Stem_1_5
+    100058: JNT_Snek_Stem_1_6
+    100060: JNT_Snek_Stem_1_7
+    100062: JNT_Snek_Stem_2_1
+    100064: JNT_Snek_Stem_2_2
+    100066: JNT_Snek_Stem_2_3
+    100068: JNT_Snek_Stem_2_4
+    100070: JNT_Snek_Stem_2_5
+    100072: JNT_Snek_Stem_2_6
+    100074: JNT_Snek_Stem_2_7
+    100076: Snek_Flower_Stem_1_1
+    100078: Snek_Flower_Stem_1_2
+    100080: Snek_Flower_Stem_1_3
+    100082: Snek_Flower_Stem_1_4
+    100084: Snek_Flower_Stem_1_5
+    100086: Snek_Flower_Stem_1_6
+    100088: Snek_Flower_Stem_1_7
+    100090: Snek_Flower_Stem_1_8
+    100092: Snek_Flower_Stem_1_9
+    400000: //RootNode
+    400002: Flytrap_UV__1_:Flytrap
+    400004: JNT_Body_Connector
+    400006: JNT_Root
+    400008: JNT_Snek_FlowerStem_2_1
+    400010: JNT_Snek_FlowerStem_2_2
+    400012: JNT_Snek_FlowerStem_2_3
+    400014: JNT_Snek_FlowerStem_2_4
+    400016: JNT_Snek_FlowerStem_2_5
+    400018: JNT_Snek_FlowerStem_2_6
+    400020: JNT_Snek_FlowerStem_2_7
+    400022: JNT_Snek_FlowerStem_2_8
+    400024: JNT_Snek_Head1_Part_1
+    400026: JNT_Snek_Head1_Part_2
+    400028: JNT_Snek_Head1_Part_3
+    400030: JNT_Snek_Head1_Part_4
+    400032: JNT_Snek_Head1_Part_5
+    400034: JNT_Snek_Head1_Part_6
+    400036: JNT_Snek_Head2_Part_1
+    400038: JNT_Snek_Head2_Part_2
+    400040: JNT_Snek_Head2_Part_3
+    400042: JNT_Snek_Head2_Part_4
+    400044: JNT_Snek_Head2_Part_5
+    400046: JNT_Snek_Head2_Part_6
+    400048: JNT_Snek_Stem_1_1
+    400050: JNT_Snek_Stem_1_2
+    400052: JNT_Snek_Stem_1_3
+    400054: JNT_Snek_Stem_1_4
+    400056: JNT_Snek_Stem_1_5
+    400058: JNT_Snek_Stem_1_6
+    400060: JNT_Snek_Stem_1_7
+    400062: JNT_Snek_Stem_2_1
+    400064: JNT_Snek_Stem_2_2
+    400066: JNT_Snek_Stem_2_3
+    400068: JNT_Snek_Stem_2_4
+    400070: JNT_Snek_Stem_2_5
+    400072: JNT_Snek_Stem_2_6
+    400074: JNT_Snek_Stem_2_7
+    400076: Snek_Flower_Stem_1_1
+    400078: Snek_Flower_Stem_1_2
+    400080: Snek_Flower_Stem_1_3
+    400082: Snek_Flower_Stem_1_4
+    400084: Snek_Flower_Stem_1_5
+    400086: Snek_Flower_Stem_1_6
+    400088: Snek_Flower_Stem_1_7
+    400090: Snek_Flower_Stem_1_8
+    400092: Snek_Flower_Stem_1_9
+    4300000: Flytrap_UV__1_:Flytrap
+    7400000: Flytrap_Export_Version
+    9500000: //RootNode
+    13700000: Flytrap_UV__1_:Flytrap
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

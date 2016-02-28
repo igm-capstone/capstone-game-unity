@@ -56,9 +56,9 @@ public class AvatarController : MonoBehaviour
             _rb.velocity = new Vector2(0, 0);
             HelpMessage.Instance.SetMessage("You are incapacitated. Seek help!");
         }
-
-        
     }
+
+
 
     private void Move()
     {
@@ -99,12 +99,13 @@ public class AvatarController : MonoBehaviour
 
     }
 
-    public void SetMinionToControl(GameObject minion)
+    public void SetMinionToControl(GameObject minion, bool hauntMinionActive)
     {
-        hauntEtoM = true;
+        hauntEtoM = hauntMinionActive;
         hauntMinionToControl = minion;
-        hauntedMinionAnimator = hauntMinionToControl.GetComponent<RpcNetworkAnimator>();
-    }   
+        if(hauntMinionToControl != null)
+            hauntedMinionAnimator = hauntMinionToControl.GetComponent<RpcNetworkAnimator>();
+    }
 
     // Functions to apply slowdown on player
     public void StartSlowDown(float _slowRate)

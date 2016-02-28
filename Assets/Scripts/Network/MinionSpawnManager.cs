@@ -100,7 +100,7 @@ public class MinionSpawnManager : NetworkBehaviour
     }
 
     [Command]
-    public void CmdHauntSpawn(Vector3 position, MinionType minType, GameObject Explorer)
+    public void CmdHauntSpawn(Vector3 position, MinionType minType, GameObject explorer)
     {
         GameObject minion;
         switch (minType)
@@ -120,22 +120,29 @@ public class MinionSpawnManager : NetworkBehaviour
 
         
         NetworkServer.Spawn(minion);
-        RpcSetParent(minion, Explorer);
+        RpcSetParent(minion, explorer);
         DisableMinion(minion);
+        StartCoroutine(FinishHauntEtoM(15,minion,explorer));
+
     }
 
     [ClientRpc]
-    void RpcSetParent(GameObject minion, GameObject player)
+    void RpcSetParent(GameObject minion, GameObject explorer)
     {
-        minion.transform.SetParent(player.transform.FindChild("AvatarRotation").gameObject.transform);
+        minion.transform.SetParent(explorer.transform.FindChild("AvatarRotation").gameObject.transform);
         minion.transform.localRotation = Quaternion.Euler(0,0,-90);
-        player.GetComponent<AvatarController>().SetMinionToControl(minion);
 
-        if (GameObject.Find("Me") == player || isServer)
+        if (GameObject.Find("Me") == explorer || isServer)
+        {
             DisableMinion(minion);
+        }
         else
+        {
             //disable exlorer model
-            player.transform.FindChild("AvatarRotation").transform.FindChild("AllAnimsInOne").gameObject.SetActive(false);
+            explorer.transform.FindChild("AvatarRotation").transform.FindChild("AllAnimsInOne").gameObject.SetActive(false);
+            explorer.transform.FindChild("ClassAura").gameObject.SetActive(false);
+            explorer.GetComponent<AvatarController>().SetMinionToControl(minion,true);
+        }
 
     }
 
@@ -152,6 +159,28 @@ public class MinionSpawnManager : NetworkBehaviour
         foreach (var s in minion.GetComponentsInChildren<Canvas>())
         {
             s.gameObject.SetActive(false);
+        }
+    }
+    
+    public IEnumerator FinishHauntEtoM(float skillTime, GameObject minion, GameObject explorer)
+    {
+        yield return new WaitForSeconds(skillTime);
+        //Destroy minion
+        NetworkServer.Destroy(minion);
+        //Enable explorer again for client
+        RpcEnableExplorer(explorer);
+
+    }
+
+    [ClientRpc]
+    public void RpcEnableExplorer(GameObject explorer)
+    {
+        if (!(GameObject.Find("Me") == explorer || isServer))
+        {
+            //enable exlorer model
+            explorer.transform.FindChild("AvatarRotation").transform.FindChild("AllAnimsInOne").gameObject.SetActive(true);
+            explorer.transform.FindChild("ClassAura").gameObject.SetActive(true);
+            explorer.GetComponent<AvatarController>().SetMinionToControl(null, false);
         }
     }
 }
