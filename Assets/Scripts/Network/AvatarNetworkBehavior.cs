@@ -145,15 +145,15 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     }
 
     [Command]
-    public void CmdSetTrapExplorer(Vector3 position, TrapType _SlctdTrap)
+    public void CmdSetTrapExplorer(Vector3 _position, TrapType _slctdTrap)
     {
-        TrapSpawnManager.Instance.CmdSetTrap(transform.position, _SlctdTrap);
+        TrapSpawnManager.Instance.CmdSetTrap(_position, _slctdTrap);
     }
 
     [Command]
-    public void CmdSetLantExplorer(Vector3 position, LanternType _SlctdLant)
+    public void CmdSetLantExplorer(Vector3 _position, LanternType _slctdLant)
     {
-        LanternSpawnManager.Instance.CmdSetLantern(transform.position, _SlctdLant);
+        LanternSpawnManager.Instance.CmdSetLantern(_position, _slctdLant);
     }
 
     [Command]

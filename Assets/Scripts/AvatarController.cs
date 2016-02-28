@@ -60,30 +60,10 @@ public class AvatarController : MonoBehaviour
         
     }
 
-    /*
-    void Update()
-    {
-        if (GetDoor() && Input.GetKeyDown(KeyCode.E))
-        {
-            avatarNB.CmdDoor(doorToOpen);
-            doorToOpen = null;
-        }
-    }
-    */
-
     private void Move()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-
-        /*
-        // Mouse and Key controls - Rotation
-        Vector3 mouseScreenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f);
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-        float LookPosX = mouseWorldPos.x - transform.position.x;
-        float LookPosY = mouseWorldPos.y - transform.position.y;
-        transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(LookPosY, LookPosX) * Mathf.Rad2Deg, Vector3.forward);
-        */
 
         if (isAttacking == false)
         {
@@ -101,7 +81,6 @@ public class AvatarController : MonoBehaviour
             {
                 hauntedMinionAnimator.SetFloat("Speed", _rb.velocity.magnitude);
             }
-
 
         }
         else
@@ -126,21 +105,6 @@ public class AvatarController : MonoBehaviour
         hauntMinionToControl = minion;
         hauntedMinionAnimator = hauntMinionToControl.GetComponent<RpcNetworkAnimator>();
     }   
-
-    /*
-    public bool GetDoor()
-    {
-        var door = Physics2D.OverlapCircle(transform.position, 2, 1 << LayerMask.NameToLayer("Door"));
-        if (door && door.transform.GetComponentInParent<Door>())
-        {
-            doorToOpen = door.transform.GetComponentInParent<Door>().gameObject;
-            return true;
-        }
-        else
-            return false;
-    }
-
-    */
 
     // Functions to apply slowdown on player
     public void StartSlowDown(float _slowRate)
