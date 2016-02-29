@@ -22,10 +22,7 @@ public class InteractSkill :  ISkill
         // ISkill SetUps
         Name = "InteractSkill";
         canDrop = false;
-        isStaticSkill = true;
-
         key = KeyCode.E;
-
 
         avatarNetBhvr = GetComponent<AvatarNetworkBehavior>();
 

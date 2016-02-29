@@ -27,13 +27,14 @@ public class EquippedSkill : MonoBehaviour
 
         foreach (var skill in allSkillScrpts)
         {
-            Debug.Log("Skills found: " + skill);
+            /*
             // If skill is not static, adds to skill list
             if (!skill.isStaticSkill)
             {
                 skillList.Add(skill);
                 skill.enabled = false;
             }// if
+            */
         }// foreach
 
         // Only one non-static skill found, enable it and disable this script
