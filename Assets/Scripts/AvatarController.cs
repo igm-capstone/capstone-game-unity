@@ -56,23 +56,14 @@ public class AvatarController : MonoBehaviour
             _rb.velocity = new Vector2(0, 0);
             HelpMessage.Instance.SetMessage("You are incapacitated. Seek help!");
         }
+    }
 
-        
-    }    
+
 
     private void Move()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-
-        /*
-        // Mouse and Key controls - Rotation
-        Vector3 mouseScreenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f);
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-        float LookPosX = mouseWorldPos.x - transform.position.x;
-        float LookPosY = mouseWorldPos.y - transform.position.y;
-        transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(LookPosY, LookPosX) * Mathf.Rad2Deg, Vector3.forward);
-        */
 
         if (isAttacking == false)
         {
@@ -90,7 +81,6 @@ public class AvatarController : MonoBehaviour
             {
                 hauntedMinionAnimator.SetFloat("Speed", _rb.velocity.magnitude);
             }
-
 
         }
         else
@@ -115,7 +105,7 @@ public class AvatarController : MonoBehaviour
         hauntMinionToControl = minion;
         if(hauntMinionToControl != null)
             hauntedMinionAnimator = hauntMinionToControl.GetComponent<RpcNetworkAnimator>();
-    }       
+    }
 
     // Functions to apply slowdown on player
     public void StartSlowDown(float _slowRate)

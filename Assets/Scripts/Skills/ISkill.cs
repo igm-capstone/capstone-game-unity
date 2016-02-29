@@ -15,7 +15,7 @@ public abstract class ISkill : MonoBehaviour
     public int UseCount = 0;
 
     // Used for EquippedSkill.
-    public bool isStaticSkill = true;
+    //public bool isStaticSkill = true;
 
     [NonSerialized] public KeyCode key = KeyCode.None;
     [NonSerialized] public bool IsActive;
@@ -92,7 +92,6 @@ public abstract class ISkill : MonoBehaviour
     //Gets the Position a set distance forward from the avatar.
     protected Vector3 GetPosForwardFromAvatar(float _dist)
     {
-
         Vector3 retPosition = transform.position + (transform.GetChild(0).transform.right * _dist);
 
         return retPosition;

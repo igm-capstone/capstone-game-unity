@@ -4,12 +4,16 @@ using System.Linq;
 public class SetTrapPoison : ISkill
 {
     TrapType SlctdTrap;
+
+    public float spawnDistance;
+    Vector3 spawnPosition;
     public void Awake()
     {
         Name = "SetTrapPoison";
         canDrop = false;
 
         SlctdTrap = TrapType.Poison;
+        spawnDistance = 1.0f;
 
         // Set key code:
         key = KeyCode.Alpha1;
@@ -25,11 +29,19 @@ public class SetTrapPoison : ISkill
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
-
+        // Face mouse direction
         TurnToMousePos();
 
-        GetComponent<AvatarNetworkBehavior>().CmdSetTrapExplorer(transform.position, SlctdTrap);
+        spawnPosition = GetPosForwardFromAvatar(spawnDistance);
+
+        // Use skill
+        GetComponent<AvatarNetworkBehavior>().CmdSetTrapExplorer(spawnPosition, SlctdTrap);
         return null;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(spawnPosition, 0.5f);
     }
 }
 

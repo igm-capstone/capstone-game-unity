@@ -16,6 +16,7 @@ public class TrapBehavior : MonoBehaviour {
     public float trapTriggerRadius;
     public float Duration;
     public float EffectTime;   // The time in between applications of the trap effect. A "2" would mean that the effect is applied every 2 seconds.
+    public float StartUpTime = 2.0f;
     public bool AffectPlayers = false;
 
     public int PoisonDamage;
@@ -23,12 +24,13 @@ public class TrapBehavior : MonoBehaviour {
     public float SpringKnockForce;
 
     bool mustApplyEffect;
+    bool hasStartUpEnded;
     bool isTrapActive;
 
     LayerMask hitLayers;
 
     // Use this for initialization
-    void Awake ()
+    void Start ()
     {
         // Component Getters
         TriggerCol = GetComponentInChildren<CircleCollider2D>();
@@ -38,6 +40,7 @@ public class TrapBehavior : MonoBehaviour {
 
         // Starting Values
         mustApplyEffect = false;
+        hasStartUpEnded = false;
         isTrapActive = false;
 
         if (MyType == TrapType.Poison || MyType == TrapType.Glue)
@@ -53,10 +56,19 @@ public class TrapBehavior : MonoBehaviour {
 
         hitLayers = 1 << LayerMask.NameToLayer("Minion") | 1 << LayerMask.NameToLayer("Player");
 
+        // Begins counting time for StartUp
+        StartCoroutine(StartUpTimer(StartUpTime));
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        // Waits for end of startup.
+        if (!hasStartUpEnded)
+        {
+            return;
+        }
+
         if (isTrapActive == false && (other.gameObject.layer == LayerMask.NameToLayer("Minion") ||
                                         (AffectPlayers && other.gameObject.layer == LayerMask.NameToLayer("Player"))))
         {
@@ -67,6 +79,12 @@ public class TrapBehavior : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
+
+        if (isTrapActive == false)
+        {
+            return;
+        }
+
         if (mustApplyEffect &&(other.gameObject.layer == LayerMask.NameToLayer("Minion") ||
             (AffectPlayers && other.gameObject.layer == LayerMask.NameToLayer("Player"))))
         {
@@ -76,6 +94,11 @@ public class TrapBehavior : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D other)
     {
+        if (isTrapActive == false)
+        {
+            return;
+        }
+
         if (MyType == TrapType.Glue) 
         {
             if (TrapPlayerObj.GetComponent<SetTrapGlue>() != null)
@@ -125,8 +148,6 @@ public class TrapBehavior : MonoBehaviour {
     // Applies the Trap Effect on a Target.
     void ApplyTrapEffect(TrapType _MyType, GameObject TargetObj)
     {
-        
-
         switch (_MyType)
         {
             case TrapType.Poison:
@@ -169,6 +190,13 @@ public class TrapBehavior : MonoBehaviour {
 
         // Resets timer for next 
         StartCoroutine(EffectTimer(_EffectTime));
+    }
+
+    // Wait for Trap Effect Time to apply the Trap effect.
+    IEnumerator StartUpTimer(float _starttUpTime)
+    {
+        yield return new WaitForSeconds(_starttUpTime);
+        hasStartUpEnded = true; ;
     }
 
     // Duration timer of trap. Destroy itself after some time.

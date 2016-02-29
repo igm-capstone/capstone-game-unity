@@ -4,12 +4,37 @@ using System.Linq;
 public class SpawnMinion : ISkill
 {
     public float distanceFromPlayers = 5f;
+    SkillBar mySkillBar;
 
     public void Awake()
     {
         Name = "SpawnMinion";
         canDrop = false;
         cost = 10;
+
+        mySkillBar = GetComponent<SkillBar>();
+    }
+
+    public void Update()
+    {
+        // If this skill is active, draw UI for all players.
+        if (mySkillBar.GetActiveSkill() == this)
+        {
+            var PlayerList = GameObject.FindGameObjectsWithTag("Player");
+            foreach (var plyr in PlayerList)
+            {
+                plyr.transform.GetChild(3).gameObject.SetActive(true);
+            }
+            
+        }
+        else
+        {
+            var PlayerList = GameObject.FindGameObjectsWithTag("Player");
+            foreach (var plyr in PlayerList)
+            {
+                plyr.transform.GetChild(3).gameObject.SetActive(false);
+            }
+        }
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
@@ -28,7 +53,7 @@ public class SpawnMinion : ISkill
         }
 
         var avatars = FindObjectsOfType<AvatarController>();
-        var sqrDist = distanceFromPlayers*distanceFromPlayers;
+        var sqrDist = distanceFromPlayers * distanceFromPlayers;
         var minDistance = avatars.Select(a => (a.transform.position - clickWorldPos).sqrMagnitude).OrderBy(d => d).FirstOrDefault();
 
         if (avatars.Any() && minDistance < sqrDist)

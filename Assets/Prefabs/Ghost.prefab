@@ -134,8 +134,9 @@ MonoBehaviour:
   Cooldown: 2
   canDrop: 0
   cost: 0
-  isStaticSkill: 1
+  UseCount: 0
   distanceFromPlayers: 5
+  SpawnUIPrefab: {fileID: 150076, guid: 16232b9ae9288b248905ae49d824d8f6, type: 2}
 --- !u!114 &11430948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,7 +178,7 @@ MonoBehaviour:
   Cooldown: 6
   canDrop: 0
   cost: 0
-  isStaticSkill: 1
+  UseCount: 0
 --- !u!114 &11452076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -259,7 +260,7 @@ MonoBehaviour:
   Cooldown: 2
   canDrop: 0
   cost: 0
-  isStaticSkill: 1
+  UseCount: 0
   HauntMeleeMinion: {fileID: 155754, guid: 3555dcae92f866f4db1693d6a8442a24, type: 2}
 --- !u!114 &11478774
 MonoBehaviour:
@@ -278,7 +279,7 @@ MonoBehaviour:
   Cooldown: 2
   canDrop: 0
   cost: 0
-  isStaticSkill: 1
+  UseCount: 0
   distanceFromPlayers: 5
 --- !u!114 &11485708
 MonoBehaviour:
@@ -297,7 +298,7 @@ MonoBehaviour:
   Cooldown: 2
   canDrop: 0
   cost: 0
-  isStaticSkill: 1
+  UseCount: 0
   Duration: 10
   Radius: 10
   Minions: 3
@@ -481,6 +482,14 @@ Prefab:
       propertyPath: restoreAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: canDrop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SpawnUIPrefab
+      value: 
+      objectReference: {fileID: 150076, guid: 16232b9ae9288b248905ae49d824d8f6, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196296}
