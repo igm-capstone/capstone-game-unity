@@ -5,17 +5,16 @@ using System;
 
 public class InteractSkill :  ISkill
 {
-    Vector3 IntrctBoxPos;
     public float IntrctBoxDist = 0.4f;
     public float IntrctBoxRad = 1;
 
     [SerializeField]
     [Range(0.0f, 1.0f)]
-    float ReviveHealPrcnt = 0.2f;
-
-    LayerMask IntrctMask;
-
-    AvatarNetworkBehavior avatarNetBhvr;
+    private float ReviveHealPrcnt = 0.2f;
+    private Vector3 IntrctBoxPos;
+    private LayerMask IntrctMask;
+    private AvatarNetworkBehavior avatarNetBhvr;
+    private bool isHiding = false;
 
     public void Awake()
     {
@@ -51,6 +50,8 @@ public class InteractSkill :  ISkill
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
+        if (GetComponent<AvatarController>().Disabled) return "You are incapacitated. Seek help!";
+
         IntrctBoxPos = GetPosForwardFromAvatar(IntrctBoxDist);
         // Detects light inside ToggleBox
         var HitTrgts = Physics2D.OverlapCircleAll(IntrctBoxPos, IntrctBoxRad, IntrctMask);
@@ -90,10 +91,10 @@ public class InteractSkill :  ISkill
                 Debug.Log("Interacting with a Player!");
                 if (_targetObj.GetComponent<AvatarController>().Disabled)
                 {
-                    Debug.Log("Interacting with a Lamp!");
+                    Debug.Log("Revive!");
                     // If player is disabled revive. Amount is rounded down
-                    int HealAmount = Mathf.FloorToInt(_targetObj.GetComponent<Health>().BaseHealth * ReviveHealPrcnt);
-                    avatarNetBhvr.CmdAssignDamage(_targetObj, -HealAmount);
+                    int ReviveAmount = Mathf.FloorToInt(_targetObj.GetComponent<Health>().BaseHealth * ReviveHealPrcnt);
+                    avatarNetBhvr.CmdAssignDamage(_targetObj, -ReviveAmount);
                 }
                 break;
 
@@ -117,6 +118,27 @@ public class InteractSkill :  ISkill
                 else if ((lightScr.CurrentStatus == LightController.LghtStatus.Dimmed) || lightScr.CurrentStatus == LightController.LghtStatus.Off)
                 {
                     avatarNetBhvr.CmdChangeLightStatus(lightScr.gameObject, LightController.LghtStatus.On);
+                }
+                break;
+
+            case InteractableObject.HidingSpot:
+                Debug.Log("Interacting with a HidingSpot!");                
+
+                var hideObj = Physics2D.OverlapCircle(transform.position, 3, 1 << LayerMask.NameToLayer("HideSpot"));
+
+                if (hideObj != null && !hideObj.GetComponent<HidingSpot>().isOccupied && !isHiding)
+                {
+                    isHiding = true;
+                    //hide the explorer in all views
+                    avatarNetBhvr.CmdHideExplorer(gameObject);
+
+                }
+                if (isHiding)
+                {
+                    isHiding = false;
+                    //show the explorer in all views
+                    avatarNetBhvr.CmdShowExplorer(gameObject);
+
                 }
                 break;
 

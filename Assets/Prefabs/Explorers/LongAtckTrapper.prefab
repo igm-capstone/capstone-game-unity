@@ -2082,7 +2082,6 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 8254e0dfe1a6b524c8bb7a7f0f242cd4, type: 3}
   Name: SetRegLantern
   Cooldown: 0
-  canDrop: 0
   cost: 0
   UseCount: 3
   isStaticSkill: 1
@@ -2153,7 +2152,6 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 66a5ec73656e2a94e97ff972fe39dc9e, type: 3}
   Name: Skill
   Cooldown: 2.5
-  canDrop: 0
   cost: 0
   UseCount: 0
   isStaticSkill: 1
@@ -2172,13 +2170,12 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 37ecfd6470428cd4299e1d6364ec9938, type: 3}
   Name: InteractSkill
   Cooldown: 0
-  canDrop: 0
   cost: 0
   UseCount: 0
   isStaticSkill: 1
   IntrctBoxDist: .400000006
   IntrctBoxRad: 1
-  ReviveHealPrcnt: .200000003
+  ReviveHealPrcnt: .400000006
 --- !u!114 &11467360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2194,7 +2191,6 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 99dcc3728c6f2c94a92f530fe19325b8, type: 3}
   Name: SetTrapGlue
   Cooldown: 2.5
-  canDrop: 0
   cost: 0
   UseCount: 0
   isStaticSkill: 1
@@ -2213,7 +2209,6 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 61165a2d681de2049b5296c3092ea42d, type: 3}
   Name: LongAttack
   Cooldown: .400000006
-  canDrop: 0
   cost: 0
   UseCount: 0
   isStaticSkill: 1
@@ -11116,11 +11111,27 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SkillSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 61165a2d681de2049b5296c3092ea42d,
+      objectReference: {fileID: 21300000, guid: ca14d521ba1358a44851490d1ac8c40c,
         type: 3}
     - target: {fileID: 0}
       propertyPath: Name
-      value: LongAttack
+      value: Hide
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explorer
+      value: 
+      objectReference: {fileID: 100808, guid: e18db561f2541d04aa973e3ca745c5b4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: FX
+      value: 
+      objectReference: {fileID: 482158, guid: 5ba6d8fad543f6b4ba43151a987472af, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ReviveHealPrcnt
+      value: .400000006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -37,7 +37,8 @@ public class Health : NetworkBehaviour
     {
         if (GetComponent<AvatarController>() != null)
         {
-            if (value > 0) animator.SetTrigger("TakeDamage");
+            if (value > 0 && CurrentHealth > 0) animator.SetTrigger("TakeDamage");
+            //Revive. Value < 0 = revive amount
             if (value < 0 && CurrentHealth <= 0) animator.SetBool("Dead", false);
         }
 

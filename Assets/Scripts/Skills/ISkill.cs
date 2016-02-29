@@ -9,6 +9,7 @@ public abstract class ISkill : MonoBehaviour
 
     public string Name = "Skill";
     public float Cooldown = 2;
+    [NonSerialized]
     public bool canDrop = false;
     public int cost = 0;
     public int UseCount = 0;

@@ -161,4 +161,19 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     {
         LightCtrl.GetComponent<LightController>().ChangeStatusTo(NxtStatus);
     }
+
+    [Command]
+    public void CmdHideExplorer(GameObject explorer)
+    {
+        explorer.transform.FindChild("AvatarRotation").gameObject.SetActive(false);
+        explorer.transform.FindChild("ClassAura").gameObject.SetActive(false);
+        explorer.GetComponent<AvatarController>().enabled = false;
+    }
+    [Command]
+    public void CmdShowExplorer(GameObject explorer)
+    {
+        explorer.transform.FindChild("AvatarRotation").gameObject.SetActive(true);
+        explorer.transform.FindChild("ClassAura").gameObject.SetActive(true);
+        explorer.GetComponent<AvatarController>().enabled = true;
+    }
 }

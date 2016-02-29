@@ -51,7 +51,9 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -105,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightSegments: 8
   lightRadius: 100
+  angle: 90
   lightMaterial: {fileID: 2100000, guid: 9dca8fb17abbe3143977f4c5d91420a8, type: 2}
   shadowMask:
     serializedVersion: 2
@@ -128,7 +131,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: shadowMask.m_Bits
+      value: 4286577403
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 144624}

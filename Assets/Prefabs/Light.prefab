@@ -249,7 +249,7 @@ MonoBehaviour:
   lightMaterial: {fileID: 0}
   shadowMask:
     serializedVersion: 2
-    m_Bits: 4294054600
+    m_Bits: 4285665992
 --- !u!114 &11478208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -319,7 +319,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: shadowMask.m_Bits
-      value: 4294054600
+      value: 4285665992
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: debug

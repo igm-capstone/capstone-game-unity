@@ -6,6 +6,7 @@ public enum InteractableObject
     Door,
     Player,
     Light,
+    HidingSpot,
     Goal
 }
 
@@ -25,7 +26,7 @@ public class InteractableBehavior : MonoBehaviour
 	
 	}
     // This will be used to implement Interactable Objects UI!
-    void OnCollisionStay2D(Collision2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
