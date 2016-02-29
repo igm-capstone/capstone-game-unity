@@ -45,6 +45,11 @@ public class MinionSpawnManager : NetworkBehaviour
                 robot = Instantiate(EnemyPrefab[1], position, Quaternion.identity) as GameObject;
                 break;
 
+            case MinionType.Plant:
+                // Prefab not completely done yet.
+                robot = Instantiate(EnemyPrefab[2], position, Quaternion.identity) as GameObject;
+                break;
+
             default:
                 robot = Instantiate(EnemyPrefab[0], position, Quaternion.identity) as GameObject;
                 break;

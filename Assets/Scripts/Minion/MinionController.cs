@@ -8,7 +8,8 @@ public enum MinionType
 {
     Meelee,
     AOEBomber,
-    HauntMelee
+    HauntMelee,
+    Plant
 }
 
 [RequireComponent(typeof(TargetFollower))]

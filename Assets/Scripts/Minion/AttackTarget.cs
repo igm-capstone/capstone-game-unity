@@ -108,6 +108,10 @@ public class AttackTarget : MinionBehaviour
                 }
                 break;
 
+            case MinionType.Plant:
+                Debug.Log("Minion type Plant not implemented yet");
+                break;
+
             default:
                 Debug.Log("Minion type Invalid!");
                 break;
