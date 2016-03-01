@@ -6,19 +6,9 @@ using System.Collections.Generic;
 public class GhostCamController : MonoBehaviour
 {
     public GameObject OuterWallsArray;
-    float SpdXAxis, SpdYAxis;
-    float ScrRightBorder, ScrLeftBorder, ScrUpBorder, ScrDownBorder;
-
     Transform GhostTransform;
-
     Camera GhostCam;
-
     Rect LvlBounds;
-
-    Vector3 LeftStep;
-    Vector3 RightStep;
-    Vector3 DownStep;
-    Vector3 UpStep;
 
     Vector2 LastWorldPosition;
     Vector2 cameraTarget;
@@ -32,34 +22,18 @@ public class GhostCamController : MonoBehaviour
         // Object Getters
         GhostTransform = transform.parent.transform;
         GhostCam = GetComponent<Camera>();
-        //GhostCam.orthographicSize = 20.0f;
-
-        // Get Lvl bounds
         OuterWallsArray = GameObject.Find("Walls");
         LvlBounds = CreateLevelBounds(OuterWallsArray);
-
-        // Starting Values
-        // Speed
-        SpdXAxis = 1.2f;
-        SpdYAxis = 1.2f;
-
-        // Position Steps
-        LeftStep = new Vector3(-SpdXAxis, 0);
-        RightStep = new Vector3(SpdXAxis, 0);
-        DownStep = new Vector3(0, -SpdYAxis);
-        UpStep = new Vector3(0, SpdYAxis);
-
         GhostCam.ScreenToWorldPoint(Input.mousePosition);
     }
 
     void Update()
     {
-        if (worldGraph != null)
-        {
-            DrawHistory();
-        }
+        //if (worldGraph != null)
+        //{
+        //    DrawHistory();
+        //}
 
-        //MoveCamWithKeyboard();
         MoveCamWithMouseDrag();
 
         GhostTransform.position = Vector2.Lerp(GhostTransform.position, cameraTarget, Time.deltaTime * 50);
