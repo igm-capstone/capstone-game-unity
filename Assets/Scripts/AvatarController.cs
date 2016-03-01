@@ -13,6 +13,7 @@ public class AvatarController : MonoBehaviour
     float SpeedAdjust = 10;
     [SerializeField]
     public bool Disabled { get { return (_health && _health.CurrentHealth <= 0); } }
+    public bool isHidden { get; set; }
     public bool isAttacking;
     public bool hauntEtoM { get; set; }
 
@@ -39,6 +40,7 @@ public class AvatarController : MonoBehaviour
         // Game Balance Adjust => Makes Speed number comparable to Minion Speed number.
         CalcMoveSpeed = MoveSpeed / SpeedAdjust;
         slowDownMod = 1.0f;
+        isHidden = false;
     }
 
     void Start()
@@ -49,12 +51,15 @@ public class AvatarController : MonoBehaviour
     void FixedUpdate()
     {
         CalcMoveSpeed = MoveSpeed / SpeedAdjust;
-        if (!Disabled)
-            Move();
-        else
+        if (Disabled || isHidden)
         {
             _rb.velocity = new Vector2(0, 0);
-            HelpMessage.Instance.SetMessage("You are incapacitated. Seek help!");
+            if(Disabled)
+                HelpMessage.Instance.SetMessage("You are incapacitated. Seek help!");
+        }
+        else
+        {
+            Move();
         }
     }
 

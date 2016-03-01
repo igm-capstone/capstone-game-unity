@@ -35,6 +35,9 @@ public class Health : NetworkBehaviour
 
     public void TakeDamage(int value)
     {
+        if (GetComponent<AvatarController>() != null && GetComponent<AvatarController>().isHidden)
+            return;
+
         if (GetComponent<AvatarController>() != null)
         {
             if (value > 0 && CurrentHealth > 0) animator.SetTrigger("TakeDamage");

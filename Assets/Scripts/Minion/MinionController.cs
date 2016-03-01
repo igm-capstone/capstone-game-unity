@@ -85,7 +85,7 @@ public class MinionController : NetworkBehaviour
             }
 
             var orderedAvatars = avatars
-                .Where(a => !a.Disabled)                        // skip disabled avatars,
+                .Where(a => !a.Disabled && !a.isHidden)         // skip disabled and hidden avatars,
                 .Select(a => a.transform)                       // select transform
                 .OrderBy(t => (t.position - pos).sqrMagnitude);  // and order by distance
 

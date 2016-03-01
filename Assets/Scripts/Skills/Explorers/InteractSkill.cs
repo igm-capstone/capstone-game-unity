@@ -85,6 +85,7 @@ public class InteractSkill :  ISkill
                 break;
 
             case InteractableObject.Player:
+                if (GetComponent<AvatarController>().isHidden) break;
                 Debug.Log("Interacting with a Player!");
                 if (_targetObj.GetComponent<AvatarController>().Disabled)
                 {
@@ -96,6 +97,7 @@ public class InteractSkill :  ISkill
                 break;
 
             case InteractableObject.Light:
+                if (GetComponent<AvatarController>().isHidden) break;
                 Debug.Log("Interacting with a Lamp!");
 
                 // Get light component
@@ -123,23 +125,27 @@ public class InteractSkill :  ISkill
 
                 var hideObj = Physics2D.OverlapCircle(transform.position, 3, 1 << LayerMask.NameToLayer("HideSpot"));
 
-                if (hideObj != null && !hideObj.GetComponent<HidingSpot>().isOccupied && !isHiding)
+                if (hideObj != null && !hideObj.GetComponentInParent<HidingSpot>().isOccupied && !isHiding)
                 {
                     isHiding = true;
+                    //hideObj.GetComponentInParent<HidingSpot>().CmdSetOccupiedStatus(true);
                     //hide the explorer in all views
-                    avatarNetBhvr.CmdHideExplorer(gameObject);
+                    avatarNetBhvr.CmdHideExplorer(gameObject, hideObj.transform.parent.gameObject);
+                    break;
 
                 }
                 if (isHiding)
                 {
                     isHiding = false;
+                    //hideObj.GetComponentInParent<HidingSpot>().CmdSetOccupiedStatus(false);
                     //show the explorer in all views
-                    avatarNetBhvr.CmdShowExplorer(gameObject);
+                    avatarNetBhvr.CmdShowExplorer(gameObject, hideObj.transform.parent.gameObject);
 
                 }
                 break;
 
             case InteractableObject.Goal:
+                if (GetComponent<AvatarController>().isHidden) break;
                 Debug.Log("Interacting with a Goal!");
                 break;
 

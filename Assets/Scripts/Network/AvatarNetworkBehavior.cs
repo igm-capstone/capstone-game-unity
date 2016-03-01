@@ -163,17 +163,34 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     }
 
     [Command]
-    public void CmdHideExplorer(GameObject explorer)
+    public void CmdHideExplorer(GameObject explorer, GameObject hideObject)
+    {
+        RpcHideExplorer(explorer);
+        hideObject.GetComponentInParent<HidingSpot>().SetOccupiedStatus(true);
+    }
+
+    [ClientRpc]
+    private void RpcHideExplorer(GameObject explorer)
     {
         explorer.transform.FindChild("AvatarRotation").gameObject.SetActive(false);
         explorer.transform.FindChild("ClassAura").gameObject.SetActive(false);
-        explorer.GetComponent<AvatarController>().enabled = false;
+        explorer.transform.FindChild("HealthCanvas(Clone)").gameObject.SetActive(false);
+        explorer.GetComponent<AvatarController>().isHidden = true;        
     }
+
     [Command]
-    public void CmdShowExplorer(GameObject explorer)
+    public void CmdShowExplorer(GameObject explorer, GameObject hideObject)
+    {
+        RpcShowExplorer(explorer);
+        hideObject.GetComponentInParent<HidingSpot>().SetOccupiedStatus(false);
+    }
+
+    [ClientRpc]
+    private void RpcShowExplorer(GameObject explorer)
     {
         explorer.transform.FindChild("AvatarRotation").gameObject.SetActive(true);
         explorer.transform.FindChild("ClassAura").gameObject.SetActive(true);
-        explorer.GetComponent<AvatarController>().enabled = true;
+        explorer.transform.FindChild("HealthCanvas(Clone)").gameObject.SetActive(true);
+        explorer.GetComponent<AvatarController>().isHidden = false;
     }
 }

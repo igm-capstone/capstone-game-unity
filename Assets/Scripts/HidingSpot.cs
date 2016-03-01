@@ -1,12 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class HidingSpot : MonoBehaviour
+public class HidingSpot : NetworkBehaviour
 {
-    public bool isOccupied { get; set; }
+    [SyncVar]
+    public bool isOccupied;
 
     void Awake()
     {
         isOccupied = false;
+    }
+
+
+    
+    public void SetOccupiedStatus(bool _isOccupied)
+    {
+        isOccupied = _isOccupied;
     }
 }
