@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TrapBehavior : MonoBehaviour {
+public class TrapBehavior : MonoBehaviour
+{
 
     CircleCollider2D TriggerCol;
     ParticleSystem PSys = null;

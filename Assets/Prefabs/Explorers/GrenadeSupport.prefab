@@ -1965,7 +1965,6 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 45350ad05f758454580a16b3d9349bb6, type: 3}
   Name: Heal
   Cooldown: 2
-  canDrop: 0
   cost: 0
   UseCount: 0
   HealAmount: 60
@@ -1986,7 +1985,6 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 37ecfd6470428cd4299e1d6364ec9938, type: 3}
   Name: Skill
   Cooldown: 0
-  canDrop: 0
   cost: 0
   UseCount: 0
   IntrctBoxDist: .400000006
@@ -2107,7 +2105,6 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 012eab9b596c88846bdb77f836669350, type: 3}
   Name: GrenadeToss
   Cooldown: .600000024
-  canDrop: 0
   cost: 0
   UseCount: 0
   HitLayers:
@@ -2176,8 +2173,7 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 8254e0dfe1a6b524c8bb7a7f0f242cd4, type: 3}
   Name: Skill
-  Cooldown: 0
-  canDrop: 0
+  Cooldown: 5
   cost: 0
   UseCount: 3
 --- !u!114 &11474894
@@ -11160,7 +11156,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
-      value: .600000024
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled

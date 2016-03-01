@@ -2099,7 +2099,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693a21abc1e1d06449429b2ae6e78e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScaleAdjst: 0
 --- !u!114 &11410476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2147,7 +2146,7 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: e525a0c8cc230854ba51f80bb587ea9a, type: 3}
   Name: SetRegLantern
-  Cooldown: 0
+  Cooldown: 5
   cost: 0
   UseCount: 3
 --- !u!114 &11437698
@@ -11384,6 +11383,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Cooldown
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
