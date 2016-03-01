@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8d703965cdb89b34ea816f119dc59385
-timeCreated: 1456866546
+guid: 0737385b7192f1d448a70b35e8b42cc3
+timeCreated: 1456866523
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Couch
+    4300000: Toliet
   materials:
     importMaterials: 0
     materialName: 0

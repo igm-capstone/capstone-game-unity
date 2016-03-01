@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8d703965cdb89b34ea816f119dc59385
-timeCreated: 1456866546
+guid: 6df1070a19356af4987e0abaab2c4320
+timeCreated: 1456866545
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Couch
+    4300000: Wall_Window
   materials:
     importMaterials: 0
     materialName: 0

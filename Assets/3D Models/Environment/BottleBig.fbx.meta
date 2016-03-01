@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8d703965cdb89b34ea816f119dc59385
-timeCreated: 1456866546
+guid: 40029e3e992d30b49a7b9f7e67b8bf41
+timeCreated: 1456866523
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Couch
+    4300000: BottleBig
   materials:
     importMaterials: 0
     materialName: 0

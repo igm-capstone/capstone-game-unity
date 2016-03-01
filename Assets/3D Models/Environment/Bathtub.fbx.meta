@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 80d41665865c7454384efbc056b21dab
-timeCreated: 1455903348
-licenseType: Pro
+guid: 734e6c532c652a74db5985ada0d79d61
+timeCreated: 1456866545
+licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: SceneModels:pCylinder3
+    4300000: Bathtub
   materials:
     importMaterials: 0
     materialName: 0

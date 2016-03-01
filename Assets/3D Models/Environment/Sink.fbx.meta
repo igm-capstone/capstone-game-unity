@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8d703965cdb89b34ea816f119dc59385
+guid: d40dde933b89e1b4b8c03805f3a4c00b
 timeCreated: 1456866546
 licenseType: Free
 ModelImporter:
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Couch
+    4300000: Sink
   materials:
     importMaterials: 0
     materialName: 0

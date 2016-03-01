@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8d703965cdb89b34ea816f119dc59385
+guid: c4670cfe2eb0f954398bb091dcddbaf8
 timeCreated: 1456866546
 licenseType: Free
 ModelImporter:
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Couch
+    4300000: BottleSmall
   materials:
     importMaterials: 0
     materialName: 0

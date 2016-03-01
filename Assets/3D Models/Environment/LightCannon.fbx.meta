@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8d703965cdb89b34ea816f119dc59385
+guid: c3053cb4eb91c4548ae2423af2830cd3
 timeCreated: 1456866546
 licenseType: Free
 ModelImporter:
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Couch
+    4300000: LightCannon
   materials:
     importMaterials: 0
     materialName: 0

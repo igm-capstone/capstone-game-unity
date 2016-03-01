@@ -1,15 +1,27 @@
 fileFormatVersion: 2
-guid: 8d703965cdb89b34ea816f119dc59385
-timeCreated: 1456866546
+guid: 20944fee8b10edb48a06819d02dae6be
+timeCreated: 1456868185
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Couch
+    100000: Door1
+    100002: Door2
+    100004: //RootNode
+    400000: Door1
+    400002: Door2
+    400004: //RootNode
+    2300000: Door1
+    2300002: Door2
+    2300004: //RootNode
+    3300000: Door1
+    3300002: Door2
+    3300004: //RootNode
+    4300000: Wardrobe
+    4300002: Door2
+    4300004: Door1
+    7400000: Take 001
+    9500000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0
@@ -29,7 +41,39 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 42
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Door1
+        weight: 1
+      - path: Door2
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -68,7 +112,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

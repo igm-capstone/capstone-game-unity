@@ -1,15 +1,27 @@
 fileFormatVersion: 2
-guid: 8d703965cdb89b34ea816f119dc59385
-timeCreated: 1456866546
+guid: 0bf8cdc21fe40eb45adeac17029dcf5a
+timeCreated: 1456867195
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
+    100002: BathroomCabinetDoor1
+    100004: BathroomCabinetDoor2
     400000: //RootNode
+    400002: BathroomCabinetDoor1
+    400004: BathroomCabinetDoor2
     2300000: //RootNode
+    2300002: BathroomCabinetDoor1
+    2300004: BathroomCabinetDoor2
     3300000: //RootNode
-    4300000: Couch
+    3300002: BathroomCabinetDoor1
+    3300004: BathroomCabinetDoor2
+    4300000: BathroomCabinet
+    4300002: BathroomCabinetDoor1
+    4300004: BathroomCabinetDoor2
+    7400000: OpenDoors
+    9500000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0
@@ -29,7 +41,39 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: OpenDoors
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 42
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BathroomCabinetDoor1
+        weight: 1
+      - path: BathroomCabinetDoor2
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -68,7 +112,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
