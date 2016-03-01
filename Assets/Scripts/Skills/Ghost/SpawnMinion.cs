@@ -3,8 +3,6 @@ using System.Linq;
 
 public class SpawnMinion : ISkill
 {
-    public float minSpawnDist = 5f;
-    public float maxSpawnDist = 150f;
     SkillBar mySkillBar;
 
     public void Awake()
@@ -12,6 +10,10 @@ public class SpawnMinion : ISkill
         Name = "SpawnMinion";
         canDrop = false;
         cost = 10;
+
+        IsSpawnSkill = true;
+        MinSpawnDist = 10f;
+        MaxSpawnDist = 50f;
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
@@ -30,8 +32,8 @@ public class SpawnMinion : ISkill
         }
 
         var avatars = FindObjectsOfType<AvatarController>();
-        var minSqrDist = minSpawnDist * minSpawnDist;
-        var maxSqrDist = maxSpawnDist * maxSpawnDist;
+        var minSqrDist = MinSpawnDist * MinSpawnDist;
+        var maxSqrDist = MaxSpawnDist * MaxSpawnDist;
         var plyrDistance = avatars.Select(a => (a.transform.position - clickWorldPos).sqrMagnitude).OrderBy(d => d).FirstOrDefault();
 
 
@@ -42,6 +44,13 @@ public class SpawnMinion : ISkill
         }
 
         MinionSpawnManager.Instance.CmdSingleSpawn(clickWorldPos, MinionType.Meelee);
+
+        // DebugCode
+        foreach (var trgt in avatars)
+        {
+            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.right * MinSpawnDist);
+            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.up * MaxSpawnDist);
+        }
 
         return null;
     }
