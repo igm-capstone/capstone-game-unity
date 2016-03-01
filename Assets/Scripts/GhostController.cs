@@ -5,23 +5,24 @@ using System.Linq;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(SkillBar))]
-public class GhostController : MonoBehaviour {
+public class GhostController : MonoBehaviour
+{
     [SerializeField]
     LayerMask LayersToClick;
 
     SkillBar _ghostSkillBar;
-            
-	void Start ()
+
+    void Start()
     {
         _ghostSkillBar = GetComponent<SkillBar>();
-	    _ghostSkillBar.enabled = true;
+        _ghostSkillBar.enabled = true;
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
-       HandleInput();
-	}
+        HandleInput();
+    }
 
     void HandleInput()
     {
@@ -30,14 +31,14 @@ public class GhostController : MonoBehaviour {
         {
             var clickWordPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            if (Physics2D.Raycast(clickWordPos, Vector2.zero, 1000, LayerMask.GetMask(new [] {"Door"})))
+            if (Physics2D.Raycast(clickWordPos, Vector2.zero, 1000, LayerMask.GetMask(new[] { "Door" })))
             {
                 return;
             }
 
             RaycastHit hit3d;
             RaycastHit2D hit2d;
-            GameObject go = null; 
+            GameObject go = null;
             if ((hit2d = Physics2D.Raycast(clickWordPos, Vector2.zero, 1000, LayersToClick)) == true)
             {
                 go = hit2d.collider.gameObject;
@@ -70,6 +71,15 @@ public class GhostController : MonoBehaviour {
             }
 
             activeSkill.Use(go, clickWordPos);
+        } //if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject())
+
+        /*
+        // Right-Click deselects skills.
+        if (Input.GetMouseButtonUp(1) && !EventSystem.current.IsPointerOverGameObject())
+        {
+            _ghostSkillBar.SetActiveSkill(GetComponent<DisableLight>());
         }
+        */
+        
     }
 }

@@ -4,6 +4,8 @@ using System.Collections;
 
 public class SpawnPlant : ISkill
 {
+    SkillBar mySkillBar;
+
     public void Awake()
     {
         Name = "SpawnPlant";
@@ -11,8 +13,20 @@ public class SpawnPlant : ISkill
         cost = 10;
 
         IsSpawnSkill = true;
-        MinSpawnDist = 30f;
+        MinSpawnDist = 10f;
         MaxSpawnDist = 100f;
+
+        key = KeyCode.Alpha4;
+
+        mySkillBar = GetComponent<SkillBar>();
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(key))
+        {
+            mySkillBar.SetActiveSkill(this);
+        }
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)

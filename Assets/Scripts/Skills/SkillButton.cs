@@ -29,28 +29,17 @@ public class SkillButton : MonoBehaviour
         _icon.sprite = _skill.SkillSprite;
         if (_skill.key != KeyCode.None)
         {
+            // Test for mouse buttons
             if (_skill.key == KeyCode.Mouse0)
                 transform.Find("Key").GetComponent<Text>().text = "LMBtn";
 
             else if (_skill.key == KeyCode.Mouse1)
                 transform.Find("Key").GetComponent<Text>().text = "RMBtn";
 
-            else if (_skill.key == KeyCode.Alpha1)
-            {
-                transform.Find("Key").GetComponent<Text>().text = "1";
-            }
-            else if (_skill.key == KeyCode.Alpha2)
-            {
-                transform.Find("Key").GetComponent<Text>().text = "2";
-            }
-            else if (_skill.key == KeyCode.Alpha3)
-            {
-                transform.Find("Key").GetComponent<Text>().text = "3";
-            }
-            else if (_skill.key == KeyCode.Alpha4)
-            {
-                transform.Find("Key").GetComponent<Text>().text = "4";
-            }
+            // Test for the Alphanumeric Keys strip on the keyboard. 48 => 0 and 57 => 9
+            else if ((int)_skill.key >= 48 && (int)_skill.key <= 57)
+                transform.Find("Key").GetComponent<Text>().text = ((int)_skill.key - 48).ToString();
+
             else
                 transform.Find("Key").GetComponent<Text>().text = _skill.key.ToString();
         }

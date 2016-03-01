@@ -33,7 +33,7 @@ public class SpawnUIUpdater : MonoBehaviour
     {
         curActiveSkill = mySkillBar.GetActiveSkill();
 
-        if  (curActiveSkill.IsSpawnSkill)
+        if  (curActiveSkill != null && curActiveSkill.IsSpawnSkill)
         { 
             SpawnUI.SetActive(true);
 

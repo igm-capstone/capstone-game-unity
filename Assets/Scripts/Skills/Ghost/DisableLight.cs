@@ -3,13 +3,24 @@ using System.Collections;
 
 public class DisableLight : ISkill
 {
-    //public float Duration = 2;
+    SkillBar mySkillBar;
 
     public void Awake()
     {
         Name = "DisableLight";
         canDrop = false;
         cost = 0;
+
+        key = KeyCode.Alpha1;
+
+        mySkillBar = GetComponent<SkillBar>();
+    }
+    public void Update()
+    {
+        if (Input.GetKeyDown(key))
+        {
+            mySkillBar.SetActiveSkill(this);
+        }
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
@@ -24,6 +35,7 @@ public class DisableLight : ISkill
         }
         return null;
     }
+
 
     IEnumerator flickerToOff(LightController light)
     {

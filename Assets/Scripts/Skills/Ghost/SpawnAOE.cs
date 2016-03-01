@@ -3,6 +3,8 @@ using System.Linq;
 
 public class SpawnAOE : ISkill
 {
+    SkillBar mySkillBar;
+
     public void Awake()
     {
         Name = "SpawnAOE";
@@ -12,6 +14,18 @@ public class SpawnAOE : ISkill
         IsSpawnSkill = true;
         MinSpawnDist = 20f;
         MaxSpawnDist = 75f;
+
+        key = KeyCode.Alpha3;
+
+        mySkillBar = GetComponent<SkillBar>();
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(key))
+        {
+            mySkillBar.SetActiveSkill(this);
+        }
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)

@@ -7,11 +7,25 @@ public class Haunt_ExpToMinion : ISkill {
 
     public GameObject HauntMeleeMinion;
 
+    SkillBar mySkillBar;
+
     public void Awake()
     {
         Name = "ExplorerToMinion";
         canDrop = false;
-        cost = 0;       
+        cost = 0;
+
+        key = KeyCode.Alpha6;
+
+        mySkillBar = GetComponent<SkillBar>();
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(key))
+        {
+            mySkillBar.SetActiveSkill(this);
+        }
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
