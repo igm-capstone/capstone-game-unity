@@ -634,8 +634,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 407280}
   - 114: {fileID: 11444976}
-  - 114: {fileID: 11478818}
   - 114: {fileID: 11459136}
+  - 114: {fileID: 11478818}
   - 114: {fileID: 11410476}
   - 50: {fileID: 5044520}
   - 61: {fileID: 6121018}
@@ -643,6 +643,7 @@ GameObject:
   - 114: {fileID: 11499024}
   - 114: {fileID: 11478992}
   - 114: {fileID: 11419616}
+  - 114: {fileID: 11409880}
   - 114: {fileID: 11499490}
   - 114: {fileID: 11405936}
   - 114: {fileID: 11464632}
@@ -1100,7 +1101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.43293667, y: 9.95074654, z: 0}
+  m_LocalPosition: {x: -20.2650452, y: -60.2002487, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 437546}
@@ -2087,6 +2088,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
+--- !u!114 &11409880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 693a21abc1e1d06449429b2ae6e78e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScaleAdjst: 0
 --- !u!114 &11410476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2132,7 +2145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 8254e0dfe1a6b524c8bb7a7f0f242cd4, type: 3}
+  SkillSprite: {fileID: 21300000, guid: e525a0c8cc230854ba51f80bb587ea9a, type: 3}
   Name: SetRegLantern
   Cooldown: 0
   cost: 0
@@ -2149,7 +2162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: .233999997}
+  m_Color: {r: 1, g: 1, b: 1, a: .588235319}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2244,7 +2257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 66a5ec73656e2a94e97ff972fe39dc9e, type: 3}
+  SkillSprite: {fileID: 21300000, guid: ad400575c6d24844f954141c45625358, type: 3}
   Name: Skill
   Cooldown: 2.5
   cost: 0
@@ -2282,7 +2295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 99dcc3728c6f2c94a92f530fe19325b8, type: 3}
+  SkillSprite: {fileID: 21300000, guid: b45d21f851ac620428f7fdcc97f80397, type: 3}
   Name: SetTrapGlue
   Cooldown: 2.5
   cost: 0
@@ -2300,7 +2313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .478431404, g: .227450997, b: .231372565, a: .235294119}
+  m_Color: {r: .478431404, g: .227450997, b: .231372565, a: .588235319}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -11282,7 +11295,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 20}
+  m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22446492
 RectTransform:
@@ -11292,7 +11305,7 @@ RectTransform:
   m_GameObject: {fileID: 180276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .400000006, y: .400000006, z: .400000006}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22446256}
   - {fileID: 22482940}
@@ -11301,7 +11314,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22482940
 RectTransform:
@@ -11318,7 +11331,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
@@ -11334,7 +11347,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SkillSprite
       value: 
-      objectReference: {fileID: 21300000, guid: ca14d521ba1358a44851490d1ac8c40c,
+      objectReference: {fileID: 21300000, guid: e525a0c8cc230854ba51f80bb587ea9a,
         type: 3}
     - target: {fileID: 0}
       propertyPath: Name
@@ -11355,6 +11368,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: ReviveHealPrcnt
       value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

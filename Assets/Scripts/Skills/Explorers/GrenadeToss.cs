@@ -57,6 +57,7 @@ public class GrenadeToss : ISkill
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
         if (avatarController.Disabled) return "You are incapacitated. Seek help!";
+        if (avatarController.isHidden) return "You are hiding.";
 
         // Turns to mouse position.
         TurnToMousePos();

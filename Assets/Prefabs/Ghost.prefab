@@ -35,6 +35,7 @@ GameObject:
   - 114: {fileID: 11438610}
   - 114: {fileID: 11425386}
   - 114: {fileID: 11478774}
+  - 114: {fileID: 11469056}
   - 114: {fileID: 11485708}
   - 114: {fileID: 11461776}
   m_Layer: 0
@@ -135,8 +136,8 @@ MonoBehaviour:
   canDrop: 0
   cost: 0
   UseCount: 0
-  distanceFromPlayers: 5
-  SpawnUIPrefab: {fileID: 150076, guid: 16232b9ae9288b248905ae49d824d8f6, type: 2}
+  minSpawnDist: 5
+  maxSpawnDist: 150
 --- !u!114 &11430948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,6 +263,26 @@ MonoBehaviour:
   cost: 0
   UseCount: 0
   HauntMeleeMinion: {fileID: 155754, guid: 3555dcae92f866f4db1693d6a8442a24, type: 2}
+--- !u!114 &11469056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196296}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9729bb273ac41ad4b8f657a0343f3616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
+  SkillSprite: {fileID: 21300000, guid: 6aa1e2020d477b94e8f7614677e8a3ae, type: 3}
+  Name: Skill
+  Cooldown: 2
+  canDrop: 0
+  cost: 10
+  UseCount: 0
+  minSpawnDist: 5
+  maxSpawnDist: 150
 --- !u!114 &11478774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,7 +301,8 @@ MonoBehaviour:
   canDrop: 0
   cost: 0
   UseCount: 0
-  distanceFromPlayers: 5
+  minSpawnDist: 5
+  maxSpawnDist: 150
 --- !u!114 &11485708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -444,7 +466,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SkillSprite
       value: 
-      objectReference: {fileID: 21300000, guid: f4561c2a9c789d645a93e5c8612fad28,
+      objectReference: {fileID: 21300000, guid: 6aa1e2020d477b94e8f7614677e8a3ae,
         type: 3}
     - target: {fileID: 0}
       propertyPath: HideInactiveSkills
@@ -490,6 +512,10 @@ Prefab:
       propertyPath: SpawnUIPrefab
       value: 
       objectReference: {fileID: 150076, guid: 16232b9ae9288b248905ae49d824d8f6, type: 2}
+    - target: {fileID: 0}
+      propertyPath: cost
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196296}

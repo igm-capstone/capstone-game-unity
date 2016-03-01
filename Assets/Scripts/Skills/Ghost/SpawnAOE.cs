@@ -3,13 +3,15 @@ using System.Linq;
 
 public class SpawnAOE : ISkill
 {
-    public float distanceFromPlayers = 5f;
-
     public void Awake()
     {
         Name = "SpawnAOE";
         canDrop = false;
         cost = 30;
+
+        IsSpawnSkill = true;
+        MinSpawnDist = 20f;
+        MaxSpawnDist = 75f;
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
@@ -28,16 +30,25 @@ public class SpawnAOE : ISkill
         }
 
         var avatars = FindObjectsOfType<AvatarController>();
-        var sqrDist = distanceFromPlayers*distanceFromPlayers;
-        var minDistance = avatars.Select(a => (a.transform.position - clickWorldPos).sqrMagnitude).OrderBy(d => d).FirstOrDefault();
+        var minSqrDist = MinSpawnDist * MinSpawnDist;
+        var maxSqrDist = MaxSpawnDist * MaxSpawnDist;
+        var plyrDistance = avatars.Select(a => (a.transform.position - clickWorldPos).sqrMagnitude).OrderBy(d => d).FirstOrDefault();
 
-        if (avatars.Any() && minDistance < sqrDist)
+
+        if (avatars.Any() && ((plyrDistance < minSqrDist) || (plyrDistance > maxSqrDist)))
         {
             //Debug.Log("Near player");
-            return Name + " skill cannot be used so close to a player!";
+            return Name + " skill must be used inside spawn area.";
         }
 
         MinionSpawnManager.Instance.CmdSingleSpawn(clickWorldPos, MinionType.AOEBomber);
+
+        // DebugCode
+        foreach (var trgt in avatars)
+        {
+            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.right * MinSpawnDist);
+            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.up * MaxSpawnDist);
+        }
 
         return null;
     }

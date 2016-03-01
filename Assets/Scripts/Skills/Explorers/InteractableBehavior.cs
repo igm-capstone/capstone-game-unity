@@ -28,11 +28,11 @@ public class InteractableBehavior : MonoBehaviour
     // This will be used to implement Interactable Objects UI!
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            Debug.Log("I am hitting the player!");
-        }
+        //if (other.gameObject.tag == "Player")
+        //{
+        //    Debug.Log("I am hitting the player!");
+        //}
 
-        Debug.Log("I am hitting something else: " + other.gameObject.layer);
+        //Debug.Log("I am hitting something else: " + other.gameObject.layer);
     }
 }

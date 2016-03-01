@@ -7,6 +7,7 @@ public class SetTrapPoison : ISkill
 
     public float spawnDistance;
     Vector3 spawnPosition;
+    AvatarController avatarController; 
     public void Awake()
     {
         Name = "SetTrapPoison";
@@ -17,6 +18,7 @@ public class SetTrapPoison : ISkill
 
         // Set key code:
         key = KeyCode.Alpha1;
+        avatarController = GetComponent<AvatarController>();
     }
 
     void Update()
@@ -29,6 +31,8 @@ public class SetTrapPoison : ISkill
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
+        if (avatarController.Disabled) return "You are incapacitated. Seek help!";
+        if (avatarController.isHidden) return "You are hiding";
         // Face mouse direction
         TurnToMousePos();
 

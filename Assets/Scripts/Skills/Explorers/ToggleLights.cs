@@ -11,7 +11,7 @@ public class ToggleLights : ISkill
     float ToggleSize;
 
     LayerMask LightMask;
-
+    AvatarController avatarController;
     public void Awake()
     {
         // ISkill SetUps
@@ -26,6 +26,8 @@ public class ToggleLights : ISkill
             ToggleLightBox =  transform.FindChild("AvatarRotation").FindChild("LightHitBox").gameObject;
         }
         LightMask = 1 << LayerMask.NameToLayer("LightSwitch");
+
+        avatarController = GetComponent<AvatarController>();
     }
 
     void Update()
@@ -39,6 +41,9 @@ public class ToggleLights : ISkill
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
+        if (avatarController.Disabled) return "You are incapacitated. Seek help!";
+        if (avatarController.isHidden) return "You are hiding";
+
         // Detects light inside ToggleBox
         var HitLight = Physics2D.OverlapCircle(ToggleLightBox.transform.position, BoxRadius, LightMask);
 

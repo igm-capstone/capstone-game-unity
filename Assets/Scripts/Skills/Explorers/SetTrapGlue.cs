@@ -7,6 +7,8 @@ public class SetTrapGlue : ISkill
 
     public float spawnDistance;
     Vector3 spawnPosition;
+
+    AvatarController avatarController;
     public void Awake()
     {
         Name = "SetTrapGlue";
@@ -18,6 +20,8 @@ public class SetTrapGlue : ISkill
 
         // Set key code:
         key = KeyCode.Alpha2;
+
+        avatarController = GetComponent<AvatarController>();
     }
 
     void Update()
@@ -30,6 +34,8 @@ public class SetTrapGlue : ISkill
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
+        if (avatarController.Disabled) return "You are incapacitated. Seek help!";
+        if (avatarController.isHidden) return "You are hiding";
         // Face mouse direction
         TurnToMousePos();
 

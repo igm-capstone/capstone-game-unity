@@ -3,7 +3,6 @@ using System.Linq;
 
 public class SpawnMinion : ISkill
 {
-    public float distanceFromPlayers = 5f;
     SkillBar mySkillBar;
 
     public void Awake()
@@ -12,29 +11,9 @@ public class SpawnMinion : ISkill
         canDrop = false;
         cost = 10;
 
-        mySkillBar = GetComponent<SkillBar>();
-    }
-
-    public void Update()
-    {
-        // If this skill is active, draw UI for all players.
-        if (mySkillBar.GetActiveSkill() == this)
-        {
-            var PlayerList = GameObject.FindGameObjectsWithTag("Player");
-            foreach (var plyr in PlayerList)
-            {
-                plyr.transform.GetChild(3).gameObject.SetActive(true);
-            }
-            
-        }
-        else
-        {
-            var PlayerList = GameObject.FindGameObjectsWithTag("Player");
-            foreach (var plyr in PlayerList)
-            {
-                plyr.transform.GetChild(3).gameObject.SetActive(false);
-            }
-        }
+        IsSpawnSkill = true;
+        MinSpawnDist = 10f;
+        MaxSpawnDist = 50f;
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
@@ -53,16 +32,25 @@ public class SpawnMinion : ISkill
         }
 
         var avatars = FindObjectsOfType<AvatarController>();
-        var sqrDist = distanceFromPlayers * distanceFromPlayers;
-        var minDistance = avatars.Select(a => (a.transform.position - clickWorldPos).sqrMagnitude).OrderBy(d => d).FirstOrDefault();
+        var minSqrDist = MinSpawnDist * MinSpawnDist;
+        var maxSqrDist = MaxSpawnDist * MaxSpawnDist;
+        var plyrDistance = avatars.Select(a => (a.transform.position - clickWorldPos).sqrMagnitude).OrderBy(d => d).FirstOrDefault();
 
-        if (avatars.Any() && minDistance < sqrDist)
+
+        if (avatars.Any() && ((plyrDistance < minSqrDist) || (plyrDistance > maxSqrDist)))
         {
             //Debug.Log("Near player");
-            return Name + " skill cannot be used so close to a player!";
+            return Name + " skill cannot be used ouside of spawn circle.";
         }
 
         MinionSpawnManager.Instance.CmdSingleSpawn(clickWorldPos, MinionType.Meelee);
+
+        // DebugCode
+        foreach (var trgt in avatars)
+        {
+            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.right * MinSpawnDist);
+            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.up * MaxSpawnDist);
+        }
 
         return null;
     }

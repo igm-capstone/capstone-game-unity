@@ -49,7 +49,8 @@ public class Heal : ISkill
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
         if (avatarController.Disabled) return "You are incapacitated. Seek help!";
-        
+        if (avatarController.isHidden) return "You are hiding.";
+
         animator.SetTrigger("Heal");
 
         var players = Physics2D.OverlapCircleAll(transform.position, AreaRadius, 1 << LayerMask.NameToLayer("Player"));
