@@ -2132,7 +2132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 8254e0dfe1a6b524c8bb7a7f0f242cd4, type: 3}
+  SkillSprite: {fileID: 21300000, guid: e525a0c8cc230854ba51f80bb587ea9a, type: 3}
   Name: SetRegLantern
   Cooldown: 0
   cost: 0
@@ -2244,7 +2244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 66a5ec73656e2a94e97ff972fe39dc9e, type: 3}
+  SkillSprite: {fileID: 21300000, guid: ad400575c6d24844f954141c45625358, type: 3}
   Name: Skill
   Cooldown: 2.5
   cost: 0
@@ -2282,7 +2282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 99dcc3728c6f2c94a92f530fe19325b8, type: 3}
+  SkillSprite: {fileID: 21300000, guid: b45d21f851ac620428f7fdcc97f80397, type: 3}
   Name: SetTrapGlue
   Cooldown: 2.5
   cost: 0
@@ -11334,7 +11334,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SkillSprite
       value: 
-      objectReference: {fileID: 21300000, guid: ca14d521ba1358a44851490d1ac8c40c,
+      objectReference: {fileID: 21300000, guid: e525a0c8cc230854ba51f80bb587ea9a,
         type: 3}
     - target: {fileID: 0}
       propertyPath: Name

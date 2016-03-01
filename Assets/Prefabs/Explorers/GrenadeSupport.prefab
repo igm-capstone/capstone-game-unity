@@ -1897,12 +1897,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 1af0d81bf1bccb84ba7954ddc061f759, type: 3}
+  SkillSprite: {fileID: 21300000, guid: f6b607f1ee1e25f489b409e6d4e61e16, type: 3}
   Name: Heal
   Cooldown: 2
   cost: 0
   UseCount: 0
-  isStaticSkill: 1
   HealAmount: 30
   AreaRadius: 3
   FX: {fileID: 474792}
@@ -1923,7 +1922,6 @@ MonoBehaviour:
   Cooldown: 0
   cost: 0
   UseCount: 0
-  isStaticSkill: 1
   IntrctBoxDist: .400000006
   IntrctBoxRad: 1
   ReviveHealPrcnt: .400000006
@@ -1996,7 +1994,6 @@ MonoBehaviour:
   Cooldown: .600000024
   cost: 0
   UseCount: 0
-  isStaticSkill: 1
   HitLayers:
     serializedVersion: 2
     m_Bits: 10240
@@ -2061,12 +2058,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 8254e0dfe1a6b524c8bb7a7f0f242cd4, type: 3}
+  SkillSprite: {fileID: 21300000, guid: e525a0c8cc230854ba51f80bb587ea9a, type: 3}
   Name: Skill
   Cooldown: 0
   cost: 0
   UseCount: 3
-  isStaticSkill: 1
 --- !u!114 &11478130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10935,7 +10931,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SkillSprite
       value: 
-      objectReference: {fileID: 21300000, guid: ca14d521ba1358a44851490d1ac8c40c,
+      objectReference: {fileID: 21300000, guid: e525a0c8cc230854ba51f80bb587ea9a,
         type: 3}
     - target: {fileID: 0}
       propertyPath: Name
