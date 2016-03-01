@@ -14,6 +14,18 @@ public class SpawnMinion : ISkill
         IsSpawnSkill = true;
         MinSpawnDist = 10f;
         MaxSpawnDist = 50f;
+
+        key = KeyCode.Alpha2;
+
+        mySkillBar = GetComponent<SkillBar>();
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(key))
+        {
+            mySkillBar.SetActiveSkill(this);
+        }
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)

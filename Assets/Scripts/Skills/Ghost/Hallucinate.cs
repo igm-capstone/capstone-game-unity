@@ -11,11 +11,25 @@ public class Hallucinate : ISkill
     public float Radius = 10.0f;
     public int Minions = 3;
 
+    SkillBar mySkillBar;
+
     public void Awake()
     {
         Name = "Hallucinate";
         canDrop = false;
         cost = 10;
+
+        key = KeyCode.Alpha5;
+
+        mySkillBar = GetComponent<SkillBar>();
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(key))
+        {
+            mySkillBar.SetActiveSkill(this);
+        }
     }
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
     {
