@@ -9,6 +9,9 @@ public class RpcNetworkAnimator: NetworkBehaviour
 {
     public Animator Animator;
 
+    [SyncVar]
+    public bool Broadcast;
+
 
     public void SetFloat(string name, float value)
     {
@@ -87,37 +90,85 @@ public class RpcNetworkAnimator: NetworkBehaviour
     [ClientRpc]
     void RpcSetFloat(string name, float value)
     {
-        Animator.SetFloat(name, value);
+        if (Animator.isInitialized)
+        {
+            Animator.SetFloat(name, value);
+        }
+
+        if (Broadcast)
+        {
+            BroadcastMessage("SetAnimator" + name, value, SendMessageOptions.DontRequireReceiver);
+        }
     }
 
     [ClientRpc]
     void RpcSetFloatDamp(string name, float value, float damp, float deltaTime)
     {
-        Animator.SetFloat(name, value, damp, deltaTime);
+        if (Animator.isInitialized)
+        {
+            Animator.SetFloat(name, value, damp, deltaTime);
+        }
+
+        if (Broadcast)
+        {
+            BroadcastMessage("SetAnimator" + name, value, SendMessageOptions.DontRequireReceiver);
+        }
     }
 
     [ClientRpc]
     void RpcSetInteger(string name, int value)
     {
-        Animator.SetInteger(name, value);
+        if (Animator.isInitialized)
+        {
+            Animator.SetInteger(name, value);
+        }
+
+        if (Broadcast)
+        {
+            BroadcastMessage("SetAnimator" + name, value, SendMessageOptions.DontRequireReceiver);
+        }
     }
 
     [ClientRpc]
     void RpcSetBool(string name, bool value)
     {
-        Animator.SetBool(name, value);
+        if (Animator.isInitialized)
+        {
+            Animator.SetBool(name, value);
+        }
+
+        if (Broadcast)
+        {
+            BroadcastMessage("SetAnimator" + name, value, SendMessageOptions.DontRequireReceiver);
+        }
     }
 
     [ClientRpc]
     void RpcSetTrigger(string name)
     {
-        Animator.SetTrigger(name);
+        if (Animator.isInitialized)
+        {
+            Animator.SetTrigger(name);
+        }
+
+        if (Broadcast)
+        {
+            BroadcastMessage("SetAnimator" + name, true, SendMessageOptions.DontRequireReceiver);
+        }
     }
 
     [ClientRpc]
     void RpcResetTrigger(string name)
     {
-        Animator.ResetTrigger(name);
+        if (Animator.isInitialized)
+        {
+            Animator.ResetTrigger(name);
+        }
+
+        if (Broadcast)
+        {
+            BroadcastMessage("SetAnimator" + name, false, SendMessageOptions.DontRequireReceiver);
+        }
     } 
 
 }
