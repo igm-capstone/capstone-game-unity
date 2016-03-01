@@ -4,14 +4,15 @@ using System.Collections;
 
 public class SpawnPlant : ISkill
 {
-    public float minSpawnDist = 5f;
-    public float maxSpawnDist = 150f;
-
     public void Awake()
     {
         Name = "SpawnPlant";
         canDrop = false;
         cost = 10;
+
+        IsSpawnSkill = true;
+        MinSpawnDist = 30f;
+        MaxSpawnDist = 100f;
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
@@ -30,8 +31,8 @@ public class SpawnPlant : ISkill
         }
 
         var avatars = FindObjectsOfType<AvatarController>();
-        var minSqrDist = minSpawnDist * minSpawnDist;
-        var maxSqrDist = maxSpawnDist * maxSpawnDist;
+        var minSqrDist = MinSpawnDist * MinSpawnDist;
+        var maxSqrDist = MaxSpawnDist * MaxSpawnDist;
         var plyrDistance = avatars.Select(a => (a.transform.position - clickWorldPos).sqrMagnitude).OrderBy(d => d).FirstOrDefault();
 
 
@@ -42,6 +43,13 @@ public class SpawnPlant : ISkill
         }
 
         MinionSpawnManager.Instance.CmdSingleSpawn(clickWorldPos, MinionType.Plant);
+
+        // DebugCode
+        foreach (var trgt in avatars)
+        {
+            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.right * MinSpawnDist);
+            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.up * MaxSpawnDist);
+        }
 
         return null;
     }

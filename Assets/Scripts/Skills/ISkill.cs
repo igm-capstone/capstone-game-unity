@@ -13,11 +13,17 @@ public abstract class ISkill : MonoBehaviour
     public int cost = 0;
     public int UseCount = 0;
 
+
     // Used for EquippedSkill.
     //public bool isStaticSkill = true;
 
     [NonSerialized] public KeyCode key = KeyCode.None;
     [NonSerialized] public bool IsActive;
+
+    // This is used by the Spawn Ui Updater.
+    [NonSerialized] public bool IsSpawnSkill = false;
+    [NonSerialized] public float MinSpawnDist = 0.0f;
+    [NonSerialized] public float MaxSpawnDist = 0.0f;
 
     public float LastUse { get; private set; }
 

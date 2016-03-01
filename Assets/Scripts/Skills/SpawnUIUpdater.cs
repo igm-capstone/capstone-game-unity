@@ -9,6 +9,9 @@ public class SpawnUIUpdater : MonoBehaviour
     ISkill curActiveSkill;
 
     GameObject SpawnUI;
+
+    // Magic number to make the UI and the actual area coincide. 
+    float ScaleAdjst = 2.0f;
     
 
     // Use this for initialization
@@ -30,13 +33,17 @@ public class SpawnUIUpdater : MonoBehaviour
     {
         curActiveSkill = mySkillBar.GetActiveSkill();
 
-        var type = curActiveSkill.GetType();
-
-        if  (type != null &&((type == typeof(SpawnMinion)) || 
-                            (type == typeof(SpawnAOE)) ||
-                            (type == typeof(SpawnPlant))))
-        {
+        if  (curActiveSkill.IsSpawnSkill)
+        { 
             SpawnUI.SetActive(true);
+
+            Vector3 MinSpawnScale = new Vector3(curActiveSkill.MinSpawnDist * ScaleAdjst, curActiveSkill.MinSpawnDist * ScaleAdjst, 1.0f);
+
+            Vector3 MaxSpawnScale = new Vector3(curActiveSkill.MaxSpawnDist * ScaleAdjst, curActiveSkill.MaxSpawnDist * ScaleAdjst, 1.0f);
+
+            SpawnUI.transform.GetChild(0).GetComponent<RectTransform>().localScale = MinSpawnScale;
+
+            SpawnUI.transform.GetChild(1).GetComponent<RectTransform>().localScale = MaxSpawnScale;
         }
         else
         {

@@ -3,15 +3,15 @@ using System.Linq;
 
 public class SpawnAOE : ISkill
 {
-    public float minSpawnDist = 5f;
-    public float maxSpawnDist = 150f;
-
-
     public void Awake()
     {
         Name = "SpawnAOE";
         canDrop = false;
         cost = 30;
+
+        IsSpawnSkill = true;
+        MinSpawnDist = 20f;
+        MaxSpawnDist = 75f;
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
@@ -30,8 +30,8 @@ public class SpawnAOE : ISkill
         }
 
         var avatars = FindObjectsOfType<AvatarController>();
-        var minSqrDist = minSpawnDist * minSpawnDist;
-        var maxSqrDist = maxSpawnDist * maxSpawnDist;
+        var minSqrDist = MinSpawnDist * MinSpawnDist;
+        var maxSqrDist = MaxSpawnDist * MaxSpawnDist;
         var plyrDistance = avatars.Select(a => (a.transform.position - clickWorldPos).sqrMagnitude).OrderBy(d => d).FirstOrDefault();
 
 
@@ -46,8 +46,8 @@ public class SpawnAOE : ISkill
         // DebugCode
         foreach (var trgt in avatars)
         {
-            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.right * minSpawnDist);
-            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.up * maxSpawnDist);
+            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.right * MinSpawnDist);
+            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.up * MaxSpawnDist);
         }
 
         return null;
