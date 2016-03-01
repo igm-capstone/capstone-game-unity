@@ -3,7 +3,9 @@ using System.Linq;
 
 public class SpawnAOE : ISkill
 {
-    public float distanceFromPlayers = 5f;
+    public float minSpawnDist = 5f;
+    public float maxSpawnDist = 150f;
+
 
     public void Awake()
     {
@@ -28,16 +30,25 @@ public class SpawnAOE : ISkill
         }
 
         var avatars = FindObjectsOfType<AvatarController>();
-        var sqrDist = distanceFromPlayers*distanceFromPlayers;
-        var minDistance = avatars.Select(a => (a.transform.position - clickWorldPos).sqrMagnitude).OrderBy(d => d).FirstOrDefault();
+        var minSqrDist = minSpawnDist * minSpawnDist;
+        var maxSqrDist = maxSpawnDist * maxSpawnDist;
+        var plyrDistance = avatars.Select(a => (a.transform.position - clickWorldPos).sqrMagnitude).OrderBy(d => d).FirstOrDefault();
 
-        if (avatars.Any() && minDistance < sqrDist)
+
+        if (avatars.Any() && ((plyrDistance < minSqrDist) || (plyrDistance > maxSqrDist)))
         {
             //Debug.Log("Near player");
-            return Name + " skill cannot be used so close to a player!";
+            return Name + " skill must be used inside spawn area.";
         }
 
         MinionSpawnManager.Instance.CmdSingleSpawn(clickWorldPos, MinionType.AOEBomber);
+
+        // DebugCode
+        foreach (var trgt in avatars)
+        {
+            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.right * minSpawnDist);
+            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.up * maxSpawnDist);
+        }
 
         return null;
     }

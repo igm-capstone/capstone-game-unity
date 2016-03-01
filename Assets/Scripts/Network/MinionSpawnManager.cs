@@ -45,6 +45,11 @@ public class MinionSpawnManager : NetworkBehaviour
                 robot = Instantiate(EnemyPrefab[1], position, Quaternion.identity) as GameObject;
                 break;
 
+            case MinionType.Plant:
+                // Prefab not completely done yet.
+                robot = Instantiate(EnemyPrefab[2], position, Quaternion.identity) as GameObject;
+                break;
+
             default:
                 robot = Instantiate(EnemyPrefab[0], position, Quaternion.identity) as GameObject;
                 break;
@@ -60,6 +65,7 @@ public class MinionSpawnManager : NetworkBehaviour
         StartCoroutine(SetGridDirty());
     }
 
+    // Currently only works for the Basic Minion. Needs to be changed if we want to implement spawning multiple minions of different types.
     [Command]
     public void CmdMultipleSpawn(GameObject target, float radius, int numMinions, Action<GameObject[], GameObject> completion)
     {
@@ -108,10 +114,6 @@ public class MinionSpawnManager : NetworkBehaviour
             case MinionType.HauntMelee:
                 minion = Instantiate(EnemyHauntPrefab[0], position, Quaternion.identity) as GameObject;                
                 break;
-
-            //case MinionType.AOEBomber:
-            //    robot = Instantiate(EnemyPrefab[1], position, Quaternion.identity) as GameObject;
-            //    break;
 
             default:
                 minion = Instantiate(EnemyPrefab[0], position, Quaternion.identity) as GameObject;
