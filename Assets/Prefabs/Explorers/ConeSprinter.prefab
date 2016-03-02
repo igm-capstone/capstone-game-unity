@@ -2167,7 +2167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 8254e0dfe1a6b524c8bb7a7f0f242cd4, type: 3}
+  SkillSprite: {fileID: 21300012, guid: 06e6adf615aa4bd47b21b38f6995a714, type: 3}
+  CooldownSprite: {fileID: 21300020, guid: 06e6adf615aa4bd47b21b38f6995a714, type: 3}
   Name: Skill
   Cooldown: 5
   cost: 0
@@ -2311,7 +2312,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 9bc1b515b807ee848961d86bb49858a4, type: 3}
+  SkillSprite: {fileID: 21300010, guid: 06e6adf615aa4bd47b21b38f6995a714, type: 3}
+  CooldownSprite: {fileID: 21300006, guid: 06e6adf615aa4bd47b21b38f6995a714, type: 3}
   Name: ConeAttack
   Cooldown: .100000001
   cost: 0
@@ -2347,6 +2349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 37ecfd6470428cd4299e1d6364ec9938, type: 3}
+  CooldownSprite: {fileID: 0}
   Name: Skill
   Cooldown: 0
   cost: 0
@@ -2405,7 +2408,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 0460b37cd7485f64a8eb9ea5af7ae6c1, type: 3}
+  SkillSprite: {fileID: 21300002, guid: 06e6adf615aa4bd47b21b38f6995a714, type: 3}
+  CooldownSprite: {fileID: 21300016, guid: 06e6adf615aa4bd47b21b38f6995a714, type: 3}
   Name: Sprint
   Cooldown: 3.5
   cost: 0

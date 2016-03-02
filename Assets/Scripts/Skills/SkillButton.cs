@@ -8,8 +8,8 @@ public class SkillButton : MonoBehaviour
     public SkillBar _skillBar;
     
     private Button _btn;
-    private Image _fill;
-    private Image _hl;
+    //private Image _fill;
+    private Image _cd;
     private Image _icon;
 
     public void Init()
@@ -23,8 +23,11 @@ public class SkillButton : MonoBehaviour
         else
             _btn.interactable = false;
 
-        _fill = transform.Find("Fill").GetComponent<Image>();
-        _hl = transform.Find("Highlight").GetComponent<Image>();
+        //_fill = transform.Find("Fill").GetComponent<Image>();
+        _cd = transform.Find("Cooldown").GetComponent<Image>();
+        _cd.sprite = _skill.CooldownSprite;
+        _cd.type = Image.Type.Filled;
+        _cd.fillAmount = 0;
         _icon = transform.Find("Image").GetComponent<Image>();
         _icon.sprite = _skill.SkillSprite;
         if (_skill.key != KeyCode.None)
@@ -66,9 +69,9 @@ public class SkillButton : MonoBehaviour
 
     void Update()
     {
-        _fill.fillAmount = 1 - ((Time.time - _skill.LastUse) / _skill.Cooldown);
+        _cd.fillAmount = 1 - ((Time.time - _skill.LastUse) / _skill.Cooldown);
 
-        _hl.enabled = _skill.IsActive;
+        //_cd.enabled = _skill.IsActive;
     }
 
     void SetActiveClick()
@@ -76,9 +79,9 @@ public class SkillButton : MonoBehaviour
         _skillBar.SetActiveSkill(_skill);
     }
 
-    public void SetHighlight(bool active)
+    public void SetCooldown(bool active)
     {
-        _hl.enabled = active;
+        _cd.enabled = active;
     }
 
     public void SetVisibility(bool active)

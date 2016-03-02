@@ -1,0 +1,100 @@
+fileFormatVersion: 2
+guid: 507b6e62e4c3748418a0c63d3464fae6
+timeCreated: 1456796864
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: UI_playerFrames_0
+    21300002: UI_playerFrames_1
+    21300004: UI_playerFrames_2
+    21300006: UI_playerFrames_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 388, z: 387, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: UI_playerFrames_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 388
+        width: 639
+        height: 636
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 2, z: 2, w: 0}
+    - name: UI_playerFrames_1
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 600
+        width: 199
+        height: 227
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UI_playerFrames_2
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 252
+        width: 900
+        height: 110
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UI_playerFrames_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 842
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
