@@ -31,6 +31,7 @@ public class AttackTarget : MinionBehaviour
         isAttacking = true;
         if (CheckHit())
         {
+            GetComponent<RpcNetworkAnimator>().SetFloat("Random", UnityEngine.Random.Range(0.0f, 1.0f));
             GetComponent<RpcNetworkAnimator>().SetTrigger("Attack");
         }
 
