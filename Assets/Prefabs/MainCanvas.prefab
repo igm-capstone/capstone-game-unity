@@ -540,15 +540,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .335207611, g: .735294104, b: .735294104, a: .39199999}
+  m_Color: {r: 1, g: 1, b: 1, a: .546999991}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300018, guid: 216fa7f6cf9a76f45a8dbd685ddc9d17, type: 3}
-  m_Type: 2
+  m_Sprite: {fileID: 21300000, guid: d15df1ab0e7c0974b898d66c7e15e3a6, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -908,8 +908,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -153.556091}
-  m_SizeDelta: {x: 580, y: 52.8878326}
+  m_AnchoredPosition: {x: 300, y: -153.495514}
+  m_SizeDelta: {x: 580, y: 53.0089951}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22487976
 RectTransform:
@@ -925,8 +925,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -71.0560837}
-  m_SizeDelta: {x: 580, y: 102.112167}
+  m_AnchoredPosition: {x: 300, y: -70.9955063}
+  m_SizeDelta: {x: 580, y: 101.991013}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22489368
 RectTransform:

@@ -6,6 +6,7 @@ public abstract class ISkill : MonoBehaviour
 {
     public GameObject SkillButtonPrefab;
     public Sprite SkillSprite;
+    public Sprite CooldownSprite;
 
     public string Name = "Skill";
     public float Cooldown = 2;

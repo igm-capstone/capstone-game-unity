@@ -2144,7 +2144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: e525a0c8cc230854ba51f80bb587ea9a, type: 3}
+  SkillSprite: {fileID: 21300012, guid: 06e6adf615aa4bd47b21b38f6995a714, type: 3}
+  CooldownSprite: {fileID: 21300020, guid: 06e6adf615aa4bd47b21b38f6995a714, type: 3}
   Name: SetRegLantern
   Cooldown: 5
   cost: 0
@@ -2256,7 +2257,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: ad400575c6d24844f954141c45625358, type: 3}
+  SkillSprite: {fileID: 21300004, guid: 06e6adf615aa4bd47b21b38f6995a714, type: 3}
+  CooldownSprite: {fileID: 21300018, guid: 06e6adf615aa4bd47b21b38f6995a714, type: 3}
   Name: Skill
   Cooldown: 2.5
   cost: 0
@@ -2274,6 +2276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 37ecfd6470428cd4299e1d6364ec9938, type: 3}
+  CooldownSprite: {fileID: 0}
   Name: InteractSkill
   Cooldown: 0
   cost: 0
@@ -2293,7 +2296,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: b45d21f851ac620428f7fdcc97f80397, type: 3}
+  SkillSprite: {fileID: 21300008, guid: 06e6adf615aa4bd47b21b38f6995a714, type: 3}
+  CooldownSprite: {fileID: 21300022, guid: 06e6adf615aa4bd47b21b38f6995a714, type: 3}
   Name: SetTrapGlue
   Cooldown: 2.5
   cost: 0
@@ -2337,7 +2341,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 61165a2d681de2049b5296c3092ea42d, type: 3}
+  SkillSprite: {fileID: 21300010, guid: 06e6adf615aa4bd47b21b38f6995a714, type: 3}
+  CooldownSprite: {fileID: 21300006, guid: 06e6adf615aa4bd47b21b38f6995a714, type: 3}
   Name: LongAttack
   Cooldown: .400000006
   cost: 0
