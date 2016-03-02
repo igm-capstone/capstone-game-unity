@@ -5,7 +5,7 @@ public class SetTrapGlue : ISkill
 {
     TrapType SlctdTrap;
 
-    public float spawnDistance;
+    float spawnDistance;
     Vector3 spawnPosition;
 
     AvatarController avatarController;

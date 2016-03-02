@@ -151,9 +151,9 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     }
 
     [Command]
-    public void CmdSetLantExplorer(Vector3 _position, LanternType _slctdLant)
+    public void CmdSetLantExplorer(Vector3 _position, LanternType _slctdLant, float _duration)
     {
-        LanternSpawnManager.Instance.CmdSetLantern(_position, _slctdLant);
+        LanternSpawnManager.Instance.CmdSetLantern(_position, _slctdLant, _duration);
     }
 
     [Command]

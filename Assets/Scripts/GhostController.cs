@@ -73,11 +73,13 @@ public class GhostController : MonoBehaviour
             activeSkill.Use(go, clickWordPos);
         } //if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject())
 
+        /*
         // Right-Click deselects skills.
         if (Input.GetMouseButtonUp(1) && !EventSystem.current.IsPointerOverGameObject())
         {
             _ghostSkillBar.SetActiveSkill(GetComponent<DisableLight>());
         }
+        */
         
     }
 }

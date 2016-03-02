@@ -5,6 +5,8 @@ public class SetRegLantern : ISkill
 {
     LanternType SlctdLant;
     AvatarController avatarController;
+
+    float spawnDistance;
     public void Awake()
     {
         Name = "SetRegLantern";
@@ -17,6 +19,8 @@ public class SetRegLantern : ISkill
 
         UseCount = 3;
         avatarController = GetComponent<AvatarController>();
+
+        spawnDistance = 1.0f;
     }
 
     void Update()
@@ -43,7 +47,9 @@ public class SetRegLantern : ISkill
 
         TurnToMousePos();
 
-        GetComponent<AvatarNetworkBehavior>().CmdSetLantExplorer(transform.position, SlctdLant);
+        Vector3 spawnLocation = GetPosForwardFromAvatar(spawnDistance);
+
+        GetComponent<AvatarNetworkBehavior>().CmdSetLantExplorer(spawnLocation, SlctdLant, Cooldown);
         return null;
     }
 }

@@ -27,6 +27,8 @@ public class AvatarController : MonoBehaviour
     private AvatarNetworkBehavior avatarNB;
 
     float slowDownMod;
+    private float animSpeed;
+
     void Awake()
     {
         hauntEtoM = false;
@@ -81,17 +83,22 @@ public class AvatarController : MonoBehaviour
             // Applies velocity
             _rb.velocity = new Vector2(horizontal, vertical).normalized * CalcMoveSpeed * slowDownMod*
                 (Mathf.Abs(Mathf.Abs(horizontal) - Mathf.Abs(vertical)) + (Mathf.Abs(horizontal) * Mathf.Abs(vertical) * Mathf.Sqrt(2)));
-            animator.SetFloat("RunSpeed", _rb.velocity.magnitude);
-            if (hauntEtoM)
-            {
-                hauntedMinionAnimator.SetFloat("Speed", _rb.velocity.magnitude);
-            }
-
         }
         else
         {
             _rb.velocity = new Vector2(0.0f, 0.0f);
-            animator.SetFloat("RunSpeed", _rb.velocity.magnitude);
+        }
+
+        var speed = _rb.velocity.magnitude;
+        if (animSpeed != speed)
+        {
+            animator.SetFloat("RunSpeed", speed);
+            //if (hauntEtoM)
+            //{
+            //    //Debug.Log("update minion animator");
+            //    //hauntedMinionAnimator.SetFloat("Speed", _rb.velocity.magnitude);
+            //}
+            //BroadcastMessage("SetAnimatorSpeed", speed, SendMessageOptions.DontRequireReceiver);
         }
 
         var pos = transform.position;
@@ -107,9 +114,13 @@ public class AvatarController : MonoBehaviour
     public void SetMinionToControl(GameObject minion, bool hauntMinionActive)
     {
         hauntEtoM = hauntMinionActive;
+        animator.Broadcast = hauntMinionActive;
+
         hauntMinionToControl = minion;
         if(hauntMinionToControl != null)
-            hauntedMinionAnimator = hauntMinionToControl.GetComponent<RpcNetworkAnimator>();
+        {
+            hauntedMinionAnimator = hauntMinionToControl.GetComponentInChildren<RpcNetworkAnimator>();
+        }
     }
 
     // Functions to apply slowdown on player

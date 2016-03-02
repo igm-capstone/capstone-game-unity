@@ -387,10 +387,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 445446}
-  - 114: {fileID: 11496266}
-  - 114: {fileID: 11438718}
-  - 114: {fileID: 11498364}
   - 114: {fileID: 11461622}
+  - 114: {fileID: 11497856}
   m_Layer: 13
   m_Name: MinionToadHaunt
   m_TagString: Untagged
@@ -1548,26 +1546,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11438718
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: .0333333351
-  m_SyncRotationAxis: 0
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: .00499999989
-  m_SnapThreshold: .5
-  m_InterpolateRotation: 20
-  m_InterpolateMovement: 20
 --- !u!114 &11461622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1579,7 +1557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398c5ddd6a4656c43b446d9b0a652cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11496266
+--- !u!114 &11497856
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1610,19 +1588,7 @@ MonoBehaviour:
     i14: 42
     i15: 36
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
---- !u!114 &11498364
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc10b66495fb84442904acd5ecd08256, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Animator: {fileID: 9515228}
+  m_LocalPlayerAuthority: 0
 --- !u!137 &13700238
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

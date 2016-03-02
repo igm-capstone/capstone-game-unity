@@ -29,7 +29,7 @@ public class LanternSpawnManager : NetworkBehaviour
     }
 
     [Command]
-    public void CmdSetLantern(Vector3 position, LanternType _SlctdLantern)
+    public void CmdSetLantern(Vector3 position, LanternType _SlctdLantern, float _duration)
     {
         GameObject spawnedLantern;
 
@@ -41,7 +41,7 @@ public class LanternSpawnManager : NetworkBehaviour
                 {
                     spawnedLantern = Instantiate(LanternsPrefab[0], position, Quaternion.identity) as GameObject;
                     spawnedLantern.transform.SetParent(LanternContainer);
-
+                    spawnedLantern.GetComponent<LanternBehavior>().Initialize(_duration);
                     if (isServer)
                     {
                         GridBehavior.Instance.SetAIDirty();
