@@ -96,11 +96,16 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     {
         // Assign Damage
         obj.GetComponent<Health>().TakeDamage(damage);
-        
+
         // Calculate KnockBackForce
-        Vector3 TransForce = (obj.transform.position - transform.position).normalized* KnockBackAmount;
+        KnockBackAmount += .5f;
+        Vector3 direction = (obj.transform.position - transform.position).normalized;
+        RaycastHit2D hit = Physics2D.Raycast(obj.transform.position, direction, KnockBackAmount, GridBehavior.Instance.opaqueObstacleMask);
+        float distance = (hit ? hit.distance : KnockBackAmount) - .5f;
+
+        
         // Apply Knock back and start stun timer.
-        obj.transform.Translate(TransForce, Space.Self);
+        obj.transform.Translate(direction * distance, Space.Self);
 
         // Stun on minion.
         if (obj.GetComponent<TargetFollower>() != null)
