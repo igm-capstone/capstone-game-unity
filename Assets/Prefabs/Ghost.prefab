@@ -130,7 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 6918db9978b4d2343a66400aa899dbce, type: 3}
+  SkillSprite: {fileID: 21300000, guid: 2fa06c957efd237478093d3aebbb8d42, type: 3}
+  CooldownSprite: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a, type: 3}
   Name: Spawn Minion
   Cooldown: 2
   cost: 0
@@ -172,6 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: bbf8f2d2fa45ef140be8cebf84313e1a, type: 3}
+  CooldownSprite: {fileID: 0}
   Name: Disable Lights
   Cooldown: 6
   cost: 0
@@ -252,7 +254,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: f4561c2a9c789d645a93e5c8612fad28, type: 3}
+  SkillSprite: {fileID: 21300000, guid: 27e4feb8dd793514e8fc168e705477ff, type: 3}
+  CooldownSprite: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a, type: 3}
   Name: HauntExplorerToMinion
   Cooldown: 2
   cost: 0
@@ -270,7 +273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 6aa1e2020d477b94e8f7614677e8a3ae, type: 3}
+  SkillSprite: {fileID: 21300000, guid: cd6993fb8014a864195665065c67103f, type: 3}
+  CooldownSprite: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a, type: 3}
   Name: Skill
   Cooldown: 2
   cost: 10
@@ -287,7 +291,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 6bc82e5931d5a674289a3f1cf6ad2e7e, type: 3}
+  SkillSprite: {fileID: 21300000, guid: 09a58399424e1314d9a674b06e7f6b08, type: 3}
+  CooldownSprite: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a, type: 3}
   Name: Skill
   Cooldown: 2
   cost: 0
@@ -304,7 +309,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 5edf57f5f0d065245bbc4934b786e877, type: 3}
+  SkillSprite: {fileID: 21300000, guid: 4238258450f1acb46bafa826cf0ef89e, type: 3}
+  CooldownSprite: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a, type: 3}
   Name: Hallucinate
   Cooldown: 2
   cost: 0
@@ -454,7 +460,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SkillSprite
       value: 
-      objectReference: {fileID: 21300000, guid: bbf8f2d2fa45ef140be8cebf84313e1a,
+      objectReference: {fileID: 21300000, guid: 27e4feb8dd793514e8fc168e705477ff,
         type: 3}
     - target: {fileID: 0}
       propertyPath: HideInactiveSkills
@@ -508,6 +514,11 @@ Prefab:
       propertyPath: m_CullingMask.m_Bits
       value: 4261380095
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: CooldownSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196296}
