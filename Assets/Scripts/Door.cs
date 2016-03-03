@@ -27,11 +27,6 @@ public class Door : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
     }
 
-    bool f(Collider2D c)
-    {
-        return !c.isTrigger;
-    }
-
     public void SwingDoor()
     {
         if(!canOpen)

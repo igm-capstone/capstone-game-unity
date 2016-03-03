@@ -44,6 +44,7 @@ public class InteractableBehavior : MonoBehaviour
                 || Type != InteractableObject.Player)
             {
                 interactUI.SetActive(true);
+                interactUI.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
             }
         }
     }
