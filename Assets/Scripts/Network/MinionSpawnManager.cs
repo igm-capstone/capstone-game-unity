@@ -59,9 +59,6 @@ public class MinionSpawnManager : NetworkBehaviour
         robot.GetComponent<MinionController>().enabled = true;
         NetworkServer.Spawn(robot);
 
-        TextureRandomizer rnd = robot.GetComponent<TextureRandomizer>();
-        rnd.RandomizeTexture();
-
         StartCoroutine(SetGridDirty());
     }
 

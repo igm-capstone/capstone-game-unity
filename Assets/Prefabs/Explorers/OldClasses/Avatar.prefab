@@ -356,8 +356,6 @@ GameObject:
   - 4: {fileID: 435526}
   - 114: {fileID: 11459388}
   - 114: {fileID: 11465060}
-  - 114: {fileID: 11448782}
-  - 114: {fileID: 11458820}
   - 50: {fileID: 5052620}
   - 60: {fileID: 6021440}
   - 114: {fileID: 11470710}
@@ -372,6 +370,8 @@ GameObject:
   - 114: {fileID: 11414952}
   - 114: {fileID: 11499930}
   - 114: {fileID: 11416774}
+  - 114: {fileID: 11497010}
+  - 114: {fileID: 11414282}
   m_Layer: 11
   m_Name: Avatar
   m_TagString: Player
@@ -2059,9 +2059,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 45350ad05f758454580a16b3d9349bb6, type: 3}
+  CooldownSprite: {fileID: 0}
   Name: Heal
   Cooldown: 2
-  canDrop: 0
+  cost: 0
+  UseCount: 0
   HealAmount: 1
   AreaRadius: 3
   FX: {fileID: 448086}
@@ -2078,11 +2080,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 0460b37cd7485f64a8eb9ea5af7ae6c1, type: 3}
+  CooldownSprite: {fileID: 0}
   Name: Sprint
   Cooldown: 2
-  canDrop: 0
+  cost: 0
+  UseCount: 0
   Duration: 2
   SpeedMultiplier: 2
+--- !u!114 &11414282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c0b47ccadf19641b48e53fbc43042c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 448192}
+  useHistoricalInterpolation: 0
 --- !u!114 &11414952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2096,10 +2113,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 1965a1dbdc9f706418d3db6c49c6ab4a, type: 3}
+  CooldownSprite: {fileID: 0}
   Name: Flame Sword
   Cooldown: 2
-  canDrop: 0
+  cost: 0
+  UseCount: 0
   FX: {fileID: 475804}
+  HitLayers:
+    serializedVersion: 2
+    m_Bits: 0
   Damage: 2
   AreaRadius: 3
   hasKnockBack: 0
@@ -2117,9 +2139,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: f2eafda9a8751994db425a22b8c67fa8, type: 3}
+  CooldownSprite: {fileID: 0}
   Name: Skill
   Cooldown: 1
-  canDrop: 0
+  cost: 0
+  UseCount: 0
+  HitLayers:
+    serializedVersion: 2
+    m_Bits: 0
   Damage: 2
   radius: 2.5
   hasKnockBack: 1
@@ -2136,8 +2163,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSkills: 3
+  totalEnergy: 200
   HideInactiveSkills: 0
   OnClickBehavior: 2
+  waitTimeRestoreEnergy: 2
+  restoreAmount: 5
+  energyUiPrefab: {fileID: 0}
 --- !u!114 &11420664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2150,6 +2181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 9549202}
+  Broadcast: 0
 --- !u!114 &11438486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2163,9 +2195,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: ca14d521ba1358a44851490d1ac8c40c, type: 3}
+  CooldownSprite: {fileID: 0}
   Name: Move Block
   Cooldown: 0
-  canDrop: 0
+  cost: 0
+  UseCount: 0
   moveableObjectLayer:
     serializedVersion: 2
     m_Bits: 4096
@@ -2183,9 +2217,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 0734cb10911136e44802c8344db09ca1, type: 3}
+  CooldownSprite: {fileID: 0}
   Name: Melee Weapon
   Cooldown: 1
-  canDrop: 0
+  cost: 0
+  UseCount: 0
   Damage: 1
   hitbox:
     serializedVersion: 2
@@ -2193,45 +2229,6 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
---- !u!114 &11448782
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: .0333333351
-  m_SyncRotationAxis: 0
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: .00999999978
-  m_SnapThreshold: 4
-  m_InterpolateRotation: 15
-  m_InterpolateMovement: 1
---- !u!114 &11458820
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1267208747, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 448192}
-  m_ChildIndex: 0
-  m_SendInterval: .0333333351
-  m_SyncRotationAxis: 3
-  m_RotationSyncCompression: 0
-  m_MovementThreshold: .00999999978
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &11459388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2275,6 +2272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795f99c4c8dccdc479e0b16a91ed075b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExploPreFab: {fileID: 0}
 --- !u!114 &11466728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2288,6 +2286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 4
   CalcMoveSpeed: 0
+  isAttacking: 0
 --- !u!114 &11470710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2315,6 +2314,19 @@ MonoBehaviour:
   BaseHealth: 50
   HealthCanvas: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
   CurrentHealth: 0
+--- !u!114 &11497010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d860704e6566b049ac807e4091cd94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTransform: {fileID: 435526}
+  useHistoricalLerping: 0
 --- !u!114 &11499930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2328,9 +2340,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300004, guid: 216fa7f6cf9a76f45a8dbd685ddc9d17, type: 3}
+  CooldownSprite: {fileID: 0}
   Name: LongAttack
   Cooldown: 1
-  canDrop: 0
+  cost: 0
+  UseCount: 0
+  HitLayers:
+    serializedVersion: 2
+    m_Bits: 0
   Damage: 2
   hasKnockBack: 0
   KnockBackMag: 5
@@ -11233,19 +11250,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_MovementTheshold
-      value: .00999999978
+      value: .00100000005
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SendInterval
-      value: .0333333351
+      value: .0909090936
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_InterpolateMovement
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SnapThreshold
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
@@ -11253,7 +11270,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_InterpolateRotation
-      value: 15
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.r
@@ -11360,6 +11377,18 @@ Prefab:
       propertyPath: hasKnockBack
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_VisualizerPrefab
+      value: 
+      objectReference: {fileID: 150340, guid: 4be79648881363842b7986a4d16d260a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: myTransform
+      value: 
+      objectReference: {fileID: 435526}
+    - target: {fileID: 0}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 448192}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 133474}

@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
+[NetworkSettings(channel = 1)]
 public class RpcNetworkAnimator: NetworkBehaviour
 {
     public Animator Animator;

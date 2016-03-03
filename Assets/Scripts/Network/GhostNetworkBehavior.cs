@@ -19,9 +19,15 @@ public class GhostNetworkBehavior : BasePlayerNetworkBehavior {
 
             if (hitInfo && hitInfo.collider.gameObject.CompareTag("Door"))
             {
-                RpcOpenDoor(hitInfo.collider.transform.parent.gameObject);
+                CmdOpenDoor(hitInfo.collider.transform.parent.gameObject);
             }
         }
+    }
+
+    [Command]
+    void CmdOpenDoor(GameObject obj)
+    {
+        RpcOpenDoor(obj);
     }
 
     [ClientRpc]
