@@ -15,13 +15,14 @@ public class LightController : NetworkBehaviour {
 
     [SyncVar(hook = "GotStatusFromSrv")]
     public LghtStatus CurrentStatus = LghtStatus.Off;
-    public Sprite SpriteOn;
-    public Sprite SpriteOff;
+    //public Sprite SpriteOn;
+    //public Sprite SpriteOff;
 
     Light2D light2d;
     new MeshRenderer renderer;
     new PolygonCollider2D collider;
-    SpriteRenderer sprite;
+    private GameObject light3D;
+    //SpriteRenderer sprite;
 
     public bool dirty = true;
 
@@ -34,13 +35,13 @@ public class LightController : NetworkBehaviour {
 
         light2d = GetComponent<Light2D>();
         renderer = GetComponent<MeshRenderer>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
+        //sprite = GetComponentInChildren<SpriteRenderer>();
         collider = GetComponentInChildren<PolygonCollider2D>();
+        light3D = transform.FindChild("Light3D").gameObject;
         DrawSprite();
 
         onLightMat = Resources.Load<Material>("LightOnMat");
         offLightMat = Resources.Load<Material>("LightOffMat");
-
 
     }
 
@@ -69,14 +70,16 @@ public class LightController : NetworkBehaviour {
             case LghtStatus.Off:
                 // Starting state. Lights are off
                 //sprite.sprite = SpriteOff;
-                sprite.sprite = SpriteOn;
+                //sprite.sprite = SpriteOn;
+                light3D.SetActive(false);
                 renderer.enabled = false;
                 collider.enabled = false;
                 break;
 
             case LghtStatus.On:
                 // Lights are On
-                sprite.sprite = SpriteOn;
+                //sprite.sprite = SpriteOn;
+                light3D.SetActive(true);
                 renderer.enabled = true;
                 light2d.lightMaterial = onLightMat;
                 collider.enabled = true;
@@ -84,7 +87,9 @@ public class LightController : NetworkBehaviour {
 
             case LghtStatus.Dimmed:
                 // Ghost Dimmed the lights.
-                sprite.sprite = SpriteOff;
+                //sprite.sprite = SpriteOff;
+                light3D.SetActive(false);
+                //light3D.GetComponent<Light>().intensity = 2.0f;
                 light2d.lightMaterial = offLightMat;
                 collider.enabled = false;
                 break;
@@ -95,7 +100,7 @@ public class LightController : NetworkBehaviour {
         if (material) {
             var c = material.color;
             c.a = 1;
-            sprite.color = c; 
+            //sprite.color = c; 
         }
         
     }
