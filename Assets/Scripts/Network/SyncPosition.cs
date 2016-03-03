@@ -21,7 +21,7 @@ public class SyncPosition : NetworkBehaviour
 
     private List<Vector3> syncPosList = new List<Vector3>();
     [SerializeField]
-    private bool useHistoricalLerping = false;
+    private bool useHistoricalLerping = true;
     private float closeEnough = 0.20f;
 
     void Start()

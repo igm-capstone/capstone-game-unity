@@ -19,7 +19,7 @@ public class SyncRotationChild : NetworkBehaviour
     private List<float> syncPlayerRotList = new List<float>();
     private float closeEnough = 10.0f;
     [SerializeField]
-    private bool useHistoricalInterpolation;
+    private bool useHistoricalInterpolation = true;
 
     void Start()
     {
