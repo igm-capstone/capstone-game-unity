@@ -668,6 +668,7 @@ GameObject:
   - 114: {fileID: 11459288}
   - 114: {fileID: 11467360}
   - 114: {fileID: 11429426}
+  - 114: {fileID: 11487278}
   m_Layer: 11
   m_Name: LongAtckTrapper
   m_TagString: Player
@@ -2554,6 +2555,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: E
+--- !u!114 &11487278
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35ad4022d647f748b1e4643aaa2c865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IndicatorPrefab: {fileID: 170614, guid: 37468903a8e4b9641897dcd0c6a08139, type: 2}
 --- !u!114 &11491262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11628,6 +11641,10 @@ Prefab:
       propertyPath: m_CullingMask.m_Bits
       value: 4261412863
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: IndicatorPrefab
+      value: 
+      objectReference: {fileID: 170614, guid: 37468903a8e4b9641897dcd0c6a08139, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 157710}

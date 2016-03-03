@@ -72,6 +72,7 @@ GameObject:
   - 114: {fileID: 11458516}
   - 114: {fileID: 11489292}
   - 114: {fileID: 11416510}
+  - 114: {fileID: 11418008}
   m_Layer: 11
   m_Name: ConeSprinter
   m_TagString: Player
@@ -1753,7 +1754,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.8443909, y: -54.0172729, z: 0}
+  m_LocalPosition: {x: 2.32340336, y: -48.8636131, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 439760}
@@ -2254,6 +2255,18 @@ MonoBehaviour:
   Cooldown: 5
   cost: 0
   UseCount: 3
+--- !u!114 &11418008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35ad4022d647f748b1e4643aaa2c865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IndicatorPrefab: {fileID: 170614, guid: 37468903a8e4b9641897dcd0c6a08139, type: 2}
 --- !u!114 &11425622
 MonoBehaviour:
   m_ObjectHideFlags: 1
