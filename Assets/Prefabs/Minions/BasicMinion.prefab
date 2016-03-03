@@ -3547,7 +3547,7 @@ MonoBehaviour:
   repelIncrement: .150000006
   rapelDecay: .200000003
   maxRepel: 1
-  turnRate: 30
+  turnRate: 70
   moveSpeed: 105
   SlowSpdPerCent: 50
   isStunned: 1
@@ -3893,6 +3893,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: useHistoricalLerping
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: turnRate
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
