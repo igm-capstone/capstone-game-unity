@@ -56,9 +56,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 489492}
   - 114: {fileID: 11441490}
-  - 114: {fileID: 11483724}
   - 114: {fileID: 11415236}
-  - 114: {fileID: 11486028}
   - 50: {fileID: 5017892}
   - 61: {fileID: 6145780}
   - 114: {fileID: 11440844}
@@ -72,6 +70,9 @@ GameObject:
   - 114: {fileID: 11458516}
   - 114: {fileID: 11489292}
   - 114: {fileID: 11416510}
+  - 114: {fileID: 11451730}
+  - 114: {fileID: 11443202}
+  - 114: {fileID: 11400816}
   m_Layer: 11
   m_Name: ConeSprinter
   m_TagString: Player
@@ -1917,7 +1918,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4261412863
+    m_Bits: 4294967039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2170,6 +2171,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11400816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35ad4022d647f748b1e4643aaa2c865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IndicatorPrefab: {fileID: 170614, guid: 37468903a8e4b9641897dcd0c6a08139, type: 2}
 --- !u!114 &11406922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2363,6 +2376,19 @@ MonoBehaviour:
     i15: 147
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &11443202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c0b47ccadf19641b48e53fbc43042c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 439760}
+  useHistoricalInterpolation: 1
 --- !u!114 &11445380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2381,6 +2407,19 @@ MonoBehaviour:
   waitTimeRestoreEnergy: 2
   restoreAmount: 5
   energyUiPrefab: {fileID: 0}
+--- !u!114 &11451730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d860704e6566b049ac807e4091cd94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTransform: {fileID: 489492}
+  useHistoricalLerping: 1
 --- !u!114 &11451870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2507,45 +2546,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: E
---- !u!114 &11483724
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: .0333333351
-  m_SyncRotationAxis: 0
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: .00999999978
-  m_SnapThreshold: 4
-  m_InterpolateRotation: 15
-  m_InterpolateMovement: 1
---- !u!114 &11486028
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1267208747, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 439760}
-  m_ChildIndex: 0
-  m_SendInterval: .0333333351
-  m_SyncRotationAxis: 3
-  m_RotationSyncCompression: 0
-  m_MovementThreshold: .00999999978
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &11489292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11627,8 +11627,28 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_CullingMask.m_Bits
-      value: 4261412863
+      value: 4294967039
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: myTransform
+      value: 
+      objectReference: {fileID: 489492}
+    - target: {fileID: 0}
+      propertyPath: useHistoricalLerping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 439760}
+    - target: {fileID: 0}
+      propertyPath: useHistoricalInterpolation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: IndicatorPrefab
+      value: 
+      objectReference: {fileID: 170614, guid: 37468903a8e4b9641897dcd0c6a08139, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102924}

@@ -136,7 +136,7 @@ public class TargetFollower : MonoBehaviour
         repel = repel * (1 - rapelDecay); // Mathf.Abs(repel) < .01f ? 0 : repel * .8f;
 
 
-        if (da > 90)
+        if (da > 70)
         {
             reverseTime = .25f;
         }

@@ -16,6 +16,22 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
         base.OnStartLocalPlayer();
     }
 
+    void Start()
+    {
+        foreach (IndicatorCollector i in GameObject.FindObjectsOfType<IndicatorCollector>())
+        {
+            i.RefreshIndicators();
+        }
+    }
+
+    void OnDestroy()
+    {
+        foreach (IndicatorCollector i in GameObject.FindObjectsOfType<IndicatorCollector>())
+        {
+            i.RefreshIndicators();
+        }
+    }
+
     [Command]
     public void CmdTakeBlockOver(string block, bool status)
     {

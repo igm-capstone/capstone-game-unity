@@ -24,9 +24,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 479846}
   - 114: {fileID: 11437762}
-  - 114: {fileID: 11446550}
   - 114: {fileID: 11478130}
-  - 114: {fileID: 11465374}
   - 50: {fileID: 5095862}
   - 61: {fileID: 6170298}
   - 114: {fileID: 11425486}
@@ -40,6 +38,9 @@ GameObject:
   - 114: {fileID: 11461480}
   - 114: {fileID: 11427248}
   - 114: {fileID: 11467996}
+  - 114: {fileID: 11494718}
+  - 114: {fileID: 11414260}
+  - 114: {fileID: 11471586}
   m_Layer: 11
   m_Name: GrenadeSupport
   m_TagString: Player
@@ -1798,7 +1799,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4261412863
+    m_Bits: 4294967039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2020,6 +2021,19 @@ MonoBehaviour:
   BaseHealth: 160
   HealthCanvas: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
   CurrentHealth: 0
+--- !u!114 &11414260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c0b47ccadf19641b48e53fbc43042c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 496544}
+  useHistoricalInterpolation: 1
 --- !u!114 &11424930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2184,26 +2198,6 @@ MonoBehaviour:
     i15: 180
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &11446550
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: .0333333351
-  m_SyncRotationAxis: 0
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: .00999999978
-  m_SnapThreshold: 4
-  m_InterpolateRotation: 15
-  m_InterpolateMovement: 1
 --- !u!114 &11457782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2263,25 +2257,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   interactUI: {fileID: 171898}
---- !u!114 &11465374
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1267208747, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 496544}
-  m_ChildIndex: 0
-  m_SendInterval: .0333333351
-  m_SyncRotationAxis: 3
-  m_RotationSyncCompression: 0
-  m_MovementThreshold: .00999999978
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &11467526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2330,6 +2305,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &11471586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35ad4022d647f748b1e4643aaa2c865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IndicatorPrefab: {fileID: 170614, guid: 37468903a8e4b9641897dcd0c6a08139, type: 2}
 --- !u!114 &11474894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2371,6 +2358,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 9516680}
   Broadcast: 0
+--- !u!114 &11494718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d860704e6566b049ac807e4091cd94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTransform: {fileID: 479846}
+  useHistoricalLerping: 1
 --- !u!114 &11495838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11413,8 +11413,28 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_CullingMask.m_Bits
-      value: 4261412863
+      value: 4294967039
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: myTransform
+      value: 
+      objectReference: {fileID: 479846}
+    - target: {fileID: 0}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 496544}
+    - target: {fileID: 0}
+      propertyPath: useHistoricalInterpolation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: useHistoricalLerping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: IndicatorPrefab
+      value: 
+      objectReference: {fileID: 170614, guid: 37468903a8e4b9641897dcd0c6a08139, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100808}

@@ -644,18 +644,17 @@ GameObject:
   - 4: {fileID: 439048}
   - 58: {fileID: 5876164}
   - 114: {fileID: 11491572}
-  - 114: {fileID: 11408072}
-  - 114: {fileID: 11481510}
   - 114: {fileID: 11408252}
   - 114: {fileID: 11466072}
   - 114: {fileID: 11465646}
   - 114: {fileID: 11473176}
   - 114: {fileID: 11405868}
   - 114: {fileID: 11433826}
-  - 114: {fileID: 11470906}
   - 114: {fileID: 11474590}
   - 114: {fileID: 11416056}
   - 50: {fileID: 5069496}
+  - 114: {fileID: 11432244}
+  - 114: {fileID: 11427388}
   m_Layer: 13
   m_Name: PlantToad
   m_TagString: Untagged
@@ -1600,26 +1599,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AtckDamage: 6
   ExplosionRadius: 0
---- !u!114 &11408072
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 175372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: .0333333351
-  m_SyncRotationAxis: 0
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: .00499999989
-  m_SnapThreshold: .5
-  m_InterpolateRotation: 20
-  m_InterpolateMovement: 20
 --- !u!114 &11408252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1659,6 +1638,32 @@ MonoBehaviour:
   BaseHealth: 40
   HealthCanvas: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
   CurrentHealth: 0
+--- !u!114 &11427388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c0b47ccadf19641b48e53fbc43042c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 413668}
+  useHistoricalInterpolation: 1
+--- !u!114 &11432244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d860704e6566b049ac807e4091cd94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTransform: {fileID: 439048}
+  useHistoricalLerping: 1
 --- !u!114 &11433826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1695,34 +1700,6 @@ MonoBehaviour:
   ClosestAvatar: {fileID: 0}
   grid: {fileID: 0}
   Type: 0
---- !u!114 &11470906
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 175372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f23b77c21c4a0046b416a6738134d76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textures:
-  - {fileID: 2800000, guid: bd545c3941fdcdf4f85db9f020a3d312, type: 3}
-  - {fileID: 2800000, guid: 1a08754bdf6345a4ab1b37c3b11c5323, type: 3}
-  - {fileID: 2800000, guid: 9cb010cc79457704785dc609a4a17b68, type: 3}
-  - {fileID: 2800000, guid: e2a0f2be09f05834f9c717dd391d3607, type: 3}
-  - {fileID: 2800000, guid: f5e5978eafccae04caef533ff3becb2c, type: 3}
-  - {fileID: 2800000, guid: 179fe9b5692eec14fb096281351aab27, type: 3}
-  - {fileID: 2800000, guid: bc5c894f6483a7841ac459359d8e8496, type: 3}
-  - {fileID: 2800000, guid: aba72e115d498db4b9c3e2492483289d, type: 3}
-  - {fileID: 2800000, guid: 92a82285538a3df4084b166049c59d18, type: 3}
-  - {fileID: 2800000, guid: bd8f04f64fab7b74c985c0eb064cc38f, type: 3}
-  - {fileID: 2800000, guid: 50a718e7280e22e438c539da4ca7aaeb, type: 3}
-  - {fileID: 2800000, guid: 4c68910a2b5f23d459d8b02770fa1937, type: 3}
-  - {fileID: 2800000, guid: 9a47192b969b0b546b054e43d3487b8e, type: 3}
-  - {fileID: 2800000, guid: 4abf238fc7031794298789a8dcfcf2a1, type: 3}
-  - {fileID: 2800000, guid: 642f07e8c83067540a51efbab16dce03, type: 3}
-  - {fileID: 2800000, guid: f51674c9d8e592741a11a04bba84afca, type: 3}
 --- !u!114 &11473176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1748,25 +1725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 9541416}
---- !u!114 &11481510
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 175372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1267208747, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 413668}
-  m_ChildIndex: 0
-  m_SendInterval: .100000001
-  m_SyncRotationAxis: 3
-  m_RotationSyncCompression: 0
-  m_MovementThreshold: .00100000005
-  m_InterpolateRotation: .5
-  m_InterpolateMovement: .5
+  Broadcast: 0
 --- !u!114 &11491572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1881,6 +1840,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: moveSpeed
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: myTransform
+      value: 
+      objectReference: {fileID: 439048}
+    - target: {fileID: 0}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 413668}
+    - target: {fileID: 0}
+      propertyPath: useHistoricalInterpolation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: useHistoricalLerping
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

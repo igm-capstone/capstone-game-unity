@@ -23,7 +23,11 @@ public class InteractableBehavior : MonoBehaviour
     {
         if (interactUI == null)
         {
-            interactUI = transform.FindChild("InteractUI").gameObject;
+            var ui = transform.FindChild("InteractUI");
+            if (ui)
+            {
+                interactUI = ui.gameObject;
+            }
         }
 
         topmostParent = this.transform.root.gameObject;
@@ -40,10 +44,11 @@ public class InteractableBehavior : MonoBehaviour
             playerOnTrigger++;
             
             // Check if this is a player and if the other player is still active, or if this is anything else.
-            if ((Type == InteractableObject.Player && other.transform.root.GetComponent<AvatarController>().Disabled)
+            if (interactUI && (Type == InteractableObject.Player && other.transform.root.GetComponent<AvatarController>().Disabled)
                 || Type != InteractableObject.Player)
             {
                 interactUI.SetActive(true);
+                interactUI.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
             }
         }
     }
@@ -58,8 +63,10 @@ public class InteractableBehavior : MonoBehaviour
             if (playerOnTrigger <0)
                 playerOnTrigger = 0;
 
-            if (playerOnTrigger == 0)
+            if (interactUI && playerOnTrigger == 0)
+            {
                 interactUI.SetActive(false);
+            }
         }
 
     }

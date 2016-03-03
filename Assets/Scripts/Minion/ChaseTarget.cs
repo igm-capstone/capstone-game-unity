@@ -26,7 +26,7 @@ public class ChaseTarget : MinionBehaviour
 
 	    if ((target.position - transform.position).magnitude > 1.5f)
 	    {
-            var success = Controller.Follower.MoveTowards(target.position, 15);
+            var success = Controller.Follower.MoveTowards(target.position, 25);
             if (!success)
             {
                 Controller.DeactivateBehaviour();
