@@ -56,13 +56,13 @@ public abstract class ISkill : MonoBehaviour
         Destroy(SkillBtnScript.gameObject);
     }
 
-    public void Use() { Use(null, Vector3.zero); }
-    public void Use(GameObject target, Vector3 clickWorldPos)
+    public bool Use() { return Use(null, Vector3.zero); }
+    public bool Use(GameObject target, Vector3 clickWorldPos)
     {
         if (!IsReady())
         {
             HelpMessage.Instance.SetMessage(Name + " is still on cooldown!");
-            return;
+            return false;
         }
 
         string usageResult = Usage(target, clickWorldPos);
@@ -71,6 +71,8 @@ public abstract class ISkill : MonoBehaviour
             LastUse = Time.time;
         }
         HelpMessage.Instance.SetMessage(usageResult);
+
+        return usageResult == null;
     }
 
     protected abstract string Usage(GameObject target, Vector3 clickWorldPos);

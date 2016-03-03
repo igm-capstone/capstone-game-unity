@@ -19,7 +19,7 @@ public class SkillButton : MonoBehaviour
         if (_skillBar.OnClickBehavior == SkillBar.OnClickBehaviorType.SetActiveSkillOnClick)
             _btn.onClick.AddListener(SetActiveClick);
         else if (_skillBar.OnClickBehavior == SkillBar.OnClickBehaviorType.UseSkill)
-            _btn.onClick.AddListener(_skill.Use);
+            _btn.onClick.AddListener(() => _skill.Use());
         else
             _btn.interactable = false;
 

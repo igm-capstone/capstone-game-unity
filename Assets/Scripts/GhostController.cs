@@ -65,12 +65,10 @@ public class GhostController : MonoBehaviour
                 return;
             }
 
-            if (activeSkill.IsReady())
+            if (activeSkill.Use(go, clickWordPos))
             {
                 _ghostSkillBar.EnergyLeft -= activeSkill.cost;
             }
-
-            activeSkill.Use(go, clickWordPos);
         } //if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject())
 
         /*
