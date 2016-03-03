@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
   - enabled: 1
     path: Assets/Scenes/Level01.unity
-  - enabled: 1
-    path: Assets/Scenes/LevelMVP - Design.unity
+  - enabled: 0
+    path: Assets/Scenes/Archive/LevelMVP - Design.unity
