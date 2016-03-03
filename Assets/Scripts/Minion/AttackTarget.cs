@@ -124,11 +124,4 @@ public class AttackTarget : MinionBehaviour
         // check if target is in hit area
         return (Controller.ClosestAvatar.position - transform.position).sqrMagnitude > 1;
     }
-
-    public void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(this.transform.position, ExplosionRadius);
-    }
-
-
 }

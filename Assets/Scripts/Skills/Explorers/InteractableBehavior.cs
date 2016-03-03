@@ -14,25 +14,53 @@ public class InteractableBehavior : MonoBehaviour
 {
     public InteractableObject Type;
 
-	// Use this for initialization
-	void Start ()
-    {
-	
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-	
-	}
-    // This will be used to implement Interactable Objects UI!
-    void OnTriggerStay2D(Collider2D other)
-    {
-        //if (other.gameObject.tag == "Player")
-        //{
-        //    Debug.Log("I am hitting the player!");
-        //}
+    int playerOnTrigger;
 
-        //Debug.Log("I am hitting something else: " + other.gameObject.layer);
+    public GameObject interactUI;
+    GameObject topmostParent;
+
+    public void Start()
+    {
+        if (interactUI == null)
+        {
+            interactUI = transform.FindChild("InteractUI").gameObject;
+        }
+
+        topmostParent = this.transform.root.gameObject;
+
+        playerOnTrigger = 0;
+    }
+
+
+    // This will be used to implement Interactable Objects UI!
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            playerOnTrigger++;
+            
+            // Check if this is a player and if the other player is still active, or if this is anything else.
+            if ((Type == InteractableObject.Player && other.transform.root.GetComponent<AvatarController>().Disabled)
+                || Type != InteractableObject.Player)
+            {
+                interactUI.SetActive(true);
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            playerOnTrigger--;
+            
+            // Hardfix for unexpedted nunmbers.
+            if (playerOnTrigger <0)
+                playerOnTrigger = 0;
+
+            if (playerOnTrigger == 0)
+                interactUI.SetActive(false);
+        }
+
     }
 }
