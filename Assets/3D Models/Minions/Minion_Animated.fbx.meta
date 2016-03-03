@@ -137,8 +137,11 @@ ModelImporter:
     400128: //RootNode
     4300000: Body
     7400000: Idle
-    7400002: Attack
+    7400002: Attack_01
     7400004: Run
+    7400006: Attack_01_End
+    7400008: Attack_02
+    7400010: Attack_02_End
     9500000: //RootNode
     13700000: Body
   materials:
@@ -171,7 +174,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -331,6 +334,166 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: IK_Arm_Left
+        weight: 1
+      - path: IK_Arm_Right
+        weight: 1
+      - path: JNT_Root
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_LS_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_LS_1/Ear_LS_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_LS_1/Ear_LS_2/Ear_LS_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_LS_1/Ear_LS_2/Ear_LS_3/Ear_LS_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_LS_1/Ear_LS_2/Ear_LS_3/Ear_LS_4/Ear_LS_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_RS_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_RS_1/Ear_RS_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_RS_1/Ear_RS_2/Ear_RS_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_RS_1/Ear_RS_2/Ear_RS_3/Ear_RS_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_RS_1/Ear_RS_2/Ear_RS_3/Ear_RS_4/Ear_RS_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/JNT_Head_High
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS/JNT_Elbow_LS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS/JNT_Elbow_LS/JNT_Wrist_LS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS/JNT_Elbow_LS/JNT_Wrist_LS/JNT_Middle_Finger_LS_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS/JNT_Elbow_LS/JNT_Wrist_LS/JNT_Middle_Finger_LS_1/JNT_Middle_Finger_LS_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS/JNT_Elbow_LS/JNT_Wrist_LS/JNT_Middle_Finger_LS_1/JNT_Middle_Finger_LS_2/JNT_Middle_Finger_LS_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_FK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_FK/JNT_Elbow_LS
+          1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_FK/JNT_Elbow_LS
+          1/JNT_Wrist_LS_FK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_IK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_IK/JNT_Elbow_LS
+          2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_IK/JNT_Elbow_LS
+          2/JNT_Wrist_LS_IK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS/JNT_Elbow_RS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS/JNT_Elbow_RS/JNT_Wrist_RS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS/JNT_Elbow_RS/JNT_Wrist_RS/JNT_Middle_Finger_RS_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS/JNT_Elbow_RS/JNT_Wrist_RS/JNT_Middle_Finger_RS_1/JNT_Middle_Finger_RS_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS/JNT_Elbow_RS/JNT_Wrist_RS/JNT_Middle_Finger_RS_1/JNT_Middle_Finger_RS_2/JNT_Middle_Finger_RS_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_FK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_FK/JNT_Elbow_RS_FK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_FK/JNT_Elbow_RS_FK/JNT_Wrist_RS_FK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_IK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_IK/JNT_Elbow_RS_IK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_IK/JNT_Elbow_RS_IK/JNT_Wrist_RS_IK
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_LS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_LS/JNT_Knee_LS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_LS/JNT_Knee_LS/JNT_Ankle_LS1
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_LS/JNT_Knee_LS/JNT_Ankle_LS1/JNT_Ball_LS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_LS/JNT_Knee_LS/JNT_Ankle_LS1/JNT_Ball_LS/JNT_Toe_LS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_RS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_RS/JNT_Knee_RS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_RS/JNT_Knee_RS/JNT_Ankle_RS1
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_RS/JNT_Knee_RS/JNT_Ankle_RS1/JNT_Ball_RS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_RS/JNT_Knee_RS/JNT_Ankle_RS1/JNT_Ball_RS/JNT_Toe_RS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1/JNT_Tail_2
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1/JNT_Tail_2/JNT_Tail_3
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1/JNT_Tail_2/JNT_Tail_3/JNT_Tail_4
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1/JNT_Tail_2/JNT_Tail_3/JNT_Tail_4/JNT_Tail_5
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1/JNT_Tail_2/JNT_Tail_3/JNT_Tail_4/JNT_Tail_5/JNT_Tail_6
+        weight: 1
+      - path: Mesh
+        weight: 1
+      - path: Mesh/Body
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack_01
+      takeName: Minion_01_Animation_Pass_1_1_1.0007
+      firstFrame: 80
+      lastFrame: 89
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -482,9 +645,329 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Attack
+      name: Attack_01_End
       takeName: Minion_01_Animation_Pass_1_1_1.0007
-      firstFrame: 80
+      firstFrame: 89
+      lastFrame: 97
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: IK_Arm_Left
+        weight: 1
+      - path: IK_Arm_Right
+        weight: 1
+      - path: JNT_Root
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_LS_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_LS_1/Ear_LS_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_LS_1/Ear_LS_2/Ear_LS_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_LS_1/Ear_LS_2/Ear_LS_3/Ear_LS_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_LS_1/Ear_LS_2/Ear_LS_3/Ear_LS_4/Ear_LS_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_RS_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_RS_1/Ear_RS_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_RS_1/Ear_RS_2/Ear_RS_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_RS_1/Ear_RS_2/Ear_RS_3/Ear_RS_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_RS_1/Ear_RS_2/Ear_RS_3/Ear_RS_4/Ear_RS_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/JNT_Head_High
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS/JNT_Elbow_LS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS/JNT_Elbow_LS/JNT_Wrist_LS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS/JNT_Elbow_LS/JNT_Wrist_LS/JNT_Middle_Finger_LS_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS/JNT_Elbow_LS/JNT_Wrist_LS/JNT_Middle_Finger_LS_1/JNT_Middle_Finger_LS_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS/JNT_Elbow_LS/JNT_Wrist_LS/JNT_Middle_Finger_LS_1/JNT_Middle_Finger_LS_2/JNT_Middle_Finger_LS_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_FK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_FK/JNT_Elbow_LS
+          1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_FK/JNT_Elbow_LS
+          1/JNT_Wrist_LS_FK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_IK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_IK/JNT_Elbow_LS
+          2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_IK/JNT_Elbow_LS
+          2/JNT_Wrist_LS_IK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS/JNT_Elbow_RS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS/JNT_Elbow_RS/JNT_Wrist_RS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS/JNT_Elbow_RS/JNT_Wrist_RS/JNT_Middle_Finger_RS_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS/JNT_Elbow_RS/JNT_Wrist_RS/JNT_Middle_Finger_RS_1/JNT_Middle_Finger_RS_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS/JNT_Elbow_RS/JNT_Wrist_RS/JNT_Middle_Finger_RS_1/JNT_Middle_Finger_RS_2/JNT_Middle_Finger_RS_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_FK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_FK/JNT_Elbow_RS_FK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_FK/JNT_Elbow_RS_FK/JNT_Wrist_RS_FK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_IK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_IK/JNT_Elbow_RS_IK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_IK/JNT_Elbow_RS_IK/JNT_Wrist_RS_IK
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_LS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_LS/JNT_Knee_LS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_LS/JNT_Knee_LS/JNT_Ankle_LS1
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_LS/JNT_Knee_LS/JNT_Ankle_LS1/JNT_Ball_LS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_LS/JNT_Knee_LS/JNT_Ankle_LS1/JNT_Ball_LS/JNT_Toe_LS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_RS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_RS/JNT_Knee_RS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_RS/JNT_Knee_RS/JNT_Ankle_RS1
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_RS/JNT_Knee_RS/JNT_Ankle_RS1/JNT_Ball_RS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_RS/JNT_Knee_RS/JNT_Ankle_RS1/JNT_Ball_RS/JNT_Toe_RS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1/JNT_Tail_2
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1/JNT_Tail_2/JNT_Tail_3
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1/JNT_Tail_2/JNT_Tail_3/JNT_Tail_4
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1/JNT_Tail_2/JNT_Tail_3/JNT_Tail_4/JNT_Tail_5
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1/JNT_Tail_2/JNT_Tail_3/JNT_Tail_4/JNT_Tail_5/JNT_Tail_6
+        weight: 1
+      - path: Mesh
+        weight: 1
+      - path: Mesh/Body
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack_02
+      takeName: Minion_01_Animation_Pass_1_1_1.0007
+      firstFrame: 97
+      lastFrame: 104
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: IK_Arm_Left
+        weight: 1
+      - path: IK_Arm_Right
+        weight: 1
+      - path: JNT_Root
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_LS_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_LS_1/Ear_LS_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_LS_1/Ear_LS_2/Ear_LS_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_LS_1/Ear_LS_2/Ear_LS_3/Ear_LS_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_LS_1/Ear_LS_2/Ear_LS_3/Ear_LS_4/Ear_LS_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_RS_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_RS_1/Ear_RS_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_RS_1/Ear_RS_2/Ear_RS_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_RS_1/Ear_RS_2/Ear_RS_3/Ear_RS_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/Ear_RS_1/Ear_RS_2/Ear_RS_3/Ear_RS_4/Ear_RS_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Body_High/JNT_Neck/JNT_Head_Mid/JNT_Head_High
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS/JNT_Elbow_LS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS/JNT_Elbow_LS/JNT_Wrist_LS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS/JNT_Elbow_LS/JNT_Wrist_LS/JNT_Middle_Finger_LS_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS/JNT_Elbow_LS/JNT_Wrist_LS/JNT_Middle_Finger_LS_1/JNT_Middle_Finger_LS_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS/JNT_Elbow_LS/JNT_Wrist_LS/JNT_Middle_Finger_LS_1/JNT_Middle_Finger_LS_2/JNT_Middle_Finger_LS_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_FK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_FK/JNT_Elbow_LS
+          1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_FK/JNT_Elbow_LS
+          1/JNT_Wrist_LS_FK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_IK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_IK/JNT_Elbow_LS
+          2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_LS/JNT_Shoulder_LS_IK/JNT_Elbow_LS
+          2/JNT_Wrist_LS_IK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS/JNT_Elbow_RS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS/JNT_Elbow_RS/JNT_Wrist_RS
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS/JNT_Elbow_RS/JNT_Wrist_RS/JNT_Middle_Finger_RS_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS/JNT_Elbow_RS/JNT_Wrist_RS/JNT_Middle_Finger_RS_1/JNT_Middle_Finger_RS_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS/JNT_Elbow_RS/JNT_Wrist_RS/JNT_Middle_Finger_RS_1/JNT_Middle_Finger_RS_2/JNT_Middle_Finger_RS_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_FK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_FK/JNT_Elbow_RS_FK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_FK/JNT_Elbow_RS_FK/JNT_Wrist_RS_FK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_IK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_IK/JNT_Elbow_RS_IK
+        weight: 1
+      - path: JNT_Root/JNT_Body_Low/JNT_Body_Mid/JNT_Clavicle_RS/JNT_Shoulder_RS_IK/JNT_Elbow_RS_IK/JNT_Wrist_RS_IK
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_LS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_LS/JNT_Knee_LS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_LS/JNT_Knee_LS/JNT_Ankle_LS1
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_LS/JNT_Knee_LS/JNT_Ankle_LS1/JNT_Ball_LS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_LS/JNT_Knee_LS/JNT_Ankle_LS1/JNT_Ball_LS/JNT_Toe_LS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_RS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_RS/JNT_Knee_RS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_RS/JNT_Knee_RS/JNT_Ankle_RS1
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_RS/JNT_Knee_RS/JNT_Ankle_RS1/JNT_Ball_RS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Hip_RS/JNT_Knee_RS/JNT_Ankle_RS1/JNT_Ball_RS/JNT_Toe_RS
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1/JNT_Tail_2
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1/JNT_Tail_2/JNT_Tail_3
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1/JNT_Tail_2/JNT_Tail_3/JNT_Tail_4
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1/JNT_Tail_2/JNT_Tail_3/JNT_Tail_4/JNT_Tail_5
+        weight: 1
+      - path: JNT_Root/JNT_Pelvis/JNT_Tail_1/JNT_Tail_2/JNT_Tail_3/JNT_Tail_4/JNT_Tail_5/JNT_Tail_6
+        weight: 1
+      - path: Mesh
+        weight: 1
+      - path: Mesh/Body
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack_02_End
+      takeName: Minion_01_Animation_Pass_1_1_1.0007
+      firstFrame: 104
       lastFrame: 110
       wrapMode: 0
       orientationOffsetY: 0

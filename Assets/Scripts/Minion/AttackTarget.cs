@@ -31,6 +31,7 @@ public class AttackTarget : MinionBehaviour
         isAttacking = true;
         if (CheckHit())
         {
+            GetComponent<RpcNetworkAnimator>().SetFloat("Random", UnityEngine.Random.Range(0.0f, 1.0f));
             GetComponent<RpcNetworkAnimator>().SetTrigger("Attack");
         }
 
@@ -123,11 +124,4 @@ public class AttackTarget : MinionBehaviour
         // check if target is in hit area
         return (Controller.ClosestAvatar.position - transform.position).sqrMagnitude > 1;
     }
-
-    public void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(this.transform.position, ExplosionRadius);
-    }
-
-
 }

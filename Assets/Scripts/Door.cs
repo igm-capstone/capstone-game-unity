@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+
 [Rig3DAsset("doors", Rig3DExports.Position | Rig3DExports.Rotation | Rig3DExports.Scale)]
 public class Door : MonoBehaviour
 {
@@ -24,11 +25,6 @@ public class Door : MonoBehaviour
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-    }
-
-    bool f(Collider2D c)
-    {
-        return !c.isTrigger;
     }
 
     public void SwingDoor()

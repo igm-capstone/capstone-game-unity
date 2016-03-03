@@ -63,9 +63,7 @@ public class InteractSkill :  ISkill
             if (Trgt.gameObject == null)
                 return "Not me and still null obj...";
 
-            Debug.Log("Hit: " + Trgt);
             // Get Interactable component
-
             var intrctScrpt = Trgt.gameObject.GetComponent<InteractableBehavior>();
             if (!intrctScrpt) return Trgt + " is not interactable.";
             InteractWithObj(Trgt.gameObject, intrctScrpt.Type);
@@ -79,14 +77,12 @@ public class InteractSkill :  ISkill
         switch (_targetType)
         {
             case InteractableObject.Door:
-                Debug.Log("Interacting with a door!");
                 // This gets the Door Trigger, who is a child of the actual door.
                 avatarNetBhvr.CmdDoor(_targetObj.transform.parent.gameObject);
                 break;
 
             case InteractableObject.Player:
                 if (GetComponent<AvatarController>().isHidden) break;
-                Debug.Log("Interacting with a Player!");
                 if (_targetObj.GetComponent<AvatarController>().Disabled)
                 {
                     Debug.Log("Revive!");
@@ -98,7 +94,6 @@ public class InteractSkill :  ISkill
 
             case InteractableObject.Light:
                 if (GetComponent<AvatarController>().isHidden) break;
-                Debug.Log("Interacting with a Lamp!");
 
                 // Get light component
                 var lightScr = _targetObj.GetComponent<LightController>();

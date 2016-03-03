@@ -83,17 +83,23 @@ public abstract class ISkill : MonoBehaviour
     //Turns to mouse position when called.
     protected void TurnToMousePos()
     {
-        // Mouse and Key controls - Rotation
         // Get mouse position in World Coordinates
-        Vector3 mouseScreenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+        Vector3 mouseWorldPos;
 
-        // Calculate look position.
-        float LookPosX = mouseWorldPos.x - transform.position.x;
-        float LookPosY = mouseWorldPos.y - transform.position.y;
-        
-        // Apply rotation
-        transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(LookPosY, LookPosX) * Mathf.Rad2Deg, Vector3.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, LayerMask.GetMask(new[] { "Floor" })))
+        {
+            mouseWorldPos = hit.point;
+        }
+        else
+        {
+            mouseWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
+        }
+
+
+        // Calculate and apply look direction.
+        Vector2 lookDir = mouseWorldPos - transform.position;
+        transform.Find("AvatarRotation").rotation = Quaternion.AngleAxis(Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg, Vector3.forward);
     }
 
     //Gets the Position a set distance forward from the avatar.
