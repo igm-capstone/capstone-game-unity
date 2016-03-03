@@ -94,7 +94,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0
+        second: .649999976
       data:
         first:
           name: _Parallax
@@ -126,7 +126,7 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 0
+        second: .200000003
     m_Colors:
       data:
         first:
