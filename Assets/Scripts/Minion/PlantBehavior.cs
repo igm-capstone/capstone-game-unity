@@ -3,14 +3,18 @@ using System.Collections;
 
 public class PlantBehavior : MonoBehaviour
 {
-    public float Damage;
+    public int Damage;
     bool hasTarget;
     GameObject AtckTarget;
+    RpcNetworkAnimator netAnim;
 
     // Use this for initialization
     void Start()
     {
         hasTarget = false;
+        netAnim = GetComponent<RpcNetworkAnimator>();
+
+        netAnim.SetTrigger("GoIdle");
     }
 
     // Update is called once per frame
@@ -19,6 +23,10 @@ public class PlantBehavior : MonoBehaviour
         if (hasTarget)
         {
             MeeleeAttack(AtckTarget);
+        }
+        else
+        {
+            netAnim.SetTrigger("GoIdle");
         }
     }
 
@@ -36,10 +44,6 @@ public class PlantBehavior : MonoBehaviour
         if (other.gameObject.tag == "Player" && other.gameObject == AtckTarget)
         {
             hasTarget = false;
-
-            // Turn to Right
-            Vector2 lookDir = transform.right;
-            transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg, Vector3.forward);
         }
     }
 
@@ -48,5 +52,18 @@ public class PlantBehavior : MonoBehaviour
         // Turn to Target
         Vector2 lookDir = Target.transform.position - transform.position;
         transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg, Vector3.forward);
+
+        netAnim.SetTrigger("Start_Bite");
+
+    }
+
+    // This method gets called by the Plant Animator via msg at the end of the Animation State.
+    void BiteAnimationComplete()
+    {
+        // Hit (I guess)
+        if ((AtckTarget.transform.position - transform.position).sqrMagnitude > 1)
+        {
+            AtckTarget.GetComponent<AvatarNetworkBehavior>().CmdAssignDamage(AtckTarget, Damage);
+        }
     }
 }

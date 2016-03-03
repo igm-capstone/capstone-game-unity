@@ -1408,7 +1408,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3.57999992
+  m_Radius: 3.5999999
 --- !u!58 &5883688
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -1464,7 +1464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c844d216f4aed8649a61705104b78f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 10
+  Damage: 0
 --- !u!114 &11462936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1596,7 +1596,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Radius
+      value: 3.5999999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 118488}

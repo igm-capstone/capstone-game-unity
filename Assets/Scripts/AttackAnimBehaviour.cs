@@ -29,6 +29,11 @@ public class AttackAnimBehaviour : StateMachineBehaviour {
         {
             animator.SendMessageUpwards("ConeAttackAnimationComplete", SendMessageOptions.DontRequireReceiver);
         }
+
+        else
+        {
+            animator.SendMessageUpwards(stateInfo.tagHash + "AnimationComplete", SendMessageOptions.DontRequireReceiver);
+        }
     }
 
 	// OnStateMove is called before OnStateMove is called on any state inside this state machine
