@@ -35,8 +35,11 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
     [SyncVar]
     private bool checkAI = true;
 
+
+#if UNITY_EDITOR
     [SerializeField]
     private bool ShowDebugLines = false;
+#endif
 
     [SerializeField] private Rect DebugArea = Rect.MinMaxRect(-25, -25, 25, 25);
 
@@ -74,7 +77,7 @@ public class GridBehavior : NetworkBehaviour, ISearchSpace
     private void Update()
     {
 #if UNITY_EDITOR
-        if (!Application.isPlaying)
+        if (!Application.isPlaying && ShowDebugLines)
         {
             if (areaOfNodes == null)
             {

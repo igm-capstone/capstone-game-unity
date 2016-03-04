@@ -1,13 +1,13 @@
 fileFormatVersion: 2
 guid: 507b6e62e4c3748418a0c63d3464fae6
-timeCreated: 1456796864
+timeCreated: 1457107785
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
-    21300000: UI_playerFrames_0
-    21300002: UI_playerFrames_1
-    21300004: UI_playerFrames_2
-    21300006: UI_playerFrames_3
+    21300000: ExplorerMarker
+    21300002: Pointer
+    21300004: HealthOuterFrame
+    21300006: HealthInnerFrame
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -54,27 +54,17 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: UI_playerFrames_0
+    - name: ExplorerMarker
       rect:
         serializedVersion: 2
         x: 0
-        y: 388
-        width: 639
-        height: 636
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 2, z: 2, w: 0}
-    - name: UI_playerFrames_1
-      rect:
-        serializedVersion: 2
-        x: 683
-        y: 600
-        width: 199
-        height: 227
+        y: 390
+        width: 637
+        height: 634
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: UI_playerFrames_2
+    - name: HealthOuterFrame
       rect:
         serializedVersion: 2
         x: 69
@@ -84,7 +74,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: UI_playerFrames_3
+    - name: HealthInnerFrame
       rect:
         serializedVersion: 2
         x: 96

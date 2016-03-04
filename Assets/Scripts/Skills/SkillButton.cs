@@ -8,7 +8,8 @@ public class SkillButton : MonoBehaviour
     public SkillBar _skillBar;
     
     private Button _btn;
-    //private Image _fill;
+    private Image _cdBackground;
+    private Image _skillBG;
     private Image _cd;
     private Image _icon;
 
@@ -23,13 +24,16 @@ public class SkillButton : MonoBehaviour
         else
             _btn.interactable = false;
 
-        //_fill = transform.Find("Fill").GetComponent<Image>();
+        _cdBackground = transform.Find("CooldownBG").GetComponent<Image>();
+        _skillBG = transform.Find("SkillBG").GetComponent<Image>();
+        _skillBG.color = _skill.bgColor;
         _cd = transform.Find("Cooldown").GetComponent<Image>();
         _cd.sprite = _skill.CooldownSprite;
         _cd.type = Image.Type.Filled;
         _cd.fillAmount = 0;
         _icon = transform.Find("Image").GetComponent<Image>();
         _icon.sprite = _skill.SkillSprite;
+        
         if (_skill.key != KeyCode.None)
         {
             // Test for mouse buttons
@@ -70,8 +74,7 @@ public class SkillButton : MonoBehaviour
     void Update()
     {
         _cd.fillAmount = 1 - ((Time.time - _skill.LastUse) / _skill.Cooldown);
-
-        //_cd.enabled = _skill.IsActive;
+        _cdBackground.fillAmount = 1 - ((Time.time - _skill.LastUse) / _skill.Cooldown);
     }
 
     void SetActiveClick()

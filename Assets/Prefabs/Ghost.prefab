@@ -37,7 +37,6 @@ GameObject:
   - 114: {fileID: 11425386}
   - 114: {fileID: 11478774}
   - 114: {fileID: 11469056}
-  - 114: {fileID: 11485708}
   - 114: {fileID: 11461776}
   m_Layer: 0
   m_Name: Ghost
@@ -122,10 +121,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 33e00b09a77e5404791ef1aa292c2db3, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: .300000012
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   Priority: 128
@@ -201,9 +200,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 2fa06c957efd237478093d3aebbb8d42, type: 3}
-  CooldownSprite: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a, type: 3}
-  Name: Spawn Minion
+  SkillSprite: {fileID: 21300000, guid: 0588e6cff3421f144a4484e24efe98b6, type: 3}
+  CooldownSprite: {fileID: 21300000, guid: 82b53c0a8fab42d4eb6a66ca791c846c, type: 3}
+  bgColor: {r: .933265626, g: .308823526, b: 1, a: .509803951}
+  Name: Basic Minion
   Cooldown: 2
   cost: 0
   UseCount: 0
@@ -243,9 +243,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: bbf8f2d2fa45ef140be8cebf84313e1a, type: 3}
-  CooldownSprite: {fileID: 0}
-  Name: Disable Lights
+  SkillSprite: {fileID: 21300004, guid: 0588e6cff3421f144a4484e24efe98b6, type: 3}
+  CooldownSprite: {fileID: 21300004, guid: 82b53c0a8fab42d4eb6a66ca791c846c, type: 3}
+  bgColor: {r: .39868173, g: .110294104, b: 1, a: .509000003}
+  Name: Disable Lantern
   Cooldown: 6
   cost: 0
   UseCount: 0
@@ -327,7 +328,8 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 27e4feb8dd793514e8fc168e705477ff, type: 3}
   CooldownSprite: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a, type: 3}
-  Name: HauntExplorerToMinion
+  bgColor: {r: 0, g: 0, b: 0, a: 0}
+  Name: Haunt Explorer To Minion
   Cooldown: 2
   cost: 0
   UseCount: 0
@@ -346,7 +348,8 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: cd6993fb8014a864195665065c67103f, type: 3}
   CooldownSprite: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a, type: 3}
-  Name: Skill
+  bgColor: {r: 0, g: 0, b: 0, a: 0}
+  Name: Flytrap
   Cooldown: 2
   cost: 10
   UseCount: 0
@@ -362,33 +365,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 09a58399424e1314d9a674b06e7f6b08, type: 3}
-  CooldownSprite: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a, type: 3}
-  Name: Skill
+  SkillSprite: {fileID: 21300002, guid: 0588e6cff3421f144a4484e24efe98b6, type: 3}
+  CooldownSprite: {fileID: 21300002, guid: 82b53c0a8fab42d4eb6a66ca791c846c, type: 3}
+  bgColor: {r: .789997518, g: .889705896, b: .333639711, a: .509803951}
+  Name: AOE Bomber
   Cooldown: 2
   cost: 0
   UseCount: 0
---- !u!114 &11485708
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196296}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e6af76fc3d98c7489382e69d57d0b3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300000, guid: 4238258450f1acb46bafa826cf0ef89e, type: 3}
-  CooldownSprite: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a, type: 3}
-  Name: Hallucinate
-  Cooldown: 2
-  cost: 0
-  UseCount: 0
-  Duration: 10
-  Radius: 10
-  Minions: 3
 --- !u!124 &12474532
 Behaviour:
   m_ObjectHideFlags: 1
@@ -518,7 +501,7 @@ Prefab:
         type: 3}
     - target: {fileID: 0}
       propertyPath: Name
-      value: HauntExplorerToMinion
+      value: Haunt Explorer To Minion
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Duration
@@ -531,7 +514,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SkillSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 27e4feb8dd793514e8fc168e705477ff,
+      objectReference: {fileID: 21300004, guid: 0588e6cff3421f144a4484e24efe98b6,
         type: 3}
     - target: {fileID: 0}
       propertyPath: HideInactiveSkills
@@ -588,11 +571,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: CooldownSprite
       value: 
-      objectReference: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a,
+      objectReference: {fileID: 21300004, guid: 82b53c0a8fab42d4eb6a66ca791c846c,
         type: 3}
     - target: {fileID: 0}
       propertyPath: Loop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_audioClip
@@ -601,6 +584,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Volume
       value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bgColor.a
+      value: .509803951
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bgColor.r
+      value: .789997518
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bgColor.g
+      value: .889705896
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bgColor.b
+      value: .333639711
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

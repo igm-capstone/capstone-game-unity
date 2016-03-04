@@ -31,10 +31,10 @@ public class Domination : MonoBehaviour
             dominationFill.fillAmount = elapsedTime / timeToCapture;
         }
 
-        if(captured == true && connection != null)
-        {
-            connection.fillAmount += (Time.deltaTime * 0.5f);
-        }
+        //if(captured == true && connection != null)
+        //{
+        //    connection.fillAmount += (Time.deltaTime * 0.5f);
+        //}
     }
     void OnTriggerStay2D(Collider2D other)
     {
