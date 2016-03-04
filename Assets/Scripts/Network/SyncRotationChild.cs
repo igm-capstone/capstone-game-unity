@@ -56,7 +56,6 @@ public class SyncRotationChild : NetworkBehaviour
         {
             CmdProvidePositionToServer(playerTransform.localEulerAngles.z);
             lastPlayerRot = playerTransform.localEulerAngles.z;
-            Debug.Log("Command tcp");
         }
     }
 
@@ -64,7 +63,6 @@ public class SyncRotationChild : NetworkBehaviour
     void CmdProvidePositionToServer(float angle)
     {
         RpcSyncRotation(angle);
-        Debug.Log("Command rcv");
     }
 
 
@@ -74,7 +72,6 @@ public class SyncRotationChild : NetworkBehaviour
     {
         syncPlayerRotation = latestPlayerRot;
         syncPlayerRotList.Add(syncPlayerRotation);
-        Debug.Log("Rpc rcv");
     }
 
     void HistoricalInterpolation()
