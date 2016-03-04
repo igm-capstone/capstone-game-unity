@@ -35,7 +35,7 @@ public class IndicatorBehavior : MonoBehaviour {
         screenPoint.x = ((viewportPoint.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * 0.5f)) * flipZ;
         screenPoint.y = ((viewportPoint.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * 0.5f)) * flipZ;
 
-        Debug.Log("VP: " + viewportPoint + " \tSP: " + screenPoint);
+        //Debug.Log("VP: " + viewportPoint + " \tSP: " + screenPoint);
 
         GameObject uiimage = transform.FindChild("UIImage").gameObject;
         RectTransform imageRect = uiimage.GetComponent<RectTransform>();
