@@ -9,6 +9,7 @@ public class SkillButton : MonoBehaviour
     
     private Button _btn;
     private Image _cdBackground;
+    private Image _skillBG;
     private Image _cd;
     private Image _icon;
 
@@ -23,14 +24,16 @@ public class SkillButton : MonoBehaviour
         else
             _btn.interactable = false;
 
-        _cdBackground = transform.Find("ZLastLayer").GetComponent<Image>();
-        //_cdBackground.enabled = false;
+        _cdBackground = transform.Find("CooldownBG").GetComponent<Image>();
+        _skillBG = transform.Find("SkillBG").GetComponent<Image>();
+        _skillBG.color = _skill.bgColor;
         _cd = transform.Find("Cooldown").GetComponent<Image>();
         _cd.sprite = _skill.CooldownSprite;
         _cd.type = Image.Type.Filled;
         _cd.fillAmount = 0;
         _icon = transform.Find("Image").GetComponent<Image>();
         _icon.sprite = _skill.SkillSprite;
+        
         if (_skill.key != KeyCode.None)
         {
             // Test for mouse buttons
@@ -72,11 +75,6 @@ public class SkillButton : MonoBehaviour
     {
         _cd.fillAmount = 1 - ((Time.time - _skill.LastUse) / _skill.Cooldown);
         _cdBackground.fillAmount = 1 - ((Time.time - _skill.LastUse) / _skill.Cooldown);
-        //if (!_skill.IsReady())
-        //    _icon.enabled = false;
-        //else
-        //    _icon.enabled = true;
-
     }
 
     void SetActiveClick()

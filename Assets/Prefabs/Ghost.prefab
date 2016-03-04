@@ -202,6 +202,7 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 0588e6cff3421f144a4484e24efe98b6, type: 3}
   CooldownSprite: {fileID: 21300000, guid: 82b53c0a8fab42d4eb6a66ca791c846c, type: 3}
+  bgColor: {r: .933265626, g: .308823526, b: 1, a: .509803951}
   Name: Basic Minion
   Cooldown: 2
   cost: 0
@@ -244,6 +245,7 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300004, guid: 0588e6cff3421f144a4484e24efe98b6, type: 3}
   CooldownSprite: {fileID: 21300004, guid: 82b53c0a8fab42d4eb6a66ca791c846c, type: 3}
+  bgColor: {r: .39868173, g: .110294104, b: 1, a: .509000003}
   Name: Disable Lantern
   Cooldown: 6
   cost: 0
@@ -326,6 +328,7 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 27e4feb8dd793514e8fc168e705477ff, type: 3}
   CooldownSprite: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a, type: 3}
+  bgColor: {r: 0, g: 0, b: 0, a: 0}
   Name: Haunt Explorer To Minion
   Cooldown: 2
   cost: 0
@@ -345,6 +348,7 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: cd6993fb8014a864195665065c67103f, type: 3}
   CooldownSprite: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a, type: 3}
+  bgColor: {r: 0, g: 0, b: 0, a: 0}
   Name: Flytrap
   Cooldown: 2
   cost: 10
@@ -363,6 +367,7 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300002, guid: 0588e6cff3421f144a4484e24efe98b6, type: 3}
   CooldownSprite: {fileID: 21300002, guid: 82b53c0a8fab42d4eb6a66ca791c846c, type: 3}
+  bgColor: {r: .789997518, g: .889705896, b: .333639711, a: .509803951}
   Name: AOE Bomber
   Cooldown: 2
   cost: 0
@@ -583,6 +588,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bgColor.a
+      value: .509803951
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bgColor.r
+      value: .789997518
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bgColor.g
+      value: .889705896
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bgColor.b
+      value: .333639711
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
