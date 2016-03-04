@@ -1,41 +1,51 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using UnityEngine.Networking;
 
-public class PlantBehavior : MonoBehaviour
+public class PlantBehavior : NetworkBehaviour
 {
     public int Damage;
-    bool hasTarget;
+    public float TriggerRadius = 3.5f;
     GameObject AtckTarget;
     RpcNetworkAnimator netAnim;
+    private bool isAttacking;
 
     // Use this for initialization
     void Start()
     {
-        hasTarget = false;
         netAnim = GetComponent<RpcNetworkAnimator>();
-
-        netAnim.SetTrigger("GoIdle");
+        foreach (var item in GetComponents<CircleCollider2D>())
+        {
+            if (item.isTrigger)
+            {
+                item.radius = TriggerRadius;
+                break;
+            }
+        } 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hasTarget)
+        if (AtckTarget)
         {
-            MeeleeAttack(AtckTarget);
+            LookAtTarget();
+            MeeleeAttack();
         }
-        else
-        {
-            netAnim.SetTrigger("GoIdle");
-        }
+    }
+
+    private void LookAtTarget()
+    {       
+        Vector2 lookDir = AtckTarget.transform.position - transform.position;
+        transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg, Vector3.forward);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player" && hasTarget == false)
+        if (other.gameObject.tag == "Player" && !AtckTarget)
         {
             AtckTarget = other.gameObject;
-            hasTarget = true;
         }
     }
 
@@ -43,27 +53,37 @@ public class PlantBehavior : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && other.gameObject == AtckTarget)
         {
-            hasTarget = false;
+            AtckTarget = null;
         }
     }
 
-    void MeeleeAttack(GameObject Target)
+    void MeeleeAttack()
     {
-        // Turn to Target
-        Vector2 lookDir = Target.transform.position - transform.position;
-        transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg, Vector3.forward);
+        if (isAttacking )
+        {
+            return;
+        }
 
+        isAttacking = true;
         netAnim.SetTrigger("Start_Bite");
-
     }
 
     // This method gets called by the Plant Animator via msg at the end of the Animation State.
     void BiteAnimationComplete()
     {
-        // Hit (I guess)
-        if ((AtckTarget.transform.position - transform.position).sqrMagnitude > 1)
+        if (!isAttacking)
         {
-            AtckTarget.GetComponent<AvatarNetworkBehavior>().CmdAssignDamage(AtckTarget, Damage);
+            return;
         }
+
+        Debug.Log("Entrei em BiteAnimationComplete");
+        // Hit (I guess)
+        if (AtckTarget && hasAuthority && (AtckTarget.transform.position - transform.position).sqrMagnitude > TriggerRadius * TriggerRadius)
+        {
+            var avatarNB = AtckTarget.GetComponentInParent<AvatarNetworkBehavior>();
+            avatarNB.CmdAssignDamage(avatarNB.gameObject, Damage);
+        }
+
+        isAttacking = false;
     }
 }

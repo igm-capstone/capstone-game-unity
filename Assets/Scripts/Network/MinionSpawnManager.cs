@@ -67,6 +67,7 @@ public class MinionSpawnManager : NetworkBehaviour
         {
             robot.GetComponent<MinionController>().enabled = true;
         }
+
         NetworkServer.Spawn(robot);
 
         StartCoroutine(SetGridDirty());
