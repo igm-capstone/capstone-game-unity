@@ -26,7 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 415794}
   - 60: {fileID: 6067506}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall_W_SingleWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
