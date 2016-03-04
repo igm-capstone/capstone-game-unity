@@ -9,7 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 404152}
   - 60: {fileID: 6018130}
-  m_Layer: 0
+  - 60: {fileID: 6014444}
+  m_Layer: 9
   m_Name: Corner_Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,6 +92,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191958}
   m_Mesh: {fileID: 4300000, guid: e6d045f10e66cbd4fbe1712cf66b54c7, type: 3}
+--- !u!60 &6014444
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127188}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 4.00315142, y: 5.00288391}
+      - {x: 5.00146675, y: 4.99711323}
+      - {x: 5.00229406, y: .995507836}
+      - {x: 4.0000515, y: .994829297}
 --- !u!60 &6018130
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -119,6 +137,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c74e986abb924d142be19968064faec4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 127188}
