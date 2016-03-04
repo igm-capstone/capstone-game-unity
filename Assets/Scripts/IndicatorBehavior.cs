@@ -22,14 +22,20 @@ public class IndicatorBehavior : MonoBehaviour {
 
         var avatarClient = GameObject.Find("Me");
 
+     //   Vector3 meToAvatar = Vector3.Normalize(avatar.transform.position - avatarClient.transform.position);
+
         Vector2 meScreenPoint = Camera.main.WorldToViewportPoint(avatarClient.transform.position);
-        Vector2 viewportPoint = Camera.main.WorldToViewportPoint(avatar.transform.position);
+        Vector3 viewportPoint = Camera.main.WorldToViewportPoint(avatar.transform.position);
+
+        float flipZ = (viewportPoint.z < 0.0f) ? -1.0f : 1.0f;
 
         RectTransform canvasRect = GetComponent<RectTransform>();
 
         Vector2 screenPoint = new Vector2();
-        screenPoint.x = (viewportPoint.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * 0.5f);
-        screenPoint.y = (viewportPoint.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * 0.5f);
+        screenPoint.x = ((viewportPoint.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * 0.5f)) * flipZ;
+        screenPoint.y = ((viewportPoint.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * 0.5f)) * flipZ;
+
+        Debug.Log("VP: " + viewportPoint + " \tSP: " + screenPoint);
 
         GameObject uiimage = transform.FindChild("UIImage").gameObject;
         RectTransform imageRect = uiimage.GetComponent<RectTransform>();
