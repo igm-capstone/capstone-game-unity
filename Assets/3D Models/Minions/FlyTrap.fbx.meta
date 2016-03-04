@@ -100,7 +100,10 @@ ModelImporter:
     400090: Snek_Flower_Stem_1_8
     400092: Snek_Flower_Stem_1_9
     4300000: Flytrap_UV__1_:Flytrap
-    7400000: Flytrap_Export_Version
+    7400000: Iddle
+    7400002: Bite_Start
+    7400004: Shoot
+    7400006: Bite_End
     9500000: //RootNode
     13700000: Flytrap_UV__1_:Flytrap
   materials:
@@ -122,11 +125,491 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Iddle
+      takeName: Flytrap_Export_Version
+      firstFrame: 10
+      lastFrame: 105
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Flytrap_UV__1_:Flytrap
+        weight: 1
+      - path: JNT_Root
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5/JNT_Snek_FlowerStem_2_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5/JNT_Snek_FlowerStem_2_6/JNT_Snek_FlowerStem_2_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5/JNT_Snek_FlowerStem_2_6/JNT_Snek_FlowerStem_2_7/JNT_Snek_FlowerStem_2_8
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_1/JNT_Snek_Head1_Part_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_1/JNT_Snek_Head1_Part_2/JNT_Snek_Head1_Part_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_4/JNT_Snek_Head1_Part_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_4/JNT_Snek_Head1_Part_5/JNT_Snek_Head1_Part_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_1/JNT_Snek_Head2_Part_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_1/JNT_Snek_Head2_Part_2/JNT_Snek_Head2_Part_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_4/JNT_Snek_Head2_Part_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_4/JNT_Snek_Head2_Part_5/JNT_Snek_Head2_Part_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4/Snek_Flower_Stem_1_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4/Snek_Flower_Stem_1_3/Snek_Flower_Stem_1_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4/Snek_Flower_Stem_1_3/Snek_Flower_Stem_1_2/Snek_Flower_Stem_1_1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Bite_Start
+      takeName: Flytrap_Export_Version
+      firstFrame: 120
+      lastFrame: 170
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Flytrap_UV__1_:Flytrap
+        weight: 1
+      - path: JNT_Root
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5/JNT_Snek_FlowerStem_2_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5/JNT_Snek_FlowerStem_2_6/JNT_Snek_FlowerStem_2_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5/JNT_Snek_FlowerStem_2_6/JNT_Snek_FlowerStem_2_7/JNT_Snek_FlowerStem_2_8
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_1/JNT_Snek_Head1_Part_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_1/JNT_Snek_Head1_Part_2/JNT_Snek_Head1_Part_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_4/JNT_Snek_Head1_Part_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_4/JNT_Snek_Head1_Part_5/JNT_Snek_Head1_Part_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_1/JNT_Snek_Head2_Part_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_1/JNT_Snek_Head2_Part_2/JNT_Snek_Head2_Part_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_4/JNT_Snek_Head2_Part_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_4/JNT_Snek_Head2_Part_5/JNT_Snek_Head2_Part_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4/Snek_Flower_Stem_1_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4/Snek_Flower_Stem_1_3/Snek_Flower_Stem_1_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4/Snek_Flower_Stem_1_3/Snek_Flower_Stem_1_2/Snek_Flower_Stem_1_1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Bite_End
+      takeName: Flytrap_Export_Version
+      firstFrame: 170
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Flytrap_UV__1_:Flytrap
+        weight: 1
+      - path: JNT_Root
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5/JNT_Snek_FlowerStem_2_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5/JNT_Snek_FlowerStem_2_6/JNT_Snek_FlowerStem_2_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5/JNT_Snek_FlowerStem_2_6/JNT_Snek_FlowerStem_2_7/JNT_Snek_FlowerStem_2_8
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_1/JNT_Snek_Head1_Part_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_1/JNT_Snek_Head1_Part_2/JNT_Snek_Head1_Part_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_4/JNT_Snek_Head1_Part_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_4/JNT_Snek_Head1_Part_5/JNT_Snek_Head1_Part_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_1/JNT_Snek_Head2_Part_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_1/JNT_Snek_Head2_Part_2/JNT_Snek_Head2_Part_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_4/JNT_Snek_Head2_Part_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_4/JNT_Snek_Head2_Part_5/JNT_Snek_Head2_Part_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4/Snek_Flower_Stem_1_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4/Snek_Flower_Stem_1_3/Snek_Flower_Stem_1_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4/Snek_Flower_Stem_1_3/Snek_Flower_Stem_1_2/Snek_Flower_Stem_1_1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Shoot
+      takeName: Flytrap_Export_Version
+      firstFrame: 230
+      lastFrame: 310
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Flytrap_UV__1_:Flytrap
+        weight: 1
+      - path: JNT_Root
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5/JNT_Snek_FlowerStem_2_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5/JNT_Snek_FlowerStem_2_6/JNT_Snek_FlowerStem_2_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_FlowerStem_2_1/JNT_Snek_FlowerStem_2_2/JNT_Snek_FlowerStem_2_3/JNT_Snek_FlowerStem_2_4/JNT_Snek_FlowerStem_2_5/JNT_Snek_FlowerStem_2_6/JNT_Snek_FlowerStem_2_7/JNT_Snek_FlowerStem_2_8
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_1/JNT_Snek_Head1_Part_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_1/JNT_Snek_Head1_Part_2/JNT_Snek_Head1_Part_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_4/JNT_Snek_Head1_Part_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_1_1/JNT_Snek_Stem_1_2/JNT_Snek_Stem_1_3/JNT_Snek_Stem_1_4/JNT_Snek_Stem_1_5/JNT_Snek_Stem_1_6/JNT_Snek_Stem_1_7/JNT_Snek_Head1_Part_4/JNT_Snek_Head1_Part_5/JNT_Snek_Head1_Part_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_1
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_1/JNT_Snek_Head2_Part_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_1/JNT_Snek_Head2_Part_2/JNT_Snek_Head2_Part_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_4/JNT_Snek_Head2_Part_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/JNT_Snek_Stem_2_1/JNT_Snek_Stem_2_2/JNT_Snek_Stem_2_3/JNT_Snek_Stem_2_4/JNT_Snek_Stem_2_5/JNT_Snek_Stem_2_6/JNT_Snek_Stem_2_7/JNT_Snek_Head2_Part_4/JNT_Snek_Head2_Part_5/JNT_Snek_Head2_Part_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4/Snek_Flower_Stem_1_3
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4/Snek_Flower_Stem_1_3/Snek_Flower_Stem_1_2
+        weight: 1
+      - path: JNT_Root/JNT_Body_Connector/Snek_Flower_Stem_1_9/Snek_Flower_Stem_1_8/Snek_Flower_Stem_1_7/Snek_Flower_Stem_1_6/Snek_Flower_Stem_1_5/Snek_Flower_Stem_1_4/Snek_Flower_Stem_1_3/Snek_Flower_Stem_1_2/Snek_Flower_Stem_1_1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 33
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
