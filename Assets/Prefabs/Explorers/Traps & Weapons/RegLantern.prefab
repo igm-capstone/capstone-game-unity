@@ -49,7 +49,6 @@ GameObject:
   - 33: {fileID: 3384292}
   - 23: {fileID: 2340796}
   - 114: {fileID: 11403208}
-  - 61: {fileID: 6128318}
   - 114: {fileID: 11413036}
   m_Layer: 0
   m_Name: RegLantern
@@ -421,19 +420,6 @@ PolygonCollider2D:
       - {x: 1.81173265, y: -6.76148129}
       - {x: .913682878, y: -6.94011402}
       - {x: -3.05979711e-07, y: -7}
---- !u!61 &6128318
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110354}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
 --- !u!114 &11403208
 MonoBehaviour:
   m_ObjectHideFlags: 1
