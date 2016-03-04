@@ -8,7 +8,7 @@ public class SkillButton : MonoBehaviour
     public SkillBar _skillBar;
     
     private Button _btn;
-    //private Image _fill;
+    private Image _cdBackground;
     private Image _cd;
     private Image _icon;
 
@@ -23,7 +23,8 @@ public class SkillButton : MonoBehaviour
         else
             _btn.interactable = false;
 
-        //_fill = transform.Find("Fill").GetComponent<Image>();
+        _cdBackground = transform.Find("ZLastLayer").GetComponent<Image>();
+        //_cdBackground.enabled = false;
         _cd = transform.Find("Cooldown").GetComponent<Image>();
         _cd.sprite = _skill.CooldownSprite;
         _cd.type = Image.Type.Filled;
@@ -70,8 +71,12 @@ public class SkillButton : MonoBehaviour
     void Update()
     {
         _cd.fillAmount = 1 - ((Time.time - _skill.LastUse) / _skill.Cooldown);
+        _cdBackground.fillAmount = 1 - ((Time.time - _skill.LastUse) / _skill.Cooldown);
+        //if (!_skill.IsReady())
+        //    _icon.enabled = false;
+        //else
+        //    _icon.enabled = true;
 
-        //_cd.enabled = _skill.IsActive;
     }
 
     void SetActiveClick()
