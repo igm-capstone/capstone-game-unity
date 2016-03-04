@@ -25,6 +25,12 @@ public class Door : MonoBehaviour
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+
+        if (!canOpen)
+        {
+            GetComponentInChildren<InteractableBehavior>().enabled = false;
+            GetComponentInChildren<BoxCollider2D>().enabled = false;
+        }
     }
 
     public void SwingDoor()
