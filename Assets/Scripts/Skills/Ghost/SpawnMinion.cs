@@ -13,7 +13,7 @@ public class SpawnMinion : ISkill
 
         IsSpawnSkill = true;
         MinSpawnDist = 10f;
-        MaxSpawnDist = 50f;
+        MaxSpawnDist = 80f;
 
         key = KeyCode.Alpha2;
 

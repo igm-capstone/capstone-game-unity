@@ -12,8 +12,8 @@ public class SpawnAOE : ISkill
         cost = 30;
 
         IsSpawnSkill = true;
-        MinSpawnDist = 20f;
-        MaxSpawnDist = 75f;
+        MinSpawnDist = 15f;
+        MaxSpawnDist = 80f;
 
         key = KeyCode.Alpha3;
 
