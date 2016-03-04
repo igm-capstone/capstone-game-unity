@@ -61,7 +61,6 @@ public class SyncPosition : NetworkBehaviour
         {
             CmdProvidePositionToServer(myTransform.position);
             lastPos = myTransform.position;
-            Debug.Log("Command sent");
         }
     }
 
@@ -69,7 +68,6 @@ public class SyncPosition : NetworkBehaviour
     void CmdProvidePositionToServer(Vector3 pos)
     {
         RpcSyncTransform(pos);
-        Debug.Log("Command rcv");
     }
 
 
@@ -78,7 +76,6 @@ public class SyncPosition : NetworkBehaviour
     {
         syncPos = latestPos;
         syncPosList.Add(syncPos);
-        Debug.Log("Rpc rcv");
     }
 
     void OrdinaryLerping()

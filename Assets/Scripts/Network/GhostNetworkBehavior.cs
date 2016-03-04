@@ -5,7 +5,9 @@ using System.Collections;
 public class GhostNetworkBehavior : BasePlayerNetworkBehavior {
     public override void OnStartLocalPlayer () {
         GetComponent<GhostController>().enabled = true;
-        
+        GetComponentInChildren<AudioListener>().enabled = true;
+        GetComponentInChildren<AudioSource>().enabled = true;
+
         base.OnStartLocalPlayer();
     }
 

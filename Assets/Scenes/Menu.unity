@@ -975,7 +975,7 @@ MonoBehaviour:
   m_SpawnPrefabs:
   - {fileID: 157710, guid: ddfaaa28f02042641864fa1a59641e7e, type: 2}
   - {fileID: 100808, guid: e18db561f2541d04aa973e3ca745c5b4, type: 2}
-  - {fileID: 188006, guid: 072c0af010dc12842bfb73d4e7b2af4d, type: 2}
+  - {fileID: 102924, guid: da50434930d53a547b16faf5a7e77d93, type: 2}
   - {fileID: 196296, guid: 019c493b42c53a1468dbd861bbbd1d49, type: 2}
   - {fileID: 155754, guid: b554c4a33a58290439e71fa855519a5d, type: 2}
   - {fileID: 183590, guid: 315cf5703670f7447b3260fd20c9e6f5, type: 2}
@@ -986,6 +986,7 @@ MonoBehaviour:
   - {fileID: 110354, guid: c634639eeef997a4b8dfa34067b646f3, type: 2}
   - {fileID: 155754, guid: 3555dcae92f866f4db1693d6a8442a24, type: 2}
   - {fileID: 175372, guid: 4740280864db9af449c099116b20a773, type: 2}
+  - {fileID: 118488, guid: 5c86aaedf3c3be045a7bf7b30346dd5f, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 5
   m_ConnectionConfig:
@@ -1022,7 +1023,7 @@ MonoBehaviour:
   avatarPrefab:
   - {fileID: 157710, guid: ddfaaa28f02042641864fa1a59641e7e, type: 2}
   - {fileID: 100808, guid: e18db561f2541d04aa973e3ca745c5b4, type: 2}
-  - {fileID: 188006, guid: 072c0af010dc12842bfb73d4e7b2af4d, type: 2}
+  - {fileID: 102924, guid: da50434930d53a547b16faf5a7e77d93, type: 2}
   exposeConsole: 1
   console: {fileID: 182870, guid: 8057a11613acd314fade6d13b2a5be5c, type: 2}
 --- !u!4 &1400174516
