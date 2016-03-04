@@ -51,9 +51,17 @@ public class Health : NetworkBehaviour
         {
             CurrentHealth = 0;
             if (GetComponent<AvatarController>() != null)
+            {
                 animator.SetTrigger("Dead");
+            }
             else if (GetComponent<MinionController>() != null)
+            {
                 GetComponent<MinionController>().CmdKill();
+            }
+            else if (GetComponent<PlantBehavior>())
+            {
+                GetComponent<PlantBehavior>().CmdKill();
+            }
         }
 
         if (CurrentHealth > BaseHealth)

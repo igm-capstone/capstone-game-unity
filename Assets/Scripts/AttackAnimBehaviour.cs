@@ -15,19 +15,21 @@ public class AttackAnimBehaviour : StateMachineBehaviour {
 
 	// OnStateExit is called before OnStateExit is called on any state inside this state machine
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	    if (stateInfo.tagHash == Animator.StringToHash("Attack"))
+	    if (stateInfo.IsTag("Attack"))
 	    {
 	        animator.SendMessageUpwards("AttackAnimationComplete", SendMessageOptions.DontRequireReceiver);
 	    }
-
-        else if (stateInfo.tagHash == Animator.StringToHash("LongAttack"))
+        else if (stateInfo.IsTag("LongAttack"))
         {
             animator.SendMessageUpwards("LongAttackAnimationComplete", SendMessageOptions.DontRequireReceiver);
         }
-
-        else if (stateInfo.tagHash == Animator.StringToHash("ConeAttack"))
+        else if (stateInfo.IsTag("ConeAttack"))
         {
             animator.SendMessageUpwards("ConeAttackAnimationComplete", SendMessageOptions.DontRequireReceiver);
+        }
+        else if (stateInfo.IsTag("Bite"))
+        {
+            animator.SendMessageUpwards("BiteAnimationComplete", SendMessageOptions.DontRequireReceiver);
         }
     }
 

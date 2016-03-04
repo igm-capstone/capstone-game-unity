@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.Networking.NetworkSystem;
+using System.Linq;
 
 public class CustomNetworkManager : NetworkManager
 {
@@ -118,27 +119,22 @@ public class CustomNetworkManager : NetworkManager
         GameObject player = null;
         if (conn.hostId == -1) //Local client
         {
+            var sp = FindObjectsOfType<AvatarSpawnPoint>().FirstOrDefault(s => s.PlayerID == 0);
+            var pos = sp ? sp.transform.position : Vector3.zero;
+            pos.z = 0;
+
             //Debug.Log("Spawning ghost");
-            player = (GameObject)GameObject.Instantiate(ghostPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            player = (GameObject)Instantiate(ghostPrefab, pos, Quaternion.identity);
             player.GetComponent<GhostNetworkBehavior>().conn = conn;
         }
         else
         {
             //Debug.Log("Spawning avatar");
-            AvatarSpawnPoint[] spawnPoints = FindObjectsOfType<AvatarSpawnPoint>();
-            foreach (AvatarSpawnPoint sp in spawnPoints)
-            {
-                if (sp.PlayerID == conn.connectionId)
-                {
-                    player = (GameObject)Instantiate(avatarPrefab[sp.PlayerID - 1], sp.transform.position, Quaternion.identity);
-                    break;
-                }
-            }
-            if (player == null) // didnt match to a spawn point
-            {
-                player =
-                    (GameObject)Instantiate(avatarPrefab[0], spawnPoints[0].transform.position, Quaternion.identity);
-            }
+            var spawnPoints = FindObjectsOfType<AvatarSpawnPoint>();
+            var sp = spawnPoints.FirstOrDefault(s => s.PlayerID == conn.connectionId) ?? spawnPoints.FirstOrDefault(s => s.PlayerID == 1);
+
+            player = (GameObject)Instantiate(avatarPrefab[sp.PlayerID - 1], sp.transform.position, Quaternion.identity);
+
             player.GetComponent<AvatarNetworkBehavior>().conn = conn;
         }
 

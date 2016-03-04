@@ -1,33 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using UnityEngine.Networking;
 
-public class PlantBehavior : MonoBehaviour
+public class PlantBehavior : NetworkBehaviour
 {
-    public float Damage;
-    bool hasTarget;
+    public int Damage;
+    public float AttackRange = 3.5f;
     GameObject AtckTarget;
+    RpcNetworkAnimator netAnim;
+    private bool isAttacking;
 
     // Use this for initialization
     void Start()
     {
-        hasTarget = false;
+        netAnim = GetComponent<RpcNetworkAnimator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hasTarget)
+        if (AtckTarget)
         {
-            MeeleeAttack(AtckTarget);
+            LookAtTarget();
+            MeeleeAttack();
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void LookAtTarget()
+    {       
+        Vector2 lookDir = AtckTarget.transform.position - transform.position;
+        var container = transform.Find("Rotation");
+        var newAngle = Mathf.LerpAngle(container.eulerAngles.z, Mathf.Atan2(lookDir.y, lookDir.x)* Mathf.Rad2Deg, Time.deltaTime);
+        container.rotation = Quaternion.AngleAxis(newAngle, Vector3.forward);
+    }
+
+    void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player" && hasTarget == false)
+        if (!AtckTarget && other.gameObject.tag == "Player")
         {
             AtckTarget = other.gameObject;
-            hasTarget = true;
+            isAttacking = false;
         }
     }
 
@@ -35,18 +48,47 @@ public class PlantBehavior : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && other.gameObject == AtckTarget)
         {
-            hasTarget = false;
-
-            // Turn to Right
-            Vector2 lookDir = transform.right;
-            transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg, Vector3.forward);
+            AtckTarget = null;
         }
     }
 
-    void MeeleeAttack(GameObject Target)
+    void MeeleeAttack()
     {
-        // Turn to Target
-        Vector2 lookDir = Target.transform.position - transform.position;
-        transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg, Vector3.forward);
+        if (isAttacking)
+        {
+            return;
+        }
+
+        isAttacking = true;
+        netAnim.SetTrigger("Start_Bite");
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, AttackRange);
+    }
+
+    // This method gets called by the Plant Animator via msg at the end of the Animation State.
+    void BiteAnimationComplete()
+    {
+        if (!isAttacking || !AtckTarget)
+        {
+            return;
+        }
+
+        if (AtckTarget && hasAuthority && (AtckTarget.transform.position - transform.position).magnitude < AttackRange)
+        {
+            var avatarNB = AtckTarget.GetComponentInParent<AvatarNetworkBehavior>();
+            avatarNB.CmdAssignDamage(avatarNB.gameObject, Damage);
+        }
+
+        isAttacking = false;
+    }
+
+    [Command]
+    public void CmdKill()
+    {
+        NetworkServer.Destroy(gameObject);
     }
 }

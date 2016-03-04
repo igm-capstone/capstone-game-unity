@@ -372,7 +372,7 @@ GameObject:
   - 58: {fileID: 5817550}
   m_Layer: 19
   m_Name: Clickbox
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2334,6 +2334,7 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300006, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   CooldownSprite: {fileID: 21300012, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
+  bgColor: {r: 0, g: 0, b: 0, a: 0}
   Name: Skill
   Cooldown: 5
   cost: 0
@@ -2542,13 +2543,14 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300010, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   CooldownSprite: {fileID: 21300020, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
+  bgColor: {r: 0, g: 0, b: 0, a: 0}
   Name: ConeAttack
   Cooldown: .100000001
   cost: 0
   UseCount: 0
   HitLayers:
     serializedVersion: 2
-    m_Bits: 10240
+    m_Bits: 67119104
   Damage: 4
   radius: 2.5
   hasKnockBack: 1
@@ -2578,6 +2580,7 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 37ecfd6470428cd4299e1d6364ec9938, type: 3}
   CooldownSprite: {fileID: 0}
+  bgColor: {r: 0, g: 0, b: 0, a: 0}
   Name: Skill
   Cooldown: 0
   cost: 0
@@ -2631,6 +2634,7 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300002, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   CooldownSprite: {fileID: 21300016, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
+  bgColor: {r: 0, g: 0, b: 0, a: 0}
   Name: Sprint
   Cooldown: 3.5
   cost: 0
@@ -11745,6 +11749,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: HitLayers.m_Bits
+      value: 67119104
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

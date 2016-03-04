@@ -35,6 +35,10 @@ public class MinionSpawnManager : NetworkBehaviour
     {
         Transform spawn = minionContainer;
         GameObject robot;
+
+        // Corrects any Z position that might be wrong.
+        position.z = GridBehavior.Instance.getNodeAtPos(position).ZIndex;
+
         switch (minType)
         {
             case MinionType.Meelee:
@@ -46,7 +50,8 @@ public class MinionSpawnManager : NetworkBehaviour
                 break;
 
             case MinionType.Plant:
-                // Prefab not completely done yet.
+                // Prefab not completely done yet. 
+                // This is supposed to be on another managet (Poltergeist trap) but is here temporarily
                 robot = Instantiate(EnemyPrefab[2], position, Quaternion.identity) as GameObject;
                 break;
 
@@ -56,7 +61,13 @@ public class MinionSpawnManager : NetworkBehaviour
         }
 
         robot.transform.SetParent(spawn);
-        robot.GetComponent<MinionController>().enabled = true;
+        
+        // PLants, as poltergeist trap, do not have a MinionController script.
+        if (minType != MinionType.Plant)
+        {
+            robot.GetComponent<MinionController>().enabled = true;
+        }
+
         NetworkServer.Spawn(robot);
 
         StartCoroutine(SetGridDirty());
