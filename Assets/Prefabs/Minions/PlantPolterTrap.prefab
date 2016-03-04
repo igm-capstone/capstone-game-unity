@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 450674}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Head1_Part_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400322}
   - 95: {fileID: 9596386}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: FlyTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 429748}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Stem_1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 495632}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Snek_Flower_Stem_1_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 445746}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Head1_Part_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 465026}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Head1_Part_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 421036}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Head2_Part_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 419938}
   - 137: {fileID: 13792324}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Flytrap_UV__1_:Flytrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - 114: {fileID: 11488232}
   - 114: {fileID: 11417550}
   - 114: {fileID: 11445258}
-  m_Layer: 13
+  m_Layer: 26
   m_Name: PlantPolterTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 440286}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Head1_Part_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431356}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Snek_Flower_Stem_1_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 428414}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Head2_Part_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 449292}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Snek_Flower_Stem_1_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 419254}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Head2_Part_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 439772}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Head2_Part_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 483760}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Stem_2_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 498102}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Stem_2_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 486464}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_FlowerStem_2_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424650}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Stem_2_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 462718}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Stem_1_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +317,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 421990}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Head1_Part_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 481422}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Head2_Part_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 404516}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 461690}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Head1_Part_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 459492}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_FlowerStem_2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 435994}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_FlowerStem_2_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 488942}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Snek_Flower_Stem_1_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 497920}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_FlowerStem_2_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 406746}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Snek_Flower_Stem_1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 403476}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Stem_1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 451904}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Stem_1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,7 +482,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 415296}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Body_Connector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +497,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 404376}
-  m_Layer: 13
+  m_Layer: 26
   m_Name: Rotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 442000}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_FlowerStem_2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 418806}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Stem_1_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 463522}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Snek_Flower_Stem_1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +557,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 425502}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Stem_2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 445460}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Stem_2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -587,7 +587,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430366}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Stem_1_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -602,7 +602,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 488466}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Stem_2_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -617,7 +617,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410748}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Snek_Flower_Stem_1_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +632,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 458496}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Snek_Flower_Stem_1_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -647,7 +647,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472638}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Head2_Part_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 477524}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_FlowerStem_2_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -677,7 +677,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 406972}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Snek_Flower_Stem_1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -692,7 +692,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 411218}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_FlowerStem_2_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,7 +707,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 440734}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_FlowerStem_2_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +722,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 419366}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Stem_2_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -737,7 +737,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 455074}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: JNT_Snek_Stem_1_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1408,7 +1408,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3.5999999
+  m_Radius: 5
 --- !u!58 &5883688
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -1459,13 +1459,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118488}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c844d216f4aed8649a61705104b78f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 10
-  TriggerRadius: 3.5
+  AttackRange: 3.5
 --- !u!114 &11462936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1600,11 +1600,19 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_Radius
-      value: 3.5999999
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Damage
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

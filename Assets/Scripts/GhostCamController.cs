@@ -25,6 +25,7 @@ public class GhostCamController : MonoBehaviour
         OuterWallsArray = GameObject.Find("Walls");
         LvlBounds = CreateLevelBounds(OuterWallsArray);
         GhostCam.ScreenToWorldPoint(Input.mousePosition);
+        cameraTarget = transform.position;
     }
 
     void Update()
