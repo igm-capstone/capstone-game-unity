@@ -51,7 +51,7 @@ public class IndicatorCollector : MonoBehaviour {
     bool IsSelfClient()
     {
         var avatar = GameObject.Find("Me");
-        if (avatar.GetComponent<AvatarController>() != null && avatar == this.gameObject)
+        if (avatar !=null && avatar.GetComponent<AvatarController>() != null && avatar == this.gameObject)
         {
             return true;
         }

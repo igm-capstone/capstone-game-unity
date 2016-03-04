@@ -37,7 +37,11 @@ public class LightController : NetworkBehaviour {
         renderer = GetComponent<MeshRenderer>();
         //sprite = GetComponentInChildren<SpriteRenderer>();
         collider = GetComponentInChildren<PolygonCollider2D>();
-        light3D = transform.FindChild("Light3D").gameObject;
+        var l3d = transform.FindChild("Light3D");
+        if (l3d)
+        {
+            light3D = l3d.gameObject;
+        }
         DrawSprite();
 
         onLightMat = Resources.Load<Material>("LightOnMat");
@@ -71,7 +75,7 @@ public class LightController : NetworkBehaviour {
                 // Starting state. Lights are off
                 //sprite.sprite = SpriteOff;
                 //sprite.sprite = SpriteOn;
-                light3D.SetActive(false);
+                if (light3D) light3D.SetActive(false);
                 renderer.enabled = false;
                 collider.enabled = false;
                 break;
@@ -79,7 +83,7 @@ public class LightController : NetworkBehaviour {
             case LghtStatus.On:
                 // Lights are On
                 //sprite.sprite = SpriteOn;
-                light3D.SetActive(true);
+                if (light3D) light3D.SetActive(true);
                 renderer.enabled = true;
                 light2d.lightMaterial = onLightMat;
                 collider.enabled = true;
@@ -88,7 +92,7 @@ public class LightController : NetworkBehaviour {
             case LghtStatus.Dimmed:
                 // Ghost Dimmed the lights.
                 //sprite.sprite = SpriteOff;
-                light3D.SetActive(false);
+                if (light3D) light3D.SetActive(false);
                 //light3D.GetComponent<Light>().intensity = 2.0f;
                 light2d.lightMaterial = offLightMat;
                 collider.enabled = false;

@@ -75,7 +75,7 @@ MonoBehaviour:
   EnemyPrefab:
   - {fileID: 155754, guid: b554c4a33a58290439e71fa855519a5d, type: 2}
   - {fileID: 183590, guid: 315cf5703670f7447b3260fd20c9e6f5, type: 2}
-  - {fileID: 118488, guid: 5c86aaedf3c3be045a7bf7b30346dd5f, type: 2}
+  - {fileID: 175372, guid: 4740280864db9af449c099116b20a773, type: 2}
   EnemyHauntPrefab:
   - {fileID: 155754, guid: 3555dcae92f866f4db1693d6a8442a24, type: 2}
 --- !u!1001 &100100000
