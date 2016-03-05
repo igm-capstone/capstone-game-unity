@@ -286,7 +286,7 @@ public class Light2D : MonoBehaviour {
             var hit = Physics2D.Raycast(position, direction, lightRadius - distance.magnitude, shadowMask);
             if (hit)
             {
-                Debug.DrawLine(position, hit.point, Color.blue);
+                //Debug.DrawLine(position, hit.point, Color.blue);
                 secVertex.Position = transform.InverseTransformPoint(hit.point);
             }
             else

@@ -15,6 +15,8 @@ public abstract class ISkill : MonoBehaviour
     public int cost = 0;
     public int UseCount = 0;
 
+    public bool addToSkillBar = true;
+
 
     // Used for EquippedSkill.
     //public bool isStaticSkill = true;
@@ -41,7 +43,11 @@ public abstract class ISkill : MonoBehaviour
         {
             var skillBar = GameObject.Find("SkillBar");
             var button = Instantiate(SkillButtonPrefab);
-            button.transform.SetParent(skillBar.transform, false);
+
+            if (addToSkillBar)
+            {
+                button.transform.SetParent(skillBar.transform, false);
+            }
 
             SkillBtnScript = button.GetComponent<SkillButton>();
             SkillBtnScript._skill = this;

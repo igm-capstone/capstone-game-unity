@@ -3,6 +3,6 @@ using System.Collections;
 
 [Rig3DAsset("spawnPoints", Rig3DExports.Position)]
 public class AvatarSpawnPoint : MonoBehaviour {
-    [Range(0,4)]
+    [Export("playerId"), Range(0,4)]
     public int PlayerID = 1;
 }

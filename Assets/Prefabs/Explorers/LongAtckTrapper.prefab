@@ -1261,7 +1261,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -.0599999987}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 407280}
@@ -1891,7 +1891,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2234,7 +2234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
-  interactUI: {fileID: 196982}
+  interactUI: {fileID: 154094, guid: a5bf0d2f1ca44234b933aec7a4520941, type: 2}
 --- !u!114 &11408932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2343,11 +2343,11 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300006, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   CooldownSprite: {fileID: 21300012, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
-  bgColor: {r: 0, g: 0, b: 0, a: 0}
   Name: SetRegLantern
   Cooldown: 5
   cost: 0
   UseCount: 3
+  addToSkillBar: 1
 --- !u!114 &11437698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2437,11 +2437,11 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300004, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   CooldownSprite: {fileID: 21300018, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
-  bgColor: {r: 0, g: 0, b: 0, a: 0}
   Name: Skill
   Cooldown: 2.5
   cost: 0
   UseCount: 0
+  addToSkillBar: 1
 --- !u!114 &11464632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2456,11 +2456,11 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 37ecfd6470428cd4299e1d6364ec9938, type: 3}
   CooldownSprite: {fileID: 0}
-  bgColor: {r: 0, g: 0, b: 0, a: 0}
   Name: InteractSkill
   Cooldown: 0
   cost: 0
   UseCount: 0
+  addToSkillBar: 0
   IntrctBoxDist: .400000006
   IntrctBoxRad: 1
   ReviveHealPrcnt: .400000006
@@ -2478,11 +2478,11 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300008, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   CooldownSprite: {fileID: 21300022, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
-  bgColor: {r: 0, g: 0, b: 0, a: 0}
   Name: SetTrapGlue
   Cooldown: 2.5
   cost: 0
   UseCount: 0
+  addToSkillBar: 1
 --- !u!114 &11467384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2536,11 +2536,11 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300010, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   CooldownSprite: {fileID: 21300020, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
-  bgColor: {r: 0, g: 0, b: 0, a: 0}
   Name: LongAttack
   Cooldown: .400000006
   cost: 0
   UseCount: 0
+  addToSkillBar: 1
   HitLayers:
     serializedVersion: 2
     m_Bits: 67119104
@@ -11477,7 +11477,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e355553bf10d56545afd4bc88a9d511a, type: 3}
   m_Color: {r: 1, g: .360294104, b: .360294104, a: .522000015}
 --- !u!222 &22229280
@@ -11702,7 +11702,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294967039
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SendInterval
@@ -11776,6 +11776,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: HitLayers.m_Bits
       value: 67119104
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: -.0599999987
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: interactUI
+      value: 
+      objectReference: {fileID: 154094, guid: a5bf0d2f1ca44234b933aec7a4520941, type: 2}
+    - target: {fileID: 0}
+      propertyPath: addToSkillBar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
