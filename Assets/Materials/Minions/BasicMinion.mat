@@ -94,7 +94,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0
+        second: .189999998
       data:
         first:
           name: _Parallax

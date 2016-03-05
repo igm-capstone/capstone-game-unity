@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class IndicatorCollector : MonoBehaviour {
 
@@ -35,9 +36,21 @@ public class IndicatorCollector : MonoBehaviour {
                 IndicatorBehavior ib = indicator.GetComponent<IndicatorBehavior>();
                 ib.avatar = ac.gameObject;
 
-                Color color = ac.gameObject.transform.FindChild("ClassAura").gameObject.GetComponent<SpriteRenderer>().color;
-                GameObject uiimage = ib.gameObject.transform.FindChild("UIImage").gameObject;
-                uiimage.GetComponent<CanvasRenderer>().SetColor(color);
+                if(ac.name == "ConeSprinter(Clone)")
+                {
+                    GameObject uiimage = ib.gameObject.transform.FindChild("UIImage").gameObject;
+                    uiimage.GetComponent<Image>().sprite = ib.Sprinter;
+                }
+                if(ac.name == "GrenadeSupport(Clone)")
+                {
+                    GameObject uiimage = ib.gameObject.transform.FindChild("UIImage").gameObject;
+                    uiimage.GetComponent<Image>().sprite = ib.Support;
+                }   
+                if(ac.name == "LongAtckTrapper(Clone)")
+                {
+                    GameObject uiimage = ib.gameObject.transform.FindChild("UIImage").gameObject;
+                    uiimage.GetComponent<Image>().sprite = ib.Trapper;
+                }
             }
         }
     }

@@ -5,12 +5,9 @@ public class IndicatorBehavior : MonoBehaviour {
 
     public GameObject avatar;
     public float padding;
-
-	// Use this for initialization
-	void Start ()
-    {
-    
-    }
+    public Sprite Sprinter;
+    public Sprite Support;
+    public Sprite Trapper;
 	
 	// Update is called once per frame
 	void Update ()
