@@ -17,7 +17,6 @@ public class InteractableBehavior : MonoBehaviour
     int playerOnTrigger;
 
     public GameObject interactUI;
-    GameObject topmostParent;
 
     public void Start()
     {
@@ -30,8 +29,6 @@ public class InteractableBehavior : MonoBehaviour
             }
         }
 
-        topmostParent = this.transform.root.gameObject;
-
         playerOnTrigger = 0;
     }
 
@@ -39,34 +36,46 @@ public class InteractableBehavior : MonoBehaviour
     // This will be used to implement Interactable Objects UI!
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag != "Player")
         {
-            playerOnTrigger++;
-            
-            // Check if this is a player and if the other player is still active, or if this is anything else.
-            if (interactUI && (Type == InteractableObject.Player && other.transform.root.GetComponent<AvatarController>().Disabled)
-                || Type != InteractableObject.Player)
-            {
-                interactUI.SetActive(true);
-                interactUI.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
-            }
+            return;
         }
+
+        playerOnTrigger++;
+            
+        if (!interactUI)
+        {
+            return;
+        }
+
+
+        var ac = GetComponentInParent<AvatarController>();
+        // only show interact ui for desabled players
+        if (Type == InteractableObject.Player && !ac.Disabled)
+        {
+            return;
+        }
+        
+        interactUI.SetActive(true);
+        interactUI.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag != "Player")
         {
-            playerOnTrigger--;
-            
-            // Hardfix for unexpedted nunmbers.
-            if (playerOnTrigger <0)
-                playerOnTrigger = 0;
+            return;
+        }
 
-            if (interactUI && playerOnTrigger == 0)
-            {
-                interactUI.SetActive(false);
-            }
+        playerOnTrigger--;
+            
+        // Hardfix for unexpedted nunmbers.
+        if (playerOnTrigger <0)
+            playerOnTrigger = 0;
+
+        if (interactUI && playerOnTrigger == 0)
+        {
+            interactUI.SetActive(false);
         }
 
     }

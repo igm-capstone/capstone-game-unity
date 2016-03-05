@@ -77,7 +77,6 @@ public class GrenadeToss : ISkill
 
         foreach (var trgt in TargetsHit)
         {
-            Debug.Log("Explosion hit: " + trgt);
             // Check if knockBack is enabled and if hitting a minion.
             if (hasKnockBack && trgt.gameObject.layer == LayerMask.NameToLayer("Minion"))
             {

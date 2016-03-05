@@ -2307,7 +2307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
-  interactUI: {fileID: 154094, guid: a5bf0d2f1ca44234b933aec7a4520941, type: 2}
+  interactUI: {fileID: 106898}
 --- !u!114 &11415236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11570,7 +11570,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6}
+  m_LocalPosition: {x: 0, y: 0, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22444118}
@@ -11756,7 +11756,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
-      value: -.0599999987
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: interactUI
@@ -11769,6 +11769,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

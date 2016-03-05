@@ -43,7 +43,10 @@ public class SkillButton : MonoBehaviour
         _icon = transform.Find("Image").GetComponent<Image>();
         _icon.sprite = _skill.SkillSprite;
         _skillBG = transform.Find("SkillBG").GetComponent<Image>();
-        _skillBG.color = GetAverageColor(_icon.sprite, 1.2f, 0.8f);//  _skill.bgColor;
+        if (_icon.sprite)
+        {
+            _skillBG.color = GetAverageColor(_icon.sprite, 1.2f, 0.8f);//  _skill.bgColor;
+        }
 
         if (_skill.key != KeyCode.None)
         {

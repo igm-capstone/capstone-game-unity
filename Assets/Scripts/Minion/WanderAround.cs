@@ -24,7 +24,6 @@ public class WanderAround : MinionBehaviour
     {
         if (Controller.ClosestAvatar != null)
         {
-            Debug.Log("chase");
             Controller.ActivateBehaviour<ChaseTarget>();
             return;
         }
