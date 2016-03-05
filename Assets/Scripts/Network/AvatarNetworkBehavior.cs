@@ -23,6 +23,7 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
         foreach (IndicatorCollector i in GameObject.FindObjectsOfType<IndicatorCollector>())
         {
             i.RefreshIndicators();
+            i.DomPointIndicators();
         }
     }
 
