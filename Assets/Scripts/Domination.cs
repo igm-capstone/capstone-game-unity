@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 [Rig3DAsset("dominationPoints", Rig3DExports.Position)]
-public class Domination : MonoBehaviour
+public class Domination : NetworkBehaviour
 {
     [System.NonSerialized]
     public bool captured = false;
     private bool outsideDominationArea = true;
+
+    [SyncVar]
     public float elapsedTime = 0.0f;
 
     [Export("captureTime")]
@@ -18,19 +21,22 @@ public class Domination : MonoBehaviour
     // Domination Point Tier. All dom Pnts of a tier must be dominated to go to the next.
     [Export("tier"), Range(0, 5)]
     public int TierCapture;
+
+    [SyncVar]
     public bool canBeCaptured = false;
 
     public event System.Action WasCaptured;
 
-
     public void Update()
     {
-        if (outsideDominationArea == true && elapsedTime >= 0.0f)
+
+        if (isServer && outsideDominationArea == true && elapsedTime >= 0.0f)
         {
             elapsedTime -= Time.deltaTime;
-            dominationFill.fillAmount = elapsedTime / timeToCapture;
         }
 
+        dominationFill.fillAmount = elapsedTime / timeToCapture;
+        
         //if(captured == true && connection != null)
         //{
         //    connection.fillAmount += (Time.deltaTime * 0.5f);
@@ -38,8 +44,11 @@ public class Domination : MonoBehaviour
     }
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Player" && canBeCaptured)
+        Debug.Log("enter " + other + " " + canBeCaptured + " " + other.tag);
+        if (isServer && other.tag == "Player" && canBeCaptured)
         {
+            Debug.Log("trigger entre");
+
             outsideDominationArea = false;
             if (elapsedTime < timeToCapture)
             {
@@ -57,8 +66,10 @@ public class Domination : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        if(other.tag == "Player" && captured == false)
+        if(isServer && other.tag == "Player" && captured == false)
         {
+
+            Debug.Log("trigger exyit");
             outsideDominationArea = true;
         }
     }

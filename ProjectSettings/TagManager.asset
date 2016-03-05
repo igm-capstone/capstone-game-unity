@@ -28,7 +28,7 @@ TagManager:
   - LightMesh
   - TransparentObstacle
   - Hitbox
-  - Clickbok
+  - Clickbox
   - Trap
   - Door
   - CPPCollision

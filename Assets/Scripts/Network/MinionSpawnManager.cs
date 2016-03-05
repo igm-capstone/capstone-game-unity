@@ -131,7 +131,7 @@ public class MinionSpawnManager : NetworkBehaviour
         
         NetworkServer.Spawn(minion);
         RpcSetParent(minion, explorer);
-        DisableMinion(minion);
+        //DisableMinion(minion);
         StartCoroutine(FinishHauntEtoM(15,minion,explorer));
 
     }
@@ -142,9 +142,15 @@ public class MinionSpawnManager : NetworkBehaviour
         minion.transform.SetParent(explorer.transform.FindChild("AvatarRotation").gameObject.transform);
         minion.transform.localRotation = Quaternion.Euler(0,0,-90);
 
-        if (GameObject.Find("Me") == explorer || isServer)
+        if (GameObject.Find("Me") == explorer)
         {
             DisableMinion(minion);
+        }
+        else if (isServer)
+        {
+            //disable exlorer model
+            explorer.transform.FindChild("AvatarRotation").transform.FindChild("AllAnimsInOne").gameObject.SetActive(false);
+            explorer.GetComponent<AvatarController>().SetMinionToControl(minion, true);
         }
         else
         {
@@ -185,7 +191,7 @@ public class MinionSpawnManager : NetworkBehaviour
     [ClientRpc]
     public void RpcEnableExplorer(GameObject explorer)
     {
-        if (!(GameObject.Find("Me") == explorer || isServer))
+        if (GameObject.Find("Me") != explorer)
         {
             //enable exlorer model
             explorer.transform.FindChild("AvatarRotation").transform.FindChild("AllAnimsInOne").gameObject.SetActive(true);
