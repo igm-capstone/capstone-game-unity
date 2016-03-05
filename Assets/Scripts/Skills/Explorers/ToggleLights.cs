@@ -50,9 +50,6 @@ public class ToggleLights : ISkill
         if (HitLight == null)
             return null;
 
-        Debug.Log("Using Skill " + Name);
-        Debug.Log("Hit: " + HitLight);
-
         // Get light component
         var light = HitLight.gameObject.GetComponent<LightController>();
         if (!light) return Name + " skill needs to target a light switch.";

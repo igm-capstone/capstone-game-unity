@@ -75,7 +75,6 @@ public class MeleeWeapon : ISkill
 
     void AttackAnimationComplete()
     {
-        Debug.Log("attack " + lastTarget);
         if (lastTarget == null)
         {
             return;
