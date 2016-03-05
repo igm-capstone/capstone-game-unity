@@ -79,7 +79,7 @@ public class IndicatorBehavior : MonoBehaviour {
         screenPointDomPoint.x = ((viewportDomPoint.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * 0.5f)) * flipZdomPoint;
         screenPointDomPoint.y = ((viewportDomPoint.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * 0.5f)) * flipZdomPoint;
 
-        GameObject uiimageDomPoint = transform.FindChild("UIImage").gameObject;
+        GameObject uiimageDomPoint = transform.FindChild("UIImageGrey").gameObject;
         Vector2 halfCanvasSizeDelta = canvasRect.sizeDelta * 0.5f;
 
         Vector2 clampedScreenPointDomPoint = new Vector2();
