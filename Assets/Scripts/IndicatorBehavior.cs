@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class IndicatorBehavior : MonoBehaviour {
 
@@ -86,6 +87,7 @@ public class IndicatorBehavior : MonoBehaviour {
         clampedScreenPointDomPoint.x = Mathf.Clamp(screenPointDomPoint.x, -halfCanvasSizeDelta.x + padding, halfCanvasSizeDelta.x - padding);
         clampedScreenPointDomPoint.y = Mathf.Clamp(screenPointDomPoint.y, -halfCanvasSizeDelta.y + padding, halfCanvasSizeDelta.y - padding);
 
+        transform.FindChild("UIImageColor").GetComponent<Image>().fillAmount = domPoint.GetComponent<Domination>().fillAmount;
 
         if (-halfCanvasSizeDelta.x < screenPointDomPoint.x && screenPointDomPoint.x < halfCanvasSizeDelta.x &&
            -halfCanvasSizeDelta.y < screenPointDomPoint.y && screenPointDomPoint.y < halfCanvasSizeDelta.y)

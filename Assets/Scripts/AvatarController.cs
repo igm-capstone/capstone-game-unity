@@ -25,6 +25,7 @@ public class AvatarController : MonoBehaviour
     private GameObject hauntMinionToControl;
     private GameObject doorToOpen;
     private AvatarNetworkBehavior avatarNB;
+    private Transform contanier;
 
     float slowDownMod;
     private float animSpeed;
@@ -38,6 +39,8 @@ public class AvatarController : MonoBehaviour
         _avatarSkillBar = GetComponentInChildren<SkillBar>();
         animator = GetComponent<RpcNetworkAnimator>();
         avatarNB = GetComponent<AvatarNetworkBehavior>();
+
+        contanier = transform.Find("AvatarRotation");
 
         // Game Balance Adjust => Makes Speed number comparable to Minion Speed number.
         CalcMoveSpeed = MoveSpeed / SpeedAdjust;
@@ -66,23 +69,48 @@ public class AvatarController : MonoBehaviour
     }
 
 
+    Vector2 currentSpeed;
+    float currAngle;
 
     private void Move()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
+        float hSpeed = horizontal > 0 ? 1 : horizontal < 0 ? -1 : 0;
+        float vSpeed = vertical > 0 ? 1 : vertical < 0 ? -1 : 0;
 
         if (isAttacking == false)
         {
-            // Keyboard only controls - Rotation
-            if (Mathf.Abs(vertical) > Mathf.Epsilon || Mathf.Abs(horizontal) > Mathf.Epsilon)
+
+            bool wantToMove = hSpeed != 0 || vSpeed != 0;
+
+            var dirVector = wantToMove ? new Vector2(hSpeed, vSpeed).normalized : new Vector2();
+
+            // speed per second
+            var targetSpeed = wantToMove ? CalcMoveSpeed * slowDownMod * dirVector : new Vector2();
+
+            var mAcceleration = 10f;
+            currentSpeed = Vector2.Lerp(currentSpeed, targetSpeed, mAcceleration * Time.deltaTime);
+
+            // delta space for the current frame
+            _rb.velocity = currentSpeed;
+
+            if (wantToMove)
             {
-                transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(vertical, horizontal) * Mathf.Rad2Deg, Vector3.forward);
+                float targetAngle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg;
+                currAngle = Mathf.LerpAngle(currAngle, targetAngle, 8 * Time.deltaTime);
+                contanier.rotation = Quaternion.AngleAxis(currAngle, Vector3.forward);
             }
 
-            // Applies velocity
-            _rb.velocity = new Vector2(horizontal, vertical).normalized * CalcMoveSpeed * slowDownMod*
-                (Mathf.Abs(Mathf.Abs(horizontal) - Mathf.Abs(vertical)) + (Mathf.Abs(horizontal) * Mathf.Abs(vertical) * Mathf.Sqrt(2)));
+            //// Keyboard only controls - Rotation
+            //if (Mathf.Abs(vertical) > Mathf.Epsilon || Mathf.Abs(horizontal) > Mathf.Epsilon)
+            //{
+            //    transform.GetChild(0).rotation = Quaternion.AngleAxis(Mathf.Atan2(vertical, horizontal) * Mathf.Rad2Deg, Vector3.forward);
+            //}
+
+            //// Applies velocity
+            //_rb.velocity = new Vector2(horizontal, vertical).normalized * CalcMoveSpeed * slowDownMod*
+            //    (Mathf.Abs(Mathf.Abs(horizontal) - Mathf.Abs(vertical)) + (Mathf.Abs(horizontal) * Mathf.Abs(vertical) * Mathf.Sqrt(2)));
         }
         else
         {

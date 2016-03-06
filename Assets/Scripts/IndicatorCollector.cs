@@ -6,8 +6,6 @@ public class IndicatorCollector : MonoBehaviour {
 
     public GameObject ExplorerIndicatorPrefab;
     public GameObject DomPointIndicatorPrefab;
-    private Image uiImageColor;
-    private Domination domPoint;
 
     public void DomPointIndicators()
     {
@@ -19,8 +17,6 @@ public class IndicatorCollector : MonoBehaviour {
                 GameObject indicator = GameObject.Instantiate(DomPointIndicatorPrefab);
                 IndicatorBehavior ib = indicator.GetComponent<IndicatorBehavior>();
                 ib.domPoint = dom.gameObject;
-                domPoint = dom;
-                uiImageColor = DomPointIndicatorPrefab.transform.FindChild("UIImageColor").GetComponent<Image>();
             }
         }
     }
@@ -82,13 +78,5 @@ public class IndicatorCollector : MonoBehaviour {
         }
 
         return false;
-    }
-
-    public void Update()
-    {
-        if (domPoint != null)
-        {
-            uiImageColor.fillAmount = domPoint.fillAmount;
-        }
     }
 }

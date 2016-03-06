@@ -2521,7 +2521,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35ad4022d647f748b1e4643aaa2c865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IndicatorPrefab: {fileID: 170614, guid: 37468903a8e4b9641897dcd0c6a08139, type: 2}
+  ExplorerIndicatorPrefab: {fileID: 170614, guid: 37468903a8e4b9641897dcd0c6a08139,
+    type: 2}
+  DomPointIndicatorPrefab: {fileID: 164582, guid: efd342e79f3af1747b2170b7ce9355cc,
+    type: 2}
 --- !u!114 &11473330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11797,6 +11800,14 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ExplorerIndicatorPrefab
+      value: 
+      objectReference: {fileID: 170614, guid: 37468903a8e4b9641897dcd0c6a08139, type: 2}
+    - target: {fileID: 0}
+      propertyPath: DomPointIndicatorPrefab
+      value: 
+      objectReference: {fileID: 164582, guid: efd342e79f3af1747b2170b7ce9355cc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 157710}
