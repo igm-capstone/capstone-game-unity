@@ -10,7 +10,7 @@ public class SetRegLantern : ISkill
     [SerializeField]
     bool hasLimitedUses = false;
 
-    public void Start()
+    public void Awake()
     {
         // Class SetUps
         Name = "SetRegLantern";
@@ -30,13 +30,18 @@ public class SetRegLantern : ISkill
         SlctdLant = LanternType.Regular;
         spawnDistance = 1.0f;
 
+    }    
+
+    void Start()
+    {
         if (!hasLimitedUses)
         {
             // Make it zero to remove number of uses from the UI.
             UseCount = 0;
             SkillBtnScript.UpdateUseAmount();
         }
-    }    
+
+    }
 
     void Update()
     {
