@@ -125,11 +125,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyType: 0
   trapTriggerRadius: 4
-  Duration: 10
-  EffectTime: .5
-  StartUpTime: 2
+  Duration: 5
+  EffectTime: .300000012
+  StartUpTime: 1
   AffectPlayers: 1
-  PoisonDamage: 4
+  PoisonDamage: 3
   GlueSlowRate: .300000012
   SpringKnockForce: 100
 --- !u!198 &19896002
@@ -1260,15 +1260,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: PoisonDamage
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Duration
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: AffectPlayers
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: StartUpTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: EffectTime
+      value: .300000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

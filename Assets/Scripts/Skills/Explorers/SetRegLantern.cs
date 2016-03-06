@@ -5,10 +5,14 @@ public class SetRegLantern : ISkill
 {
     LanternType SlctdLant;
     AvatarController avatarController;
-
     float spawnDistance;
+
+    [SerializeField]
+    bool hasLimitedUses = false;
+
     public void Awake()
     {
+        // Class SetUps
         Name = "SetRegLantern";
         canDrop = false;
 
@@ -18,9 +22,20 @@ public class SetRegLantern : ISkill
         key = KeyCode.Mouse1;
 
         UseCount = 3;
+        
+        // Component Getters
         avatarController = GetComponent<AvatarController>();
-
+        
+        // Initialization
+        SlctdLant = LanternType.Regular;
         spawnDistance = 1.0f;
+
+        if (!hasLimitedUses)
+        {
+            // Make it zero to remove number of uses from the UI.
+            UseCount = 0;
+            SkillBtnScript.UpdateUseAmount();
+        }
     }
 
     void Update()
@@ -36,14 +51,17 @@ public class SetRegLantern : ISkill
         if (avatarController.Disabled) return "You are incapacitated. Seek help!";
         if (avatarController.isHidden) return "You are hiding";
 
-        if (UseCount <= 0)
+        if (UseCount <= 0 && hasLimitedUses)
         {
             return "You have no more Lanterns of this type";
         }
 
-        // Update amount.
-        UseCount--;
-        SkillBtnScript.UpdateUseAmount();
+        if (hasLimitedUses)
+        {
+            // Update amount.
+            UseCount--;
+            SkillBtnScript.UpdateUseAmount();
+        }
 
         TurnToMousePos();
 
