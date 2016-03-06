@@ -2314,7 +2314,7 @@ MonoBehaviour:
   HitLayers:
     serializedVersion: 2
     m_Bits: 67119104
-  Damage: 14
+  Damage: 15
   hasKnockBack: 1
   ThrowDistance: 7
   KnockBackMag: 3
@@ -11572,6 +11572,10 @@ Prefab:
       propertyPath: DomPointIndicatorPrefab
       value: 
       objectReference: {fileID: 164582, guid: efd342e79f3af1747b2170b7ce9355cc, type: 2}
+    - target: {fileID: 0}
+      propertyPath: Damage
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100808}

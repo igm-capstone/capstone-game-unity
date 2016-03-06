@@ -1740,7 +1740,7 @@ MonoBehaviour:
   rapelDecay: .200000003
   maxRepel: 1
   turnRate: 30
-  moveSpeed: 70
+  moveSpeed: 60
   SlowSpdPerCent: 50
   isStunned: 0
   StunOnHitTime: .5
@@ -1768,7 +1768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54cc894172296b4283a42e2b9acc609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AtckDamage: 80
+  AtckDamage: 50
   ExplosionRadius: 6
 --- !u!114 &11449576
 MonoBehaviour:
@@ -1781,7 +1781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbb605028cfaec48b2c20240430a909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHealth: 50
+  BaseHealth: 60
   HealthCanvas: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
   CurrentHealth: 0
 --- !u!114 &11454328
@@ -1915,7 +1915,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: AtckDamage
-      value: 80
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ExplosionRadius
@@ -1923,11 +1923,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: moveSpeed
-      value: 70
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: BaseHealth
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsKinematic

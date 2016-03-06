@@ -9,7 +9,6 @@ public class SpawnMinion : ISkill
     {
         Name = "SpawnMinion";
         canDrop = false;
-        cost = 10;
 
         IsSpawnSkill = true;
         MinSpawnDist = 10f;

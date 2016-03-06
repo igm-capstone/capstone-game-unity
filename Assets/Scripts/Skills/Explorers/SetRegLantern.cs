@@ -10,7 +10,7 @@ public class SetRegLantern : ISkill
     [SerializeField]
     bool hasLimitedUses = false;
 
-    public void Awake()
+    public void Start()
     {
         // Class SetUps
         Name = "SetRegLantern";

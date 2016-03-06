@@ -19,13 +19,13 @@ public class SkillBar : MonoBehaviour
     public bool HideInactiveSkills = false;
     public OnClickBehaviorType OnClickBehavior;
     public float waitTimeRestoreEnergy = 2;
-    public int restoreAmount = 5;
+    public float restoreAmount = 5;
     public GameObject energyUiPrefab;
 
     private List<ISkill> _skillList;
     private ISkill _activeSkill = null;
     private int _skillCapacity;
-    private int availableEnergy;
+    private float availableEnergy;
     private Text energyUiText;
 
 
@@ -143,24 +143,23 @@ public class SkillBar : MonoBehaviour
 
     public int EnergyLeft
     {
-        get { return availableEnergy; }
+        get { return Mathf.RoundToInt( availableEnergy); }
         set
         {
             availableEnergy = value;
-            energyUiText.text = availableEnergy.ToString();
-
+            energyUiText.text = EnergyLeft.ToString();
         }
     }
 
-    IEnumerator RestoreEnergy(int restoreValuePerSecond)
+    IEnumerator RestoreEnergy(float restoreValuePerSecond)
     {
         while (true)
         {
             yield return new WaitForSeconds(waitTimeRestoreEnergy);
             if (availableEnergy < totalEnergy)
             {
-                availableEnergy += restoreValuePerSecond;
-                energyUiText.text = availableEnergy.ToString();
+                availableEnergy = availableEnergy + restoreValuePerSecond;
+                energyUiText.text = EnergyLeft.ToString();
             }
         }
     }

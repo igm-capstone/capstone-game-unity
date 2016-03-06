@@ -13,7 +13,6 @@ public class Haunt_ExpToMinion : ISkill {
     {
         Name = "ExplorerToMinion";
         canDrop = false;
-        cost = 0;
 
         key = KeyCode.Alpha5;
 

@@ -975,7 +975,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8.9910326, y: -60.3069916, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 404376}
@@ -1408,7 +1408,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 3.5
 --- !u!58 &5883688
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -1450,7 +1450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbb605028cfaec48b2c20240430a909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHealth: 50
+  BaseHealth: 80
   HealthCanvas: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
   CurrentHealth: 0
 --- !u!114 &11445258
@@ -1464,7 +1464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c844d216f4aed8649a61705104b78f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 10
+  Damage: 25
   AttackRange: 3.5
 --- !u!114 &11462936
 MonoBehaviour:
@@ -1604,7 +1604,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Damage
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
@@ -1613,6 +1613,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: BaseHealth
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -3563,7 +3563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54cc894172296b4283a42e2b9acc609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AtckDamage: 6
+  AtckDamage: 10
   ExplosionRadius: 0
 --- !u!114 &11496266
 MonoBehaviour:
@@ -3828,7 +3828,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: AtckDamage
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: BaseHealth

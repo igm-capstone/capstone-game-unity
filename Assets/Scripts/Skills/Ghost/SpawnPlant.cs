@@ -10,7 +10,6 @@ public class SpawnPlant : ISkill
     {
         Name = "SpawnPlant";
         canDrop = false;
-        cost = 10;
 
         IsSpawnSkill = true;
         MinSpawnDist = 10f;

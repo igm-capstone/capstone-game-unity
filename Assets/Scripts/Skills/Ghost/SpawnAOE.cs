@@ -9,7 +9,6 @@ public class SpawnAOE : ISkill
     {
         Name = "SpawnAOE";
         canDrop = false;
-        cost = 30;
 
         IsSpawnSkill = true;
         MinSpawnDist = 15f;
