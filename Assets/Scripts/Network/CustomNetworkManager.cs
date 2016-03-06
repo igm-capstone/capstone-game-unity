@@ -58,6 +58,11 @@ public class CustomNetworkManager : NetworkManager
 
     void SetIPAddress(string ip)
     {
+        if (!GameObject.Find("InputFieldIP"))
+        {
+            return;
+        }
+
         var input = GameObject.Find("InputFieldIP").GetComponent<InputField>();
         input.text = ip;
         networkAddress = ip;
