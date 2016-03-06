@@ -21,7 +21,7 @@ public class InteractSkill :  ISkill
         // ISkill SetUps
         Name = "InteractSkill";
         canDrop = false;
-        key = KeyCode.E;
+        key = KeyCode.Space;
 
         avatarNetBhvr = GetComponent<AvatarNetworkBehavior>();
 

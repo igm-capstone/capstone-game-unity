@@ -18,7 +18,7 @@ public class SetTrapPoison : ISkill
         spawnDistance = 1.0f;
 
         // Set key code:
-        key = KeyCode.Alpha1;
+        key = KeyCode.LeftShift;
         avatarController = GetComponent<AvatarController>();
     }
 

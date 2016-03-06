@@ -167,10 +167,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 456888}
   - 33: {fileID: 3307120}
-  - 64: {fileID: 6443458}
   - 23: {fileID: 2354190}
   m_Layer: 11
-  m_Name: LongAttackHitBox
+  m_Name: SpriteBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1155,7 +1154,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.45945168, y: -54.7284164, z: 0}
+  m_LocalPosition: {x: 2.39501405, y: -2.44874334, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 437546}
@@ -1476,7 +1475,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.39999998, y: 0, z: 0}
+  m_LocalPosition: {x: 1.39999998, y: 0, z: -.400000006}
   m_LocalScale: {x: 3.16000009, y: 2, z: 5}
   m_Children: []
   m_Father: {fileID: 437546}
@@ -1937,7 +1936,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: f06e128bda326684cb8bfb9a5d9170b4, type: 2}
+  - {fileID: 2100000, guid: 9fd019d6b21dcda42974fda45849c98d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2088,18 +2087,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!64 &6443458
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118246}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!81 &8188444
 AudioListener:
   m_ObjectHideFlags: 1
@@ -2346,8 +2333,9 @@ MonoBehaviour:
   Name: SetRegLantern
   Cooldown: 5
   cost: 0
-  UseCount: 3
+  UseCount: 5
   addToSkillBar: 1
+  hasLimitedUses: 0
 --- !u!114 &11437698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2547,7 +2535,7 @@ MonoBehaviour:
   HitLayers:
     serializedVersion: 2
     m_Bits: 67119104
-  Damage: 8
+  Damage: 17
   hasKnockBack: 1
   KnockBackMag: 5
 --- !u!114 &11478818

@@ -36,7 +36,7 @@ public class LongAttack : ISkill
         avatarNetwork = GetComponent<AvatarNetworkBehavior>();
         avatarController = GetComponent<AvatarController>();        
 
-        DisplayBox = transform.FindChild("AvatarRotation").FindChild("LongAttackHitBox").gameObject;
+        DisplayBox = transform.FindChild("AvatarRotation/SpriteBox").gameObject;
         DisplayBox.SetActive(false);
 
         // Set key code:

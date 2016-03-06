@@ -311,7 +311,7 @@ MonoBehaviour:
   totalEnergy: 100
   HideInactiveSkills: 0
   OnClickBehavior: 0
-  waitTimeRestoreEnergy: .100000001
+  waitTimeRestoreEnergy: 1
   restoreAmount: 1
   energyUiPrefab: {fileID: 126932, guid: ad64248c582df8b4b900ab476a475f4a, type: 2}
 --- !u!114 &11461776
@@ -329,7 +329,7 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300008, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
   CooldownSprite: {fileID: 21300022, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
   Name: Haunt Explorer To Minion
-  Cooldown: 2
+  Cooldown: 17
   cost: 0
   UseCount: 0
   addToSkillBar: 1
@@ -509,7 +509,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
-      value: 6
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: SkillSprite
@@ -546,7 +546,7 @@ Prefab:
       objectReference: {fileID: 155754, guid: 3555dcae92f866f4db1693d6a8442a24, type: 2}
     - target: {fileID: 0}
       propertyPath: waitTimeRestoreEnergy
-      value: .100000001
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: restoreAmount

@@ -19,7 +19,7 @@ public class SetTrapGlue : ISkill
         spawnDistance = 1.0f;
 
         // Set key code:
-        key = KeyCode.Alpha2;
+        key = KeyCode.LeftControl;
 
         avatarController = GetComponent<AvatarController>();
     }
