@@ -30,17 +30,13 @@ public class SetRegLantern : ISkill
         SlctdLant = LanternType.Regular;
         spawnDistance = 1.0f;
 
-    }
-
-    void Start()
-    {
         if (!hasLimitedUses)
         {
             // Make it zero to remove number of uses from the UI.
             UseCount = 0;
             SkillBtnScript.UpdateUseAmount();
         }
-    }
+    }    
 
     void Update()
     {
