@@ -1622,7 +1622,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.1522713, y: -56.7250862, z: 0}
+  m_LocalPosition: {x: .00999999978, y: -3.66000009, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 496544}
@@ -2187,7 +2187,7 @@ MonoBehaviour:
   cost: 0
   UseCount: 0
   addToSkillBar: 1
-  HealAmount: 60
+  HealAmount: 80
   AreaRadius: 3
   FX: {fileID: 474792}
 --- !u!114 &11434612
@@ -2314,10 +2314,10 @@ MonoBehaviour:
   HitLayers:
     serializedVersion: 2
     m_Bits: 67119104
-  Damage: 8
+  Damage: 14
   hasKnockBack: 1
   ThrowDistance: 7
-  KnockBackMag: 5.5
+  KnockBackMag: 3
 --- !u!114 &11464816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2362,8 +2362,9 @@ MonoBehaviour:
   Name: Skill
   Cooldown: 5
   cost: 0
-  UseCount: 3
+  UseCount: 5
   addToSkillBar: 1
+  hasLimitedUses: 0
 --- !u!114 &11471492
 MonoBehaviour:
   m_ObjectHideFlags: 1
