@@ -52,10 +52,16 @@ public class SkillButton : MonoBehaviour
         {
             // Test for mouse buttons
             if (_skill.key == KeyCode.Mouse0)
-                transform.Find("Key").GetComponent<Text>().text = "LMBtn";
+                transform.Find("Key").GetComponent<Text>().text = "LMB";
 
             else if (_skill.key == KeyCode.Mouse1)
-                transform.Find("Key").GetComponent<Text>().text = "RMBtn";
+                transform.Find("Key").GetComponent<Text>().text = "RMB";
+
+            else if (_skill.key == KeyCode.LeftShift)
+                transform.Find("Key").GetComponent<Text>().text = "LShift";
+
+            else if (_skill.key == KeyCode.LeftControl)
+                transform.Find("Key").GetComponent<Text>().text = "LCtrl";
 
             // Test for the Alphanumeric Keys strip on the keyboard. 48 => 0 and 57 => 9
             else if ((int)_skill.key >= 48 && (int)_skill.key <= 57)

@@ -35,7 +35,7 @@ public class Heal : ISkill
         }
 
         // Set key code:
-        key = KeyCode.Alpha1;
+        key = KeyCode.LeftShift;
     }
 
     void Update()

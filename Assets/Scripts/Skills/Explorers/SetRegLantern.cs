@@ -15,7 +15,7 @@ public class SetRegLantern : ISkill
         SlctdLant = LanternType.Regular;
 
         // Set key code:
-        key = KeyCode.Q;
+        key = KeyCode.Mouse1;
 
         UseCount = 3;
         avatarController = GetComponent<AvatarController>();

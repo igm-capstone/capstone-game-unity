@@ -15,7 +15,7 @@ public class Haunt_ExpToMinion : ISkill {
         canDrop = false;
         cost = 0;
 
-        key = KeyCode.Alpha6;
+        key = KeyCode.Alpha5;
 
         mySkillBar = GetComponent<SkillBar>();
     }
