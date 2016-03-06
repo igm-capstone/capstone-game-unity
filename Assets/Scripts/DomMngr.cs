@@ -15,6 +15,13 @@ public class DomMngr : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        StartCoroutine(DelayedStart());
+    }
+
+    IEnumerator DelayedStart()
+    {
+        yield return new WaitForSeconds(2);
+
         // Get all Dom Pnts
         DomPntList = GetComponentsInChildren<Domination>();
 

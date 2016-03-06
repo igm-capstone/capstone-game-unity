@@ -4,9 +4,23 @@ using UnityEngine.UI;
 
 public class IndicatorCollector : MonoBehaviour {
 
-    public GameObject IndicatorPrefab;
+    public GameObject ExplorerIndicatorPrefab;
+    public GameObject DomPointIndicatorPrefab;
 
-	// Use this for initialization
+    public void DomPointIndicators()
+    {
+        if (IsSelfClient())
+        {
+            Domination[] dominationPoints = GameObject.FindObjectsOfType<Domination>();
+            foreach (Domination dom in dominationPoints)
+            {
+                GameObject indicator = GameObject.Instantiate(DomPointIndicatorPrefab);
+                IndicatorBehavior ib = indicator.GetComponent<IndicatorBehavior>();
+                ib.domPoint = dom.gameObject;
+            }
+        }
+    }
+
 	public void RefreshIndicators ()
     {
        if (IsSelfClient())
@@ -30,7 +44,7 @@ public class IndicatorCollector : MonoBehaviour {
                 }
 
                 // Create Indicator
-                GameObject indicator = GameObject.Instantiate(IndicatorPrefab);
+                GameObject indicator = GameObject.Instantiate(ExplorerIndicatorPrefab);
 
                 // Tie indicator to a given instance of explorer
                 IndicatorBehavior ib = indicator.GetComponent<IndicatorBehavior>();
@@ -53,12 +67,6 @@ public class IndicatorCollector : MonoBehaviour {
                 }
             }
         }
-    }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-       
     }
 
     bool IsSelfClient()
