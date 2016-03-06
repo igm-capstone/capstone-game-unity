@@ -52,16 +52,35 @@ public class CustomNetworkManager : NetworkManager
 
     void GetIPAddress()
     {
-        string ip = GameObject.Find("InputFieldIP").transform.FindChild("Text").GetComponent<Text>().text;
+        string ip = GameObject.Find("InputFieldIP").GetComponent<InputField>().text;
         networkAddress = ip;
     }
 
-    public void SetButtons()
+    void SetIPAddress(string ip)
+    {
+        var input = GameObject.Find("InputFieldIP").GetComponent<InputField>();
+        input.text = ip;
+        networkAddress = ip;
+    }
+
+
+    public void SetButtons(string ip, bool autoConnect, bool autoHost)
     {
         EnableBtn("ButtonHost", "Host Game", TryHost);
         EnableBtn("ButtonJoin", "Join Game", TryJoin);
         EnableBtn("ButtonQuit", "Quit Game", () => { Application.Quit(); });
         EnableBtn("ButtonExit", "Exit", () => { DisableBtn("ButtonExit", "Exiting..."); StopHost(); });
+
+        SetIPAddress(ip);
+
+        if (autoConnect)
+        {
+            TryJoin();
+        }
+        else if (autoHost)
+        {
+            TryHost();
+        }
     }
 
     public void TryHost()
