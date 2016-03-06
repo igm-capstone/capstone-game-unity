@@ -80,7 +80,8 @@ public class IndicatorBehavior : MonoBehaviour {
         screenPointDomPoint.x = ((viewportDomPoint.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * 0.5f)) * flipZdomPoint;
         screenPointDomPoint.y = ((viewportDomPoint.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * 0.5f)) * flipZdomPoint;
 
-        GameObject uiimageDomPoint = transform.FindChild("UIImageGrey").gameObject;
+        GameObject uiimageGreyDomPoint = transform.FindChild("UIImageGrey").gameObject;
+        GameObject uiimageColorDomPoint = transform.FindChild("UIImageColor").gameObject;
         Vector2 halfCanvasSizeDelta = canvasRect.sizeDelta * 0.5f;
 
         Vector2 clampedScreenPointDomPoint = new Vector2();
@@ -92,14 +93,17 @@ public class IndicatorBehavior : MonoBehaviour {
         if (-halfCanvasSizeDelta.x < screenPointDomPoint.x && screenPointDomPoint.x < halfCanvasSizeDelta.x &&
            -halfCanvasSizeDelta.y < screenPointDomPoint.y && screenPointDomPoint.y < halfCanvasSizeDelta.y)
         {
-            uiimageDomPoint.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
+            uiimageGreyDomPoint.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
+            uiimageColorDomPoint.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
         }
         else
         {
-            uiimageDomPoint.GetComponent<CanvasRenderer>().SetAlpha(1.0f);
+            uiimageGreyDomPoint.GetComponent<CanvasRenderer>().SetAlpha(1.0f);
+            uiimageColorDomPoint.GetComponent<CanvasRenderer>().SetAlpha(1.0f);
         }
 
-        uiimageDomPoint.GetComponent<RectTransform>().anchoredPosition = clampedScreenPointDomPoint;
+        uiimageGreyDomPoint.GetComponent<RectTransform>().anchoredPosition = clampedScreenPointDomPoint;
+        uiimageColorDomPoint.GetComponent<RectTransform>().anchoredPosition = clampedScreenPointDomPoint;
 
     }
 }
