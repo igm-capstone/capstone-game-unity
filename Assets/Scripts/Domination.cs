@@ -46,10 +46,8 @@ public class Domination : NetworkBehaviour
     }
     void OnTriggerStay2D(Collider2D other)
     {
-        if (isServer && other.tag == "Player" && canBeCaptured)
+        if (isServer && !captured  && canBeCaptured && other.tag == "Player")
         {
-            Debug.Log("trigger entre");
-
             outsideDominationArea = false;
             if (elapsedTime < timeToCapture)
             {
@@ -67,10 +65,9 @@ public class Domination : NetworkBehaviour
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        if(isServer && other.tag == "Player" && captured == false)
+        if(isServer && !captured && other.tag == "Player")
         {
 
-            Debug.Log("trigger exyit");
             outsideDominationArea = true;
         }
     }
