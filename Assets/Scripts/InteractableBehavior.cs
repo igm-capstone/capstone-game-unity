@@ -17,6 +17,7 @@ public class InteractableBehavior : MonoBehaviour
     int playerOnTrigger;
 
     public GameObject interactUI;
+    AvatarController ac;
 
     public void Start()
     {
@@ -30,6 +31,22 @@ public class InteractableBehavior : MonoBehaviour
         }
 
         playerOnTrigger = 0;
+        if (Type == InteractableObject.Player)
+        {
+            Debug.Log("interact " + name);
+            ac = GetComponentInParent<AvatarController>();
+        }
+    }
+
+
+    void Update()
+    {
+        if (Type == InteractableObject.Player)
+        {
+            Debug.Log("up " + name);
+            interactUI.SetActive(ac.Disabled);
+            interactUI.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
+        }
     }
 
 
@@ -41,23 +58,18 @@ public class InteractableBehavior : MonoBehaviour
             return;
         }
 
+        if (other.name != "Me")
+        {
+            return;
+        }
+
         playerOnTrigger++;
             
-        if (!interactUI)
+        if (other.name == "Me" && interactUI)
         {
-            return;
+            interactUI.SetActive(true);
+            interactUI.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
         }
-
-
-        var ac = GetComponentInParent<AvatarController>();
-        // only show interact ui for desabled players
-        if (Type == InteractableObject.Player && !ac.Disabled)
-        {
-            return;
-        }
-        
-        interactUI.SetActive(true);
-        interactUI.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -73,7 +85,7 @@ public class InteractableBehavior : MonoBehaviour
         if (playerOnTrigger <0)
             playerOnTrigger = 0;
 
-        if (interactUI && playerOnTrigger == 0)
+        if (other.name == "Me" && interactUI && playerOnTrigger == 0)
         {
             interactUI.SetActive(false);
         }

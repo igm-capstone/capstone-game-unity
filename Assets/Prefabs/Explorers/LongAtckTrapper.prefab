@@ -2216,7 +2216,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157710}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6550b509401494945997ec29d61c6b6f, type: 3}
   m_Name: 
@@ -2581,7 +2581,8 @@ MonoBehaviour:
   HideInactiveSkills: 0
   OnClickBehavior: 2
   waitTimeRestoreEnergy: 2
-  restoreAmount: 5
+  restoreAmount: []
+  restoreAmountLevel: 0
   energyUiPrefab: {fileID: 0}
 --- !u!114 &11480220
 MonoBehaviour:
@@ -11680,7 +11681,7 @@ Prefab:
       objectReference: {fileID: 482158, guid: 5ba6d8fad543f6b4ba43151a987472af, type: 2}
     - target: {fileID: 0}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ReviveHealPrcnt

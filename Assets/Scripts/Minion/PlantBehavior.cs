@@ -7,60 +7,57 @@ public class PlantBehavior : NetworkBehaviour
 {
     public int Damage;
     public float AttackRange = 3.5f;
-    GameObject AtckTarget;
+    GameObject Target;
     RpcNetworkAnimator netAnim;
-    private bool isAttacking;
+    private Collider2D[] collisions;
 
     // Use this for initialization
     void Start()
     {
         netAnim = GetComponent<RpcNetworkAnimator>();
+        collisions = new Collider2D[4];
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (AtckTarget)
+
+        FindTarget();
+
+        if (Target)
         {
             LookAtTarget();
-            MeeleeAttack();
+        }
+    }
+
+    private void FindTarget()
+    {
+        if (Target)
+        {
+            return;
+        }
+
+        var playerMask = LayerMask.GetMask(new[] { "Player" });
+        var collisionCount = Physics2D.OverlapCircleNonAlloc(transform.position, 3.5f, collisions, playerMask);
+        for (int i = 0; i < collisionCount; i++)
+        {
+            var col = collisions[i];
+            if (col.gameObject.tag == "Player")
+            {
+                Target = col.gameObject;
+                netAnim.SetTrigger("Start_Bite");
+
+                return;
+            }
         }
     }
 
     private void LookAtTarget()
     {       
-        Vector2 lookDir = AtckTarget.transform.position - transform.position;
+        Vector2 lookDir = Target.transform.position - transform.position;
         var container = transform.Find("Rotation");
         var newAngle = Mathf.LerpAngle(container.eulerAngles.z, Mathf.Atan2(lookDir.y, lookDir.x)* Mathf.Rad2Deg, Time.deltaTime);
         container.rotation = Quaternion.AngleAxis(newAngle, Vector3.forward);
-    }
-
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (!AtckTarget && other.gameObject.tag == "Player")
-        {
-            AtckTarget = other.gameObject;
-            isAttacking = false;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player" && other.gameObject == AtckTarget)
-        {
-            AtckTarget = null;
-        }
-    }
-
-    void MeeleeAttack()
-    {
-        if (isAttacking)
-        {
-            return;
-        }
-
-        isAttacking = true;
-        netAnim.SetTrigger("Start_Bite");
     }
 
     void OnDrawGizmos()
@@ -72,18 +69,20 @@ public class PlantBehavior : NetworkBehaviour
     // This method gets called by the Plant Animator via msg at the end of the Animation State.
     void BiteAnimationComplete()
     {
-        if (!isAttacking || !AtckTarget)
+        if (!hasAuthority || !Target)
         {
+            Target = null;
             return;
         }
 
-        if (AtckTarget && hasAuthority && (AtckTarget.transform.position - transform.position).magnitude < AttackRange)
+        if ((Target.transform.position - transform.position).magnitude < AttackRange)
         {
-            var avatarNB = AtckTarget.GetComponentInParent<AvatarNetworkBehavior>();
+            var avatarNB = Target.GetComponentInParent<AvatarNetworkBehavior>();
             avatarNB.CmdAssignDamage(avatarNB.gameObject, Damage);
         }
 
-        isAttacking = false;
+        Target = null;
+
     }
 
     [Command]

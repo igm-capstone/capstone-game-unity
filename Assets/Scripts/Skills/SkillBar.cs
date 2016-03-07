@@ -29,6 +29,7 @@ public class SkillBar : MonoBehaviour
 
     private int _skillCapacity;
     private float availableEnergy;
+    private Image energyUIFill;
     private Text energyUiText;
 
 
@@ -59,6 +60,8 @@ public class SkillBar : MonoBehaviour
             energyTransform.SetAsFirstSibling();
             energyUiText = energyTransform.Find("Text").GetComponent<Text>();
             energyUiText.text = EnergyLeft.ToString();
+            energyUIFill = energyTransform.Find("Fill").GetComponent<Image>();
+            energyUIFill.fillAmount = 1;
         }
     }
     public void UpgradeRestoreRate()
@@ -166,7 +169,9 @@ public class SkillBar : MonoBehaviour
             if (availableEnergy < totalEnergy)
             {
                 availableEnergy = availableEnergy + restoreAmount[restoreAmountLevel];
+                availableEnergy = Mathf.Clamp(availableEnergy, 0, totalEnergy);
                 energyUiText.text = EnergyLeft.ToString();
+                energyUIFill.fillAmount = availableEnergy / totalEnergy;
             }
         }
     }

@@ -64,6 +64,26 @@ public class LongAttack : ISkill
         // Turns to mouse position.
         TurnToMousePos();
 
+        DisplayBox.SetActive(true);
+
+        // Trigger animation
+        animator.SetTrigger("LongAttack");
+        GetComponent<AvatarController>().isAttacking = true;
+
+        return null;
+    }
+
+    void LongAttackAnimationComplete()
+    {
+        if (!GetComponent<NetworkIdentity>().hasAuthority)
+        {
+            return;
+        }
+
+        DisplayBox.SetActive(false);
+
+        if (avatarController.Disabled || avatarController.isHidden) return;
+
         var hitBox = transform.Find("AvatarRotation/Hitbox");
         var hitBoxCol = hitBox.GetComponent<BoxCollider2D>();
 
@@ -74,23 +94,17 @@ public class LongAttack : ISkill
         HitBoxAA = hitBox.TransformPoint(hitBoxOffset - hitBoxSize);
         HitBoxBB = hitBox.TransformPoint(hitBoxOffset + hitBoxSize);
 
-        DisplayBox.SetActive(true);
-
-        // Trigger animation
-        animator.SetTrigger("LongAttack");
-        GetComponent<AvatarController>().isAttacking = true;
-
         // Get targets
         var TargetsHit = Physics2D.OverlapAreaAll(HitBoxAA, HitBoxBB, HitLayers);
-
-        // Old implementation tied to animation:
-        //lastTarget = TargetsHit.Contains(lastTarget) ? lastTarget : TargetsHit.FirstOrDefault();
-
-        // New implementation cpoied from AOE attack.
         foreach (var trgt in TargetsHit)
         {
             // Check if I am hitting myself
             if (trgt.gameObject == this.gameObject)
+            {
+                continue;
+            }
+
+            if (trgt.isTrigger)
             {
                 continue;
             }
@@ -104,30 +118,6 @@ public class LongAttack : ISkill
             {
                 avatarNetwork.CmdAssignDamage(trgt.gameObject, Damage);
             }
-        } //foreach
-
-        return null;
-    }
-
-    void LongAttackAnimationComplete()
-    {
-        DisplayBox.SetActive(false);
-
-    /* Old implementation tied to animation
-        if (lastTarget == null || lastTarget.gameObject == this.gameObject)
-            return;
-
-        // Check if knockBack is enabled and if hitting a minion.
-        if (hasKnockBack && lastTarget.gameObject.layer == LayerMask.NameToLayer("Minion"))
-        {   // Assign damage with knockback.
-            avatarNetwork.CmdAssignDamageWithForce(lastTarget.gameObject, Damage, KnockBackMag);
         }
-        else
-        {   // Damage without force
-            avatarNetwork.CmdAssignDamage(lastTarget.gameObject, Damage);
-        }
-
-        lastTarget = null;
-    */
     }
 }

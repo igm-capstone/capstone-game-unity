@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using System.Linq;
+using UnityEngine.Networking;
 
 public class ConeAttack : ISkill
 {
@@ -73,9 +74,24 @@ public class ConeAttack : ISkill
         animator.SetTrigger("ConeAttack");
         GetComponent<AvatarController>().isAttacking = true;
 
+        return null;
+    }
+
+    void ConeAttackAnimationComplete()
+    {
+        if (!GetComponent<NetworkIdentity>().hasAuthority)
+        {
+            return;
+        }
+
+        SpriteBoxObj.SetActive(false);
+
+        if (avatarController.Disabled || avatarController.isHidden) return;
+
         // Get targets from CloseBox
         var HitBoxObj = transform.Find("AvatarRotation/HitBox");
         var HitBoxCol = HitBoxObj.GetComponent<BoxCollider2D>();
+
         // Calculate Box size and position
         var HitBoxSize = new Vector2(HitBoxCol.size.x * hitBoxXAdjst, HitBoxCol.size.y * hitBoxYAdjst);
         var HitBoxOffset = new Vector2(HitBoxSize.x, HitBoxCol.offset.y);
@@ -93,6 +109,12 @@ public class ConeAttack : ISkill
             {
                 continue;
             }
+
+            if (trgt.isTrigger)
+            {
+                continue;
+            }
+
             // Check for KnockBack enabled and if hitting a minion
             if (hasKnockBack && trgt.gameObject.layer == LayerMask.NameToLayer("Minion"))
             {
@@ -103,12 +125,6 @@ public class ConeAttack : ISkill
                 avatarNetwork.CmdAssignDamage(trgt.gameObject, Damage);
             }
         }
-        return null;
-    }
-
-    void ConeAttackAnimationComplete()
-    {
-        SpriteBoxObj.SetActive(false);
     }
 
     public void OnDrawGizmos()

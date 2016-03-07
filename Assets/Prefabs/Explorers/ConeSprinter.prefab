@@ -1522,8 +1522,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 120732}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .899999976, y: 0, z: -.400000006}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalPosition: {x: 1.20000005, y: 0, z: -.400000006}
+  m_LocalScale: {x: 3, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 439760}
   m_RootOrder: 3
@@ -2071,9 +2071,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .899999976, y: 0}
+  m_Offset: {x: 1.20000005, y: 0}
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.5}
+  m_Size: {x: 3, y: 2.5}
 --- !u!61 &6145780
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102924}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6550b509401494945997ec29d61c6b6f, type: 3}
   m_Name: 
@@ -2441,7 +2441,8 @@ MonoBehaviour:
   HideInactiveSkills: 0
   OnClickBehavior: 2
   waitTimeRestoreEnergy: 2
-  restoreAmount: 5
+  restoreAmount: []
+  restoreAmountLevel: 0
   energyUiPrefab: {fileID: 0}
 --- !u!114 &11451730
 MonoBehaviour:
@@ -11645,7 +11646,7 @@ Prefab:
       objectReference: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
     - target: {fileID: 0}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x

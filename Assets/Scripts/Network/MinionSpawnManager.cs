@@ -35,12 +35,13 @@ public class MinionSpawnManager : NetworkBehaviour
     {
         SingleSpawn(position, minType);
 
+        StartCoroutine(ClearOldMinions());
         StartCoroutine(SetGridDirty());
     }
 
-    private void SingleSpawn(Vector3 position, MinionType minType)
+    private void SingleSpawn(Vector3 position, MinionType minType, Transform spawn = null)
     {
-        Transform spawn = minionContainer;
+        spawn = spawn ?? minionContainer;
         GameObject robot;
 
         // Corrects any Z position that might be wrong.
@@ -78,20 +79,34 @@ public class MinionSpawnManager : NetworkBehaviour
         NetworkServer.Spawn(robot);
     }
 
+    public IEnumerator ClearOldMinions()
+    {
+        while (minionContainer.transform.childCount > 10)
+        {
+            var group = minionContainer.GetChild(0);
+
+            Destroy(group.gameObject);
+
+            yield return null;
+        }
+    }
 
     [Command]
     public void CmdMultipleSpawn(Vector3 position, MinionType minType, int numMinions, float radius)
     {
-        Transform spawn = minionContainer;
+        var container = new GameObject("Minion group");
+        container.transform.SetParent(minionContainer);
 
         List<Node> nodes = GridBehavior.Instance.getNodesNearPos(position, radius, node => !node.hasLight && node.canWalk) as List<Node>;
         nodes.Sort((a, b) => UnityEngine.Random.Range(-1, 2));
 
         for (int n = 0; n < numMinions; n++)
         {
-            SingleSpawn(nodes[n].position, minType);
+            SingleSpawn(nodes[n].position, minType, container.transform);
         }
-        
+
+
+        StartCoroutine(ClearOldMinions());
         StartCoroutine(SetGridDirty());
     }
 
