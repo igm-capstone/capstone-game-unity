@@ -19,10 +19,10 @@ public class AttackTarget : MinionBehaviour
 
         if (MyType == MinionType.AOEBomber)
         {
-            AttackSprite = transform.FindChild("ExplosionSprite").gameObject;
-            AttackSprite.SetActive(false);
+            //AttackSprite = transform.FindChild("ExplosionSprite").gameObject;
+            //AttackSprite.SetActive(false);
 
-            GetComponent<MinionController>().RpcTriggerExplosionSrpite(false);
+            //GetComponent<MinionController>().RpcTriggerExplosionSrpite(false);
         }
     }
 
@@ -38,8 +38,11 @@ public class AttackTarget : MinionBehaviour
         if (MyType == MinionType.AOEBomber)
         {
             // Explosion Sprite
-            AttackSprite.SetActive(true);
-            GetComponent<MinionController>().RpcTriggerExplosionSrpite(true);
+            //AttackSprite.SetActive(true);
+            //GetComponent<MinionController>().RpcTriggerExplosionSrpite(true)
+            
+            // Trigger Explosion
+            //GetComponent<MinionController>().CmdSpawnExplosion(transform.position, ExplosionRadius);
         }
     }
 
@@ -92,6 +95,14 @@ public class AttackTarget : MinionBehaviour
 
                 Vector2 Cur2DPosition = new Vector2(this.transform.position.x, this.transform.position.y);
                 Collider2D[] NearbyAvatarsCol = Physics2D.OverlapCircleAll(Cur2DPosition, ExplosionRadius, LayerMask.GetMask("Player"));
+
+
+                // Trigger Explosion
+                if (MyType == MinionType.AOEBomber)
+                {
+                    GetComponent<MinionController>().CmdSpawnExplosion(transform.position, ExplosionRadius);
+                }
+
 
                 if (NearbyAvatarsCol != null)
                 {

@@ -28,6 +28,8 @@ public class MinionController : NetworkBehaviour
 
     public MinionType Type;
 
+    public GameObject ExploPreFab;
+
 	// Use this for initialization
 	void Awake ()
 	{
@@ -159,4 +161,14 @@ public class MinionController : NetworkBehaviour
             AttackSprite.SetActive(State);
         }
     }
+
+    [Command]
+    public void CmdSpawnExplosion(Vector3 _exploSpawnPos, float _radius)
+    {
+        // Instantiate Explosion
+        GameObject exploInstance = Instantiate(ExploPreFab, _exploSpawnPos, Quaternion.identity) as GameObject;
+        exploInstance.GetComponent<ExplosionBehavior>().ExploRadius = _radius;
+        NetworkServer.Spawn(exploInstance);
+    }
+
 }

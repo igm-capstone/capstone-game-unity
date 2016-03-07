@@ -10,7 +10,9 @@ public class ExplosionBehavior : MonoBehaviour
     float startSize = 0.1f;
 
     // This needs to be 2 times the size of the Explosion radius on the GrenadeToss Script
-    float ExploDiameter = 7.0f;
+    public float ExploRadius = 3.5f;
+    float exploDiameter;
+
 
     Vector3 curScale;
 
@@ -30,6 +32,8 @@ public class ExplosionBehavior : MonoBehaviour
         // Start timer
         exploTimer = 0.0f;
 
+        exploDiameter = ExploRadius * 2;
+
     }
 	
 	// Update is called once per frame
@@ -43,8 +47,7 @@ public class ExplosionBehavior : MonoBehaviour
         {
             // Expand
             //curSize = Mathf.Lerp(curSize, radius, Time.deltaTime * durTime);
-            curSize = Mathf.Lerp(curSize, ExploDiameter, exploTimer);
-
+            curSize = Mathf.Lerp(curSize, exploDiameter, exploTimer);
         }
         else
         {
@@ -52,16 +55,13 @@ public class ExplosionBehavior : MonoBehaviour
             //curSize = Mathf.Lerp(curSize, startSize, Time.deltaTime * durTime);
             curSize = Mathf.Lerp(curSize, startSize, exploTimer);
         }
-
         // updates Scale
         curScale.x = curSize;
         curScale.y = curSize;
         curScale.z = curSize;
 
-
         transform.localScale = curScale;
     }
-
 
     // Duration timer of Explosion. Destroy itself after some time.
     IEnumerator DurationTimer(float _ExploTime)

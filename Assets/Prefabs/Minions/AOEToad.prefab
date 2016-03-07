@@ -363,7 +363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &147022
 GameObject:
   m_ObjectHideFlags: 1
@@ -1051,7 +1051,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.07000017, y: -14.3412018, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: .800000012}
   m_Children:
   - {fileID: 490602}
@@ -1719,6 +1719,7 @@ MonoBehaviour:
   ClosestAvatar: {fileID: 0}
   grid: {fileID: 0}
   Type: 1
+  ExploPreFab: {fileID: 194436, guid: 4955546646734d74680f7720f3ae9f1a, type: 2}
 --- !u!114 &11434402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1768,7 +1769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54cc894172296b4283a42e2b9acc609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AtckDamage: 50
+  AtckDamage: 60
   ExplosionRadius: 6
 --- !u!114 &11449576
 MonoBehaviour:
@@ -1915,7 +1916,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: AtckDamage
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ExplosionRadius
@@ -1952,6 +1953,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: useHistoricalLerping
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ExploPreFab
+      value: 
+      objectReference: {fileID: 194436, guid: 4955546646734d74680f7720f3ae9f1a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

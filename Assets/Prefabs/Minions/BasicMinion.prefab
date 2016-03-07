@@ -3527,6 +3527,7 @@ MonoBehaviour:
   ClosestAvatar: {fileID: 0}
   grid: {fileID: 0}
   Type: 0
+  ExploPreFab: {fileID: 194436, guid: 4955546646734d74680f7720f3ae9f1a, type: 2}
 --- !u!114 &11461328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3898,6 +3899,10 @@ Prefab:
       propertyPath: turnRate
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ExploPreFab
+      value: 
+      objectReference: {fileID: 194436, guid: 4955546646734d74680f7720f3ae9f1a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155754}

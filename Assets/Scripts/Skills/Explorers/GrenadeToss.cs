@@ -16,7 +16,7 @@ public class GrenadeToss : ISkill
     public bool hasKnockBack = false;
 
     // When changing this remeber to change the ExploDiameter variable on the ExplosionBehavior Script.
-    float ExploRadius = 3.5f;
+    public float ExploRadius = 3.5f;
     public float ThrowDistance = 7.0f;
 
 
@@ -70,7 +70,7 @@ public class GrenadeToss : ISkill
         ExploPos = GetPosForwardFromAvatar(ThrowDistance);
 
         // Instantiate explosion
-        GetComponent<AvatarNetworkBehavior>().CmdSpawnExplosion(ExploPos);
+        GetComponent<AvatarNetworkBehavior>().CmdSpawnExplosion(ExploPos, ExploRadius);
 
         // Get targets hit
         var TargetsHit = Physics2D.OverlapCircleAll(ExploPos, ExploRadius, HitLayers);
