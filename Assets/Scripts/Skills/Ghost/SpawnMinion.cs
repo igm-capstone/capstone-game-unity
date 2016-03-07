@@ -5,6 +5,9 @@ public class SpawnMinion : ISkill
 {
     SkillBar mySkillBar;
 
+    public float radius = 4f;
+    public int spawnCount = 3;
+
     public void Awake()
     {
         Name = "SpawnMinion";
@@ -54,7 +57,7 @@ public class SpawnMinion : ISkill
             return Name + " skill cannot be used ouside of spawn circle.";
         }
 
-        MinionSpawnManager.Instance.CmdSingleSpawn(clickWorldPos, MinionType.Meelee);
+        MinionSpawnManager.Instance.CmdMultipleSpawn(clickWorldPos, MinionType.Meelee, spawnCount, radius);
 
         // DebugCode
         foreach (var trgt in avatars)

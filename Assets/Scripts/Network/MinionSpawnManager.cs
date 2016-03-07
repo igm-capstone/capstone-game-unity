@@ -33,6 +33,13 @@ public class MinionSpawnManager : NetworkBehaviour
     [Command]
     public void CmdSingleSpawn(Vector3 position, MinionType minType)
     {
+        SingleSpawn(position, minType);
+
+        StartCoroutine(SetGridDirty());
+    }
+
+    private void SingleSpawn(Vector3 position, MinionType minType)
+    {
         Transform spawn = minionContainer;
         GameObject robot;
 
@@ -61,7 +68,7 @@ public class MinionSpawnManager : NetworkBehaviour
         }
 
         robot.transform.SetParent(spawn);
-        
+
         // PLants, as poltergeist trap, do not have a MinionController script.
         if (minType != MinionType.Plant)
         {
@@ -69,13 +76,29 @@ public class MinionSpawnManager : NetworkBehaviour
         }
 
         NetworkServer.Spawn(robot);
+    }
 
+
+    [Command]
+    public void CmdMultipleSpawn(Vector3 position, MinionType minType, int numMinions, float radius)
+    {
+        Transform spawn = minionContainer;
+
+        List<Node> nodes = GridBehavior.Instance.getNodesNearPos(position, radius, node => !node.hasLight && node.canWalk) as List<Node>;
+        nodes.Sort((a, b) => UnityEngine.Random.Range(-1, 2));
+
+        for (int n = 0; n < numMinions; n++)
+        {
+            SingleSpawn(nodes[n].position, minType);
+        }
+        
         StartCoroutine(SetGridDirty());
     }
 
+
     // Currently only works for the Basic Minion. Needs to be changed if we want to implement spawning multiple minions of different types.
     [Command]
-    public void CmdMultipleSpawn(GameObject target, float radius, int numMinions, Action<GameObject[], GameObject> completion)
+    public void CmdHallucinateSpawn(GameObject target, float radius, int numMinions, Action<GameObject[], GameObject> completion)
     {
         List<Node> nodes = GridBehavior.Instance.getNodesNearPos(target.transform.position, radius, node => !node.hasLight && node.canWalk) as List<Node>;
         nodes.Sort((a, b) => UnityEngine.Random.Range(-1, 2));

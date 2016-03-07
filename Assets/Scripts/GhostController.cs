@@ -16,12 +16,19 @@ public class GhostController : MonoBehaviour
     {
         _ghostSkillBar = GetComponent<SkillBar>();
         _ghostSkillBar.enabled = true;
+
+        DomMngr.Instance.PointDominated += OnControlPointDominated;
     }
 
     // Update is called once per frame
     void Update()
     {
         HandleInput();
+    }
+
+    void OnControlPointDominated()
+    {
+        _ghostSkillBar.UpgradeRestoreRate();
     }
 
     void HandleInput()

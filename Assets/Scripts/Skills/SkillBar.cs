@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using System;
 
 public class SkillBar : MonoBehaviour
 {
@@ -19,11 +20,13 @@ public class SkillBar : MonoBehaviour
     public bool HideInactiveSkills = false;
     public OnClickBehaviorType OnClickBehavior;
     public float waitTimeRestoreEnergy = 2;
-    public float restoreAmount = 5;
+    public float[] restoreAmount = { 0.20f, 0.23f, 0.26f, 0.30f };
+    public int restoreAmountLevel = 0;
     public GameObject energyUiPrefab;
 
     private List<ISkill> _skillList;
     private ISkill _activeSkill = null;
+
     private int _skillCapacity;
     private float availableEnergy;
     private Text energyUiText;
@@ -47,7 +50,7 @@ public class SkillBar : MonoBehaviour
             */
         }
         availableEnergy = totalEnergy;
-        StartCoroutine(RestoreEnergy(restoreAmount));
+        StartCoroutine(RestoreEnergy());
 
         if (energyUiPrefab != null)
         {
@@ -57,7 +60,11 @@ public class SkillBar : MonoBehaviour
             energyUiText = energyTransform.Find("Text").GetComponent<Text>();
             energyUiText.text = EnergyLeft.ToString();
         }
-    }    
+    }
+    public void UpgradeRestoreRate()
+    {
+        restoreAmountLevel = Mathf.Clamp(restoreAmountLevel + 1, 0, restoreAmount.Length - 1);
+    }
 
     public ISkill GetActiveSkill()
     {
@@ -151,14 +158,14 @@ public class SkillBar : MonoBehaviour
         }
     }
 
-    IEnumerator RestoreEnergy(float restoreValuePerSecond)
+    IEnumerator RestoreEnergy()
     {
         while (true)
         {
             yield return new WaitForSeconds(waitTimeRestoreEnergy);
             if (availableEnergy < totalEnergy)
             {
-                availableEnergy = availableEnergy + restoreValuePerSecond;
+                availableEnergy = availableEnergy + restoreAmount[restoreAmountLevel];
                 energyUiText.text = EnergyLeft.ToString();
             }
         }

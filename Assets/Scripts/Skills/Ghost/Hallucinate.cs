@@ -35,7 +35,7 @@ public class Hallucinate : ISkill
     {
         if (target.tag != "Player") return Name + " skill needs to target an explorer.";
 
-        MinionSpawnManager.Instance.CmdMultipleSpawn(target, Radius, Minions,
+        MinionSpawnManager.Instance.CmdHallucinateSpawn(target, Radius, Minions,
             (GameObject[] minions, GameObject player) =>
             {
                 var selfAc = player.GetComponentInParent<AvatarNetworkBehavior>();

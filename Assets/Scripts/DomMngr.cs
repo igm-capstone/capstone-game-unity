@@ -12,9 +12,14 @@ public class DomMngr : MonoBehaviour
 
     private BasePlayerNetworkBehavior netBehavior;
 
+    public static DomMngr Instance { get; private set; }
+
+    public event System.Action PointDominated;
+
     // Use this for initialization
     void Awake()
     {
+        Instance = this;
         StartCoroutine(DelayedStart());
     }
 
@@ -84,6 +89,7 @@ public class DomMngr : MonoBehaviour
             {
                 // If one Domination Point is lower/same tier as CurrentTier and is not captured, exit from event
                 EnableNextTier = false;
+                if (PointDominated != null) PointDominated();
                 return;
             }
             else
@@ -114,5 +120,7 @@ public class DomMngr : MonoBehaviour
                 if (DomPnt.TierCapture == CurrentTier)
                     DomPnt.canBeCaptured = true;
         }
+
+        if (PointDominated != null) PointDominated();
     }
 }
