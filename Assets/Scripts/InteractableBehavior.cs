@@ -43,7 +43,7 @@ public class InteractableBehavior : MonoBehaviour
     {
         if (Type == InteractableObject.Player)
         {
-            Debug.Log("up " + name);
+            //Debug.Log("up " + name);
             interactUI.SetActive(ac.Disabled);
             interactUI.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
         }

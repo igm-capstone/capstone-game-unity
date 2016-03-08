@@ -4,11 +4,11 @@ using System;
 
 public class LanternBehavior : MonoBehaviour
 {
-    [NonSerialized] public float LanternDuration;
+    public float LanternDuration;
 
     public void Initialize(float _duration)
     {
-        LanternDuration = _duration;
+        //LanternDuration = _duration;
         // Begins counting time for StartUp
         StartCoroutine(DurationTimer(LanternDuration));
     }

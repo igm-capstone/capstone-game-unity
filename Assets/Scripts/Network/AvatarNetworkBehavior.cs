@@ -84,10 +84,10 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     [ClientRpc]
     public void RpcStartSlowDown(GameObject _obj, float _slowRate)
     {
-        if (_obj.GetComponent<AvatarController>() != null)
+        if (_obj && _obj.GetComponent<AvatarController>() != null)
             _obj.GetComponent<AvatarController>().StartSlowDown(_slowRate);
 
-        else if (_obj.GetComponent<TargetFollower>() != null)
+        else if (_obj && _obj.GetComponent<TargetFollower>() != null)
             _obj.GetComponent<TargetFollower>().StartSlowDown(_slowRate);
     }
 
@@ -112,6 +112,11 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     [Command]
     public void CmdAssignDamageWithForce(GameObject obj, int damage, float KnockBackAmount)
     {
+        if(!obj)
+        {
+            return;
+        }
+
         // Assign Damage
         obj.GetComponent<Health>().TakeDamage(damage);
 

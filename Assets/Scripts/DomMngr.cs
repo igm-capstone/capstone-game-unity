@@ -9,6 +9,8 @@ public class DomMngr : MonoBehaviour
     Domination[] DomPntList;
     int CurrentTier = 0;
     int MaxTier;
+    bool gameOver = false;
+
 
     private BasePlayerNetworkBehavior netBehavior;
 
@@ -52,6 +54,12 @@ public class DomMngr : MonoBehaviour
 
     void Update()
     {
+
+        if (gameOver)
+        {
+            return;
+        }
+
         if (netBehavior == null)
         {
             var me =  GameObject.Find("Me");
@@ -72,6 +80,7 @@ public class DomMngr : MonoBehaviour
 
         if (AreAllDead)
         {
+            gameOver = true;
             string WinMsg = "Ghost Wins!";
             netBehavior.CmdEndGame(WinMsg);
         }
@@ -80,6 +89,11 @@ public class DomMngr : MonoBehaviour
     // Treats DomPnt wasCaptured Event
     private void DomPnt_WasCaptured()
     {
+        if (gameOver)
+        {
+            return;
+        }
+
         bool EnableNextTier = false;
 
         // Check to see if all lower tier domination points were captured
@@ -101,6 +115,8 @@ public class DomMngr : MonoBehaviour
         // Check to see if the Game is Over
         if (CurrentTier+1 > MaxTier)
         {
+
+            gameOver = true;
             // Game is over - Avatars Win.
             string WinMsg = "Avatars Win!";
 

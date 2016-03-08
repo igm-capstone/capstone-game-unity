@@ -2185,11 +2185,11 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300000, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   CooldownSprite: {fileID: 21300014, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   Name: Heal
-  Cooldown: 2
+  Cooldown: 6
   cost: 0
   UseCount: 0
   addToSkillBar: 1
-  HealAmount: 80
+  HealAmount: 60
   AreaRadius: 3
   FX: {fileID: 474792}
 --- !u!114 &11434612
@@ -2330,9 +2330,9 @@ MonoBehaviour:
   HitLayers:
     serializedVersion: 2
     m_Bits: 67119104
-  Damage: 15
+  Damage: 10
   hasKnockBack: 1
-  ExploRadius: 3.5
+  ExploRadius: 2.5
   ThrowDistance: 7
   KnockBackMag: 3
 --- !u!114 &11464816
@@ -2377,11 +2377,11 @@ MonoBehaviour:
   SkillSprite: {fileID: 21300006, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   CooldownSprite: {fileID: 21300012, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   Name: Skill
-  Cooldown: 5
+  Cooldown: 7
   cost: 0
   UseCount: 5
   addToSkillBar: 1
-  hasLimitedUses: 0
+  hasLimitedUses: 1
 --- !u!114 &11471492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11481,7 +11481,7 @@ Prefab:
       objectReference: {fileID: 194436, guid: 4955546646734d74680f7720f3ae9f1a, type: 2}
     - target: {fileID: 0}
       propertyPath: ExploRadius
-      value: 3.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ThrowDistance
@@ -11489,7 +11489,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
@@ -11591,7 +11591,15 @@ Prefab:
       objectReference: {fileID: 164582, guid: efd342e79f3af1747b2170b7ce9355cc, type: 2}
     - target: {fileID: 0}
       propertyPath: Damage
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: HealAmount
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hasLimitedUses
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

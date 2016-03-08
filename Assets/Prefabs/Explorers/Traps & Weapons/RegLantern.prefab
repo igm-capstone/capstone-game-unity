@@ -481,6 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a97ab3da67ffde4ab3be280f1151f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LanternDuration: 3
 --- !u!114 &11413590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -689,6 +690,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: -.0299999993
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: LanternDuration
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

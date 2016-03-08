@@ -94,7 +94,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4261380095
+    m_Bits: 4294934527
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
   - .25
   - .280000001
   - .319999993
-  - .370000005
+  - .400000006
   restoreAmountLevel: 0
   energyUiPrefab: {fileID: 126932, guid: ad64248c582df8b4b900ab476a475f4a, type: 2}
 --- !u!114 &11461776
@@ -577,7 +577,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_CullingMask.m_Bits
-      value: 4261380095
+      value: 4294934527
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: CooldownSprite
@@ -634,7 +634,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: restoreAmount.Array.data[3]
-      value: .370000005
+      value: .400000006
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spawnCount

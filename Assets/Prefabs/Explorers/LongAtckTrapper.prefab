@@ -2345,12 +2345,12 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300006, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   CooldownSprite: {fileID: 21300012, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
-  Name: SetRegLantern
-  Cooldown: 5
+  Name: Skill
+  Cooldown: 7
   cost: 0
   UseCount: 5
   addToSkillBar: 1
-  hasLimitedUses: 0
+  hasLimitedUses: 1
 --- !u!114 &11437698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11669,7 +11669,7 @@ Prefab:
         type: 3}
     - target: {fileID: 0}
       propertyPath: Name
-      value: Hide
+      value: Skill
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: explorer
@@ -11705,7 +11705,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Cooldown
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_CullingMask.m_Bits
@@ -11812,6 +11812,10 @@ Prefab:
       propertyPath: DomPointIndicatorPrefab
       value: 
       objectReference: {fileID: 164582, guid: efd342e79f3af1747b2170b7ce9355cc, type: 2}
+    - target: {fileID: 0}
+      propertyPath: hasLimitedUses
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 157710}

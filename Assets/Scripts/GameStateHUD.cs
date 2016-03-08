@@ -32,22 +32,38 @@ public class GameStateHUD : MonoBehaviour {
     public void SetMsg(string text)
     {
         if (isOver) return;
+
+        isOver = true;
         gameStateHUD.SetActive(true);
 
         msg = gameStateHUD.GetComponentInChildren<Text>();
         msg.text = text;
 
         btn = gameStateHUD.GetComponentInChildren<Button>();
-        btn.onClick.RemoveAllListeners();
-        btn.onClick.AddListener(RestartGame);
-        btn.GetComponentInChildren<Text>().text = "Restart";
+        if (GameObject.Find("Me").GetComponent<GhostController>())
+        {
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(RestartGame);
+            btn.GetComponentInChildren<Text>().text = "Restart";
+            btn.gameObject.SetActive(true);
+        }
+        else
+        {
+            btn.enabled = false;
+            btn.interactable = false;
+            btn.gameObject.SetActive(false);
+        }
+
     }
 
     public void SetRestarting()
     {
         btn = gameStateHUD.GetComponentInChildren<Button>();
-        btn.onClick.RemoveAllListeners();
-        btn.GetComponentInChildren<Text>().text = "Restarting...";
+        if(btn && btn.gameObject.activeSelf == true)
+        {
+            btn.onClick.RemoveAllListeners();
+            btn.GetComponentInChildren<Text>().text = "Restarting...";
+        }
     }
 
     void RestartGame()
