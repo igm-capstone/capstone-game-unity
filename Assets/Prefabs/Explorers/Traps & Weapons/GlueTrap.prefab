@@ -95,7 +95,7 @@ MonoBehaviour:
   trapTriggerRadius: 4
   Duration: 5
   EffectTime: 0
-  StartUpTime: 1
+  StartUpTime: .5
   AffectPlayers: 1
   PoisonDamage: 4
   GlueSlowRate: .300000012
@@ -1244,7 +1244,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: StartUpTime
-      value: 1
+      value: .5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: EffectTime
