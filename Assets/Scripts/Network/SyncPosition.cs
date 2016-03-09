@@ -7,6 +7,11 @@ using System.Collections.Generic;
 [NetworkSettings(channel = 0, sendInterval = 0.1f)]
 public class SyncPosition : NetworkBehaviour
 {
+    struct SyncPoint
+    {
+        public Vector3 position;
+        public float timestamp;
+    }
 
     private Vector3 syncPos;
 
@@ -19,9 +24,14 @@ public class SyncPosition : NetworkBehaviour
     private Vector3 lastPos;
     private float threshold = 0.5f;
 
-    private List<Vector3> syncPosList = new List<Vector3>();
+    private List<SyncPoint> syncPosList = new List<SyncPoint>();
+
     [SerializeField]
     private bool useHistoricalLerping = true;
+
+    [Range(0, 2), SerializeField]
+    private float historicalLerpingTimeout = 1;
+
     private float closeEnough = 0.20f;
 
     void Start()
@@ -75,7 +85,11 @@ public class SyncPosition : NetworkBehaviour
     void RpcSyncTransform(Vector3 latestPos)
     {
         syncPos = latestPos;
-        syncPosList.Add(syncPos);
+
+        if (useHistoricalLerping)
+        {
+            syncPosList.Add(new SyncPoint { position = syncPos, timestamp = Time.time });
+        }
     }
 
     void OrdinaryLerping()
@@ -87,9 +101,18 @@ public class SyncPosition : NetworkBehaviour
     {
         if (syncPosList.Count > 0)
         {
-            myTransform.position = Vector3.Lerp(myTransform.position, syncPosList[0], Time.deltaTime * lerpRate);
+            var point = syncPosList[0];
 
-            if (Vector3.Distance(myTransform.position, syncPosList[0]) < closeEnough)
+            if (Time.time - point.timestamp > historicalLerpingTimeout)
+            {
+                // force next position
+                // whenever taking too much to get to it.
+                myTransform.position = point.position;
+            }
+
+            myTransform.position = Vector3.Lerp(myTransform.position, point.position, Time.deltaTime * lerpRate);
+
+            if (Vector3.Distance(myTransform.position, point.position) < closeEnough)
             {
                 syncPosList.RemoveAt(0);
             }

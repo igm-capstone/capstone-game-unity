@@ -2457,6 +2457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTransform: {fileID: 489492}
   useHistoricalLerping: 1
+  historicalLerpingTimeout: .300000012
 --- !u!114 &11451870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11765,6 +11766,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: hasLimitedUses
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: historicalLerpingTimeout
+      value: .300000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
