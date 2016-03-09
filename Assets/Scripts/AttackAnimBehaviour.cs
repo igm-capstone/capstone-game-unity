@@ -31,6 +31,16 @@ public class AttackAnimBehaviour : StateMachineBehaviour {
         {
             animator.SendMessageUpwards("BiteAnimationComplete", SendMessageOptions.DontRequireReceiver);
         }
+        else if (stateInfo.IsTag("SwingOpen"))
+        {
+            Debug.Log("upwards " + animator);
+            animator.SendMessageUpwards("SwingOpenAnimationComplete", SendMessageOptions.DontRequireReceiver);
+        }
+        else if (stateInfo.IsTag("SwingClose"))
+        {
+            Debug.Log("upwards " + animator);
+            animator.SendMessageUpwards("SwingCloseAnimationComplete", SendMessageOptions.DontRequireReceiver);
+        }
     }
 
 	// OnStateMove is called before OnStateMove is called on any state inside this state machine

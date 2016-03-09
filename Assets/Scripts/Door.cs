@@ -5,8 +5,11 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public bool isOpen = false;
+
     [Export]
     public bool canOpen = true;
+
+    public bool isSwinging { get; private set; }
 
     [Export]
     public Bounds bounds
@@ -42,12 +45,12 @@ public class Door : MonoBehaviour
         }
         else
         {
+            Debug.Log("door anim start");
+            isSwinging = true;
+
             if (isOpen)
             {
                 animator.SetTrigger("Close");
-                isOpen = false;
-                GetComponent<PolygonCollider2D>().enabled = true;
-                GridBehavior.Instance.SetGridDirty();
             }
             else
             {
@@ -58,5 +61,21 @@ public class Door : MonoBehaviour
             }
         }
         
+    }
+
+    void SwingOpenAnimationComplete()
+    {
+        Debug.Log("door anim complete");
+        isSwinging = false;
+    }
+
+    void SwingCloseAnimationComplete()
+    {
+        Debug.Log("door anim complete");
+        isSwinging = false;
+
+        isOpen = false;
+        GetComponent<PolygonCollider2D>().enabled = true;
+        GridBehavior.Instance.SetGridDirty();
     }
 }

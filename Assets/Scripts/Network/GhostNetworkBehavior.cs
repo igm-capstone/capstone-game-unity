@@ -29,7 +29,10 @@ public class GhostNetworkBehavior : BasePlayerNetworkBehavior {
     [Command]
     void CmdOpenDoor(GameObject obj)
     {
-        RpcOpenDoor(obj);
+        if (!obj.GetComponent<Door>().isSwinging)
+        {
+            RpcOpenDoor(obj);
+        }
     }
 
     [ClientRpc]

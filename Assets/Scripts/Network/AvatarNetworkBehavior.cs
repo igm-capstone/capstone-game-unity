@@ -147,7 +147,10 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     [Command]
     public void CmdDoor(GameObject obj)
     {
-        RpcDoor(obj);
+        if (!obj.GetComponent<Door>().isSwinging)
+        {
+            RpcDoor(obj);
+        }
     }
 
     [ClientRpc]
