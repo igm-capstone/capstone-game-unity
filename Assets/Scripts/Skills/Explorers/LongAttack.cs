@@ -29,7 +29,7 @@ public class LongAttack : ISkill
 
     public void Awake()
     {
-        Name = "LongAttack";
+        Name = "Sword Swing";
         canDrop = false;
 
         animator = GetComponentInParent<RpcNetworkAnimator>();

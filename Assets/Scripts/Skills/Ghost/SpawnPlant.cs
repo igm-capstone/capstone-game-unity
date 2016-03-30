@@ -8,7 +8,7 @@ public class SpawnPlant : ISkill
 
     public void Awake()
     {
-        Name = "SpawnPlant";
+        Name = "Plant";
         canDrop = false;
 
         IsSpawnSkill = true;

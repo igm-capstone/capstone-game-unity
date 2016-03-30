@@ -15,7 +15,7 @@ public class Hallucinate : ISkill
 
     public void Awake()
     {
-        Name = "Hallucinate";
+        Name = "Fake Imps";
         canDrop = false;
         cost = 10;
 

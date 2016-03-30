@@ -10,7 +10,7 @@ public class SpawnMinion : ISkill
 
     public void Awake()
     {
-        Name = "SpawnMinion";
+        Name = "Imp Squad";
         canDrop = false;
 
         IsSpawnSkill = true;

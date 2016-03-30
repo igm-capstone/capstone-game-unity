@@ -11,7 +11,7 @@ public class SetTrapPoison : ISkill
     AvatarController avatarController; 
     public void Awake()
     {
-        Name = "SetTrapPoison";
+        Name = "Poison Trap";
         canDrop = false;
 
         SlctdTrap = TrapType.Poison;

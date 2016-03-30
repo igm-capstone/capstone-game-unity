@@ -7,7 +7,7 @@ public class DisableLight : ISkill
 
     public void Awake()
     {
-        Name = "DisableLight";
+        Name = "Put Out Lamp";
         canDrop = false;
         cost = 0;
 
