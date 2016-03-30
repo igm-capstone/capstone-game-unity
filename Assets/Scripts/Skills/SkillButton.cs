@@ -89,6 +89,15 @@ public class SkillButton : MonoBehaviour
             transform.Find("UseCount").GetComponent<Text>().text = "";
         }
 
+        if (_skill.Name != null)
+        {
+            transform.Find("SkillName").GetComponent<Text>().text = _skill.Name;
+        }
+        else
+        {
+            transform.Find("UseCount").GetComponent<Text>().text = "";
+        }
+
     }
 
     private Color GetAverageColor(Sprite sprite, float saturation, float brightness)

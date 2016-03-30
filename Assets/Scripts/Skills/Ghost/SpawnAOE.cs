@@ -7,7 +7,7 @@ public class SpawnAOE : ISkill
 
     public void Awake()
     {
-        Name = "SpawnAOE";
+        Name = "Bomber";
         canDrop = false;
 
         IsSpawnSkill = true;

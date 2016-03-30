@@ -11,7 +11,7 @@ public class SetTrapGlue : ISkill
     AvatarController avatarController;
     public void Awake()
     {
-        Name = "SetTrapGlue";
+        Name = "Glue Trap";
         canDrop = false;
 
         SlctdTrap = TrapType.Glue;

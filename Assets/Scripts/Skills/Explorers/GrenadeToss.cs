@@ -28,7 +28,7 @@ public class GrenadeToss : ISkill
 
     public void Awake()
     {
-        Name = "GrenadeToss";
+        Name = "Grenade Toss";
         canDrop = false;
 
         animator = GetComponentInParent<RpcNetworkAnimator>();

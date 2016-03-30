@@ -13,7 +13,7 @@ public class SetRegLantern : ISkill
     public void Awake()
     {
         // Class SetUps
-        Name = "SetRegLantern";
+        Name = "Drop Lantern";
         canDrop = false;
 
         SlctdLant = LanternType.Regular;
