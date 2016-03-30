@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 0737385b7192f1d448a70b35e8b42cc3
-timeCreated: 1456866523
-licenseType: Free
+guid: 003bc66e095fc334fb32895579e8baaf
+timeCreated: 1459272827
+licenseType: Pro
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
@@ -11,7 +11,7 @@ ModelImporter:
     3300000: //RootNode
     4300000: Toliet
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:

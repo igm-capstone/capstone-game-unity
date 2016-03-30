@@ -285,6 +285,11 @@ public class AssetPipelineTools
                 jobj.Add("cullingLayer", collection.CullingLayer);
             }
 
+            if (collection.TextureName != null)
+            {
+                jobj.Add("textureName", collection.TextureName);
+            }
+
             meshData.Instances.Add(jobj);
         }
     }

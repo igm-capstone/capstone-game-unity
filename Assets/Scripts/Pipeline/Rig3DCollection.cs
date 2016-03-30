@@ -12,4 +12,6 @@ public class Rig3DCollection : MonoBehaviour
     public bool IsStaticMesh;
     public bool CalculateBounds;
     public bool NormalizeDepth;
+
+    public string TextureName;
 }
