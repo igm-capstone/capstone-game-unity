@@ -9,12 +9,14 @@ public class IndicatorCollector : MonoBehaviour {
 
     public void DomPointIndicators()
     {
+        GameObject radarCam = GameObject.Find("RadarCamera");
         if (IsSelfClient())
         {
             Domination[] dominationPoints = GameObject.FindObjectsOfType<Domination>();
             foreach (Domination dom in dominationPoints)
             {
                 GameObject indicator = GameObject.Instantiate(DomPointIndicatorPrefab);
+                indicator.GetComponent<Canvas>().worldCamera = radarCam.GetComponent<Camera>();
                 IndicatorBehavior ib = indicator.GetComponent<IndicatorBehavior>();
                 ib.domPoint = dom.gameObject;
             }
@@ -23,7 +25,8 @@ public class IndicatorCollector : MonoBehaviour {
 
 	public void RefreshIndicators ()
     {
-       if (IsSelfClient())
+        GameObject radarCam = GameObject.Find("RadarCamera");
+        if (IsSelfClient())
         {
             foreach(IndicatorBehavior i in GameObject.FindObjectsOfType<IndicatorBehavior>())
             {
@@ -45,6 +48,7 @@ public class IndicatorCollector : MonoBehaviour {
 
                 // Create Indicator
                 GameObject indicator = GameObject.Instantiate(ExplorerIndicatorPrefab);
+                indicator.GetComponent<Canvas>().worldCamera = radarCam.GetComponent<Camera>();
 
                 // Tie indicator to a given instance of explorer
                 IndicatorBehavior ib = indicator.GetComponent<IndicatorBehavior>();

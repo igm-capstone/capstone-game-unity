@@ -1890,7 +1890,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4160749567
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -11667,7 +11667,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294967295
+      value: 4160749567
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: myTransform
