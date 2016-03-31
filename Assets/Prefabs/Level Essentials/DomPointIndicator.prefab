@@ -64,7 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   avatar: {fileID: 0}
   domPoint: {fileID: 0}
-  padding: 50
+  padding: 11.8000002
   Sprinter: {fileID: 21300002, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   Support: {fileID: 21300000, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   Trapper: {fileID: 21300008, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
@@ -242,7 +242,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: padding
-      value: 50
+      value: 11.8000002
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SizeDelta.x
