@@ -31,7 +31,7 @@ public class ConeAttack : ISkill
 
     public void Awake()
     {
-        Name = "ConeAttack";
+        Name = "Quick Slash";
         canDrop = false;
 
         avatarController = GetComponent<AvatarController>();

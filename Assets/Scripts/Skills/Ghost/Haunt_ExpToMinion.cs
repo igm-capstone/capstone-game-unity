@@ -11,7 +11,7 @@ public class Haunt_ExpToMinion : ISkill {
 
     public void Awake()
     {
-        Name = "ExplorerToMinion";
+        Name = "Imp Illusion";
         canDrop = false;
 
         key = KeyCode.Alpha5;
