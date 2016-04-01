@@ -32,7 +32,9 @@ public class Haunt_ExpToMinion : ISkill {
         if (target.tag != "Player") return Name + " skill needs to target an explorer.";                
         
         var selfAc = target.GetComponent<AvatarNetworkBehavior>();
+
         MinionSpawnManager.Instance.CmdHauntSpawn(target.transform.position, MinionType.HauntMelee, target.GetComponentInParent<NetworkIdentity>().gameObject);
+
         return null;
     }    
 }

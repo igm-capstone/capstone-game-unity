@@ -491,7 +491,7 @@ GameObject:
   - 114: {fileID: 11461622}
   - 114: {fileID: 11497856}
   m_Layer: 13
-  m_Name: BasicMinionHaunt
+  m_Name: GhostHauntMinion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1907,6 +1907,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398c5ddd6a4656c43b446d9b0a652cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MatArray:
+  - {fileID: 2100000, guid: b2c601194d9a12b45a36381876228f96, type: 2}
+  - {fileID: 2100000, guid: aeb92a55f680f79418ef5619f3112633, type: 2}
 --- !u!114 &11497856
 MonoBehaviour:
   m_ObjectHideFlags: 1

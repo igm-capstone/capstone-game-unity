@@ -86,9 +86,17 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: EnemyHauntPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: EnemyPrefab.Array.data[2]
       value: 
       objectReference: {fileID: 118488, guid: 5c86aaedf3c3be045a7bf7b30346dd5f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: EnemyHauntPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131384}

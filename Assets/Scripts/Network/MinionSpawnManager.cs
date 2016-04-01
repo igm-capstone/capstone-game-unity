@@ -158,7 +158,7 @@ public class MinionSpawnManager : NetworkBehaviour
         switch (minType)
         {
             case MinionType.HauntMelee:
-                minion = Instantiate(EnemyHauntPrefab[0], position, Quaternion.identity) as GameObject;                
+                minion = Instantiate(EnemyHauntPrefab[0], position, Quaternion.identity) as GameObject;
                 break;
 
             default:

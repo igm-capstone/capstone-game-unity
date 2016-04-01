@@ -5,14 +5,28 @@ public class MimicExplorer : MonoBehaviour
 {
     Animator animator;
 
+    [SerializeField]
+    Material[] MatArray;
+    SkinnedMeshRenderer SknMshRend;
+
     void OnEnable()
     {
         animator = GetComponentInChildren<Animator>();
     }
 
-    void Update()
+    void Start()
     {
+        SknMshRend = GetComponentInChildren<SkinnedMeshRenderer>();
 
+        // Check for the ghost and load the correct material.
+        if (GameObject.Find("Me").GetComponent<GhostController>())
+        {   // Load material for Ghost
+            SknMshRend.sharedMaterial = MatArray[1];
+        }
+        else
+        { // Load material for Explorers
+            SknMshRend.sharedMaterial = MatArray[0];
+        }
     }
 
     void SetAnimatorRunSpeed(float speed)
