@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
 
 public class SetRegLantern : ISkill
 {
@@ -9,6 +11,9 @@ public class SetRegLantern : ISkill
 
     [SerializeField]
     bool hasLimitedUses = false;
+
+    int maxLanternCount;
+    float refillTime;
 
     public void Awake()
     {
@@ -20,8 +25,6 @@ public class SetRegLantern : ISkill
 
         // Set key code:
         key = KeyCode.Mouse1;
-
-        UseCount = 3;
         
         // Component Getters
         avatarController = GetComponent<AvatarController>();
@@ -29,6 +32,7 @@ public class SetRegLantern : ISkill
         // Initialization
         SlctdLant = LanternType.Regular;
         spawnDistance = 1.0f;
+        maxLanternCount = UseCount;
 
     }    
 
@@ -39,8 +43,7 @@ public class SetRegLantern : ISkill
             // Make it zero to remove number of uses from the UI.
             UseCount = 0;
             SkillBtnScript.UpdateUseAmount();
-        }
-
+        }      
     }
 
     void Update()
@@ -48,7 +51,13 @@ public class SetRegLantern : ISkill
         if (Input.GetKeyDown(key))
         {
             Use();
+            if (UseCount < maxLanternCount && UseCount>= 0)
+            {
+                StopCoroutine("RefillLantern");
+                StartCoroutine("RefillLantern");
+            }
         }
+        Debug.Log(refillTime);
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
@@ -75,5 +84,24 @@ public class SetRegLantern : ISkill
         GetComponent<AvatarNetworkBehavior>().CmdSetLantExplorer(spawnLocation, SlctdLant, Cooldown);
         return null;
     }
+
+    IEnumerator RefillLantern()
+    {
+        //(5, 36)
+        //(4, 25)
+        //(3, 16)
+        //(2, 10);
+        //(1, 7)
+        //(0, 6);
+
+        refillTime = (1.32f * (Mathf.Pow(UseCount, 2))) - (0.6f * UseCount) + 6f;
+        yield return new WaitForSeconds(refillTime);
+
+        UseCount++;
+        SkillBtnScript.UpdateUseAmount();
+
+        if (UseCount < maxLanternCount)
+            StartCoroutine("RefillLantern");
+    }    
 }
 
