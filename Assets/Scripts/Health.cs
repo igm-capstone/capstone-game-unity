@@ -17,12 +17,13 @@ public class Health : NetworkBehaviour
 
     void Start()
     {
-        CurrentHealth = BaseHealth;
-        Transform mainCanvas = GameObject.Find("MainCanvas").transform;             
+        Transform healthPanel = GameObject.Find("MainCanvas").transform.FindChild("HealthPanel").transform.FindChild("HealthBar");
         canvas = GameObject.Instantiate(HealthCanvas);
+        
+        CurrentHealth = BaseHealth;
         if (GetComponent<AvatarController>() != null)
         {
-            canvas.transform.SetParent(mainCanvas, false);
+            canvas.transform.SetParent(healthPanel, false);
             slider = canvas.GetComponentInChildren<Slider>();
         }
         else
