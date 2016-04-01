@@ -13,5 +13,5 @@ public class Rig3DCollection : MonoBehaviour
     public bool CalculateBounds;
     public bool NormalizeDepth;
 
-    public string TextureName;
+    public bool GetTexture;
 }

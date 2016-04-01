@@ -9,7 +9,8 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Toliet
+    4300000: Toilet
+    4300002: Toliet
   materials:
     importMaterials: 1
     materialName: 0
