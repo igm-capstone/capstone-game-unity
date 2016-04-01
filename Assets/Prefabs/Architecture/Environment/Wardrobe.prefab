@@ -441,6 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
+  meshName: Wardrobe
 --- !u!114 &11449796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -614,6 +615,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 28be9c87510279549a287c1883fd503c, type: 2}
+    - target: {fileID: 0}
+      propertyPath: meshName
+      value: Wardrobe
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 163688}
