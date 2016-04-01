@@ -105,13 +105,13 @@ public class InteractSkill :  ISkill
                 }
 
                 // Change light status acordingly
-                if (lightScr.CurrentStatus == LightController.LghtStatus.On)
+                if (lightScr.CurrentStatus == LightController.LightStatus.On)
                 {
-                    avatarNetBhvr.CmdChangeLightStatus(lightScr.gameObject, LightController.LghtStatus.Dimmed);
+                    avatarNetBhvr.CmdChangeLightStatus(lightScr.gameObject, LightController.LightStatus.Dimmed);
                 }
-                else if ((lightScr.CurrentStatus == LightController.LghtStatus.Dimmed) || lightScr.CurrentStatus == LightController.LghtStatus.Off)
+                else if ((lightScr.CurrentStatus == LightController.LightStatus.Dimmed) || lightScr.CurrentStatus == LightController.LightStatus.Off)
                 {
-                    avatarNetBhvr.CmdChangeLightStatus(lightScr.gameObject, LightController.LghtStatus.On);
+                    avatarNetBhvr.CmdChangeLightStatus(lightScr.gameObject, LightController.LightStatus.On);
                 }
                 break;
 
