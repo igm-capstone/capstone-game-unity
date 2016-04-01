@@ -143,6 +143,8 @@ public class CustomNetworkManager : NetworkManager
         GameObject player = null;
         if (conn.hostId == -1) //Local client
         {
+            GameObject radarCam = GameObject.Find("RadarCamera");
+            radarCam.SetActive(false);
             var sp = FindObjectsOfType<AvatarSpawnPoint>().FirstOrDefault(s => s.PlayerID == 0);
             var pos = sp ? sp.transform.position : Vector3.zero;
             pos.z = 0;
