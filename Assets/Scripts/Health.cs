@@ -15,12 +15,21 @@ public class Health : NetworkBehaviour
     private GameObject canvas;
     private RpcNetworkAnimator animator;
 
-    void Awake()
+    void Start()
     {
         CurrentHealth = BaseHealth;
+        Transform mainCanvas = GameObject.Find("MainCanvas").transform;             
         canvas = GameObject.Instantiate(HealthCanvas);
-        canvas.transform.SetParent(transform, false);
-        slider = GetComponentInChildren<Slider>();
+        if (GetComponent<AvatarController>() != null)
+        {
+            canvas.transform.SetParent(mainCanvas, false);
+            slider = canvas.GetComponentInChildren<Slider>();
+        }
+        else
+        {
+            canvas.transform.SetParent(transform, false);
+            slider = GetComponentInChildren<Slider>();
+        }
         animator = GetComponent<RpcNetworkAnimator>();
     }
 	

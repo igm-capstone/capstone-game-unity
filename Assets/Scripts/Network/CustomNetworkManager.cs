@@ -145,6 +145,10 @@ public class CustomNetworkManager : NetworkManager
         {
             GameObject radarCam = GameObject.Find("RadarCamera");
             radarCam.SetActive(false);
+
+            //GameObject healthPanel = GameObject.Find("HealthPanel");
+            //healthPanel.SetActive(false);
+
             var sp = FindObjectsOfType<AvatarSpawnPoint>().FirstOrDefault(s => s.PlayerID == 0);
             var pos = sp ? sp.transform.position : Vector3.zero;
             pos.z = 0;

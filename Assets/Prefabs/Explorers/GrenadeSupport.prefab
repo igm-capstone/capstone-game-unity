@@ -2091,7 +2091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseHealth: 160
-  HealthCanvas: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
+  HealthCanvas: {fileID: 145894, guid: ec605853710758b4cb8b3dbdb9cff438, type: 2}
   CurrentHealth: 0
 --- !u!114 &11414260
 MonoBehaviour:
@@ -11606,6 +11606,10 @@ Prefab:
       propertyPath: historicalLerpingTimeout
       value: .300000012
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: HealthCanvas
+      value: 
+      objectReference: {fileID: 145894, guid: ec605853710758b4cb8b3dbdb9cff438, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100808}
