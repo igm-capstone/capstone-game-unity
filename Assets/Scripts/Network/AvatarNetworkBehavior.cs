@@ -188,7 +188,7 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
     }
 
     [Command]
-    public void CmdChangeLightStatus(GameObject LightCtrl, LightController.LghtStatus NxtStatus)
+    public void CmdChangeLightStatus(GameObject LightCtrl, LightController.LightStatus NxtStatus)
     {
         LightCtrl.GetComponent<LightController>().ChangeStatusTo(NxtStatus);
     }

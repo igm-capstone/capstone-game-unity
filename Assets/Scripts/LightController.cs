@@ -6,7 +6,7 @@ using System.Collections.Generic;
 [ExecuteInEditMode]
 [RequireComponent(typeof(Light2D))]
 public class LightController : NetworkBehaviour {
-    public enum LghtStatus
+    public enum LightStatus
     {
         Off,
         On,
@@ -14,7 +14,7 @@ public class LightController : NetworkBehaviour {
     }
 
     [SyncVar(hook = "GotStatusFromSrv")]
-    public LghtStatus CurrentStatus = LghtStatus.Off;
+    public LightStatus CurrentStatus = LightStatus.Off;
     //public Sprite SpriteOn;
     //public Sprite SpriteOff;
 
@@ -71,7 +71,7 @@ public class LightController : NetworkBehaviour {
             
         switch (CurrentStatus)
         {
-            case LghtStatus.Off:
+            case LightStatus.Off:
                 // Starting state. Lights are off
                 //sprite.sprite = SpriteOff;
                 //sprite.sprite = SpriteOn;
@@ -80,7 +80,7 @@ public class LightController : NetworkBehaviour {
                 collider.enabled = false;
                 break;
 
-            case LghtStatus.On:
+            case LightStatus.On:
                 // Lights are On
                 //sprite.sprite = SpriteOn;
                 if (light3D) light3D.SetActive(true);
@@ -89,7 +89,7 @@ public class LightController : NetworkBehaviour {
                 collider.enabled = true;
                 break;
 
-            case LghtStatus.Dimmed:
+            case LightStatus.Dimmed:
                 // Ghost Dimmed the lights.
                 //sprite.sprite = SpriteOff;
                 if (light3D) light3D.SetActive(false);
@@ -109,23 +109,23 @@ public class LightController : NetworkBehaviour {
         
     }
 
-    public void ChangeStatusTo(LghtStatus NxtStatus)
+    public void ChangeStatusTo(LightStatus NxtStatus)
     {
         //Debug.Log("ToggleStatus called. IsServer: "+isServer.ToString());
         switch (NxtStatus)
         {
-            case LghtStatus.Off: 
-                CurrentStatus = LghtStatus.Off;
+            case LightStatus.Off: 
+                CurrentStatus = LightStatus.Off;
                 DrawSprite();
                 break;
 
-            case LghtStatus.On:
-                CurrentStatus = LghtStatus.On;
+            case LightStatus.On:
+                CurrentStatus = LightStatus.On;
                 DrawSprite();
                 break;
 
-            case LghtStatus.Dimmed:
-                CurrentStatus = LghtStatus.Dimmed;
+            case LightStatus.Dimmed:
+                CurrentStatus = LightStatus.Dimmed;
                 DrawSprite();
                 break;
         }
@@ -133,7 +133,7 @@ public class LightController : NetworkBehaviour {
     }
 
     [Client]
-    void GotStatusFromSrv(LghtStatus latestStatus)
+    void GotStatusFromSrv(LightStatus latestStatus)
     {
         //Debug.Log("GotSts from server. IsServer: " + isServer.ToString());
         CurrentStatus = latestStatus;

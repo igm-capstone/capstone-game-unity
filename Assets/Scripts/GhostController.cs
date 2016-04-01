@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class GhostController : MonoBehaviour
 {
     [SerializeField]
-    LayerMask LayersToClick;
+    LayerMask ClickableLayers;
 
     SkillBar _ghostSkillBar;
 
@@ -46,16 +46,23 @@ public class GhostController : MonoBehaviour
             RaycastHit hit3d;
             RaycastHit2D hit2d;
             GameObject go = null;
-            if ((hit2d = Physics2D.Raycast(clickWordPos, Vector2.zero, 1000, LayersToClick)) == true)
+            if ((hit2d = Physics2D.Raycast(clickWordPos, Vector2.zero, 1000, ClickableLayers)) == true)
             {
                 go = hit2d.collider.gameObject;
             }
-            else if (Physics.Raycast(clickWordPos + Vector3.back * 500, Vector3.forward, out hit3d, 1000, LayersToClick))
+            else if (Physics.Raycast(clickWordPos + Vector3.back * 500, Vector3.forward, out hit3d, 1000, ClickableLayers))
             {
                 go = hit3d.collider.gameObject;
             }
             else
             {
+                return;
+            }
+
+            if (go.layer == LayerMask.NameToLayer("LightSwitch"))
+            {
+                // Hit a Light. Disable it and move on.
+                DisableLight(go);
                 return;
             }
 
@@ -86,5 +93,31 @@ public class GhostController : MonoBehaviour
         }
         */
         
+    }
+
+    void DisableLight(GameObject target)
+    {
+        var light = target.GetComponent<LightController>();
+
+        if (light != null && light.CurrentStatus == LightController.LightStatus.On)
+        {
+            light.ChangeStatusTo(LightController.LightStatus.Dimmed); //Disabled
+            StartCoroutine(flickerToOff(light));
+        }
+        return;
+    }
+
+
+    // Flicker Light Subrotine.
+    IEnumerator flickerToOff(LightController light)
+    {
+        yield return new WaitForSeconds(0.05f);
+        light.ChangeStatusTo(LightController.LightStatus.On); //On
+        yield return new WaitForSeconds(0.1f);
+        light.ChangeStatusTo(LightController.LightStatus.Dimmed); //Disabled
+        yield return new WaitForSeconds(0.05f);
+        light.ChangeStatusTo(LightController.LightStatus.On); //On
+        yield return new WaitForSeconds(0.1f);
+        light.ChangeStatusTo(LightController.LightStatus.Dimmed); //Disabled
     }
 }

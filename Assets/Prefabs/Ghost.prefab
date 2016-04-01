@@ -33,7 +33,6 @@ GameObject:
   - 114: {fileID: 11430948}
   - 114: {fileID: 11452076}
   - 114: {fileID: 11459854}
-  - 114: {fileID: 11438610}
   - 114: {fileID: 11425386}
   - 114: {fileID: 11478774}
   - 114: {fileID: 11469056}
@@ -233,25 +232,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OuterWallsArray: {fileID: 0}
   keyMoveSpeed: 40
---- !u!114 &11438610
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196296}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12842a7149152434b93f4d28b451639e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300006, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
-  CooldownSprite: {fileID: 21300020, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
-  Name: Disable Lantern
-  Cooldown: 1
-  cost: 0
-  UseCount: 0
-  addToSkillBar: 1
 --- !u!114 &11452076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc3225f95049ef4ea76406c228ce24b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LayersToClick:
+  ClickableLayers:
     serializedVersion: 2
     m_Bits: 2654464
 --- !u!114 &11456038
@@ -643,6 +623,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: radius
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InteractableLayers.m_Bits
+      value: 2621696
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ClickableLayers.m_Bits
+      value: 2654464
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

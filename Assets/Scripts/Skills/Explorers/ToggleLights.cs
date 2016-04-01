@@ -55,14 +55,14 @@ public class ToggleLights : ISkill
         if (!light) return Name + " skill needs to target a light switch.";
 
         // Change light status acordingly
-        if (light != null && light.CurrentStatus == LightController.LghtStatus.On)
+        if (light != null && light.CurrentStatus == LightController.LightStatus.On)
         {
-            GetComponent<AvatarNetworkBehavior>().CmdChangeLightStatus(light.gameObject, LightController.LghtStatus.Dimmed);
+            GetComponent<AvatarNetworkBehavior>().CmdChangeLightStatus(light.gameObject, LightController.LightStatus.Dimmed);
             //light.ChangeStatusTo(LightController.LghtStatus.Dimmed);
         }
-        else if (light != null && ((light.CurrentStatus == LightController.LghtStatus.Dimmed) || light.CurrentStatus == LightController.LghtStatus.Off))
+        else if (light != null && ((light.CurrentStatus == LightController.LightStatus.Dimmed) || light.CurrentStatus == LightController.LightStatus.Off))
         {
-            GetComponent<AvatarNetworkBehavior>().CmdChangeLightStatus(light.gameObject, LightController.LghtStatus.On);
+            GetComponent<AvatarNetworkBehavior>().CmdChangeLightStatus(light.gameObject, LightController.LightStatus.On);
             //light.ChangeStatusTo(LightController.LghtStatus.On);
         }
         return null;
