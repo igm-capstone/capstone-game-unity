@@ -285,9 +285,13 @@ public class AssetPipelineTools
                 jobj.Add("cullingLayer", collection.CullingLayer);
             }
 
-            if (collection.TextureName != null)
+            if (collection.GetTexture)
             {
-                jobj.Add("textureName", collection.TextureName);
+                var renderer = behaviour.GetComponentInChildren<MeshRenderer>();
+                var texture = renderer.material.GetTexture("_MainTex");
+
+                var path = AssetDatabase.GetAssetPath(texture);
+                jobj.Add("textureName", Path.GetFileName(path));
             }
 
             meshData.Instances.Add(jobj);
