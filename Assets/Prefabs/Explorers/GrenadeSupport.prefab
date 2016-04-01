@@ -2092,6 +2092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseHealth: 160
   HealthCanvas: {fileID: 145894, guid: ec605853710758b4cb8b3dbdb9cff438, type: 2}
+  UISprite: {fileID: 21300000, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   CurrentHealth: 0
 --- !u!114 &11414260
 MonoBehaviour:
@@ -11610,6 +11611,11 @@ Prefab:
       propertyPath: HealthCanvas
       value: 
       objectReference: {fileID: 145894, guid: ec605853710758b4cb8b3dbdb9cff438, type: 2}
+    - target: {fileID: 0}
+      propertyPath: UISprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6e129aeba264b5243ab6121aeec9361f,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100808}

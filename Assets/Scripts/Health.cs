@@ -7,6 +7,7 @@ public class Health : NetworkBehaviour
 {
     public int BaseHealth = 5;
     public GameObject HealthCanvas;
+    public Sprite UISprite;
 
     [SyncVar]
     public int CurrentHealth;
@@ -25,6 +26,7 @@ public class Health : NetworkBehaviour
         {
             canvas.transform.SetParent(healthPanel, false);
             slider = canvas.GetComponentInChildren<Slider>();
+            slider.gameObject.transform.FindChild("UISprite").GetComponent<Image>().sprite = UISprite;
         }
         else
         {
