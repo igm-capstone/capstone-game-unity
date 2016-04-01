@@ -51,13 +51,13 @@ public class SetRegLantern : ISkill
         if (Input.GetKeyDown(key))
         {
             Use();
-            if (UseCount < maxLanternCount && UseCount>= 0)
-            {
-                StopCoroutine("RefillLantern");
-                StartCoroutine("RefillLantern");
-            }
+            //Auto refill of lantern
+            //if (UseCount < maxLanternCount && UseCount>= 0)
+            //{
+            //    StopCoroutine("RefillLantern");
+            //    StartCoroutine("RefillLantern");
+            //}
         }
-        Debug.Log(refillTime);
     }
 
     protected override string Usage(GameObject target, Vector3 clickWorldPos)
@@ -85,6 +85,7 @@ public class SetRegLantern : ISkill
         return null;
     }
 
+    //Auto refill of lantern
     IEnumerator RefillLantern()
     {
         //(5, 36)
@@ -103,5 +104,18 @@ public class SetRegLantern : ISkill
         if (UseCount < maxLanternCount)
             StartCoroutine("RefillLantern");
     }    
+
+
+    //To pick up lanterns
+    public void PickUpLantern()
+    {
+        UseCount++;
+        SkillBtnScript.UpdateUseAmount();
+    }
+
+    public bool CanPickUpLantern()
+    {
+        return UseCount < maxLanternCount;
+    }
 }
 

@@ -8,7 +8,12 @@ public class LanternBehavior : MonoBehaviour
 
     public void Initialize(float _duration)
     {
-        //LanternDuration = _duration;
+        //Lantern is a pick up lantern
+        if (_duration == -1)
+        {
+            return;
+        }
+
         // Begins counting time for StartUp
         StartCoroutine(DurationTimer(LanternDuration));
     }
@@ -22,5 +27,18 @@ public class LanternBehavior : MonoBehaviour
         // Waits for end of frame so all logic related to this can run
         yield return new WaitForEndOfFrame();
         Destroy(this.gameObject);
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag != "Player")
+        {
+            return;
+        }
+        if (other.gameObject.GetComponent<SetRegLantern>().CanPickUpLantern())
+        {
+            other.gameObject.GetComponent<SetRegLantern>().PickUpLantern();
+            Destroy(this.gameObject);
+        }
     }
 }
