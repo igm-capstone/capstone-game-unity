@@ -63,6 +63,5 @@ public class BasePlayerNetworkBehavior : NetworkBehaviour
     {
         gameStateHud.SetRestarting();
     }
-
-
+    
 }

@@ -23,6 +23,7 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
         {
             i.RefreshIndicators();
             i.DomPointIndicators();
+            
         }
     }
 
@@ -33,6 +34,8 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
             i.RefreshIndicators();
         }
     }
+
+    
 
     [Command]
     public void CmdTakeBlockOver(string block, bool status)
@@ -224,4 +227,6 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
         explorer.transform.FindChild("HealthCanvas(Clone)").gameObject.SetActive(true);
         explorer.GetComponent<AvatarController>().isHidden = false;
     }
+    
+
 }
