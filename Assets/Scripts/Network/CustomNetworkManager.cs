@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -14,6 +15,8 @@ public class CustomNetworkManager : NetworkManager
 
     public bool exposeConsole = true;
     public GameObject console;
+
+    private List<GameObject> explorerHealth = new List<GameObject>();
 
     [NonSerialized]
     public bool sceneLoaded = false;
@@ -153,6 +156,8 @@ public class CustomNetworkManager : NetworkManager
             //Debug.Log("Spawning ghost");
             player = (GameObject)Instantiate(ghostPrefab, pos, Quaternion.identity);
             player.GetComponent<GhostNetworkBehavior>().conn = conn;
+            explorerHealth.Clear();
+            //explorerHealth.Add(GameObject.FindGameObjectsWithTag("ExplorerHealth"));
         }
         else
         {
@@ -168,4 +173,61 @@ public class CustomNetworkManager : NetworkManager
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
     }
 
+    public override void OnServerDisconnect(NetworkConnection conn)
+    {
+        Debug.Log("Client Disconnected");
+        base.OnServerDisconnect(conn);
+        GameObject.FindObjectOfType<GhostNetworkBehavior>().RpcDestroyHealthBar();
+    }
+
+
+    
+
+
+    IEnumerator RemoveExplorerHealth(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+
+        List<GameObject> avatarCtrl = FindObjectsOfType<AvatarController>().Select(a => a.GetComponent<Health>().canvas).ToList();
+
+        List<GameObject> allExplorersHealth = GameObject.FindGameObjectsWithTag("ExplorerHealth").ToList();
+
+        List<GameObject> healthRemaining = new List<GameObject>();
+
+        for (int i = allExplorersHealth.Count - 1; i >= 0; i--)
+        {
+            if(avatarCtrl.Contains(allExplorersHealth[i]))
+            {
+                allExplorersHealth.RemoveAt(i);
+            }
+
+        }
+
+        foreach (var item in allExplorersHealth)
+        {
+            Destroy(item);
+        }
+
+        //foreach (AvatarController ac in avatarCtrl)
+        //{
+        //    healthRemaining.Add(GameObject.Find(ac.gameObject.name + "Health"));
+        //}
+
+        //var healthToRemove = allExplorersHealth.Except(healthRemaining).ToList();
+
+
+
+        //foreach (AvatarController ac in avatarCtrl)
+        //{
+        //    ac.gameObject.GetComponent<AvatarNetworkBehavior>().CmdDestroyHealthBar(healthToRemove[0]);
+        //}
+        //foreach (GameObject health in healthToRemove)
+        //{
+        //    Debug.Log(health.name);
+        //    Destroy(health);
+            
+        //}
+    }
 }
+

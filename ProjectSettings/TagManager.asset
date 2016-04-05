@@ -8,6 +8,7 @@ TagManager:
   - MoveableObject
   - Goal
   - Door
+  - ExplorerHealth
   layers:
   - Default
   - TransparentFX

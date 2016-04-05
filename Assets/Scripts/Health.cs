@@ -13,13 +13,14 @@ public class Health : NetworkBehaviour
     public int CurrentHealth;
 
     private Slider slider;
-    private GameObject canvas;
+    public GameObject canvas { get; private set; }
     private RpcNetworkAnimator animator;
 
     void Start()
     {
         Transform healthPanel = GameObject.Find("MainCanvas").transform.FindChild("HealthPanel").transform.FindChild("HealthBar");
         canvas = GameObject.Instantiate(HealthCanvas);
+        canvas.name = gameObject.name + "Health";
         
         CurrentHealth = BaseHealth;
         if (GetComponent<AvatarController>() != null)
@@ -27,6 +28,10 @@ public class Health : NetworkBehaviour
             canvas.transform.SetParent(healthPanel, false);
             slider = canvas.GetComponentInChildren<Slider>();
             slider.gameObject.transform.FindChild("UISprite").GetComponent<Image>().sprite = UISprite;
+            if(gameObject.name == "Me")
+            {
+                canvas.transform.SetAsFirstSibling();
+            }
         }
         else
         {
@@ -81,4 +86,6 @@ public class Health : NetworkBehaviour
             CurrentHealth = BaseHealth;
         }
     }
+
+  
 }
