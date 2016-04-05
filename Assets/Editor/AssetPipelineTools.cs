@@ -288,7 +288,7 @@ public class AssetPipelineTools
             if (collection.GetTexture)
             {
                 var renderer = behaviour.GetComponentInChildren<MeshRenderer>();
-                var texture = renderer.material.GetTexture("_MainTex");
+                var texture = renderer.sharedMaterial.GetTexture("_MainTex");
 
                 var path = AssetDatabase.GetAssetPath(texture);
                 jobj.Add("textureName", Path.GetFileName(path));
@@ -409,8 +409,9 @@ public class AssetPipelineTools
             var mesh = transform.GetComponentInChildren<MeshFilter>();
             if (mesh)
             { 
-                Bounds bounds = new Bounds(transform.TransformPoint(mesh.sharedMesh.bounds.min), Vector3.zero);
-                bounds.Encapsulate(transform.TransformPoint(mesh.sharedMesh.bounds.max));
+                var meshtrans = mesh.transform;
+                Bounds bounds = new Bounds(meshtrans.TransformPoint(mesh.sharedMesh.bounds.min), Vector3.zero);
+                bounds.Encapsulate(meshtrans.TransformPoint(mesh.sharedMesh.bounds.max));
                 jobj.Add("bounds", ToJToken(bounds));
             }
         }
