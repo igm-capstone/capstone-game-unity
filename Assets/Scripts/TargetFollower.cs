@@ -12,6 +12,9 @@ public class TargetFollower : MonoBehaviour
 {
     public LayerMask wallMask;
 
+    public GameObject SlowedUI;
+    private MinionController minCtrlScrpt;
+
     // repel
     public Vector3 repelOffset = new Vector3(.66f, -.6f, 0);
     public float repelFocus = 4f;
@@ -42,12 +45,26 @@ public class TargetFollower : MonoBehaviour
 
     void Awake()
     {
+        minCtrlScrpt = GetComponent<MinionController>();
+
         animator = GetComponent<RpcNetworkAnimator>();
         container = transform.Find("Rotation");
         path = new List<Vector2>();
 
         isStunned = false;
         slowDownMod = 1.0f;
+
+        // Gets slowed UI and disables it.
+        if (SlowedUI == null)
+        {
+            SlowedUI = transform.GetChild(1).gameObject;
+            if (SlowedUI == null)
+            {
+                Debug.Log(this.gameObject + " did not find its SLOWED UI");
+            }
+            // Deactivate Slowed UI
+            minCtrlScrpt.RpcSetSlowedUiActive(false);
+        }
     }
 
     public bool MoveTowards(Vector3 targetPos, int maxSteps = int.MaxValue)
@@ -163,6 +180,18 @@ public class TargetFollower : MonoBehaviour
         if (animator)
         {
             animator.SetFloat("Slide", repel);
+        }
+
+
+        if (speedFactor < 1 || slowDownMod < 1)
+        {
+            // Activate Slowed UI
+            minCtrlScrpt.RpcSetSlowedUiActive(true);
+        }
+        else
+        {
+            // Deactivate Slowed UI
+            minCtrlScrpt.RpcSetSlowedUiActive(false);
         }
 
         transform.Translate(moveDirection * moveSpeed * speedFactor * slowDownMod* .1f * Time.deltaTime, Space.Self);

@@ -171,4 +171,10 @@ public class MinionController : NetworkBehaviour
         NetworkServer.Spawn(exploInstance);
     }
 
+    [ClientRpc]
+    public void RpcSetSlowedUiActive(bool isActive)
+    {
+        GetComponent<TargetFollower>().SlowedUI.SetActive(isActive);
+    }
+
 }

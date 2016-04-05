@@ -9,21 +9,12 @@ public class AttackTarget : MinionBehaviour
     private bool isAttacking;
     public int AtckDamage;
     public float ExplosionRadius;
-    GameObject AttackSprite;
 
     MinionType MyType;
 
     void Awake()
     {
         MyType = GetComponent<MinionController>().Type;
-
-        if (MyType == MinionType.AOEBomber)
-        {
-            //AttackSprite = transform.FindChild("ExplosionSprite").gameObject;
-            //AttackSprite.SetActive(false);
-
-            //GetComponent<MinionController>().RpcTriggerExplosionSrpite(false);
-        }
     }
 
     public override void ActivateBehaviour()
@@ -33,16 +24,6 @@ public class AttackTarget : MinionBehaviour
         {
             GetComponent<RpcNetworkAnimator>().SetFloat("Random", UnityEngine.Random.Range(0.0f, 1.0f));
             GetComponent<RpcNetworkAnimator>().SetTrigger("Attack");
-        }
-
-        if (MyType == MinionType.AOEBomber)
-        {
-            // Explosion Sprite
-            //AttackSprite.SetActive(true);
-            //GetComponent<MinionController>().RpcTriggerExplosionSrpite(true)
-            
-            // Trigger Explosion
-            //GetComponent<MinionController>().CmdSpawnExplosion(transform.position, ExplosionRadius);
         }
     }
 
