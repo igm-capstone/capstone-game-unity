@@ -17,6 +17,13 @@ public class Haunt_ExpToMinion : ISkill {
         key = KeyCode.Alpha5;
 
         mySkillBar = GetComponent<SkillBar>();
+
+        // ToolTip text
+        ToolTip.Description =   "Disguise an Explorer as an Imp.";
+        ToolTip.AtkAttrbt =     "Other Explorers";
+        ToolTip.DefAttrbt =     "N/A";
+        ToolTip.SpdAttrbt =     "N/A";
+
     }
 
     public void Update()

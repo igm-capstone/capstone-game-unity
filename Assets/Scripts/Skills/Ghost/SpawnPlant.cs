@@ -18,6 +18,13 @@ public class SpawnPlant : ISkill
         key = KeyCode.Alpha4;
 
         mySkillBar = GetComponent<SkillBar>();
+
+        // ToolTip text
+        ToolTip.Description =   "Spawns a Haunted Plant. Does not move.";
+        ToolTip.AtkAttrbt =     "High";
+        ToolTip.DefAttrbt =     "Regular";
+        ToolTip.SpdAttrbt =     "None";
+
     }
 
     public void Update()

@@ -17,6 +17,13 @@ public class Sprint : ISkill
 
         // Set key code:
         key = KeyCode.LeftShift;
+
+        // ToolTip text
+        ToolTip.Description =   "Doubles explorer Speed";
+        ToolTip.AtkAttrbt=      "Double";
+        ToolTip.DefAttrbt =     "N/A";
+        ToolTip.SpdAttrbt =     "N/A";
+
     }
 
     public void Update()

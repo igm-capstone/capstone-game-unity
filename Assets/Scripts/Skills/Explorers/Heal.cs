@@ -36,6 +36,13 @@ public class Heal : ISkill
 
         // Set key code:
         key = KeyCode.LeftShift;
+
+        // ToolTip text
+        ToolTip.Description =   "Replenishes allies Health.";
+        ToolTip.AtkAttrbt=      "N/A";
+        ToolTip.DefAttrbt =     "N/A";
+        ToolTip.SpdAttrbt =     "N/A";
+
     }
 
     void Update()

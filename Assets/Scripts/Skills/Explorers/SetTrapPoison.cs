@@ -20,6 +20,13 @@ public class SetTrapPoison : ISkill
         // Set key code:
         key = KeyCode.LeftShift;
         avatarController = GetComponent<AvatarController>();
+
+        // ToolTip text
+        ToolTip.Description = "Places a Poison trap.\nDamages enemies.";
+        ToolTip.AtkAttrbt=      "9 per second";
+        ToolTip.DefAttrbt =     "N/A";
+        ToolTip.SpdAttrbt =     "N/A";
+
     }
 
     void Update()

@@ -2,6 +2,24 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+public struct ToolTipText
+{
+    public string Description;
+    public string AtkAttrbt;
+    public string DefAttrbt;
+    public string SpdAttrbt;
+    
+    // constructor for Default Values
+    public ToolTipText (string _Dscrpt, string _AtkAtt, string _DefAtt, string __SpdAtt)
+    {
+        Description = _Dscrpt;
+        AtkAttrbt = _AtkAtt;
+        DefAttrbt = _DefAtt;
+        SpdAttrbt = __SpdAtt;
+    }
+}
+
+
 public abstract class ISkill : MonoBehaviour
 {
     public GameObject SkillButtonPrefab;
@@ -10,13 +28,20 @@ public abstract class ISkill : MonoBehaviour
 
     public string Name = "Skill";
     public float Cooldown = 2;
+
     [NonSerialized]
     public bool canDrop = false;
+
     public int cost = 0;
     public int UseCount = 0;
 
     public bool addToSkillBar = true;
 
+    public ToolTipText ToolTip = new ToolTipText
+                                ("Skill description here. \n Allows two lines.",
+                                 "Attack: Regular",
+                                 "Defense: Regular",
+                                 "Speed: Regular");
 
     // Used for EquippedSkill.
     //public bool isStaticSkill = true;

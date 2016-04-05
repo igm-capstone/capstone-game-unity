@@ -24,6 +24,13 @@ public class SkillButton : MonoBehaviour
     private Image _cd;
     private Image _icon;
 
+    //ToolTip
+    private GameObject toolTipObj;
+    private Text toolTipDscrpt;
+    private Text toolTipAtkAtt;
+    private Text toolTipDefAtt;
+    private Text toolTipSpdAtt;
+
     public void Init()
     {
         _btn = GetComponent<Button>();
@@ -95,8 +102,26 @@ public class SkillButton : MonoBehaviour
         }
         else
         {
-            transform.Find("UseCount").GetComponent<Text>().text = "";
+            transform.Find("SkillName").GetComponent<Text>().text = "";
         }
+
+        // finds toolTip and Disables it if it is enabled.
+        toolTipObj = transform.Find("ToolTip").gameObject;
+        ShowToolTip(false);
+
+        // Gets Reference to the ToolTip texts.
+        toolTipDscrpt = toolTipObj.transform.FindChild("Description").gameObject.GetComponent<Text>();
+
+        toolTipAtkAtt = toolTipObj.transform.FindChild("AttackAttribute").gameObject.GetComponent<Text>(); ;
+
+        toolTipDefAtt = toolTipObj.transform.FindChild("DefenseAttribute").gameObject.GetComponent<Text>(); ;
+
+        toolTipSpdAtt = toolTipObj.transform.FindChild("SpeedAtribute").gameObject.GetComponent<Text>();
+
+        toolTipDscrpt.text = _skill.ToolTip.Description;
+        toolTipAtkAtt.text = _skill.ToolTip.AtkAttrbt;
+        toolTipDefAtt.text = _skill.ToolTip.DefAttrbt;
+        toolTipSpdAtt.text = _skill.ToolTip.SpdAttrbt;
 
     }
 
@@ -246,6 +271,7 @@ public class SkillButton : MonoBehaviour
     {
         _cd.fillAmount = 1 - ((Time.time - _skill.LastUse) / _skill.Cooldown);
         _cdBackground.fillAmount = 1 - ((Time.time - _skill.LastUse) / _skill.Cooldown);
+
     }
 
     void SetActiveClick()
@@ -273,5 +299,11 @@ public class SkillButton : MonoBehaviour
         {
             transform.Find("UseCount").GetComponent<Text>().text = "";
         }
+    }
+
+    // Gets Called by Event Handler. Show/Hide Tooltip.
+    public void ShowToolTip(bool mustShow)
+    {
+        toolTipObj.SetActive(mustShow);
     }
 }

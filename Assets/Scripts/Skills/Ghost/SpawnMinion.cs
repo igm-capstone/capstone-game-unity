@@ -20,6 +20,12 @@ public class SpawnMinion : ISkill
         key = KeyCode.Alpha2;
 
         mySkillBar = GetComponent<SkillBar>();
+
+        // ToolTip text
+        ToolTip.Description =   "Spwans 2 Imps.\nAttacks on sight.";
+        ToolTip.AtkAttrbt=      "Regular";
+        ToolTip.DefAttrbt =     "Low";
+        ToolTip.SpdAttrbt =     "Fast";
     }
 
     public void Update()

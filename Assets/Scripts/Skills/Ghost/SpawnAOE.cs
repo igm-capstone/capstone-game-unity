@@ -17,6 +17,13 @@ public class SpawnAOE : ISkill
         key = KeyCode.Alpha3;
 
         mySkillBar = GetComponent<SkillBar>();
+
+        // ToolTip text
+        ToolTip.Description =   "Spawns an Abomination.\nExplodes on contact.";
+        ToolTip.AtkAttrbt =     "High";
+        ToolTip.DefAttrbt =     "High";
+        ToolTip.SpdAttrbt =     "Low";
+
     }
 
     public void Update()

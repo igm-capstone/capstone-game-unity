@@ -22,6 +22,13 @@ public class SetTrapGlue : ISkill
         key = KeyCode.LeftControl;
 
         avatarController = GetComponent<AvatarController>();
+
+        // ToolTip text
+        ToolTip.Description =   "Places a Glue Trap.\nSlows enemies.";
+        ToolTip.AtkAttrbt=      "30% slow rate.";
+        ToolTip.DefAttrbt =     "N/A";
+        ToolTip.SpdAttrbt =     "N/A";
+
     }
 
     void Update()
