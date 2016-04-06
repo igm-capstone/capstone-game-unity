@@ -27,9 +27,14 @@ public class SkillButton : MonoBehaviour
     //ToolTip
     private GameObject toolTipObj;
     private Text toolTipDscrpt;
-    private Text toolTipAtkAtt;
-    private Text toolTipDefAtt;
-    private Text toolTipSpdAtt;
+
+    private Text toolTipFstLbl;
+    private Text toolTipSndLbl;
+    private Text toolTipThdLbl;
+
+    private Text toolTipFstAtt;
+    private Text toolTipSndAtt;
+    private Text toolTipThdAtt;
 
     public void Init()
     {
@@ -112,16 +117,23 @@ public class SkillButton : MonoBehaviour
         // Gets Reference to the ToolTip texts.
         toolTipDscrpt = toolTipObj.transform.FindChild("Description").gameObject.GetComponent<Text>();
 
-        toolTipAtkAtt = toolTipObj.transform.FindChild("AttackAttribute").gameObject.GetComponent<Text>(); ;
+        toolTipFstLbl = toolTipObj.transform.FindChild("FirstLabel").gameObject.GetComponent<Text>();
+        toolTipSndLbl = toolTipObj.transform.FindChild("SecondLabel").gameObject.GetComponent<Text>();
+        toolTipThdLbl = toolTipObj.transform.FindChild("ThirdLabel").gameObject.GetComponent<Text>();
 
-        toolTipDefAtt = toolTipObj.transform.FindChild("DefenseAttribute").gameObject.GetComponent<Text>(); ;
-
-        toolTipSpdAtt = toolTipObj.transform.FindChild("SpeedAtribute").gameObject.GetComponent<Text>();
+        toolTipFstAtt = toolTipObj.transform.FindChild("FirstAttribute").gameObject.GetComponent<Text>();
+        toolTipSndAtt = toolTipObj.transform.FindChild("SecondAttribute").gameObject.GetComponent<Text>();
+        toolTipThdAtt = toolTipObj.transform.FindChild("ThirdAttribute").gameObject.GetComponent<Text>();
 
         toolTipDscrpt.text = _skill.ToolTip.Description;
-        toolTipAtkAtt.text = _skill.ToolTip.AtkAttrbt;
-        toolTipDefAtt.text = _skill.ToolTip.DefAttrbt;
-        toolTipSpdAtt.text = _skill.ToolTip.SpdAttrbt;
+
+        toolTipFstLbl.text = _skill.ToolTip.FirstLabel;
+        toolTipSndLbl.text = _skill.ToolTip.SecondLabel;
+        toolTipThdLbl.text = _skill.ToolTip.ThirdLabel;
+
+        toolTipFstAtt.text = _skill.ToolTip.FirstAttribute;
+        toolTipSndAtt.text = _skill.ToolTip.SecondAttribute;
+        toolTipThdAtt.text = _skill.ToolTip.ThirdAttribute;
 
     }
 

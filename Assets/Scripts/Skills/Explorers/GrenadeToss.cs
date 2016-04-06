@@ -38,6 +38,18 @@ public class GrenadeToss : ISkill
 
         // Set key code:
         key = KeyCode.Mouse0;
+
+        // ToolTip text
+        ToolTip.Description =       "Throws light greanade. Deal damage on impact.";
+
+        ToolTip.FirstAttribute =    "Regular";
+
+        ToolTip.SecondLabel =       "Knockback:";
+        ToolTip.SecondAttribute =   "Low";
+
+        ToolTip.ThirdLabel =        "Radius:";
+        ToolTip.ThirdAttribute =    ExploRadius.ToString() + "m";
+
     }
 
     void Update()

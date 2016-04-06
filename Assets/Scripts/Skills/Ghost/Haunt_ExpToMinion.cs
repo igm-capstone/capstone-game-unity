@@ -6,6 +6,8 @@ using UnityEngine.Networking;
 public class Haunt_ExpToMinion : ISkill {
 
     public GameObject HauntMeleeMinion;
+    [SerializeField]
+    float HauntDuration = 15;
 
     SkillBar mySkillBar;
 
@@ -19,10 +21,16 @@ public class Haunt_ExpToMinion : ISkill {
         mySkillBar = GetComponent<SkillBar>();
 
         // ToolTip text
-        ToolTip.Description =   "Disguise an Explorer as an Imp.";
-        ToolTip.AtkAttrbt =     "Other Explorers";
-        ToolTip.DefAttrbt =     "N/A";
-        ToolTip.SpdAttrbt =     "N/A";
+        ToolTip.Description =       "Disguise an Explorer as an Imp.";
+
+        ToolTip.FirstLabel =        "Duration:";
+        ToolTip.FirstAttribute =    HauntDuration.ToString() + "sec";
+
+        ToolTip.SecondLabel =       "Cooldown:";
+        ToolTip.SecondAttribute =   Cooldown.ToString() + "sec";
+
+        ToolTip.ThirdLabel =        "Cost:";
+        ToolTip.ThirdAttribute =    cost.ToString() + " MP";
 
     }
 
@@ -40,7 +48,7 @@ public class Haunt_ExpToMinion : ISkill {
         
         var selfAc = target.GetComponent<AvatarNetworkBehavior>();
 
-        MinionSpawnManager.Instance.CmdHauntSpawn(target.transform.position, MinionType.HauntMelee, target.GetComponentInParent<NetworkIdentity>().gameObject);
+        MinionSpawnManager.Instance.CmdHauntSpawn(HauntDuration, target.transform.position, MinionType.HauntMelee, target.GetComponentInParent<NetworkIdentity>().gameObject);
 
         return null;
     }    

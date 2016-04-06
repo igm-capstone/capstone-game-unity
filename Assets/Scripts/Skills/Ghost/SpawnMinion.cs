@@ -22,10 +22,11 @@ public class SpawnMinion : ISkill
         mySkillBar = GetComponent<SkillBar>();
 
         // ToolTip text
-        ToolTip.Description =   "Spwans 2 Imps.\nAttacks on sight.";
-        ToolTip.AtkAttrbt=      "Regular";
-        ToolTip.DefAttrbt =     "Low";
-        ToolTip.SpdAttrbt =     "Fast";
+        ToolTip.Description =       "Spwans 2 Imps.\nAttacks on sight.";
+        ToolTip.FirstAttribute=     "Regular";
+        ToolTip.SecondAttribute =   "Low";
+        ToolTip.ThirdAttribute =    "Fast";
+
     }
 
     public void Update()

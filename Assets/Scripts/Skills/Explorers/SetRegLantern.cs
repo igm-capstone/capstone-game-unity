@@ -34,6 +34,20 @@ public class SetRegLantern : ISkill
         spawnDistance = 1.0f;
         maxLanternCount = UseCount;
 
+
+        // ToolTip text
+        ToolTip.Description = "Places a Latern down.\nLimited amount.";
+
+        ToolTip.FirstLabel =        "Duration:";
+        ToolTip.FirstAttribute =    "8 sec";
+
+        ToolTip.SecondLabel =       "Cooldown:";
+        ToolTip.SecondAttribute =   Cooldown.ToString() + " sec";
+
+        ToolTip.ThirdLabel =        "";
+        ToolTip.ThirdAttribute =    "";
+
+
     }    
 
     void Start()

@@ -43,6 +43,17 @@ public class ConeAttack : ISkill
 
         // Set key code:
         key = KeyCode.Mouse0;
+
+        // ToolTip text
+        ToolTip.Description =       "Swings batons switfly and deals damage.";
+
+        ToolTip.FirstAttribute =    "Low";
+
+        ToolTip.SecondLabel =       "Knockback:";
+        ToolTip.SecondAttribute =   "Low";
+
+        ToolTip.ThirdAttribute =    "High";
+
     }
 
     void Update()

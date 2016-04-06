@@ -19,10 +19,16 @@ public class Sprint : ISkill
         key = KeyCode.LeftShift;
 
         // ToolTip text
-        ToolTip.Description =   "Doubles explorer Speed";
-        ToolTip.AtkAttrbt=      "Double";
-        ToolTip.DefAttrbt =     "N/A";
-        ToolTip.SpdAttrbt =     "N/A";
+        ToolTip.Description =       "Doubles explorer Speed";
+
+        ToolTip.FirstLabel =        "Duration:";
+        ToolTip.FirstAttribute =    Duration.ToString() + " sec";
+
+        ToolTip.SecondLabel =       "Cooldown:";
+        ToolTip.SecondAttribute =   Cooldown.ToString() + " sec";
+
+        ToolTip.ThirdLabel =        "";
+        ToolTip.ThirdAttribute =    "";
 
     }
 

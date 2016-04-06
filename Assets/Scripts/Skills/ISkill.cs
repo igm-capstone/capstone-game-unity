@@ -4,18 +4,29 @@ using UnityEngine.UI;
 
 public struct ToolTipText
 {
+
     public string Description;
-    public string AtkAttrbt;
-    public string DefAttrbt;
-    public string SpdAttrbt;
+
+    public string FirstLabel;
+    public string SecondLabel;
+    public string ThirdLabel;
+
+    public string FirstAttribute;
+    public string SecondAttribute;
+    public string ThirdAttribute;
     
     // constructor for Default Values
-    public ToolTipText (string _Dscrpt, string _AtkAtt, string _DefAtt, string __SpdAtt)
+    public ToolTipText (string _Dscrpt, string _FstAtt, string _SndAtt, string _ThdAtt)
     {
         Description = _Dscrpt;
-        AtkAttrbt = _AtkAtt;
-        DefAttrbt = _DefAtt;
-        SpdAttrbt = __SpdAtt;
+
+        FirstLabel = "Attack:";
+        SecondLabel = "Defense:";
+        ThirdLabel = "Speed:";
+
+        FirstAttribute = _FstAtt;
+        SecondAttribute = _SndAtt;
+        ThirdAttribute = _ThdAtt;
     }
 }
 

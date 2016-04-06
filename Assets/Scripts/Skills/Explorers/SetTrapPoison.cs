@@ -22,10 +22,16 @@ public class SetTrapPoison : ISkill
         avatarController = GetComponent<AvatarController>();
 
         // ToolTip text
-        ToolTip.Description = "Places a Poison trap.\nDamages enemies.";
-        ToolTip.AtkAttrbt=      "9 per second";
-        ToolTip.DefAttrbt =     "N/A";
-        ToolTip.SpdAttrbt =     "N/A";
+        ToolTip.Description =       "Places a Poison trap.\nDamages enemies.";
+
+        ToolTip.FirstLabel =        "Damage:";
+        ToolTip.FirstAttribute =    "9 per sec";
+
+        ToolTip.SecondLabel =       "Duration:";
+        ToolTip.SecondAttribute =   "5 sec";
+
+        ToolTip.ThirdLabel =        "";
+        ToolTip.ThirdAttribute =    "";
 
     }
 

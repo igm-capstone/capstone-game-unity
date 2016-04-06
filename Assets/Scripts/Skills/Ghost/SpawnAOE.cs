@@ -19,10 +19,10 @@ public class SpawnAOE : ISkill
         mySkillBar = GetComponent<SkillBar>();
 
         // ToolTip text
-        ToolTip.Description =   "Spawns an Abomination.\nExplodes on contact.";
-        ToolTip.AtkAttrbt =     "High";
-        ToolTip.DefAttrbt =     "High";
-        ToolTip.SpdAttrbt =     "Low";
+        ToolTip.Description =       "Spawns Abomination.\nExplodes on contact.";
+        ToolTip.FirstAttribute =    "High";
+        ToolTip.SecondAttribute =   "High";
+        ToolTip.ThirdAttribute =    "Low";
 
     }
 

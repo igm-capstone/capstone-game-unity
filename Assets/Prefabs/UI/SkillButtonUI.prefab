@@ -30,7 +30,7 @@ GameObject:
   - 114: {fileID: 11498500}
   - 114: {fileID: 11447908}
   m_Layer: 5
-  m_Name: DefenceTxt
+  m_Name: SecondLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ GameObject:
   - 114: {fileID: 11476038}
   - 114: {fileID: 11466758}
   m_Layer: 5
-  m_Name: AttackTxt
+  m_Name: FirstLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,7 +104,7 @@ GameObject:
   - 114: {fileID: 11455692}
   - 114: {fileID: 11476162}
   m_Layer: 5
-  m_Name: DefenseAttribute
+  m_Name: SecondAttribute
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,7 +192,7 @@ GameObject:
   - 114: {fileID: 11444282}
   - 114: {fileID: 11484662}
   m_Layer: 5
-  m_Name: SpeedAtribute
+  m_Name: ThirdAttribute
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,7 +210,7 @@ GameObject:
   - 114: {fileID: 11446952}
   - 114: {fileID: 11408698}
   m_Layer: 5
-  m_Name: SpeedTxt
+  m_Name: ThirdLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,7 +280,7 @@ GameObject:
   - 114: {fileID: 11468970}
   - 114: {fileID: 11493246}
   m_Layer: 5
-  m_Name: AttackAttribute
+  m_Name: FirstAttribute
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -564,17 +564,15 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 20
     m_Alignment: 3
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Regular
-
-'
+  m_Text: Regular
 --- !u!114 &11446952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -598,17 +596,15 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 20
     m_Alignment: 3
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Speed:
-
-'
+  m_Text: 'Speed:'
 --- !u!114 &11447908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -646,9 +642,9 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 20
     m_Alignment: 3
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -844,9 +840,9 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 20
     m_Alignment: 3
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -923,9 +919,9 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 20
     m_Alignment: 3
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1043,15 +1039,15 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 20
     m_Alignment: 3
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Defense:'
+  m_Text: 'Cooldown:'
 --- !u!114 &11498958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1301,8 +1297,8 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 71.4000015, y: -109.299973}
-  m_SizeDelta: {x: 90, y: 30}
+  m_AnchoredPosition: {x: 77, y: -109.299957}
+  m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22436714
 RectTransform:
@@ -1335,8 +1331,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 181.570007, y: -109.300049}
-  m_SizeDelta: {x: 130.350006, y: 30}
+  m_AnchoredPosition: {x: 187, y: -109.300003}
+  m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22448572
 RectTransform:
@@ -1403,8 +1399,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 181.580109, y: -79.2999573}
-  m_SizeDelta: {x: 130.360001, y: 30}
+  m_AnchoredPosition: {x: 187, y: -79.3000031}
+  m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22471686
 RectTransform:
@@ -1420,8 +1416,8 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 71.4000015, y: -139.299988}
-  m_SizeDelta: {x: 90, y: 30}
+  m_AnchoredPosition: {x: 77, y: -139.299957}
+  m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22480962
 RectTransform:
@@ -1437,8 +1433,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 71.4000015, y: -79.2999573}
-  m_SizeDelta: {x: 90, y: 30}
+  m_AnchoredPosition: {x: 77, y: -79.2999573}
+  m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22481856
 RectTransform:
@@ -1488,8 +1484,8 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 181.580002, y: -139.300018}
-  m_SizeDelta: {x: 130.350006, y: 30}
+  m_AnchoredPosition: {x: 187, y: -139.299957}
+  m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:

@@ -41,6 +41,17 @@ public class LongAttack : ISkill
 
         // Set key code:
         key = KeyCode.Mouse0;
+
+        // ToolTip text
+        ToolTip.Description =       "Swings heavy staff and deals damage.";
+
+        ToolTip.FirstAttribute =    "High";
+
+        ToolTip.SecondLabel =       "Knockback:";
+        ToolTip.SecondAttribute =   "High";
+
+        ToolTip.ThirdAttribute =    "Low";
+
     }
     
     void Update()

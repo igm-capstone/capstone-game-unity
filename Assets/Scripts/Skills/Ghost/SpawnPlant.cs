@@ -20,10 +20,15 @@ public class SpawnPlant : ISkill
         mySkillBar = GetComponent<SkillBar>();
 
         // ToolTip text
-        ToolTip.Description =   "Spawns a Haunted Plant. Does not move.";
-        ToolTip.AtkAttrbt =     "High";
-        ToolTip.DefAttrbt =     "Regular";
-        ToolTip.SpdAttrbt =     "None";
+        ToolTip.Description =       "Spawns a Haunted Plant. Does not move.";
+
+        ToolTip.FirstAttribute =    "High";
+
+        ToolTip.SecondAttribute =   "Regular";
+
+        ToolTip.ThirdLabel = "Cost:";
+        ToolTip.ThirdAttribute = cost.ToString() + " MP";
+
 
     }
 

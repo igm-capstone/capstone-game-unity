@@ -152,7 +152,7 @@ public class MinionSpawnManager : NetworkBehaviour
     }
 
     [Command]
-    public void CmdHauntSpawn(Vector3 position, MinionType minType, GameObject explorer)
+    public void CmdHauntSpawn(float _hauntDuration, Vector3 position, MinionType minType, GameObject explorer)
     {
         GameObject minion;
         switch (minType)
@@ -170,7 +170,7 @@ public class MinionSpawnManager : NetworkBehaviour
         NetworkServer.Spawn(minion);
         RpcSetParent(minion, explorer);
         //DisableMinion(minion);
-        StartCoroutine(FinishHauntEtoM(15,minion,explorer));
+        StartCoroutine(FinishHauntEtoM(_hauntDuration, minion,explorer));
 
     }
 

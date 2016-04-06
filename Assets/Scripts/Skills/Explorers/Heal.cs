@@ -38,10 +38,16 @@ public class Heal : ISkill
         key = KeyCode.LeftShift;
 
         // ToolTip text
-        ToolTip.Description =   "Replenishes allies Health.";
-        ToolTip.AtkAttrbt=      "N/A";
-        ToolTip.DefAttrbt =     "N/A";
-        ToolTip.SpdAttrbt =     "N/A";
+        ToolTip.Description =       "Recovers allies health around Explorer.";
+
+        ToolTip.FirstLabel =        "Amount:";
+        ToolTip.FirstAttribute =    HealAmount.ToString() + " HP";
+
+        ToolTip.SecondLabel =       "Radius:";
+        ToolTip.SecondAttribute =   AreaRadius.ToString() + "m";
+
+        ToolTip.ThirdLabel =        "";
+        ToolTip.ThirdAttribute =    "";
 
     }
 
