@@ -24,6 +24,8 @@ public class SkillButton : MonoBehaviour
     private Image _cd;
     private Image _icon;
 
+    private GameObject _slctdSkillUiObj;
+
     //ToolTip
     private GameObject toolTipObj;
     private Text toolTipDscrpt;
@@ -39,6 +41,9 @@ public class SkillButton : MonoBehaviour
     public void Init()
     {
         _btn = GetComponent<Button>();
+
+        _slctdSkillUiObj = transform.FindChild("SelectedSkill").gameObject;
+        _slctdSkillUiObj.SetActive(false);
 
         if (_skillBar.OnClickBehavior == SkillBar.OnClickBehaviorType.SetActiveSkillOnClick)
             _btn.onClick.AddListener(SetActiveClick);
@@ -283,6 +288,19 @@ public class SkillButton : MonoBehaviour
     {
         _cd.fillAmount = 1 - ((Time.time - _skill.LastUse) / _skill.Cooldown);
         _cdBackground.fillAmount = 1 - ((Time.time - _skill.LastUse) / _skill.Cooldown);
+
+        // Only enable Selected UI on the Ghost Player.
+        if (_skillBar.GetActiveSkill() == _skill && GameObject.Find("Me").GetComponent<GhostController>() != null)
+        {
+            // Enable Highlighted Square obj
+            _slctdSkillUiObj.SetActive(true);
+
+        }
+        else
+        {
+            // Disable Highlighted Square obj.
+            _slctdSkillUiObj.SetActive(false);
+        }
 
     }
 
