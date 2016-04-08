@@ -26,14 +26,20 @@ public class Domination : NetworkBehaviour
     [SyncVar]
     public bool canBeCaptured = false;
 
-    public event System.Action WasCaptured;
+    //declaring event
+    public event DomMngr.DomPoint PointCapturedEvent;
 
     [Range(0, 3)]
     public int ID;
 
+    public void Start()
+    {
+        PointCapturedEvent += GetComponentInParent<DomMngr>().DomPnt_WasCaptured;
+    }
+
     public void Update()
     {
-        
+
         if (isServer && outsideDominationArea == true && elapsedTime >= 0.0f)
         {
             elapsedTime -= Time.deltaTime;
@@ -44,7 +50,7 @@ public class Domination : NetworkBehaviour
     }
     void OnTriggerStay2D(Collider2D other)
     {
-        if (isServer && !captured  && canBeCaptured && other.tag == "Player")
+        if (isServer && !captured && canBeCaptured && other.tag == "Player")
         {
             outsideDominationArea = false;
             if (elapsedTime < timeToCapture)
@@ -56,21 +62,24 @@ public class Domination : NetworkBehaviour
             {
                 captured = true;
 
-                //Update UI
-                
-
                 // Indicates that this point was captured to the EventMngr
-                WasCaptured();
+                PointCaptured(ID);
             }
         }
     }
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        if(isServer && !captured && other.tag == "Player")
+        if (isServer && !captured && other.tag == "Player")
         {
 
             outsideDominationArea = true;
         }
+    }
+
+    public void PointCaptured(int ID)
+    {
+        if (PointCapturedEvent != null)
+            PointCapturedEvent(ID);
     }
 }

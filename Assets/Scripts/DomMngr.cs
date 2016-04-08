@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
+using System.Linq;
+using UnityEngine.Networking;
 
 public class DomMngr : MonoBehaviour
 {
@@ -12,9 +16,14 @@ public class DomMngr : MonoBehaviour
     bool gameOver = false;
 
     private BasePlayerNetworkBehavior netBehavior;
+    private GameObject objectiveCanvas;
+    private bool EnableNextTier = false;
+    private int pointsCaptured = 0;
 
     public static DomMngr Instance { get; private set; }
 
+    //callback signature 
+    public delegate void DomPoint(int domID);
     public event System.Action PointDominated;
 
     // Use this for initialization
@@ -22,6 +31,8 @@ public class DomMngr : MonoBehaviour
     {
         Instance = this;
         StartCoroutine(DelayedStart());
+        objectiveCanvas = transform.FindChild("ObjectiveCanvas").gameObject;
+        objectiveCanvas.transform.FindChild("3").gameObject.SetActive(false);
     }
 
     IEnumerator DelayedStart()
@@ -35,9 +46,6 @@ public class DomMngr : MonoBehaviour
         CurrentTier = 0;
         foreach (var DomPnt in DomPntList)
         {
-            // Start listening to DmtPnt WasCaptured Event
-            DomPnt.WasCaptured += DomPnt_WasCaptured;
-
             //Update MaxTier
             if (MaxTier < DomPnt.TierCapture)
                 MaxTier = DomPnt.TierCapture;
@@ -61,7 +69,7 @@ public class DomMngr : MonoBehaviour
 
         if (netBehavior == null)
         {
-            var me =  GameObject.Find("Me");
+            var me = GameObject.Find("Me");
             if (me)
                 netBehavior = me.GetComponent<BasePlayerNetworkBehavior>();
         }
@@ -70,7 +78,7 @@ public class DomMngr : MonoBehaviour
         bool AreAllDead = (players.Length > 0);
         foreach (var player in players)
         {
-            if(player.GetComponent<Health>().CurrentHealth > 0)
+            if (player.GetComponent<Health>().CurrentHealth > 0)
             {
                 AreAllDead = false;
                 break;
@@ -86,38 +94,54 @@ public class DomMngr : MonoBehaviour
     }
 
     // Treats DomPnt wasCaptured Event
-    private void DomPnt_WasCaptured()
+    public void DomPnt_WasCaptured(int domID)
     {
         if (gameOver)
         {
             return;
         }
 
-        bool EnableNextTier = false;
+        EnableNextTier = false;
 
+        Debug.Log(domID);
+
+        List<Domination> currentTierDomPoints = DomPntList.Where(a => a.TierCapture == CurrentTier).ToList();
         // Check to see if all lower tier domination points were captured
-        foreach (var DomPnt in DomPntList)
+        foreach (var DomPnt in currentTierDomPoints )
         {
-            if ((DomPnt.TierCapture <= CurrentTier) && DomPnt.captured == false)
+            //If all lower tier points are captured
+            if (DomPnt.captured == true)
             {
-                // If one Domination Point is lower/same tier as CurrentTier and is not captured, exit from event
-                EnableNextTier = false;
-                if (PointDominated != null) PointDominated();
-                return;
+                pointsCaptured++;
+                if (pointsCaptured == currentTierDomPoints.Count)
+                {
+                    EnableNextTier = true;
+
+                    
+                    bool enableMainHall = (EnableNextTier && CurrentTier != MaxTier);
+                    objectiveCanvas.GetComponent<ObjectiveUI>().CmdUpdateObjectiveUI(domID, enableMainHall);
+                }
             }
             else
             {
-                EnableNextTier = true;
+                EnableNextTier = false;
+                pointsCaptured = 0;
+
+                bool enableMainHall = (EnableNextTier && CurrentTier != MaxTier);
+                objectiveCanvas.GetComponent<ObjectiveUI>().CmdUpdateObjectiveUI(domID, enableMainHall);
+
+                if (PointDominated != null) PointDominated();
+                return;
             }
         }
- 
+
         // Check to see if the Game is Over
-        if (CurrentTier+1 > MaxTier)
+        if (CurrentTier + 1 > MaxTier)
         {
 
             gameOver = true;
             // Game is over - Avatars Win.
-            string WinMsg = "Avatars Win!";
+            string WinMsg = "Explorers Win!";
 
             // display win msg and exit 
             netBehavior.CmdEndGame(WinMsg);

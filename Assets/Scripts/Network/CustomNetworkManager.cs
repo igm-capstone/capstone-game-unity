@@ -157,7 +157,6 @@ public class CustomNetworkManager : NetworkManager
             player = (GameObject)Instantiate(ghostPrefab, pos, Quaternion.identity);
             player.GetComponent<GhostNetworkBehavior>().conn = conn;
             explorerHealth.Clear();
-            //explorerHealth.Add(GameObject.FindGameObjectsWithTag("ExplorerHealth"));
         }
         else
         {
@@ -179,11 +178,6 @@ public class CustomNetworkManager : NetworkManager
         base.OnServerDisconnect(conn);
         GameObject.FindObjectOfType<GhostNetworkBehavior>().RpcDestroyHealthBar();
     }
-
-
-    
-
-
     IEnumerator RemoveExplorerHealth(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
@@ -208,26 +202,7 @@ public class CustomNetworkManager : NetworkManager
         {
             Destroy(item);
         }
-
-        //foreach (AvatarController ac in avatarCtrl)
-        //{
-        //    healthRemaining.Add(GameObject.Find(ac.gameObject.name + "Health"));
-        //}
-
-        //var healthToRemove = allExplorersHealth.Except(healthRemaining).ToList();
-
-
-
-        //foreach (AvatarController ac in avatarCtrl)
-        //{
-        //    ac.gameObject.GetComponent<AvatarNetworkBehavior>().CmdDestroyHealthBar(healthToRemove[0]);
-        //}
-        //foreach (GameObject health in healthToRemove)
-        //{
-        //    Debug.Log(health.name);
-        //    Destroy(health);
-            
-        //}
+        
     }
 }
 
