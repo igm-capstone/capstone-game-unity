@@ -16,7 +16,7 @@ public class Domination : NetworkBehaviour
     [Export("captureTime")]
     public float timeToCapture = 20.0f;
     public Image dominationFill;
-    public Image connection;    
+    [System.NonSerialized]
     public float fillAmount;
 
     // Domination Point Tier. All dom Pnts of a tier must be dominated to go to the next.
@@ -28,9 +28,12 @@ public class Domination : NetworkBehaviour
 
     public event System.Action WasCaptured;
 
+    [Range(0, 3)]
+    public int ID;
+
     public void Update()
     {
-
+        
         if (isServer && outsideDominationArea == true && elapsedTime >= 0.0f)
         {
             elapsedTime -= Time.deltaTime;
@@ -38,11 +41,6 @@ public class Domination : NetworkBehaviour
 
         dominationFill.fillAmount = elapsedTime / timeToCapture;
         fillAmount = dominationFill.fillAmount;
-        
-        //if(captured == true && connection != null)
-        //{
-        //    connection.fillAmount += (Time.deltaTime * 0.5f);
-        //}
     }
     void OnTriggerStay2D(Collider2D other)
     {
@@ -57,6 +55,10 @@ public class Domination : NetworkBehaviour
             else
             {
                 captured = true;
+
+                //Update UI
+                
+
                 // Indicates that this point was captured to the EventMngr
                 WasCaptured();
             }

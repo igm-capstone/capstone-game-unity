@@ -11,7 +11,6 @@ public class DomMngr : MonoBehaviour
     int MaxTier;
     bool gameOver = false;
 
-
     private BasePlayerNetworkBehavior netBehavior;
 
     public static DomMngr Instance { get; private set; }

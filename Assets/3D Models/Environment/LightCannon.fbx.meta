@@ -1,15 +1,50 @@
 fileFormatVersion: 2
-guid: c3053cb4eb91c4548ae2423af2830cd3
-timeCreated: 1456866546
-licenseType: Free
+guid: ff2a8a73d9ba14640a11913ef6d5693b
+timeCreated: 1460129669
+licenseType: Pro
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: LightCannon
+    100000: Arcs1
+    100002: Arcs2
+    100004: Ball
+    100006: EnergyCylinder1
+    100008: EnergyCylinder2
+    100010: Lever1
+    100012: Lever2
+    100014: //RootNode
+    400000: Arcs1
+    400002: Arcs2
+    400004: Ball
+    400006: EnergyCylinder1
+    400008: EnergyCylinder2
+    400010: Lever1
+    400012: Lever2
+    400014: //RootNode
+    2300000: Arcs1
+    2300002: Arcs2
+    2300004: Ball
+    2300006: EnergyCylinder1
+    2300008: EnergyCylinder2
+    2300010: Lever1
+    2300012: Lever2
+    2300014: //RootNode
+    3300000: Arcs1
+    3300002: Arcs2
+    3300004: Ball
+    3300006: EnergyCylinder1
+    3300008: EnergyCylinder2
+    3300010: Lever1
+    3300012: Lever2
+    3300014: //RootNode
+    4300000: CannonBody
+    4300002: Arcs1
+    4300004: Arcs2
+    4300006: EnergyCylinder1
+    4300008: EnergyCylinder2
+    4300010: Lever2
+    4300012: Lever1
+    4300014: Ball
   materials:
     importMaterials: 0
     materialName: 0
