@@ -636,6 +636,7 @@ GameObject:
   - 114: {fileID: 11414444}
   - 114: {fileID: 11413242}
   - 114: {fileID: 11467864}
+  - 114: {fileID: 11410760}
   m_Layer: 11
   m_Name: GrenadeTrapper
   m_TagString: Player
@@ -2145,6 +2146,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693a21abc1e1d06449429b2ae6e78e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11410760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f0ac47106bf224382f152a4e819260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StrtWndwPreFab: {fileID: 149572, guid: b45fc5559e3912f4083d12757e1d8e2a, type: 2}
 --- !u!114 &11413242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11580,7 +11593,7 @@ Prefab:
       objectReference: {fileID: 482158, guid: 5ba6d8fad543f6b4ba43151a987472af, type: 2}
     - target: {fileID: 0}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ReviveHealPrcnt
@@ -11732,6 +11745,10 @@ Prefab:
       propertyPath: UseCount
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: StrtWndwPreFab
+      value: 
+      objectReference: {fileID: 149572, guid: b45fc5559e3912f4083d12757e1d8e2a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 157710}

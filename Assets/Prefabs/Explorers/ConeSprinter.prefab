@@ -73,6 +73,7 @@ GameObject:
   - 114: {fileID: 11451730}
   - 114: {fileID: 11443202}
   - 114: {fileID: 11400816}
+  - 114: {fileID: 11496890}
   m_Layer: 11
   m_Name: ConeSprinter
   m_TagString: Player
@@ -2661,6 +2662,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11496890
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f0ac47106bf224382f152a4e819260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StrtWndwPreFab: {fileID: 149572, guid: b45fc5559e3912f4083d12757e1d8e2a, type: 2}
 --- !u!124 &12437470
 Behaviour:
   m_ObjectHideFlags: 1
@@ -11648,7 +11661,7 @@ Prefab:
       objectReference: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
     - target: {fileID: 0}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
@@ -11789,6 +11802,10 @@ Prefab:
       propertyPath: maxLanternCount
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: StrtWndwPreFab
+      value: 
+      objectReference: {fileID: 149572, guid: b45fc5559e3912f4083d12757e1d8e2a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102924}
