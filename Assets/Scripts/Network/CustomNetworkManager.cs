@@ -148,6 +148,7 @@ public class CustomNetworkManager : NetworkManager
         {
             GameObject radarCam = GameObject.Find("RadarCamera");
             radarCam.SetActive(false);
+            FindObjectOfType<ObjectiveUI>().transform.FindChild("MainText").GetComponent<Text>().text = "Areas Exorcised";
 
             var sp = FindObjectsOfType<AvatarSpawnPoint>().FirstOrDefault(s => s.PlayerID == 0);
             var pos = sp ? sp.transform.position : Vector3.zero;

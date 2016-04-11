@@ -26,8 +26,6 @@ public class IndicatorBehavior : MonoBehaviour {
 
         var avatarClient = GameObject.Find("Me");
 
-     //   Vector3 meToAvatar = Vector3.Normalize(avatar.transform.position - avatarClient.transform.position);
-
         Vector2 meScreenPoint = Camera.main.WorldToViewportPoint(avatarClient.transform.position);
         Vector3 viewportPoint = Camera.main.WorldToViewportPoint(avatar.transform.position);
         

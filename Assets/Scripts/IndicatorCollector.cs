@@ -54,17 +54,17 @@ public class IndicatorCollector : MonoBehaviour {
                 IndicatorBehavior ib = indicator.GetComponent<IndicatorBehavior>();
                 ib.avatar = ac.gameObject;
 
-                if(ac.name == "ConeSprinter(Clone)")
+                if(ac.GetComponent<Sprint>() != null)//Sprinter
                 {
                     GameObject uiimage = ib.gameObject.transform.FindChild("UIImage").gameObject;
                     uiimage.GetComponent<Image>().sprite = ib.Sprinter;
                 }
-                if(ac.name == "GrenadeSupport(Clone)")
+                if(ac.GetComponent<Heal>() != null)//Prof
                 {
                     GameObject uiimage = ib.gameObject.transform.FindChild("UIImage").gameObject;
                     uiimage.GetComponent<Image>().sprite = ib.Support;
                 }   
-                if(ac.name == "LongAtckTrapper(Clone)")
+                if(ac.GetComponent<SetTrapGlue>() != null)//Trapmaster 
                 {
                     GameObject uiimage = ib.gameObject.transform.FindChild("UIImage").gameObject;
                     uiimage.GetComponent<Image>().sprite = ib.Trapper;

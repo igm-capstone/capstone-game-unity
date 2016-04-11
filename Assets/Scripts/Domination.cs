@@ -15,6 +15,7 @@ public class Domination : NetworkBehaviour
 
     [Export("captureTime")]
     public float timeToCapture = 20.0f;
+    public Sprite indicator;
     public Image dominationFill;
     [System.NonSerialized]
     public float fillAmount;
