@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-enum PlyrNum
+public enum PlyrNum
 {
     Ghost,
     Sprinter,
@@ -67,6 +67,10 @@ public class StartUpScreenMngr : MonoBehaviour
 
         GameObject window = (GameObject)Instantiate(StrtWndwPreFab,Vector3.zero,Quaternion.identity);
 
+        var windowScr = window.GetComponent<StartUpScrBhvr>();
+        windowScr.ScrnMngrRef = this;
+        windowScr.MyId = MyPlyrId;
+
         // Set window parent and center it.
         window.transform.SetParent(MainCanvasRef.transform);
         window.transform.localPosition = Vector3.zero;
@@ -76,24 +80,28 @@ public class StartUpScreenMngr : MonoBehaviour
         {
             case PlyrNum.Ghost:
                 window.GetComponent<StartUpScrBhvr>().ClassName.text = "Ghost";
+                windowScr.GhostNetBhvr = gameObject.GetComponent<GhostNetworkBehavior>();
                 break;
 
             case PlyrNum.Sprinter:
                 window.GetComponent<StartUpScrBhvr>().ClassName.text = "Sprinter";
+                windowScr.AvNetBhvr = gameObject.GetComponent<AvatarNetworkBehavior>();
                 break;
 
             case PlyrNum.TrapMaster:
                 window.GetComponent<StartUpScrBhvr>().ClassName.text = "TrapMaster";
+                windowScr.AvNetBhvr = gameObject.GetComponent<AvatarNetworkBehavior>();
                 break;
 
             case PlyrNum.Support:
                 window.GetComponent<StartUpScrBhvr>().ClassName.text = "Support";
+                windowScr.AvNetBhvr = gameObject.GetComponent<AvatarNetworkBehavior>();
                 break;
 
             default:
                 break;
         }
-        
+
 
 
     }
