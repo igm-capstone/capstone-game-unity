@@ -21,7 +21,7 @@ public class ObjectiveUI : NetworkBehaviour
             {
                 transform.FindChild(i.ToString()).gameObject.SetActive(false);
             }
-            transform.FindChild((ID + 1).ToString()).gameObject.SetActive(true);
+            transform.FindChild("3").gameObject.SetActive(true);
             //FindObjectOfType<IndicatorCollector>().ChangeIndicators();
         }
     }

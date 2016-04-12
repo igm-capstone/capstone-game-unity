@@ -106,13 +106,13 @@ public class DomMngr : MonoBehaviour
         Debug.Log(domID);
 
         List<Domination> currentTierDomPoints = DomPntList.Where(a => a.TierCapture == CurrentTier).ToList();
-        // Check to see if all lower tier domination points were captured
+        // Check to see if the current tier domination points were captured
         foreach (var DomPnt in currentTierDomPoints )
-        {
-            //If all lower tier points are captured
+        {            
             if (DomPnt.captured == true)
             {
                 pointsCaptured++;
+                //If all current tier points are captured
                 if (pointsCaptured == currentTierDomPoints.Count)
                 {
                     EnableNextTier = true;

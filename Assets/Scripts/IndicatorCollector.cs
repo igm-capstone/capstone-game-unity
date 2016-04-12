@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Linq;
 
 public class IndicatorCollector : MonoBehaviour {
 
@@ -12,18 +13,21 @@ public class IndicatorCollector : MonoBehaviour {
         GameObject radarCam = GameObject.Find("RadarCamera");
         if (IsSelfClient())
         {
-            Domination[] dominationPoints = GameObject.FindObjectsOfType<Domination>();
-            foreach (Domination dom in dominationPoints)
+            List<Domination> tier1DomPoints = FindObjectsOfType<Domination>().Where(a => a.GetComponent<Domination>().TierCapture == 0).ToList();
+            foreach (Domination dom in tier1DomPoints)
             {
                 GameObject indicator = GameObject.Instantiate(DomPointIndicatorPrefab);
                 indicator.GetComponent<Canvas>().worldCamera = radarCam.GetComponent<Camera>();
                 IndicatorBehavior ib = indicator.GetComponent<IndicatorBehavior>();
                 ib.domPoint = dom.gameObject;
+                indicator.transform.FindChild("UIImageGrey").GetComponent<Image>().sprite = dom.indicator;
+                indicator.transform.FindChild("UIImageColor").GetComponent<Image>().sprite = dom.indicator;
             }
         }
     }
 
-	public void RefreshIndicators ()
+
+    public void RefreshIndicators ()
     {
         GameObject radarCam = GameObject.Find("RadarCamera");
         if (IsSelfClient())
