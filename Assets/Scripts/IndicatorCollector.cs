@@ -13,7 +13,35 @@ public class IndicatorCollector : MonoBehaviour {
         GameObject radarCam = GameObject.Find("RadarCamera");
         if (IsSelfClient())
         {
-            List<Domination> tier1DomPoints = FindObjectsOfType<Domination>().Where(a => a.GetComponent<Domination>().TierCapture == 0).ToList();
+            List<Domination> tier0DomPoints = FindObjectsOfType<Domination>().Where(a => a.GetComponent<Domination>().TierCapture == 0).ToList();
+            foreach (Domination dom in tier0DomPoints)
+            {
+                GameObject indicator = GameObject.Instantiate(DomPointIndicatorPrefab);
+                indicator.GetComponent<Canvas>().worldCamera = radarCam.GetComponent<Camera>();
+                IndicatorBehavior ib = indicator.GetComponent<IndicatorBehavior>();
+                ib.domPoint = dom.gameObject;
+                indicator.transform.FindChild("UIImageGrey").GetComponent<Image>().sprite = dom.indicator;
+                indicator.transform.FindChild("UIImageColor").GetComponent<Image>().sprite = dom.indicator;
+            }
+        }
+    }
+
+    public void ChangeIndicators()
+    {
+        GameObject radarCam = GameObject.Find("RadarCamera");
+        Debug.Log("Update Indicator UI");
+
+        if (IsSelfClient())
+        {
+            //Get all old dom point indicators
+            List<IndicatorBehavior> oldIndicators = FindObjectsOfType<IndicatorBehavior>().Where(I => I.domPoint != null).ToList();
+            foreach (IndicatorBehavior I in oldIndicators)
+            {
+                Destroy(I.gameObject);
+            }
+
+            List<Domination> tier1DomPoints = FindObjectsOfType<Domination>().Where(a => a.GetComponent<Domination>().TierCapture == 1).ToList();
+
             foreach (Domination dom in tier1DomPoints)
             {
                 GameObject indicator = GameObject.Instantiate(DomPointIndicatorPrefab);

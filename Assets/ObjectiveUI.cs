@@ -15,6 +15,7 @@ public class ObjectiveUI : NetworkBehaviour
         domPointCanvas.GetComponentInChildren<Image>().color = Color.grey;
         domPointCanvas.GetComponent<Text>().color = Color.grey;
 
+        Debug.Log("Main Hall enable  " + shouldEnableMainHall);
         if (shouldEnableMainHall)
         {
             for (int i = 0; i < 3; i++)
@@ -22,7 +23,7 @@ public class ObjectiveUI : NetworkBehaviour
                 transform.FindChild(i.ToString()).gameObject.SetActive(false);
             }
             transform.FindChild("3").gameObject.SetActive(true);
-            //FindObjectOfType<IndicatorCollector>().ChangeIndicators();
+            FindObjectOfType<IndicatorCollector>().ChangeIndicators();
         }
     }
 
