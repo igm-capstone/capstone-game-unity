@@ -14,7 +14,7 @@ public class SpawnAOE : ISkill
         MinSpawnDist = 15f;
         MaxSpawnDist = 80f;
 
-        key = KeyCode.Alpha3;
+        key = KeyCode.Alpha2;
 
         mySkillBar = GetComponent<SkillBar>();
 

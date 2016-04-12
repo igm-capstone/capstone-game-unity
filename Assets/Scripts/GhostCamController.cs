@@ -57,22 +57,22 @@ public class GhostCamController : MonoBehaviour
             }
         }
 
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        //float horizontal = Input.GetAxis("Horizontal");
+        //float vertical = Input.GetAxis("Vertical");
 
-        Vector2 dskeyboard = new Vector2(horizontal, vertical);
+       // Vector2 dskeyboard = new Vector2(horizontal, vertical);
 
         // calculate ds (delta space) for the mouse
         var mousePos = Input.mousePosition;
         var nearClip = GhostCam.nearClipPlane;
         Vector2 currWorldPos = mousePos * 0.1f; // GhostCam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, nearClip)); //camManager->Screen2WorldAtZ0(currScreenPos);
-        Vector2 ds = (LastWorldPosition - currWorldPos) + dskeyboard;
+        Vector2 ds = (LastWorldPosition - currWorldPos);// + dskeyboard;
 
         worldGraph[index] = currWorldPos;
         screenGraph[index] = mousePos;
         index = (index + 1) % worldGraph.Count;
 
-        if (!Input.GetMouseButton(1) && dskeyboard.magnitude == 0)
+        if (!Input.GetMouseButton(1))// && dskeyboard.magnitude == 0)
         {
             LastWorldPosition = currWorldPos;
             return;

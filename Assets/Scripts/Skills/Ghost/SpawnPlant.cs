@@ -15,7 +15,7 @@ public class SpawnPlant : ISkill
         MinSpawnDist = 10f;
         MaxSpawnDist = 100f;
 
-        key = KeyCode.Alpha4;
+        key = KeyCode.Alpha3;
 
         mySkillBar = GetComponent<SkillBar>();
 

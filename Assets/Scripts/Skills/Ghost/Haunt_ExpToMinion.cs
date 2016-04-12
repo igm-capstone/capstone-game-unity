@@ -16,7 +16,7 @@ public class Haunt_ExpToMinion : ISkill {
         Name = "Imp Illusion";
         canDrop = false;
 
-        key = KeyCode.Alpha5;
+        key = KeyCode.Alpha4;
 
         mySkillBar = GetComponent<SkillBar>();
 

@@ -17,7 +17,7 @@ public class SpawnMinion : ISkill
         MinSpawnDist = 10f;
         MaxSpawnDist = 80f;
 
-        key = KeyCode.Alpha2;
+        key = KeyCode.Alpha1;
 
         mySkillBar = GetComponent<SkillBar>();
 
