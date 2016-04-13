@@ -29,7 +29,7 @@ GameObject:
   - 114: {fileID: 11423372}
   - 114: {fileID: 11488622}
   m_Layer: 5
-  m_Name: BaseStartUpWindow
+  m_Name: StartUpWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -227,16 +227,4 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
         explorer.transform.FindChild("HealthCanvas(Clone)").gameObject.SetActive(true);
         explorer.GetComponent<AvatarController>().isHidden = false;
     }
-
-    [Command]
-    public void CmdPropagateRdy(PlyrNum PlyrId)
-    {
-        // Called from explorers propagate player ready
-        // Calls client RPC
-
-
-
-    }
-    
-
 }

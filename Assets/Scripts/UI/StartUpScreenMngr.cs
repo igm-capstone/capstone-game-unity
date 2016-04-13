@@ -78,31 +78,15 @@ public class StartUpScreenMngr : MonoBehaviour
         windowObj.transform.localPosition = Vector3.zero;
         windowObj.transform.localScale= Vector3.one;
 
-        switch (MyPlyrId)
+        if (MyPlyrId == PlyrNum.Ghost)
         {
-            case PlyrNum.Ghost:
-                windowObj.GetComponent<StartUpScrBhvr>().ClassName.text = "Ghost";
-                windowScrpt.GhostNetBhvr = gameObject.GetComponent<GhostNetworkBehavior>();
-                break;
-
-            case PlyrNum.Sprinter:
-                windowObj.GetComponent<StartUpScrBhvr>().ClassName.text = "Sprinter";
-                windowScrpt.AvNetBhvr = gameObject.GetComponent<AvatarNetworkBehavior>();
-                break;
-
-            case PlyrNum.TrapMaster:
-                windowObj.GetComponent<StartUpScrBhvr>().ClassName.text = "TrapMaster";
-                windowScrpt.AvNetBhvr = gameObject.GetComponent<AvatarNetworkBehavior>();
-                break;
-
-            case PlyrNum.Support:
-                windowObj.GetComponent<StartUpScrBhvr>().ClassName.text = "Support";
-                windowScrpt.AvNetBhvr = gameObject.GetComponent<AvatarNetworkBehavior>();
-                break;
-
-            default:
-                Debug.Log("Player ID not found!");
-                break;
+            windowObj.GetComponent<StartUpScrBhvr>().ClassName.text = "Ghost";
+            windowScrpt.BaseNetBhvr = gameObject.GetComponent<GhostNetworkBehavior>();
+        }
+        else 
+        {
+            windowObj.GetComponent<StartUpScrBhvr>().ClassName.text = "Explorer";
+            windowScrpt.BaseNetBhvr = gameObject.GetComponent<AvatarNetworkBehavior>();
         }
     }
 

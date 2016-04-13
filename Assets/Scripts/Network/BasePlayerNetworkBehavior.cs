@@ -63,5 +63,17 @@ public class BasePlayerNetworkBehavior : NetworkBehaviour
     {
         gameStateHud.SetRestarting();
     }
-    
+
+    [Command]
+    public void CmdPropagateRdy(PlyrNum PlyrId)
+    {
+        var StartScreenBhvr = transform.Find("StartUpWindow").GetComponent<StartUpScrBhvr>();
+    }
+
+    [Command]
+    public void CmdPropagateRdy(PlyrNum PlyrId)
+    {
+
+    }
+
 }
