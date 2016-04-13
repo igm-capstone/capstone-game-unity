@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using System.Linq;
 using Wenzil.Console;
 
 public class BasePlayerNetworkBehavior : NetworkBehaviour
@@ -64,16 +65,45 @@ public class BasePlayerNetworkBehavior : NetworkBehaviour
         gameStateHud.SetRestarting();
     }
 
+    // Sets PlayerId player as ready on the Start Up screen. Propagates to all clients
     [Command]
-    public void CmdPropagateRdy(PlyrNum PlyrId)
+    public void CmdPropagateRdy(PlyrNum _PlyrId)
     {
-        var StartScreenBhvr = transform.Find("StartUpWindow").GetComponent<StartUpScrBhvr>();
+        var StartScreenBhvr = GameObject.Find("StartUpWindow(Clone)").GetComponent<StartUpScrBhvr>();
+
+        // Sets PlyerId as ready on server.
+        StartScreenBhvr.RdyArray[(int)_PlyrId] = true;
+        StartScreenBhvr.RdyCheckMark[(int)_PlyrId].gameObject.SetActive(true);
+
+        // Propagates to clients
+        RpcPropagateRdy(_PlyrId, StartScreenBhvr.RdyArray);
     }
 
-    [Command]
-    public void CmdPropagateRdy(PlyrNum PlyrId)
+    // Sets PlayerId player as ready on the Start Up screen. Propagates to all clients
+    [ClientRpc]
+    public void RpcPropagateRdy(PlyrNum _PlyrId, bool[] _RdyArray)
     {
+        var StartScreenBhvr = GameObject.Find("StartUpWindow(Clone)").GetComponent<StartUpScrBhvr>();
 
+        // Get Rdy state array from server.
+        StartScreenBhvr.RdyArray = _RdyArray;
+
+        int i = 0;
+        // Propagates all Rdy states to all clients
+        foreach (var RdyState in StartScreenBhvr.RdyArray)
+        {
+            if (RdyState)
+            {
+                StartScreenBhvr.RdyCheckMark[i].gameObject.SetActive(true);
+            }
+            i++;
+        }
+
+        // If all players are ready start the game.
+        if (StartScreenBhvr.RdyArray.All(b => b))
+        {
+            GameObject.Find("Me").GetComponent<StartUpScreenMngr>().GameStart();
+        }
     }
 
 }

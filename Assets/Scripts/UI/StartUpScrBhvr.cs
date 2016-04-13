@@ -5,9 +5,7 @@ using System.Collections;
 
 public class StartUpScrBhvr : MonoBehaviour
 {
-
     public Text ClassName;
-
     public Sprite[] ClassInfoSprt;
     Image ClassImg;
 
@@ -15,8 +13,10 @@ public class StartUpScrBhvr : MonoBehaviour
     public StartUpScreenMngr ScrnMngrRef;
     [NonSerialized]
     public PlyrNum MyId;
-
-    bool[] RdyArray = new bool[4];
+    [NonSerialized]
+    public Image[] RdyCheckMark = new Image[4];
+    [NonSerialized]
+    public bool[] RdyArray = new bool[4];
 
     [NonSerialized]
     public BasePlayerNetworkBehavior BaseNetBhvr;
@@ -30,15 +30,21 @@ public class StartUpScrBhvr : MonoBehaviour
 
         // All enums are an INT.
         ClassImg.sprite = ClassInfoSprt[(int)MyId];
+
+        int i = 0;
+        // Get all checkmarks and disable them.
+        foreach (var chkMark in RdyCheckMark)
+        {
+            RdyCheckMark[i] = transform.Find("RdyBox-" + (i.ToString()+"/Checkmark")).GetComponent<Image>();
+            RdyCheckMark[i].gameObject.SetActive(false);
+            i++;
+        }
     }
 
     // Ready button was pressed
     public void RdyBtnClick()
     {
-        // Signal
-        RdyArray[(int)MyId] = true;
-        Debug.Log(MyId + " is ready!");
-
-        // Calls Command/Client RPC
+        // Propagates the Ready button click to the server.
+        BaseNetBhvr.CmdPropagateRdy(MyId);
     }
 }
