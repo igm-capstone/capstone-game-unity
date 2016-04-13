@@ -21,6 +21,8 @@ public class StartUpScreenMngr : MonoBehaviour
 
     PlyrNum MyPlyrId;
 
+    GameObject windowObj;
+
     // Use this for initialization
     void Start()
     {
@@ -65,56 +67,44 @@ public class StartUpScreenMngr : MonoBehaviour
 
         // Instance the Start Up window.
 
-        GameObject window = (GameObject)Instantiate(StrtWndwPreFab,Vector3.zero,Quaternion.identity);
+        windowObj = (GameObject)Instantiate(StrtWndwPreFab,Vector3.zero,Quaternion.identity);
 
-        var windowScr = window.GetComponent<StartUpScrBhvr>();
-        windowScr.ScrnMngrRef = this;
-        windowScr.MyId = MyPlyrId;
+        var windowScrpt = windowObj.GetComponent<StartUpScrBhvr>();
+        windowScrpt.ScrnMngrRef = this;
+        windowScrpt.MyId = MyPlyrId;
 
         // Set window parent and center it.
-        window.transform.SetParent(MainCanvasRef.transform);
-        window.transform.localPosition = Vector3.zero;
-        window.transform.localScale= Vector3.one;
+        windowObj.transform.SetParent(MainCanvasRef.transform);
+        windowObj.transform.localPosition = Vector3.zero;
+        windowObj.transform.localScale= Vector3.one;
 
         switch (MyPlyrId)
         {
             case PlyrNum.Ghost:
-                window.GetComponent<StartUpScrBhvr>().ClassName.text = "Ghost";
-                windowScr.GhostNetBhvr = gameObject.GetComponent<GhostNetworkBehavior>();
+                windowObj.GetComponent<StartUpScrBhvr>().ClassName.text = "Ghost";
+                windowScrpt.GhostNetBhvr = gameObject.GetComponent<GhostNetworkBehavior>();
                 break;
 
             case PlyrNum.Sprinter:
-                window.GetComponent<StartUpScrBhvr>().ClassName.text = "Sprinter";
-                windowScr.AvNetBhvr = gameObject.GetComponent<AvatarNetworkBehavior>();
+                windowObj.GetComponent<StartUpScrBhvr>().ClassName.text = "Sprinter";
+                windowScrpt.AvNetBhvr = gameObject.GetComponent<AvatarNetworkBehavior>();
                 break;
 
             case PlyrNum.TrapMaster:
-                window.GetComponent<StartUpScrBhvr>().ClassName.text = "TrapMaster";
-                windowScr.AvNetBhvr = gameObject.GetComponent<AvatarNetworkBehavior>();
+                windowObj.GetComponent<StartUpScrBhvr>().ClassName.text = "TrapMaster";
+                windowScrpt.AvNetBhvr = gameObject.GetComponent<AvatarNetworkBehavior>();
                 break;
 
             case PlyrNum.Support:
-                window.GetComponent<StartUpScrBhvr>().ClassName.text = "Support";
-                windowScr.AvNetBhvr = gameObject.GetComponent<AvatarNetworkBehavior>();
+                windowObj.GetComponent<StartUpScrBhvr>().ClassName.text = "Support";
+                windowScrpt.AvNetBhvr = gameObject.GetComponent<AvatarNetworkBehavior>();
                 break;
 
             default:
+                Debug.Log("Player ID not found!");
                 break;
         }
-
-
-
     }
-
-    // TEST CODE.
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GameStart();
-        }
-    }
-    // END OF TEST CODE
 
     // ReadyBtnfunction
 
@@ -122,6 +112,7 @@ public class StartUpScreenMngr : MonoBehaviour
     public void GameStart()
     {
         // DeletesStart up window instance
+        Destroy(windowObj);
 
         // Enable movement
         switch (MyPlyrId)
