@@ -37,6 +37,7 @@ GameObject:
   - 114: {fileID: 11478774}
   - 114: {fileID: 11469056}
   - 114: {fileID: 11461776}
+  - 114: {fileID: 11463636}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -321,6 +322,19 @@ MonoBehaviour:
   UseCount: 0
   addToSkillBar: 1
   HauntMeleeMinion: {fileID: 155754, guid: 3555dcae92f866f4db1693d6a8442a24, type: 2}
+  HauntDuration: 15
+--- !u!114 &11463636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f0ac47106bf224382f152a4e819260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StrtWndwPreFab: {fileID: 149572, guid: b45fc5559e3912f4083d12757e1d8e2a, type: 2}
 --- !u!114 &11469056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -632,6 +646,10 @@ Prefab:
       propertyPath: ClickableLayers.m_Bits
       value: 2654464
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: StrtWndwPreFab
+      value: 
+      objectReference: {fileID: 149572, guid: b45fc5559e3912f4083d12757e1d8e2a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196296}

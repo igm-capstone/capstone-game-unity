@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// This Script runs on the explorer's copy on the server. It is responsable for enabling or disabling the 
+// This Script runs on the explorer's copy on the server. It is responsable for enabling or disabling the Spawn Minion UI on all explorers.
 
 public class SpawnUIUpdater : MonoBehaviour
 {

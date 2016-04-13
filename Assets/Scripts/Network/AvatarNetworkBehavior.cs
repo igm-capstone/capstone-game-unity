@@ -227,6 +227,4 @@ public class AvatarNetworkBehavior : BasePlayerNetworkBehavior
         explorer.transform.FindChild("HealthCanvas(Clone)").gameObject.SetActive(true);
         explorer.GetComponent<AvatarController>().isHidden = false;
     }
-    
-
 }
