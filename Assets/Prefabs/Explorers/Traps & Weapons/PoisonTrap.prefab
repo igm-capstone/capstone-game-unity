@@ -132,6 +132,12 @@ MonoBehaviour:
   PoisonDamage: 3
   GlueSlowRate: .300000012
   SpringKnockForce: 100
+  TriggerLayers:
+    serializedVersion: 2
+    m_Bits: 67119104
+  HitLayers:
+    serializedVersion: 2
+    m_Bits: 67119104
 --- !u!198 &19896002
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1277,6 +1283,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: EffectTime
       value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: TriggerLayers.m_Bits
+      value: 67119104
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: HitLayers.m_Bits
+      value: 67119104
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

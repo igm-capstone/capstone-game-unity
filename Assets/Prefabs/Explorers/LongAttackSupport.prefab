@@ -2546,7 +2546,7 @@ MonoBehaviour:
   addToSkillBar: 1
   HitLayers:
     serializedVersion: 2
-    m_Bits: 67119104
+    m_Bits: 67117056
   Damage: 17
   hasKnockBack: 1
   KnockBackMag: 5
@@ -11740,7 +11740,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: HitLayers.m_Bits
-      value: 67119104
+      value: 67117056
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z

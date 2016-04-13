@@ -28,7 +28,10 @@ public class TrapBehavior : MonoBehaviour
     bool hasStartUpEnded;
     bool isTrapActive;
 
-    LayerMask hitLayers;
+    [SerializeField]
+    LayerMask TriggerLayers;
+    [SerializeField]
+    LayerMask HitLayers;
 
     // Use this for initialization
     void Start ()
@@ -55,8 +58,6 @@ public class TrapBehavior : MonoBehaviour
             mustApplyEffect = true;
         }
 
-        hitLayers = 1 << LayerMask.NameToLayer("Minion") | 1 << LayerMask.NameToLayer("Player");
-
         // Begins counting time for StartUp
         StartCoroutine(StartUpTimer(StartUpTime));
 
@@ -70,8 +71,11 @@ public class TrapBehavior : MonoBehaviour
             return;
         }
 
-        if (isTrapActive == false && (other.gameObject.layer == LayerMask.NameToLayer("Minion") ||
-                                        (AffectPlayers && other.gameObject.layer == LayerMask.NameToLayer("Player"))))
+        int colLayer = 1 << other.gameObject.layer;
+        if (isTrapActive == false && (colLayer & TriggerLayers) == colLayer)
+
+            /*LayerMask.NameToLayer("Minion") ||
+                                        (AffectPlayers && other.gameObject.layer == LayerMask.NameToLayer("Player"))))*/
         {
             ActivateTrap(MyType);
             isTrapActive = true;
@@ -209,7 +213,7 @@ public class TrapBehavior : MonoBehaviour
         {
 
             // Stop slowdown on all current affected targets before destroying trap.
-            var curTrgts = Physics2D.OverlapCircleAll(transform.position, trapTriggerRadius, hitLayers);
+            var curTrgts = Physics2D.OverlapCircleAll(transform.position, trapTriggerRadius, HitLayers);
 
             foreach (var trgt in curTrgts)
             {
