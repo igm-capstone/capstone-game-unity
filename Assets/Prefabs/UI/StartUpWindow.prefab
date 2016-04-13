@@ -735,6 +735,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4d61e299651f0ba479c29758263f0bc1, type: 3}
   - {fileID: 21300000, guid: 45c0495128a1b464ea1e62c46636cd39, type: 3}
   - {fileID: 21300000, guid: 5f9906ed05e5cac47a7f6be68fab81a0, type: 3}
+  DebugEnable: 1
 --- !u!114 &11488692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1291,6 +1292,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: DebugEnable
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

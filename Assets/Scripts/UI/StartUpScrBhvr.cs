@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Linq;
 using System.Collections;
 
 public class StartUpScrBhvr : MonoBehaviour
@@ -20,7 +21,8 @@ public class StartUpScrBhvr : MonoBehaviour
 
     [NonSerialized]
     public BasePlayerNetworkBehavior BaseNetBhvr;
-    // Chaltein do futuro: Usa base net behavior para pegar ambos behaviors e chamar as funcopes de propagar o rdy. Vai ser um Command  que chama um RPC.
+
+    public bool DebugEnable;
 
     // Use this for initialization
     void Start()
@@ -41,10 +43,31 @@ public class StartUpScrBhvr : MonoBehaviour
         }
     }
 
+    // Debug code for easier testing.
+    // Set everyone as ready and signal to start the game.
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && DebugEnable)
+        {
+            RdyArray.All(b => { b = true; return true; });
+            DebugStart();
+        }
+    }
+
     // Ready button was pressed
     public void RdyBtnClick()
     {
         // Propagates the Ready button click to the server.
         BaseNetBhvr.CmdPropagateRdy(MyId);
+    }
+
+    // DebugCode: Send all PlyrID Rdy states to server. Used to start the game with varying amounts of players.
+    void DebugStart()
+    {
+        // Propagates the Ready button click to the server.
+        BaseNetBhvr.CmdPropagateRdy(PlyrNum.Ghost);
+        BaseNetBhvr.CmdPropagateRdy(PlyrNum.Sprinter);
+        BaseNetBhvr.CmdPropagateRdy(PlyrNum.Support);
+        BaseNetBhvr.CmdPropagateRdy(PlyrNum.TrapMaster);
     }
 }
