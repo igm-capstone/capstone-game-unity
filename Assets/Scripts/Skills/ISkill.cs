@@ -1,6 +1,9 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.EventSystems;
+using System.Linq;
 
 public struct ToolTipText
 {
@@ -69,9 +72,39 @@ public abstract class ISkill : MonoBehaviour
 
     [NonSerialized]
     public SkillButton SkillBtnScript;
-    
+
+    //ToolTip
+    private GameObject toolTipObj;
+    private Text toolTipDscrpt;
+
+    private Text toolTipFstLbl;
+    private Text toolTipSndLbl;
+    private Text toolTipThdLbl;
+
+    private Text toolTipFstAtt;
+    private Text toolTipSndAtt;
+    private Text toolTipThdAtt;
+
+    private static bool toolTipChange = false;
+
+
     void OnEnable()
     {
+        var mc = GameObject.Find("MainCanvas");
+        toolTipObj = mc.transform.Find("SkillPanel/ToolTip").gameObject;
+        
+        // Gets Reference to the ToolTip texts.
+        toolTipDscrpt = toolTipObj.transform.FindChild("Description").gameObject.GetComponent<Text>();
+
+        toolTipFstLbl = toolTipObj.transform.FindChild("FirstLabel").gameObject.GetComponent<Text>();
+        toolTipSndLbl = toolTipObj.transform.FindChild("SecondLabel").gameObject.GetComponent<Text>();
+        toolTipThdLbl = toolTipObj.transform.FindChild("ThirdLabel").gameObject.GetComponent<Text>();
+
+        toolTipFstAtt = toolTipObj.transform.FindChild("FirstAttribute").gameObject.GetComponent<Text>();
+        toolTipSndAtt = toolTipObj.transform.FindChild("SecondAttribute").gameObject.GetComponent<Text>();
+        toolTipThdAtt = toolTipObj.transform.FindChild("ThirdAttribute").gameObject.GetComponent<Text>();
+
+
         LastUse = float.MinValue;
 
         // CreateUI
@@ -79,6 +112,11 @@ public abstract class ISkill : MonoBehaviour
         {
             var skillBar = GameObject.Find("SkillBar");
             var button = Instantiate(SkillButtonPrefab);
+            var showCallback = button.GetComponent<EventTrigger>().triggers.First(a => a.eventID == EventTriggerType.PointerEnter).callback;
+            showCallback.AddListener(ShowToolTip);
+
+            var hideCallback = button.GetComponent<EventTrigger>().triggers.First(a => a.eventID == EventTriggerType.PointerExit).callback;
+            hideCallback.AddListener(HideToolTip);
 
             if (addToSkillBar)
             {
@@ -89,6 +127,7 @@ public abstract class ISkill : MonoBehaviour
             SkillBtnScript._skill = this;
             SkillBtnScript._skillBar = GetComponent<SkillBar>();
             SkillBtnScript.Init();
+            //HideToolTip();
         }
     }
 
@@ -152,5 +191,55 @@ public abstract class ISkill : MonoBehaviour
         Vector3 retPosition = transform.position + (transform.GetChild(0).transform.right * _dist);
 
         return retPosition;
+    }
+
+
+    Coroutine coID;
+    static Coroutine stopCoID;
+    // Gets Called by Event Handler. Show/Hide Tooltip.
+    void ShowToolTip(BaseEventData e)
+    {
+        if (toolTipChange)
+        {
+            StopCoroutine(stopCoID);
+            toolTipChange = false;
+        }
+        UpdateToolTip();
+        coID = StartCoroutine(MouseOverWait());
+    }
+
+    public void HideToolTip(BaseEventData e)
+    {
+        toolTipChange = true;
+        stopCoID = StartCoroutine(NextToolTip());
+    }
+
+    public void UpdateToolTip()
+    {
+        toolTipDscrpt.text = ToolTip.Description;
+
+        toolTipFstLbl.text = ToolTip.FirstLabel;
+        toolTipSndLbl.text = ToolTip.SecondLabel;
+        toolTipThdLbl.text = ToolTip.ThirdLabel;
+
+        toolTipFstAtt.text = ToolTip.FirstAttribute;
+        toolTipSndAtt.text = ToolTip.SecondAttribute;
+        toolTipThdAtt.text = ToolTip.ThirdAttribute;
+    }
+
+    IEnumerator MouseOverWait()
+    {
+        if (toolTipChange)
+            yield return null;
+
+        yield return new WaitForSeconds(0.3f);
+        toolTipObj.SetActive(true);
+    }
+
+    IEnumerator NextToolTip()
+    {
+        yield return new WaitForSeconds(1.5f);
+        toolTipChange = false;
+        toolTipObj.SetActive(false);
     }
 }

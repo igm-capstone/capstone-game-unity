@@ -10,8 +10,8 @@ PlayerSettings:
   targetResolution: 0
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: Light
+  companyName: So Close Games
+  productName: Scare Tactics
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_ShowUnitySplashScreen: 0
@@ -165,7 +165,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 2af3b784d4e6a30468e5a44acfa4b36f, type: 3}
+      m_Icon: {fileID: 2800000, guid: 712e3ab225d23e74587586b992c53385, type: 3}
       m_Width: 128
       m_Height: 128
   m_BuildTargetBatching: []

@@ -26,17 +26,7 @@ public class SkillButton : MonoBehaviour
 
     private GameObject _slctdSkillUiObj;
 
-    //ToolTip
-    private GameObject toolTipObj;
-    private Text toolTipDscrpt;
-
-    private Text toolTipFstLbl;
-    private Text toolTipSndLbl;
-    private Text toolTipThdLbl;
-
-    private Text toolTipFstAtt;
-    private Text toolTipSndAtt;
-    private Text toolTipThdAtt;
+   
 
     public void Init()
     {
@@ -114,32 +104,7 @@ public class SkillButton : MonoBehaviour
         {
             transform.Find("SkillName").GetComponent<Text>().text = "";
         }
-
-        // finds toolTip and Disables it if it is enabled.
-        toolTipObj = transform.Find("ToolTip").gameObject;
-        ShowToolTip(false);
-
-        // Gets Reference to the ToolTip texts.
-        toolTipDscrpt = toolTipObj.transform.FindChild("Description").gameObject.GetComponent<Text>();
-
-        toolTipFstLbl = toolTipObj.transform.FindChild("FirstLabel").gameObject.GetComponent<Text>();
-        toolTipSndLbl = toolTipObj.transform.FindChild("SecondLabel").gameObject.GetComponent<Text>();
-        toolTipThdLbl = toolTipObj.transform.FindChild("ThirdLabel").gameObject.GetComponent<Text>();
-
-        toolTipFstAtt = toolTipObj.transform.FindChild("FirstAttribute").gameObject.GetComponent<Text>();
-        toolTipSndAtt = toolTipObj.transform.FindChild("SecondAttribute").gameObject.GetComponent<Text>();
-        toolTipThdAtt = toolTipObj.transform.FindChild("ThirdAttribute").gameObject.GetComponent<Text>();
-
-        toolTipDscrpt.text = _skill.ToolTip.Description;
-
-        toolTipFstLbl.text = _skill.ToolTip.FirstLabel;
-        toolTipSndLbl.text = _skill.ToolTip.SecondLabel;
-        toolTipThdLbl.text = _skill.ToolTip.ThirdLabel;
-
-        toolTipFstAtt.text = _skill.ToolTip.FirstAttribute;
-        toolTipSndAtt.text = _skill.ToolTip.SecondAttribute;
-        toolTipThdAtt.text = _skill.ToolTip.ThirdAttribute;
-
+        
     }
 
     private Color GetAverageColor(Sprite sprite, float saturation, float brightness)
@@ -329,11 +294,5 @@ public class SkillButton : MonoBehaviour
         {
             transform.Find("UseCount").GetComponent<Text>().text = "";
         }
-    }
-
-    // Gets Called by Event Handler. Show/Hide Tooltip.
-    public void ShowToolTip(bool mustShow)
-    {
-        toolTipObj.SetActive(mustShow);
     }
 }
