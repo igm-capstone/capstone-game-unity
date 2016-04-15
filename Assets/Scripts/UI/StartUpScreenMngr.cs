@@ -95,18 +95,28 @@ public class StartUpScreenMngr : MonoBehaviour
     // StartTheGame function
     public void GameStart()
     {
-        // DeletesStart up window instance
-        Destroy(windowObj);
+
+        if (windowObj)
+        {
+            // DeletesStart up window instance
+            Destroy(windowObj);
+        }
 
         // Enable movement
         switch (MyPlyrId)
         {
             case PlyrNum.Ghost:
-                PlayerObjRef.GetComponent<GhostController>().enabled = true;
+                if (PlayerObjRef.GetComponent<GhostController>().enabled == false)
+                {
+                    PlayerObjRef.GetComponent<GhostController>().enabled = true;
+                }
                 break;
 
             default:
-                PlayerObjRef.GetComponent<AvatarController>().enabled = true;
+                if (PlayerObjRef.GetComponent<AvatarController>().enabled == false)
+                {
+                    PlayerObjRef.GetComponent<AvatarController>().enabled = true;
+                }
                 break;
         }
     }

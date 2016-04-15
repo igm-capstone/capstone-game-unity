@@ -69,5 +69,8 @@ public class StartUpScrBhvr : MonoBehaviour
         BaseNetBhvr.CmdPropagateRdy(PlyrNum.Sprinter);
         BaseNetBhvr.CmdPropagateRdy(PlyrNum.Support);
         BaseNetBhvr.CmdPropagateRdy(PlyrNum.TrapMaster);
+
+        // Calls game start to fix players joining at a later date.
+        BaseNetBhvr.gameObject.GetComponent<StartUpScreenMngr>().GameStart();
     }
 }
