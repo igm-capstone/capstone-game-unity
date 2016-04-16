@@ -6,7 +6,7 @@ using System.Collections;
 
 public class StartUpScrBhvr : MonoBehaviour
 {
-    public Text ClassName;
+    //public Text ClassName;
     public Sprite[] ClassInfoSprt;
     Image ClassImg;
 
@@ -27,7 +27,7 @@ public class StartUpScrBhvr : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        ClassName = transform.Find("ClassName").GetComponent<Text>();
+        //ClassName = transform.Find("ClassName").GetComponent<Text>();
         ClassImg = transform.Find("ClassInfoImg").GetComponent<Image>();
 
         // All enums are an INT.
