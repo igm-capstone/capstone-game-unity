@@ -80,12 +80,12 @@ public class StartUpScreenMngr : MonoBehaviour
 
         if (MyPlyrId == PlyrNum.Ghost)
         {
-            windowObj.GetComponent<StartUpScrBhvr>().ClassName.text = "Ghost";
+            //windowObj.GetComponent<StartUpScrBhvr>().ClassName.text = "Ghost";
             windowScrpt.BaseNetBhvr = gameObject.GetComponent<GhostNetworkBehavior>();
         }
         else 
         {
-            windowObj.GetComponent<StartUpScrBhvr>().ClassName.text = "Explorer";
+            //windowObj.GetComponent<StartUpScrBhvr>().ClassName.text = "Explorer";
             windowScrpt.BaseNetBhvr = gameObject.GetComponent<AvatarNetworkBehavior>();
         }
     }

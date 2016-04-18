@@ -1,0 +1,309 @@
+fileFormatVersion: 2
+guid: fe5b40fc97fb9e6408dce2529397e750
+timeCreated: 1460773636
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: UIExplorerIcons-02_0
+    21300002: UIExplorerIcons-02_1
+    21300004: UIExplorerIcons-02_2
+    21300006: UIExplorerIcons-02_3
+    21300008: UIExplorerIcons-02_4
+    21300010: UIExplorerIcons-02_5
+    21300012: UIExplorerIcons-02_6
+    21300014: UIExplorerIcons-02_7
+    21300016: UIExplorerIcons-02_8
+    21300018: UIExplorerIcons-02_9
+    21300020: UIExplorerIcons-02_10
+    21300022: UIExplorerIcons-02_11
+    21300024: UIExplorerIcons-02_12
+    21300026: UIExplorerIcons-02_13
+    21300028: UIExplorerIcons-02_14
+    21300030: UIExplorerIcons-02_15
+    21300032: UIExplorerIcons-02_16
+    21300034: UIExplorerIcons-02_17
+    21300036: UIExplorerIcons-02_18
+    21300038: UIExplorerIcons-02_19
+    21300040: UIExplorerIcons-02_20
+    21300042: UIExplorerIcons-02_21
+    21300044: UIExplorerIcons-02_22
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 72
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: UIExplorerIcons-02_0
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_1
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_2
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_3
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_4
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_5
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_6
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_7
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_8
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_9
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_10
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_11
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_12
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_13
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_14
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_15
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_16
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_17
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_18
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_19
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_20
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_21
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: UIExplorerIcons-02_22
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
