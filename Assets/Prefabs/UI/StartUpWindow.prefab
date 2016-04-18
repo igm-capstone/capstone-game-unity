@@ -731,10 +731,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClassName: {fileID: 11493112}
   ClassInfoSprt:
-  - {fileID: 21300000, guid: f7e8284c3311fbb4c874ecdc1b02c07d, type: 3}
-  - {fileID: 21300000, guid: 4d61e299651f0ba479c29758263f0bc1, type: 3}
-  - {fileID: 21300000, guid: 45c0495128a1b464ea1e62c46636cd39, type: 3}
-  - {fileID: 21300000, guid: 5f9906ed05e5cac47a7f6be68fab81a0, type: 3}
+  - {fileID: 21300000, guid: f9c689b845e5c404a8d19e992e30d83d, type: 3}
+  - {fileID: 21300000, guid: 446938e1cc41b484dbde67c939c5ad8f, type: 3}
+  - {fileID: 21300000, guid: 614e071ff1258c646bac10680ee60eef, type: 3}
+  - {fileID: 21300000, guid: 49c039b8f7f8a944e8437faed29f05ea, type: 3}
   DebugEnable: 1
 --- !u!114 &11488692
 MonoBehaviour:
@@ -1298,6 +1298,26 @@ Prefab:
       propertyPath: DebugEnable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ClassInfoSprt.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: f9c689b845e5c404a8d19e992e30d83d,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: ClassInfoSprt.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 446938e1cc41b484dbde67c939c5ad8f,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: ClassInfoSprt.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 614e071ff1258c646bac10680ee60eef,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: ClassInfoSprt.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 49c039b8f7f8a944e8437faed29f05ea,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 149572}
