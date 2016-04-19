@@ -68,7 +68,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2a94b826f59a25842bc37a48e9dcef85, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -90,7 +90,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135298}
-  m_Mesh: {fileID: 4300000, guid: 10ecba78a7b0170459c3890ce01230e0, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 104c6eba6ab1e074ab3682083e055940, type: 3}
 --- !u!60 &6092220
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -114,7 +114,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2a94b826f59a25842bc37a48e9dcef85, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 104c6eba6ab1e074ab3682083e055940, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 120150}
