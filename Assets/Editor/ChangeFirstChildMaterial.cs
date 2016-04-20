@@ -24,4 +24,25 @@ public class ChangeFirstChildMaterial : MonoBehaviour {
         var goTransform = mCommand.context as Transform;
         goTransform.GetChild(0).GetComponent<MeshRenderer>().material = Resources.Load("WoodFloor") as Material;
     }
+
+    [MenuItem("CONTEXT/Transform/Change to Normal Wall")]
+    private static void NormalWall(MenuCommand mCommand)
+    {
+        var goTransform = mCommand.context as Transform;
+        goTransform.GetChild(0).GetComponent<MeshRenderer>().material = Resources.Load("Wall") as Material;
+    }
+
+    [MenuItem("CONTEXT/Transform/Change to Bathroom Wall")]
+    private static void BathroomWall(MenuCommand mCommand)
+    {
+        var goTransform = mCommand.context as Transform;
+        goTransform.GetChild(0).GetComponent<MeshRenderer>().material = Resources.Load("WallBathroom") as Material;
+    }
+
+    [MenuItem("CONTEXT/Transform/Change to Basement Wall")]
+    private static void BasementWall(MenuCommand mCommand)
+    {
+        var goTransform = mCommand.context as Transform;
+        goTransform.GetChild(0).GetComponent<MeshRenderer>().material = Resources.Load("WallBasement") as Material;
+    }
 }
