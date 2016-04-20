@@ -151,7 +151,9 @@ public class AssetPipelineTools
                 }
                 else
                 {
-                    bounds.Value.Encapsulate(data.Bounds);
+                    var b = bounds.Value;
+                    b.Encapsulate(data.Bounds);
+                    bounds = b;
                 }
             }
         }
@@ -185,6 +187,12 @@ public class AssetPipelineTools
             size.z = 1;
             
             metadata.Add("bounds", ToJToken(new Bounds(center, size)));
+
+            var dbg = GameObject.Find("__Debug") ?? new GameObject("__Debug");
+            var debugBounds = dbg.GetComponent<DebugBounds>() ?? dbg.AddComponent<DebugBounds>();
+
+            debugBounds.bounds.center = center;
+            debugBounds.bounds.size = size;
         }
 
         metadata.Add("count", counters);
