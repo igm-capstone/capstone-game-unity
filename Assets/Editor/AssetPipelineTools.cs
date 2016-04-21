@@ -109,14 +109,104 @@ public class AssetPipelineTools
         foreach (var skill in skills)
         {
             var skillJson = new JObject();
+            skillArray.Add(skillJson);
 
             skillJson.Add("name", skill.Name);
             skillJson.Add("cooldown", skill.Cooldown);
             skillJson.Add("cost", skill.cost);
-            skillJson.Add("duration", 0);
-            skillJson.Add("charges", skill.UseCount);
 
-            skillArray.Add(skillJson);
+            var lantern = skill as SetRegLantern;
+            if (lantern)
+            {
+                skillJson.Add("charges", skill.UseCount);
+                continue;
+            }
+
+            var grenadeToss = skill as GrenadeToss;
+            if (grenadeToss)
+            {
+                skillJson.Add("damage", grenadeToss.Damage);
+                skillJson.Add("aoe", grenadeToss.ExploRadius);
+                skillJson.Add("maxRange", grenadeToss.ThrowDistance);
+                skillJson.Add("knockback", grenadeToss.KnockBackMag);
+                continue;
+            }
+
+            // review and expose trap params
+            var glueTrap = skill as SetTrapGlue;
+            if (glueTrap)
+            {
+                skillJson.Add("duration", 0);
+                skillJson.Add("speedMultiplier", 0);
+                continue;
+            }
+
+            var poisonTrap = skill as SetTrapPoison;
+            if (poisonTrap)
+            {
+                skillJson.Add("duration", 0);
+                skillJson.Add("damageOverTime", 0);
+                continue;
+            }
+
+            var longAttack = skill as LongAttack;
+            if (longAttack)
+            {
+                skillJson.Add("damage", longAttack.Damage);
+                skillJson.Add("knockback", longAttack.KnockBackMag);
+                continue;
+            }
+
+            var heal = skill as Heal;
+            if (heal)
+            {
+                skillJson.Add("heal", heal.HealAmount);
+                skillJson.Add("aoe", heal.AreaRadius);
+                continue;
+            }
+
+            var coneAttack = skill as ConeAttack;
+            if (coneAttack)
+            {
+                skillJson.Add("damage", coneAttack.Damage);
+                skillJson.Add("knockback", coneAttack.KnockBackMag);
+                continue;
+            }
+
+            var sprint = skill as Sprint;
+            if (sprint)
+            {
+                skillJson.Add("duration", sprint.Duration);
+                skillJson.Add("speedMultiplier", sprint.SpeedMultiplier);
+                continue;
+            }
+
+            var spawnImp = skill as SpawnMinion;
+            if (spawnImp)
+            {
+                skillJson.Add("spawnRadius", spawnImp.radius);
+                skillJson.Add("spawnCount", spawnImp.spawnCount);
+                continue;
+            }
+
+            //var spawnAbomination = skill as SpawnAOE;
+            //if (spawnAbomination)
+            //{
+            //    continue;
+            //}
+
+            //var spawnFlytrap = skill as SpawnPlant;
+            //if (spawnFlytrap)
+            //{
+            //    continue;
+            //}
+            
+            var transmogrify = skill as Haunt_ExpToMinion;
+            if (transmogrify)
+            {
+                skillJson.Add("duration", transmogrify.HauntDuration);
+                continue;
+            }
         }
 
         return skillArray;

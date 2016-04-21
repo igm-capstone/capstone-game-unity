@@ -6,8 +6,7 @@ using UnityEngine.Networking;
 public class Haunt_ExpToMinion : ISkill {
 
     public GameObject HauntMeleeMinion;
-    [SerializeField]
-    float HauntDuration = 15;
+    public float HauntDuration = 15;
 
     SkillBar mySkillBar;
 

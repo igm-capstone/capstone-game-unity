@@ -21,9 +21,8 @@ public class ConeAttack : ISkill
     public int Damage = 2;
     public bool hasKnockBack = false;
 
-    [SerializeField]
     [Range(0.0f, 10.0f)]
-    float KnockBackMag = 5.0f;
+    public float KnockBackMag = 5.0f;
 
     // Magic numbers to adjust the Hit colliders. Necessary because of Sacel in between childs and parents.
     float hitBoxXAdjst = 0.4f;

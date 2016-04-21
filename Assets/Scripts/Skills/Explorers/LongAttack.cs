@@ -17,9 +17,8 @@ public class LongAttack : ISkill
     public int Damage = 2;
     public bool hasKnockBack = false;
 
-    [SerializeField]
     [Range(0.0f, 10.0f)]
-    float KnockBackMag = 5.0f;
+    public float KnockBackMag = 5.0f;
 
     Vector3 HitBoxAA, HitBoxBB;
 

@@ -20,9 +20,8 @@ public class GrenadeToss : ISkill
     public float ThrowDistance = 7.0f;
 
 
-    [SerializeField]
     [Range(0.0f, 10.0f)]
-    float KnockBackMag = 5.0f;
+    public float KnockBackMag = 5.0f;
 
     Vector3 ExploPos;
 
