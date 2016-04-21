@@ -49,11 +49,10 @@ public class AssetPipelineTools
         var ghost = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(ghostGUID));
         var skillBar = ghost.GetComponent<SkillBar>();
         var ghostSkills = ghost.GetComponents<ISkill>();
-
-        ghostJson.Add("baseEnergy", skillBar.totalEnergy);
-
         var strRegenEnergy = skillBar.restoreAmount.Select(val => val.ToString()).ToArray();
         ghostJson.Add("regenEnergy", new JRaw("[ " + string.Join(", ", strRegenEnergy) + " ]"));
+        ghostJson.Add("regenEnergyTick", skillBar.waitTimeRestoreEnergy);
+        ghostJson.Add("baseEnergy", skillBar.totalEnergy);
         ghostJson.Add("skills", ParseSkills(ghostSkills));
 
         json.Add("ghost", ghostJson);
@@ -114,6 +113,8 @@ public class AssetPipelineTools
             skillJson.Add("name", skill.Name);
             skillJson.Add("cooldown", skill.Cooldown);
             skillJson.Add("cost", skill.cost);
+            skillJson.Add("duration", 0);
+            skillJson.Add("charges", skill.UseCount);
 
             skillArray.Add(skillJson);
         }
