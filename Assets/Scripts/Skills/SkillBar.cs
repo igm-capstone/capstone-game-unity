@@ -165,10 +165,10 @@ public class SkillBar : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(waitTimeRestoreEnergy);
+            yield return null;
             if (availableEnergy < totalEnergy)
             {
-                availableEnergy = availableEnergy + restoreAmount[restoreAmountLevel];
+                availableEnergy = availableEnergy + restoreAmount[restoreAmountLevel] * (Time.deltaTime / waitTimeRestoreEnergy);
                 availableEnergy = Mathf.Clamp(availableEnergy, 0, totalEnergy);
                 energyUiText.text = EnergyLeft.ToString();
                 energyUIFill.fillAmount = availableEnergy / totalEnergy;
