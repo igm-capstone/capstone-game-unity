@@ -29,6 +29,98 @@ public class AssetPipelineTools
         public JArray Instances;
     }
 
+    [UnityEditor.MenuItem("Tools/Export Game Properties")]
+    public static void ExportGameProperties()
+    {
+        var explorerGUIDs = new [] {
+            "da50434930d53a547b16faf5a7e77d93",
+            "e18db561f2541d04aa973e3ca745c5b4",
+            "ddfaaa28f02042641864fa1a59641e7e",
+        };
+
+        var ghostGUID = "019c493b42c53a1468dbd861bbbd1d49";
+
+        var json = new JObject();
+
+        // --- GHOST
+
+        var ghostJson = new JObject();
+
+        var ghost = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(ghostGUID));
+        var skillBar = ghost.GetComponent<SkillBar>();
+        var ghostSkills = ghost.GetComponents<ISkill>();
+
+        ghostJson.Add("baseEnergy", skillBar.totalEnergy);
+
+        var strRegenEnergy = skillBar.restoreAmount.Select(val => val.ToString()).ToArray();
+        ghostJson.Add("regenEnergy", new JRaw("[ " + string.Join(", ", strRegenEnergy) + " ]"));
+        ghostJson.Add("skills", ParseSkills(ghostSkills));
+
+        json.Add("ghost", ghostJson);
+
+        // --- EXPLORERS
+
+        var explorerArray = new JArray();
+        foreach (var guid in explorerGUIDs)
+        {
+            var explorerJson = new JObject();
+
+            var explorer = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(guid));
+            var controller = explorer.GetComponent<AvatarController>();
+            var health = explorer.GetComponent<Health>();
+            var skills = explorer.GetComponents<ISkill>();
+
+            explorerJson.Add("name", controller.name);
+            explorerJson.Add("moveSpeed", new JValue(controller.MoveSpeed));
+            explorerJson.Add("baseHealth", new JValue(health.BaseHealth));
+            explorerJson.Add("skills", ParseSkills(skills));
+
+            explorerArray.Add(explorerJson);
+        }
+        json.Add("explorers", explorerArray);
+
+        var defaultDir = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));
+        var initialDir = EditorPrefs.GetString("jsonSaveDir", defaultDir);
+        var dialog = new SaveFileDialog
+        {
+            FileName = "config.json",
+            InitialDirectory = initialDir,
+            Filter = "JSON Asset (*.json)|*.json",
+        };
+
+        var result = dialog.ShowDialog();
+
+        if (result != DialogResult.OK)
+        {
+            return;
+        }
+
+        var dir = Path.GetDirectoryName(dialog.FileName) ?? defaultDir;
+        EditorPrefs.SetString("jsonSaveDir", dir);
+
+        Directory.CreateDirectory(dir);
+
+        File.WriteAllText(dialog.FileName, json.ToString());
+        Debug.LogFormat("JSON asset saved at {0}.", dialog.FileName);
+    }
+
+    public static JArray ParseSkills(IEnumerable<ISkill> skills)
+    {
+        var skillArray = new JArray();
+        foreach (var skill in skills)
+        {
+            var skillJson = new JObject();
+
+            skillJson.Add("name", skill.Name);
+            skillJson.Add("cooldown", skill.Cooldown);
+            skillJson.Add("cost", skill.cost);
+
+            skillArray.Add(skillJson);
+        }
+
+        return skillArray;
+    }
+
     [UnityEditor.MenuItem("Tools/Export Active Scene")]
     public static void ExportActiveScene()
     {
