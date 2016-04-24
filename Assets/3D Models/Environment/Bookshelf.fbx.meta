@@ -20,6 +20,7 @@ ModelImporter:
     4300000: Bookshelf
     4300002: books1
     4300004: books2
+    4300006: Bookshelf1
   materials:
     importMaterials: 0
     materialName: 0
@@ -46,7 +47,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importBlendShapes: 1
+    importBlendShapes: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 74c72f2c8da3f6b4b9454b86d02b98c4
-timeCreated: 1461089739
+guid: 1d76a2df97203d243b2ce7b3bbcb6684
+timeCreated: 1461277294
 licenseType: Pro
 ModelImporter:
   serializedVersion: 18
@@ -36,7 +36,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importBlendShapes: 1
+    importBlendShapes: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
