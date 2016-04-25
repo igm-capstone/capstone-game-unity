@@ -1,31 +1,26 @@
 fileFormatVersion: 2
-guid: f196f70274821c146b91dd2910597e49
-timeCreated: 1456870999
-licenseType: Free
+guid: 91a53025dc7ce7044a621b6a8821adac
+timeCreated: 1461089952
+licenseType: Pro
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: Book
-    100002: Books1
-    100004: Books2
-    100006: //RootNode
-    100008: Bookshelf
-    100010: Bookshelf1
-    400000: Book
-    400002: Books1
-    400004: Books2
-    400006: //RootNode
-    400008: Bookshelf
-    400010: Bookshelf1
-    2300000: Books1
-    2300002: Books2
-    2300004: Bookshelf1
-    3300000: Books1
-    3300002: Books2
-    3300004: Bookshelf1
-    4300000: Bookshelf1
-    4300002: Books1
-    4300004: Books2
+    100000: books1
+    100002: books2
+    100004: //RootNode
+    400000: books1
+    400002: books2
+    400004: //RootNode
+    2300000: books1
+    2300002: books2
+    2300004: //RootNode
+    3300000: books1
+    3300002: books2
+    3300004: //RootNode
+    4300000: Bookshelf
+    4300002: books1
+    4300004: books2
+    4300006: Bookshelf1
   materials:
     importMaterials: 0
     materialName: 0
@@ -52,7 +47,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importBlendShapes: 1
+    importBlendShapes: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 458378}
   - 60: {fileID: 6031470}
-  - 60: {fileID: 6031490}
   m_Layer: 9
   m_Name: Bookshelf2
   m_TagString: Untagged
@@ -42,7 +41,7 @@ Transform:
   m_GameObject: {fileID: 140156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.29999995, y: 1.29999995, z: 1.29999995}
   m_Children:
   - {fileID: 492040}
   m_Father: {fileID: 0}
@@ -69,7 +68,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2a94b826f59a25842bc37a48e9dcef85, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -91,7 +90,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154698}
-  m_Mesh: {fileID: 4300000, guid: 37df01944e8b0a64a9113074d0a137fe, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 90793463500f2ba4984418b1b8f8fb19, type: 3}
 --- !u!60 &6031470
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -105,36 +104,43 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: .693783045, y: .921780348}
-      - {x: 1.3186152, y: 1.17096162}
-      - {x: 1.33353865, y: .158532947}
-      - {x: .860651493, y: -.713607311}
-      - {x: .399959326, y: -.222868234}
---- !u!60 &6031490
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140156}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: .398068488, y: -.236687377}
-      - {x: .853337765, y: -.708787203}
-      - {x: -.22111322, y: -1.16344154}
-      - {x: -1.44135356, y: -.767233849}
-      - {x: -.992839456, y: -.264007747}
+    - - {x: -1.47109795, y: .120072007}
+      - {x: -.83566761, y: .758206844}
+      - {x: .137404323, y: 1.06912506}
+      - {x: 1.24008381, y: .633799672}
+      - {x: .802046895, y: .139792562}
+      - {x: .24682796, y: .351240754}
+      - {x: -.465484202, y: .203633547}
+      - {x: -.943356335, y: -.437077284}
+      - {x: -.910528898, y: -1.07127237}
+      - {x: -1.54571247, y: -1.31402564}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2a94b826f59a25842bc37a48e9dcef85, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 90793463500f2ba4984418b1b8f8fb19, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1.29999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1.29999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 1.29999995
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 140156}
