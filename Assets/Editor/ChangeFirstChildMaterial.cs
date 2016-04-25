@@ -45,4 +45,34 @@ public class ChangeFirstChildMaterial : MonoBehaviour {
         var goTransform = mCommand.context as Transform;
         goTransform.GetChild(0).GetComponent<MeshRenderer>().material = Resources.Load("WallBasement") as Material;
     }
+
+    [MenuItem("CONTEXT/Transform/Change to Outside Floor")]
+    private static void OutsideFloor(MenuCommand mCommand)
+    {
+        var goTransform = mCommand.context as Transform;
+        var grassGO = GameObject.Find("Grass");
+
+        GameObject outsideFloor = GameObject.Instantiate(Resources.Load("OutsideFloor") as GameObject, Vector3.zero, Quaternion.identity) as GameObject;
+        outsideFloor.transform.parent = grassGO.transform;
+
+        outsideFloor.transform.position = goTransform.transform.position;
+        outsideFloor.transform.eulerAngles = goTransform.transform.eulerAngles;
+        outsideFloor.transform.localScale = goTransform.transform.localScale;
+
+    }
+
+    //[MenuItem("CONTEXT/Transform/Change to Outside Floor Scaled")]
+    //private static void OutsideFloorScaled(MenuCommand mCommand)
+    //{
+    //    var goTransform = mCommand.context as Transform;
+    //    var grassGO = GameObject.Find("Grass");
+
+    //    GameObject outsideFloor = GameObject.Instantiate(Resources.Load("OutsideFloorScaled") as GameObject, Vector3.zero, Quaternion.identity) as GameObject;
+    //    outsideFloor.transform.parent = grassGO.transform;
+
+    //    outsideFloor.transform.position = goTransform.transform.position;
+    //    outsideFloor.transform.eulerAngles = goTransform.transform.eulerAngles;
+    //    outsideFloor.transform.localScale = goTransform.transform.localScale;
+
+    //}
 }
