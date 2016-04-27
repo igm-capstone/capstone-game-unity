@@ -40,7 +40,7 @@ public abstract class ISkill : MonoBehaviour
     public Sprite SkillSprite;
     public Sprite CooldownSprite;
 
-    public string Name = "Skill";
+    public virtual string Name { get { return  "Skill"; } }
     public float Cooldown = 2;
     //public float Duration = 0;
 

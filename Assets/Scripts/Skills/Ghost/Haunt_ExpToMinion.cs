@@ -10,9 +10,10 @@ public class Haunt_ExpToMinion : ISkill {
 
     SkillBar mySkillBar;
 
+    public override string Name { get { return "Imp Illusion"; } }
+
     public void Awake()
     {
-        Name = "Imp Illusion";
         canDrop = false;
 
         key = KeyCode.Alpha4;

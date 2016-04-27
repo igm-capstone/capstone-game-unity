@@ -13,9 +13,10 @@ public class MoveBlock : ISkill
     private AvatarController avatarController;
     private string currentBlock = null;
     
+    public override string Name {  get { return "Move Block"; } }
+
     public void Awake()
     {
-        Name = "MoveBlock";
         canDrop = false;
 
         blockCollector = GameObject.Find("BlocksCollector");

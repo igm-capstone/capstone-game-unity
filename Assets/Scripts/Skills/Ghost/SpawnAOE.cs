@@ -5,9 +5,10 @@ public class SpawnAOE : ISkill
 {
     SkillBar mySkillBar;
 
+    public override string Name {  get { return "Bomber"; } }
+
     public void Awake()
     {
-        Name = "Bomber";
         canDrop = false;
 
         IsSpawnSkill = true;

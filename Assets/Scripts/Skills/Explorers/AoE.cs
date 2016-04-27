@@ -21,9 +21,10 @@ public class AoE : ISkill
     [Range(0.0f, 10.0f)]
     float KnockBackMag = 5.0f;
 
+    public override string Name {  get { return "AoE"; } }
+
     public void Awake()
     {
-        Name = "AoE";
         canDrop = false;
 
         animator = GetComponentInParent<RpcNetworkAnimator>();

@@ -8,10 +8,11 @@ public class SetTrapGlue : ISkill
     float spawnDistance;
     Vector3 spawnPosition;
 
+    public override string Name { get { return "Glue Trap"; } }
+
     AvatarController avatarController;
     public void Awake()
     {
-        Name = "Glue Trap";
         canDrop = false;
 
         SlctdTrap = TrapType.Glue;

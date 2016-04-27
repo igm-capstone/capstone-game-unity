@@ -16,10 +16,11 @@ public class InteractSkill :  ISkill
     private AvatarNetworkBehavior avatarNetBhvr;
     private bool isHiding = false;
 
+    public override string Name { get { return "InteractSkill"; } }
+
     public void Awake()
     {
         // ISkill SetUps
-        Name = "InteractSkill";
         canDrop = false;
         key = KeyCode.Space;
 

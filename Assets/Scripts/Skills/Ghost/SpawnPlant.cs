@@ -6,9 +6,10 @@ public class SpawnPlant : ISkill
 {
     SkillBar mySkillBar;
 
+    public override string Name {  get { return "Terror Tree"; } }
+
     public void Awake()
     {
-        Name = "Plant";
         canDrop = false;
 
         IsSpawnSkill = true;

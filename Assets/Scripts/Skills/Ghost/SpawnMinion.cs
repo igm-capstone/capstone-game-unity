@@ -7,10 +7,10 @@ public class SpawnMinion : ISkill
 
     public float radius = 4f;
     public int spawnCount = 3;
+    public override string Name { get { return "Imp Squad"; } }
 
     public void Awake()
     {
-        Name = "Imp Squad";
         canDrop = false;
 
         IsSpawnSkill = true;

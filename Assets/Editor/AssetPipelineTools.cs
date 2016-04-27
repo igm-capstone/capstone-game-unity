@@ -111,7 +111,8 @@ public class AssetPipelineTools
             var skillJson = new JObject();
             skillArray.Add(skillJson);
 
-            skillJson.Add("name", skill.Name);
+            skillJson.Add("name", skill.GetType().Name);
+            skillJson.Add("description", skill.Name);
             skillJson.Add("cooldown", skill.Cooldown);
             skillJson.Add("cost", skill.cost);
 

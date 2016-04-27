@@ -28,9 +28,10 @@ public class ConeAttack : ISkill
     float hitBoxXAdjst = 0.4f;
     float hitBoxYAdjst = 0.4f;
 
+    public override string Name { get { return "Quick Slash"; } }
+
     public void Awake()
     {
-        Name = "Quick Slash";
         canDrop = false;
 
         avatarController = GetComponent<AvatarController>();

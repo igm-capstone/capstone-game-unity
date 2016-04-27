@@ -12,9 +12,10 @@ public class Heal : ISkill
     AvatarController avatarController;
     public Transform FX;
 
+    public override string Name {  get { return "Heal"; } }
+
     public void Awake()
     {
-        Name = "Heal";
         canDrop = false;
 
         animator = GetComponentInParent<RpcNetworkAnimator>();
