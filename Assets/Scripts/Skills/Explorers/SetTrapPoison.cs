@@ -8,10 +8,11 @@ public class SetTrapPoison : ISkill
     float spawnDistance;
     Vector3 spawnPosition;
 
+    public override string Name { get { return "Poison Trap"; } }
+
     AvatarController avatarController; 
     public void Awake()
     {
-        Name = "Poison Trap";
         canDrop = false;
 
         SlctdTrap = TrapType.Poison;

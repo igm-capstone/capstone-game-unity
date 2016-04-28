@@ -6,12 +6,12 @@ public class Sprint : ISkill
 {
     public float Duration = 2;
     public float SpeedMultiplier = 2;
+    public override string Name { get { return "Sprint"; } }
 
     private AvatarController avatarController;
 
     public void Awake()
     {
-        Name = "Sprint";
         canDrop = false;
         avatarController = GetComponent<AvatarController>();
 

@@ -15,9 +15,10 @@ public class MeleeWeapon : ISkill
     Collider2D lastTarget;
     float agroTime;
 
+    public override string Name { get { return "Melee"; } }
+
     public void Awake()
     {
-        Name = "Melee";
         canDrop = false;
 
         avatarController = GetComponent<AvatarController>();

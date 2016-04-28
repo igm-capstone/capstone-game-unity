@@ -5,9 +5,10 @@ public class DisableLight : ISkill
 {
     SkillBar mySkillBar;
 
+    public override string Name { get { return "Put Out Lamp"; } }
+
     public void Awake()
     {
-        Name = "Put Out Lamp";
         canDrop = false;
         cost = 0;
 

@@ -13,9 +13,10 @@ public class Hallucinate : ISkill
 
     SkillBar mySkillBar;
 
+    public override string Name { get { return "Fake Imps"; } }
+
     public void Awake()
     {
-        Name = "Fake Imps";
         canDrop = false;
         cost = 10;
 

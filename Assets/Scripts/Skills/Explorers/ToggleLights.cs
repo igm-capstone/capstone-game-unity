@@ -12,10 +12,12 @@ public class ToggleLights : ISkill
 
     LayerMask LightMask;
     AvatarController avatarController;
+
+    public override string Name { get { return "Toggle Lights"; } }
+
     public void Awake()
     {
         // ISkill SetUps
-        Name = "ToggleLights";
         canDrop = false;
 
         key = KeyCode.E;

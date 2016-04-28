@@ -25,9 +25,10 @@ public class GrenadeToss : ISkill
 
     Vector3 ExploPos;
 
+    public override string Name { get { return "Grenade Toss"; } }
+
     public void Awake()
     {
-        Name = "Grenade Toss";
         canDrop = false;
 
         animator = GetComponentInParent<RpcNetworkAnimator>();

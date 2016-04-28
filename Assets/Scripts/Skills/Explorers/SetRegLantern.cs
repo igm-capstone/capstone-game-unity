@@ -15,10 +15,12 @@ public class SetRegLantern : ISkill
     int maxLanternCount;
     float refillTime;
 
+    public override string Name { get { return "Drop Lantern"; } }
+
+
     public void Awake()
     {
         // Class SetUps
-        Name = "Drop Lantern";
         canDrop = false;
 
         SlctdLant = LanternType.Regular;
