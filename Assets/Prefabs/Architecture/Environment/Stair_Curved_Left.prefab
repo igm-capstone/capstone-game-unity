@@ -25,6 +25,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 417330}
+  - 60: {fileID: 6041640}
+  - 60: {fileID: 6020144}
   m_Layer: 0
   m_Name: Stair_Curved_Left
   m_TagString: Untagged
@@ -90,6 +92,60 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100300}
   m_Mesh: {fileID: 4300000, guid: e152825bac666a4428fa4f11a5f70059, type: 3}
+--- !u!60 &6020144
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134874}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: -5.53992367, y: 5.37449598}
+      - {x: -3.85173631, y: 6.28360462}
+      - {x: -1.94744694, y: 6.86485529}
+      - {x: -.0100343227, y: 7.07025623}
+      - {x: -.00212424994, y: 6.02810192}
+      - {x: -1.75686979, y: 5.87706804}
+      - {x: -3.43229079, y: 5.39074421}
+      - {x: -4.99530983, y: 4.55704451}
+      - {x: -6.34048748, y: 3.47504163}
+      - {x: -7.48707914, y: 2.0440228}
+      - {x: -8.32044983, y: .554808497}
+      - {x: -8.81794643, y: -1.16789365}
+      - {x: -8.96461391, y: -2.93401122}
+      - {x: -9.9777689, y: -2.948241}
+      - {x: -9.79687119, y: -.991047978}
+      - {x: -9.2213459, y: .93024534}
+      - {x: -8.32193947, y: 2.60784698}
+      - {x: -7.05141401, y: 4.13177395}
+--- !u!60 &6041640
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134874}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: -3.60672045, y: -1.42212903}
+      - {x: -2.75842547, y: -.13527751}
+      - {x: -1.4978292, y: .729475856}
+      - {x: 0, y: 1.03127253}
+      - {x: -.00495630503, y: .00302578509}
+      - {x: -1.10100794, y: -.210374624}
+      - {x: -2.04793978, y: -.850852728}
+      - {x: -2.68202114, y: -1.80941415}
+      - {x: -2.89697957, y: -2.93741131}
+      - {x: -3.90493846, y: -2.94339323}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
