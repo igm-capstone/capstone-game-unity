@@ -6,7 +6,6 @@ using System.Collections;
 
 public class StartUpScrBhvr : MonoBehaviour
 {
-    //public Text ClassName;
     public Sprite[] ClassInfoSprt;
     Image ClassImg;
 
@@ -27,7 +26,6 @@ public class StartUpScrBhvr : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //ClassName = transform.Find("ClassName").GetComponent<Text>();
         ClassImg = transform.Find("ClassInfoImg").GetComponent<Image>();
 
         // All enums are an INT.
@@ -47,10 +45,16 @@ public class StartUpScrBhvr : MonoBehaviour
     // Set everyone as ready and signal to start the game.
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && DebugEnable)
+        if (Input.GetKeyDown(KeyCode.J) && DebugEnable)
         {
             RdyArray.All(b => { b = true; return true; });
             DebugStart();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // Propagates the Ready state to the server.
+            BaseNetBhvr.CmdPropagateRdy(MyId);
         }
     }
 
