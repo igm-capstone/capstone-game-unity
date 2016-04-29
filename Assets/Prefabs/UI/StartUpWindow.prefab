@@ -730,10 +730,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClassInfoSprt:
-  - {fileID: 21300000, guid: f9c689b845e5c404a8d19e992e30d83d, type: 3}
-  - {fileID: 21300000, guid: 446938e1cc41b484dbde67c939c5ad8f, type: 3}
-  - {fileID: 21300000, guid: 49c039b8f7f8a944e8437faed29f05ea, type: 3}
-  - {fileID: 21300000, guid: 614e071ff1258c646bac10680ee60eef, type: 3}
+  - {fileID: 21300000, guid: 90cf4986a1e469d4f8b182a1064a325e, type: 3}
+  - {fileID: 21300000, guid: 7c78bf3f62fe63c41aefa2b6e7cca1b5, type: 3}
+  - {fileID: 21300000, guid: 14e0fef6e55cb3b4fa2aed47b38a5935, type: 3}
+  - {fileID: 21300000, guid: 5a35631ff2c3b6e409a3d78166c6197a, type: 3}
   DebugEnable: 1
 --- !u!114 &11488692
 MonoBehaviour:
@@ -1143,10 +1143,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22436866}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -316, y: -250}
+  m_SizeDelta: {x: 1200, y: 675}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22436866
 RectTransform:
@@ -1300,23 +1300,31 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: ClassInfoSprt.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: f9c689b845e5c404a8d19e992e30d83d,
+      objectReference: {fileID: 21300000, guid: 90cf4986a1e469d4f8b182a1064a325e,
         type: 3}
     - target: {fileID: 0}
       propertyPath: ClassInfoSprt.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 446938e1cc41b484dbde67c939c5ad8f,
+      objectReference: {fileID: 21300000, guid: 7c78bf3f62fe63c41aefa2b6e7cca1b5,
         type: 3}
     - target: {fileID: 0}
       propertyPath: ClassInfoSprt.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: 614e071ff1258c646bac10680ee60eef,
+      objectReference: {fileID: 21300000, guid: 14e0fef6e55cb3b4fa2aed47b38a5935,
         type: 3}
     - target: {fileID: 0}
       propertyPath: ClassInfoSprt.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 49c039b8f7f8a944e8437faed29f05ea,
+      objectReference: {fileID: 21300000, guid: 5a35631ff2c3b6e409a3d78166c6197a,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_SizeDelta.x
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SizeDelta.y
+      value: 675
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 149572}
