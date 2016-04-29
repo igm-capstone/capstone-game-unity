@@ -161,4 +161,12 @@ public class AvatarController : MonoBehaviour
     {
         slowDownMod = 1.0f;
     }
+
+    public void Message(string str)
+    {
+        if (gameObject.name == "Me")
+        {
+            HelpMessage.Instance.SetMessage(str);
+        }
+    }
 }

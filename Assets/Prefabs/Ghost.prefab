@@ -202,13 +202,12 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
   CooldownSprite: {fileID: 21300014, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
-  Name: Basic Minion
   Cooldown: 2
   cost: 10
   UseCount: 0
   addToSkillBar: 1
   radius: 4
-  spawnCount: 2
+  spawnCount: 1
 --- !u!114 &11430948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -316,7 +315,6 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300008, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
   CooldownSprite: {fileID: 21300022, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
-  Name: Haunt Explorer To Minion
   Cooldown: 17
   cost: 0
   UseCount: 0
@@ -349,7 +347,6 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300010, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
   CooldownSprite: {fileID: 21300024, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
-  Name: Flytrap
   Cooldown: 3
   cost: 20
   UseCount: 0
@@ -368,9 +365,8 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300002, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
   CooldownSprite: {fileID: 21300016, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
-  Name: AOE Bomber
   Cooldown: 4
-  cost: 25
+  cost: 20
   UseCount: 0
   addToSkillBar: 1
 --- !u!124 &12474532
@@ -567,7 +563,7 @@ Prefab:
       objectReference: {fileID: 150076, guid: 16232b9ae9288b248905ae49d824d8f6, type: 2}
     - target: {fileID: 0}
       propertyPath: cost
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_CullingMask.m_Bits
@@ -632,7 +628,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spawnCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: radius

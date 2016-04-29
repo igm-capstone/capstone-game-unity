@@ -83,7 +83,7 @@ public class BasePlayerNetworkBehavior : NetworkBehaviour
     [ClientRpc]
     public void RpcPropagateRdy(PlyrNum _PlyrId, bool[] _RdyArray)
     {
-        var StartScreenBhvr = GameObject.Find("StartUpWindow(Clone)").GetComponent<StartUpScrBhvr>();
+        var StartScreenBhvr = GameObject.Find("StartUpWindow(Clone)").GetComponent<StartUpScrBhvr>();       
 
         // Get Rdy state array from server.
         StartScreenBhvr.RdyArray = _RdyArray;

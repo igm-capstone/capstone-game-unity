@@ -1452,6 +1452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseHealth: 50
   HealthCanvas: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
+  UISprite: {fileID: 0}
   CurrentHealth: 0
 --- !u!114 &11445258
 MonoBehaviour:
@@ -1464,7 +1465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c844d216f4aed8649a61705104b78f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 25
+  Damage: 33
   AttackRange: 3.5
 --- !u!114 &11462936
 MonoBehaviour:
@@ -1604,7 +1605,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Damage
-      value: 25
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled

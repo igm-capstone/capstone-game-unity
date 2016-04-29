@@ -23,21 +23,21 @@ public class Health : NetworkBehaviour
         canvas.name = gameObject.name + "Health";
         
         CurrentHealth = BaseHealth;
-        if (GetComponent<AvatarController>() != null)
-        {
-            canvas.transform.SetParent(healthPanel, false);
-            slider = canvas.GetComponentInChildren<Slider>();
-            slider.gameObject.transform.FindChild("UISprite").GetComponent<Image>().sprite = UISprite;
-            if(gameObject.name == "Me")
-            {
-                canvas.transform.SetAsFirstSibling();
-            }
-        }
-        else
-        {
+        //if (GetComponent<AvatarController>() != null)
+        //{
+        //    canvas.transform.SetParent(healthPanel, false);
+        //    slider = canvas.GetComponentInChildren<Slider>();
+        //    slider.gameObject.transform.FindChild("UISprite").GetComponent<Image>().sprite = UISprite;
+        //    if(gameObject.name == "Me")
+        //    {
+        //        canvas.transform.SetAsFirstSibling();
+        //    }
+        //}
+        //else
+        //{
+        //}
             canvas.transform.SetParent(transform, false);
             slider = GetComponentInChildren<Slider>();
-        }
         animator = GetComponent<RpcNetworkAnimator>();
     }
 	

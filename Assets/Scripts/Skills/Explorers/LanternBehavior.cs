@@ -29,16 +29,17 @@ public class LanternBehavior : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.tag != "Player")
-        {
-            return;
-        }
-        if (other.gameObject.GetComponent<SetRegLantern>().CanPickUpLantern())
-        {
-            other.gameObject.GetComponent<SetRegLantern>().PickUpLantern();
-            Destroy(this.gameObject);
-        }
-    }
+    //For pick up Lanterns
+    //public void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if(other.tag != "Player")
+    //    {
+    //        return;
+    //    }
+    //    if (other.gameObject.GetComponent<SetRegLantern>().CanPickUpLantern())
+    //    {
+    //        other.gameObject.GetComponent<SetRegLantern>().PickUpLantern();
+    //        Destroy(this.gameObject);
+    //    }
+    //}
 }

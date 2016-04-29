@@ -2243,7 +2243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseHealth: 140
-  HealthCanvas: {fileID: 145894, guid: ec605853710758b4cb8b3dbdb9cff438, type: 2}
+  HealthCanvas: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
   UISprite: {fileID: 21300002, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   CurrentHealth: 0
 --- !u!114 &11412696
@@ -2285,7 +2285,6 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300006, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   CooldownSprite: {fileID: 21300012, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
-  Name: Lantern
   Cooldown: 1
   cost: 0
   UseCount: 6
@@ -2511,7 +2510,6 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300010, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   CooldownSprite: {fileID: 21300020, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
-  Name: ConeAttack
   Cooldown: .300000012
   cost: 0
   UseCount: 0
@@ -2547,7 +2545,6 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 37ecfd6470428cd4299e1d6364ec9938, type: 3}
   CooldownSprite: {fileID: 0}
-  Name: Skill
   Cooldown: 0
   cost: 0
   UseCount: 0
@@ -2601,7 +2598,6 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300002, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
   CooldownSprite: {fileID: 21300016, guid: 6e129aeba264b5243ab6121aeec9361f, type: 3}
-  Name: Sprint
   Cooldown: 2
   cost: 0
   UseCount: 0
@@ -11788,7 +11784,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: HealthCanvas
       value: 
-      objectReference: {fileID: 145894, guid: ec605853710758b4cb8b3dbdb9cff438, type: 2}
+      objectReference: {fileID: 101880, guid: 31f3be4aadfa1164e9e7847e4744815d, type: 2}
     - target: {fileID: 0}
       propertyPath: UISprite
       value: 

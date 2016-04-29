@@ -68,11 +68,11 @@ public class SetRegLantern : ISkill
         {
             Use();
             //Auto refill of lantern
-            //if (UseCount < maxLanternCount && UseCount>= 0)
-            //{
-            //    StopCoroutine("RefillLantern");
-            //    StartCoroutine("RefillLantern");
-            //}
+            if (UseCount < maxLanternCount && UseCount >= 0)
+            {
+                StopCoroutine("RefillLantern");
+                StartCoroutine("RefillLantern");
+            }
         }
     }
 

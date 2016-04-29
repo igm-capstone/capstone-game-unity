@@ -143,7 +143,7 @@ public abstract class ISkill : MonoBehaviour
     {
         if (!IsReady())
         {
-            HelpMessage.Instance.SetMessage(Name + " is still on cooldown!");
+            //HelpMessage.Instance.SetMessage(Name + " is still on cooldown!");
             return false;
         }
 
@@ -152,7 +152,7 @@ public abstract class ISkill : MonoBehaviour
         {
             LastUse = Time.time;
         }
-        HelpMessage.Instance.SetMessage(usageResult);
+        //HelpMessage.Instance.SetMessage(usageResult);
 
         return usageResult == null;
     }

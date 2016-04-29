@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class HelpMessage : MonoBehaviour
 {
-    public float TimeOut = 2;
+    public float TimeOut = 5;
 
     private Text _text;
     private Image _panel;

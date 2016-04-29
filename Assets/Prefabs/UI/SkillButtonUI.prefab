@@ -213,7 +213,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_FontSize: 34
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -223,7 +223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Skill Name here
+  m_Text: Skill Name
 --- !u!114 &11406938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -699,8 +699,8 @@ RectTransform:
   m_RootOrder: 8
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 2.5999999, y: -65}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 2.5999999, y: -71}
+  m_SizeDelta: {x: 219.039993, y: 96}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22419952
 RectTransform:
@@ -810,7 +810,7 @@ RectTransform:
   m_RootOrder: 7
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 35.4000015, y: 53.6249962}
+  m_AnchoredPosition: {x: 59, y: 53.6249962}
   m_SizeDelta: {x: 49.2000008, y: 52.9000015}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22481856
@@ -827,7 +827,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 9.99994469, y: 48.1119995}
+  m_AnchoredPosition: {x: -12, y: 48.1119995}
   m_SizeDelta: {x: 140, y: 63.9000015}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22485706
@@ -844,7 +844,7 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 35.4000015, y: 53.625}
+  m_AnchoredPosition: {x: 59, y: 53.625}
   m_SizeDelta: {x: 49.2000008, y: 52.9000015}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000

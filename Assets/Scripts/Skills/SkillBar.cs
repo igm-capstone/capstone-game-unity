@@ -76,7 +76,7 @@ public class SkillBar : MonoBehaviour
 
     public void SetActiveSkill(ISkill skill)
     {
-        HelpMessage.Instance.SetMessage(skill.Name + " skill active.");
+        //HelpMessage.Instance.SetMessage(skill.Name + " skill active.");
         foreach (var s in _skillList)
         {
             if (HideInactiveSkills)
