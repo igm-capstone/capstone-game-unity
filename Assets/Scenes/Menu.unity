@@ -1112,6 +1112,22 @@ Prefab:
       propertyPath: m_CustomConfig
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11477892, guid: 65258586e9ae54b498b327717eb90b1b, type: 2}
+      propertyPath: mouseInteract
+      value: 
+      objectReference: {fileID: 2800000, guid: c0dcc37f3fe5d8947aebc53063c8070b, type: 3}
+    - target: {fileID: 11477892, guid: 65258586e9ae54b498b327717eb90b1b, type: 2}
+      propertyPath: mouseExplorerAttack
+      value: 
+      objectReference: {fileID: 2800000, guid: dadbfb8dbeca26c4eb41f380d82193a1, type: 3}
+    - target: {fileID: 11477892, guid: 65258586e9ae54b498b327717eb90b1b, type: 2}
+      propertyPath: mouseGhostNoSpawn
+      value: 
+      objectReference: {fileID: 2800000, guid: 33ec183fa85e29344ae7d46ed601a61e, type: 3}
+    - target: {fileID: 11477892, guid: 65258586e9ae54b498b327717eb90b1b, type: 2}
+      propertyPath: mouseGhostDefault
+      value: 
+      objectReference: {fileID: 2800000, guid: ea4dd1be6de60c74485991b868800fde, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65258586e9ae54b498b327717eb90b1b, type: 2}
   m_IsPrefabParent: 0
