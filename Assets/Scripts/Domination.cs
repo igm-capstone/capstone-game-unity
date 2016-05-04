@@ -69,7 +69,7 @@ public class Domination : NetworkBehaviour
         }
         else if(TierCapture == 1 && canBeCaptured == false && other.tag == "Player")
         {            
-            other.GetComponent<AvatarController>().Message("Find the generators and power them up!");            
+            other.GetComponent<AvatarController>().Message("Find the <color=fuchsia><b><i>Generators</i></b></color> and power them up to use the <color=white><b><i>LIGHT CANNON!</i></b></color>");
         }
     }
 

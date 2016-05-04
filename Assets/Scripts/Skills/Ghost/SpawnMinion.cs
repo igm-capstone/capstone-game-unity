@@ -9,6 +9,10 @@ public class SpawnMinion : ISkill
     public int spawnCount = 3;
     public override string Name { get { return "Imp"; } }
 
+    Vector3 mouseWorldPos;
+    float mouseDistance;
+    //AvatarController[] avatars2;
+
     public void Awake()
     {
         canDrop = false;
@@ -30,7 +34,20 @@ public class SpawnMinion : ISkill
     }
 
     public void Update()
-    {
+    {        
+        //RaycastHit hit;
+        //if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, LayerMask.GetMask(new[] { "Floor" })))
+        //{
+        //    mouseWorldPos = hit.point;
+        //    mouseDistance = avatars.Select(a => (a.transform.position - mouseWorldPos).sqrMagnitude).OrderBy(d => d).FirstOrDefault();
+        //}
+
+        ////change mouse to no spawn indicator
+        //if (avatars.Any() && ((mouseDistance < (MinSpawnDist * MinSpawnDist) || (mouseDistance > (MaxSpawnDist * MaxSpawnDist)))))
+        //{
+        //    Debug.Log("mouse");
+        //}
+
         if (Input.GetKeyDown(key))
         {
             mySkillBar.SetActiveSkill(this);
@@ -52,7 +69,8 @@ public class SpawnMinion : ISkill
             return Name + " skill can only be used in the darkness!";
         }
 
-        var avatars = FindObjectsOfType<AvatarController>();
+        //var avatars = FindObjectsOfType<AvatarController>();
+        //avatars2 = avatars;
         var minSqrDist = MinSpawnDist * MinSpawnDist;
         var maxSqrDist = MaxSpawnDist * MaxSpawnDist;
         var plyrDistance = avatars.Select(a => (a.transform.position - clickWorldPos).sqrMagnitude).OrderBy(d => d).FirstOrDefault();

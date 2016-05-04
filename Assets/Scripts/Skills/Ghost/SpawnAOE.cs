@@ -65,11 +65,11 @@ public class SpawnAOE : ISkill
         MinionSpawnManager.Instance.CmdSingleSpawn(clickWorldPos, MinionType.AOEBomber);
 
         // DebugCode
-        foreach (var trgt in avatars)
-        {
-            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.right * MinSpawnDist);
-            Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.up * MaxSpawnDist);
-        }
+        //foreach (var trgt in avatars)
+        //{
+        //    Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.right * MinSpawnDist);
+        //    Debug.DrawLine(trgt.transform.position, trgt.transform.position + transform.up * MaxSpawnDist);
+        //}
 
         return null;
     }

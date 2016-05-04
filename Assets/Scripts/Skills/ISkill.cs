@@ -74,6 +74,9 @@ public abstract class ISkill : MonoBehaviour
     [NonSerialized]
     public SkillButton SkillBtnScript;
 
+    [NonSerialized]
+    public AvatarController[] avatars;
+
     //ToolTip
     private GameObject toolTipObj;
     private Text toolTipDscrpt;
@@ -130,6 +133,8 @@ public abstract class ISkill : MonoBehaviour
             SkillBtnScript.Init();
             //HideToolTip();
         }
+
+        avatars = FindObjectsOfType<AvatarController>();
     }
 
     void OnDisable()
@@ -242,5 +247,11 @@ public abstract class ISkill : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         toolTipChange = false;
         toolTipObj.SetActive(false);
+    }
+
+    public void UpdateExplorerCount()
+    {
+        avatars = FindObjectsOfType<AvatarController>();
+        Debug.Log(avatars.Count());
     }
 }

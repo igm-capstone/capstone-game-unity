@@ -166,10 +166,10 @@ public class CustomNetworkManager : NetworkManager
             var sp = spawnPoints.FirstOrDefault(s => s.PlayerID == conn.connectionId) ?? spawnPoints.FirstOrDefault(s => s.PlayerID == 1);
 
             player = (GameObject)Instantiate(avatarPrefab[sp.PlayerID - 1], sp.transform.position, Quaternion.identity);
-
             player.GetComponent<AvatarNetworkBehavior>().conn = conn;
 
-            
+            var ghost = FindObjectOfType<GhostController>();
+            ghost.BroadcastMessage("UpdateExplorerCount");
         }
 
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
@@ -177,6 +177,8 @@ public class CustomNetworkManager : NetworkManager
 
     public override void OnServerDisconnect(NetworkConnection conn)
     {
+        var ghost = FindObjectOfType<GhostController>();
+        ghost.BroadcastMessage("UpdateExplorerCount");
         Debug.Log("Client Disconnected");
         base.OnServerDisconnect(conn);
         GameObject.FindObjectOfType<GhostNetworkBehavior>().RpcDestroyHealthBar();
@@ -185,11 +187,8 @@ public class CustomNetworkManager : NetworkManager
     {
         yield return new WaitForSeconds(waitTime);
 
-
         List<GameObject> avatarCtrl = FindObjectsOfType<AvatarController>().Select(a => a.GetComponent<Health>().canvas).ToList();
-
         List<GameObject> allExplorersHealth = GameObject.FindGameObjectsWithTag("ExplorerHealth").ToList();
-
         List<GameObject> healthRemaining = new List<GameObject>();
 
         for (int i = allExplorersHealth.Count - 1; i >= 0; i--)
@@ -198,14 +197,12 @@ public class CustomNetworkManager : NetworkManager
             {
                 allExplorersHealth.RemoveAt(i);
             }
-
         }
 
         foreach (var item in allExplorersHealth)
         {
             Destroy(item);
         }
-        
     }
 }
 

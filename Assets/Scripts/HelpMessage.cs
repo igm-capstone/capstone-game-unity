@@ -8,6 +8,7 @@ public class HelpMessage : MonoBehaviour
 
     private Text _text;
     private Image _panel;
+    private CanvasGroup _canvasGroup;
     private float _lastSet;
     private bool setMsg = false;
 
@@ -21,7 +22,8 @@ public class HelpMessage : MonoBehaviour
     {
         Instance = this;
         _text = GetComponentInChildren<Text>();
-        _panel = GetComponentInChildren<Image>();       
+        _panel = GetComponentInChildren<Image>();
+        _canvasGroup = GetComponent<CanvasGroup>();   
 
         textColor = _text.color;
         panelColor = _panel.color;
@@ -31,21 +33,22 @@ public class HelpMessage : MonoBehaviour
     {
         if(setMsg)
         {
-            //Debug.Log(textColor.a);
-            textColor.a += 0.1f;
-            _text.color = textColor;
+            //textColor.a += 0.1f;
+            //_text.color = textColor;
 
-            panelColor.a += 0.1f;
-            _panel.color = panelColor;
+            //panelColor.a += 0.1f;
+            //_panel.color = panelColor;
+            _canvasGroup.alpha += 0.1f;
         }
 
         if (_lastSet + TimeOut < Time.time)
         {
-            textColor.a -= 0.06f;
-            _text.color = textColor;
+            //textColor.a -= 0.06f;
+            //_text.color = textColor;
 
-            panelColor.a -= 0.06f;
-            _panel.color = panelColor;
+            //panelColor.a -= 0.06f;
+            //_panel.color = panelColor;
+            _canvasGroup.alpha -= 0.06f;
 
             setMsg = false; 
         }
@@ -60,11 +63,11 @@ public class HelpMessage : MonoBehaviour
         } 
     
         _text.text = msg;
-        if(!setMsg)
-        {
-            textColor.a = 0;
-            panelColor.a = 0;
-        }
+        //if(!setMsg)
+        //{
+        //    textColor.a = 0;
+        //    panelColor.a = 0;
+        //}
         setMsg = true;
 	    _lastSet = Time.time;
 	}

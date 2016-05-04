@@ -38,11 +38,9 @@ public class SpawnUIUpdater : MonoBehaviour
             SpawnUI.SetActive(true);
 
             Vector3 MinSpawnScale = new Vector3(curActiveSkill.MinSpawnDist * ScaleAdjst, curActiveSkill.MinSpawnDist * ScaleAdjst, 1.0f);
-
             Vector3 MaxSpawnScale = new Vector3(curActiveSkill.MaxSpawnDist * ScaleAdjst, curActiveSkill.MaxSpawnDist * ScaleAdjst, 1.0f);
 
             SpawnUI.transform.GetChild(0).GetComponent<RectTransform>().localScale = MinSpawnScale;
-
             SpawnUI.transform.GetChild(1).GetComponent<RectTransform>().localScale = MaxSpawnScale;
         }
         else

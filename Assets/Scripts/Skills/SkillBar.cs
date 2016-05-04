@@ -32,6 +32,12 @@ public class SkillBar : MonoBehaviour
     private Image energyUIFill;
     private Text energyUiText;
 
+    private Vector3 mouseWorldPos;
+    private float mouseDistance;
+    private float MinSpawnDist;
+    private float MaxSpawnDist;
+
+    private AvatarController[] avatars;
 
 
     void Start()
@@ -64,6 +70,34 @@ public class SkillBar : MonoBehaviour
             energyUIFill.fillAmount = 1;
         }
     }
+
+    void Update()
+    {
+        if(_activeSkill.MinSpawnDist > 0)
+        {
+            Debug.Log(_activeSkill.MinSpawnDist);
+            Debug.Log(_activeSkill.MaxSpawnDist);
+        }
+        //RaycastHit hit;
+        //if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, LayerMask.GetMask(new[] { "Floor" })))
+        //{
+        //    mouseWorldPos = hit.point;
+        //    mouseDistance = avatars.Select(a => (a.transform.position - mouseWorldPos).sqrMagnitude).OrderBy(d => d).FirstOrDefault();
+        //}
+
+        ////change mouse to no spawn indicator
+        //if (avatars.Any() && ((mouseDistance < (MinSpawnDist * MinSpawnDist) || (mouseDistance > (MaxSpawnDist * MaxSpawnDist)))))
+        //{
+        //    Debug.Log("mouse");
+        //}
+    }
+
+    public void UpdateExplorerCount()
+    {
+        avatars = FindObjectsOfType<AvatarController>();
+        Debug.Log(avatars.Count());
+    }
+
     public void UpgradeRestoreRate()
     {
         restoreAmountLevel = Mathf.Clamp(restoreAmountLevel + 1, 0, restoreAmount.Length - 1);
