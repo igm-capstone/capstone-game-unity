@@ -10,6 +10,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cylinder04
+    4300002: Generator_polySurface13
   materials:
     importMaterials: 0
     materialName: 0
