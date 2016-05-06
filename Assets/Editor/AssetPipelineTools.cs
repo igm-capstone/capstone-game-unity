@@ -32,18 +32,12 @@ public class AssetPipelineTools
     [UnityEditor.MenuItem("Tools/Export Game Properties")]
     public static void ExportGameProperties()
     {
-        var explorerGUIDs = new [] {
-            "da50434930d53a547b16faf5a7e77d93",
-            "e18db561f2541d04aa973e3ca745c5b4",
-            "ddfaaa28f02042641864fa1a59641e7e",
-        };
-
-        var ghostGUID = "019c493b42c53a1468dbd861bbbd1d49";
 
         var json = new JObject();
 
         // --- GHOST
 
+        var ghostGUID = "019c493b42c53a1468dbd861bbbd1d49";
         var ghostJson = new JObject();
 
         var ghost = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(ghostGUID));
@@ -58,6 +52,12 @@ public class AssetPipelineTools
         json.Add("ghost", ghostJson);
 
         // --- EXPLORERS
+
+        var explorerGUIDs = new[] {
+            "da50434930d53a547b16faf5a7e77d93",
+            "e18db561f2541d04aa973e3ca745c5b4",
+            "ddfaaa28f02042641864fa1a59641e7e",
+        };
 
         var explorerArray = new JArray();
         foreach (var guid in explorerGUIDs)
@@ -77,6 +77,53 @@ public class AssetPipelineTools
             explorerArray.Add(explorerJson);
         }
         json.Add("explorers", explorerArray);
+
+        // --- MINIONS
+
+        var minionGUIDs = new[] {
+            "b554c4a33a58290439e71fa855519a5d",  // Imp
+            "315cf5703670f7447b3260fd20c9e6f5",  // Bomber
+            "5c86aaedf3c3be045a7bf7b30346dd5f",  // Flytrap
+        };
+
+        var minionArray = new JArray();
+        foreach (var guid in minionGUIDs)
+        {
+            var minionJson = new JObject();
+
+            var minion = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(guid));
+            var health = minion.GetComponent<Health>();
+
+            minionJson.Add("name", minion.name);
+            minionJson.Add("baseHealth", new JValue(health.BaseHealth));
+
+            var plant = minion.GetComponent<PlantBehavior>();
+            if (plant)
+            {
+                minionJson.Add("attackDamage", plant.Damage);
+                minionJson.Add("attackRange", plant.AttackRange);
+            }
+
+            var targetFollower = minion.GetComponent<TargetFollower>();
+            if (targetFollower)
+            {
+                minionJson.Add("moveSpeed", targetFollower.moveSpeed);
+                minionJson.Add("turnRate", targetFollower.turnRate);
+                minionJson.Add("stunOnHitDuration", targetFollower.StunOnHitTime);
+            }
+
+            var attack = minion.GetComponent<AttackTarget>();
+            if (attack)
+            {
+                minionJson.Add("attackDamage", attack.AtckDamage);
+                minionJson.Add("splashRange", attack.ExplosionRadius);
+            }
+
+            minionArray.Add(minionJson);
+        }
+        json.Add("minions", minionArray);
+
+        // --- EXPORT
 
         var defaultDir = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));
         var initialDir = EditorPrefs.GetString("jsonSaveDir", defaultDir);
