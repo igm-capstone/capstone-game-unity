@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1d76a2df97203d243b2ce7b3bbcb6684
-timeCreated: 1461277294
+timeCreated: 1462578563
 licenseType: Pro
 ModelImporter:
   serializedVersion: 18
@@ -11,7 +11,7 @@ ModelImporter:
     3300000: //RootNode
     4300000: OwnerBed
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -36,7 +36,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importBlendShapes: 0
+    importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

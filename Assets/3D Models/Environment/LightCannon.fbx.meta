@@ -45,6 +45,7 @@ ModelImporter:
     4300010: LightCannon1_Ball
     4300012: LightCannon1_EnergyCylinder3
     4300014: LightCannon1_EnergyCylinder2
+    4300016: LightCannon2
   materials:
     importMaterials: 0
     materialName: 0

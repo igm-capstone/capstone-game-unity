@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 01018bc86fa01b4429e432ca88d31181
-timeCreated: 1461630871
+timeCreated: 1462578574
 licenseType: Pro
 ModelImporter:
   serializedVersion: 18
@@ -9,9 +9,9 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: StaffBed
+    4300000: Staffbed
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:

@@ -41,7 +41,7 @@ Transform:
   m_GameObject: {fileID: 143116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .300000012, y: .25, z: .25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 496482}
   m_Father: {fileID: 0}
@@ -90,7 +90,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163732}
-  m_Mesh: {fileID: 4300000, guid: 90d7a14fca0607c46996d181dcc668c6, type: 3}
+  m_Mesh: {fileID: 4300002, guid: 9224028f434bdd54f83ddc55a9f4d021, type: 3}
 --- !u!60 &6062384
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -104,10 +104,10 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: 2.96524882, y: 2.12192225}
-      - {x: 2.9587779, y: -2.12799048}
-      - {x: -2.89441395, y: -2.10888362}
-      - {x: -2.89222479, y: 2.11561465}
+    - - {x: .796635926, y: .56854248}
+      - {x: .795720398, y: -.567993164}
+      - {x: -.775604248, y: -.568725586}
+      - {x: -.784505188, y: .595336914}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -131,6 +131,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8c19a618a0bd9844583b91dca0875a34, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300002, guid: 9224028f434bdd54f83ddc55a9f4d021, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 143116}
