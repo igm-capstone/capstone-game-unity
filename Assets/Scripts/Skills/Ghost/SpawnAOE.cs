@@ -5,15 +5,15 @@ public class SpawnAOE : ISkill
 {
     SkillBar mySkillBar;
 
-    public override string Name {  get { return "Bomber"; } }
+    public override string Name {  get { return "Abomination"; } }
 
     public void Awake()
     {
         canDrop = false;
 
         IsSpawnSkill = true;
-        MinSpawnDist = 15f;
-        MaxSpawnDist = 80f;
+        MinSpawnDist = 13f;
+        MaxSpawnDist = 60f;
 
         key = KeyCode.Alpha2;
 

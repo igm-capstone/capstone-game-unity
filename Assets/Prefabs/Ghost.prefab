@@ -202,13 +202,12 @@ MonoBehaviour:
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
   SkillSprite: {fileID: 21300000, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
   CooldownSprite: {fileID: 21300014, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
-  Name: Basic Minion
   Cooldown: 2
   cost: 10
   UseCount: 0
   addToSkillBar: 1
   radius: 4
-  spawnCount: 2
+  spawnCount: 1
 --- !u!114 &11430948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,6 +243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc3225f95049ef4ea76406c228ce24b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseGhostNoSpawn: {fileID: 2800000, guid: 33ec183fa85e29344ae7d46ed601a61e, type: 3}
+  mouseGhostDefault: {fileID: 2800000, guid: ea4dd1be6de60c74485991b868800fde, type: 3}
   ClickableLayers:
     serializedVersion: 2
     m_Bits: 2654464
@@ -314,9 +315,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300008, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
-  CooldownSprite: {fileID: 21300022, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
-  Name: Haunt Explorer To Minion
+  SkillSprite: {fileID: 21300010, guid: 1a8dab880bb7f784f856373078b16270, type: 3}
+  CooldownSprite: {fileID: 21300022, guid: 1a8dab880bb7f784f856373078b16270, type: 3}
   Cooldown: 17
   cost: 0
   UseCount: 0
@@ -347,9 +347,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300010, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
-  CooldownSprite: {fileID: 21300024, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
-  Name: Flytrap
+  SkillSprite: {fileID: 21300006, guid: 1a8dab880bb7f784f856373078b16270, type: 3}
+  CooldownSprite: {fileID: 21300018, guid: 1a8dab880bb7f784f856373078b16270, type: 3}
   Cooldown: 3
   cost: 20
   UseCount: 0
@@ -366,11 +365,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillButtonPrefab: {fileID: 137546, guid: e4169ceb2e35df040b22757db07a421f, type: 2}
-  SkillSprite: {fileID: 21300002, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
-  CooldownSprite: {fileID: 21300016, guid: 8b55f94bf40d96741ac52fa63fbf3aba, type: 3}
-  Name: AOE Bomber
+  SkillSprite: {fileID: 21300008, guid: 1a8dab880bb7f784f856373078b16270, type: 3}
+  CooldownSprite: {fileID: 21300020, guid: 1a8dab880bb7f784f856373078b16270, type: 3}
   Cooldown: 4
-  cost: 25
+  cost: 20
   UseCount: 0
   addToSkillBar: 1
 --- !u!124 &12474532
@@ -519,7 +517,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SkillSprite
       value: 
-      objectReference: {fileID: 21300008, guid: 8b55f94bf40d96741ac52fa63fbf3aba,
+      objectReference: {fileID: 21300010, guid: 1a8dab880bb7f784f856373078b16270,
         type: 3}
     - target: {fileID: 0}
       propertyPath: HideInactiveSkills
@@ -567,7 +565,7 @@ Prefab:
       objectReference: {fileID: 150076, guid: 16232b9ae9288b248905ae49d824d8f6, type: 2}
     - target: {fileID: 0}
       propertyPath: cost
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_CullingMask.m_Bits
@@ -576,7 +574,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: CooldownSprite
       value: 
-      objectReference: {fileID: 21300022, guid: 8b55f94bf40d96741ac52fa63fbf3aba,
+      objectReference: {fileID: 21300022, guid: 1a8dab880bb7f784f856373078b16270,
         type: 3}
     - target: {fileID: 0}
       propertyPath: Loop
@@ -632,7 +630,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spawnCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: radius
@@ -650,6 +648,14 @@ Prefab:
       propertyPath: StrtWndwPreFab
       value: 
       objectReference: {fileID: 149572, guid: b45fc5559e3912f4083d12757e1d8e2a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: mouseGhostNoSpawn
+      value: 
+      objectReference: {fileID: 2800000, guid: 33ec183fa85e29344ae7d46ed601a61e, type: 3}
+    - target: {fileID: 0}
+      propertyPath: mouseGhostDefault
+      value: 
+      objectReference: {fileID: 2800000, guid: ea4dd1be6de60c74485991b868800fde, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196296}

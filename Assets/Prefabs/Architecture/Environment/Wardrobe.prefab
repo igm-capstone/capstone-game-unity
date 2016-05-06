@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 484794}
   - 61: {fileID: 6183840}
-  - 114: {fileID: 11478620}
   m_Layer: 23
   m_Name: 'Trigger '
   m_TagString: Untagged
@@ -78,8 +77,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 428534}
   - 60: {fileID: 6003408}
-  - 114: {fileID: 11414390}
-  - 114: {fileID: 11436828}
   m_Layer: 9
   m_Name: Wardrobe
   m_TagString: Untagged
@@ -132,7 +129,6 @@ GameObject:
   - 4: {fileID: 418138}
   - 33: {fileID: 3336526}
   - 23: {fileID: 2303446}
-  - 95: {fileID: 9577856}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -337,23 +333,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: .159999996}
   serializedVersion: 2
   m_Size: {x: 2.97000003, y: 2.24000001}
---- !u!95 &9577856
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198694}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 20944fee8b10edb48a06819d02dae6be, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11403946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -381,38 +360,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11414390
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 103
-    i1: 28
-    i2: 233
-    i3: 146
-    i4: 171
-    i5: 15
-    i6: 246
-    i7: 244
-    i8: 10
-    i9: 147
-    i10: 70
-    i11: 96
-    i12: 19
-    i13: 45
-    i14: 23
-    i15: 31
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &11425758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -429,19 +376,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &11436828
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 836e27ff92f4e514ebf97db613a7e02e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOccupied: 0
-  meshName: Wardrobe
 --- !u!114 &11449796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -463,19 +397,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &11478620
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6550b509401494945997ec29d61c6b6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 3
-  interactUI: {fileID: 190926}
 --- !u!114 &11498802
 MonoBehaviour:
   m_ObjectHideFlags: 1

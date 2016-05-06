@@ -8,7 +8,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 474988}
-  m_Layer: 0
+  - 60: {fileID: 6029480}
+  m_Layer: 9
   m_Name: Stair_Half_Railing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,6 +91,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164600}
   m_Mesh: {fileID: 4300000, guid: 93e7477a36569674ab100afcf30ef0b6, type: 3}
+--- !u!60 &6029480
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122026}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: -5.00206423, y: .00189882517}
+      - {x: -.000615060329, y: .00168812275}
+      - {x: .00233252347, y: -.501536012}
+      - {x: -5.0011735, y: -.500212371}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -101,6 +119,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 76ff537c8e1a84345868e6aeee938ab3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 122026}

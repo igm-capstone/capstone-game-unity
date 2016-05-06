@@ -558,7 +558,14 @@ public class AssetPipelineTools
                 }
 
                 var value = fieldPair.Key.GetValue(behaviour);
-                jobj.Add(name, new JValue(value));
+                if(value is Vector3)
+                {
+                    jobj.Add(name, ToJToken((Vector3)value));
+                }
+                else
+                {
+                    jobj.Add(name, new JValue(value));
+                }
             }
 
             foreach (var propPair in properties)

@@ -41,11 +41,11 @@ public class Door : MonoBehaviour
         if(!canOpen)
         {
             //UI message - can't open door
-            Debug.Log("Door Broken");
+            //Debug.Log("Door Broken");
         }
         else
         {
-            Debug.Log("door anim start");
+            //Debug.Log("door anim start");
             isSwinging = true;
 
             if (isOpen)

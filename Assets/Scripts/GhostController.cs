@@ -6,7 +6,10 @@ using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(SkillBar))]
 public class GhostController : MonoBehaviour
-{
+{    
+    public Texture2D mouseGhostNoSpawn;
+    public Texture2D mouseGhostDefault;
+
     [SerializeField]
     LayerMask ClickableLayers;
 
@@ -18,6 +21,9 @@ public class GhostController : MonoBehaviour
         _ghostSkillBar.enabled = true;
 
         DomMngr.Instance.PointDominated += OnControlPointDominated;
+
+       
+        Cursor.SetCursor(mouseGhostDefault, new Vector2(mouseGhostDefault.width * 0.5f, mouseGhostDefault.height * 0.5f), CursorMode.Auto);
     }
 
     // Update is called once per frame

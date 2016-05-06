@@ -30,6 +30,9 @@ public class AvatarController : MonoBehaviour
     float slowDownMod;
     private float animSpeed;
 
+    public Texture2D mouseInteract;
+    public Texture2D mouseExplorerAttack;
+
     void Awake()
     {
         hauntEtoM = false;
@@ -50,7 +53,9 @@ public class AvatarController : MonoBehaviour
 
     void Start()
     {
-        _avatarSkillBar.enabled = true;
+        _avatarSkillBar.enabled = true;        
+
+        Cursor.SetCursor(mouseExplorerAttack, new Vector2(mouseExplorerAttack.width * 0.5f, mouseExplorerAttack.height * 0.5f), CursorMode.Auto);
     }
 
     void FixedUpdate()
@@ -160,5 +165,13 @@ public class AvatarController : MonoBehaviour
     public void StopSlowDown()
     {
         slowDownMod = 1.0f;
+    }
+
+    public void Message(string str)
+    {
+        if (gameObject.name == "Me")
+        {
+            HelpMessage.Instance.SetMessage(str);
+        }
     }
 }

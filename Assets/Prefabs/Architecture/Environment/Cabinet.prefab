@@ -27,7 +27,6 @@ GameObject:
   - 4: {fileID: 470702}
   - 60: {fileID: 6089762}
   - 114: {fileID: 11419418}
-  - 114: {fileID: 11435220}
   m_Layer: 9
   m_Name: Cabinet
   m_TagString: Untagged
@@ -44,7 +43,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 462276}
   - 61: {fileID: 6103928}
-  - 114: {fileID: 11457542}
   m_Layer: 23
   m_Name: Trigger
   m_TagString: Untagged
@@ -114,7 +112,6 @@ GameObject:
   - 4: {fileID: 427912}
   - 33: {fileID: 3325064}
   - 23: {fileID: 2364216}
-  - 95: {fileID: 9558182}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -334,23 +331,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: .159999996}
   serializedVersion: 2
   m_Size: {x: 2.97000003, y: 2.24000001}
---- !u!95 &9558182
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185298}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0bf8cdc21fe40eb45adeac17029dcf5a, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11419418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -442,19 +422,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Space
---- !u!114 &11435220
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 836e27ff92f4e514ebf97db613a7e02e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOccupied: 0
-  meshName: Cabinet
 --- !u!114 &11438210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -476,19 +443,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &11457542
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 165608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6550b509401494945997ec29d61c6b6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 3
-  interactUI: {fileID: 175656}
 --- !u!114 &11475958
 MonoBehaviour:
   m_ObjectHideFlags: 1

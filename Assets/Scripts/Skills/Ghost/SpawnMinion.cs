@@ -7,7 +7,7 @@ public class SpawnMinion : ISkill
 
     public float radius = 4f;
     public int spawnCount = 3;
-    public override string Name { get { return "Imp Squad"; } }
+    public override string Name { get { return "Imp"; } }
 
     public void Awake()
     {
@@ -15,7 +15,7 @@ public class SpawnMinion : ISkill
 
         IsSpawnSkill = true;
         MinSpawnDist = 10f;
-        MaxSpawnDist = 80f;
+        MaxSpawnDist = 60f;
 
         key = KeyCode.Alpha1;
 

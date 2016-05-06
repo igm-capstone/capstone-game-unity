@@ -39,8 +39,7 @@ public class Domination : NetworkBehaviour
     }
 
     public void Update()
-    {
-
+    {        
         if (isServer && outsideDominationArea == true && elapsedTime >= 0.0f)
         {
             elapsedTime -= Time.deltaTime;
@@ -49,6 +48,7 @@ public class Domination : NetworkBehaviour
         dominationFill.fillAmount = elapsedTime / timeToCapture;
         fillAmount = dominationFill.fillAmount;
     }
+
     void OnTriggerStay2D(Collider2D other)
     {
         if (isServer && !captured && canBeCaptured && other.tag == "Player")
@@ -66,6 +66,10 @@ public class Domination : NetworkBehaviour
                 // Indicates that this point was captured to the EventMngr
                 PointCaptured(ID);
             }
+        }
+        else if(TierCapture == 1 && canBeCaptured == false && other.tag == "Player")
+        {            
+            other.GetComponent<AvatarController>().Message("Find the generators and power them up!");            
         }
     }
 

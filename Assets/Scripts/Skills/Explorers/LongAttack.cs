@@ -26,7 +26,7 @@ public class LongAttack : ISkill
     float BoxXAdjst = 0.5f;
     float BoxYAdjst = 0.5f;
 
-    public override string Name { get { return "Sword Swing"; } }
+    public override string Name { get { return "Staff Swing"; } }
 
     public void Awake()
     {

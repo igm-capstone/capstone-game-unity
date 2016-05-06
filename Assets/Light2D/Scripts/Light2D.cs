@@ -3,12 +3,17 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-[Rig3DAsset("lamps", Rig3DExports.Position | Rig3DExports.Rotation)]
+[Rig3DAsset("lamps", Rig3DExports.Rotation)]
 [ExecuteInEditMode]
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
 public class Light2D : MonoBehaviour {
 
+    public GameObject exportPosObj;
+
+    [Export]
+    public Vector3 position;
+       
     enum VertexLocation
     {
         Middle = 0,
@@ -67,6 +72,11 @@ public class Light2D : MonoBehaviour {
     private float coneAngle;
     private float highAngle;
     private float lowAngle;
+
+    public void OnEnable()
+    {
+        position = exportPosObj.transform.position;
+    }
 
     void Awake()
     {

@@ -25,6 +25,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 414344}
+  - 60: {fileID: 6037418}
+  - 60: {fileID: 6010774}
   m_Layer: 0
   m_Name: Stair_Curved_Right
   m_TagString: Untagged
@@ -67,7 +69,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 76ff537c8e1a84345868e6aeee938ab3, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -90,6 +92,60 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121582}
   m_Mesh: {fileID: 4300000, guid: 7f0ae0a93bc21bf4aa65f6bcf0d60400, type: 3}
+--- !u!60 &6010774
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126438}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: -8.96500301, y: 2.94667029}
+      - {x: -8.79585743, y: 1.12357652}
+      - {x: -8.2650013, y: -.64618355}
+      - {x: -7.46268082, y: -2.1337738}
+      - {x: -6.35030985, y: -3.46208882}
+      - {x: -4.9891181, y: -4.55609369}
+      - {x: -3.43619227, y: -5.36968803}
+      - {x: -1.73382294, y: -5.8592844}
+      - {x: .00303661823, y: -6.03076792}
+      - {x: .00324422121, y: -7.03775978}
+      - {x: -1.93918681, y: -6.89276981}
+      - {x: -3.81078935, y: -6.28936768}
+      - {x: -5.54593039, y: -5.36747408}
+      - {x: -7.07471609, y: -4.13723087}
+      - {x: -8.31398296, y: -2.68714285}
+      - {x: -9.20019054, y: -.979405165}
+      - {x: -9.77534485, y: .96258235}
+      - {x: -9.96354771, y: 2.93498063}
+--- !u!60 &6037418
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126438}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: -2.90851808, y: 2.9443388}
+      - {x: -2.68509293, y: 1.80798781}
+      - {x: -2.07290959, y: .845784247}
+      - {x: -1.0897944, y: .204272747}
+      - {x: -.00246876478, y: -.0106004477}
+      - {x: -.0088339448, y: -1.03274918}
+      - {x: -1.51604414, y: -.735401273}
+      - {x: -2.79659486, y: .124253988}
+      - {x: -3.6198616, y: 1.42759252}
+      - {x: -3.91007304, y: 2.94756413}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
